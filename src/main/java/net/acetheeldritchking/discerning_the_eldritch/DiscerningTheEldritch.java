@@ -1,6 +1,9 @@
 package net.acetheeldritchking.discerning_the_eldritch;
 
 import com.mojang.logging.LogUtils;
+import net.acetheeldritchking.discerning_the_eldritch.registeries.DTEPotionEffectRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registeries.ItemRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registeries.SpellRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -35,6 +38,15 @@ public class DiscerningTheEldritch
     public DiscerningTheEldritch()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        // Items
+        ItemRegistry.register(modEventBus);
+        // Spells
+        SpellRegistry.register(modEventBus);
+        // Effects
+        DTEPotionEffectRegistry.register(modEventBus);
+        // Entities
+
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
