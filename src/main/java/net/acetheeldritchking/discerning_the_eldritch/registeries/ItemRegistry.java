@@ -1,5 +1,8 @@
 package net.acetheeldritchking.discerning_the_eldritch.registeries;
 
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.api.spells.SpellRarity;
+import io.redspace.ironsspellbooks.item.spell_books.SimpleAttributeSpellBook;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -18,8 +21,14 @@ public class ItemRegistry {
     //             //
 
     // Black Book
+    public static final RegistryObject<Item> BLACK_BOOK_SPELLBOOK = ITEMS.register
+            ("black_book_spellbook", () -> new SimpleAttributeSpellBook
+                    (10, SpellRarity.EPIC, AttributeRegistry.ELDRITCH_SPELL_POWER.get(), 0.10));
 
     // The Apocrypha
+    public static final RegistryObject<Item> THE_APOCRYPHA_SPELLBOOK = ITEMS.register
+            ("the_apocrypha_spellbook", () -> new SimpleAttributeSpellBook
+                    (12, SpellRarity.LEGENDARY, AttributeRegistry.ELDRITCH_SPELL_POWER.get(), 0.25));
 
 
     //                    //

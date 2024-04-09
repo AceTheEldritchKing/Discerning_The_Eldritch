@@ -1,6 +1,8 @@
 package net.acetheeldritchking.discerning_the_eldritch;
 
 import com.mojang.logging.LogUtils;
+import io.redspace.ironsspellbooks.item.SpellBook;
+import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.registeries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registeries.ItemRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registeries.SpellRegistry;
@@ -25,6 +27,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
+import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(DiscerningTheEldritch.MOD_ID)
@@ -74,7 +77,10 @@ public class DiscerningTheEldritch
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // Some client setup code
+            // curios
+            event.enqueueWork(() -> {
+                ItemRegistry.getDTEItems().stream().filter(item -> item.get() instanceof SpellBook).forEach((item) -> CuriosRendererRegistry.register(item.get(), SpellBookCurioRenderer::new));
+            });
         }
     }
 }

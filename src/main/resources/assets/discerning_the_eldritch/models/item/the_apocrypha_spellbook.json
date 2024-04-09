@@ -1,0 +1,24 @@
+{
+    "parent": "minecraft:item/handheld",
+    "loader": "forge:separate_transforms",
+    "base": {
+        "parent": "discerning_the_eldritch:item/the_apocrypha_model"
+    },
+    "perspectives": {
+        "gui": {
+            "parent": "discerning_the_eldritch:item/the_apocrypha_spellbook_gui"
+        },
+        "third_person_left_hand": {
+            "parent": "discerning_the_eldritch:item/the_apocrypha_model_handheld"
+        },
+        "third_person_right_hand": {
+            "parent": "discerning_the_eldritch:item/the_apocrypha_model_handheld"
+        },
+        "first_person_left_hand": {
+            "parent": "discerning_the_eldritch:item/the_apocrypha_model_handheld"
+        },
+        "first_person_right_hand": {
+            "parent": "discerning_the_eldritch:item/the_apocrypha_model_handheld"
+        }
+    }
+}
