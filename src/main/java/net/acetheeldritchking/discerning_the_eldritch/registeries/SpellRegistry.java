@@ -17,17 +17,24 @@ public class SpellRegistry {
 
     // ELDRITCH SPELLS //
 
-    // Meteorology
+    // Meteorology - Changes weather or time
 
-    // Apocalypse
+    // Apocalypse - Powerful beam-based attack
 
-    // Atomic Annihilation
+    // Mind-Flaying - Inflicts insanity and darkness effects
 
-    // Mind-Flaying
+    // Assimilation (Debating on keeping) - On enemy death, turn them into a summon?
 
-    // Subjugation
+    // Silence - Prevent target from casting spells
 
-    // Forsaken Aid
+    // Forsaken Aid - Summons entities like Raise Dead
+
+    // Eldritch Slash - Melee spell
+
+
+    // HOLY SPELLS //
+
+    // Exorcism - Resets insanity
 
     public static void register(IEventBus eventBus)
     {
