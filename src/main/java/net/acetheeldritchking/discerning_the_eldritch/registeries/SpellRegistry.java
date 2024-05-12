@@ -36,6 +36,11 @@ public class SpellRegistry {
 
     // Exorcism - Resets insanity
 
+
+    // BLOOD SPELLS //
+
+    // Bloodlust - Damage dealt by user gets turned into healt; lifesteal on hit
+
     public static void register(IEventBus eventBus)
     {
         SPELLS.register(eventBus);
