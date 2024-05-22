@@ -2,6 +2,7 @@ package net.acetheeldritchking.discerning_the_eldritch.registeries;
 
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.SilenceSpell;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -26,10 +27,13 @@ public class SpellRegistry {
     // Assimilation (Debating on keeping) - On enemy death, turn them into a summon?
 
     // Silence - Prevent target from casting spells
+    public static final RegistryObject<AbstractSpell> SILENCE = registerSpell(new SilenceSpell());
 
     // Forsaken Aid - Summons entities like Raise Dead
 
     // Eldritch Slash - Melee spell
+
+    // Wrath of God - Destroy all creatures, they can't regenerate (do a lot of damage, prevent any healing)
 
 
     // HOLY SPELLS //
