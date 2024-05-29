@@ -3,6 +3,7 @@ package net.acetheeldritchking.discerning_the_eldritch;
 import com.mojang.logging.LogUtils;
 import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
+import net.acetheeldritchking.discerning_the_eldritch.events.ServerEvents;
 import net.acetheeldritchking.discerning_the_eldritch.registeries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registeries.ItemRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registeries.SpellRegistry;
@@ -41,7 +42,8 @@ public class DiscerningTheEldritch
     public DiscerningTheEldritch()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
+        // Event Handler
+        MinecraftForge.EVENT_BUS.register(new ServerEvents());
         // Items
         ItemRegistry.register(modEventBus);
         // Spells

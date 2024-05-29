@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.CastTargetingData;
+import io.redspace.ironsspellbooks.spells.eldritch.AbstractEldritchSpell;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.registeries.DTEPotionEffectRegistry;
 import net.minecraft.network.chat.Component;
@@ -19,7 +20,7 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 
 @AutoSpellConfig
-public class SilenceSpell extends AbstractSpell {
+public class SilenceSpell extends AbstractEldritchSpell {
     private final ResourceLocation spellId = new ResourceLocation(DiscerningTheEldritch.MOD_ID, "silence");
 
     @Override
@@ -31,7 +32,7 @@ public class SilenceSpell extends AbstractSpell {
     }
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
-            .setMinRarity(SpellRarity.EPIC)
+            .setMinRarity(SpellRarity.LEGENDARY)
             .setSchoolResource(SchoolRegistry.ELDRITCH_RESOURCE)
             .setMaxLevel(5)
             .setCooldownSeconds(35)
