@@ -5,6 +5,7 @@ import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.events.ServerEvents;
 import net.acetheeldritchking.discerning_the_eldritch.registeries.DTEPotionEffectRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registeries.DTESoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registeries.ItemRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registeries.SpellRegistry;
 import net.minecraft.client.Minecraft;
@@ -50,6 +51,8 @@ public class DiscerningTheEldritch
         SpellRegistry.register(modEventBus);
         // Effects
         DTEPotionEffectRegistry.register(modEventBus);
+        // Sounds
+        DTESoundRegistry.register(modEventBus);
         // Entities
 
 
