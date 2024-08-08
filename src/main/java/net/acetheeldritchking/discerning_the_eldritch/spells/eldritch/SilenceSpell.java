@@ -31,7 +31,7 @@ public class SilenceSpell extends AbstractEldritchSpell {
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
-                Component.translatable("ui.discerning_the_eldritch.void_beam",
+                Component.translatable("ui.discerning_the_eldritch.silence_spell",
                         Utils.stringTruncation(getSpellPower(spellLevel, caster), 1))
         );
     }

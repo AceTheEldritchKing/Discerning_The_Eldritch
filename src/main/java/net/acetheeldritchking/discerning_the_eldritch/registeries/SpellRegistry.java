@@ -35,6 +35,8 @@ public class SpellRegistry {
 
     // Wrath of God - Destroy all creatures, they can't regenerate (do a lot of damage, prevent any healing)
 
+    // Conjour Gaoler - Unobtainable spell, summon the Gaoler entity
+
 
     // HOLY SPELLS //
 
@@ -43,7 +45,11 @@ public class SpellRegistry {
 
     // BLOOD SPELLS //
 
-    // Bloodlust - Damage dealt by user gets turned into healt; lifesteal on hit
+    // Bloodlust - Damage dealt by user gets turned into health; lifesteal on hit
+
+    // LIGHTNING SPELLS //
+
+    // Thundering Blow/Lightning Crash - Melee spell
 
     public static void register(IEventBus eventBus)
     {
