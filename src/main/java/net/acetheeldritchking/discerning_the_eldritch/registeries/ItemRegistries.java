@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.item.curios.CurioBaseItem;
 import io.redspace.ironsspellbooks.item.spell_books.SimpleAttributeSpellBook;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.EchoVibrationRing;
+import net.acetheeldritchking.discerning_the_eldritch.items.gauntlets.HandOfApocryphaItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -38,6 +39,7 @@ public class ItemRegistries {
      */
 
     // Hand of Apocrypha - Gauntlet
+    public static final RegistryObject<Item> HAND_OF_APOCRYPHA = ITEMS.register("hand_of_apocrypha", HandOfApocryphaItem::new);
 
 
     /***
