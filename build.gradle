@@ -141,6 +141,7 @@ repositories {
     maven { url = "https://cursemaven.com" }
     maven { url = "https://maven.blamejared.com" }
     maven { url = "https://maven.kosmx.dev/" }
+    maven { url = 'https://libs.azuredoom.com:4443/mods'}
 }
 
 dependencies {
@@ -166,11 +167,23 @@ dependencies {
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
 
+    // Tetra
+    //compileOnly fg.deobf("se.mickelus.mutil:mutil:${mutil_version}")
+    compileOnly fg.deobf("curse.maven:tetra-${tetra_version}")
+    compileOnly fg.deobf("se.mickelus.mutil:mutil:${mutil_version}")
+
+    // If you want to run with tetra in dev comment the above line and uncomment the following 2 lines
+    //runtimeOnly fg.deobf("curse.maven:tetra-${tetra_version}")
+    //runtimeOnly fg.deobf("se.mickelus.mutil:mutil:${mutil_version}")
+
     // JSON
     implementation "com.google.code.gson:gson:${gson_version}"
 
     // JEI
     runtimeOnly(fg.deobf("curse.maven:Jei-238222:4712866"))
+
+    // AzureLib
+    implementation fg.deobf("mod.azure.azurelib:azurelib-forge-1.19.2:1.0.47")
 
     // Mixins
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"

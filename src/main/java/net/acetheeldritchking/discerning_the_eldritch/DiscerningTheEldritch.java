@@ -6,16 +6,8 @@ import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.events.ServerEvents;
 import net.acetheeldritchking.discerning_the_eldritch.registeries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registeries.DTESoundRegistry;
-import net.acetheeldritchking.discerning_the_eldritch.registeries.ItemRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registeries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registeries.SpellRegistry;
-import net.minecraft.client.Minecraft;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -25,9 +17,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
@@ -46,7 +35,7 @@ public class DiscerningTheEldritch
         // Event Handler
         MinecraftForge.EVENT_BUS.register(new ServerEvents());
         // Items
-        ItemRegistry.register(modEventBus);
+        ItemRegistries.register(modEventBus);
         // Spells
         SpellRegistry.register(modEventBus);
         // Effects
@@ -84,7 +73,7 @@ public class DiscerningTheEldritch
         {
             // curios
             event.enqueueWork(() -> {
-                ItemRegistry.getDTEItems().stream().filter(item -> item.get() instanceof SpellBook).forEach((item) -> CuriosRendererRegistry.register(item.get(), SpellBookCurioRenderer::new));
+                ItemRegistries.getDTEItems().stream().filter(item -> item.get() instanceof SpellBook).forEach((item) -> CuriosRendererRegistry.register(item.get(), SpellBookCurioRenderer::new));
             });
         }
     }

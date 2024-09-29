@@ -3,5 +3,10 @@
         "sounds": [
             "discerning_the_eldritch:silence_cast"
         ]
+    },
+    "clap": {
+        "sounds": [
+            "discerning_the_eldritch:clap"
+        ]
     }
 }

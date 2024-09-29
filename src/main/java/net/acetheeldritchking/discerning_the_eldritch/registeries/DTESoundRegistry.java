@@ -13,6 +13,7 @@ public class DTESoundRegistry {
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, DiscerningTheEldritch.MOD_ID);
 
     public static RegistryObject<SoundEvent> SILENCE_SPELL_CAST = registerSoundEvent("silence_cast");
+    public static RegistryObject<SoundEvent> CLAP_SPELL_CAST = registerSoundEvent("clap");
 
     public static void register(IEventBus eventBus)
     {

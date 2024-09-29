@@ -3,6 +3,7 @@ package net.acetheeldritchking.discerning_the_eldritch.registeries;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.SilenceSpell;
+import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.BoogieWoogieSpell;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -16,7 +17,9 @@ public class SpellRegistry {
         return SPELLS.register(spell.getSpellName(), () -> spell);
     }
 
-    // ELDRITCH SPELLS //
+    /***
+     * Eldritch Spells
+     */
 
     // Meteorology - Changes weather or time
 
@@ -38,18 +41,32 @@ public class SpellRegistry {
     // Conjour Gaoler - Unobtainable spell, summon the Gaoler entity
 
 
-    // HOLY SPELLS //
+    /***
+     * Holy Spells
+     */
 
     // Exorcism - Resets insanity
 
 
-    // BLOOD SPELLS //
+    /***
+     * Blood Spells
+     */
 
     // Bloodlust - Damage dealt by user gets turned into health; lifesteal on hit
 
-    // LIGHTNING SPELLS //
+    /***
+     * Lightning Spells
+     */
 
     // Thundering Blow/Lightning Crash - Melee spell
+
+
+    /***
+     * Evocation Spells
+     */
+
+    // Boogie Woogie - Switch places with a target
+    public static final RegistryObject<AbstractSpell> BOOGIE_WOOGIE = registerSpell(new BoogieWoogieSpell());
 
     public static void register(IEventBus eventBus)
     {
