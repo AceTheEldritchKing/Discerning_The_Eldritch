@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.capabilities.magic.RecastInstance;
 import io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.registeries.DTESoundRegistry;
@@ -14,6 +15,9 @@ import net.acetheeldritchking.discerning_the_eldritch.spells.DTESpellAnimations;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -67,11 +71,6 @@ public class BoogieWoogieSpell extends AbstractSpell {
     }
 
     @Override
-    public AnimationHolder getCastStartAnimation() {
-        return DTESpellAnimations.ANIMATION_CLAP;
-    }
-
-    @Override
     public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
         return Utils.preCastTargetHelper(level, entity, playerMagicData, this, 32, .15f);
     }
@@ -89,6 +88,12 @@ public class BoogieWoogieSpell extends AbstractSpell {
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
+        if (!playerMagicData.getPlayerRecasts().hasRecastForSpell(getSpellId()))
+        {
+            playerMagicData.getPlayerRecasts().addRecast
+                    (new RecastInstance(getSpellId(), spellLevel, getRecastCount(spellLevel, entity), 80, castSource, null), playerMagicData);
+        }
+
         if (playerMagicData.getAdditionalCastData() instanceof TargetEntityCastData targetEntityCastData)
         {
             var targetEntity = targetEntityCastData.getTarget((ServerLevel) level);
@@ -99,6 +104,8 @@ public class BoogieWoogieSpell extends AbstractSpell {
 
                 entity.teleportTo(targetPos.x, targetPos.y, targetPos.z);
                 targetEntity.teleportTo(casterPos.x, casterPos.y, casterPos.z);
+
+                targetEntity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 60, 0, true, true, true));
             }
         }
 

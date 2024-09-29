@@ -2,7 +2,6 @@
 	"format_version": "1.8.0",
 	"animations": {
 		"clap": {
-			"loop": "hold_on_last_frame",
 			"animation_length": 0.2917,
 			"bones": {
 				"right_arm": {
