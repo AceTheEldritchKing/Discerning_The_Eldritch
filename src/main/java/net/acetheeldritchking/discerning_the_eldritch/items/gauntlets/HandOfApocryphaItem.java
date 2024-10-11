@@ -30,14 +30,14 @@ public class HandOfApocryphaItem extends CastingGauntletItem implements IAnimata
     private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
     public HandOfApocryphaItem() {
-        super(ItemPropertiesHelper.equipment().stacksTo(1).rarity(Rarity.EPIC), 10, -3,
+        super(ItemPropertiesHelper.equipment().stacksTo(1).rarity(Rarity.EPIC), 9, -3.5,
                 Map.of(
                         AttributeRegistry.ELDRITCH_SPELL_POWER.get(),
-                        new AttributeModifier(UUID.fromString("307c7972-eab7-45ec-8a5b-2462e46920c5"), "Weapon modifier", 0.25F, AttributeModifier.Operation.MULTIPLY_BASE),
+                        new AttributeModifier(UUID.fromString("307c7972-eab7-45ec-8a5b-2462e46920c5"), "Weapon modifier", 0.20F, AttributeModifier.Operation.MULTIPLY_BASE),
                         AttributeRegistry.SPELL_POWER.get(),
                         new AttributeModifier(UUID.fromString("307c7972-eab7-45ec-8a5b-2462e46920c5"), "Weapon modifier", 0.10F, AttributeModifier.Operation.MULTIPLY_BASE),
                         AttributeRegistry.COOLDOWN_REDUCTION.get(),
-                        new AttributeModifier(UUID.fromString("307c7972-eab7-45ec-8a5b-2462e46920c5"), "Weapon modifier", 0.20F, AttributeModifier.Operation.MULTIPLY_BASE)
+                        new AttributeModifier(UUID.fromString("307c7972-eab7-45ec-8a5b-2462e46920c5"), "Weapon modifier", 0.15F, AttributeModifier.Operation.MULTIPLY_BASE)
                 ));
     }
 

@@ -31,7 +31,7 @@ public class ItemRegistries {
     // The Apocrypha
     public static final RegistryObject<Item> THE_APOCRYPHA_SPELLBOOK = ITEMS.register
             ("the_apocrypha_spellbook", () -> new SimpleAttributeSpellBook
-                    (12, SpellRarity.LEGENDARY, AttributeRegistry.ELDRITCH_SPELL_POWER.get(), 0.25));
+                    (13, SpellRarity.LEGENDARY, AttributeRegistry.ELDRITCH_SPELL_POWER.get(), 0.20));
 
 
     /***

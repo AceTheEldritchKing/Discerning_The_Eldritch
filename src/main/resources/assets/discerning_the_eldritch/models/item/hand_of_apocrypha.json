@@ -2,108 +2,113 @@
   "credit": "Made with Blockbench",
   "parent": "builtin/entity",
   "texture_size": [
-    32,
-    32
+    96,
+    96
   ],
   "display": {
     "thirdperson_righthand": {
       "translation": [
-        -1,
-        -4.75,
-        0
+        0,
+        -6.75,
+        3.75
       ],
       "scale": [
-        1.5,
-        1.5,
-        1.5
+        1.2,
+        1.2,
+        1.2
       ]
     },
     "thirdperson_lefthand": {
       "translation": [
-        1,
-        -4.75,
-        0
+        0,
+        -6.75,
+        3.75
       ],
       "scale": [
-        1.5,
-        1.5,
-        1.5
+        1.2,
+        1.2,
+        1.2
       ]
     },
     "firstperson_righthand": {
       "rotation": [
-        37.8,
-        -2.51,
-        2.02
+        0,
+        0,
+        -9.25
       ],
       "translation": [
-        -1.25,
-        2.75,
-        4
+        1.25,
+        -3.25,
+        2.25
       ]
     },
     "firstperson_lefthand": {
       "rotation": [
-        37.8,
-        2.51,
-        2.02
+        0,
+        0,
+        -9.25
       ],
       "translation": [
-        -1.25,
-        2.75,
-        4
+        1.25,
+        -3.25,
+        2.25
       ]
     },
     "ground": {
-      "rotation": [
-        -3.17,
-        -11.59,
-        41.98
-      ],
       "translation": [
         0,
-        1.5,
+        -5.5,
         0
       ]
     },
     "gui": {
       "rotation": [
-        126.66,
-        -47.57,
-        -151.17
+        -141.75,
+        33.75,
+        -180
       ],
       "translation": [
-        5.75,
-        3,
+        0.75,
+        -3.75,
         0
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        1.5
       ]
     },
     "head": {
       "translation": [
-        -3,
-        24,
-        -5.25
+        0,
+        -13.5,
+        3.25
       ],
       "scale": [
-        4,
-        4,
-        4
+        3,
+        3,
+        3
       ]
     },
     "fixed": {
       "rotation": [
+        -90,
         0,
-        90,
         0
       ],
       "translation": [
-        -2.25,
-        6.75,
-        0
+        0,
+        2.25,
+        4.75
+      ],
+      "scale": [
+        2,
+        2,
+        2
       ]
     }
   },
   "textures": {
-    "particle": "hand_of_apocrypha"
+    "particle": "discerning_the_eldritch:item/hand_of_apocrypha_2"
   }
 }
