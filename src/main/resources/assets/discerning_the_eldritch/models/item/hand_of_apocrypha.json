@@ -2,74 +2,14 @@
   "credit": "Made with Blockbench",
   "parent": "builtin/entity",
   "texture_size": [
-    96,
-    96
+    32,
+    32
   ],
   "display": {
     "thirdperson_righthand": {
       "translation": [
-        0,
-        -6.75,
-        3.75
-      ],
-      "scale": [
-        1.2,
-        1.2,
-        1.2
-      ]
-    },
-    "thirdperson_lefthand": {
-      "translation": [
-        0,
-        -6.75,
-        3.75
-      ],
-      "scale": [
-        1.2,
-        1.2,
-        1.2
-      ]
-    },
-    "firstperson_righthand": {
-      "rotation": [
-        0,
-        0,
-        -9.25
-      ],
-      "translation": [
-        1.25,
-        -3.25,
-        2.25
-      ]
-    },
-    "firstperson_lefthand": {
-      "rotation": [
-        0,
-        0,
-        -9.25
-      ],
-      "translation": [
-        1.25,
-        -3.25,
-        2.25
-      ]
-    },
-    "ground": {
-      "translation": [
-        0,
-        -5.5,
-        0
-      ]
-    },
-    "gui": {
-      "rotation": [
-        -141.75,
-        33.75,
-        -180
-      ],
-      "translation": [
-        0.75,
-        -3.75,
+        -1,
+        -4.75,
         0
       ],
       "scale": [
@@ -78,37 +18,92 @@
         1.5
       ]
     },
-    "head": {
+    "thirdperson_lefthand": {
       "translation": [
-        0,
-        -13.5,
-        3.25
+        1,
+        -4.75,
+        0
       ],
       "scale": [
+        1.5,
+        1.5,
+        1.5
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        37.8,
+        -2.51,
+        2.02
+      ],
+      "translation": [
+        -1.25,
+        2.75,
+        4
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        37.8,
+        2.51,
+        2.02
+      ],
+      "translation": [
+        -1.25,
+        2.75,
+        4
+      ]
+    },
+    "ground": {
+      "rotation": [
+        -3.17,
+        -11.59,
+        41.98
+      ],
+      "translation": [
+        0,
+        1.5,
+        0
+      ]
+    },
+    "gui": {
+      "rotation": [
+        126.66,
+        -47.57,
+        -151.17
+      ],
+      "translation": [
+        5.75,
         3,
-        3,
-        3
+        0
+      ]
+    },
+    "head": {
+      "translation": [
+        -3,
+        24,
+        -5.25
+      ],
+      "scale": [
+        4,
+        4,
+        4
       ]
     },
     "fixed": {
       "rotation": [
-        -90,
         0,
+        90,
         0
       ],
       "translation": [
-        0,
-        2.25,
-        4.75
-      ],
-      "scale": [
-        2,
-        2,
-        2
+        -2.25,
+        6.75,
+        0
       ]
     }
   },
   "textures": {
-    "particle": "discerning_the_eldritch:item/hand_of_apocrypha_2"
+    "particle": "hand_of_apocrypha"
   }
 }

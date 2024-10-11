@@ -1,12 +1,19 @@
 {
-    "effect.discerning_the_eldritch.silence_potion_effect": "Silenced",
+  "creative_tab.discerning_the_eldritch.items": "Discerning The Eldritch",
 
-    "item.discerning_the_eldritch.black_book_spellbook": "Black Book",
-    "item.discerning_the_eldritch.the_apocrypha_spellbook": "The Apocrypha",
-    "item.discerning_the_eldritch.hand_of_apocrypha": "Hand of Apocrypha",
 
-    "spell.discerning_the_eldritch.silence": "Silence",
-    "spell.discerning_the_eldritch.silence.guide": "Cast a wicked spell that prevents targets from casting spell",
-    "spell.discerning_the_eldritch.boogie_woogie": "Boogie Woogie",
-    "spell.discerning_the_eldritch.boogie_woogie.guide": "Boogie Woogie!"
+  "effect.discerning_the_eldritch.silence_potion_effect": "Silenced",
+
+
+  "item.discerning_the_eldritch.black_book_spellbook": "Black Book",
+  "item.discerning_the_eldritch.the_apocrypha_spellbook": "The Apocrypha",
+  "item.discerning_the_eldritch.corrupted_cloth": "Corrupted Cloth",
+  "item.discerning_the_eldritch.echo_vibration_ring": "Echo Vibration Ring",
+  "item.discerning_the_eldritch.echo_vibration_ring.desc": "Provides bonus recasts for Boogie Woogie",
+
+
+  "spell.discerning_the_eldritch.silence": "Silence",
+  "spell.discerning_the_eldritch.silence.guide": "Cast a wicked spell that prevents targets from casting any spell for a set amount of time",
+  "spell.discerning_the_eldritch.boogie_woogie": "Boogie Woogie",
+  "spell.discerning_the_eldritch.boogie_woogie.guide": "Boogie Woogie!"
 }

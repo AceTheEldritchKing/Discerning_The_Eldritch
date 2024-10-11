@@ -7,10 +7,9 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData;
-import io.redspace.ironsspellbooks.spells.eldritch.AbstractEldritchSpell;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
-import net.acetheeldritchking.discerning_the_eldritch.registeries.DTEPotionEffectRegistry;
-import net.acetheeldritchking.discerning_the_eldritch.registeries.DTESoundRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -24,14 +23,13 @@ import java.util.List;
 import java.util.Optional;
 
 @AutoSpellConfig
-public class SilenceSpell extends AbstractEldritchSpell {
-    private final ResourceLocation spellId = new ResourceLocation(DiscerningTheEldritch.MOD_ID, "silence");
+public class SilenceSpell extends AbstractSpell {
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "silence");
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
-                Component.translatable("ui.discerning_the_eldritch.silence_spell",
-                        Utils.stringTruncation(getSpellPower(spellLevel, caster), 1))
+                Component.translatable("ui.irons_spellbooks.effect_length", Utils.timeFromTicks(getSpellPower(spellLevel, caster) * 20, 1))
         );
     }
 
@@ -44,7 +42,7 @@ public class SilenceSpell extends AbstractEldritchSpell {
 
     public SilenceSpell()
     {
-        this.manaCostPerLevel = 100;
+        this.manaCostPerLevel = 10;
         this.baseSpellPower = 1;
         this.spellPowerPerLevel = 1;
         this.castTime = 50;
@@ -93,7 +91,7 @@ public class SilenceSpell extends AbstractEldritchSpell {
             var targetEntity = targetingData.getTarget((ServerLevel) level);
             if (targetEntity != null)
             {
-                targetEntity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.SILENCE_POTION_EFFECT.get(),
+                targetEntity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.SILENCE_POTION_EFFECT,
                         getEffectDuration(spellLevel, entity), 1, true, true, true));
             }
         }

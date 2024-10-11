@@ -1,39 +1,43 @@
 package net.acetheeldritchking.discerning_the_eldritch;
 
-import com.mojang.logging.LogUtils;
 import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.events.ServerEvents;
-import net.acetheeldritchking.discerning_the_eldritch.registeries.DTEPotionEffectRegistry;
-import net.acetheeldritchking.discerning_the_eldritch.registeries.DTESoundRegistry;
-import net.acetheeldritchking.discerning_the_eldritch.registeries.ItemRegistries;
-import net.acetheeldritchking.discerning_the_eldritch.registeries.SpellRegistry;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.acetheeldritchking.discerning_the_eldritch.registries.*;
+import net.minecraft.world.item.CreativeModeTabs;
 import org.slf4j.Logger;
+
+import com.mojang.logging.LogUtils;
+
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
-// The value here should match an entry in the META-INF/mods.toml file
+// The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(DiscerningTheEldritch.MOD_ID)
 public class DiscerningTheEldritch
 {
-    // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "discerning_the_eldritch";
-    // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public DiscerningTheEldritch()
+    public DiscerningTheEldritch(IEventBus modEventBus, ModContainer modContainer)
     {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        // Event Handler
-        MinecraftForge.EVENT_BUS.register(new ServerEvents());
+        modEventBus.addListener(this::commonSetup);
+
+        NeoForge.EVENT_BUS.register(this);
+
+        // Creative Tab
+        DTECreativeModeTabs.register(modEventBus);
         // Items
         ItemRegistries.register(modEventBus);
         // Spells
@@ -44,28 +48,28 @@ public class DiscerningTheEldritch
         DTESoundRegistry.register(modEventBus);
         // Entities
 
+        modEventBus.addListener(this::addCreative);
 
-        // Register the commonSetup method for modloading
-        modEventBus.addListener(this::commonSetup);
-
-        // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
+        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-        // Some common setup code
+        //
     }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
+    private void addCreative(BuildCreativeModeTabContentsEvent event)
+    {
+        // Creative Menu
+    }
+
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event)
     {
-        // Do something when the server starts
+        //
     }
 
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
     {
         @SubscribeEvent

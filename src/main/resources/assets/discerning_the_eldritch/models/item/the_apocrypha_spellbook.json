@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/handheld",
-    "loader": "forge:separate_transforms",
+    "loader": "neoforge:separate_transforms",
     "base": {
         "parent": "discerning_the_eldritch:item/the_apocrypha_model"
     },

@@ -9,13 +9,12 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.RecastInstance;
 import io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
-import net.acetheeldritchking.discerning_the_eldritch.registeries.DTESoundRegistry;
-import net.acetheeldritchking.discerning_the_eldritch.registeries.ItemRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.spells.DTESpellAnimations;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -27,7 +26,7 @@ import java.util.Optional;
 
 @AutoSpellConfig
 public class BoogieWoogieSpell extends AbstractSpell {
-    private final ResourceLocation spellId = new ResourceLocation(DiscerningTheEldritch.MOD_ID, "boogie_woogie");
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "boogie_woogie");
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.RARE)

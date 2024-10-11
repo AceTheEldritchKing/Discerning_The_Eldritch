@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "discerning_the_eldritch:item/corrupted_cloth"
+    }
+}

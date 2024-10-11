@@ -6,6 +6,6 @@ import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 
 public class EchoVibrationRing extends SimpleDescriptiveCurio {
     public EchoVibrationRing() {
-        super(ItemPropertiesHelper.equipment().stacksTo(1), Curios.RING_SLOT);
+        super(ItemPropertiesHelper.equipment().stacksTo(1).fireResistant(), Curios.RING_SLOT);
     }
 }

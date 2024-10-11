@@ -2,10 +2,10 @@ package net.acetheeldritchking.discerning_the_eldritch.effects;
 
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.neoforged.neoforge.common.EffectCure;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 public class SilencePotionEffect extends MobEffect {
     public SilencePotionEffect() {
@@ -13,8 +13,7 @@ public class SilencePotionEffect extends MobEffect {
     }
 
     @Override
-    public List<ItemStack> getCurativeItems() {
-        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-        return ret;
+    public void fillEffectCures(Set<EffectCure> cures, MobEffectInstance effectInstance) {
+        // Actually, I DO know what I'm doing!
     }
 }
