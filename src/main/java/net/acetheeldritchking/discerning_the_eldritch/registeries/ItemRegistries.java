@@ -1,12 +1,15 @@
 package net.acetheeldritchking.discerning_the_eldritch.registeries;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
+import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.item.curios.CurioBaseItem;
 import io.redspace.ironsspellbooks.item.spell_books.SimpleAttributeSpellBook;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.EchoVibrationRing;
 import net.acetheeldritchking.discerning_the_eldritch.items.gauntlets.HandOfApocryphaItem;
+import net.acetheeldritchking.discerning_the_eldritch.items.weapons.DeepGreatsword;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,12 +29,12 @@ public class ItemRegistries {
     // Black Book
     public static final RegistryObject<Item> BLACK_BOOK_SPELLBOOK = ITEMS.register
             ("black_book_spellbook", () -> new SimpleAttributeSpellBook
-                    (10, SpellRarity.EPIC, AttributeRegistry.ELDRITCH_SPELL_POWER.get(), 0.10));
+                    (10, SpellRarity.EPIC, AttributeRegistry.ELDRITCH_SPELL_POWER.get(), 0.10, 200));
 
     // The Apocrypha
     public static final RegistryObject<Item> THE_APOCRYPHA_SPELLBOOK = ITEMS.register
             ("the_apocrypha_spellbook", () -> new SimpleAttributeSpellBook
-                    (13, SpellRarity.LEGENDARY, AttributeRegistry.ELDRITCH_SPELL_POWER.get(), 0.20));
+                    (13, SpellRarity.LEGENDARY, AttributeRegistry.ELDRITCH_SPELL_POWER.get(), 0.20, 300));
 
 
     /***
@@ -45,6 +48,10 @@ public class ItemRegistries {
     /***
      * Weapons
      */
+
+    // Deep Greatsword
+    public static final RegistryObject<Item> DEEP_GREATSWORD = ITEMS.register("deep_greatsword",
+            () -> new DeepGreatsword(SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.BLOOD_SLASH_SPELL, 5))));
 
 
     /***
