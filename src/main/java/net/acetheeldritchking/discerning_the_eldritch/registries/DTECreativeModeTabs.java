@@ -22,6 +22,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.ECHO_VIBRATION_RING.get());
                         output.accept(ItemRegistries.BLACK_BOOK_SPELLBOOK.get());
                         output.accept(ItemRegistries.THE_APOCRYPHA_SPELLBOOK.get());
+                        output.accept(ItemRegistries.DEEP_GREATSWORD.get());
                     }).build());
 
     public static void register(IEventBus eventBus)
