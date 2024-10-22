@@ -19,6 +19,13 @@
         },
         "first_person_right_hand": {
             "parent": "discerning_the_eldritch:item/the_apocrypha_model_handheld"
+        },
+        "head": {
+            "textures": {
+                "book": "discerning_the_eldritch:item/spell_books/the_apocrypha_open",
+                "particle": "discerning_the_eldritch:item/spell_books/the_apocrypha_open"
+            },
+            "parent": "irons_spellbooks:item/template_spell_book_model_open"
         }
     }
 }
