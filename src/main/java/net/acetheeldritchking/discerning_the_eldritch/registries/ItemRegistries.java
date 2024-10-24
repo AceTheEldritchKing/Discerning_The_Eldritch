@@ -11,6 +11,8 @@ import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.EchoVibrationRing;
+import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.GuardianGuidebookSpellbook;
+import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.TempestuousTomeSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.DTEWeaponTiers;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
@@ -43,6 +45,26 @@ public class ItemRegistries {
                     new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, .20F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
                     new AttributeContainer(AttributeRegistry.MAX_MANA, 300, AttributeModifier.Operation.ADD_VALUE)
             ));
+
+    // Tempestuous Time
+    public static final DeferredHolder<Item, Item> TEMPESTUOUS_TOME = ITEMS.register("tempestuous_tome", TempestuousTomeSpellbook::new);
+
+    // Frozen Folio
+    public static final DeferredHolder<Item, Item> FROZEN_FOLIO = ITEMS.register("frozen_folio", () ->
+            new SpellBook(10).withSpellbookAttributes(
+                    new AttributeContainer(AttributeRegistry.ICE_SPELL_POWER, .10F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                    new AttributeContainer(AttributeRegistry.MAX_MANA, 200, AttributeModifier.Operation.ADD_VALUE)
+            ));
+
+    // Diary of Decay
+    public static final DeferredHolder<Item, Item> DIARY_OF_DECAY  = ITEMS.register("diary_of_decay", () ->
+            new SpellBook(13).withSpellbookAttributes(
+                    new AttributeContainer(AttributeRegistry.BLOOD_SPELL_POWER, .10F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                    new AttributeContainer(AttributeRegistry.MAX_MANA, 200, AttributeModifier.Operation.ADD_VALUE)
+            ));
+
+    // Guardian's Gaze
+    public static final DeferredHolder<Item, Item> GUARDIANS_GAZE = ITEMS.register("guardian_guidebook", GuardianGuidebookSpellbook::new);
 
     /***
      * Staffs and Gauntlets

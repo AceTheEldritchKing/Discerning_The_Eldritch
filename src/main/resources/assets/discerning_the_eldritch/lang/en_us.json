@@ -11,10 +11,19 @@
   "item.discerning_the_eldritch.echo_vibration_ring": "Echo Vibration Ring",
   "item.discerning_the_eldritch.echo_vibration_ring.desc": "Provides bonus recasts for Boogie Woogie",
   "item.discerning_the_eldritch.deep_greatsword": "Greatsword of the Depths",
+  "item.discerning_the_eldritch.tempestuous_tome": "Tempestuous Tome",
+  "item.discerning_the_eldritch.frozen_folio": "Frozen Folio",
+  "item.discerning_the_eldritch.diary_of_decay": "Diary of Decay",
+  "item.discerning_the_eldritch.guardian_guidebook": "Guardian's Guidebook",
 
 
   "spell.discerning_the_eldritch.silence": "Silence",
   "spell.discerning_the_eldritch.silence.guide": "Cast a wicked spell that prevents targets from casting any spell for a set amount of time",
   "spell.discerning_the_eldritch.boogie_woogie": "Boogie Woogie",
-  "spell.discerning_the_eldritch.boogie_woogie.guide": "Boogie Woogie!"
+  "spell.discerning_the_eldritch.boogie_woogie.guide": "Boogie Woogie!",
+  "spell.discerning_the_eldritch.guardians_gaze": "Guardian's Gaze",
+  "spell.discerning_the_eldritch.guardians_gaze.guide": "A unique variant of Ray of Frost that inflicts mining fatigue",
+
+
+  "death.attack.discerning_the_eldritch.guardians_gaze": "%1$s fell from %2$s's gaze"
 }

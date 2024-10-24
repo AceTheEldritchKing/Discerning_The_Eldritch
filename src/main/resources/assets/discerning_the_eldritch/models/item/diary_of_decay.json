@@ -1,0 +1,19 @@
+{
+    "parent": "minecraft:item/handheld",
+    "loader": "neoforge:separate_transforms",
+    "base": {
+        "parent": "discerning_the_eldritch:item/diary_of_decay_model"
+    },
+    "perspectives": {
+        "gui": {
+            "parent": "discerning_the_eldritch:item/diary_of_decay_gui"
+        },
+        "head": {
+            "textures": {
+                "book": "discerning_the_eldritch:item/spell_books/diary_of_decay_open",
+                "particle": "discerning_the_eldritch:item/spell_books/diary_of_decay_open"
+            },
+            "parent": "irons_spellbooks:item/template_spell_book_model_open"
+        }
+    }
+}

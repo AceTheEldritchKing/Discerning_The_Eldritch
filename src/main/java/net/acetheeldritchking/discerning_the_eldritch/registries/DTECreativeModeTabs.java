@@ -23,6 +23,10 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.BLACK_BOOK_SPELLBOOK.get());
                         output.accept(ItemRegistries.THE_APOCRYPHA_SPELLBOOK.get());
                         output.accept(ItemRegistries.DEEP_GREATSWORD.get());
+                        output.accept(ItemRegistries.TEMPESTUOUS_TOME.get());
+                        output.accept(ItemRegistries.FROZEN_FOLIO.get());
+                        output.accept(ItemRegistries.DIARY_OF_DECAY.get());
+                        output.accept(ItemRegistries.GUARDIANS_GAZE.get());
                     }).build());
 
     public static void register(IEventBus eventBus)

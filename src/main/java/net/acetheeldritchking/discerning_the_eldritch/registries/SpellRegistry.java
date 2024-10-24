@@ -4,6 +4,7 @@ import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.SilenceSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.BoogieWoogieSpell;
+import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.GuardiansGazeSpell;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -68,6 +69,9 @@ public class SpellRegistry {
 
     // Boogie Woogie - Switch places with a target
     public static final Supplier<AbstractSpell> BOOGIE_WOOGIE = registerSpell(new BoogieWoogieSpell());
+
+    // Guardian's Gaze - Special version of Ray of Frost that inflicts Mining Fatigue (By request of Ama)
+    public static final Supplier<AbstractSpell> GUARDIANS_GAZE = registerSpell(new GuardiansGazeSpell());
 
 
     public static void register(IEventBus eventBus)

@@ -1,0 +1,19 @@
+{
+    "parent": "minecraft:item/handheld",
+    "loader": "neoforge:separate_transforms",
+    "base": {
+        "parent": "discerning_the_eldritch:item/frozen_folio_model"
+    },
+    "perspectives": {
+        "gui": {
+            "parent": "discerning_the_eldritch:item/frozen_folio_gui"
+        },
+        "head": {
+            "textures": {
+                "book": "discerning_the_eldritch:item/spell_books/frozen_folio_open",
+                "particle": "discerning_the_eldritch:item/spell_books/frozen_folio_open"
+            },
+            "parent": "irons_spellbooks:item/template_spell_book_model_open"
+        }
+    }
+}
