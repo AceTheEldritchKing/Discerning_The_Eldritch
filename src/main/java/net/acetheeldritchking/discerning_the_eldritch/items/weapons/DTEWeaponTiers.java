@@ -19,6 +19,28 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
     public static DTEWeaponTiers DEEP_GREATSWORD = new DTEWeaponTiers(1680, 7, -3.0F, 10, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
+    // God Spear
+    public static DTEWeaponTiers GOD_SPEAR = new DTEWeaponTiers(1560, 8, -3.2F, 10, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.HOLY_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+
+    // Ender Cleaver
+    public static DTEWeaponTiers ENDER_CLEAVER = new DTEWeaponTiers(1600, 6.5F, -2.5F, 10, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.ENDER_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+
+    // Glaive of The Gods
+
+    // Hammer of Hephaestus
+
+    // Bane of The King
+
+    // Skull Staff
+
+    // Ymir
+    public static DTEWeaponTiers YMIR = new DTEWeaponTiers(2670, 8.5F, -2.5F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+    );
+
     //private final int level;
     private final int uses;
     private final float speed;

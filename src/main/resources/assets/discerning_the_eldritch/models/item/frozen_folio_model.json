@@ -3,7 +3,7 @@
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "discerning_the_eldritch:item/spell_books/frozen_folio_model",
-		"particle": "discerning_the_eldritch:item/spell_books/frozen_folio_model"
+		"particle": "discerning_the_eldritch:item/spell_books/frozen_folio_model_silver"
 	},
 	"elements": [
 		{
@@ -79,10 +79,6 @@
 		"ground": {
 			"rotation": [0, 0, 90],
 			"translation": [-1.25, -2, 0]
-		},
-		"head": {
-			"rotation": [0, 0, 90],
-			"translation": [-4.5, 8.25, 0]
 		},
 		"fixed": {
 			"rotation": [0, 90, 0],

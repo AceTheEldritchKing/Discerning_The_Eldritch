@@ -14,6 +14,7 @@ import net.acetheeldritchking.discerning_the_eldritch.items.curios.EchoVibration
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.GuardianGuidebookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.TempestuousTomeSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.DTEWeaponTiers;
+import net.acetheeldritchking.discerning_the_eldritch.items.weapons.YmirSwordItem;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -79,7 +80,16 @@ public class ItemRegistries {
     // Deep Greatsword
     public static final DeferredHolder<Item, Item> DEEP_GREATSWORD = ITEMS.register("deep_greatsword", () ->
             new MagicSwordItem(DTEWeaponTiers.DEEP_GREATSWORD, ItemPropertiesHelper.equipment().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.DEEP_GREATSWORD)),
-                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.BLOOD_SLASH_SPELL, 5))));
+                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.PLANAR_SIGHT_SPELL, 5))));
+
+    // God Spear
+    public static final DeferredHolder<Item, Item> GOD_SPEAR = ITEMS.register("god_spear", () ->
+            new MagicSwordItem(DTEWeaponTiers.GOD_SPEAR, ItemPropertiesHelper.equipment().rarity(Rarity.UNCOMMON).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.GOD_SPEAR)),
+                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.DIVINE_SMITE_SPELL, 5))));
+
+    // Ender Cleaver
+    public static final DeferredHolder<Item, Item> YMIR = ITEMS.register("ymir", () ->
+            new YmirSwordItem(SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.BLOOD_SLASH_SPELL, 5))));
 
     /***
      * Generic Items

@@ -27,6 +27,8 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.FROZEN_FOLIO.get());
                         output.accept(ItemRegistries.DIARY_OF_DECAY.get());
                         output.accept(ItemRegistries.GUARDIANS_GAZE.get());
+                        output.accept(ItemRegistries.GOD_SPEAR.get());
+                        output.accept(ItemRegistries.YMIR.get());
                     }).build());
 
     public static void register(IEventBus eventBus)
