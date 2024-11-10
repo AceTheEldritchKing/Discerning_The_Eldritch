@@ -94,11 +94,11 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
-
+        //
     }
 
     @Override
     public void onAntiMagic(MagicData playerMagicData) {
-
+        //
     }
 }
