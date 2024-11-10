@@ -10,6 +10,7 @@ import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegist
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -17,6 +18,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -60,13 +62,19 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
 
     @Override
     public float getSpeed() {
-        return 1;
+        return 0.8F;
+    }
+
+    @Override
+    public void setDamage(float damage) {
+        this.damage = damage;
     }
 
     @Override
     protected void onHitEntity(EntityHitResult pResult) {
         super.onHitEntity(pResult);
         var target = pResult.getEntity();
+
         DamageSources.applyDamage(target, damage,
                 SpellRegistry.ESOTERIC_EDGE.get().getDamageSource(this, getOwner()));
 
@@ -77,6 +85,10 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
             if (livingTarget instanceof Player player)
             {
                 player.disableShield();
+            }
+            if (DamageSources.applyDamage(livingTarget, damage, SpellRegistry.ESOTERIC_EDGE.get().getDamageSource(this, getOwner())))
+            {
+                EnchantmentHelper.doPostAttackEffects((ServerLevel) this.level(), livingTarget, SpellRegistry.ESOTERIC_EDGE.get().getDamageSource(this, getOwner()));
             }
         }
         if (target instanceof ShieldPart || target instanceof AbstractShieldEntity)

@@ -40,6 +40,8 @@ public class EsotericEdgeRenderer extends EntityRenderer<EsotericEdge> {
 
         createSlashTexturePlace(pose, esotericEdge, bufferSource, esotericEdge.getBbWidth() * 1.5F);
 
+        poseStack.popPose();
+
         super.render(esotericEdge, entityYaw, partialTick, poseStack, bufferSource, packedLight);
     }
 

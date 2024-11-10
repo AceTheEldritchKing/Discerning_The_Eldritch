@@ -49,6 +49,7 @@ public class DiscerningTheEldritch
         // Sounds
         DTESoundRegistry.register(modEventBus);
         // Entities
+        DTEEntityRegistry.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
 
