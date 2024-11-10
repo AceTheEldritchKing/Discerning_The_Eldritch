@@ -2,6 +2,7 @@ package net.acetheeldritchking.discerning_the_eldritch.registries;
 
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.EsotericEdgeSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.SilenceSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.BoogieWoogieSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.GuardiansGazeSpell;
@@ -36,7 +37,8 @@ public class SpellRegistry {
 
     // Forsaken Aid - Summons entities like Raise Dead
 
-    // Eldritch Slash - Melee spell
+    // Esoteric Edge - Melee spell
+    public static final Supplier<AbstractSpell> ESOTERIC_EDGE = registerSpell(new EsotericEdgeSpell());
 
     // Wrath of God - Destroy all creatures, they can't regenerate (do a lot of damage, prevent any healing)
 

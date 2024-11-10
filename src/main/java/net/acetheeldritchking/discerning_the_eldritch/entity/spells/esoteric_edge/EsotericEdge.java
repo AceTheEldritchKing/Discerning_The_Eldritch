@@ -1,11 +1,13 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge;
 
 import io.redspace.ironsspellbooks.api.magic.MagicData;
+import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import io.redspace.ironsspellbooks.entity.spells.AbstractShieldEntity;
 import io.redspace.ironsspellbooks.entity.spells.ShieldPart;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
@@ -22,7 +24,7 @@ import net.minecraft.world.phys.HitResult;
 import java.util.Optional;
 
 public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSusceptible {
-        public EsotericEdge(EntityType<? extends Projectile> entityType, Level level) {
+    public EsotericEdge(EntityType<? extends Projectile> entityType, Level level) {
         super(entityType, level);
 
         this.setNoGravity(true);
@@ -65,6 +67,8 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
     protected void onHitEntity(EntityHitResult pResult) {
         super.onHitEntity(pResult);
         var target = pResult.getEntity();
+        DamageSources.applyDamage(target, damage,
+                SpellRegistry.ESOTERIC_EDGE.get().getDamageSource(this, getOwner()));
 
         // Kills shields & Do effects
         if (target instanceof LivingEntity livingTarget)
