@@ -11,6 +11,8 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 import java.util.Random;
@@ -33,8 +35,8 @@ public class EsotericEdgeRenderer extends EntityRenderer<EsotericEdge> {
 
         PoseStack.Pose pose = poseStack.last();
 
-        poseStack.mulPose(Axis.YP.rotationDegrees(90 - esotericEdge.getXRot()));
-        poseStack.mulPose(Axis.ZP.rotationDegrees(esotericEdge.getXRot()));
+        poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partialTick, esotericEdge.yRotO, esotericEdge.getYRot())));
+        poseStack.mulPose(Axis.XP.rotationDegrees(-Mth.lerp(partialTick, esotericEdge.xRotO, esotericEdge.getXRot())));
         float randomZ = new Random(31L * esotericEdge.getId()).nextInt(-8, 8);
         poseStack.mulPose(Axis.XP.rotationDegrees(randomZ));
 

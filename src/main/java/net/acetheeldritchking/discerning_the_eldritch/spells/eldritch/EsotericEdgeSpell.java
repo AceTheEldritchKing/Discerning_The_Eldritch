@@ -67,34 +67,9 @@ public class EsotericEdgeSpell extends AbstractSpell {
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         EsotericEdge esotericEdge = new EsotericEdge(level, entity);
         esotericEdge.setPos(entity.getEyePosition());
-        esotericEdge.shootFromRotation(entity, entity.getXRot(), entity.getYHeadRot(), 0, 1, 1);
+        esotericEdge.shoot(entity.getLookAngle());
 
         esotericEdge.setDamage(getDamage(spellLevel, entity));
-
-        /*float radius = 2.0f;
-        float distance = 2.0f;
-        Vec3 esotericEdgeSlashLocation = esotericEdge.position().add(esotericEdge.getForward().multiply(distance, 0.3f, distance));
-        var entities = level.getEntities(entity,
-                AABB.ofSize(esotericEdgeSlashLocation, radius * 2, radius, radius *2));
-        for (Entity targetEntity : entities)
-        {
-            if (entity.isPickable() && entity.distanceToSqr(targetEntity) < radius * radius &&
-                    Utils.hasLineOfSight(level, entity.getEyePosition(), targetEntity.getBoundingBox().getCenter(),
-                            true))
-            {
-                if (DamageSources.applyDamage(targetEntity, getDamage(spellLevel, entity), this.getDamageSource(esotericEdge)))
-                {
-                    if (targetEntity instanceof LivingEntity livingTarget)
-                    {
-                        if (DamageSources.applyDamage(livingTarget, getDamage(spellLevel, entity), this.getDamageSource(esotericEdge)))
-                        {
-                            esotericEdge.setDamage(getDamage(spellLevel, entity));
-                            EnchantmentHelper.doPostAttackEffects((ServerLevel) level, targetEntity, this.getDamageSource(esotericEdge));
-                        }
-                    }
-                }
-            }
-        }*/
 
         level.addFreshEntity(esotericEdge);
 
