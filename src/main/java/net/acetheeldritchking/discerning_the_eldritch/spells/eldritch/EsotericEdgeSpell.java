@@ -66,8 +66,8 @@ public class EsotericEdgeSpell extends AbstractSpell {
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         EsotericEdge esotericEdge = new EsotericEdge(level, entity);
-        esotericEdge.setPos(entity.getEyePosition());
-        esotericEdge.shoot(entity.getLookAngle());
+        esotericEdge.setPos(entity.position().add(0, entity.getEyeHeight() - esotericEdge.getBoundingBox().getYsize() * .5f, 0));
+        esotericEdge.shootFromRotation(entity, entity.getXRot(), entity.getYHeadRot(), 0, esotericEdge.getSpeed(), 1);
 
         esotericEdge.setDamage(getDamage(spellLevel, entity));
 
