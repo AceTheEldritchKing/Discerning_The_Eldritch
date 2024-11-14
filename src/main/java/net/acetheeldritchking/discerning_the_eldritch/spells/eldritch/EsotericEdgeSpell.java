@@ -6,15 +6,20 @@ import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdge;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Optional;
 
 @AutoSpellConfig
 public class EsotericEdgeSpell extends AbstractSpell {
@@ -65,6 +70,11 @@ public class EsotericEdgeSpell extends AbstractSpell {
     }
 
     @Override
+    public Optional<SoundEvent> getCastFinishSound() {
+        return Optional.of(DTESoundRegistry.ESOTERIC_EDGE_SLASH.get());
+    }
+
+    @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         EsotericEdge esotericEdge = new EsotericEdge(level, entity);
         esotericEdge.setPos(entity.position().add(0, entity.getEyeHeight() - esotericEdge.getBoundingBox().getYsize() * .5f, 0));
@@ -81,7 +91,14 @@ public class EsotericEdgeSpell extends AbstractSpell {
 
     private float getDamage(int spellLevel, LivingEntity caster)
     {
-        return getSpellPower(spellLevel, caster) + Utils.getWeaponDamage(caster);
+        return getSpellPower(spellLevel, caster) + getWeaponDamage(caster);
+    }
+
+    private float getWeaponDamage(LivingEntity caster)
+    {
+        float weaponDamage = Utils.getWeaponDamage(caster);
+
+        return weaponDamage;
     }
 
     private String getDamageText(int spellLevel, LivingEntity caster)

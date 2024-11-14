@@ -13,7 +13,9 @@ public class TempestuousTomeSpellbook extends UniqueSpellBook {
                 new SpellDataRegistryHolder(SpellRegistry.GUST_SPELL, 12),
                 new SpellDataRegistryHolder(SpellRegistry.THUNDERSTORM_SPELL, 10)
         ), 8);
-        withSpellbookAttributes(new AttributeContainer(AttributeRegistry.MAX_MANA, 200, AttributeModifier.Operation.ADD_VALUE));
-        withSpellbookAttributes(new AttributeContainer(AttributeRegistry.LIGHTNING_SPELL_POWER, 0.10F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        withSpellbookAttributes(
+                new AttributeContainer(AttributeRegistry.MAX_MANA, 200, AttributeModifier.Operation.ADD_VALUE),
+                new AttributeContainer(AttributeRegistry.LIGHTNING_SPELL_POWER, 0.10F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+        );
     }
 }

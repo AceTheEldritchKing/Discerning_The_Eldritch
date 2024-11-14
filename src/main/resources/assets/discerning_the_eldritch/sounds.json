@@ -8,5 +8,10 @@
         "sounds": [
             "discerning_the_eldritch:clap"
         ]
+    },
+    "esoteric_edge_slash": {
+        "sounds": [
+            "discerning_the_eldritch:esoteric_edge_slash"
+        ]
     }
 }

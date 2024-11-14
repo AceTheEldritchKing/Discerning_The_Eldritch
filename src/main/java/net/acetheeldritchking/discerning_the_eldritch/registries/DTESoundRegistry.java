@@ -17,6 +17,8 @@ public class DTESoundRegistry {
     // Clap Spell Cast
     public static DeferredHolder<SoundEvent, SoundEvent> CLAP_SPELL_CAST = registerSoundEvent("clap");
 
+    public static DeferredHolder<SoundEvent, SoundEvent> ESOTERIC_EDGE_SLASH = registerSoundEvent("esoteric_edge_slash");
+
     private static DeferredHolder<SoundEvent, SoundEvent> registerSoundEvent(String name)
     {
         return SOUND_EVENT.register(name, () -> SoundEvent.createVariableRangeEvent

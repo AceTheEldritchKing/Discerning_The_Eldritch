@@ -2,18 +2,25 @@
     "parent": "minecraft:item/handheld",
     "loader": "neoforge:separate_transforms",
     "base": {
-        "parent": "discerning_the_eldritch:item/guardian_guidebook_model"
+      "textures": {
+        "book": "discerning_the_eldritch:item/spell_book_models/guardian_guidebook",
+        "particle": "discerning_the_eldritch:item/spell_book_models/guardian_guidebook"
+      },
+      "parent": "irons_spellbooks:item/template_spell_book_model"
     },
     "perspectives": {
-        "gui": {
-            "parent": "discerning_the_eldritch:item/guardian_guidebook_gui"
-        },
-        "head": {
-            "textures": {
-                "book": "discerning_the_eldritch:item/spell_books/guardian_guidebook_open",
-                "particle": "discerning_the_eldritch:item/spell_books/guardian_guidebook_open"
-            },
-            "parent": "irons_spellbooks:item/template_spell_book_model_open"
+      "gui": {
+        "parent": "item/generated",
+        "textures": {
+          "layer0": "discerning_the_eldritch:item/guardian_guidebook"
         }
+      },
+      "head": {
+        "textures": {
+          "book": "discerning_the_eldritch:item/spell_book_models/guardian_guidebook",
+          "particle": "discerning_the_eldritch:item/spell_book_models/guardian_guidebook"
+        },
+        "parent": "irons_spellbooks:item/template_spell_book_model_open"
+      }
     }
-}
+  }

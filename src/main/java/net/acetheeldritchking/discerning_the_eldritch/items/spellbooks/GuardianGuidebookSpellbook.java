@@ -12,7 +12,9 @@ public class GuardianGuidebookSpellbook extends UniqueSpellBook {
         super(SpellDataRegistryHolder.of(
                 new SpellDataRegistryHolder(SpellRegistries.GUARDIANS_GAZE, 1)
         ), 9);
-        withSpellbookAttributes(new AttributeContainer(AttributeRegistry.MAX_MANA, 200, AttributeModifier.Operation.ADD_VALUE));
-        withSpellbookAttributes(new AttributeContainer(AttributeRegistry.EVOCATION_SPELL_POWER, 0.10F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        withSpellbookAttributes(
+                new AttributeContainer(AttributeRegistry.MAX_MANA, 200, AttributeModifier.Operation.ADD_VALUE),
+                new AttributeContainer(AttributeRegistry.EVOCATION_SPELL_POWER, 0.10F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+        );
     }
 }
