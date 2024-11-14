@@ -4,6 +4,7 @@ import io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem;
 import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
+import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -13,11 +14,14 @@ import net.minecraft.world.item.TooltipFlag;
 import java.util.List;
 
 public class YmirSwordItem extends MagicSwordItem {
-    public YmirSwordItem(SpellDataRegistryHolder[] spellDataRegistryHolders) {
+    public YmirSwordItem() {
         super(
                 DTEWeaponTiers.YMIR,
                 ItemPropertiesHelper.equipment().fireResistant().rarity(Rarity.EPIC).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.YMIR)
-                ), spellDataRegistryHolders
+                ),
+                SpellDataRegistryHolder.of(
+                        new SpellDataRegistryHolder(SpellRegistries.ESOTERIC_EDGE, 11),
+                        new SpellDataRegistryHolder(SpellRegistries.SILENCE, 8))
         );
     }
 

@@ -88,11 +88,7 @@ public class ItemRegistries {
                     SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.DIVINE_SMITE_SPELL, 6))));
 
     // Ymir
-    public static final DeferredHolder<Item, Item> YMIR = ITEMS.register("ymir", () ->
-            new YmirSwordItem(SpellDataRegistryHolder.of(
-                    new SpellDataRegistryHolder(SpellRegistries.ESOTERIC_EDGE, 11),
-                    new SpellDataRegistryHolder(SpellRegistries.SILENCE, 8)
-                    )));
+    public static final DeferredHolder<Item, Item> YMIR = ITEMS.register("ymir", YmirSwordItem::new);
 
     /***
      * Generic Items

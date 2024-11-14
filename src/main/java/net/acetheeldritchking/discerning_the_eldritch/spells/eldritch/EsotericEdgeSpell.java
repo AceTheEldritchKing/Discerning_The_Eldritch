@@ -35,7 +35,7 @@ public class EsotericEdgeSpell extends AbstractSpell {
 
     public EsotericEdgeSpell()
     {
-        this.manaCostPerLevel = 15;
+        this.manaCostPerLevel = 5;
         this.baseSpellPower = 10;
         this.spellPowerPerLevel = 5;
         this.castTime = 0;
