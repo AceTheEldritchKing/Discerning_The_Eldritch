@@ -17,7 +17,7 @@ public class DTEEntityRegistry {
     // Esoteric Edge
     public static final DeferredHolder<EntityType<?>, EntityType<EsotericEdge>> ESOTERIC_EDGE =
             ENTITIES.register("esoteric_edge", () -> EntityType.Builder.<EsotericEdge>of(EsotericEdge::new, MobCategory.MISC)
-                    .sized(1f, 1f)
+                    .sized(5f, 1f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "esoteric_edge").toString())
             );

@@ -4,6 +4,7 @@ import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
+import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdge;
@@ -22,7 +23,8 @@ public class EsotericEdgeSpell extends AbstractSpell {
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
-                Component.translatable("ui.irons_spellbooks.damage", getDamageText(spellLevel, caster))
+                Component.translatable("ui.irons_spellbooks.damage", getDamageText(spellLevel, caster)),
+                Component.translatable("ui.discerning_the_eldritch.extra_damage")
         );
     }
 
@@ -58,12 +60,19 @@ public class EsotericEdgeSpell extends AbstractSpell {
     }
 
     @Override
+    public AnimationHolder getCastStartAnimation() {
+        return SpellAnimations.SLASH_ANIMATION;
+    }
+
+    @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         EsotericEdge esotericEdge = new EsotericEdge(level, entity);
         esotericEdge.setPos(entity.position().add(0, entity.getEyeHeight() - esotericEdge.getBoundingBox().getYsize() * .5f, 0));
         esotericEdge.shootFromRotation(entity, entity.getXRot(), entity.getYHeadRot(), 0, esotericEdge.getSpeed(), 1);
 
         esotericEdge.setDamage(getDamage(spellLevel, entity));
+
+        //System.out.println("Damage: " + esotericEdge.getDamage());
 
         level.addFreshEntity(esotericEdge);
 

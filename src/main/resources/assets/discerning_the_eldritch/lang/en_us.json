@@ -30,5 +30,8 @@
   "spell.discerning_the_eldritch.esoteric_edge.guide": "Unleash a devastating slash of pure eldritch energy, inflicting darkness upon hit",
 
 
+  "ui.discerning_the_eldritch.extra_damage": "Deals extra damage when a weapon is held in the caster's hand",
+
+
   "death.attack.discerning_the_eldritch.guardians_gaze": "%1$s fell from %2$s's gaze"
 }
