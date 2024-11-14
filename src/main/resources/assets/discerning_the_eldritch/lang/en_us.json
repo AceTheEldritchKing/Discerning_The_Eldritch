@@ -12,11 +12,12 @@
   "item.discerning_the_eldritch.echo_vibration_ring.desc": "Provides bonus recasts for Boogie Woogie",
   "item.discerning_the_eldritch.deep_greatsword": "Greatsword of the Depths",
   "item.discerning_the_eldritch.tempestuous_tome": "Tempestuous Tome",
-  "item.discerning_the_eldritch.frozen_folio": "Frozen Folio",
+  "item.discerning_the_eldritch.frozen_folio": "Frozen Folios",
   "item.discerning_the_eldritch.diary_of_decay": "Diary of Decay",
   "item.discerning_the_eldritch.guardian_guidebook": "Guardian's Guidebook",
   "item.discerning_the_eldritch.ymir": "Ymir, Apothic Eldritch Blade",
   "item.discerning_the_eldritch.ymir_description": "Blade forged from Eldritch dreams",
+  "item.discerning_the_eldritch.god_spear": "The God Spear",
 
 
   "spell.discerning_the_eldritch.silence": "Silence",
@@ -25,6 +26,8 @@
   "spell.discerning_the_eldritch.boogie_woogie.guide": "Boogie Woogie!",
   "spell.discerning_the_eldritch.guardians_gaze": "Guardian's Gaze",
   "spell.discerning_the_eldritch.guardians_gaze.guide": "A unique variant of Ray of Frost that inflicts mining fatigue",
+  "spell.discerning_the_eldritch.esoteric_edge": "Esoteric Edge",
+  "spell.discerning_the_eldritch.esoteric_edge.guide": "Unleash a devastating slash of pure eldritch energy, inflicting darkness upon hit",
 
 
   "death.attack.discerning_the_eldritch.guardians_gaze": "%1$s fell from %2$s's gaze"

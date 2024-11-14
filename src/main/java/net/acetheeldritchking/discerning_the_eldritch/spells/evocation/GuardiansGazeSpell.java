@@ -10,8 +10,7 @@ import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.ray_of_frost.RayOfFrostVisualEntity;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
-import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistry;
-import net.minecraft.client.particle.Particle;
+import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -85,7 +84,7 @@ public class GuardiansGazeSpell extends AbstractSpell {
         if (hitResult.getType() == HitResult.Type.ENTITY)
         {
             Entity target = ((EntityHitResult) hitResult).getEntity();
-            DamageSources.applyDamage(target, getDamage(spellLevel, entity), SpellRegistry.GUARDIANS_GAZE.get().getDamageSource(entity));
+            DamageSources.applyDamage(target, getDamage(spellLevel, entity), SpellRegistries.GUARDIANS_GAZE.get().getDamageSource(entity));
             if (target instanceof LivingEntity livingTarget)
             {
                 livingTarget.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 60, 1, true, true, true));

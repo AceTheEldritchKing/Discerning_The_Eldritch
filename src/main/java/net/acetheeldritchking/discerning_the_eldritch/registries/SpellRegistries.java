@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 
 import static io.redspace.ironsspellbooks.api.registry.SpellRegistry.SPELL_REGISTRY_KEY;
 
-public class SpellRegistry {
+public class SpellRegistries {
     public static final DeferredRegister<AbstractSpell> SPELLS = DeferredRegister.create(SPELL_REGISTRY_KEY, DiscerningTheEldritch.MOD_ID);
 
     public static Supplier<AbstractSpell> registerSpell(AbstractSpell spell) {

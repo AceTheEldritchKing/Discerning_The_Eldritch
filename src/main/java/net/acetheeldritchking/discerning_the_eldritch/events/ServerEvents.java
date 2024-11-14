@@ -2,6 +2,7 @@ package net.acetheeldritchking.discerning_the_eldritch.events;
 
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
@@ -11,8 +12,14 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.logging.Level;
 
@@ -55,5 +62,29 @@ public class ServerEvents {
 
         // Format the result as mm:ss
         return String.format("%02d:%02d" , minutes , seconds);
+    }
+
+    // This doesn't work
+    @SubscribeEvent
+    public static void livingDamageEvent(LivingDamageEvent.Post event)
+    {
+        var sourceEntity = event.getSource().getEntity();
+        var target = event.getEntity();
+        var projectile = event.getSource().getDirectEntity();
+
+        if (sourceEntity != null)
+        {
+            if (sourceEntity instanceof Player player)
+            {
+                boolean hasCurio = CuriosApi.getCuriosInventory(player).map(inventory -> inventory.findCurios(ItemRegistries.DIARY_OF_DECAY.get()).size()).isPresent();
+                if (hasCurio)
+                {
+                    if (projectile instanceof Projectile)
+                    {
+                        target.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 0, true, true, true));
+                    }
+                }
+            }
+        }
     }
 }

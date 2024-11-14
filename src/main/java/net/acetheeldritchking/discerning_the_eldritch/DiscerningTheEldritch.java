@@ -2,10 +2,8 @@ package net.acetheeldritchking.discerning_the_eldritch;
 
 import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
-import net.acetheeldritchking.discerning_the_eldritch.events.ServerEvents;
 import net.acetheeldritchking.discerning_the_eldritch.registries.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTabs;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
@@ -43,7 +41,7 @@ public class DiscerningTheEldritch
         // Items
         ItemRegistries.register(modEventBus);
         // Spells
-        SpellRegistry.register(modEventBus);
+        SpellRegistries.register(modEventBus);
         // Effects
         DTEPotionEffectRegistry.register(modEventBus);
         // Sounds

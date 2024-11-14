@@ -52,14 +52,14 @@ public class ItemRegistries {
 
     // Frozen Folio
     public static final DeferredHolder<Item, Item> FROZEN_FOLIO = ITEMS.register("frozen_folio", () ->
-            new SpellBook(10).withSpellbookAttributes(
+            new SpellBook(8).withSpellbookAttributes(
                     new AttributeContainer(AttributeRegistry.ICE_SPELL_POWER, .10F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
                     new AttributeContainer(AttributeRegistry.MAX_MANA, 200, AttributeModifier.Operation.ADD_VALUE)
             ));
 
     // Diary of Decay
     public static final DeferredHolder<Item, Item> DIARY_OF_DECAY  = ITEMS.register("diary_of_decay", () ->
-            new SpellBook(13).withSpellbookAttributes(
+            new SpellBook(8).withSpellbookAttributes(
                     new AttributeContainer(AttributeRegistry.BLOOD_SPELL_POWER, .10F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
                     new AttributeContainer(AttributeRegistry.MAX_MANA, 200, AttributeModifier.Operation.ADD_VALUE)
             ));
@@ -80,16 +80,19 @@ public class ItemRegistries {
     // Deep Greatsword
     public static final DeferredHolder<Item, Item> DEEP_GREATSWORD = ITEMS.register("deep_greatsword", () ->
             new MagicSwordItem(DTEWeaponTiers.DEEP_GREATSWORD, ItemPropertiesHelper.equipment().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.DEEP_GREATSWORD)),
-                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.PLANAR_SIGHT_SPELL, 5))));
+                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.PLANAR_SIGHT_SPELL, 6))));
 
     // God Spear
     public static final DeferredHolder<Item, Item> GOD_SPEAR = ITEMS.register("god_spear", () ->
             new MagicSwordItem(DTEWeaponTiers.GOD_SPEAR, ItemPropertiesHelper.equipment().rarity(Rarity.UNCOMMON).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.GOD_SPEAR)),
-                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.DIVINE_SMITE_SPELL, 5))));
+                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.DIVINE_SMITE_SPELL, 6))));
 
-    // Ender Cleaver
+    // Ymir
     public static final DeferredHolder<Item, Item> YMIR = ITEMS.register("ymir", () ->
-            new YmirSwordItem(SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.BLOOD_SLASH_SPELL, 5))));
+            new YmirSwordItem(SpellDataRegistryHolder.of(
+                    new SpellDataRegistryHolder(SpellRegistries.ESOTERIC_EDGE, 11),
+                    new SpellDataRegistryHolder(SpellRegistries.SILENCE, 8)
+                    )));
 
     /***
      * Generic Items

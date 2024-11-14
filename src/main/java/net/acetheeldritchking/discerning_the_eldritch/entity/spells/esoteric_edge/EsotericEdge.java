@@ -7,11 +7,12 @@ import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import io.redspace.ironsspellbooks.entity.spells.AbstractShieldEntity;
 import io.redspace.ironsspellbooks.entity.spells.ShieldPart;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
-import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.Holder;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
@@ -47,8 +48,29 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
     }
 
     @Override
-    public void shoot(Vec3 rotation) {
-        setDeltaMovement(rotation.scale(0.6F));
+    public void travel() {
+        this.setPos(this.position().add(this.getDeltaMovement()));
+        if (!this.isNoGravity())
+        {
+            Vec3 vec3 = this.getDeltaMovement();
+            this.setDeltaMovement(vec3.x, vec3.y - 0.05000000074505806, vec3.z);
+        }
+    }
+
+    @Override
+    public void tick() {
+        Vec3 deltaMovement = getDeltaMovement();
+        double distance = deltaMovement.horizontalDistance();
+
+        double x = deltaMovement.x;
+        double y = deltaMovement.y;
+        double z = deltaMovement.z;
+
+        setYRot((float) (Mth.atan2(x, z) * (180 / Math.PI)));
+        setXRot((float) (Mth.atan2(y, distance) * (180 / Math.PI)));
+        setXRot(lerpRotation(xRotO, getXRot()));
+        setYRot(lerpRotation(yRotO, getYRot()));
+        super.tick();
     }
 
     @Override
@@ -63,7 +85,7 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
 
     @Override
     public float getSpeed() {
-        return 0.6F;
+        return 0.8F;
     }
 
     @Override
@@ -77,7 +99,7 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
         var target = pResult.getEntity();
 
         DamageSources.applyDamage(target, damage,
-                SpellRegistry.ESOTERIC_EDGE.get().getDamageSource(this, getOwner()));
+                SpellRegistries.ESOTERIC_EDGE.get().getDamageSource(this, getOwner()));
 
         // Kills shields & Do effects
         if (target instanceof LivingEntity livingTarget)
@@ -87,9 +109,9 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
             {
                 player.disableShield();
             }
-            if (DamageSources.applyDamage(livingTarget, damage, SpellRegistry.ESOTERIC_EDGE.get().getDamageSource(this, getOwner())))
+            if (DamageSources.applyDamage(livingTarget, damage, SpellRegistries.ESOTERIC_EDGE.get().getDamageSource(this, getOwner())))
             {
-                EnchantmentHelper.doPostAttackEffects((ServerLevel) this.level(), livingTarget, SpellRegistry.ESOTERIC_EDGE.get().getDamageSource(this, getOwner()));
+                EnchantmentHelper.doPostAttackEffects((ServerLevel) this.level(), livingTarget, SpellRegistries.ESOTERIC_EDGE.get().getDamageSource(this, getOwner()));
             }
         }
         if (target instanceof ShieldPart || target instanceof AbstractShieldEntity)
