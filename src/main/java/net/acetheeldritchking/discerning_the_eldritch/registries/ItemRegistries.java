@@ -11,6 +11,7 @@ import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.EchoVibrationRing;
+import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.BlackBookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.GuardianGuidebookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.TempestuousTomeSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.DTEWeaponTiers;
@@ -34,11 +35,7 @@ public class ItemRegistries {
      */
 
     // Black Book
-    public static final DeferredHolder<Item, Item> BLACK_BOOK_SPELLBOOK = ITEMS.register("black_book_spellbook", () ->
-            new SpellBook(12).withSpellbookAttributes(
-                    new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, .10F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-                    new AttributeContainer(AttributeRegistry.MAX_MANA, 200, AttributeModifier.Operation.ADD_VALUE)
-            ));
+    public static final DeferredHolder<Item, Item> BLACK_BOOK_SPELLBOOK = ITEMS.register("black_book_spellbook", BlackBookSpellbook::new);
 
     // The Apocrypha
     public static final DeferredHolder<Item, Item> THE_APOCRYPHA_SPELLBOOK  = ITEMS.register("the_apocrypha_spellbook", () ->

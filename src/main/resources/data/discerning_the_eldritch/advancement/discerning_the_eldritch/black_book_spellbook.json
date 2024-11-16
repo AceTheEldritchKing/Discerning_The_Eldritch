@@ -1,0 +1,32 @@
+{
+    "display": {
+        "hidden": true,
+        "icon": {
+            "id": "discerning_the_eldritch:black_book_spellbook"
+        },
+        "title": {
+            "translate": "advancements.discerning_the_eldritch.black_book_spellbook.title"
+        },
+        "description": {
+            "translate": "advancements.discerning_the_eldritch.black_book_spellbook.description"
+        },
+        "announce_to_chat": true,
+        "show_toast": true,
+        "frame": "challenge"
+    },
+    "parent": "irons_spellbooks:irons_spellbooks/spell_book_equip",
+    "criteria": {
+        "requirement": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "discerning_the_eldritch:black_book_spellbook"
+                        ]
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        }
+    }
+}

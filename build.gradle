@@ -136,7 +136,7 @@ repositories {
 
 dependencies {
     // ISS ***************************************************************************************************
-    implementation "io.redspace:irons_spellbooks:1.21-3.8.0"
+    implementation "io.redspace:irons_spellbooks:1.21-3.8.4"
 
     // GECKOLIB ***************************************************************************************************
     implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"

@@ -37,15 +37,15 @@ public class SilenceSpell extends AbstractSpell {
             .setMinRarity(SpellRarity.LEGENDARY)
             .setSchoolResource(SchoolRegistry.ELDRITCH_RESOURCE)
             .setMaxLevel(5)
-            .setCooldownSeconds(35)
+            .setCooldownSeconds(200)
             .build();
 
     public SilenceSpell()
     {
-        this.manaCostPerLevel = 10;
+        this.manaCostPerLevel = 20;
         this.baseSpellPower = 1;
         this.spellPowerPerLevel = 1;
-        this.castTime = 50;
+        this.castTime = 80;
         this.baseManaCost = 100;
     }
 

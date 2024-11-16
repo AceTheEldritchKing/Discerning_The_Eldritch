@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+      "ppp",
+      "pep",
+      "ppp"
+    ],
+    "result": {
+      "count": 2,
+      "id": "discerning_the_eldritch:corrupted_cloth"
+    },
+    "key": {
+        "p": {
+          "item": "irons_spellbooks:magic_cloth"
+        },
+        "e": {
+          "item": "minecraft:echo_shard"
+        }
+    }
+}

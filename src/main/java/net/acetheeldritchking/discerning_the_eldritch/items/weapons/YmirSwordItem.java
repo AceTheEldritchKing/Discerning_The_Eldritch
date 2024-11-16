@@ -21,7 +21,7 @@ public class YmirSwordItem extends MagicSwordItem {
                 ),
                 SpellDataRegistryHolder.of(
                         new SpellDataRegistryHolder(SpellRegistries.ESOTERIC_EDGE, 11),
-                        new SpellDataRegistryHolder(SpellRegistries.SILENCE, 8))
+                        new SpellDataRegistryHolder(SpellRegistries.SILENCE, 6))
         );
     }
 

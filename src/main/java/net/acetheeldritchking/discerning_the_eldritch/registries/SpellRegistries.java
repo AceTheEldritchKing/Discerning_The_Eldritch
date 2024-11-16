@@ -44,6 +44,8 @@ public class SpellRegistries {
 
     // Conjour Gaoler - Unobtainable spell, summon the Gaoler entity
 
+    // Forlorn Blades - Summon several blades around the caster that attack whatever the attack attacks
+
 
     /***
      * Holy Spells
@@ -57,6 +59,7 @@ public class SpellRegistries {
      */
 
     // Bloodlust - Damage dealt by user gets turned into health; lifesteal on hit
+
 
     /***
      * Lightning Spells

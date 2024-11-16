@@ -33,5 +33,10 @@
   "ui.discerning_the_eldritch.extra_damage": "Deals extra damage while holding a weapon in your mainhand",
 
 
-  "death.attack.discerning_the_eldritch.guardians_gaze": "%1$s fell from %2$s's gaze"
+  "death.attack.discerning_the_eldritch.guardians_gaze": "%1$s fell from %2$s's gaze",
+
+  "advancements.discerning_the_eldritch.apocrypha_spellbook.title": "The Gardener of Men",
+  "advancements.discerning_the_eldritch.apocrypha_spellbook.description": "Obtain The Apocrypha spell book",
+  "advancements.discerning_the_eldritch.black_book_spellbook.title": "The Path of Knowledge",
+  "advancements.discerning_the_eldritch.black_book_spellbook.description": "Obtain The Black Book"
 }

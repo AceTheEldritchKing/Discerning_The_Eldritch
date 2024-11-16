@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+      "  e",
+      " d ",
+      "w  "
+    ],
+    "result": {
+      "count": 1,
+      "id": "discerning_the_eldritch:deep_greatsword"
+    },
+    "key": {
+        "d": {
+          "item": "minecraft:diamond"
+        },
+        "e": {
+          "item": "minecraft:echo_shard"
+        },
+        "w": {
+          "item": "irons_spellbooks:weapon_parts"
+        }
+    }
+}

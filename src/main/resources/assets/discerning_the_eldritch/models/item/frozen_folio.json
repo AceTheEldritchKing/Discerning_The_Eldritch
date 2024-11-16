@@ -3,8 +3,8 @@
     "loader": "neoforge:separate_transforms",
     "base": {
       "textures": {
-        "book": "discerning_the_eldritch:item/spell_book_models/frozen_folio",
-        "particle": "discerning_the_eldritch:item/spell_book_models/frozen_folio"
+        "book": "discerning_the_eldritch:item/spell_books/frozen_folio",
+        "particle": "discerning_the_eldritch:item/spell_books/frozen_folio"
       },
       "parent": "irons_spellbooks:item/template_spell_book_model"
     },
@@ -17,8 +17,8 @@
       },
       "head": {
         "textures": {
-          "book": "discerning_the_eldritch:item/spell_book_models/frozen_folio",
-          "particle": "discerning_the_eldritch:item/spell_book_models/frozen_folio"
+          "book": "discerning_the_eldritch:item/spell_books/frozen_folio",
+          "particle": "discerning_the_eldritch:item/spell_books/frozen_folio"
         },
         "parent": "irons_spellbooks:item/template_spell_book_model_open"
       }

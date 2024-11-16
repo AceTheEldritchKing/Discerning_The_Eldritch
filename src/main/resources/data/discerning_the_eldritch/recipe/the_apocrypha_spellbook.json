@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+      "aca",
+      "cbc",
+      "aca"
+    ],
+    "result": {
+      "count": 2,
+      "id": "discerning_the_eldritch:the_apocrypha_spellbook"
+    },
+    "key": {
+        "a": {
+          "item": "irons_spellbooks:ancient_knowledge_fragment"
+        },
+        "b": {
+          "item": "irons_spellbooks:netherite_spell_book"
+        },
+        "c": {
+          "item": "discerning_the_eldritch:corrupted_cloth"
+        }
+    }
+}

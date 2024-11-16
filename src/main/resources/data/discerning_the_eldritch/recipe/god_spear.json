@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+      " gg",
+      " mg",
+      "w  "
+    ],
+    "result": {
+      "count": 1,
+      "id": "discerning_the_eldritch:god_spear"
+    },
+    "key": {
+        "g": {
+          "item": "minecraft:gold_ingot"
+        },
+        "m": {
+          "item": "irons_spellbooks:mithril_ingot"
+        },
+        "w": {
+          "item": "irons_spellbooks:weapon_parts"
+        }
+    }
+}

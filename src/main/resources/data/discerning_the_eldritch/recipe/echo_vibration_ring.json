@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+        {
+            "item": "minecraft:echo_shard"
+        },
+        {
+            "item": "irons_spellbooks:silver_ring"
+        }
+    ],
+    "result": {
+        "count": 1,
+        "id": "discerning_the_eldritch:echo_vibration_ring"
+    }
+}
