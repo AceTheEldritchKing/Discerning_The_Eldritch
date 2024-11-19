@@ -20,7 +20,7 @@ public class YmirSwordItem extends MagicSwordItem {
                 ItemPropertiesHelper.equipment().fireResistant().rarity(Rarity.EPIC).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.YMIR)
                 ),
                 SpellDataRegistryHolder.of(
-                        new SpellDataRegistryHolder(SpellRegistries.ESOTERIC_EDGE, 11),
+                        new SpellDataRegistryHolder(SpellRegistries.ESOTERIC_EDGE, 6),
                         new SpellDataRegistryHolder(SpellRegistries.SILENCE, 6))
         );
     }
