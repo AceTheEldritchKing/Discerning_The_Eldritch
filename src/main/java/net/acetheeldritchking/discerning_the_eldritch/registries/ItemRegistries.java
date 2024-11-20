@@ -87,6 +87,11 @@ public class ItemRegistries {
     // Ymir
     public static final DeferredHolder<Item, Item> YMIR = ITEMS.register("ymir", YmirSwordItem::new);
 
+    // Ice Spear
+    public static final DeferredHolder<Item, Item> ICE_SPEAR = ITEMS.register("ice_spear", () ->
+            new MagicSwordItem(DTEWeaponTiers.ICE_SPEAR, ItemPropertiesHelper.equipment().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.ICE_SPEAR)),
+                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.FROST_STEP_SPELL, 9))));
+
     /***
      * Generic Items
      */

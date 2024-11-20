@@ -35,6 +35,10 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
 
     // Skull Staff
 
+    // Ice Spear
+    public static DTEWeaponTiers ICE_SPEAR = new DTEWeaponTiers(1600, 7F, -3.2F, 10, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.ICE_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+
     // Ymir
     public static DTEWeaponTiers YMIR = new DTEWeaponTiers(2670, 8.5F, -2.5F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
