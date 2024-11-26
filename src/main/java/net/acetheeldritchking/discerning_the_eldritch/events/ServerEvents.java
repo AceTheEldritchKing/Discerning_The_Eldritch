@@ -1,6 +1,7 @@
 package net.acetheeldritchking.discerning_the_eldritch.events;
 
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
+import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
 import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
@@ -19,7 +20,9 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -75,12 +78,12 @@ public class ServerEvents {
         var target = event.getEntity();
         var projectile = event.getSource().getDirectEntity();
 
-        // This doesn't work -  To clarify this is for Diary of Decay making projectiles inflict wither
+        // Diary of Decay
         if (sourceEntity != null)
         {
             if (sourceEntity instanceof Player player)
             {
-                boolean hasCurio = CuriosApi.getCuriosInventory(player).map(inventory -> inventory.findCurios(ItemRegistries.DIARY_OF_DECAY.get()).size()).isPresent();
+                boolean hasCurio = CuriosApi.getCuriosHelper().findEquippedCurio(ItemRegistries.DIARY_OF_DECAY.get(), player).isPresent();
                 if (hasCurio)
                 {
                     if (projectile instanceof Projectile)
