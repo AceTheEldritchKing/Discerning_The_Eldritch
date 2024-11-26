@@ -11,10 +11,12 @@ import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.EchoVibrationRing;
+import net.acetheeldritchking.discerning_the_eldritch.items.curios.KingsEffigyCurio;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.BlackBookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.GuardianGuidebookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.TempestuousTomeSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.DTEWeaponTiers;
+import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.YmirSwordItem;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
@@ -88,9 +90,7 @@ public class ItemRegistries {
     public static final DeferredHolder<Item, Item> YMIR = ITEMS.register("ymir", YmirSwordItem::new);
 
     // Ice Spear
-    public static final DeferredHolder<Item, Item> ICE_SPEAR = ITEMS.register("ice_spear", () ->
-            new MagicSwordItem(DTEWeaponTiers.ICE_SPEAR, ItemPropertiesHelper.equipment().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.ICE_SPEAR)),
-                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.FROST_STEP_SPELL, 9))));
+    public static final DeferredHolder<Item, Item> ICE_SPEAR = ITEMS.register("ice_spear", IceSpearItem::new);
 
     /***
      * Generic Items
@@ -106,6 +106,9 @@ public class ItemRegistries {
 
     // Echo Vibration Ring
     public static final Supplier<CurioBaseItem> ECHO_VIBRATION_RING = ITEMS.register("echo_vibration_ring", EchoVibrationRing::new);
+
+    // King's Effigy
+    public static final Supplier<CurioBaseItem> KINGS_EFFIGY = ITEMS.register("kings_effigy", KingsEffigyCurio::new);
 
     /***
      * Armor

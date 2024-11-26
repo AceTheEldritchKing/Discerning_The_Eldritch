@@ -1,6 +1,8 @@
 package net.acetheeldritchking.discerning_the_eldritch.events;
 
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
+import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.minecraft.ChatFormatting;
@@ -14,8 +16,10 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -64,7 +68,6 @@ public class ServerEvents {
         return String.format("%02d:%02d" , minutes , seconds);
     }
 
-    // This doesn't work
     @SubscribeEvent
     public static void livingDamageEvent(LivingDamageEvent.Post event)
     {
@@ -72,6 +75,7 @@ public class ServerEvents {
         var target = event.getEntity();
         var projectile = event.getSource().getDirectEntity();
 
+        // This doesn't work -  To clarify this is for Diary of Decay making projectiles inflict wither
         if (sourceEntity != null)
         {
             if (sourceEntity instanceof Player player)
@@ -83,6 +87,20 @@ public class ServerEvents {
                     {
                         target.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 0, true, true, true));
                     }
+                }
+            }
+        }
+
+        if (sourceEntity instanceof LivingEntity livingEntity)
+        {
+            ItemStack mainhandItem = livingEntity.getMainHandItem();
+
+            // Ice Spear
+            if (mainhandItem.getItem() instanceof IceSpearItem)
+            {
+                if (target instanceof LivingEntity livingTarget)
+                {
+                    livingTarget.setTicksFrozen(20*20);
                 }
             }
         }

@@ -29,7 +29,8 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.GUARDIANS_GAZE.get());
                         output.accept(ItemRegistries.GOD_SPEAR.get());
                         output.accept(ItemRegistries.YMIR.get());
-                        //output.accept(ItemRegistries.ICE_SPEAR.get());
+                        output.accept(ItemRegistries.ICE_SPEAR.get());
+                        output.accept(ItemRegistries.KINGS_EFFIGY.get());
                     }).build());
 
     public static void register(IEventBus eventBus)

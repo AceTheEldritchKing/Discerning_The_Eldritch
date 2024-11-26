@@ -18,6 +18,10 @@
   "item.discerning_the_eldritch.ymir": "Ymir, Apothic Eldritch Blade",
   "item.discerning_the_eldritch.ymir_description": "Blade forged from Eldritch dreams",
   "item.discerning_the_eldritch.god_spear": "The God Spear",
+  "item.discerning_the_eldritch.ice_spear": "The Ice Spear",
+  "item.discerning_the_eldritch.ice_spear_description": "Frozen tears formed into cold vengeance",
+  "item.discerning_the_eldritch.kings_effigy": "King's Effigy",
+  "item.discerning_the_eldritch.kings_effigy.desc": "Being torn apart over and over again, is this what you want?",
 
 
   "spell.discerning_the_eldritch.silence": "Silence",

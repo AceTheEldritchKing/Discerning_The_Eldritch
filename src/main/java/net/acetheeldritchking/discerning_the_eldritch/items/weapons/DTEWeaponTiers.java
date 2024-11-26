@@ -6,7 +6,6 @@ import io.redspace.ironsspellbooks.item.weapons.IronsWeaponTier;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -37,7 +36,7 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
 
     // Ice Spear
     public static DTEWeaponTiers ICE_SPEAR = new DTEWeaponTiers(1600, 7F, -3.2F, 10, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
-            new AttributeContainer(AttributeRegistry.ICE_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            new AttributeContainer(AttributeRegistry.ICE_SPELL_POWER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
     // Ymir
     public static DTEWeaponTiers YMIR = new DTEWeaponTiers(2670, 8.5F, -2.5F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
@@ -51,7 +50,7 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
     private final float damage;
     private final int enchantmentValue;
     private final TagKey<Block> incorrectBlocksForDrops;
-    private final LazyLoadedValue<Ingredient> repairIngredient;
+    private final Supplier<Ingredient> repairIngredient;
     private final AttributeContainer[] attributeContainers;
 
     private DTEWeaponTiers(int uses, float damage, float speed, int enchantmentValue, TagKey<Block> incorrectBlocksForDrops, Supplier<Ingredient> repairIngredient, AttributeContainer... attributes) {
@@ -61,7 +60,7 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
         this.damage = damage;
         this.enchantmentValue = enchantmentValue;
         this.incorrectBlocksForDrops = incorrectBlocksForDrops;
-        this.repairIngredient = new LazyLoadedValue<>(repairIngredient);
+        this.repairIngredient = repairIngredient;
         this.attributeContainers = attributes;
     }
 
@@ -97,6 +96,6 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
 
     @Override
     public Ingredient getRepairIngredient() {
-        return repairIngredient.get();
+        return this.repairIngredient.get();
     }
 }

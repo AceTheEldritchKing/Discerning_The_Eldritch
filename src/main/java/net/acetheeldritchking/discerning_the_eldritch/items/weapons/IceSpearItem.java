@@ -1,0 +1,34 @@
+package net.acetheeldritchking.discerning_the_eldritch.items.weapons;
+
+import io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem;
+import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
+import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
+import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
+import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
+
+import java.util.List;
+
+public class IceSpearItem extends MagicSwordItem {
+    public IceSpearItem() {
+        super(
+            DTEWeaponTiers.ICE_SPEAR,
+            ItemPropertiesHelper.equipment().fireResistant().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.ICE_SPEAR)),
+                SpellDataRegistryHolder.of(
+                        new SpellDataRegistryHolder(SpellRegistry.FROST_STEP_SPELL, 9)
+                )
+        );
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+        tooltipComponents.add(Component.translatable("item.discerning_the_eldritch.ice_spear_description").
+                withStyle(ChatFormatting.DARK_GRAY).
+                withStyle(ChatFormatting.ITALIC));
+    }
+}
