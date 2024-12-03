@@ -26,6 +26,7 @@ import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.logging.Level;
@@ -96,15 +97,39 @@ public class ServerEvents {
 
         if (sourceEntity instanceof LivingEntity livingEntity)
         {
+            // Ice Spear
             ItemStack mainhandItem = livingEntity.getMainHandItem();
 
-            // Ice Spear
             if (mainhandItem.getItem() instanceof IceSpearItem)
             {
                 if (target instanceof LivingEntity livingTarget)
                 {
                     livingTarget.setTicksFrozen(20*20);
                 }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void livingIncomingDamageEvent(LivingIncomingDamageEvent event)
+    {
+        var target = event.getEntity();
+        var attacker = event.getSource().getEntity();
+
+        // Otherworldly Presence
+        if (target instanceof LivingEntity livingTarget)
+        {
+            if (livingTarget.hasEffect(DTEPotionEffectRegistry.METAPHYSICAL_POTION_EFFECT))
+            {
+                event.setCanceled(true);
+            }
+        }
+
+        if (attacker instanceof LivingEntity livingAttacker)
+        {
+            if (livingAttacker.hasEffect(DTEPotionEffectRegistry.METAPHYSICAL_POTION_EFFECT))
+            {
+                event.setCanceled(true);
             }
         }
     }

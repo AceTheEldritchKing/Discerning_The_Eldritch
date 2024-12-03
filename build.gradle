@@ -132,6 +132,7 @@ repositories {
     maven { url = "https://cursemaven.com" }
     maven { url = "https://maven.blamejared.com" }
     maven { url = "https://maven.kosmx.dev/" }
+    maven { url = 'https://maven.azuredoom.com/mods'}
 }
 
 dependencies {
@@ -185,6 +186,9 @@ dependencies {
     //localRuntime "curse.maven:apotheosis-${apotheosis_version}"
     //localRuntime "curse.maven:placebo-${placebo_version}"
     //localRuntime "curse.maven:apothic-curios-950712:5108911"
+
+    // AZURELIB
+    implementation "mod.azure.azurelib:azurelib-neo-1.21:2.3.15"
 
     //QOL
     //todo: 1.21: update these mods

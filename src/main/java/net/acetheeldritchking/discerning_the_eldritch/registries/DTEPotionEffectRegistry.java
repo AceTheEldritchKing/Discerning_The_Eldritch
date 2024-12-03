@@ -1,6 +1,7 @@
 package net.acetheeldritchking.discerning_the_eldritch.registries;
 
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.effects.MetaphysicalPotionEffect;
 import net.acetheeldritchking.discerning_the_eldritch.effects.SilencePotionEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
@@ -15,6 +16,9 @@ public class DTEPotionEffectRegistry {
 
     // Silence Potion Effect
     public static final DeferredHolder<MobEffect, MobEffect> SILENCE_POTION_EFFECT = MOB_EFFECTS.register("silence_potion_effect", SilencePotionEffect::new);
+
+    // Metaphysical Potion Effect
+    public static final DeferredHolder<MobEffect, MobEffect> METAPHYSICAL_POTION_EFFECT = MOB_EFFECTS.register("metaphysical_potion_effect", MetaphysicalPotionEffect::new);
 
     public static void register(IEventBus eventBus)
     {

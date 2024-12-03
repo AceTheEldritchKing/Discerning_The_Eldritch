@@ -3,6 +3,7 @@ package net.acetheeldritchking.discerning_the_eldritch.registries;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.EsotericEdgeSpell;
+import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.OtherworldlyPresenceSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.SilenceSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.BoogieWoogieSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.GuardiansGazeSpell;
@@ -45,6 +46,9 @@ public class SpellRegistries {
     // Conjour Gaoler - Unobtainable spell, summon the Gaoler entity
 
     // Forlorn Blades - Summon several blades around the caster that attack whatever the attack attacks
+
+    // Otherworldly Presence - Teleport based spell, grants you the Metaphysical effect
+    public static final Supplier<AbstractSpell> OTHERWORLDLY_PRESENCE = registerSpell(new OtherworldlyPresenceSpell());
 
 
     /***
