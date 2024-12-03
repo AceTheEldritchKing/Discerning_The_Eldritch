@@ -31,6 +31,10 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.YMIR.get());
                         output.accept(ItemRegistries.ICE_SPEAR.get());
                         output.accept(ItemRegistries.KINGS_EFFIGY.get());
+                        output.accept(ItemRegistries.ELDRITCH_WARLOCK_HOOD.get());
+                        output.accept(ItemRegistries.ELDRITCH_WARLOCK_ROBES.get());
+                        output.accept(ItemRegistries.ELDRITCH_WARLOCK_LEGGINGS.get());
+                        output.accept(ItemRegistries.ELDRITCH_WARLOCK_GREAVES.get());
                     }).build());
 
     public static void register(IEventBus eventBus)
