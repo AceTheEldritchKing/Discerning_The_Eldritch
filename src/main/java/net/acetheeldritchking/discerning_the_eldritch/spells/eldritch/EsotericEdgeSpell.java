@@ -35,16 +35,16 @@ public class EsotericEdgeSpell extends AbstractSpell {
             .setMinRarity(SpellRarity.LEGENDARY)
             .setSchoolResource(SchoolRegistry.ELDRITCH_RESOURCE)
             .setMaxLevel(5)
-            .setCooldownSeconds(15)
+            .setCooldownSeconds(25)
             .build();
 
     public EsotericEdgeSpell()
     {
-        this.manaCostPerLevel = 60;
+        this.manaCostPerLevel = 15;
         this.baseSpellPower = 20;
         this.spellPowerPerLevel = 5;
         this.castTime = 0;
-        this.baseManaCost = 110;
+        this.baseManaCost = 70;
     }
 
     @Override
@@ -89,7 +89,7 @@ public class EsotericEdgeSpell extends AbstractSpell {
 
     private float getDamage(int spellLevel, LivingEntity caster)
     {
-        return (float) ((getSpellPower(spellLevel, caster) * 1.3) + getWeaponDamage(caster));
+        return (float) ((getSpellPower(spellLevel, caster) * 0.75) + getWeaponDamage(caster));
     }
 
     private float getWeaponDamage(LivingEntity caster)

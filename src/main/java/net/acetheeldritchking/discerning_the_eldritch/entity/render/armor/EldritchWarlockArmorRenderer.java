@@ -2,9 +2,12 @@ package net.acetheeldritchking.discerning_the_eldritch.entity.render.armor;
 
 import mod.azure.azurelib.common.api.client.renderer.GeoArmorRenderer;
 import mod.azure.azurelib.common.api.client.renderer.layer.AutoGlowingGeoLayer;
+import mod.azure.azurelib.common.internal.client.util.RenderUtils;
 import mod.azure.azurelib.common.internal.common.cache.object.GeoBone;
 import net.acetheeldritchking.discerning_the_eldritch.entity.armor.EldritchWarlockArmorModel;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockArmorItem;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.world.entity.EquipmentSlot;
 
 public class EldritchWarlockArmorRenderer extends GeoArmorRenderer<EldritchWarlockArmorItem> {
@@ -52,6 +55,17 @@ public class EldritchWarlockArmorRenderer extends GeoArmorRenderer<EldritchWarlo
                 this.setBoneVisible(getRightBootBone(), true);
                 this.setBoneVisible(getLeftBootBone(), true);
             }
+        }
+    }
+
+    @Override
+    protected void applyBaseTransformations(HumanoidModel<?> baseModel) {
+        super.applyBaseTransformations(baseModel);
+        if (this.armorLeggingTorsoBone() != null)
+        {
+            ModelPart modelPart = baseModel.body;
+            RenderUtils.matchModelPartRot(modelPart, this.armorLeggingTorsoBone());
+            this.armorLeggingTorsoBone().updatePosition(modelPart.x, -modelPart.y, modelPart.z);
         }
     }
 }

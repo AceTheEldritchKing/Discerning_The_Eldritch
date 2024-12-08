@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.item.SpellBook;
+import io.redspace.ironsspellbooks.item.UpgradeOrbItem;
 import io.redspace.ironsspellbooks.item.curios.CurioBaseItem;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
@@ -13,6 +14,7 @@ import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockArmorItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.EchoVibrationRing;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.KingsEffigyCurio;
+import net.acetheeldritchking.discerning_the_eldritch.items.custom.DTEUpgradeTypes;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.BlackBookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.GuardianGuidebookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.TempestuousTomeSpellbook;
@@ -101,6 +103,14 @@ public class ItemRegistries {
     // Corrupted Cloth - will eventually be a mob drop but not today <3
     public static final DeferredItem<Item> CORRUPTED_CLOTH = ITEMS.register("corrupted_cloth",
             () -> new Item(new Item.Properties()));
+
+    /***
+     * Upgrade Orbs
+     */
+
+    // Eldritch Upgrade Orb
+    public static final DeferredHolder<Item, Item> ELDRITCH_UPGRADE_ORB = ITEMS.register("eldritch_upgrade_orb",
+            () -> new UpgradeOrbItem(DTEUpgradeTypes.ELDRITCH_SPELL_POWER, ItemPropertiesHelper.material().rarity(Rarity.UNCOMMON)));
 
     /***
      * Curios

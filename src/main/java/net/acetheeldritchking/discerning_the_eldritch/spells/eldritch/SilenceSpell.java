@@ -15,6 +15,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -29,7 +30,7 @@ public class SilenceSpell extends AbstractSpell {
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
-                Component.translatable("ui.irons_spellbooks.effect_length", Utils.timeFromTicks(getSpellPower(spellLevel, caster) * 20, 1))
+                Component.translatable("ui.irons_spellbooks.effect_length", Utils.timeFromTicks(getEffectDuration(spellLevel, caster), 1))
         );
     }
 
@@ -101,6 +102,8 @@ public class SilenceSpell extends AbstractSpell {
 
     public int getEffectDuration(int spellLevel, LivingEntity caster)
     {
-        return (int) (getSpellPower(spellLevel, caster) * 20);
+        int amount = (int) Mth.clamp((getSpellPower(spellLevel, caster) * 20), 20, 7*20);
+        //System.out.println("Clamp: " + amount);
+        return amount;
     }
 }

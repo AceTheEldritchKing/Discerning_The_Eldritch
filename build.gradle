@@ -190,6 +190,9 @@ dependencies {
     // AZURELIB
     implementation "mod.azure.azurelib:azurelib-neo-1.21:2.3.15"
 
+    // Spell Collector Lib
+    implementation "curse.maven:spell-collector-lib-1149858:5972600"
+
     //QOL
     //todo: 1.21: update these mods
 //    localRuntime "curse.maven:tslatentitystatus-tes-830420:4746241"
