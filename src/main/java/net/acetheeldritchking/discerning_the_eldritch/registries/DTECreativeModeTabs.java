@@ -23,7 +23,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.ELDRITCH_UPGRADE_ORB.get());
                         // Curios
                         output.accept(ItemRegistries.ECHO_VIBRATION_RING.get());
-                        output.accept(ItemRegistries.KINGS_EFFIGY.get());
+                        //output.accept(ItemRegistries.KINGS_EFFIGY.get());
                         // Spellbooks
                         output.accept(ItemRegistries.BLACK_BOOK_SPELLBOOK.get());
                         output.accept(ItemRegistries.THE_APOCRYPHA_SPELLBOOK.get());
@@ -35,7 +35,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.DEEP_GREATSWORD.get());
                         output.accept(ItemRegistries.GOD_SPEAR.get());
                         output.accept(ItemRegistries.YMIR.get());
-                        output.accept(ItemRegistries.ICE_SPEAR.get());
+                        //output.accept(ItemRegistries.ICE_SPEAR.get());
                         // Armor
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_HOOD.get());
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_ROBES.get());
