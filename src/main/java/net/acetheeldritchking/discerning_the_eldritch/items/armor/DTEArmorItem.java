@@ -62,6 +62,7 @@ public class DTEArmorItem extends ArmorItem implements GeoItem {
                 new AttributeContainer(AttributeRegistry.SPELL_POWER, spellPower, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)};
     }
 
+    // Can also be used for giving two attributes, doesn't have to be resistance
     public static AttributeContainer[] schoolAttributesWithResistance(Holder<Attribute> school, Holder<Attribute> resistSchool, int mana, float schoolSpellPower, float spellPower, float resistSpellPower)
     {
         return new AttributeContainer[]{

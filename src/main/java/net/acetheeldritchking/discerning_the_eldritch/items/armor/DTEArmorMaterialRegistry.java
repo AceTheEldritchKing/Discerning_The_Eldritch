@@ -28,7 +28,7 @@ public class DTEArmorMaterialRegistry {
             SoundEvents.ARMOR_EQUIP_LEATHER,
             () -> Ingredient.of(ItemRegistries.CORRUPTED_CLOTH.get()),
             3,
-            1);
+            0.1F);
 
     // Mage Hunter
 

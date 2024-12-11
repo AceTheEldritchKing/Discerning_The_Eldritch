@@ -20,6 +20,7 @@ public class DTECreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         // Materials
                         output.accept(ItemRegistries.CORRUPTED_CLOTH.get());
+                        output.accept(ItemRegistries.ELDRITCH_RUNE.get());
                         output.accept(ItemRegistries.ELDRITCH_UPGRADE_ORB.get());
                         // Curios
                         output.accept(ItemRegistries.ECHO_VIBRATION_RING.get());
@@ -38,6 +39,8 @@ public class DTECreativeModeTabs {
                         //output.accept(ItemRegistries.ICE_SPEAR.get());
                         // Armor
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_HOOD.get());
+                        output.accept(ItemRegistries.ELDRITCH_WARLOCK_MASK.get());
+                        output.accept(ItemRegistries.ELDRITCH_WARLOCK_HELMET.get());
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_ROBES.get());
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_LEGGINGS.get());
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_GREAVES.get());

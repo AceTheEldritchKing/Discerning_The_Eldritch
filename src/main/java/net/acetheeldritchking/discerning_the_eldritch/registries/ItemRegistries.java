@@ -12,6 +12,8 @@ import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockArmorItem;
+import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockHelmetItem;
+import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockMaskItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.EchoVibrationRing;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.KingsEffigyCurio;
 import net.acetheeldritchking.discerning_the_eldritch.items.custom.DTEUpgradeTypes;
@@ -104,6 +106,9 @@ public class ItemRegistries {
     public static final DeferredItem<Item> CORRUPTED_CLOTH = ITEMS.register("corrupted_cloth",
             () -> new Item(new Item.Properties()));
 
+    // Eldritch Rune
+    public static final DeferredHolder<Item, Item> ELDRITCH_RUNE = ITEMS.register("eldritch_rune", () -> new Item(ItemPropertiesHelper.material()));
+
     /***
      * Upgrade Orbs
      */
@@ -131,6 +136,8 @@ public class ItemRegistries {
     public static final DeferredHolder<Item, Item> ELDRITCH_WARLOCK_ROBES = ITEMS.register("eldritch_warlock_robes", () -> new EldritchWarlockArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
     public static final DeferredHolder<Item, Item> ELDRITCH_WARLOCK_LEGGINGS = ITEMS.register("eldritch_warlock_leggings", () -> new EldritchWarlockArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
     public static final DeferredHolder<Item, Item> ELDRITCH_WARLOCK_GREAVES = ITEMS.register("eldritch_warlock_greaves", () -> new EldritchWarlockArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
+    public static final DeferredHolder<Item, Item> ELDRITCH_WARLOCK_MASK = ITEMS.register("eldritch_warlock_mask", () -> new EldritchWarlockMaskItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredHolder<Item, Item> ELDRITCH_WARLOCK_HELMET = ITEMS.register("eldritch_warlock_helmet", () -> new EldritchWarlockHelmetItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
 
     // Mage Hunter Armor
 
