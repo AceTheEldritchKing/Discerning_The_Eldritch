@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:smithing_transform",
+    "addition": {
+        "item": "discerning_the_eldritch:corrupted_cloth"
+    },
+    "base": {
+        "item": "irons_spellbooks:netherite_mage_helmet"
+    },
+    "result": {
+        "count": 1,
+        "id": "discerning_the_eldritch:eldritch_warlock_hood"
+    },
+    "template": {
+        "item": "discerning_the_eldritch:eldritch_upgrade_template"
+    }
+}

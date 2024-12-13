@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "fff",
+        "frf",
+        "fff"
+    ],
+    "key": {
+        "f": {
+            "tag": "irons_spellbooks:eldritch_focus"
+        },
+        "r": {
+            "item": "irons_spellbooks:blank_rune"
+        }
+    },
+    "result": {
+        "id": "discerning_the_eldritch:eldritch_rune",
+        "count": 1
+    }
+}

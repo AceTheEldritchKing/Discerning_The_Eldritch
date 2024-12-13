@@ -85,7 +85,7 @@ public class ItemRegistries {
     // Deep Greatsword
     public static final DeferredHolder<Item, Item> DEEP_GREATSWORD = ITEMS.register("deep_greatsword", () ->
             new MagicSwordItem(DTEWeaponTiers.DEEP_GREATSWORD, ItemPropertiesHelper.equipment().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.DEEP_GREATSWORD)),
-                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.PLANAR_SIGHT_SPELL, 6))));
+                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.PLANAR_SIGHT_SPELL, 4))));
 
     // God Spear
     public static final DeferredHolder<Item, Item> GOD_SPEAR = ITEMS.register("god_spear", () ->
@@ -109,6 +109,10 @@ public class ItemRegistries {
     // Eldritch Rune
     public static final DeferredHolder<Item, Item> ELDRITCH_RUNE = ITEMS.register("eldritch_rune", () -> new Item(ItemPropertiesHelper.material()));
 
+    // Eldritch Upgrade Template
+    public static final DeferredHolder<Item, Item> ELDRITCH_UPGRADE_TEMPLATE = ITEMS.register("eldritch_upgrade_template",
+            () -> new Item(ItemPropertiesHelper.material().stacksTo(16).rarity(Rarity.EPIC)));
+
     /***
      * Upgrade Orbs
      */
@@ -131,7 +135,7 @@ public class ItemRegistries {
      * Armor
      */
 
-    // Eldritch Accoutrement
+    // Eldritch Acolyte Accoutrement
     public static final DeferredHolder<Item, Item> ELDRITCH_WARLOCK_HOOD = ITEMS.register("eldritch_warlock_hood", () -> new EldritchWarlockArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
     public static final DeferredHolder<Item, Item> ELDRITCH_WARLOCK_ROBES = ITEMS.register("eldritch_warlock_robes", () -> new EldritchWarlockArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
     public static final DeferredHolder<Item, Item> ELDRITCH_WARLOCK_LEGGINGS = ITEMS.register("eldritch_warlock_leggings", () -> new EldritchWarlockArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));

@@ -22,6 +22,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.CORRUPTED_CLOTH.get());
                         output.accept(ItemRegistries.ELDRITCH_RUNE.get());
                         output.accept(ItemRegistries.ELDRITCH_UPGRADE_ORB.get());
+                        output.accept(ItemRegistries.ELDRITCH_UPGRADE_TEMPLATE.get());
                         // Curios
                         output.accept(ItemRegistries.ECHO_VIBRATION_RING.get());
                         //output.accept(ItemRegistries.KINGS_EFFIGY.get());

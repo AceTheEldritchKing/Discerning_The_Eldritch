@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:smithing_transform",
+    "addition": {
+        "item": "minecraft:echo_shard"
+    },
+    "base": {
+        "item": "irons_spellbooks:keeper_flamberge"
+    },
+    "result": {
+        "count": 1,
+        "id": "discerning_the_eldritch:ymir"
+    },
+    "template": {
+        "item": "discerning_the_eldritch:eldritch_upgrade_template"
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+        {
+            "item": "minecraft:netherite_upgrade_smithing_template"
+        },
+        {
+            "item": "discerning_the_eldritch:eldritch_rune"
+        }
+    ],
+    "result": {
+        "count": 1,
+        "id": "discerning_the_eldritch:eldritch_upgrade_template"
+    }
+}

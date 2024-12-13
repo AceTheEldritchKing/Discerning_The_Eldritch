@@ -89,7 +89,7 @@ public class EsotericEdgeSpell extends AbstractSpell {
 
     private float getDamage(int spellLevel, LivingEntity caster)
     {
-        return (float) ((getSpellPower(spellLevel, caster) * 0.75) + getWeaponDamage(caster));
+        return (float) ((getSpellPower(spellLevel, caster) * 0.77) + getWeaponDamage(caster));
     }
 
     private float getWeaponDamage(LivingEntity caster)

@@ -39,7 +39,7 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
             new AttributeContainer(AttributeRegistry.ICE_SPELL_POWER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
     // Ymir
-    public static DTEWeaponTiers YMIR = new DTEWeaponTiers(2670, 8.5F, -2.5F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+    public static DTEWeaponTiers YMIR = new DTEWeaponTiers(2670, 8.5F, -3.1F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
     );
