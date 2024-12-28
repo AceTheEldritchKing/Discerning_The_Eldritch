@@ -14,6 +14,9 @@ import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockArmorItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockHelmetItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockMaskItem;
+import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.GeckolibEldritchWarlockArmorItem;
+import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.GeckolibEldritchWarlockHelmetItem;
+import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.GeckolibEldritchWarlockMaskItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.EchoVibrationRing;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.KingsEffigyCurio;
 import net.acetheeldritchking.discerning_the_eldritch.items.custom.DTEUpgradeTypes;
@@ -162,6 +165,17 @@ public class ItemRegistries {
     // Void Seeker Warlock Armor
 
     // Crimson Stag Armor (Blood & Nature set)
+
+
+    // GECKOLIB ARMOR VERSIONS FOR NPCS/NON-PLAYER ENTITIES - THESE ARE NOT OBTAINABLE)
+
+    // Eldritch Set
+    public static final DeferredHolder<Item, Item> GECKOLIB_ELDRITCH_WARLOCK_HOOD = ITEMS.register("gecko_eldritch_warlock_hood", () -> new GeckolibEldritchWarlockArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredHolder<Item, Item> GECKOLIB_ELDRITCH_WARLOCK_ROBES = ITEMS.register("gecko_eldritch_warlock_robes", () -> new GeckolibEldritchWarlockArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
+    public static final DeferredHolder<Item, Item> GECKOLIB_ELDRITCH_WARLOCK_LEGGINGS = ITEMS.register("gecko_eldritch_warlock_leggings", () -> new GeckolibEldritchWarlockArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
+    public static final DeferredHolder<Item, Item> GECKOLIB_ELDRITCH_WARLOCK_GREAVES = ITEMS.register("gecko_eldritch_warlock_greaves", () -> new GeckolibEldritchWarlockArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
+    public static final DeferredHolder<Item, Item> GECKOLIB_ELDRITCH_WARLOCK_MASK = ITEMS.register("gecko_eldritch_warlock_mask", () -> new GeckolibEldritchWarlockMaskItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredHolder<Item, Item> GECKOLIB_ELDRITCH_WARLOCK_HELMET = ITEMS.register("gecko_eldritch_warlock_helmet", () -> new GeckolibEldritchWarlockHelmetItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
 
 
     public static Collection<DeferredHolder<Item, ? extends Item>> getDTEItems()

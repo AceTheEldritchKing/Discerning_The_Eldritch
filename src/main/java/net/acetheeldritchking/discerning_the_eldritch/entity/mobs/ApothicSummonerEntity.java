@@ -58,10 +58,10 @@ public class ApothicSummonerEntity extends NeutralWizard implements Enemy {
 
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
-        this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(ItemRegistries.ELDRITCH_WARLOCK_MASK.get()));
-        this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(ItemRegistries.ELDRITCH_WARLOCK_ROBES.get()));
-        this.setItemSlot(EquipmentSlot.LEGS, new ItemStack(ItemRegistries.ELDRITCH_WARLOCK_LEGGINGS.get()));
-        this.setItemSlot(EquipmentSlot.FEET, new ItemStack(ItemRegistries.ELDRITCH_WARLOCK_GREAVES.get()));
+        this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_MASK.get()));
+        this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_ROBES.get()));
+        this.setItemSlot(EquipmentSlot.LEGS, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_LEGGINGS.get()));
+        this.setItemSlot(EquipmentSlot.FEET, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_GREAVES.get()));
         this.setDropChance(EquipmentSlot.HEAD, 0.0F);
         this.setDropChance(EquipmentSlot.CHEST, 0.0F);
         this.setDropChance(EquipmentSlot.LEGS, 0.0F);
