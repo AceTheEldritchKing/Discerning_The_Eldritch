@@ -1,6 +1,8 @@
 package net.acetheeldritchking.discerning_the_eldritch.registries;
 
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ApothicAcolyteEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ApothicCrusaderEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ApothicSummonerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdge;
 import net.minecraft.core.registries.Registries;
@@ -29,6 +31,22 @@ public class DTEEntityRegistry {
                     .sized(.6f, 1.8f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "apothic_summoner").toString())
+            );
+
+    // Apothic Crusader
+    public static final DeferredHolder<EntityType<?>, EntityType<ApothicCrusaderEntity>> APOTHIC_CRUSADER =
+            ENTITIES.register("apothic_crusader", () -> EntityType.Builder.of(ApothicCrusaderEntity::new, MobCategory.MONSTER)
+                    .sized(.6f, 1.8f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "apothic_crusader").toString())
+            );
+
+    // Apothic Acolyte
+    public static final DeferredHolder<EntityType<?>, EntityType<ApothicAcolyteEntity>> APOTHIC_ACOLYTE =
+            ENTITIES.register("apothic_acolyte", () -> EntityType.Builder.of(ApothicAcolyteEntity::new, MobCategory.MONSTER)
+                    .sized(.6f, 1.8f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "apothic_acolyte").toString())
             );
 
     public static void register(IEventBus eventBus)

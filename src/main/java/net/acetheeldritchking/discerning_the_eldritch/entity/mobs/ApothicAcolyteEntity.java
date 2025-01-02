@@ -26,8 +26,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ApothicSummonerEntity extends NeutralWizard implements Enemy {
-    public ApothicSummonerEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
+public class ApothicAcolyteEntity extends NeutralWizard implements Enemy {
+    public ApothicAcolyteEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         xpReward = 25;
     }
@@ -36,18 +36,18 @@ public class ApothicSummonerEntity extends NeutralWizard implements Enemy {
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 1, 5, 100, 250, 1));
-        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 50, 85)
+        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 40, 75)
                 .setSpells(
                         // Attack
-                        List.of(SpellRegistry.BLOOD_SLASH_SPELL.get(), SpellRegistry.TELEKINESIS_SPELL.get(), SpellRegistry.RAISE_DEAD_SPELL.get(), SpellRegistry.SACRIFICE_SPELL.get()),
+                        List.of(SpellRegistry.SHOCKWAVE_SPELL.get(), SpellRegistry.SONIC_BOOM_SPELL.get(), SpellRegistry.BALL_LIGHTNING_SPELL.get()),
                         // Defense
-                        List.of(SpellRegistry.COUNTERSPELL_SPELL.get(), SpellRegistry.HEAL_SPELL.get(), SpellRegistry.ROOT_SPELL.get()),
+                        List.of(SpellRegistry.COUNTERSPELL_SPELL.get(), SpellRegistry.HEAL_SPELL.get(), SpellRegistry.BLIGHT_SPELL.get()),
                         // Movement
                         List.of(SpellRegistry.BLOOD_STEP_SPELL.get()),
                         // Support
                         List.of(SpellRegistry.ABYSSAL_SHROUD_SPELL.get())
                         // Silence down here is a temp thing
-                ).setSingleUseSpell(SpellRegistries.BOOGIE_WOOGIE.get(), 80, 400, 1, 3)
+                ).setSingleUseSpell(SpellRegistry.SCULK_TENTACLES_SPELL.get(), 80, 400, 1, 3)
                 .setDrinksPotions());
         //this.goalSelector.addGoal(4, new PatrolNearLocationGoal(this, 30, .75f));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -58,7 +58,7 @@ public class ApothicSummonerEntity extends NeutralWizard implements Enemy {
 
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
-        this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_MASK.get()));
+        this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_HOOD.get()));
         this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_ROBES.get()));
         this.setItemSlot(EquipmentSlot.LEGS, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_LEGGINGS.get()));
         this.setItemSlot(EquipmentSlot.FEET, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_GREAVES.get()));
@@ -78,10 +78,10 @@ public class ApothicSummonerEntity extends NeutralWizard implements Enemy {
     public static AttributeSupplier.Builder createAttributes()
     {
         return LivingEntity.createLivingAttributes()
-                .add(Attributes.ATTACK_DAMAGE, 2.5)
-                .add(Attributes.ATTACK_KNOCKBACK, 0.0)
-                .add(Attributes.MAX_HEALTH, 50.0)
+                .add(Attributes.ATTACK_DAMAGE, 4.0)
+                .add(Attributes.ATTACK_KNOCKBACK, 0.5)
+                .add(Attributes.MAX_HEALTH, 60.0)
                 .add(Attributes.FOLLOW_RANGE, 24.0)
-                .add(Attributes.MOVEMENT_SPEED, .25);
+                .add(Attributes.MOVEMENT_SPEED, .15);
     }
 }

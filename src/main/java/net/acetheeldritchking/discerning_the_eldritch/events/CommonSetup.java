@@ -1,6 +1,8 @@
 package net.acetheeldritchking.discerning_the_eldritch.events;
 
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ApothicAcolyteEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ApothicCrusaderEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ApothicSummonerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -13,5 +15,7 @@ public class CommonSetup {
     public static void onAttributeCreateEvent(EntityAttributeCreationEvent event)
     {
         event.put(DTEEntityRegistry.APOTHIC_SUMMONER.get(), ApothicSummonerEntity.createAttributes().build());
+        event.put(DTEEntityRegistry.APOTHIC_CRUSADER.get(), ApothicCrusaderEntity.createAttributes().build());
+        event.put(DTEEntityRegistry.APOTHIC_ACOLYTE.get(), ApothicAcolyteEntity.createAttributes().build());
     }
 }

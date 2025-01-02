@@ -12,17 +12,17 @@ public class GeckolibEldritchWarlockHelmetModel extends DefaultedItemGeoModel<Ge
     }
 
     @Override
-    public ResourceLocation getModelResource(GeckolibEldritchWarlockHelmetModel object) {
+    public ResourceLocation getModelResource(GeckolibEldritchWarlockHelmetItem object) {
         return ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "geo/eldritch_armor_helmet_geckolib.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureResource(GeckolibEldritchWarlockHelmetModel object) {
-        return ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "textures/models/armor/eldritch_armor_helmet.png");
+    public ResourceLocation getTextureResource(GeckolibEldritchWarlockHelmetItem object) {
+        return ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "textures/models/armor/geckolib/eldritch_armor_helmet.png");
     }
 
     @Override
-    public ResourceLocation getAnimationResource(GeckolibEldritchWarlockHelmetModel animatable) {
+    public ResourceLocation getAnimationResource(GeckolibEldritchWarlockHelmetItem animatable) {
         return ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "animations/eldritch_armor_geckolib.animation.json");
     }
 }

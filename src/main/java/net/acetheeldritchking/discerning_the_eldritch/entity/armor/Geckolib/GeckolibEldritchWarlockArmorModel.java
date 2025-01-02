@@ -18,7 +18,7 @@ public class GeckolibEldritchWarlockArmorModel extends DefaultedItemGeoModel<Gec
 
     @Override
     public ResourceLocation getTextureResource(GeckolibEldritchWarlockArmorItem object) {
-        return ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "textures/models/armor/eldritch_mage_armor.png");
+        return ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "textures/models/armor/geckolib/eldritch_mage_armor.png");
     }
 
     @Override
