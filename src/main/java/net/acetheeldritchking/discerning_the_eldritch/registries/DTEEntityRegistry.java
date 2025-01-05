@@ -49,6 +49,14 @@ public class DTEEntityRegistry {
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "apothic_acolyte").toString())
             );
 
+    // Sightless Maw
+
+    // Untold Behemoth
+
+    // The Apostle
+
+    // Gaoler
+
     public static void register(IEventBus eventBus)
     {
         ENTITIES.register(eventBus);

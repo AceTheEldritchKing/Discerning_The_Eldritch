@@ -44,6 +44,18 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
             new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
     );
 
+    // Echo Greatsword
+    public static DTEWeaponTiers ECHO_GREATSWORD = new DTEWeaponTiers(1680, 7, -3.0F, 10, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+
+    // Ritual Dagger
+    public static DTEWeaponTiers RITUAL_DAGGER = new DTEWeaponTiers(900, 2, -2.6F, 10, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+
+    // Forlorn Rapier
+    public static DTEWeaponTiers FORLORN_RAPIER = new DTEWeaponTiers(1061, 5, -2.8F, 10, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+
     //private final int level;
     private final int uses;
     private final float speed;

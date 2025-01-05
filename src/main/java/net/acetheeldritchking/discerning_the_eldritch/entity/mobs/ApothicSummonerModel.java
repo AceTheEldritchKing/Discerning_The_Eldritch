@@ -8,6 +8,6 @@ import net.minecraft.resources.ResourceLocation;
 public class ApothicSummonerModel extends AbstractSpellCastingMobModel {
     @Override
     public ResourceLocation getTextureResource(AbstractSpellCastingMob mob) {
-        return ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "textures/entity/apothic_cultists/apothic_summoner");
+        return ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "textures/entity/apothic_cultists/apothic_summoner.png");
     }
 }

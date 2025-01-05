@@ -101,6 +101,21 @@ public class ItemRegistries {
     // Ice Spear
     public static final DeferredHolder<Item, Item> ICE_SPEAR = ITEMS.register("ice_spear", IceSpearItem::new);
 
+    // Echo Greatsword
+    public static final DeferredHolder<Item, Item> ECHO_GREATSWORD = ITEMS.register("echo_greatsword", () ->
+            new MagicSwordItem(DTEWeaponTiers.ECHO_GREATSWORD, ItemPropertiesHelper.equipment().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.ECHO_GREATSWORD)),
+                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.SONIC_BOOM_SPELL, 1))));
+
+    // Ritual Dagger
+    public static final DeferredHolder<Item, Item> RITUAL_DAGGER = ITEMS.register("ritual_dagger", () ->
+            new MagicSwordItem(DTEWeaponTiers.RITUAL_DAGGER, ItemPropertiesHelper.equipment().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.RITUAL_DAGGER)),
+                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.SACRIFICE_SPELL, 1))));
+
+    // Forlorn Rapier
+    public static final DeferredHolder<Item, Item> FORLORN_RAPIER = ITEMS.register("forlorn_rapier", () ->
+            new MagicSwordItem(DTEWeaponTiers.FORLORN_RAPIER, ItemPropertiesHelper.equipment().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.FORLORN_RAPIER)),
+                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.COUNTERSPELL_SPELL, 1))));
+
     /***
      * Generic Items
      */

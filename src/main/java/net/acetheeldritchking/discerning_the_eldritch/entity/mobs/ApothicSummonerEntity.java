@@ -36,7 +36,7 @@ public class ApothicSummonerEntity extends NeutralWizard implements Enemy {
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 1, 5, 100, 250, 1));
-        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 50, 85)
+        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 35, 45)
                 .setSpells(
                         // Attack
                         List.of(SpellRegistry.BLOOD_SLASH_SPELL.get(), SpellRegistry.TELEKINESIS_SPELL.get(), SpellRegistry.RAISE_DEAD_SPELL.get(), SpellRegistry.SACRIFICE_SPELL.get()),
@@ -62,10 +62,12 @@ public class ApothicSummonerEntity extends NeutralWizard implements Enemy {
         this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_ROBES.get()));
         this.setItemSlot(EquipmentSlot.LEGS, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_LEGGINGS.get()));
         this.setItemSlot(EquipmentSlot.FEET, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_GREAVES.get()));
+        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ItemRegistries.FORLORN_RAPIER.get()));
         this.setDropChance(EquipmentSlot.HEAD, 0.0F);
         this.setDropChance(EquipmentSlot.CHEST, 0.0F);
         this.setDropChance(EquipmentSlot.LEGS, 0.0F);
         this.setDropChance(EquipmentSlot.FEET, 0.0F);
+        this.setDropChance(EquipmentSlot.MAINHAND, 0.0F);
     }
 
     @Override
