@@ -8,4 +8,5 @@ public class DTESpellAnimations {
     public static ResourceLocation ANIMATION_RESOURCE = ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "animation");
 
     public static final AnimationHolder ANIMATION_CLAP = new AnimationHolder(DiscerningTheEldritch.MOD_ID + ":clap", true);
+    public static final AnimationHolder ANIMATION_GAOLER_SUMMON = new AnimationHolder(DiscerningTheEldritch.MOD_ID + ":gaoler_summon", true);
 }

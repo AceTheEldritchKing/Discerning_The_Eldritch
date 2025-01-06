@@ -2,6 +2,7 @@ package net.acetheeldritchking.discerning_the_eldritch.registries;
 
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.ConjureGaolerSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.EsotericEdgeSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.OtherworldlyPresenceSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.SilenceSpell;
@@ -43,7 +44,8 @@ public class SpellRegistries {
 
     // Wrath of God - Destroy all creatures, they can't regenerate (do a lot of damage, prevent any healing)
 
-    // Conjour Gaoler - Unobtainable spell, summon the Gaoler entity
+    // Conjour Gaoler - Summon the Gaoler entity
+    public static final Supplier<AbstractSpell> CONJURE_GAOLER = registerSpell(new ConjureGaolerSpell());
 
     // Forlorn Blades - Summon several blades around the caster that attack whatever the attack attacks
 

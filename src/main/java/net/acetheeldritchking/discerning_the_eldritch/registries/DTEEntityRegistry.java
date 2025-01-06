@@ -4,6 +4,7 @@ import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ApothicAcolyteEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ApothicCrusaderEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ApothicSummonerEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.GaolerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdge;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -56,6 +57,13 @@ public class DTEEntityRegistry {
     // The Apostle
 
     // Gaoler
+    public static final DeferredHolder<EntityType<?>, EntityType<GaolerEntity>> GAOLER_ENTITY =
+            ENTITIES.register("gaoler", () -> EntityType.Builder.<GaolerEntity>of
+                            (GaolerEntity::new, MobCategory.MONSTER).
+                    sized(3f, 5f)
+                    .build(
+                            ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "gaoler").toString()
+                    ));
 
     public static void register(IEventBus eventBus)
     {

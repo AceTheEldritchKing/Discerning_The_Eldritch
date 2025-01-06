@@ -2,6 +2,7 @@ package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.NeutralWizard;
 import io.redspace.ironsspellbooks.entity.mobs.goals.SpellBarrageGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
@@ -54,6 +55,26 @@ public class ApothicSummonerEntity extends NeutralWizard implements Enemy {
         this.goalSelector.addGoal(10, new WizardRecoverGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+    }
+
+    @Override
+    public boolean isAlliedTo(Entity entityIn) {
+        if (entityIn == this)
+        {
+            return true;
+        }
+        else if (entityIn instanceof IMagicSummon summon && summon.getSummoner() == this)
+        {
+            return true;
+        }
+        else if (entityIn instanceof ApothicCrusaderEntity || entityIn instanceof ApothicSummonerEntity)
+        {
+            return true;
+        }
+        else
+        {
+            return this.getTeam() == null && entityIn.getTeam() == null;
+        }
     }
 
     @Override
