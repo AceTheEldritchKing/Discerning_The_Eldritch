@@ -1,9 +1,13 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 
+import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
+import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
+import io.redspace.ironsspellbooks.entity.mobs.wizards.GenericAnimatedWarlockAttackGoal;
 import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
@@ -11,16 +15,21 @@ import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffect
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffectUtil;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -28,6 +37,8 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.behavior.warden.SonicBoom;
+import net.minecraft.world.entity.ai.control.LookControl;
+import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
@@ -37,24 +48,29 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
+import org.apache.logging.log4j.core.jmx.Server;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.UUID;
 
-public class GaolerEntity extends Monster implements IMagicSummon, GeoAnimatable {
+public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummon, GeoAnimatable, IAnimatedAttacker {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     protected LivingEntity cachedSummoner;
     protected UUID summonerUUID;
     private int riseAnimationTime = 40;
     private static final EntityDataAccessor<Boolean> DATA_IS_PLAYING_RISE_ANIM = SynchedEntityData.defineId(GaolerEntity.class, EntityDataSerializers.BOOLEAN);
 
-    public GaolerEntity(EntityType<? extends Monster> entityType, Level level) {
+    public GaolerEntity(EntityType<? extends AbstractSpellCastingMob> entityType, Level level) {
         super(entityType, level);
         xpReward = 0;
+        this.lookControl = createLookControl();
+        this.moveControl = createMoveControl();
     }
 
     public GaolerEntity(Level level, LivingEntity owner, boolean playAnimation) {
@@ -66,10 +82,55 @@ public class GaolerEntity extends Monster implements IMagicSummon, GeoAnimatable
         }
     }
 
+    protected LookControl createLookControl()
+    {
+        return new LookControl(this)
+        {
+            @Override
+            protected float rotateTowards(float from, float to, float maxDelta) {
+                return super.rotateTowards(from, to, maxDelta * 2.5F);
+            }
+
+            @Override
+            protected boolean resetXRotOnTick() {
+                return getTarget() == null;
+            }
+        };
+    }
+
+    protected MoveControl createMoveControl()
+    {
+        return new MoveControl(this)
+        {
+            @Override
+            protected float rotlerp(float sourceAngle, float targetAngle, float maximumChange) {
+                double x = this.wantedX - this.mob.getX();
+                double z = this.wantedZ - this.mob.getZ();
+
+                if (x * x + z * z < 0.5F)
+                {
+                    return sourceAngle;
+                }
+                else
+                {
+                    return super.rotlerp(sourceAngle, targetAngle, maximumChange * 0.25F);
+                }
+            }
+        };
+    }
+
     @Override
     public void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0f, true));
+        //this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0f, true));
+        this.goalSelector.addGoal(1, new GenericAnimatedWarlockAttackGoal<>(this, 1.0F, 35, 45, 5f)
+                .setMoveset(List.of(
+                        new AttackAnimationData(20, "slam_1", 16),
+                        new AttackAnimationData(30, "upper_cut", 0, 5, 15, 20, 30)
+                ))
+                .setComboChance(0.5f)
+                .setMeleeAttackInverval(10, 30)
+                .setMeleeMovespeedModifier(1.5f));
         this.goalSelector.addGoal(7, new GenericFollowOwnerGoal(this, this::getSummoner, 0.9f, 10, 2, false, 50));
         this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.9D));
         this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
@@ -85,9 +146,9 @@ public class GaolerEntity extends Monster implements IMagicSummon, GeoAnimatable
     public static AttributeSupplier.Builder createAttributes()
     {
         return LivingEntity.createLivingAttributes()
-                .add(Attributes.ATTACK_DAMAGE, 8.5)
+                .add(Attributes.ATTACK_DAMAGE, 10.5)
                 .add(Attributes.ATTACK_KNOCKBACK, 1.0)
-                .add(Attributes.MAX_HEALTH, 150.0)
+                .add(Attributes.MAX_HEALTH, 350.0)
                 .add(Attributes.FOLLOW_RANGE, 45.0)
                 .add(Attributes.MOVEMENT_SPEED, .25);
     }
@@ -171,19 +232,57 @@ public class GaolerEntity extends Monster implements IMagicSummon, GeoAnimatable
         return Utils.doMeleeAttack(this, entity, SpellRegistries.CONJURE_GAOLER.get().getDamageSource(this, getSummoner()));
     }
 
+    @Override
+    public boolean canDisableShield() {
+        return true;
+    }
+
+    @Override
+    public boolean dampensVibrations() {
+        return true;
+    }
+
+    @Override
+    protected void customServerAiStep() {
+        ServerLevel serverLevel = (ServerLevel) this.level();
+        if ((this.tickCount + this.getId()) % 120 == 0)
+        {
+            applyDarknessAround(serverLevel, this.position(), this, 25);
+        }
+    }
+
+    private int getHeartBeatDelay()
+    {
+        return 40 - Mth.floor(Mth.clamp(5, 0.0F, 1.0F) * 30.0F);
+    }
+
+    public static void applyDarknessAround(ServerLevel level, Vec3 pos, @Nullable Entity source, int radius) {
+        MobEffectInstance mobeffectinstance = new MobEffectInstance(MobEffects.DARKNESS, 260, 0, false, false);
+        MobEffectUtil.addEffectToPlayersAround(level, source, pos, radius, mobeffectinstance, 200);
+    }
+
     // Geckolib & Animations
+    RawAnimation animationToPlay = null;
+    private final AnimationController<GaolerEntity> animationController = new AnimationController<>(this, "controller", 0, this::predicate);
+
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController(this, "controller", 0, this::predicate));
+        controllers.add(animationController);
     }
 
     private PlayState predicate(AnimationState event)
     {
+        var controller = event.getController();
+
         if (!isPlayingRiseAnimation())
         {
-            if (this.swinging)
+            if (this.swinging && this.animationToPlay != null)
             {
-                event.getController().setAnimation(RawAnimation.begin().thenPlay("attacking"));
+                // This should do the custom attack animations
+                controller.forceAnimationReset();
+                controller.setAnimation(animationToPlay);
+                animationToPlay = null;
+                //event.getController().setAnimation(RawAnimation.begin().thenPlay("attacking"));
             }
             else if (event.isMoving())
             {
@@ -199,6 +298,20 @@ public class GaolerEntity extends Monster implements IMagicSummon, GeoAnimatable
             event.getController().setAnimation(RawAnimation.begin().thenPlay("spawn"));
         }
         return PlayState.CONTINUE;
+    }
+
+    @Override
+    public void playAnimation(String animationId) {
+        try {
+            animationToPlay = RawAnimation.begin().thenPlay(animationId);
+        } catch (Exception ignored) {
+            IronsSpellbooks.LOGGER.error("Entity {} Failed to play animation: {}", this, animationId);
+        }
+    }
+
+    @Override
+    public boolean isAnimating() {
+        return animationController.getAnimationState() != AnimationController.State.STOPPED || super.isAnimating();
     }
 
     @Override
@@ -254,6 +367,15 @@ public class GaolerEntity extends Monster implements IMagicSummon, GeoAnimatable
         }
         else {
             super.tick();
+        }
+        if (this.level().isClientSide())
+        {
+            if (this.tickCount % this.getHeartBeatDelay() == 0)
+            {
+                if (!this.isSilent()) {
+                    this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.WARDEN_HEARTBEAT, this.getSoundSource(), 5.0F, this.getVoicePitch(), false);
+                }
+            }
         }
     }
 
