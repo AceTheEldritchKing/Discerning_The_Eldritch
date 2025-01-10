@@ -242,18 +242,9 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
         return true;
     }
 
-    @Override
-    protected void customServerAiStep() {
-        ServerLevel serverLevel = (ServerLevel) this.level();
-        if ((this.tickCount + this.getId()) % 120 == 0)
-        {
-            applyDarknessAround(serverLevel, this.position(), this, 25);
-        }
-    }
-
     private int getHeartBeatDelay()
     {
-        return 40 - Mth.floor(Mth.clamp(5, 0.0F, 1.0F) * 30.0F);
+        return 40 - Mth.floor(Mth.clamp(10, 0.0F, 1.0F) * 30.0F);
     }
 
     public static void applyDarknessAround(ServerLevel level, Vec3 pos, @Nullable Entity source, int radius) {
@@ -270,13 +261,13 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
         controllers.add(animationController);
     }
 
-    private PlayState predicate(AnimationState event)
+    private PlayState predicate(AnimationState<GaolerEntity> event)
     {
         var controller = event.getController();
 
         if (!isPlayingRiseAnimation())
         {
-            if (this.swinging && this.animationToPlay != null)
+            if (this.animationToPlay != null)
             {
                 // This should do the custom attack animations
                 controller.forceAnimationReset();
@@ -351,6 +342,18 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
     }
 
     @Override
+    protected void customServerAiStep() {
+        // Darkness
+        super.customServerAiStep();
+
+        ServerLevel serverLevel = (ServerLevel) this.level();
+        if (this.tickCount % 120 == 0)
+        {
+            applyDarknessAround(serverLevel, this.position(), this, 25);
+        }
+    }
+
+    @Override
     public void tick() {
         if (isPlayingRiseAnimation())
         {
@@ -368,6 +371,7 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
         else {
             super.tick();
         }
+        // Client side stuff
         if (this.level().isClientSide())
         {
             if (this.tickCount % this.getHeartBeatDelay() == 0)
