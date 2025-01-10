@@ -244,12 +244,18 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
 
     private int getHeartBeatDelay()
     {
-        return 40 - Mth.floor(Mth.clamp(10, 0.0F, 1.0F) * 30.0F);
+        return 40 - Mth.floor(Mth.clamp(20, 0.0F, 1.0F) * 30.0F);
     }
 
-    public static void applyDarknessAround(ServerLevel level, Vec3 pos, @Nullable Entity source, int radius) {
+    public void applyDarknessAround(ServerLevel level, Vec3 pos, @Nullable Entity source, int radius) {
         MobEffectInstance mobeffectinstance = new MobEffectInstance(MobEffects.DARKNESS, 260, 0, false, false);
         MobEffectUtil.addEffectToPlayersAround(level, source, pos, radius, mobeffectinstance, 200);
+
+        List<LivingEntity> entitiesNearby = level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(radius));
+        for (LivingEntity targets : entitiesNearby)
+        {
+            targets.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 200, 1, false, false, false));
+        }
     }
 
     // Geckolib & Animations
