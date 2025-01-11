@@ -276,18 +276,21 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
             if (this.animationToPlay != null)
             {
                 // This should do the custom attack animations
+                System.out.println("This should do the custom attack animations");
                 controller.forceAnimationReset();
                 controller.setAnimation(animationToPlay);
                 animationToPlay = null;
                 //event.getController().setAnimation(RawAnimation.begin().thenPlay("attacking"));
             }
-            else if (event.isMoving())
-            {
-                event.getController().setAnimation(RawAnimation.begin().then("walking", Animation.LoopType.LOOP));
-            }
-            else if (!event.isMoving())
-            {
-                event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
+            else {
+                if (event.isMoving())
+                {
+                    event.getController().setAnimation(RawAnimation.begin().then("walking", Animation.LoopType.LOOP));
+                }
+                else if (!event.isMoving())
+                {
+                    event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
+                }
             }
         }
         else
