@@ -1,6 +1,8 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 
 import io.redspace.ironsspellbooks.IronsSpellbooks;
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
@@ -123,14 +125,16 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
     public void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         //this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0f, true));
-        this.goalSelector.addGoal(1, new GenericAnimatedWarlockAttackGoal<>(this, 1.0F, 35, 45, 5f)
+        this.goalSelector.addGoal(1, new GaolerAnimatedWarlockAttackGoal(this, 1.0F, 35, 45, 5f)
                 .setMoveset(List.of(
                         new AttackAnimationData(20, "slam_1", 16),
                         new AttackAnimationData(30, "upper_cut", 0, 5, 15, 20, 30)
                 ))
-                .setComboChance(0.5f)
-                .setMeleeAttackInverval(10, 30)
-                .setMeleeMovespeedModifier(1.5f));
+                .setComboChance(0.8f)
+                .setMeleeAttackInverval(10, 25)
+                .setMeleeMovespeedModifier(1.5f)
+                //.setSingleUseSpell(SpellRegistry.SONIC_BOOM_SPELL.get(), 50, 180, 8, 8)
+        );
         this.goalSelector.addGoal(7, new GenericFollowOwnerGoal(this, this::getSummoner, 0.9f, 10, 2, false, 50));
         this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.9D));
         this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
@@ -225,9 +229,9 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
 
     @Override
     public boolean doHurtTarget(Entity entity) {
-        this.level().broadcastEntityEvent(this, (byte)4);
-        this.playSound(SoundEvents.WARDEN_ATTACK_IMPACT, 10.0F, this.getVoicePitch());
-        SonicBoom.setCooldown(this, 40);
+        //this.level().broadcastEntityEvent(this, (byte)4);
+        //this.playSound(SoundEvents.WARDEN_ATTACK_IMPACT, 10.0F, this.getVoicePitch());
+        //SonicBoom.setCooldown(this, 40);
 
         return Utils.doMeleeAttack(this, entity, SpellRegistries.CONJURE_GAOLER.get().getDamageSource(this, getSummoner()));
     }
@@ -276,18 +280,18 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
             if (this.animationToPlay != null)
             {
                 // This should do the custom attack animations
-                System.out.println("This should do the custom attack animations");
+                //System.out.println("This should do the custom attack animations");
                 controller.forceAnimationReset();
                 controller.setAnimation(animationToPlay);
                 animationToPlay = null;
                 //event.getController().setAnimation(RawAnimation.begin().thenPlay("attacking"));
             }
             else {
-                if (event.isMoving())
+                if (event.isMoving() && this.animationToPlay == null)
                 {
                     event.getController().setAnimation(RawAnimation.begin().then("walking", Animation.LoopType.LOOP));
                 }
-                else if (!event.isMoving())
+                else if (!event.isMoving() && this.animationToPlay == null)
                 {
                     event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
                 }
@@ -336,6 +340,7 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
                 double y = livingEntity.getY();
                 double z = livingEntity.getZ() + Mth.randomBetween(randomSource, -0.7F, 0.7F);
                 livingEntity.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, blockState), x, y , z, 0.0D, 0.0D, 0.0D);
+                livingEntity.playSound(SoundEvents.WARDEN_DIG, 10.0F, this.getVoicePitch());
             }
         }
     }

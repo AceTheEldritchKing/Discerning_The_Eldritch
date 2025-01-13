@@ -120,9 +120,6 @@ public class ConjureGaolerSpell extends AbstractSpell {
 
     private void spawnGaoler(double x, double y, double z, LivingEntity caster, Level level, int timer, int spellLevel)
     {
-        //MobEffectInstance effect = new MobEffectInstance((Holder<MobEffect>) DTEPotionEffectRegistry.GAOLER_TIMER.get(),
-                //timer, 0, false, false, false);
-
         GaolerEntity gaoler = new GaolerEntity(level, caster, true);
 
         gaoler.finalizeSpawn((ServerLevelAccessor) level,
