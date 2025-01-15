@@ -54,6 +54,13 @@
 
 
   "death.attack.discerning_the_eldritch.guardians_gaze": "%1$s fell from %2$s's gaze",
+  "death.attack.discerning_the_eldritch.esoteric_edge": "%1$s was torn asunder by %2$s",
+  "death.attack.discerning_the_eldritch.gaoler": "%1$s maimed and gored by %2$s",
+
+  "death.attack.discerning_the_eldritch.esoteric_edge.item": "%1$s was torn asunder by %2$s using %3$s",
+  "death.attack.discerning_the_eldritch.gaoler.item": "%1$s maimed and gored by %2$s using %3$s",
+
+
 
   "advancements.discerning_the_eldritch.apocrypha_spellbook.title": "The Gardener of Men",
   "advancements.discerning_the_eldritch.apocrypha_spellbook.description": "Obtain The Apocrypha spell book",

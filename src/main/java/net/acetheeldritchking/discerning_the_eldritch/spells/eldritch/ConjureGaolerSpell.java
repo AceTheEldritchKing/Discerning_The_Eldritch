@@ -63,6 +63,12 @@ public class ConjureGaolerSpell extends AbstractSpell {
         return CastType.LONG;
     }
 
+    // SPELL ISN'T DONE YET - Temp just for hotfix
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
     @Override
     public boolean canBeCraftedBy(Player player) {
         return false;
