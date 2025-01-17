@@ -1,6 +1,7 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 
 import io.redspace.ironsspellbooks.entity.mobs.wizards.GenericAnimatedWarlockAttackGoal;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.minecraft.sounds.SoundEvents;
 
 public class GaolerAnimatedWarlockAttackGoal extends GenericAnimatedWarlockAttackGoal {
@@ -14,6 +15,6 @@ public class GaolerAnimatedWarlockAttackGoal extends GenericAnimatedWarlockAttac
 
     @Override
     public void playSwingSound() {
-        gaoler.playSound(SoundEvents.WARDEN_ATTACK_IMPACT, 10.0F, gaoler.getVoicePitch());
+        gaoler.playSound(DTESoundRegistry.GAOLER_ATTACK_IMPACT.get(), 10.0F, gaoler.getVoicePitch());
     }
 }

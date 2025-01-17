@@ -14,6 +14,7 @@ import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -186,16 +187,21 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
         }
     }
 
+    @Override
+    protected @org.jetbrains.annotations.Nullable SoundEvent getAmbientSound() {
+        return DTESoundRegistry.GAOLER_AMBIENT.get();
+    }
+
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return SoundEvents.WARDEN_HURT;
+        return DTESoundRegistry.GAOLER_HURT.get();
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundEvents.WARDEN_DEATH;
+        return DTESoundRegistry.GAOLER_DEATH.get();
     }
 
     protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(SoundEvents.WARDEN_STEP, 10.0F, 1.0F);
+        this.playSound(DTESoundRegistry.GAOLER_STEP.get(), 10.0F, 1.0F);
     }
 
     // Attacks and Death

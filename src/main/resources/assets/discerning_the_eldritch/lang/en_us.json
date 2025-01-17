@@ -59,6 +59,13 @@
   "entity.discerning_the_eldritch.gaoler": "Gaoler",
 
 
+
+  "subtitles.entity.gaoler.hurt": "Gaoler hurts",
+  "subtitles.entity.gaoler.step": "Gaoler footsteps",
+  "subtitles.entity.gaoler.ambient": "Gaoler snarls",
+  "subtitles.entity.gaoler.attack_impact": "Gaoler attacks",
+
+
   "death.attack.discerning_the_eldritch.guardians_gaze": "%1$s fell from %2$s's gaze",
   "death.attack.discerning_the_eldritch.esoteric_edge": "%1$s was torn asunder by %2$s",
   "death.attack.discerning_the_eldritch.gaoler": "%1$s maimed and gored by %2$s",

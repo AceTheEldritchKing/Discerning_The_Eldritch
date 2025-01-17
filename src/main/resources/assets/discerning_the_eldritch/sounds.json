@@ -13,5 +13,54 @@
         "sounds": [
             "discerning_the_eldritch:esoteric_edge_slash"
         ]
+    },
+    "entity.gaoler.hurt": {
+        "sounds": [
+            "discerning_the_eldritch:mob/gaoler/hurt_1",
+            "discerning_the_eldritch:mob/gaoler/hurt_2",
+            "discerning_the_eldritch:mob/gaoler/hurt_3",
+            "discerning_the_eldritch:mob/gaoler/hurt_4"
+        ],
+        "subtitle": "subtitles.entity.gaoler.hurt"
+    },
+    "entity.gaoler.death": {
+        "sounds": [
+            "discerning_the_eldritch:mob/gaoler/death_1",
+            "discerning_the_eldritch:mob/gaoler/death_2"
+        ],
+        "subtitle": "subtitles.entity.gaoler.death"
+    },
+    "entity.gaoler.step": {
+        "sounds": [
+            "discerning_the_eldritch:mob/gaoler/step_1",
+            "discerning_the_eldritch:mob/gaoler/step_2",
+            "discerning_the_eldritch:mob/gaoler/step_3",
+            "discerning_the_eldritch:mob/gaoler/step_4"
+        ],
+        "subtitle": "subtitles.entity.gaoler.step"
+    },
+    "entity.gaoler.ambient": {
+        "sounds": [
+            "discerning_the_eldritch:mob/gaoler/ambient_1",
+            "discerning_the_eldritch:mob/gaoler/ambient_2",
+            "discerning_the_eldritch:mob/gaoler/ambient_3",
+            "discerning_the_eldritch:mob/gaoler/ambient_4",
+            "discerning_the_eldritch:mob/gaoler/ambient_5",
+            "discerning_the_eldritch:mob/gaoler/ambient_6",
+            "discerning_the_eldritch:mob/gaoler/ambient_7",
+            "discerning_the_eldritch:mob/gaoler/ambient_8",
+            "discerning_the_eldritch:mob/gaoler/ambient_9",
+            "discerning_the_eldritch:mob/gaoler/ambient_10",
+            "discerning_the_eldritch:mob/gaoler/ambient_11",
+            "discerning_the_eldritch:mob/gaoler/ambient_12"
+        ],
+        "subtitle": "subtitles.entity.gaoler.ambient"
+    },
+    "entity.gaoler.attack_impact": {
+        "sounds": [
+            "discerning_the_eldritch:mob/gaoler/attack_impact_1",
+            "discerning_the_eldritch:mob/gaoler/attack_impact_2"
+        ],
+        "subtitle": "subtitles.entity.gaoler.attack_impact"
     }
 }

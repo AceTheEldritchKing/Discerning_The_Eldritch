@@ -17,7 +17,23 @@ public class DTESoundRegistry {
     // Clap Spell Cast
     public static DeferredHolder<SoundEvent, SoundEvent> CLAP_SPELL_CAST = registerSoundEvent("clap");
 
+    // Esoteric Edge
     public static DeferredHolder<SoundEvent, SoundEvent> ESOTERIC_EDGE_SLASH = registerSoundEvent("esoteric_edge_slash");
+
+    // Gaoler Hurt
+    public static DeferredHolder<SoundEvent, SoundEvent> GAOLER_HURT = registerSoundEvent("entity.gaoler.hurt");
+
+    // Gaoler Death
+    public static DeferredHolder<SoundEvent, SoundEvent> GAOLER_DEATH = registerSoundEvent("entity.gaoler.death");
+
+    // Gaoler Step
+    public static DeferredHolder<SoundEvent, SoundEvent> GAOLER_STEP = registerSoundEvent("entity.gaoler.step");
+
+    // Gaoler Ambient
+    public static DeferredHolder<SoundEvent, SoundEvent> GAOLER_AMBIENT = registerSoundEvent("entity.gaoler.ambient");
+
+    // Gaoler Attack
+    public static DeferredHolder<SoundEvent, SoundEvent> GAOLER_ATTACK_IMPACT = registerSoundEvent("entity.gaoler.attack_impact");
 
     private static DeferredHolder<SoundEvent, SoundEvent> registerSoundEvent(String name)
     {
