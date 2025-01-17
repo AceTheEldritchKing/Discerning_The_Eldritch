@@ -53,6 +53,12 @@
   "ui.discerning_the_eldritch.extra_damage": "Deals extra damage while holding a weapon in your mainhand",
 
 
+  "entity.discerning_the_eldritch.apothic_acolyte": "Apothic Acolyte",
+  "entity.discerning_the_eldritch.apothic_crusader": "Apothic Crusader",
+  "entity.discerning_the_eldritch.apothic_summoner": "Apothic Summoner",
+  "entity.discerning_the_eldritch.gaoler": "Gaoler",
+
+
   "death.attack.discerning_the_eldritch.guardians_gaze": "%1$s fell from %2$s's gaze",
   "death.attack.discerning_the_eldritch.esoteric_edge": "%1$s was torn asunder by %2$s",
   "death.attack.discerning_the_eldritch.gaoler": "%1$s maimed and gored by %2$s",

@@ -60,7 +60,7 @@ public class DTEEntityRegistry {
     public static final DeferredHolder<EntityType<?>, EntityType<GaolerEntity>> GAOLER_ENTITY =
             ENTITIES.register("gaoler", () -> EntityType.Builder.<GaolerEntity>of
                             (GaolerEntity::new, MobCategory.MONSTER).
-                    sized(3f, 5f)
+                    sized(1.5f, 5f)
                     .build(
                             ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "gaoler").toString()
                     ));

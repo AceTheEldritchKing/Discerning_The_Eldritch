@@ -6,19 +6,21 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
+import io.redspace.ironsspellbooks.api.util.Utils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.GaolerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.spells.DTESpellAnimations;
-import net.minecraft.core.Holder;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -31,6 +33,13 @@ import java.util.Optional;
 @AutoSpellConfig
 public class ConjureGaolerSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "conjure_gaoler");
+
+    @Override
+    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
+        return List.of(
+                Component.translatable("ui.irons_spellbooks.damage", Utils.stringTruncation(getGaolerDamage(spellLevel, caster), 2))
+        );
+    }
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.LEGENDARY)
@@ -117,7 +126,7 @@ public class ConjureGaolerSpell extends AbstractSpell {
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         int summonTimer = (int) (20 * (20 * getSpellPower(spellLevel, entity)));
 
-        spawnGaoler(entity.getX(), entity.getY(), entity.getZ(), entity, level, summonTimer, spellLevel);
+        spawnGaoler(entity.getX(), entity.getY(), entity.getZ() + 2.5, entity, level, summonTimer, spellLevel);
 
         entity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.GAOLER_TIMER, summonTimer, 0, false, false, true));
 
@@ -133,11 +142,17 @@ public class ConjureGaolerSpell extends AbstractSpell {
                 MobSpawnType.MOB_SUMMONED, null);
         gaoler.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.GAOLER_TIMER, timer, 0, false, false, true));
 
-        gaoler.setPos(caster.getX(), caster.getY(), caster.getZ() - 2);
+        gaoler.setPos(x, y, z);
         gaoler.setYRot(caster.getYRot());
-        gaoler.setOldPosAndRot();
+        //gaoler.setOldPosAndRot();
+        gaoler.getAttributes().getInstance(Attributes.ATTACK_DAMAGE).setBaseValue(getGaolerDamage(spellLevel, caster));
 
         var event = NeoForge.EVENT_BUS.post(new SpellSummonEvent<>(caster, gaoler, this.spellId, spellLevel));
         level.addFreshEntity(event.getCreature());
+    }
+
+    private float getGaolerDamage(int spellLevel, LivingEntity caster)
+    {
+        return getSpellPower(spellLevel, caster);
     }
 }

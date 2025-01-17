@@ -73,11 +73,7 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy {
 
     @Override
     public boolean isAlliedTo(Entity entityIn) {
-        if (entityIn == this)
-        {
-            return true;
-        }
-        else if (entityIn instanceof IMagicSummon summon && summon.getSummoner() == this)
+        if (entityIn instanceof IMagicSummon summon && summon.getSummoner() == this)
         {
             return true;
         }
@@ -87,7 +83,7 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy {
         }
         else
         {
-            return this.getTeam() == null && entityIn.getTeam() == null;
+            return false;
         }
     }
 

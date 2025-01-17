@@ -1,23 +1,22 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 
 import io.redspace.ironsspellbooks.IronsSpellbooks;
-import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
+import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
+import io.redspace.ironsspellbooks.api.util.CameraShakeData;
+import io.redspace.ironsspellbooks.api.util.CameraShakeManager;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
-import io.redspace.ironsspellbooks.entity.mobs.wizards.GenericAnimatedWarlockAttackGoal;
-import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
+import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -38,20 +37,16 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.behavior.warden.SonicBoom;
 import net.minecraft.world.entity.ai.control.LookControl;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import org.apache.logging.log4j.core.jmx.Server;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.*;
@@ -65,7 +60,7 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     protected LivingEntity cachedSummoner;
     protected UUID summonerUUID;
-    private int riseAnimationTime = 40;
+    private int riseAnimationTime = 130;
     private static final EntityDataAccessor<Boolean> DATA_IS_PLAYING_RISE_ANIM = SynchedEntityData.defineId(GaolerEntity.class, EntityDataSerializers.BOOLEAN);
 
     public GaolerEntity(EntityType<? extends AbstractSpellCastingMob> entityType, Level level) {
@@ -125,10 +120,10 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
     public void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         //this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0f, true));
-        this.goalSelector.addGoal(1, new GaolerAnimatedWarlockAttackGoal(this, 1.0F, 35, 45, 5f)
+        this.goalSelector.addGoal(1, new GaolerAnimatedWarlockAttackGoal(this, 1.0F, 20, 35, 5f)
                 .setMoveset(List.of(
-                        new AttackAnimationData(20, "slam_1", 16),
-                        new AttackAnimationData(30, "upper_cut", 0, 5, 15, 20, 30)
+                        new AttackAnimationData(39, "slam_1", 24),
+                        new AttackAnimationData(37, "upper_cut", 22)
                 ))
                 .setComboChance(0.8f)
                 .setMeleeAttackInverval(10, 25)
@@ -233,6 +228,10 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
         //this.playSound(SoundEvents.WARDEN_ATTACK_IMPACT, 10.0F, this.getVoicePitch());
         //SonicBoom.setCooldown(this, 40);
 
+        CameraShakeManager.addCameraShake(new CameraShakeData(15, this.position(), 12));
+        MagicManager.spawnParticles(entity.level(), new BlastwaveParticleOptions(SchoolRegistry.ELDRITCH.get().getTargetingColor(), 5),
+                entity.getX(), 0.3, entity.getZ(), 1, 0, 0, 0, 0, true);
+
         return Utils.doMeleeAttack(this, entity, SpellRegistries.CONJURE_GAOLER.get().getDamageSource(this, getSummoner()));
     }
 
@@ -265,13 +264,39 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
     // Geckolib & Animations
     RawAnimation animationToPlay = null;
     private final AnimationController<GaolerEntity> animationController = new AnimationController<>(this, "controller", 0, this::predicate);
+    private final AnimationController<GaolerEntity> attackAnimationController = new AnimationController<>(this, "attack_controller", 0, this::attackPredicate);
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(animationController);
+        controllers.add(attackAnimationController);
     }
 
     private PlayState predicate(AnimationState<GaolerEntity> event)
+    {
+        if (!isPlayingRiseAnimation())
+        {
+            if (event.isMoving())
+            {
+                event.getController().setAnimation(RawAnimation.begin().then("walking", Animation.LoopType.LOOP));
+                return PlayState.CONTINUE;
+            }
+            else if (!event.isMoving() && this.animationToPlay == null)
+            {
+                event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
+                return PlayState.CONTINUE;
+            }
+        }
+        else
+        {
+            event.getController().setAnimation(RawAnimation.begin().thenPlay("spawn"));
+            return PlayState.CONTINUE;
+        }
+
+        return PlayState.STOP;
+    }
+
+    private PlayState attackPredicate(AnimationState<GaolerEntity> event)
     {
         var controller = event.getController();
 
@@ -280,27 +305,16 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
             if (this.animationToPlay != null)
             {
                 // This should do the custom attack animations
-                //System.out.println("This should do the custom attack animations");
                 controller.forceAnimationReset();
                 controller.setAnimation(animationToPlay);
                 animationToPlay = null;
-                //event.getController().setAnimation(RawAnimation.begin().thenPlay("attacking"));
-            }
-            else {
-                if (event.isMoving() && this.animationToPlay == null)
-                {
-                    event.getController().setAnimation(RawAnimation.begin().then("walking", Animation.LoopType.LOOP));
-                }
-                else if (!event.isMoving() && this.animationToPlay == null)
-                {
-                    event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
-                }
             }
         }
         else
         {
             event.getController().setAnimation(RawAnimation.begin().thenPlay("spawn"));
         }
+
         return PlayState.CONTINUE;
     }
 
@@ -393,6 +407,11 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
                 if (!this.isSilent()) {
                     this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.WARDEN_HEARTBEAT, this.getSoundSource(), 5.0F, this.getVoicePitch(), false);
                 }
+            }
+            // Screenshake when it walks
+            if (this.getDeltaMovement().x < 0 || this.getDeltaMovement().z < 0)
+            {
+                CameraShakeManager.addCameraShake(new CameraShakeData(4, this.position(), 20));
             }
         }
     }
