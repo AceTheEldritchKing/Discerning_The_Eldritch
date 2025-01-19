@@ -1,6 +1,7 @@
 package net.acetheeldritchking.discerning_the_eldritch.events;
 
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.GaolerModel;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.mobs.ApothicAcolyteRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.mobs.ApothicCrusaderRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.mobs.ApothicSummonerRenderer;
@@ -21,6 +22,6 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.APOTHIC_SUMMONER.get(), ApothicSummonerRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.APOTHIC_CRUSADER.get(), ApothicCrusaderRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.APOTHIC_ACOLYTE.get(), ApothicAcolyteRenderer::new);
-        event.registerEntityRenderer(DTEEntityRegistry.GAOLER_ENTITY.get(), GaolerRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.GAOLER_ENTITY.get(), context -> {return new GaolerRenderer(context, new GaolerModel());});
     }
 }

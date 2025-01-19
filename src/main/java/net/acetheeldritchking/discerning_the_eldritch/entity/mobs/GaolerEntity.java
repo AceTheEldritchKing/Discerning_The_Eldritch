@@ -2,6 +2,7 @@ package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 
 import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
+import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.CameraShakeData;
 import io.redspace.ironsspellbooks.api.util.CameraShakeManager;
 import io.redspace.ironsspellbooks.api.util.Utils;
@@ -10,7 +11,6 @@ import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
-import io.redspace.ironsspellbooks.entity.mobs.keeper.KeeperEntity;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
@@ -122,8 +122,7 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
     @Override
     public void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        //this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0f, true));
-        this.goalSelector.addGoal(1, new GaolerAnimatedWarlockAttackGoal(this, 1.0F, 20, 35, 5f)
+        this.goalSelector.addGoal(1, new GaolerAnimatedWarlockAttackGoal(this, 1.0F, 25, 55, 5f)
                 .setMoveset(List.of(
                         new AttackAnimationData(39, "slam_1", 24),
                         new AttackAnimationData(37, "upper_cut", 22)
@@ -131,15 +130,16 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
                 .setComboChance(0.8f)
                 .setMeleeAttackInverval(10, 25)
                 .setMeleeMovespeedModifier(1.5f)
-                //.setSingleUseSpell(SpellRegistry.SONIC_BOOM_SPELL.get(), 50, 180, 8, 8)
+                .setSingleUseSpell(SpellRegistry.SONIC_BOOM_SPELL.get(), 10, 15, 10, 10)
+                .setSpellQuality(15, 15)
         );
         this.goalSelector.addGoal(7, new GenericFollowOwnerGoal(this, this::getSummoner, 0.9f, 10, 2, false, 50));
         this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.9D));
         this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
         this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Mob.class, 8.0F));
 
-        //this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, Mob.class, true, (entity) -> !(entity == getSummoner())));
+        // Attack mobs on sight
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Mob.class, true, (entity) -> !(entity == getSummoner())));
 
         this.targetSelector.addGoal(1, new GenericOwnerHurtByTargetGoal(this, this::getSummoner));
         this.targetSelector.addGoal(2, new GenericOwnerHurtTargetGoal(this, this::getSummoner));
@@ -235,10 +235,6 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
 
     @Override
     public boolean doHurtTarget(Entity entity) {
-        //this.level().broadcastEntityEvent(this, (byte)4);
-        //this.playSound(SoundEvents.WARDEN_ATTACK_IMPACT, 10.0F, this.getVoicePitch());
-        //SonicBoom.setCooldown(this, 40);
-
         CameraShakeManager.addCameraShake(new CameraShakeData(15, this.position(), 12));
         MagicManager.spawnParticles(entity.level(), new BlastwaveParticleOptions(SchoolRegistry.ELDRITCH.get().getTargetingColor(), 5),
                 entity.getX(), 0.3, entity.getZ(), 1, 0, 0, 0, 0, true);
@@ -276,18 +272,20 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
     RawAnimation animationToPlay = null;
     private final AnimationController<GaolerEntity> animationController = new AnimationController<>(this, "controller", 0, this::predicate);
     private final AnimationController<GaolerEntity> attackAnimationController = new AnimationController<>(this, "attack_controller", 0, this::attackPredicate);
+    private final AnimationController<GaolerEntity> castingAnimationController = new AnimationController<>(this, "casting_controller", 0, this::castingPredicate);
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(animationController);
         controllers.add(attackAnimationController);
+        controllers.add(castingAnimationController);
     }
 
     private PlayState predicate(AnimationState<GaolerEntity> event)
     {
         if (!isPlayingRiseAnimation())
         {
-            if (event.isMoving())
+            if (event.isMoving() && this.animationToPlay == null)
             {
                 event.getController().setAnimation(RawAnimation.begin().then("walking", Animation.LoopType.LOOP));
                 return PlayState.CONTINUE;
@@ -327,6 +325,24 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
         }
 
         return PlayState.CONTINUE;
+    }
+
+    private PlayState castingPredicate(AnimationState<GaolerEntity> event)
+    {
+        if (!isPlayingRiseAnimation())
+        {
+            if (isCasting() && this.animationToPlay == null)
+            {
+                event.getController().setAnimation(RawAnimation.begin().thenPlay("charged_spit"));
+                return PlayState.CONTINUE;
+            }
+            else
+            {
+                event.getController().setAnimation(RawAnimation.begin().thenPlay("spawn"));
+            }
+        }
+
+        return PlayState.STOP;
     }
 
     @Override

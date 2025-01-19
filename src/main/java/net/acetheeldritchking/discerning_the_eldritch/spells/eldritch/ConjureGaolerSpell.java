@@ -11,6 +11,7 @@ import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.GaolerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.spells.DTESpellAnimations;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -37,7 +38,7 @@ public class ConjureGaolerSpell extends AbstractSpell {
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
-                Component.translatable("ui.irons_spellbooks.damage", Utils.stringTruncation(getGaolerDamage(spellLevel, caster), 2))
+                Component.translatable("ui.irons_spellbooks.damage", Utils.stringTruncation(getGaolerDamage(spellLevel, caster) * 1.5f, 2))
         );
     }
 
@@ -126,7 +127,9 @@ public class ConjureGaolerSpell extends AbstractSpell {
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         int summonTimer = (int) (20 * (20 * getSpellPower(spellLevel, entity)));
 
-        spawnGaoler(entity.getX(), entity.getY(), entity.getZ() + 2.5, entity, level, summonTimer, spellLevel);
+        BlockPos pos = new BlockPos((int) entity.getX(), (int) entity.getY(), (int) entity.getZ());
+
+        spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, entity, level, summonTimer, spellLevel);
 
         entity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.GAOLER_TIMER, summonTimer, 0, false, false, true));
 
@@ -144,7 +147,7 @@ public class ConjureGaolerSpell extends AbstractSpell {
 
         gaoler.setPos(x, y, z);
         gaoler.setYRot(caster.getYRot());
-        //gaoler.setOldPosAndRot();
+        gaoler.setOldPosAndRot();
         gaoler.getAttributes().getInstance(Attributes.ATTACK_DAMAGE).setBaseValue(getGaolerDamage(spellLevel, caster));
 
         var event = NeoForge.EVENT_BUS.post(new SpellSummonEvent<>(caster, gaoler, this.spellId, spellLevel));
@@ -153,6 +156,6 @@ public class ConjureGaolerSpell extends AbstractSpell {
 
     private float getGaolerDamage(int spellLevel, LivingEntity caster)
     {
-        return getSpellPower(spellLevel, caster);
+        return getSpellPower(spellLevel, caster) * 1.5f;
     }
 }

@@ -9,6 +9,7 @@ import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
@@ -23,6 +24,7 @@ public class KingsEffigyCurio extends SimpleDescriptiveCurio {
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         super.curioTick(slotContext, stack);
         slotContext.entity().removeEffect(DTEPotionEffectRegistry.SILENCE_POTION_EFFECT);
+        slotContext.entity().removeEffect(MobEffects.DARKNESS);
     }
 
     @Override
