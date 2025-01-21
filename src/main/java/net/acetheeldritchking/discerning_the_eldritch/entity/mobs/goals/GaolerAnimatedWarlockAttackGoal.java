@@ -1,8 +1,8 @@
-package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
+package net.acetheeldritchking.discerning_the_eldritch.entity.mobs.goals;
 
 import io.redspace.ironsspellbooks.entity.mobs.wizards.GenericAnimatedWarlockAttackGoal;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.GaolerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
-import net.minecraft.sounds.SoundEvents;
 
 public class GaolerAnimatedWarlockAttackGoal extends GenericAnimatedWarlockAttackGoal {
     final GaolerEntity gaoler;

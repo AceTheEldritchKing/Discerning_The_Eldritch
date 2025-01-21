@@ -31,6 +31,8 @@ import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.logging.Level;
 
+import static net.acetheeldritchking.discerning_the_eldritch.utils.DTEUtils.hasCurio;
+
 @EventBusSubscriber
 public class ServerEvents {
     @SubscribeEvent
@@ -84,8 +86,7 @@ public class ServerEvents {
         {
             if (sourceEntity instanceof Player player)
             {
-                boolean hasCurio = CuriosApi.getCuriosHelper().findEquippedCurio(ItemRegistries.DIARY_OF_DECAY.get(), player).isPresent();
-                if (hasCurio)
+                if (hasCurio(player, ItemRegistries.DIARY_OF_DECAY.get()))
                 {
                     if (projectile instanceof Projectile)
                     {

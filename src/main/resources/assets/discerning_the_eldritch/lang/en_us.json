@@ -17,12 +17,14 @@
   "item.discerning_the_eldritch.diary_of_decay": "Diary of Decay",
   "item.discerning_the_eldritch.guardian_guidebook": "Guardian's Guidebook",
   "item.discerning_the_eldritch.ymir": "Ymir, Apothic Eldritch Blade",
-  "item.discerning_the_eldritch.ymir_description": "Blade forged from Eldritch dreams",
+  "item.discerning_the_eldritch.ymir_description": "A blade forged from Eldritch dreams",
   "item.discerning_the_eldritch.god_spear": "The God Spear",
   "item.discerning_the_eldritch.ice_spear": "The Ice Spear",
   "item.discerning_the_eldritch.ice_spear_description": "Frozen tears formed into cold vengeance",
   "item.discerning_the_eldritch.kings_effigy": "King's Effigy",
   "item.discerning_the_eldritch.kings_effigy.desc": "Being torn apart over and over again, is this what you want?",
+  "item.discerning_the_eldritch.amulet_of_sculk_treasure": "Amulet of Hidden Treasure",
+  "item.discerning_the_eldritch.amulet_of_sculk_treasure.desc": "The gem reflects an ancient enemy before your eyes",
 
   "item.discerning_the_eldritch.eldritch_warlock_hood": "Apothic Acolyte Hood",
   "item.discerning_the_eldritch.eldritch_warlock_robes": "Apothic Acolyte Robes",
@@ -64,14 +66,17 @@
   "subtitles.entity.gaoler.step": "Gaoler footsteps",
   "subtitles.entity.gaoler.ambient": "Gaoler snarls",
   "subtitles.entity.gaoler.attack_impact": "Gaoler attacks",
+  "subtitles.entity.gaoler.death": "Gaoler dies",
 
 
   "death.attack.discerning_the_eldritch.guardians_gaze": "%1$s fell from %2$s's gaze",
   "death.attack.discerning_the_eldritch.esoteric_edge": "%1$s was torn asunder by %2$s",
   "death.attack.discerning_the_eldritch.gaoler": "%1$s maimed and gored by %2$s",
+  "death.attack.discerning_the_eldritch.conjure_gaoler": "%1$s maimed and gored by %2$s",
 
   "death.attack.discerning_the_eldritch.esoteric_edge.item": "%1$s was torn asunder by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.gaoler.item": "%1$s maimed and gored by %2$s using %3$s",
+  "death.attack.discerning_the_eldritch.conjure_gaoler.item": "%1$s maimed and gored by %2$s using %3$s",
 
 
 

@@ -25,6 +25,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.ELDRITCH_UPGRADE_TEMPLATE.get());
                         // Curios
                         output.accept(ItemRegistries.ECHO_VIBRATION_RING.get());
+                        output.accept(ItemRegistries.AMULET_OF_SCULK_TREASURE.get());
                         //output.accept(ItemRegistries.KINGS_EFFIGY.get());
                         // Spellbooks
                         output.accept(ItemRegistries.BLACK_BOOK_SPELLBOOK.get());

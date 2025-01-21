@@ -10,6 +10,7 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.GaolerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.spells.DTESpellAnimations;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -30,6 +31,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
+
+import static net.acetheeldritchking.discerning_the_eldritch.utils.DTEUtils.hasCurio;
 
 @AutoSpellConfig
 public class ConjureGaolerSpell extends AbstractSpell {
@@ -73,12 +76,6 @@ public class ConjureGaolerSpell extends AbstractSpell {
         return CastType.LONG;
     }
 
-    // SPELL ISN'T DONE YET - Temp just for hotfix
-    /*@Override
-    public boolean isEnabled() {
-        return false;
-    }*/
-
     @Override
     public boolean canBeCraftedBy(Player player) {
         return false;
@@ -91,6 +88,11 @@ public class ConjureGaolerSpell extends AbstractSpell {
 
     @Override
     public boolean allowLooting() {
+        return false;
+    }
+
+    @Override
+    public boolean requiresLearning() {
         return false;
     }
 
@@ -129,7 +131,14 @@ public class ConjureGaolerSpell extends AbstractSpell {
 
         BlockPos pos = new BlockPos((int) entity.getX(), (int) entity.getY(), (int) entity.getZ());
 
-        spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, entity, level, summonTimer, spellLevel);
+        if (entity instanceof Player player && hasCurio(player, ItemRegistries.KINGS_EFFIGY.get()))
+        {
+            spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, entity, level, summonTimer, spellLevel);
+        }
+        else
+        {
+            spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, null, level, summonTimer, spellLevel);
+        }
 
         entity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.GAOLER_TIMER, summonTimer, 0, false, false, true));
 
@@ -146,7 +155,6 @@ public class ConjureGaolerSpell extends AbstractSpell {
         gaoler.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.GAOLER_TIMER, timer, 0, false, false, true));
 
         gaoler.setPos(x, y, z);
-        gaoler.setYRot(caster.getYRot());
         gaoler.setOldPosAndRot();
         gaoler.getAttributes().getInstance(Attributes.ATTACK_DAMAGE).setBaseValue(getGaolerDamage(spellLevel, caster));
 

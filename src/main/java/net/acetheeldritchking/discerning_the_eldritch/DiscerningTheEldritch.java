@@ -3,6 +3,7 @@ package net.acetheeldritchking.discerning_the_eldritch;
 import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.DTEArmorMaterialRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.loot.DTELootModifiers;
 import net.acetheeldritchking.discerning_the_eldritch.registries.*;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
@@ -51,6 +52,8 @@ public class DiscerningTheEldritch
         DTEEntityRegistry.register(modEventBus);
         // Armor Materials
         DTEArmorMaterialRegistry.register(modEventBus);
+        // Loot Tables
+        DTELootModifiers.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
 

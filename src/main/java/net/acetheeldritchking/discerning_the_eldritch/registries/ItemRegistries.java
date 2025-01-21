@@ -17,6 +17,7 @@ import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarloc
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.GeckolibEldritchWarlockArmorItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.GeckolibEldritchWarlockHelmetItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.GeckolibEldritchWarlockMaskItem;
+import net.acetheeldritchking.discerning_the_eldritch.items.curios.AmuletOfSculkTreasureCurio;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.EchoVibrationRing;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.KingsEffigyCurio;
 import net.acetheeldritchking.discerning_the_eldritch.items.custom.DTEUpgradeTypes;
@@ -101,11 +102,6 @@ public class ItemRegistries {
     // Ice Spear
     public static final DeferredHolder<Item, Item> ICE_SPEAR = ITEMS.register("ice_spear", IceSpearItem::new);
 
-    // Echo Greatsword
-    public static final DeferredHolder<Item, Item> ECHO_GREATSWORD = ITEMS.register("echo_greatsword", () ->
-            new MagicSwordItem(DTEWeaponTiers.ECHO_GREATSWORD, ItemPropertiesHelper.equipment().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.ECHO_GREATSWORD)),
-                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.SONIC_BOOM_SPELL, 1))));
-
     // Ritual Dagger
     public static final DeferredHolder<Item, Item> RITUAL_DAGGER = ITEMS.register("ritual_dagger", () ->
             new MagicSwordItem(DTEWeaponTiers.RITUAL_DAGGER, ItemPropertiesHelper.equipment().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.RITUAL_DAGGER)),
@@ -148,6 +144,9 @@ public class ItemRegistries {
 
     // King's Effigy
     public static final Supplier<CurioBaseItem> KINGS_EFFIGY = ITEMS.register("kings_effigy", KingsEffigyCurio::new);
+
+    // Amulet of Hidden Treasure
+    public static final Supplier<CurioBaseItem> AMULET_OF_SCULK_TREASURE = ITEMS.register("amulet_of_sculk_treasure", AmuletOfSculkTreasureCurio::new);
 
     /***
      * Armor

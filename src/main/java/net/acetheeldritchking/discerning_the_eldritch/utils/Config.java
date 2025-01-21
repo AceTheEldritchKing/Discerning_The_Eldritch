@@ -1,9 +1,10 @@
-package net.acetheeldritchking.discerning_the_eldritch;
+package net.acetheeldritchking.discerning_the_eldritch.utils;
 
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;

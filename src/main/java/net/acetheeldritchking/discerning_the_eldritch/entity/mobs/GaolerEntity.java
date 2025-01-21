@@ -3,7 +3,6 @@ package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
-import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.util.CameraShakeData;
 import io.redspace.ironsspellbooks.api.util.CameraShakeManager;
 import io.redspace.ironsspellbooks.api.util.Utils;
@@ -14,10 +13,8 @@ import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.Abstra
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
-import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
-import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
-import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
-import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.goals.GaolerAnimatedWarlockAttackGoal;
+import net.acetheeldritchking.discerning_the_eldritch.registries.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -59,6 +56,8 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
+
+import static net.acetheeldritchking.discerning_the_eldritch.utils.DTEUtils.hasCurio;
 
 public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummon, GeoAnimatable, IAnimatedAttacker {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
@@ -140,7 +139,7 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
         this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Mob.class, 8.0F));
 
         // Attack mobs on sight
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Mob.class, true, (entity) -> !(entity == getSummoner())));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Mob.class, true));
 
         this.targetSelector.addGoal(1, new GenericOwnerHurtByTargetGoal(this, this::getSummoner));
         this.targetSelector.addGoal(2, new GenericOwnerHurtTargetGoal(this, this::getSummoner));
@@ -189,7 +188,8 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
         }
         else
         {
-            return this.getTeam() == null && entityIn.getTeam() == null;
+            //return this.getTeam() == null && entityIn.getTeam() == null;
+            return false;
         }
     }
 

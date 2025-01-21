@@ -63,7 +63,7 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy {
         this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_ROBES.get()));
         this.setItemSlot(EquipmentSlot.LEGS, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_LEGGINGS.get()));
         this.setItemSlot(EquipmentSlot.FEET, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_GREAVES.get()));
-        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ItemRegistries.ECHO_GREATSWORD.get()));
+        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ItemRegistries.DEEP_GREATSWORD.get()));
         this.setDropChance(EquipmentSlot.HEAD, 0.0F);
         this.setDropChance(EquipmentSlot.CHEST, 0.0F);
         this.setDropChance(EquipmentSlot.LEGS, 0.0F);

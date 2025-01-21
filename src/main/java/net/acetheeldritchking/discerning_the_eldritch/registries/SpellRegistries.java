@@ -73,6 +73,8 @@ public class SpellRegistries {
 
     // Thundering Blow/Lightning Crash - Melee spell
 
+    // Lightning Step/Thunder Step - Movement spell, burning dash-like spell. Short distance but recastable
+
 
     /***
      * Evocation Spells
