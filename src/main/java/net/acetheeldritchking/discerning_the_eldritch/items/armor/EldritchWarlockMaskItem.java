@@ -12,7 +12,7 @@ import java.util.function.Consumer;
 
 public class EldritchWarlockMaskItem extends ImbuableDTEArmorItem {
     public EldritchWarlockMaskItem(Type slot, Properties settings) {
-        super(DTEArmorMaterialRegistry.ELDRITCH_WARLOCK, slot, settings, schoolAttributesWithResistance(AttributeRegistry.ELDRITCH_SPELL_POWER, AttributeRegistry.SUMMON_DAMAGE, 150, 0.10F, 0.05F, 0.05F));
+        super(DTEArmorMaterialRegistry.ELDRITCH_WARLOCK, slot, settings, schoolAttributesWithResistance(AttributeRegistry.ELDRITCH_SPELL_POWER, AttributeRegistry.SUMMON_DAMAGE, 150, 0.15F, 0.05F, 0.05F));
     }
 
     @Override

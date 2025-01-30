@@ -149,9 +149,6 @@ public class ConjureGaolerSpell extends AbstractSpell {
     {
         GaolerEntity gaoler = new GaolerEntity(level, caster, true);
 
-        gaoler.finalizeSpawn((ServerLevelAccessor) level,
-                level.getCurrentDifficultyAt(gaoler.getOnPos()),
-                MobSpawnType.MOB_SUMMONED, null);
         gaoler.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.GAOLER_TIMER, timer, 0, false, false, true));
 
         gaoler.setPos(x, y, z);
@@ -159,6 +156,7 @@ public class ConjureGaolerSpell extends AbstractSpell {
         gaoler.getAttributes().getInstance(Attributes.ATTACK_DAMAGE).setBaseValue(getGaolerDamage(spellLevel, caster));
 
         var event = NeoForge.EVENT_BUS.post(new SpellSummonEvent<>(caster, gaoler, this.spellId, spellLevel));
+
         level.addFreshEntity(event.getCreature());
     }
 

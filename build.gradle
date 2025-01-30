@@ -193,6 +193,9 @@ dependencies {
     // Spell Collector Lib
     implementation "curse.maven:spell-collector-lib-1149858:5972600"
 
+    // World Edit (Only for building)
+    implementation "curse.maven:worldedit-225608:5830452"
+
     //QOL
     //todo: 1.21: update these mods
 //    localRuntime "curse.maven:tslatentitystatus-tes-830420:4746241"

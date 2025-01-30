@@ -49,6 +49,7 @@ public class ApothicSummonerEntity extends NeutralWizard implements Enemy {
                         List.of(SpellRegistry.ABYSSAL_SHROUD_SPELL.get())
                         // Silence down here is a temp thing
                 ).setSingleUseSpell(SpellRegistries.BOOGIE_WOOGIE.get(), 80, 400, 1, 3)
+                .setSpellQuality(1.0f, 1.0f)
                 .setDrinksPotions());
         //this.goalSelector.addGoal(4, new PatrolNearLocationGoal(this, 30, .75f));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
