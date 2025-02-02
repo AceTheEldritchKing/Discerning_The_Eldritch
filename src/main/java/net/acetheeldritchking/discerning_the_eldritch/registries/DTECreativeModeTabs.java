@@ -38,7 +38,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.DEEP_GREATSWORD.get());
                         output.accept(ItemRegistries.GOD_SPEAR.get());
                         output.accept(ItemRegistries.YMIR.get());
-                        //output.accept(ItemRegistries.ICE_SPEAR.get());
+                        output.accept(ItemRegistries.ICE_SPEAR.get());
                         // Armor
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_HOOD.get());
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_MASK.get());
@@ -46,6 +46,10 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_ROBES.get());
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_LEGGINGS.get());
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_GREAVES.get());
+                        // Spawn Eggs
+                        output.accept(ItemRegistries.ACOLYTE_SPAWN_EGG.get());
+                        output.accept(ItemRegistries.SUMMONER_SPAWN_EGG.get());
+                        output.accept(ItemRegistries.CRUSADER_SPAWN_EGG.get());
                     }).build());
 
     public static void register(IEventBus eventBus)

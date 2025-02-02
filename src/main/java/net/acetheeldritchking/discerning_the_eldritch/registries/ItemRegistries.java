@@ -32,6 +32,7 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -179,6 +180,25 @@ public class ItemRegistries {
     // Void Seeker Warlock Armor
 
     // Crimson Stag Armor (Blood & Nature set)
+
+
+    /***
+     * Armor
+     */
+    // Apothic Acolyte
+    public static final DeferredItem<Item> ACOLYTE_SPAWN_EGG = ITEMS.register("apothic_acolyte_spawn_egg",
+            () -> new DeferredSpawnEggItem(DTEEntityRegistry.APOTHIC_ACOLYTE, 1973277, 5147788,
+                    new Item.Properties()));
+
+    // Apothic Summoner
+    public static final DeferredItem<Item> SUMMONER_SPAWN_EGG = ITEMS.register("apothic_summoner_spawn_egg",
+            () -> new DeferredSpawnEggItem(DTEEntityRegistry.APOTHIC_SUMMONER, 1973277, 9324137,
+                    new Item.Properties()));
+
+    // Apothic Crusader
+    public static final DeferredItem<Item> CRUSADER_SPAWN_EGG = ITEMS.register("apothic_crusader_spawn_egg",
+            () -> new DeferredSpawnEggItem(DTEEntityRegistry.APOTHIC_CRUSADER, 1973277, 12556098,
+                    new Item.Properties()));
 
 
     // GECKOLIB ARMOR VERSIONS FOR NPCS/NON-PLAYER ENTITIES - THESE ARE NOT OBTAINABLE)

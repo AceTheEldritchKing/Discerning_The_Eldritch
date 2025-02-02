@@ -19,7 +19,7 @@ import java.util.function.Supplier;
 public class AddItemModifier extends LootModifier {
     public static final Supplier<MapCodec<AddItemModifier>> CODEC = Suppliers.memoize(()
     -> RecordCodecBuilder.mapCodec(inst -> codecStart(inst).and(
-            Codec.STRING.fieldOf("item").forGetter(m -> m.lootTable)).apply(inst, AddItemModifier::new)));
+            Codec.STRING.fieldOf("loot_table").forGetter(m -> m.lootTable)).apply(inst, AddItemModifier::new)));
     private final String lootTable;
 
     protected AddItemModifier(LootItemCondition[] conditionsIn, String item) {
