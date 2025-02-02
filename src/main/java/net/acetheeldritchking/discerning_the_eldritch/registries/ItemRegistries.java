@@ -14,6 +14,7 @@ import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockArmorItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockHelmetItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockMaskItem;
+import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.AscendedArmorItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.GeckolibEldritchWarlockArmorItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.GeckolibEldritchWarlockHelmetItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.GeckolibEldritchWarlockMaskItem;
@@ -210,6 +211,12 @@ public class ItemRegistries {
     public static final DeferredHolder<Item, Item> GECKOLIB_ELDRITCH_WARLOCK_GREAVES = ITEMS.register("gecko_eldritch_warlock_greaves", () -> new GeckolibEldritchWarlockArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
     public static final DeferredHolder<Item, Item> GECKOLIB_ELDRITCH_WARLOCK_MASK = ITEMS.register("gecko_eldritch_warlock_mask", () -> new GeckolibEldritchWarlockMaskItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
     public static final DeferredHolder<Item, Item> GECKOLIB_ELDRITCH_WARLOCK_HELMET = ITEMS.register("gecko_eldritch_warlock_helmet", () -> new GeckolibEldritchWarlockHelmetItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+
+    // Ascended Set
+    public static final DeferredHolder<Item, Item> ASCENDED_ONE_HOOD = ITEMS.register("ascended_one_hood", () -> new AscendedArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredHolder<Item, Item> ASCENDED_ONE_ROBES = ITEMS.register("ascended_one_robes", () -> new AscendedArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
+    public static final DeferredHolder<Item, Item> ASCENDED_ONE_LEGGINGS = ITEMS.register("ascended_one_leggings", () -> new AscendedArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
+    public static final DeferredHolder<Item, Item> ASCENDED_ONE_GREAVES = ITEMS.register("ascended_one_greaves", () -> new AscendedArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
 
     public static Collection<DeferredHolder<Item, ? extends Item>> getDTEItems()
