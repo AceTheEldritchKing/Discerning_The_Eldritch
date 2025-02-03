@@ -1,10 +1,7 @@
 package net.acetheeldritchking.discerning_the_eldritch.events;
 
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ApothicAcolyteEntity;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ApothicCrusaderEntity;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ApothicSummonerEntity;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.GaolerEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.*;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -19,5 +16,6 @@ public class CommonSetup {
         event.put(DTEEntityRegistry.APOTHIC_CRUSADER.get(), ApothicCrusaderEntity.createAttributes().build());
         event.put(DTEEntityRegistry.APOTHIC_ACOLYTE.get(), ApothicAcolyteEntity.createAttributes().build());
         event.put(DTEEntityRegistry.GAOLER_ENTITY.get(), GaolerEntity.createAttributes().build());
+        event.put(DTEEntityRegistry.ASCENDED_ONE.get(), AscendedOneBoss.createAttributes().build());
     }
 }

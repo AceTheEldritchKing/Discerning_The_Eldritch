@@ -1,10 +1,7 @@
 package net.acetheeldritchking.discerning_the_eldritch.registries;
 
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ApothicAcolyteEntity;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ApothicCrusaderEntity;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ApothicSummonerEntity;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.GaolerEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.*;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdge;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -64,6 +61,14 @@ public class DTEEntityRegistry {
                     .build(
                             ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "gaoler").toString()
                     ));
+
+    // The Ascended One
+    public static final DeferredHolder<EntityType<?>, EntityType<AscendedOneBoss>> ASCENDED_ONE =
+            ENTITIES.register("ascended_one", () -> EntityType.Builder.of(AscendedOneBoss::new, MobCategory.MONSTER)
+                    .sized(.6f, 1.8f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "ascended_one").toString())
+            );
 
     public static void register(IEventBus eventBus)
     {

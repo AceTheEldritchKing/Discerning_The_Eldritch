@@ -2,10 +2,7 @@ package net.acetheeldritchking.discerning_the_eldritch.events;
 
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.GaolerModel;
-import net.acetheeldritchking.discerning_the_eldritch.entity.render.mobs.ApothicAcolyteRenderer;
-import net.acetheeldritchking.discerning_the_eldritch.entity.render.mobs.ApothicCrusaderRenderer;
-import net.acetheeldritchking.discerning_the_eldritch.entity.render.mobs.ApothicSummonerRenderer;
-import net.acetheeldritchking.discerning_the_eldritch.entity.render.mobs.GaolerRenderer;
+import net.acetheeldritchking.discerning_the_eldritch.entity.render.mobs.*;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdgeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.neoforged.api.distmarker.Dist;
@@ -22,6 +19,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.APOTHIC_SUMMONER.get(), ApothicSummonerRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.APOTHIC_CRUSADER.get(), ApothicCrusaderRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.APOTHIC_ACOLYTE.get(), ApothicAcolyteRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.ASCENDED_ONE.get(), AscendedOneRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.GAOLER_ENTITY.get(), context -> {return new GaolerRenderer(context, new GaolerModel());});
     }
 }

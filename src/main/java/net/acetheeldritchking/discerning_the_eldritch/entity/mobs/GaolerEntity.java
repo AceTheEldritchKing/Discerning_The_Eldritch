@@ -57,7 +57,6 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
-import static net.acetheeldritchking.discerning_the_eldritch.utils.DTEUtils.hasCurio;
 
 public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummon, GeoAnimatable, IAnimatedAttacker {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
