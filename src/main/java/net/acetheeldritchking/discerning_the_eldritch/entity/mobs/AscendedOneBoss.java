@@ -30,10 +30,7 @@ import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.IronGolem;
-import net.minecraft.world.entity.monster.AbstractIllager;
 import net.minecraft.world.entity.monster.Enemy;
-import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -80,6 +77,8 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy {
     }
 
     // Phase stuff //
+    // Tbh I'm not really gonna use this, the boss is supposed to be a simple boss
+    // Kinda like an introduction into the world of DTE
     public enum Phase
     {
         FirstPhase(0),
