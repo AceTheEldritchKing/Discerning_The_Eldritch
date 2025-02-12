@@ -11,8 +11,11 @@ import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextColor;
+import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -28,6 +31,7 @@ import net.minecraft.world.entity.ai.control.LookControl;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.WrappedGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Enemy;
@@ -77,8 +81,6 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy {
     }
 
     // Phase stuff //
-    // Tbh I'm not really gonna use this, the boss is supposed to be a simple boss
-    // Kinda like an introduction into the world of DTE
     public enum Phase
     {
         FirstPhase(0),
@@ -152,8 +154,63 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy {
     @Override
     protected void registerGoals() {
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-        // Magic Spells
+
+        firstPhaseGoals();
+        this.goalSelector.addGoal(10, new WizardRecoverGoal(this));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+    }
+
+    private void firstPhaseGoals()
+    {
+        this.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
+        this.goalSelector.removeAllGoals((x) -> true);
+
         this.goalSelector.addGoal(1, new FloatGoal(this));
+        // Magic Spells
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 80, 250, 1));
+        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 30, 55)
+                .setSpells(
+                        // Attack
+                        List.of(
+                                SpellRegistry.SONIC_BOOM_SPELL.get(),
+                                SpellRegistry.SHOCKWAVE_SPELL.get(),
+                                SpellRegistry.TELEKINESIS_SPELL.get(),
+                                SpellRegistry.BLOOD_SLASH_SPELL.get()
+                        ),
+                        // Defense
+                        List.of(
+                                SpellRegistry.COUNTERSPELL_SPELL.get(),
+                                SpellRegistry.HEAL_SPELL.get(),
+                                SpellRegistry.CHARGE_SPELL.get(),
+                                SpellRegistry.ABYSSAL_SHROUD_SPELL.get()
+                        ),
+                        // Movement
+                        List.of(
+                                SpellRegistry.BLOOD_STEP_SPELL.get(),
+                                SpellRegistries.OTHERWORLDLY_PRESENCE.get()
+                        ),
+                        // Support
+                        List.of(
+                                SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
+                                SpellRegistry.RAISE_DEAD_SPELL.get(),
+                                SpellRegistry.COUNTERSPELL_SPELL.get(),
+                                SpellRegistry.SACRIFICE_SPELL.get()
+                        )
+                        // Silence down here is a temp thing
+                ).setSingleUseSpell(SpellRegistries.SILENCE.get(), 250, 400, 3, 5)
+                .setSpellQuality(1.0f, 1.0f)
+                .setDrinksPotions());
+            this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
+    }
+
+    private void secondPhaseGoals()
+    {
+        this.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
+        this.goalSelector.removeAllGoals((x) -> true);
+
+        this.goalSelector.addGoal(1, new FloatGoal(this));
+        // Magic Spells
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 80, 250, 1));
         this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 30, 55)
                 .setSpells(
@@ -166,7 +223,7 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy {
                                 SpellRegistry.BLOOD_SLASH_SPELL.get(),
                                 SpellRegistry.LIGHTNING_LANCE_SPELL.get(),
                                 SpellRegistry.SCULK_TENTACLES_SPELL.get()
-                                ),
+                        ),
                         // Defense
                         List.of(
                                 SpellRegistry.COUNTERSPELL_SPELL.get(),
@@ -196,9 +253,44 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy {
                 .setSpellQuality(1.5f, 1.5f)
                 .setDrinksPotions());
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(10, new WizardRecoverGoal(this));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+        float health = this.getHealth();
+        float MAX_HEALTH = this.getMaxHealth();
+
+        float halfHealth = MAX_HEALTH/2;
+
+        if (isPhase(Phase.FirstPhase))
+        {
+            if (this.getHealth() <= halfHealth)
+            {
+                setPhase(Phase.SecondPhase);
+                setHealth(halfHealth);
+            }
+        }
+
+        if (isPhase(Phase.SecondPhase))
+        {
+            int radius = 15;
+
+            List<LivingEntity> entitiesNearby = level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(radius));
+            secondPhaseGoals();
+
+            for (LivingEntity targets : entitiesNearby)
+            {
+                if (targets instanceof ServerPlayer player)
+                {
+                    player.connection.send(new ClientboundSetActionBarTextPacket(Component.translatable("discerning_the_eldritch:ascended_one_taunt")
+                            .withStyle(s -> s.withColor(TextColor.fromRgb(0xC71B8B)))));
+                }
+            }
+
+            this.bossEvent.setProgress(health / (MAX_HEALTH - halfHealth));
+        }
     }
 
     @Override
@@ -269,7 +361,7 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy {
         setPhase(pCompound.getInt("phase"));
         if (isPhase(Phase.SecondPhase))
         {
-            // second phase goals here
+            secondPhaseGoals();
         }
     }
 
