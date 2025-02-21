@@ -1,5 +1,6 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 
+import io.redspace.ironsspellbooks.api.network.IClientEventEntity;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
@@ -8,9 +9,11 @@ import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.Abstra
 import io.redspace.ironsspellbooks.entity.mobs.goals.SpellBarrageGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
+import io.redspace.ironsspellbooks.network.EntityEventPacket;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.boss_music.AscendedOneMusicManager;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -39,11 +42,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy {
+public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, IClientEventEntity {
     /*public AscendedOneBoss(Level level)
     {
         this(DTEEntityRegistry.ASCENDED_ONE.get(), level);
@@ -61,17 +65,31 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy {
     private final ServerBossEvent bossEvent =
             new ServerBossEvent(Component.translatable("discerning_the_eldritch:ascended_one_boss"), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS);
     private final static EntityDataAccessor<Integer> PHASE = SynchedEntityData.defineId(AscendedOneBoss.class, EntityDataSerializers.INT);
+    public static final byte STOP_MUSIC = 0;
+    public static final byte START_MUSIC = 1;
+
+    @Override
+    public void handleClientEvent(byte eventId)
+    {
+        switch (eventId)
+        {
+            case STOP_MUSIC -> AscendedOneMusicManager.stop(this);
+            case START_MUSIC -> AscendedOneMusicManager.createOrResumeInstance(this);
+        }
+    }
 
     @Override
     public void startSeenByPlayer(ServerPlayer serverPlayer) {
         super.startSeenByPlayer(serverPlayer);
         this.bossEvent.addPlayer(serverPlayer);
+        PacketDistributor.sendToPlayer(serverPlayer, new EntityEventPacket<AscendedOneBoss>(this, START_MUSIC));
     }
 
     @Override
     public void stopSeenByPlayer(ServerPlayer serverPlayer) {
         super.stopSeenByPlayer(serverPlayer);
         this.bossEvent.removePlayer(serverPlayer);
+        PacketDistributor.sendToPlayer(serverPlayer, new EntityEventPacket<AscendedOneBoss>(this, STOP_MUSIC));
     }
 
     @Override
@@ -168,7 +186,7 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy {
 
         this.goalSelector.addGoal(1, new FloatGoal(this));
         // Magic Spells
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 80, 250, 1));
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 80, 150, 1));
         this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 30, 55)
                 .setSpells(
                         // Attack
@@ -198,7 +216,7 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy {
                                 SpellRegistry.SACRIFICE_SPELL.get()
                         )
                         // Silence down here is a temp thing
-                ).setSingleUseSpell(SpellRegistries.SILENCE.get(), 250, 400, 3, 5)
+                ).setSingleUseSpell(SpellRegistries.BOOGIE_WOOGIE.get(), 85, 100, 3, 5)
                 .setSpellQuality(1.0f, 1.0f)
                 .setDrinksPotions());
             this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -211,8 +229,8 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy {
 
         this.goalSelector.addGoal(1, new FloatGoal(this));
         // Magic Spells
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 80, 250, 1));
-        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 30, 55)
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 30, 50, 5));
+        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 20, 35)
                 .setSpells(
                         // Attack
                         List.of(
@@ -249,7 +267,7 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy {
                                 SpellRegistry.SACRIFICE_SPELL.get()
                         )
                         // Silence down here is a temp thing
-                ).setSingleUseSpell(SpellRegistries.SILENCE.get(), 250, 400, 3, 5)
+                ).setSingleUseSpell(SpellRegistries.SILENCE.get(), 250, 400, 5, 5)
                 .setSpellQuality(1.5f, 1.5f)
                 .setDrinksPotions());
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -270,6 +288,8 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy {
             {
                 setPhase(Phase.SecondPhase);
                 setHealth(halfHealth);
+
+                secondPhaseGoals();
             }
         }
 
@@ -278,7 +298,6 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy {
             int radius = 15;
 
             List<LivingEntity> entitiesNearby = level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(radius));
-            secondPhaseGoals();
 
             for (LivingEntity targets : entitiesNearby)
             {

@@ -62,5 +62,10 @@
             "discerning_the_eldritch:mob/gaoler/attack_impact_2"
         ],
         "subtitle": "subtitles.entity.gaoler.attack_impact"
+    },
+    "test_boss_music": {
+        "sounds": [
+            "discerning_the_eldritch:test_boss_music"
+        ]
     }
 }
