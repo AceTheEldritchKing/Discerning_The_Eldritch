@@ -194,7 +194,8 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, I
                                 SpellRegistry.SONIC_BOOM_SPELL.get(),
                                 SpellRegistry.SHOCKWAVE_SPELL.get(),
                                 SpellRegistry.TELEKINESIS_SPELL.get(),
-                                SpellRegistry.BLOOD_SLASH_SPELL.get()
+                                SpellRegistry.BLOOD_SLASH_SPELL.get(),
+                                SpellRegistry.BLOOD_NEEDLES_SPELL.get()
                         ),
                         // Defense
                         List.of(
@@ -230,6 +231,7 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, I
         this.goalSelector.addGoal(1, new FloatGoal(this));
         // Magic Spells
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 30, 50, 5));
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ABYSSAL_SHROUD_SPELL.get(), 1, 3, 80, 100, 0));
         this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 20, 35)
                 .setSpells(
                         // Attack
@@ -239,8 +241,10 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, I
                                 SpellRegistry.SHOCKWAVE_SPELL.get(),
                                 SpellRegistry.TELEKINESIS_SPELL.get(),
                                 SpellRegistry.BLOOD_SLASH_SPELL.get(),
+                                SpellRegistry.ACUPUNCTURE_SPELL.get(),
                                 SpellRegistry.LIGHTNING_LANCE_SPELL.get(),
-                                SpellRegistry.SCULK_TENTACLES_SPELL.get()
+                                SpellRegistry.SCULK_TENTACLES_SPELL.get(),
+                                SpellRegistry.COUNTERSPELL_SPELL.get()
                         ),
                         // Defense
                         List.of(
@@ -249,14 +253,15 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, I
                                 SpellRegistry.CHARGE_SPELL.get(),
                                 SpellRegistry.BLIGHT_SPELL.get(),
                                 SpellRegistry.SLOW_SPELL.get(),
-                                SpellRegistry.ABYSSAL_SHROUD_SPELL.get()
+                                SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
+                                SpellRegistry.BLOOD_STEP_SPELL.get()
                         ),
                         // Movement
                         List.of(
                                 SpellRegistry.BLOOD_STEP_SPELL.get(),
-                                SpellRegistry.HASTE_SPELL.get(),
                                 SpellRegistries.OTHERWORLDLY_PRESENCE.get(),
-                                SpellRegistry.PLANAR_SIGHT_SPELL.get()
+                                SpellRegistry.PLANAR_SIGHT_SPELL.get(),
+                                SpellRegistry.COUNTERSPELL_SPELL.get()
                         ),
                         // Support
                         List.of(
@@ -264,7 +269,8 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, I
                                 SpellRegistry.RAISE_DEAD_SPELL.get(),
                                 SpellRegistry.SUMMON_VEX_SPELL.get(),
                                 SpellRegistry.COUNTERSPELL_SPELL.get(),
-                                SpellRegistry.SACRIFICE_SPELL.get()
+                                SpellRegistry.SACRIFICE_SPELL.get(),
+                                SpellRegistry.COUNTERSPELL_SPELL.get()
                         )
                         // Silence down here is a temp thing
                 ).setSingleUseSpell(SpellRegistries.SILENCE.get(), 250, 400, 5, 5)
@@ -290,6 +296,8 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, I
                 setHealth(halfHealth);
 
                 secondPhaseGoals();
+
+                this.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(1.5F);
             }
         }
 
@@ -356,10 +364,12 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, I
                 .add(Attributes.ATTACK_KNOCKBACK, 0.5)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1.5)
                 .add(Attributes.MAX_HEALTH, 550.0)
-                .add(Attributes.ARMOR, 10)
-                .add(Attributes.FOLLOW_RANGE, 50.0)
-                .add(Attributes.MOVEMENT_SPEED, .25)
+                .add(Attributes.ARMOR, 60)
+                .add(Attributes.ARMOR_TOUGHNESS, 20)
+                .add(Attributes.FOLLOW_RANGE, 80.0)
+                .add(Attributes.MOVEMENT_SPEED, 0.25)
                 .add(AttributeRegistry.SPELL_POWER, 1.35)
+                .add(AttributeRegistry.SPELL_RESIST, 1.7)
                 ;
     }
 
