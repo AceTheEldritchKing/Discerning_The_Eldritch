@@ -193,7 +193,6 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, I
                         List.of(
                                 SpellRegistry.SONIC_BOOM_SPELL.get(),
                                 SpellRegistry.SHOCKWAVE_SPELL.get(),
-                                SpellRegistry.TELEKINESIS_SPELL.get(),
                                 SpellRegistry.BLOOD_SLASH_SPELL.get(),
                                 SpellRegistry.BLOOD_NEEDLES_SPELL.get()
                         ),
@@ -206,8 +205,7 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, I
                         ),
                         // Movement
                         List.of(
-                                SpellRegistry.BLOOD_STEP_SPELL.get(),
-                                SpellRegistries.OTHERWORLDLY_PRESENCE.get()
+                                SpellRegistry.BLOOD_STEP_SPELL.get()
                         ),
                         // Support
                         List.of(
@@ -216,8 +214,7 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, I
                                 SpellRegistry.COUNTERSPELL_SPELL.get(),
                                 SpellRegistry.SACRIFICE_SPELL.get()
                         )
-                        // Silence down here is a temp thing
-                ).setSingleUseSpell(SpellRegistries.BOOGIE_WOOGIE.get(), 85, 100, 3, 5)
+                ).setSingleUseSpell(SpellRegistries.BOOGIE_WOOGIE.get(), 70, 100, 3, 5)
                 .setSpellQuality(1.0f, 1.0f)
                 .setDrinksPotions());
             this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -239,7 +236,6 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, I
                                 SpellRegistries.ESOTERIC_EDGE.get(),
                                 SpellRegistry.SONIC_BOOM_SPELL.get(),
                                 SpellRegistry.SHOCKWAVE_SPELL.get(),
-                                SpellRegistry.TELEKINESIS_SPELL.get(),
                                 SpellRegistry.BLOOD_SLASH_SPELL.get(),
                                 SpellRegistry.ACUPUNCTURE_SPELL.get(),
                                 SpellRegistry.LIGHTNING_LANCE_SPELL.get(),
@@ -259,9 +255,7 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, I
                         // Movement
                         List.of(
                                 SpellRegistry.BLOOD_STEP_SPELL.get(),
-                                SpellRegistries.OTHERWORLDLY_PRESENCE.get(),
-                                SpellRegistry.PLANAR_SIGHT_SPELL.get(),
-                                SpellRegistry.COUNTERSPELL_SPELL.get()
+                                SpellRegistry.PLANAR_SIGHT_SPELL.get()
                         ),
                         // Support
                         List.of(
@@ -269,13 +263,11 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, I
                                 SpellRegistry.RAISE_DEAD_SPELL.get(),
                                 SpellRegistry.SUMMON_VEX_SPELL.get(),
                                 SpellRegistry.COUNTERSPELL_SPELL.get(),
-                                SpellRegistry.SACRIFICE_SPELL.get(),
-                                SpellRegistry.COUNTERSPELL_SPELL.get()
+                                SpellRegistry.SACRIFICE_SPELL.get()
                         )
                         // Silence down here is a temp thing
-                ).setSingleUseSpell(SpellRegistries.SILENCE.get(), 250, 400, 5, 5)
-                .setSpellQuality(1.5f, 1.5f)
-                .setDrinksPotions());
+                ).setSingleUseSpell(SpellRegistries.SILENCE.get(), 100, 250, 5, 5)
+                .setSpellQuality(1.5f, 1.5f));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }
 

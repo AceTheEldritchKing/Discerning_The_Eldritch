@@ -37,7 +37,7 @@ public class SpellRegistries {
     // Silence - Prevent target from casting spells
     public static final Supplier<AbstractSpell> SILENCE = registerSpell(new SilenceSpell());
 
-    // Forsaken Aid - Summons entities like Raise Dead
+    // Forsaken Aid - Summons entities like Raise Dead; summons The Apostle (spell casting summon), Feral Maw (lowly grunt) and Unyielding Juggernaut (tanky summon)
 
     // Esoteric Edge - Melee spell
     public static final Supplier<AbstractSpell> ESOTERIC_EDGE = registerSpell(new EsotericEdgeSpell());
@@ -51,6 +51,21 @@ public class SpellRegistries {
 
     // Otherworldly Presence - Teleport based spell, grants you the Metaphysical effect
     public static final Supplier<AbstractSpell> OTHERWORLDLY_PRESENCE = registerSpell(new OtherworldlyPresenceSpell());
+
+    // Mend Flesh - Healing spell; heals you for a small amount, but grants an effect that'll heal you for X amount every time you attack or gain XP
+
+    // Rift Walker - Teleport based spell, leaves an unstable rift at your original location and at your new location. Rift deals damage
+
+    // Entangled - Prevents the user from being counterspelled at the cost of reduced spell power
+
+    // Subjugation - AoE Silence that damages targets, prevents them from doing anything of their agency, damages them for doing anything, stops healing, stops mana regen, blindness and darkness, weakness and reduced armor, more suseptible to spells,
+    // Yeah this is cancerous for a reason, this won't be casted by a player, only by a boss
+
+
+    /***
+     * Ritual Spells
+     */
+    // Call: Ascended One
 
 
     /***
