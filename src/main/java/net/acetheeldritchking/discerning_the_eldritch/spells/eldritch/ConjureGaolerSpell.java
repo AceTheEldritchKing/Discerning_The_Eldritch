@@ -21,11 +21,9 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
 import net.neoforged.neoforge.common.NeoForge;
 import org.jetbrains.annotations.Nullable;
 
@@ -41,7 +39,8 @@ public class ConjureGaolerSpell extends AbstractSpell {
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
-                Component.translatable("ui.irons_spellbooks.damage", Utils.stringTruncation(getGaolerDamage(spellLevel, caster) * 1.5f, 2))
+                Component.translatable("ui.irons_spellbooks.hp", Utils.stringTruncation(getGaolerHealth(spellLevel, null), 2)),
+                Component.translatable("ui.irons_spellbooks.damage", Utils.stringTruncation(getGaolerDamage(spellLevel, null), 2))
         );
     }
 
@@ -154,14 +153,30 @@ public class ConjureGaolerSpell extends AbstractSpell {
         gaoler.setPos(x, y, z);
         gaoler.setOldPosAndRot();
         gaoler.getAttributes().getInstance(Attributes.ATTACK_DAMAGE).setBaseValue(getGaolerDamage(spellLevel, caster));
+        gaoler.getAttributes().getInstance(Attributes.MAX_HEALTH).setBaseValue(getGaolerHealth(spellLevel, caster));
+        gaoler.setHealth(gaoler.getMaxHealth());
 
         var event = NeoForge.EVENT_BUS.post(new SpellSummonEvent<>(caster, gaoler, this.spellId, spellLevel));
 
         level.addFreshEntity(event.getCreature());
+
+        /*
+        System.out.println("////");
+        System.out.println("/");
+        System.out.println("HP: " + gaoler.getMaxHealth());
+        System.out.println("Damage: " + gaoler.getAttributes().getInstance(Attributes.ATTACK_DAMAGE).getBaseValue());
+        System.out.println("/");
+        System.out.println("////");
+        */
     }
 
     private float getGaolerDamage(int spellLevel, LivingEntity caster)
     {
-        return getSpellPower(spellLevel, caster) * 1.5f;
+        return getSpellPower(spellLevel, caster) * 4.5f;
+    }
+
+    private float getGaolerHealth(int spellLevel, LivingEntity caster)
+    {
+        return getSpellPower(spellLevel, caster) * 20.5f;
     }
 }

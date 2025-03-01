@@ -121,12 +121,12 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
     @Override
     public void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new GaolerAnimatedWarlockAttackGoal(this, 1.0F, 25, 55, 5f)
+        this.goalSelector.addGoal(1, new GaolerAnimatedWarlockAttackGoal(this, 1.5F, 10, 25, 5.5f)
                 .setMoveset(List.of(
                         new AttackAnimationData(39, "slam_1", 24),
                         new AttackAnimationData(37, "upper_cut", 22)
                 ))
-                .setComboChance(0.8f)
+                .setComboChance(1.2f)
                 .setMeleeAttackInverval(10, 25)
                 .setMeleeMovespeedModifier(1.5f)
                 .setSingleUseSpell(SpellRegistry.SONIC_BOOM_SPELL.get(), 10, 15, 10, 10)
@@ -150,7 +150,7 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
     public static AttributeSupplier.Builder createAttributes()
     {
         return LivingEntity.createLivingAttributes()
-                .add(Attributes.ATTACK_DAMAGE, 10.5)
+                .add(Attributes.ATTACK_DAMAGE, 25.5)
                 .add(Attributes.ATTACK_KNOCKBACK, 1.0)
                 .add(Attributes.MAX_HEALTH, 350.0)
                 .add(Attributes.FOLLOW_RANGE, 45.0)
@@ -317,6 +317,8 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
                 controller.forceAnimationReset();
                 controller.setAnimation(animationToPlay);
                 animationToPlay = null;
+
+                this.stopInPlace();
             }
         }
         else
@@ -416,6 +418,10 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
             {
                 clientDiggingParticles(this);
             }
+            if (riseAnimationTime >= 130)
+            {
+                this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.WARDEN_EMERGE, this.getSoundSource(), 5.0F, this.getVoicePitch(), false);
+            }
             if (--riseAnimationTime < 0)
             {
                 entityData.set(DATA_IS_PLAYING_RISE_ANIM, false);
@@ -436,10 +442,10 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
                 }
             }
             // Screenshake when it walks
-            if (this.getDeltaMovement().x < 0 || this.getDeltaMovement().z < 0)
+            /*if (this.getDeltaMovement().x < 0 || this.getDeltaMovement().z < 0)
             {
                 CameraShakeManager.addCameraShake(new CameraShakeData(4, this.position(), 20));
-            }
+            }*/
         }
     }
 
