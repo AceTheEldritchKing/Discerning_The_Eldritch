@@ -1,0 +1,9 @@
+{
+    "order": 6,
+    "size": 1,
+    "icon": "discerning_the_eldritch:slot/artifact",
+    "add_cosmetic": false,
+    "operation": "SET",
+    "render_toggle": true,
+    "drop_rule": "DEFAULT"
+}
