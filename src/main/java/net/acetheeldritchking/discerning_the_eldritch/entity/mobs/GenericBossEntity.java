@@ -2,7 +2,6 @@ package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 
 import io.redspace.ironsspellbooks.api.network.IClientEventEntity;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
-import net.acetheeldritchking.discerning_the_eldritch.utils.boss_music.BossMusicManager;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
