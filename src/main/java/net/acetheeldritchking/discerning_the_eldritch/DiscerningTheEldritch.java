@@ -35,7 +35,6 @@ public class DiscerningTheEldritch
     public DiscerningTheEldritch(IEventBus modEventBus, ModContainer modContainer)
     {
         modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(DTEUpgradeOrbTypeRegistry::setDteDatapackUpgradeOrbRegistryKey);
 
         NeoForge.EVENT_BUS.register(this);
 
