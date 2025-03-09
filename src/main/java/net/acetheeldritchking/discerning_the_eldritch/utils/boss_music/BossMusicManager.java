@@ -1,9 +1,9 @@
 package net.acetheeldritchking.discerning_the_eldritch.utils.boss_music;
 
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.AscendedOneBoss;
-import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.GenericBossEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.sounds.SoundManager;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -15,24 +15,24 @@ import java.util.HashSet;
 import java.util.Set;
 
 @EventBusSubscriber(Dist.CLIENT)
-public class AscendedOneMusicManager {
+public class BossMusicManager {
     @Nullable
-    private static AscendedOneMusicManager INSTANCE;
+    private static BossMusicManager INSTANCE;
     static final SoundSource SOUND_SOURCE = SoundSource.RECORDS;
 
-    AscendedOneBoss ascendedOneBoss;
+    GenericBossEntity genericBoss;
     final SoundManager manager;
     BossSoundInstance bossMusic;
-    AscendedOneBoss.Phase phase;
+    GenericBossEntity.Phase phase;
     Set<BossSoundInstance> layers = new HashSet<>();
     boolean finishedPlaying = false;
 
-    private AscendedOneMusicManager(AscendedOneBoss boss)
+    private BossMusicManager(GenericBossEntity boss)
     {
-        this.ascendedOneBoss = boss;
+        this.genericBoss = boss;
         this.manager = Minecraft.getInstance().getSoundManager();
-        phase = AscendedOneBoss.Phase.values()[boss.getPhase()];
-        bossMusic = new BossSoundInstance(DTESoundRegistry.TEST_BOSS_MUSIC.get(), SOUND_SOURCE, true);
+        phase = GenericBossEntity.Phase.values()[boss.getPhase()];
+        bossMusic = new BossSoundInstance(getBossMusic(), SOUND_SOURCE, true);
 
         init();
     }
@@ -48,6 +48,10 @@ public class AscendedOneMusicManager {
         }
     }
 
+    public SoundEvent getBossMusic() {
+        return genericBoss.getBossMusic();
+    }
+
     @SubscribeEvent
     public static void clientTick(ClientTickEvent.Pre event)
     {
@@ -57,11 +61,11 @@ public class AscendedOneMusicManager {
         }
     }
 
-    public static void createOrResumeInstance(AscendedOneBoss boss)
+    public static void createOrResumeInstance(GenericBossEntity boss)
     {
         if (INSTANCE == null || INSTANCE.isDonePlaying())
         {
-            INSTANCE = new AscendedOneMusicManager(boss);
+            INSTANCE = new BossMusicManager(boss);
         }
         else
         {
@@ -69,9 +73,9 @@ public class AscendedOneMusicManager {
         }
     }
 
-    public static void stop(AscendedOneBoss boss)
+    public static void stop(GenericBossEntity boss)
     {
-        if (INSTANCE != null && INSTANCE.ascendedOneBoss.getUUID().equals(boss.getUUID()))
+        if (INSTANCE != null && INSTANCE.genericBoss.getUUID().equals(boss.getUUID()))
         {
             INSTANCE.stopLayers();
             INSTANCE.finishedPlaying = true;
@@ -84,14 +88,14 @@ public class AscendedOneMusicManager {
         {
             return;
         }
-        if (ascendedOneBoss.isDeadOrDying() || ascendedOneBoss.isRemoved())
+        if (genericBoss.isDeadOrDying() || genericBoss.isRemoved())
         {
             stopLayers();
             finishedPlaying = true;
             return;
         }
 
-        var bossPhase = AscendedOneBoss.Phase.values()[ascendedOneBoss.getPhase()];
+        var bossPhase = GenericBossEntity.Phase.values()[genericBoss.getPhase()];
         switch (bossPhase)
         {
             case FirstPhase -> {
@@ -137,14 +141,14 @@ public class AscendedOneMusicManager {
         }
     }
 
-    public void triggerResumeMusic(AscendedOneBoss boss)
+    public void triggerResumeMusic(GenericBossEntity boss)
     {
-        if (boss.getUUID().equals(this.ascendedOneBoss.getUUID()))
+        if (boss.getUUID().equals(this.genericBoss.getUUID()))
         {
-            this.ascendedOneBoss = boss;
+            this.genericBoss = boss;
         }
 
-        if (this.ascendedOneBoss.isRemoved())
+        if (this.genericBoss.isRemoved())
         {
             layers.forEach((sound) -> {
                 if (!manager.isActive(sound))

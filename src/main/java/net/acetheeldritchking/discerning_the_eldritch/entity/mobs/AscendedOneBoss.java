@@ -1,6 +1,5 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 
-import io.redspace.ironsspellbooks.api.network.IClientEventEntity;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
@@ -10,11 +9,10 @@ import io.redspace.ironsspellbooks.entity.mobs.goals.SpellBarrageGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
 import io.redspace.ironsspellbooks.network.EntityEventPacket;
-import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
-import net.acetheeldritchking.discerning_the_eldritch.utils.boss_music.AscendedOneMusicManager;
-import net.minecraft.ChatFormatting;
+import net.acetheeldritchking.discerning_the_eldritch.utils.boss_music.BossMusicManager;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
@@ -24,6 +22,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
@@ -37,7 +36,6 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -47,7 +45,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, IClientEventEntity {
+public class AscendedOneBoss extends GenericBossEntity {
     /*public AscendedOneBoss(Level level)
     {
         this(DTEEntityRegistry.ASCENDED_ONE.get(), level);
@@ -68,13 +66,20 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, I
     public static final byte STOP_MUSIC = 0;
     public static final byte START_MUSIC = 1;
 
+    public static SoundEvent bossMusic = DTESoundRegistry.TEST_BOSS_MUSIC.get();
+
+    @Override
+    public SoundEvent getBossMusic() {
+        return bossMusic;
+    }
+
     @Override
     public void handleClientEvent(byte eventId)
     {
         switch (eventId)
         {
-            case STOP_MUSIC -> AscendedOneMusicManager.stop(this);
-            case START_MUSIC -> AscendedOneMusicManager.createOrResumeInstance(this);
+            case STOP_MUSIC -> BossMusicManager.stop(this);
+            case START_MUSIC -> BossMusicManager.createOrResumeInstance(this);
         }
     }
 
@@ -96,40 +101,6 @@ public class AscendedOneBoss extends AbstractSpellCastingMob implements Enemy, I
     public void aiStep() {
         super.aiStep();
         this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
-    }
-
-    // Phase stuff //
-    public enum Phase
-    {
-        FirstPhase(0),
-        SecondPhase(1);
-
-        final int value;
-
-        Phase(int value)
-        {
-            this.value = value;
-        }
-    }
-
-    private void setPhase(int phase)
-    {
-        this.entityData.set(PHASE, phase);
-    }
-
-    private void setPhase(Phase phase)
-    {
-        this.setPhase(phase.value);
-    }
-
-    public int getPhase()
-    {
-        return this.entityData.get(PHASE);
-    }
-
-    public boolean isPhase(Phase phase)
-    {
-        return phase.value == getPhase();
     }
 
     protected LookControl createLookControl()
