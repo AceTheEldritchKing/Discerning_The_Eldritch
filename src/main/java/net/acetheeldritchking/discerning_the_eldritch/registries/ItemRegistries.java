@@ -9,6 +9,7 @@ import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.item.UpgradeOrbItem;
 import io.redspace.ironsspellbooks.item.curios.CurioBaseItem;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
+import io.redspace.ironsspellbooks.registries.ComponentRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockArmorItem;
@@ -114,6 +115,8 @@ public class ItemRegistries {
             new MagicSwordItem(DTEWeaponTiers.FORLORN_RAPIER, ItemPropertiesHelper.equipment().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.FORLORN_RAPIER)),
                     SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.COUNTERSPELL_SPELL, 1))));
 
+    // Lemon Spear
+
     /***
      * Generic Items
      */
@@ -135,7 +138,7 @@ public class ItemRegistries {
 
     // Eldritch Upgrade Orb
     public static final DeferredHolder<Item, Item> ELDRITCH_UPGRADE_ORB = ITEMS.register("eldritch_upgrade_orb",
-            () -> new UpgradeOrbItem(DTEUpgradeTypes.ELDRITCH_SPELL_POWER, ItemPropertiesHelper.material().rarity(Rarity.UNCOMMON)));
+            () -> new UpgradeOrbItem(ItemPropertiesHelper.material().rarity(Rarity.UNCOMMON)));
 
     /***
      * Curios
