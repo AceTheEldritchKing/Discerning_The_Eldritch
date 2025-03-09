@@ -138,7 +138,7 @@ public class ItemRegistries {
 
     // Eldritch Upgrade Orb
     public static final DeferredHolder<Item, Item> ELDRITCH_UPGRADE_ORB = ITEMS.register("eldritch_upgrade_orb",
-            () -> new UpgradeOrbItem(ItemPropertiesHelper.material().rarity(Rarity.UNCOMMON)));
+            () -> new UpgradeOrbItem(ItemPropertiesHelper.material().rarity(Rarity.UNCOMMON).component(ComponentRegistry.UPGRADE_ORB_TYPE, DTEUpgradeOrbTypeRegistry.ELDRITCH_SPELL_POWER)));
 
     /***
      * Curios
