@@ -155,6 +155,7 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
                 .add(Attributes.ATTACK_KNOCKBACK, 1.0)
                 .add(Attributes.MAX_HEALTH, 350.0)
                 .add(Attributes.FOLLOW_RANGE, 45.0)
+                .add(Attributes.ENTITY_INTERACTION_RANGE, 5.5)
                 .add(Attributes.MOVEMENT_SPEED, .25);
     }
 
@@ -178,7 +179,7 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
         {
             return true;
         }
-        else if (entityIn == getSummoner())
+        else if (entityIn == getSummoner() || entityIn.isAlliedTo(getSummoner()))
         {
             return true;
         }

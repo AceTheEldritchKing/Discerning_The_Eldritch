@@ -147,6 +147,7 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1.0)
                 .add(Attributes.MAX_HEALTH, 40.0)
                 .add(Attributes.FOLLOW_RANGE, 35.0)
+                .add(Attributes.ENTITY_INTERACTION_RANGE, 3.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.25)
                 .add(AttributeRegistry.SPELL_POWER, 1.1)
                 .add(AttributeRegistry.SPELL_RESIST, 1.1)
@@ -165,6 +166,10 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
             this.summonerUUID = owner.getUUID();
             this.cachedSummoner = owner;
         }
+    }
+
+    public boolean isAlliedTo(Entity pEntity) {
+        return super.isAlliedTo(pEntity) || this.isAlliedHelper(pEntity);
     }
 
     // Attacks and Death
@@ -233,7 +238,7 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
 
     private PlayState instantCastPredicate(AnimationState<TheApostleEntity> event)
     {
-        if (isCasting())
+        if (isCasting() && castingSpell != null)
         {
             if (castingSpell.getSpell().getCastType() == CastType.INSTANT)
             {
@@ -247,7 +252,7 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
 
     private PlayState longCastPredicate(AnimationState<TheApostleEntity> event)
     {
-        if (isCasting())
+        if (isCasting() && castingSpell != null)
         {
             if (castingSpell.getSpell().getCastType() == CastType.LONG)
             {
@@ -261,7 +266,7 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
 
     private PlayState continuousCastPredicate(AnimationState<TheApostleEntity> event)
     {
-        if (isCasting())
+        if (isCasting() && castingSpell != null)
         {
             if (castingSpell.getSpell().getCastType() == CastType.CONTINUOUS)
             {

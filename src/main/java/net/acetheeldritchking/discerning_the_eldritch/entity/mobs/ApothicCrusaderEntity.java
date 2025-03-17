@@ -102,6 +102,7 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy {
                 .add(Attributes.ATTACK_KNOCKBACK, 0.5)
                 .add(Attributes.MAX_HEALTH, 60.0)
                 .add(Attributes.FOLLOW_RANGE, 24.0)
+                .add(Attributes.ENTITY_INTERACTION_RANGE, 3.0)
                 .add(Attributes.MOVEMENT_SPEED, .15);
     }
 }

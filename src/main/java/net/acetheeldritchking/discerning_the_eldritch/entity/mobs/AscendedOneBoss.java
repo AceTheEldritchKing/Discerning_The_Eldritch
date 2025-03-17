@@ -330,6 +330,7 @@ public class AscendedOneBoss extends GenericBossEntity {
                 .add(Attributes.ARMOR, 60)
                 .add(Attributes.ARMOR_TOUGHNESS, 20)
                 .add(Attributes.FOLLOW_RANGE, 80.0)
+                .add(Attributes.ENTITY_INTERACTION_RANGE, 4.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.25)
                 .add(AttributeRegistry.SPELL_POWER, 1.35)
                 .add(AttributeRegistry.SPELL_RESIST, 1.7)
