@@ -138,7 +138,7 @@ repositories {
 dependencies {
     // ISS ***************************************************************************************************
     //implementation "io.redspace:irons_spellbooks:1.21-3.9.1"
-    implementation "curse.maven:irons-spells-n-spellbooks-855414:6282642"
+    implementation "curse.maven:irons-spells-n-spellbooks-855414:6312581"
 
     // GECKOLIB ***************************************************************************************************
     implementation "curse.maven:geckolib-388172:6027599"

@@ -1,6 +1,9 @@
 {
-    "amount": 0.05,
-    "attribute": "irons_spellbooks:eldritch_spell_power",
-    "containerItem": "discerning_the_eldritch:eldritch_upgrade_orb",
-    "operation": "add_multiplied_base"
+  "amount": 0.05,
+  "attribute": "irons_spellbooks:eldritch_spell_power",
+  "containerItem": {
+    "count": 1,
+    "id": "discerning_the_eldritch:eldritch_upgrade_orb"
+  },
+  "operation": "add_multiplied_base"
 }

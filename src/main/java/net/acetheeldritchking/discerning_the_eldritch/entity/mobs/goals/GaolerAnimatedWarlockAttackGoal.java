@@ -7,8 +7,8 @@ import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistr
 public class GaolerAnimatedWarlockAttackGoal extends GenericAnimatedWarlockAttackGoal {
     final GaolerEntity gaoler;
 
-    public GaolerAnimatedWarlockAttackGoal(GaolerEntity entity, double pSpeedModifier, int minAttackInterval, int maxAttackInterval, float meleeRange) {
-        super(entity, pSpeedModifier, minAttackInterval, maxAttackInterval, meleeRange);
+    public GaolerAnimatedWarlockAttackGoal(GaolerEntity entity, double pSpeedModifier, int minAttackInterval, int maxAttackInterval) {
+        super(entity, pSpeedModifier, minAttackInterval, maxAttackInterval);
         this.gaoler = entity;
         this.wantsToMelee = true;
     }

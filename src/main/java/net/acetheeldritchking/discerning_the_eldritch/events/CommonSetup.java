@@ -17,5 +17,6 @@ public class CommonSetup {
         event.put(DTEEntityRegistry.APOTHIC_ACOLYTE.get(), ApothicAcolyteEntity.createAttributes().build());
         event.put(DTEEntityRegistry.GAOLER_ENTITY.get(), GaolerEntity.createAttributes().build());
         event.put(DTEEntityRegistry.ASCENDED_ONE.get(), AscendedOneBoss.createAttributes().build());
+        event.put(DTEEntityRegistry.APOSTLE_ENTITY.get(), TheApostleEntity.createAttributes().build());
     }
 }

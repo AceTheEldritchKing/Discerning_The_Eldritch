@@ -25,6 +25,9 @@ public class DTEPotionEffectRegistry {
     // Gaoler Timer
     public static final DeferredHolder<MobEffect, SummonTimer> GAOLER_TIMER = MOB_EFFECTS.register("gaoler_timer", () -> new SummonTimer(MobEffectCategory.BENEFICIAL, 0xbea925));
 
+    // Forsaken Aid Timer
+    public static final DeferredHolder<MobEffect, SummonTimer> FORSAKEN_TIMER = MOB_EFFECTS.register("forsaken_timer", () -> new SummonTimer(MobEffectCategory.BENEFICIAL, 0xbea925));
+
     public static void register(IEventBus eventBus)
     {
         MOB_EFFECTS.register(eventBus);

@@ -11,6 +11,7 @@ import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
+import io.redspace.ironsspellbooks.entity.mobs.goals.melee.AttackAnimationData;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.goals.GaolerAnimatedWarlockAttackGoal;
@@ -121,7 +122,7 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
     @Override
     public void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new GaolerAnimatedWarlockAttackGoal(this, 1.5F, 10, 25, 5.5f)
+        this.goalSelector.addGoal(1, new GaolerAnimatedWarlockAttackGoal(this, 1.5F, 10, 25)
                 .setMoveset(List.of(
                         new AttackAnimationData(39, "slam_1", 24),
                         new AttackAnimationData(37, "upper_cut", 22)
@@ -317,8 +318,6 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
                 controller.forceAnimationReset();
                 controller.setAnimation(animationToPlay);
                 animationToPlay = null;
-
-                this.stopInPlace();
             }
         }
         else

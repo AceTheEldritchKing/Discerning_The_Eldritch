@@ -52,6 +52,13 @@ public class DTEEntityRegistry {
     // Untold Behemoth
 
     // The Apostle
+    public static final DeferredHolder<EntityType<?>, EntityType<TheApostleEntity>> APOSTLE_ENTITY =
+            ENTITIES.register("apostle", () -> EntityType.Builder.<TheApostleEntity>of
+                            (TheApostleEntity::new, MobCategory.MONSTER).
+                    sized(1.5f, 5f)
+                    .build(
+                            ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "apostle").toString()
+                    ));
 
     // Gaoler
     public static final DeferredHolder<EntityType<?>, EntityType<GaolerEntity>> GAOLER_ENTITY =

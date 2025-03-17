@@ -10,6 +10,7 @@ import io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -18,7 +19,9 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
@@ -78,6 +81,11 @@ public class SilenceSpell extends AbstractSpell {
     @Override
     public AnimationHolder getCastFinishAnimation() {
         return SpellAnimations.ANIMATION_LONG_CAST_FINISH;
+    }
+
+    @Override
+    public boolean canBeInterrupted(@Nullable Player player) {
+        return !ItemRegistries.KINGS_EFFIGY.get().isEquippedBy(player);
     }
 
     @Override

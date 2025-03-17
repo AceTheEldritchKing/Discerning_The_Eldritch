@@ -1,0 +1,303 @@
+package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
+
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
+import io.redspace.ironsspellbooks.api.spells.CastType;
+import io.redspace.ironsspellbooks.api.spells.SpellData;
+import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
+import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
+import io.redspace.ironsspellbooks.entity.mobs.goals.*;
+import io.redspace.ironsspellbooks.util.OwnerHelper;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.LookControl;
+import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import software.bernie.geckolib.animatable.GeoAnimatable;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.*;
+import software.bernie.geckolib.animation.AnimationState;
+import software.bernie.geckolib.util.GeckoLibUtil;
+
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.UUID;
+
+public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicSummon, GeoAnimatable {
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    protected LivingEntity cachedSummoner;
+    protected UUID summonerUUID;
+    private SpellData castingSpell;
+
+    public TheApostleEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
+        super(pEntityType, pLevel);
+        xpReward = 0;
+        this.lookControl = createLookControl();
+        this.moveControl = createMoveControl();
+        this.setNoGravity(true);
+    }
+
+    public TheApostleEntity(Level level, LivingEntity owner) {
+        this(DTEEntityRegistry.APOSTLE_ENTITY.get(), level);
+        setSummoner(owner);
+    }
+
+    protected LookControl createLookControl()
+    {
+        return new LookControl(this)
+        {
+            @Override
+            protected float rotateTowards(float from, float to, float maxDelta) {
+                return super.rotateTowards(from, to, maxDelta * 2.5F);
+            }
+
+            @Override
+            protected boolean resetXRotOnTick() {
+                return getTarget() == null;
+            }
+        };
+    }
+
+    protected MoveControl createMoveControl()
+    {
+        return new MoveControl(this)
+        {
+            @Override
+            protected float rotlerp(float sourceAngle, float targetAngle, float maximumChange) {
+                double x = this.wantedX - this.mob.getX();
+                double z = this.wantedZ - this.mob.getZ();
+
+                if (x * x + z * z < 0.5F)
+                {
+                    return sourceAngle;
+                }
+                else
+                {
+                    return super.rotlerp(sourceAngle, targetAngle, maximumChange * 0.25F);
+                }
+            }
+        };
+    }
+
+    @Override
+    protected void registerGoals() {
+        this.goalSelector.addGoal(0, new FloatGoal(this));
+
+        // Magic Spells
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 80, 150, 1));
+        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 30, 55)
+                .setSpells(
+                        // Attack
+                        List.of(
+                                SpellRegistries.ESOTERIC_EDGE.get(),
+                                SpellRegistry.SONIC_BOOM_SPELL.get(),
+                                SpellRegistry.ACUPUNCTURE_SPELL.get(),
+                                SpellRegistry.COUNTERSPELL_SPELL.get()
+                        ),
+                        // Defense
+                        List.of(
+                                SpellRegistry.COUNTERSPELL_SPELL.get(),
+                                SpellRegistry.BLIGHT_SPELL.get(),
+                                SpellRegistry.HEAL_SPELL.get(),
+                                SpellRegistry.ABYSSAL_SHROUD_SPELL.get()
+                        ),
+                        // Movement
+                        List.of(
+                                SpellRegistry.BLOOD_STEP_SPELL.get()
+                        ),
+                        // Support
+                        List.of(
+                                SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
+                                SpellRegistry.COUNTERSPELL_SPELL.get()
+                        )
+                ).setSingleUseSpell(SpellRegistries.SILENCE.get(), 100, 250, 5, 5)
+                .setSpellQuality(1.0f, 1.0f)
+                .setIsFlying()
+                .setSpellQuality(1.0f, 1.0f)
+        );
+
+        this.goalSelector.addGoal(7, new GenericFollowOwnerGoal(this, this::getSummoner, 0.9f, 10, 2, false, 50));
+        this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.9D));
+        this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
+        this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Mob.class, 8.0F));
+
+        this.targetSelector.addGoal(1, new GenericOwnerHurtByTargetGoal(this, this::getSummoner));
+        this.targetSelector.addGoal(2, new GenericOwnerHurtTargetGoal(this, this::getSummoner));
+        this.targetSelector.addGoal(3, new GenericCopyOwnerTargetGoal(this, this::getSummoner));
+        this.targetSelector.addGoal(4, (new GenericHurtByTargetGoal(this, (entity) -> entity == getSummoner())).setAlertOthers());
+    }
+
+    public static AttributeSupplier.Builder createAttributes()
+    {
+        return LivingEntity.createLivingAttributes()
+                .add(Attributes.ATTACK_DAMAGE, 15.5)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 1.0)
+                .add(Attributes.MAX_HEALTH, 40.0)
+                .add(Attributes.FOLLOW_RANGE, 35.0)
+                .add(Attributes.MOVEMENT_SPEED, 0.25)
+                .add(AttributeRegistry.SPELL_POWER, 1.1)
+                .add(AttributeRegistry.SPELL_RESIST, 1.1)
+                ;
+    }
+
+    @Override
+    public LivingEntity getSummoner() {
+        return OwnerHelper.getAndCacheOwner(level(), cachedSummoner, summonerUUID);
+    }
+
+    public void setSummoner(@Nullable LivingEntity owner)
+    {
+        if (owner != null)
+        {
+            this.summonerUUID = owner.getUUID();
+            this.cachedSummoner = owner;
+        }
+    }
+
+    // Attacks and Death
+    @Override
+    public void die(DamageSource pDamageSource) {
+        this.onDeathHelper();
+        super.die(pDamageSource);
+    }
+
+    @Override
+    public void onRemovedFromLevel() {
+        this.onRemovedHelper(this, DTEPotionEffectRegistry.FORSAKEN_TIMER);
+        super.onRemovedFromLevel();
+    }
+
+    @Override
+    public void onUnSummon() {
+        if (!this.level().isClientSide)
+        {
+            MagicManager.spawnParticles(this.level(), ParticleTypes.ENCHANT,
+                    getX(), getY(), getZ(),
+                    25, 0.4, 0.8, 0.4, 0.03, false);
+            discard();
+        }
+    }
+
+    @Override
+    public boolean doHurtTarget(Entity entity) {
+        return Utils.doMeleeAttack(this, entity, SpellRegistries.CONJURE_FORSAKE_AID.get().getDamageSource(this, getSummoner()));
+    }
+
+    @Override
+    public boolean dampensVibrations() {
+        return true;
+    }
+
+    // Geckolib & Animations
+    private final AnimationController<TheApostleEntity> animationController = new AnimationController<>(this, "controller", 0, this::predicate);
+    private final AnimationController<TheApostleEntity> instantCastAnimationController = new AnimationController<>(this, "instant_cast_controller", 0, this::instantCastPredicate);
+    private final AnimationController<TheApostleEntity> longCastAnimationController = new AnimationController<>(this, "long_cast_controller", 0, this::longCastPredicate);
+    private final AnimationController<TheApostleEntity> contCastAnimationController = new AnimationController<>(this, "continuous_cast_controller", 0, this::continuousCastPredicate);
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(animationController);
+        controllers.add(instantCastAnimationController);
+        controllers.add(longCastAnimationController);
+        controllers.add(contCastAnimationController);
+    }
+
+    private PlayState predicate(AnimationState<TheApostleEntity> event)
+    {
+        if (event.isMoving())
+        {
+            event.getController().setAnimation(RawAnimation.begin().then("walk", Animation.LoopType.LOOP));
+            return PlayState.CONTINUE;
+        }
+        else if (!event.isMoving())
+        {
+            event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
+            return PlayState.CONTINUE;
+        }
+
+        return PlayState.STOP;
+    }
+
+    private PlayState instantCastPredicate(AnimationState<TheApostleEntity> event)
+    {
+        if (isCasting())
+        {
+            if (castingSpell.getSpell().getCastType() == CastType.INSTANT)
+            {
+                event.getController().setAnimation(RawAnimation.begin().then("instant_cast", Animation.LoopType.LOOP));
+                return PlayState.CONTINUE;
+            }
+        }
+
+        return PlayState.STOP;
+    }
+
+    private PlayState longCastPredicate(AnimationState<TheApostleEntity> event)
+    {
+        if (isCasting())
+        {
+            if (castingSpell.getSpell().getCastType() == CastType.LONG)
+            {
+                event.getController().setAnimation(RawAnimation.begin().then("long_cast", Animation.LoopType.LOOP));
+                return PlayState.CONTINUE;
+            }
+        }
+
+        return PlayState.STOP;
+    }
+
+    private PlayState continuousCastPredicate(AnimationState<TheApostleEntity> event)
+    {
+        if (isCasting())
+        {
+            if (castingSpell.getSpell().getCastType() == CastType.CONTINUOUS)
+            {
+                event.getController().setAnimation(RawAnimation.begin().then("continous_cast", Animation.LoopType.LOOP));
+                return PlayState.CONTINUE;
+            }
+        }
+
+        return PlayState.STOP;
+    }
+
+    @Override
+    public boolean isAnimating() {
+        return animationController.getAnimationState() != AnimationController.State.STOPPED || super.isAnimating();
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.cache;
+    }
+
+    @Override
+    public double getTick(Object object) {
+        return this.tickCount;
+    }
+
+    // NBT
+    @Override
+    public void readAdditionalSaveData(CompoundTag pCompound) {
+        super.readAdditionalSaveData(pCompound);
+        this.summonerUUID = OwnerHelper.deserializeOwner(pCompound);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag pCompound) {
+        super.addAdditionalSaveData(pCompound);
+        OwnerHelper.serializeOwner(pCompound, summonerUUID);
+    }
+}

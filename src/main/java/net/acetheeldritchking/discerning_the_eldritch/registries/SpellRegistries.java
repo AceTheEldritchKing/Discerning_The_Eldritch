@@ -2,10 +2,7 @@ package net.acetheeldritchking.discerning_the_eldritch.registries;
 
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
-import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.ConjureGaolerSpell;
-import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.EsotericEdgeSpell;
-import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.OtherworldlyPresenceSpell;
-import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.SilenceSpell;
+import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.*;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.BoogieWoogieSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.GuardiansGazeSpell;
 import net.neoforged.bus.api.IEventBus;
@@ -38,6 +35,7 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> SILENCE = registerSpell(new SilenceSpell());
 
     // Forsaken Aid - Summons entities like Raise Dead; summons The Apostle (spell casting summon), Feral Maw (lowly grunt) and Unyielding Juggernaut (tanky summon)
+    public static final Supplier<AbstractSpell> CONJURE_FORSAKE_AID = registerSpell(new ConjureForsakenAidSpell());
 
     // Esoteric Edge - Melee spell
     public static final Supplier<AbstractSpell> ESOTERIC_EDGE = registerSpell(new EsotericEdgeSpell());
