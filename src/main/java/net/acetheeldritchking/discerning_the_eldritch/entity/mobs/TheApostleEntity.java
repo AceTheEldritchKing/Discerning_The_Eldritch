@@ -1,7 +1,9 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 
+import io.redspace.ironsspellbooks.api.entity.IMagicEntity;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
+import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.SpellData;
 import io.redspace.ironsspellbooks.api.util.Utils;
@@ -13,19 +15,27 @@ import io.redspace.ironsspellbooks.util.OwnerHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.control.LookControl;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.*;
@@ -36,7 +46,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
-public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicSummon, GeoAnimatable {
+public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicSummon, GeoAnimatable, IMagicEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     protected LivingEntity cachedSummoner;
     protected UUID summonerUUID;
@@ -46,8 +56,7 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
         super(pEntityType, pLevel);
         xpReward = 0;
         this.lookControl = createLookControl();
-        this.moveControl = createMoveControl();
-        this.setNoGravity(true);
+        this.moveControl = new FlyingMoveControl(this, 20, true);
     }
 
     public TheApostleEntity(Level level, LivingEntity owner) {
@@ -71,30 +80,23 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
         };
     }
 
-    protected MoveControl createMoveControl()
-    {
-        return new MoveControl(this)
-        {
-            @Override
-            protected float rotlerp(float sourceAngle, float targetAngle, float maximumChange) {
-                double x = this.wantedX - this.mob.getX();
-                double z = this.wantedZ - this.mob.getZ();
+    protected PathNavigation createNavigation(Level pLevel) {
+        FlyingPathNavigation flyingpathnavigation = new FlyingPathNavigation(this, pLevel);
+        flyingpathnavigation.setCanOpenDoors(true);
+        flyingpathnavigation.setCanFloat(true);
+        flyingpathnavigation.setCanPassDoors(true);
+        return flyingpathnavigation;
+    }
 
-                if (x * x + z * z < 0.5F)
-                {
-                    return sourceAngle;
-                }
-                else
-                {
-                    return super.rotlerp(sourceAngle, targetAngle, maximumChange * 0.25F);
-                }
-            }
-        };
+    @Override
+    public @org.jetbrains.annotations.Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @org.jetbrains.annotations.Nullable SpawnGroupData spawnGroupData) {
+        this.setNoGravity(true);
+        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
+        //this.goalSelector.addGoal(0, new FloatGoal(this));
 
         // Magic Spells
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 80, 150, 1));
@@ -105,14 +107,15 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
                                 SpellRegistries.ESOTERIC_EDGE.get(),
                                 SpellRegistry.SONIC_BOOM_SPELL.get(),
                                 SpellRegistry.ACUPUNCTURE_SPELL.get(),
-                                SpellRegistry.COUNTERSPELL_SPELL.get()
+                                SpellRegistry.CHAIN_LIGHTNING_SPELL.get(),
+                                SpellRegistry.FIRE_ARROW_SPELL.get()
                         ),
                         // Defense
                         List.of(
-                                SpellRegistry.COUNTERSPELL_SPELL.get(),
                                 SpellRegistry.BLIGHT_SPELL.get(),
                                 SpellRegistry.HEAL_SPELL.get(),
-                                SpellRegistry.ABYSSAL_SHROUD_SPELL.get()
+                                SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
+                                SpellRegistry.THUNDERSTORM_SPELL.get()
                         ),
                         // Movement
                         List.of(
@@ -121,15 +124,16 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
                         // Support
                         List.of(
                                 SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
-                                SpellRegistry.COUNTERSPELL_SPELL.get()
+                                SpellRegistry.HASTE_SPELL.get()
                         )
                 ).setSingleUseSpell(SpellRegistries.SILENCE.get(), 100, 250, 5, 5)
                 .setSpellQuality(1.0f, 1.0f)
                 .setIsFlying()
-                .setSpellQuality(1.0f, 1.0f)
+                .setSpellQuality(0.8f, 0.8f)
+                .setAllowFleeing(false)
         );
 
-        this.goalSelector.addGoal(7, new GenericFollowOwnerGoal(this, this::getSummoner, 0.9f, 10, 2, false, 50));
+        this.goalSelector.addGoal(7, new GenericFollowOwnerGoal(this, this::getSummoner, 0.9f, 10, 1, true, 50));
         this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.9D));
         this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
         this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Mob.class, 8.0F));
@@ -146,9 +150,10 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
                 .add(Attributes.ATTACK_DAMAGE, 15.5)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1.0)
                 .add(Attributes.MAX_HEALTH, 40.0)
-                .add(Attributes.FOLLOW_RANGE, 35.0)
+                .add(Attributes.FOLLOW_RANGE, 45.0)
                 .add(Attributes.ENTITY_INTERACTION_RANGE, 3.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.25)
+                .add(Attributes.FLYING_SPEED, 0.25)
                 .add(AttributeRegistry.SPELL_POWER, 1.1)
                 .add(AttributeRegistry.SPELL_RESIST, 1.1)
                 ;
@@ -206,6 +211,16 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
         return true;
     }
 
+    @Override
+    public boolean canBeAffected(MobEffectInstance effectInstance) {
+        return false;
+    }
+
+    @Override
+    protected void checkFallDamage(double y, boolean onGround, BlockState state, BlockPos pos) {
+        // No fall damage please <3
+    }
+
     // Geckolib & Animations
     private final AnimationController<TheApostleEntity> animationController = new AnimationController<>(this, "controller", 0, this::predicate);
     private final AnimationController<TheApostleEntity> instantCastAnimationController = new AnimationController<>(this, "instant_cast_controller", 0, this::instantCastPredicate);
@@ -222,12 +237,12 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
 
     private PlayState predicate(AnimationState<TheApostleEntity> event)
     {
-        if (event.isMoving())
+        if (event.isMoving() && !isCasting())
         {
             event.getController().setAnimation(RawAnimation.begin().then("walk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
-        else if (!event.isMoving())
+        else if (!event.isMoving() && !isCasting())
         {
             event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
@@ -238,11 +253,12 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
 
     private PlayState instantCastPredicate(AnimationState<TheApostleEntity> event)
     {
-        if (isCasting() && castingSpell != null)
+        if (isCasting() && this.castingSpell != null && event.getController().getAnimationState() == AnimationController.State.STOPPED)
         {
-            if (castingSpell.getSpell().getCastType() == CastType.INSTANT)
+            if (this.castingSpell.getSpell().getCastType() == CastType.INSTANT)
             {
-                event.getController().setAnimation(RawAnimation.begin().then("instant_cast", Animation.LoopType.LOOP));
+                System.out.println("Instant Cast");
+                event.getController().setAnimation(RawAnimation.begin().then("instant_cast", Animation.LoopType.PLAY_ONCE));
                 return PlayState.CONTINUE;
             }
         }
@@ -252,10 +268,11 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
 
     private PlayState longCastPredicate(AnimationState<TheApostleEntity> event)
     {
-        if (isCasting() && castingSpell != null)
+        if (isCasting() && this.castingSpell != null && event.getController().getAnimationState() == AnimationController.State.STOPPED)
         {
-            if (castingSpell.getSpell().getCastType() == CastType.LONG)
+            if (this.castingSpell.getSpell().getCastType() == CastType.LONG)
             {
+                System.out.println("Long Cast");
                 event.getController().setAnimation(RawAnimation.begin().then("long_cast", Animation.LoopType.LOOP));
                 return PlayState.CONTINUE;
             }
@@ -266,10 +283,11 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
 
     private PlayState continuousCastPredicate(AnimationState<TheApostleEntity> event)
     {
-        if (isCasting() && castingSpell != null)
+        if (isCasting() && this.castingSpell != null && event.getController().getAnimationState() == AnimationController.State.STOPPED)
         {
-            if (castingSpell.getSpell().getCastType() == CastType.CONTINUOUS)
+            if (this.castingSpell.getSpell().getCastType() == CastType.CONTINUOUS)
             {
+                System.out.println("Cont Cast");
                 event.getController().setAnimation(RawAnimation.begin().then("continous_cast", Animation.LoopType.LOOP));
                 return PlayState.CONTINUE;
             }

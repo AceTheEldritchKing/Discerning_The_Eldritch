@@ -55,7 +55,7 @@ public class DTEEntityRegistry {
     public static final DeferredHolder<EntityType<?>, EntityType<TheApostleEntity>> APOSTLE_ENTITY =
             ENTITIES.register("apostle", () -> EntityType.Builder.<TheApostleEntity>of
                             (TheApostleEntity::new, MobCategory.MONSTER).
-                    sized(1.5f, 5f)
+                    sized(.6f, 1.8f)
                     .build(
                             ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "apostle").toString()
                     ));

@@ -5,6 +5,7 @@ import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
+import io.redspace.ironsspellbooks.entity.mobs.goals.PatrolNearLocationGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.SpellBarrageGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
@@ -165,14 +166,19 @@ public class AscendedOneBoss extends GenericBossEntity {
                                 SpellRegistry.SONIC_BOOM_SPELL.get(),
                                 SpellRegistry.SHOCKWAVE_SPELL.get(),
                                 SpellRegistry.BLOOD_SLASH_SPELL.get(),
-                                SpellRegistry.BLOOD_NEEDLES_SPELL.get()
+                                SpellRegistry.BLOOD_NEEDLES_SPELL.get(),
+                                SpellRegistry.FIRE_ARROW_SPELL.get(),
+                                SpellRegistry.CHAIN_LIGHTNING_SPELL.get(),
+                                SpellRegistry.SUMMON_SWORDS.get(),
+                                SpellRegistry.SHOCKWAVE_SPELL.get()
                         ),
                         // Defense
                         List.of(
                                 SpellRegistry.COUNTERSPELL_SPELL.get(),
                                 SpellRegistry.HEAL_SPELL.get(),
                                 SpellRegistry.CHARGE_SPELL.get(),
-                                SpellRegistry.ABYSSAL_SHROUD_SPELL.get()
+                                SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
+                                SpellRegistry.THUNDERSTORM_SPELL.get()
                         ),
                         // Movement
                         List.of(
@@ -182,13 +188,15 @@ public class AscendedOneBoss extends GenericBossEntity {
                         List.of(
                                 SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
                                 SpellRegistry.RAISE_DEAD_SPELL.get(),
+                                SpellRegistry.SUMMON_VEX_SPELL.get(),
                                 SpellRegistry.COUNTERSPELL_SPELL.get(),
                                 SpellRegistry.SACRIFICE_SPELL.get()
                         )
                 ).setSingleUseSpell(SpellRegistries.BOOGIE_WOOGIE.get(), 70, 100, 3, 5)
-                .setSpellQuality(1.0f, 1.0f)
+                .setSpellQuality(1.2f, 1.2f)
                 .setDrinksPotions());
-            this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, 0.9));
+        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }
 
     private void secondPhaseGoals()
@@ -211,7 +219,10 @@ public class AscendedOneBoss extends GenericBossEntity {
                                 SpellRegistry.ACUPUNCTURE_SPELL.get(),
                                 SpellRegistry.LIGHTNING_LANCE_SPELL.get(),
                                 SpellRegistry.SCULK_TENTACLES_SPELL.get(),
-                                SpellRegistry.COUNTERSPELL_SPELL.get()
+                                SpellRegistry.COUNTERSPELL_SPELL.get(),
+                                SpellRegistry.FIRE_ARROW_SPELL.get(),
+                                SpellRegistry.SUMMON_SWORDS.get(),
+                                SpellRegistry.SHOCKWAVE_SPELL.get()
                         ),
                         // Defense
                         List.of(
@@ -221,7 +232,8 @@ public class AscendedOneBoss extends GenericBossEntity {
                                 SpellRegistry.BLIGHT_SPELL.get(),
                                 SpellRegistry.SLOW_SPELL.get(),
                                 SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
-                                SpellRegistry.BLOOD_STEP_SPELL.get()
+                                SpellRegistry.BLOOD_STEP_SPELL.get(),
+                                SpellRegistry.THUNDERSTORM_SPELL.get()
                         ),
                         // Movement
                         List.of(
@@ -231,14 +243,15 @@ public class AscendedOneBoss extends GenericBossEntity {
                         // Support
                         List.of(
                                 SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
-                                SpellRegistry.RAISE_DEAD_SPELL.get(),
                                 SpellRegistry.SUMMON_VEX_SPELL.get(),
+                                SpellRegistries.CONJURE_FORSAKE_AID.get(),
                                 SpellRegistry.COUNTERSPELL_SPELL.get(),
                                 SpellRegistry.SACRIFICE_SPELL.get()
                         )
                         // Silence down here is a temp thing
                 ).setSingleUseSpell(SpellRegistries.SILENCE.get(), 100, 250, 5, 5)
                 .setSpellQuality(1.5f, 1.5f));
+        this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, 0.9));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }
 
@@ -306,6 +319,7 @@ public class AscendedOneBoss extends GenericBossEntity {
         this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(ItemRegistries.ASCENDED_ONE_ROBES.get()));
         this.setItemSlot(EquipmentSlot.LEGS, new ItemStack(ItemRegistries.ASCENDED_ONE_LEGGINGS.get()));
         this.setItemSlot(EquipmentSlot.FEET, new ItemStack(ItemRegistries.ASCENDED_ONE_GREAVES.get()));
+        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ItemRegistries.BLACK_BOOK_SPELLBOOK.get()));
         this.setDropChance(EquipmentSlot.HEAD, 0.0F);
         this.setDropChance(EquipmentSlot.CHEST, 0.0F);
         this.setDropChance(EquipmentSlot.LEGS, 0.0F);

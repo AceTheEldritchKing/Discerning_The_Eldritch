@@ -8,11 +8,11 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.TheApostleEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
-import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForge;
 
 @AutoSpellConfig
@@ -54,9 +54,15 @@ public class ConjureForsakenAidSpell extends AbstractSpell {
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         int summonTimer = (int) (20 * (20 * getSpellPower(spellLevel, entity)));
 
-        BlockPos pos = new BlockPos((int) entity.getX(), (int) entity.getY(), (int) entity.getZ());
+        for (int i = 0; i < spellLevel; i++)
+        {
+            Vec3 vec = entity.getEyePosition();
 
-        spawnForsakenAid(pos.getX(), pos.getY(), pos.getZ(), entity, level, summonTimer, spellLevel);
+            double randomNearbyX = vec.x + entity.getRandom().nextGaussian() * 3;
+            double randomNearbyZ = vec.z + entity.getRandom().nextGaussian() * 3;
+
+            spawnForsakenAid(randomNearbyX, vec.y, randomNearbyZ, entity, level, summonTimer, spellLevel);
+        }
 
         entity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.FORSAKEN_TIMER, summonTimer, 0, false, false, true));
 

@@ -55,7 +55,9 @@
   "spell.discerning_the_eldritch.otherworldly_presence": "Otherworldly Presence",
   "spell.discerning_the_eldritch.otherworldly_presence.guide": "Teleport and shift between reality, causing you to be unable to take any damage but also unable to deal any damage",
   "spell.discerning_the_eldritch.conjure_gaoler": "Conjure: Gaoler",
-  "spell.discerning_the_eldritch.conjure_gaoler.guide": "Conjure the legendary Gaoler, ancient ancestor of the Warden",
+  "spell.discerning_the_eldritch.conjure_gaoler.guide": "Conjure the legendary Gaoler, the ancient ancestor of the Warden",
+  "spell.discerning_the_eldritch.conjure_forsaken_aid": "Conjure: Forsaken Aid",
+  "spell.discerning_the_eldritch.conjure_forsaken_aid.guide": "Conjure multiple eldritch beings to your aid",
 
 
   "ui.discerning_the_eldritch.extra_damage": "Deals extra damage while holding a weapon in your mainhand",
@@ -67,6 +69,7 @@
   "entity.discerning_the_eldritch.gaoler": "Gaoler",
   "entity.discerning_the_eldritch.ascended_one": "The Ascended One",
   "entity.discerning_the_eldritch.esoteric_edge": "Esoteric Edge",
+  "entity.discerning_the_eldritch.apostle": "Apostle",
 
 
 
@@ -88,10 +91,12 @@
   "death.attack.discerning_the_eldritch.gaoler": "%1$s was maimed and gored by %2$s",
   "death.attack.discerning_the_eldritch.conjure_gaoler": "%1$s was maimed and gored by %2$s",
   "death.attack.discerning_the_eldritch.ascended_one": "%1$s saw the truth by %2$s",
+  "death.attack.discerning_the_eldritch.apostle": "%1$s unmade by %2$s",
 
   "death.attack.discerning_the_eldritch.esoteric_edge.item": "%1$s was torn asunder by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.gaoler.item": "%1$s maimed and gored by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.conjure_gaoler.item": "%1$s maimed and gored by %2$s using %3$s",
+  "death.attack.discerning_the_eldritch.apostle.item": "%1$s unmade by %2$s using %3$s",
 
 
 
