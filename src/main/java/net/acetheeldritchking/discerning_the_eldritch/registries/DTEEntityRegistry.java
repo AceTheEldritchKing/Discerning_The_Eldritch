@@ -71,7 +71,7 @@ public class DTEEntityRegistry {
 
     // The Ascended One
     public static final DeferredHolder<EntityType<?>, EntityType<AscendedOneBoss>> ASCENDED_ONE =
-            ENTITIES.register("ascended_one", () -> EntityType.Builder.of(AscendedOneBoss::new, MobCategory.MONSTER)
+            ENTITIES.register("ascended_one", () -> EntityType.Builder.<AscendedOneBoss>of(AscendedOneBoss::new, MobCategory.MONSTER)
                     .sized(.6f, 1.8f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "ascended_one").toString())

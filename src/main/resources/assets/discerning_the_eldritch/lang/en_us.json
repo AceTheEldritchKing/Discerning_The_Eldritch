@@ -1,6 +1,12 @@
 {
   "creative_tab.discerning_the_eldritch.items": "Discerning The Eldritch",
 
+  "attribute.discerning_the_eldritch.ritual_magic_resist": "Ritual Magic Resist",
+  "attribute.discerning_the_eldritch.ritual_spell_power": "Ritual Spell Power",
+
+
+  "school.discerning_the_eldritch.ritual": "Ritual",
+
 
   "effect.discerning_the_eldritch.silence_potion_effect": "Silenced",
   "effect.discerning_the_eldritch.metaphysical_potion_effect": "Metaphysical",
@@ -42,6 +48,8 @@
   "item.discerning_the_eldritch.eldritch_upgrade_orb": "Eldritch Upgrade Orb",
   "item.discerning_the_eldritch.eldritch_rune": "Eldritch Rune",
   "item.discerning_the_eldritch.eldritch_upgrade_template": "Eldritch Upgrade Template",
+  "item.discerning_the_eldritch.ritual_upgrade_orb": "Ritual Upgrade Orb",
+  "item.discerning_the_eldritch.ritual_rune": "Ritual Rune",
 
 
   "spell.discerning_the_eldritch.silence": "Silence",
@@ -58,9 +66,14 @@
   "spell.discerning_the_eldritch.conjure_gaoler.guide": "Conjure the legendary Gaoler, the ancient ancestor of the Warden",
   "spell.discerning_the_eldritch.conjure_forsaken_aid": "Conjure: Forsaken Aid",
   "spell.discerning_the_eldritch.conjure_forsaken_aid.guide": "Conjure multiple eldritch beings to your aid",
+  "spell.discerning_the_eldritch.call_ascended_one": "Call: The Ascended One",
+  "spell.discerning_the_eldritch.call_ascended_one.guide": "Call The Ascended One beyond death to challenge him to a battle",
 
 
   "ui.discerning_the_eldritch.extra_damage": "Deals extra damage while holding a weapon in your mainhand",
+  "ui.discerning_the_eldritch.ritual_cast_failure": "Rituals cannot be casted in a mere spellbook",
+  "ui.discerning_the_eldritch.spell_power": "%d Spell Power",
+  "ui.discerning_the_eldritch.spell_resist": "%d Spell Resist",
 
 
   "entity.discerning_the_eldritch.apothic_acolyte": "Apothic Acolyte",

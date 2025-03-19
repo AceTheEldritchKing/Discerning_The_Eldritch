@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "irons_spellbooks:item/upgrade_orb_base",
+    "layer1": "discerning_the_eldritch:item/upgrade_orb_ritual"
+  }
+}

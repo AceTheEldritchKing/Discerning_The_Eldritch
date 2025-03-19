@@ -10,6 +10,7 @@ import io.redspace.ironsspellbooks.entity.mobs.goals.SpellBarrageGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
 import io.redspace.ironsspellbooks.network.EntityEventPacket;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
@@ -47,11 +48,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class AscendedOneBoss extends GenericBossEntity {
-    /*public AscendedOneBoss(Level level)
+    public AscendedOneBoss(Level level)
     {
         this(DTEEntityRegistry.ASCENDED_ONE.get(), level);
         setPersistenceRequired();
-    }*/
+    }
 
     public AscendedOneBoss(EntityType<? extends AbstractSpellCastingMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);

@@ -54,6 +54,10 @@ public class DiscerningTheEldritch
         DTEArmorMaterialRegistry.register(modEventBus);
         // Loot Tables
         DTELootModifiers.register(modEventBus);
+        // Attributes
+        DTEAttributeRegistry.register(modEventBus);
+        // Schools
+        DTESchoolRegistry.register(modEventBus);
 
         //modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }

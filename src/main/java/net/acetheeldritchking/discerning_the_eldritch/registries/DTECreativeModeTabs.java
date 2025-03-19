@@ -21,7 +21,9 @@ public class DTECreativeModeTabs {
                         // Materials
                         output.accept(ItemRegistries.CORRUPTED_CLOTH.get());
                         output.accept(ItemRegistries.ELDRITCH_RUNE.get());
+                        output.accept(ItemRegistries.RITUAL_RUNE.get());
                         output.accept(ItemRegistries.ELDRITCH_UPGRADE_ORB.get());
+                        output.accept(ItemRegistries.RITUAL_UPGRADE_ORB.get());
                         output.accept(ItemRegistries.ELDRITCH_UPGRADE_TEMPLATE.get());
                         // Curios
                         output.accept(ItemRegistries.ECHO_VIBRATION_RING.get());

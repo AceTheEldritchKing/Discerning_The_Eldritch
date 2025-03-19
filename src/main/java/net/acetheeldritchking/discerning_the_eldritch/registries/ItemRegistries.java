@@ -22,7 +22,6 @@ import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.Gecko
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.AmuletOfSculkTreasureCurio;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.EchoVibrationRing;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.KingsEffigyCurio;
-import net.acetheeldritchking.discerning_the_eldritch.items.custom.DTEUpgradeTypes;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.BlackBookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.GuardianGuidebookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.TempestuousTomeSpellbook;
@@ -132,6 +131,9 @@ public class ItemRegistries {
     public static final DeferredHolder<Item, Item> ELDRITCH_UPGRADE_TEMPLATE = ITEMS.register("eldritch_upgrade_template",
             () -> new Item(ItemPropertiesHelper.material().stacksTo(16).rarity(Rarity.EPIC)));
 
+    // Ritual Rune
+    public static final DeferredHolder<Item, Item> RITUAL_RUNE = ITEMS.register("ritual_rune", () -> new Item(ItemPropertiesHelper.material()));
+
     /***
      * Upgrade Orbs
      */
@@ -139,6 +141,10 @@ public class ItemRegistries {
     // Eldritch Upgrade Orb
     public static final DeferredHolder<Item, Item> ELDRITCH_UPGRADE_ORB = ITEMS.register("eldritch_upgrade_orb",
             () -> new UpgradeOrbItem(ItemPropertiesHelper.material().rarity(Rarity.UNCOMMON).component(ComponentRegistry.UPGRADE_ORB_TYPE, DTEUpgradeOrbTypeRegistry.ELDRITCH_SPELL_POWER)));
+
+    // Ritual Upgrade Orb
+    public static final DeferredHolder<Item, Item> RITUAL_UPGRADE_ORB = ITEMS.register("ritual_upgrade_orb",
+            () -> new UpgradeOrbItem(ItemPropertiesHelper.material().rarity(Rarity.UNCOMMON).component(ComponentRegistry.UPGRADE_ORB_TYPE, DTEUpgradeOrbTypeRegistry.RITUAL_SPELL_POWER)));
 
     /***
      * Curios
