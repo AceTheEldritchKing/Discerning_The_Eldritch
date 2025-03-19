@@ -15,6 +15,7 @@ import io.redspace.ironsspellbooks.util.OwnerHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -26,8 +27,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.control.LookControl;
-import net.minecraft.world.entity.ai.control.MoveControl;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
@@ -51,6 +50,10 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
     protected LivingEntity cachedSummoner;
     protected UUID summonerUUID;
     private SpellData castingSpell;
+    protected AbstractSpell lastCastSpellType = SpellRegistry.none();
+    protected AbstractSpell instantCastSpellType = SpellRegistry.none();
+    protected boolean cancelCastAnimation = false;
+    protected boolean animatingLegs = false;
 
     public TheApostleEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -119,7 +122,7 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
                         ),
                         // Movement
                         List.of(
-                                SpellRegistry.BLOOD_STEP_SPELL.get()
+                                SpellRegistry.TELEPORT_SPELL.get()
                         ),
                         // Support
                         List.of(
@@ -237,12 +240,17 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
 
     private PlayState predicate(AnimationState<TheApostleEntity> event)
     {
-        if (event.isMoving() && !isCasting())
+        if (isAnimating())
+        {
+            return PlayState.STOP;
+        }
+
+        if (event.isMoving())
         {
             event.getController().setAnimation(RawAnimation.begin().then("walk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
-        else if (!event.isMoving() && !isCasting())
+        else if (!event.isMoving())
         {
             event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
@@ -253,52 +261,87 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
 
     private PlayState instantCastPredicate(AnimationState<TheApostleEntity> event)
     {
-        if (isCasting() && this.castingSpell != null && event.getController().getAnimationState() == AnimationController.State.STOPPED)
-        {
-            if (this.castingSpell.getSpell().getCastType() == CastType.INSTANT)
-            {
-                System.out.println("Instant Cast");
-                event.getController().setAnimation(RawAnimation.begin().then("instant_cast", Animation.LoopType.PLAY_ONCE));
-                return PlayState.CONTINUE;
-            }
+        var controller = event.getController();
+
+        if (cancelCastAnimation) {
+            return PlayState.STOP;
         }
 
-        return PlayState.STOP;
+        if (instantCastSpellType != SpellRegistry.none() && controller.getAnimationState() == AnimationController.State.STOPPED)
+        {
+            setStartAnimationFromSpell(controller, instantCastSpellType);
+            instantCastSpellType = SpellRegistry.none();
+        }
+
+        return PlayState.CONTINUE;
     }
 
     private PlayState longCastPredicate(AnimationState<TheApostleEntity> event)
     {
-        if (isCasting() && this.castingSpell != null && event.getController().getAnimationState() == AnimationController.State.STOPPED)
+        var controller = event.getController();
+
+        if (cancelCastAnimation || (controller.getAnimationState() == AnimationController.State.STOPPED && !(isCasting() && castingSpell != null && castingSpell.getSpell().getCastType() == CastType.LONG)))
         {
-            if (this.castingSpell.getSpell().getCastType() == CastType.LONG)
+            return PlayState.STOP;
+        }
+
+        if (isCasting() && this.castingSpell != null)
+        {
+            if (controller.getAnimationState() == AnimationController.State.STOPPED)
             {
-                System.out.println("Long Cast");
-                event.getController().setAnimation(RawAnimation.begin().then("long_cast", Animation.LoopType.LOOP));
-                return PlayState.CONTINUE;
+                setStartAnimationFromSpell(controller, castingSpell.getSpell());
             }
         }
 
-        return PlayState.STOP;
+        return PlayState.CONTINUE;
     }
 
     private PlayState continuousCastPredicate(AnimationState<TheApostleEntity> event)
     {
-        if (isCasting() && this.castingSpell != null && event.getController().getAnimationState() == AnimationController.State.STOPPED)
+        var controller = event.getController();
+
+        if (cancelCastAnimation || (controller.getAnimationState() == AnimationController.State.STOPPED && !(isCasting() && castingSpell != null && castingSpell.getSpell().getCastType() == CastType.LONG)))
         {
-            if (this.castingSpell.getSpell().getCastType() == CastType.CONTINUOUS)
+            return PlayState.STOP;
+        }
+
+        if (isCasting() && this.castingSpell != null)
+        {
+            if (controller.getAnimationState() == AnimationController.State.STOPPED)
             {
-                System.out.println("Cont Cast");
-                event.getController().setAnimation(RawAnimation.begin().then("continous_cast", Animation.LoopType.LOOP));
-                return PlayState.CONTINUE;
+                setStartAnimationFromSpell(controller, castingSpell.getSpell());
             }
         }
 
-        return PlayState.STOP;
+        return PlayState.CONTINUE;
+    }
+
+    protected void setStartAnimationFromSpell(AnimationController controller, AbstractSpell spell) {
+        spell.getCastStartAnimation().getForMob().ifPresentOrElse(animationBuilder -> {
+            controller.forceAnimationReset();
+            if(DTEUtils.isLongAnimCast(spell)){
+                controller.setAnimation(RawAnimation.begin().then("continous_cast", Animation.LoopType.LOOP));
+            }
+            else if (DTEUtils.isContAnimCast(spell)){
+                controller.setAnimation(RawAnimation.begin().then("continous_cast", Animation.LoopType.LOOP));
+            }
+            else {
+                controller.setAnimation(RawAnimation.begin().then("instant_cast", Animation.LoopType.PLAY_ONCE));
+            }
+            lastCastSpellType = spell;
+            cancelCastAnimation = false;
+            animatingLegs = false;
+        }, () -> {
+            cancelCastAnimation = true;
+        });
     }
 
     @Override
     public boolean isAnimating() {
-        return animationController.getAnimationState() != AnimationController.State.STOPPED || super.isAnimating();
+        return isCasting()
+                || (longCastAnimationController.getAnimationState() != AnimationController.State.STOPPED)
+                || (instantCastAnimationController.getAnimationState() != AnimationController.State.STOPPED)
+                || (contCastAnimationController.getAnimationState() != AnimationController.State.STOPPED);
     }
 
     @Override
