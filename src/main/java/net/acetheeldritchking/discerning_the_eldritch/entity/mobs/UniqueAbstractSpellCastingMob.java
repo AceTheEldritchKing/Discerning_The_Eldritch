@@ -32,7 +32,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 // I have to recreate the goddamn AbstractSpellCastingMob class because of my little entities will not animate
 // if their mother does not provide them with a special class (they will crash the game)
 public abstract class UniqueAbstractSpellCastingMob extends AbstractSpellCastingMob implements GeoEntity, IMagicEntity {
-    private static final EntityDataAccessor<Boolean> DATA_CANCEL_CAST = SynchedEntityData.defineId(AbstractSpellCastingMob.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_CANCEL_CAST = SynchedEntityData.defineId(UniqueAbstractSpellCastingMob.class, EntityDataSerializers.BOOLEAN);
     private SpellData castingSpell;
     protected AbstractSpell lastCastSpellType = SpellRegistry.none();
     protected AbstractSpell instantCastSpellType = SpellRegistry.none();
