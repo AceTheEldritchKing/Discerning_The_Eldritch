@@ -61,11 +61,6 @@ public class TheApostleEntity extends UniqueAbstractSpellCastingMob implements I
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     protected LivingEntity cachedSummoner;
     protected UUID summonerUUID;
-    private SpellData castingSpell;
-    protected AbstractSpell lastCastSpellType = SpellRegistry.none();
-    protected AbstractSpell instantCastSpellType = SpellRegistry.none();
-    protected boolean cancelCastAnimation = false;
-    protected boolean animatingLegs = false;
     private final MagicData playerMagicData = new MagicData(true);
     private boolean recreateSpell;
 
