@@ -175,22 +175,7 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
 
     @Override
     public boolean isAlliedTo(Entity entityIn) {
-        if (entityIn == this)
-        {
-            return true;
-        }
-        else if (entityIn == getSummoner() || entityIn.isAlliedTo(getSummoner()))
-        {
-            return true;
-        }
-        else if (getSummoner() != null && !entityIn.isAlliedTo(getSummoner().getTeam()))
-        {
-            return false;
-        }
-        else
-        {
-            return this.getTeam() == null && entityIn.getTeam() == null;
-        }
+        return super.isAlliedTo(entityIn) || this.isAlliedHelper(entityIn);
     }
 
     @Override

@@ -1,13 +1,18 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 
+import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.api.entity.IMagicEntity;
+import io.redspace.ironsspellbooks.api.magic.MagicData;
+import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
+import io.redspace.ironsspellbooks.api.spells.CastSource;
 import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.SpellData;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.capabilities.magic.SyncedSpellData;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
@@ -19,7 +24,13 @@ import net.acetheeldritchking.discerning_the_eldritch.utils.DTEUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
@@ -45,7 +56,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
-public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicSummon, GeoAnimatable, IMagicEntity {
+public class TheApostleEntity extends UniqueAbstractSpellCastingMob implements IMagicSummon, GeoAnimatable, IMagicEntity {
+    private static final EntityDataAccessor<Boolean> DATA_CANCEL_CAST = SynchedEntityData.defineId(AbstractSpellCastingMob.class, EntityDataSerializers.BOOLEAN);
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     protected LivingEntity cachedSummoner;
     protected UUID summonerUUID;
@@ -54,6 +66,8 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
     protected AbstractSpell instantCastSpellType = SpellRegistry.none();
     protected boolean cancelCastAnimation = false;
     protected boolean animatingLegs = false;
+    private final MagicData playerMagicData = new MagicData(true);
+    private boolean recreateSpell;
 
     public TheApostleEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -225,150 +239,6 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
     }
 
     // Geckolib & Animations
-    private final AnimationController<TheApostleEntity> animationController = new AnimationController<>(this, "controller", 0, this::predicate);
-    private final AnimationController<TheApostleEntity> instantCastAnimationController = new AnimationController<>(this, "instant_cast_controller", 0, this::instantCastPredicate);
-    private final AnimationController<TheApostleEntity> longCastAnimationController = new AnimationController<>(this, "long_cast_controller", 0, this::longCastPredicate);
-    private final AnimationController<TheApostleEntity> contCastAnimationController = new AnimationController<>(this, "continuous_cast_controller", 0, this::continuousCastPredicate);
-    private final AnimationController<TheApostleEntity> castingAnimationController = new AnimationController<>(this, "casting_controller", 0, this::castingPredicate);
-
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(animationController);
-        //controllers.add(instantCastAnimationController);
-        //controllers.add(longCastAnimationController);
-        //controllers.add(contCastAnimationController);
-        controllers.add(castingAnimationController);
-    }
-
-    private PlayState predicate(AnimationState<TheApostleEntity> event)
-    {
-        if (event.isMoving())
-        {
-            //System.out.println("Set is moving");
-            event.getController().setAnimation(RawAnimation.begin().then("walk", Animation.LoopType.LOOP));
-            return PlayState.CONTINUE;
-        }
-        else if (!event.isMoving())
-        {
-            //System.out.println("Set is idle");
-            event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
-            return PlayState.CONTINUE;
-        }
-
-        return PlayState.STOP;
-    }
-
-    private PlayState instantCastPredicate(AnimationState<TheApostleEntity> event)
-    {
-        //System.out.println("Instant predicate");
-        var controller = event.getController();
-
-        if (cancelCastAnimation) {
-            return PlayState.STOP;
-        }
-
-        if (instantCastSpellType != SpellRegistry.none() && controller.getAnimationState() == AnimationController.State.STOPPED)
-        {
-            System.out.println("Set instant cast animation");
-            setStartAnimationFromSpell(controller, instantCastSpellType);
-            instantCastSpellType = SpellRegistry.none();
-        }
-
-        return PlayState.CONTINUE;
-    }
-
-    private PlayState longCastPredicate(AnimationState<TheApostleEntity> event)
-    {
-        //System.out.println("Long predicate");
-        var controller = event.getController();
-
-        if (cancelCastAnimation || (controller.getAnimationState() == AnimationController.State.STOPPED && !(isCasting() && castingSpell != null && castingSpell.getSpell().getCastType() == CastType.LONG)))
-        {
-            return PlayState.STOP;
-        }
-
-        if (isCasting() && this.castingSpell != null)
-        {
-            System.out.println("Is casting?");
-            if (controller.getAnimationState() == AnimationController.State.STOPPED)
-            {
-                System.out.println("Set long cast animation");
-                setStartAnimationFromSpell(controller, castingSpell.getSpell());
-            }
-        }
-
-        return PlayState.CONTINUE;
-    }
-
-    private PlayState continuousCastPredicate(AnimationState<TheApostleEntity> event)
-    {
-        //System.out.println("Continuous predicate");
-        var controller = event.getController();
-
-        if (cancelCastAnimation || (controller.getAnimationState() == AnimationController.State.STOPPED && !(isCasting() && castingSpell != null && castingSpell.getSpell().getCastType() == CastType.LONG)))
-        {
-            return PlayState.STOP;
-        }
-
-        if (isCasting() && this.castingSpell != null)
-        {
-            System.out.println("Is casting?");
-            if (controller.getAnimationState() == AnimationController.State.STOPPED)
-            {
-                System.out.println("Set continuous cast animation");
-                setStartAnimationFromSpell(controller, castingSpell.getSpell());
-            }
-        }
-
-        return PlayState.CONTINUE;
-    }
-
-    // For testing purposes
-    private PlayState castingPredicate(AnimationState<TheApostleEntity> event)
-    {
-        var controller = event.getController();
-
-        if (isCasting())
-        {
-            controller.forceAnimationReset();
-            controller.setAnimation(RawAnimation.begin().thenPlay("long_cast"));
-            //event.getController().setAnimation(RawAnimation.begin().thenPlay("instant_cast"));
-            return PlayState.CONTINUE;
-        }
-
-        return PlayState.STOP;
-    }
-
-    protected void setStartAnimationFromSpell(AnimationController controller, AbstractSpell spell) {
-        spell.getCastStartAnimation().getForMob().ifPresentOrElse(animationBuilder -> {
-            controller.forceAnimationReset();
-            if(DTEUtils.isLongAnimCast(spell)) {
-                System.out.println("Set Start long cast");
-                controller.setAnimation(RawAnimation.begin().then("long_cast", Animation.LoopType.LOOP));
-            }
-            else if (DTEUtils.isContAnimCast(spell)) {
-                System.out.println("Set Start cont. cast");
-                controller.setAnimation(RawAnimation.begin().then("continous_cast", Animation.LoopType.LOOP));
-            }
-            else {
-                System.out.println("Set Start instant cast");
-                controller.setAnimation(RawAnimation.begin().then("instant_cast", Animation.LoopType.PLAY_ONCE));
-            }
-            lastCastSpellType = spell;
-            cancelCastAnimation = false;
-            animatingLegs = false;
-        }, () -> {
-            cancelCastAnimation = true;
-        });
-    }
-
-    @Override
-    public boolean isAnimating() {
-        return isCasting()
-                || (longCastAnimationController.getAnimationState() != AnimationController.State.STOPPED)
-                || (instantCastAnimationController.getAnimationState() != AnimationController.State.STOPPED)
-                || (contCastAnimationController.getAnimationState() != AnimationController.State.STOPPED);
-    }
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
@@ -384,12 +254,27 @@ public class TheApostleEntity extends AbstractSpellCastingMob implements IMagicS
     @Override
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
+        SyncedSpellData syncedSpellData = new SyncedSpellData(this);
+        syncedSpellData.loadNBTData(pCompound, this.level().registryAccess());
+        if (syncedSpellData.isCasting()) {
+            this.recreateSpell = true;
+        }
+
+        this.playerMagicData.setSyncedData(syncedSpellData);
+
         this.summonerUUID = OwnerHelper.deserializeOwner(pCompound);
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
+        this.playerMagicData.getSyncedData().saveNBTData(pCompound, this.level().registryAccess());
         OwnerHelper.serializeOwner(pCompound, summonerUUID);
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_CANCEL_CAST, false);
     }
 }

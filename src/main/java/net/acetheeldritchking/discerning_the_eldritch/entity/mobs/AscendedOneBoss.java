@@ -169,9 +169,7 @@ public class AscendedOneBoss extends GenericBossEntity {
                                 SpellRegistry.BLOOD_SLASH_SPELL.get(),
                                 SpellRegistry.BLOOD_NEEDLES_SPELL.get(),
                                 SpellRegistry.FIRE_ARROW_SPELL.get(),
-                                SpellRegistry.CHAIN_LIGHTNING_SPELL.get(),
-                                SpellRegistry.SUMMON_SWORDS.get(),
-                                SpellRegistry.SHOCKWAVE_SPELL.get()
+                                SpellRegistry.CHAIN_LIGHTNING_SPELL.get()
                         ),
                         // Defense
                         List.of(
@@ -222,7 +220,6 @@ public class AscendedOneBoss extends GenericBossEntity {
                                 SpellRegistry.SCULK_TENTACLES_SPELL.get(),
                                 SpellRegistry.COUNTERSPELL_SPELL.get(),
                                 SpellRegistry.FIRE_ARROW_SPELL.get(),
-                                SpellRegistry.SUMMON_SWORDS.get(),
                                 SpellRegistry.SHOCKWAVE_SPELL.get()
                         ),
                         // Defense
