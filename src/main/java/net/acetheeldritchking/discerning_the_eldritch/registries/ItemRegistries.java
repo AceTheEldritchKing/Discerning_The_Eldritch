@@ -19,9 +19,7 @@ import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.Ascen
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.GeckolibEldritchWarlockArmorItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.GeckolibEldritchWarlockHelmetItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.GeckolibEldritchWarlockMaskItem;
-import net.acetheeldritchking.discerning_the_eldritch.items.curios.AmuletOfSculkTreasureCurio;
-import net.acetheeldritchking.discerning_the_eldritch.items.curios.EchoVibrationRing;
-import net.acetheeldritchking.discerning_the_eldritch.items.curios.KingsEffigyCurio;
+import net.acetheeldritchking.discerning_the_eldritch.items.curios.*;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.BlackBookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.GuardianGuidebookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.TempestuousTomeSpellbook;
@@ -151,13 +149,19 @@ public class ItemRegistries {
      */
 
     // Echo Vibration Ring
-    public static final Supplier<CurioBaseItem> ECHO_VIBRATION_RING = ITEMS.register("echo_vibration_ring", EchoVibrationRing::new);
+    public static final Supplier<CurioBaseItem> ECHO_VIBRATION_RING = ITEMS.register("echo_vibration_ring", EchoVibrationRingCurio::new);
 
     // King's Effigy
     public static final Supplier<CurioBaseItem> KINGS_EFFIGY = ITEMS.register("kings_effigy", KingsEffigyCurio::new);
 
     // Amulet of Hidden Treasure
     public static final Supplier<CurioBaseItem> AMULET_OF_SCULK_TREASURE = ITEMS.register("amulet_of_sculk_treasure", AmuletOfSculkTreasureCurio::new);
+
+    // Caster's Mantle
+    public static final Supplier<CurioBaseItem> CASTERS_MANTLE = ITEMS.register("casters_mantle", CastersMantleCurio::new);
+
+    // Ironbound Feather
+    public static final Supplier<CurioBaseItem> IRONBOUND_FEATHER = ITEMS.register("ironbound_feather", IronboundFeatherCurio::new);
 
     /***
      * Armor

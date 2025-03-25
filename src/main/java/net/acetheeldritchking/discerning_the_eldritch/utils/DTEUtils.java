@@ -1,6 +1,5 @@
 package net.acetheeldritchking.discerning_the_eldritch.utils;
 
-import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.CastType;
 import net.minecraft.world.entity.player.Player;
@@ -14,6 +13,7 @@ public class DTEUtils {
         return CuriosApi.getCuriosHelper().findEquippedCurio(item, player).isPresent();
     }
 
+    // Checks if an entity is doing a long cast spell
     public static boolean isLongAnimCast(AbstractSpell spell)
     {
         if (spell.getCastType() == CastType.LONG)
@@ -26,6 +26,7 @@ public class DTEUtils {
         }
     }
 
+    // Checks if an entity is doing a continuous cast spell
     public static boolean isContAnimCast(AbstractSpell spell)
     {
         if (spell.getCastType() == CastType.CONTINUOUS)

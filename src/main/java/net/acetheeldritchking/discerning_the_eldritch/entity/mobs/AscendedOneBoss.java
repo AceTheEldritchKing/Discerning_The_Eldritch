@@ -160,7 +160,7 @@ public class AscendedOneBoss extends GenericBossEntity {
         this.goalSelector.addGoal(1, new FloatGoal(this));
         // Magic Spells
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 80, 150, 1));
-        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 30, 55)
+        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 20, 35)
                 .setSpells(
                         // Attack
                         List.of(
@@ -169,7 +169,8 @@ public class AscendedOneBoss extends GenericBossEntity {
                                 SpellRegistry.BLOOD_SLASH_SPELL.get(),
                                 SpellRegistry.BLOOD_NEEDLES_SPELL.get(),
                                 SpellRegistry.FIRE_ARROW_SPELL.get(),
-                                SpellRegistry.CHAIN_LIGHTNING_SPELL.get()
+                                SpellRegistry.CHAIN_LIGHTNING_SPELL.get(),
+                                SpellRegistry.SUMMON_SWORDS.get()
                         ),
                         // Defense
                         List.of(
@@ -207,7 +208,7 @@ public class AscendedOneBoss extends GenericBossEntity {
         // Magic Spells
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 30, 50, 5));
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ABYSSAL_SHROUD_SPELL.get(), 1, 3, 80, 100, 0));
-        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 20, 35)
+        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 10, 25)
                 .setSpells(
                         // Attack
                         List.of(
@@ -220,7 +221,7 @@ public class AscendedOneBoss extends GenericBossEntity {
                                 SpellRegistry.SCULK_TENTACLES_SPELL.get(),
                                 SpellRegistry.COUNTERSPELL_SPELL.get(),
                                 SpellRegistry.FIRE_ARROW_SPELL.get(),
-                                SpellRegistry.SHOCKWAVE_SPELL.get()
+                                SpellRegistry.SUMMON_SWORDS.get()
                         ),
                         // Defense
                         List.of(

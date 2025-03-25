@@ -107,7 +107,7 @@ public class CallAscendedOneSpell extends AbstractRitualSpell {
 
     private float getAscendedHealth(int spellLevel, LivingEntity caster)
     {
-        return getSpellPower(spellLevel, caster) * 58.5f;
+        return getSpellPower(spellLevel, caster) * 60.5f;
     }
 
     private float getAscendedSpellPower(int spellLevel, LivingEntity caster)
@@ -117,6 +117,6 @@ public class CallAscendedOneSpell extends AbstractRitualSpell {
 
     private float getAscendedSpellResist(int spellLevel, LivingEntity caster)
     {
-        return getSpellPower(spellLevel, caster) * 0.07f;
+        return getSpellPower(spellLevel, caster) * 0.075f;
     }
 }

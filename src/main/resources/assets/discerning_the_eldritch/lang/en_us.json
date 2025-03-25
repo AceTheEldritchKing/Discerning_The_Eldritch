@@ -37,6 +37,9 @@
   "item.discerning_the_eldritch.apothic_acolyte_spawn_egg": "Apothic Acolyte Spawn Egg",
   "item.discerning_the_eldritch.apothic_summoner_spawn_egg": "Apothic Summoner Spawn Egg",
   "item.discerning_the_eldritch.apothic_crusader_spawn_egg": "Apothic Crusader Spawn Egg",
+  "item.discerning_the_eldritch.casters_mantle": "Caster's Mantle",
+  "item.discerning_the_eldritch.ironbound_feather": "Ironbound Feather",
+  "item.discerning_the_eldritch.ironbound_feather.desc": "A beautiful brooch that feels lighter than it seems",
 
   "item.discerning_the_eldritch.eldritch_warlock_hood": "Apothic Acolyte Hood",
   "item.discerning_the_eldritch.eldritch_warlock_robes": "Apothic Acolyte Robes",
@@ -54,20 +57,27 @@
 
   "spell.discerning_the_eldritch.silence": "Silence",
   "spell.discerning_the_eldritch.silence.guide": "Cast a wicked spell that prevents targets from casting any spell for a set amount of time",
+
   "spell.discerning_the_eldritch.boogie_woogie": "Boogie Woogie",
   "spell.discerning_the_eldritch.boogie_woogie.guide": "Boogie Woogie!",
+
   "spell.discerning_the_eldritch.guardians_gaze": "Guardian's Gaze",
   "spell.discerning_the_eldritch.guardians_gaze.guide": "A unique variant of Ray of Frost that inflicts mining fatigue",
+
   "spell.discerning_the_eldritch.esoteric_edge": "Esoteric Edge",
   "spell.discerning_the_eldritch.esoteric_edge.guide": "Unleash a devastating slash of pure eldritch energy, inflicting darkness upon hit",
+
   "spell.discerning_the_eldritch.otherworldly_presence": "Otherworldly Presence",
   "spell.discerning_the_eldritch.otherworldly_presence.guide": "Teleport and shift between reality, causing you to be unable to take any damage but also unable to deal any damage",
+
   "spell.discerning_the_eldritch.conjure_gaoler": "Conjure: Gaoler",
   "spell.discerning_the_eldritch.conjure_gaoler.guide": "Conjure the legendary Gaoler, the ancient ancestor of the Warden",
+
   "spell.discerning_the_eldritch.conjure_forsaken_aid": "Conjure: Forsaken Aid",
   "spell.discerning_the_eldritch.conjure_forsaken_aid.guide": "Conjure multiple eldritch beings to your aid",
+
   "spell.discerning_the_eldritch.call_ascended_one": "Call: The Ascended One",
-  "spell.discerning_the_eldritch.call_ascended_one.guide": "Call The Ascended One beyond death to challenge him to a battle",
+  "spell.discerning_the_eldritch.call_ascended_one.guide": "Call The Ascended One from beyond death to challenge him to a battle",
 
 
   "ui.discerning_the_eldritch.extra_damage": "Deals extra damage while holding a weapon in your mainhand",

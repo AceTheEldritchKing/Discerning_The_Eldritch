@@ -28,6 +28,8 @@ public class DTECreativeModeTabs {
                         // Curios
                         output.accept(ItemRegistries.ECHO_VIBRATION_RING.get());
                         output.accept(ItemRegistries.AMULET_OF_SCULK_TREASURE.get());
+                        output.accept(ItemRegistries.CASTERS_MANTLE.get());
+                        output.accept(ItemRegistries.IRONBOUND_FEATHER.get());
                         //output.accept(ItemRegistries.KINGS_EFFIGY.get());
                         // Spellbooks
                         output.accept(ItemRegistries.BLACK_BOOK_SPELLBOOK.get());

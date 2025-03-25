@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
@@ -26,6 +27,7 @@ import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 
@@ -129,6 +131,20 @@ public class ServerEvents {
         if (attacker instanceof LivingEntity livingAttacker)
         {
             if (livingAttacker.hasEffect(DTEPotionEffectRegistry.METAPHYSICAL_POTION_EFFECT))
+            {
+                event.setCanceled(true);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onFallEvent(LivingFallEvent event)
+    {
+        var entity = event.getEntity();
+
+        if (entity instanceof Player player)
+        {
+            if (DTEUtils.hasCurio(player, ItemRegistries.IRONBOUND_FEATHER.get()))
             {
                 event.setCanceled(true);
             }
