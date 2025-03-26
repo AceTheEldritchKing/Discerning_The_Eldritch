@@ -3,6 +3,7 @@ package net.acetheeldritchking.discerning_the_eldritch.items.weapons;
 import io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem;
 import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
+import io.redspace.ironsspellbooks.item.UniqueItem;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.ChatFormatting;
@@ -13,7 +14,7 @@ import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
 
-public class YmirSwordItem extends MagicSwordItem {
+public class YmirSwordItem extends MagicSwordItem implements UniqueItem {
     public YmirSwordItem() {
         super(
                 DTEWeaponTiers.YMIR,

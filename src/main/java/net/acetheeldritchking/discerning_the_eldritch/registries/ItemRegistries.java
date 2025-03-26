@@ -160,7 +160,7 @@ public class ItemRegistries {
     // Caster's Mantle
     public static final Supplier<CurioBaseItem> CASTERS_MANTLE = ITEMS.register("casters_mantle", CastersMantleCurio::new);
 
-    // Ironbound Feather
+    // Ironbound Feather - Trial Chamber loot
     public static final Supplier<CurioBaseItem> IRONBOUND_FEATHER = ITEMS.register("ironbound_feather", IronboundFeatherCurio::new);
 
     /***

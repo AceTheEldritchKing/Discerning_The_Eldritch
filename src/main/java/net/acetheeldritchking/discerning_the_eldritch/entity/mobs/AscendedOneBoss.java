@@ -48,12 +48,14 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class AscendedOneBoss extends GenericBossEntity {
+    // This method is only needed if you plan on summoning the boss with a spell
     public AscendedOneBoss(Level level)
     {
         this(DTEEntityRegistry.ASCENDED_ONE.get(), level);
         setPersistenceRequired();
     }
 
+    // Constructor for the boss
     public AscendedOneBoss(EntityType<? extends AbstractSpellCastingMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         setPersistenceRequired();
@@ -62,12 +64,14 @@ public class AscendedOneBoss extends GenericBossEntity {
         this.moveControl = createMoveControl();
     }
 
+    // These are used for doing boss bars, setting up the phase serializer for NBT, and stopping and starting music
     private final ServerBossEvent bossEvent =
             new ServerBossEvent(Component.translatable("discerning_the_eldritch:ascended_one_boss"), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS);
     private final static EntityDataAccessor<Integer> PHASE = SynchedEntityData.defineId(AscendedOneBoss.class, EntityDataSerializers.INT);
     public static final byte STOP_MUSIC = 0;
     public static final byte START_MUSIC = 1;
 
+    // Boss music
     public static SoundEvent bossMusic = DTESoundRegistry.TEST_BOSS_MUSIC.get();
 
     @Override
@@ -75,6 +79,7 @@ public class AscendedOneBoss extends GenericBossEntity {
         return bossMusic;
     }
 
+    // Helps handle the starting and stopping of boss music
     @Override
     public void handleClientEvent(byte eventId)
     {
@@ -85,6 +90,7 @@ public class AscendedOneBoss extends GenericBossEntity {
         }
     }
 
+    // These two methods add and remove the boss bar and music based on how far the player is/if it is seen by the boss
     @Override
     public void startSeenByPlayer(ServerPlayer serverPlayer) {
         super.startSeenByPlayer(serverPlayer);
@@ -99,12 +105,14 @@ public class AscendedOneBoss extends GenericBossEntity {
         PacketDistributor.sendToPlayer(serverPlayer, new EntityEventPacket<AscendedOneBoss>(this, STOP_MUSIC));
     }
 
+    // For updating the boss health
     @Override
     public void aiStep() {
         super.aiStep();
         this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
     }
 
+    // These are for movement and looking controls for smoother movement (from Iron himself)
     protected LookControl createLookControl()
     {
         return new LookControl(this)
@@ -142,6 +150,7 @@ public class AscendedOneBoss extends GenericBossEntity {
         };
     }
 
+    // Register the basic goals for the boss
     @Override
     protected void registerGoals() {
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
@@ -152,6 +161,7 @@ public class AscendedOneBoss extends GenericBossEntity {
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
 
+    // First phase spells
     private void firstPhaseGoals()
     {
         this.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
@@ -199,6 +209,7 @@ public class AscendedOneBoss extends GenericBossEntity {
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }
 
+    // Second phase spells
     private void secondPhaseGoals()
     {
         this.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
@@ -254,15 +265,21 @@ public class AscendedOneBoss extends GenericBossEntity {
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }
 
+    // Down here in the tick event we do more keeping track of the boss
+    // For setting the boss bar and the boss phases
     @Override
     public void tick() {
         super.tick();
 
+        // These are used for getting health; very handy for doing phases based on health
         float health = this.getHealth();
         float MAX_HEALTH = this.getMaxHealth();
 
         float halfHealth = MAX_HEALTH/2;
 
+        // Once the boss is at half health or less, it will set the boss to its second phase
+        // This will increase its spell power attribute, set its second goals
+        // And set its health to its half health
         if (isPhase(Phase.FirstPhase))
         {
             if (this.getHealth() <= halfHealth)
@@ -276,6 +293,7 @@ public class AscendedOneBoss extends GenericBossEntity {
             }
         }
 
+        // Used for displaying the taunt message to all players nearby who are fighting the boss
         if (isPhase(Phase.SecondPhase))
         {
             int radius = 15;
@@ -291,10 +309,12 @@ public class AscendedOneBoss extends GenericBossEntity {
                 }
             }
 
+            // This "refills" the boss' health bar even though it is at half health
             this.bossEvent.setProgress(health / (MAX_HEALTH - halfHealth));
         }
     }
 
+    // Used for determining which mobs the boss is allied to
     @Override
     public boolean isAlliedTo(Entity entityIn) {
         if (entityIn instanceof IMagicSummon summon && summon.getSummoner() == this)
@@ -312,6 +332,7 @@ public class AscendedOneBoss extends GenericBossEntity {
         }
     }
 
+    // Puts items on the boss like armors and weapons
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
         this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(ItemRegistries.ASCENDED_ONE_HOOD.get()));
@@ -333,6 +354,7 @@ public class AscendedOneBoss extends GenericBossEntity {
         return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
 
+    // Creates the entity attributes for the boss
     public static AttributeSupplier.Builder createAttributes()
     {
         return LivingEntity.createLivingAttributes()

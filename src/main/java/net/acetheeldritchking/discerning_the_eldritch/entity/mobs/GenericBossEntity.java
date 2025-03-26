@@ -13,13 +13,16 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.level.Level;
 
 public abstract class GenericBossEntity extends AbstractSpellCastingMob implements Enemy, IClientEventEntity {
-
+    // This class is a generic and abstract class used for bosses
+    // In here are helpful methods for handling phases and boss music
     public GenericBossEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
+    // Phase Serializer
     public final static EntityDataAccessor<Integer> PHASE = SynchedEntityData.defineId(GenericBossEntity.class, EntityDataSerializers.INT);
 
+    // Used for boss music; set it in the child class to the music you want to have play
     public SoundEvent getBossMusic() {
 
         return null;
