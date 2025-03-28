@@ -188,7 +188,7 @@ dependencies {
 
     // AZURELIB
     //implementation "mod.azure.azurelib:azurelib-neo-1.21:2.3.28"
-    implementation "curse.maven:azurelib-817423:5996521"
+    implementation "curse.maven:azurelib-817423:6004979"
 
     // Spell Collector Lib
     implementation "curse.maven:spell-collector-lib-1149858:6174572"

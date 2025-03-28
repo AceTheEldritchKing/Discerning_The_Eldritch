@@ -16,8 +16,9 @@ public class ImbuableStaffItem extends StaffItem implements IPresetSpellContaine
     List<SpellData> spellData = null;
     SpellDataRegistryHolder[] spellDataRegistryHolders;
 
-    public ImbuableStaffItem(Properties properties) {
+    public ImbuableStaffItem(Properties properties, SpellDataRegistryHolder[] spellDataRegistryHolders) {
         super(properties);
+        this.spellDataRegistryHolders = spellDataRegistryHolders;
     }
 
     public List<SpellData> getSpells()

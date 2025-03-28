@@ -43,6 +43,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.GOD_SPEAR.get());
                         output.accept(ItemRegistries.YMIR.get());
                         output.accept(ItemRegistries.ICE_SPEAR.get());
+                        output.accept(ItemRegistries.STAFF_OF_VEHEMENCE.get());
                         // Armor
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_HOOD.get());
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_MASK.get());

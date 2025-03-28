@@ -23,6 +23,7 @@ import net.acetheeldritchking.discerning_the_eldritch.items.curios.*;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.BlackBookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.GuardianGuidebookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.TempestuousTomeSpellbook;
+import net.acetheeldritchking.discerning_the_eldritch.items.staffs.StaffOfVehemenceStaffItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.DTEWeaponTiers;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.YmirSwordItem;
@@ -79,6 +80,9 @@ public class ItemRegistries {
     /***
      * Staffs and Gauntlets
      */
+
+    // Staff of Vehemence
+    public static final DeferredHolder<Item, Item> STAFF_OF_VEHEMENCE = ITEMS.register("staff_of_eldritch", StaffOfVehemenceStaffItem::new);
 
     // Hand of Apocrypha
 
