@@ -9,6 +9,7 @@ import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.item.UpgradeOrbItem;
 import io.redspace.ironsspellbooks.item.curios.CurioBaseItem;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
+import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import io.redspace.ironsspellbooks.registries.ComponentRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
@@ -23,6 +24,7 @@ import net.acetheeldritchking.discerning_the_eldritch.items.curios.*;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.BlackBookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.GuardianGuidebookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.TempestuousTomeSpellbook;
+import net.acetheeldritchking.discerning_the_eldritch.items.staffs.DTEStaffTier;
 import net.acetheeldritchking.discerning_the_eldritch.items.staffs.StaffOfVehemenceStaffItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.DTEWeaponTiers;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
@@ -85,6 +87,9 @@ public class ItemRegistries {
     public static final DeferredHolder<Item, Item> STAFF_OF_VEHEMENCE = ITEMS.register("staff_of_eldritch", StaffOfVehemenceStaffItem::new);
 
     // Hand of Apocrypha
+
+    // Staff of Ascension
+    public static final DeferredHolder<Item, Item> STAFF_OF_ASCENSION = ITEMS.register("staff_of_ascension", () -> new StaffItem(ItemPropertiesHelper.equipment(1).fireResistant().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEStaffTier.STAFF_OF_ASCENSION))));
 
     /***
      * Weapons

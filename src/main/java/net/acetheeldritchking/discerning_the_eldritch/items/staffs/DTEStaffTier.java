@@ -9,10 +9,17 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 public class DTEStaffTier implements IronsWeaponTier {
     // Staff of Vehemence
     public static DTEStaffTier STAFF_OF_VEHEMENCE = new DTEStaffTier(3, -3,
-            new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.10f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.15f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(DTEAttributeRegistry.RITUAL_MAGIC_POWER, 0.15f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(AttributeRegistry.MANA_REGEN, 0.15f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.25f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+    );
+
+    // Staff of Ascension
+    public static DTEStaffTier STAFF_OF_ASCENSION = new DTEStaffTier(3, -3,
+            new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.10f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.CAST_TIME_REDUCTION, 0.25f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.15f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
     );
 
     float damage;

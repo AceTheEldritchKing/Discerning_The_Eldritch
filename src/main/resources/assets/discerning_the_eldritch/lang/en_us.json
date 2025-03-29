@@ -40,6 +40,8 @@
   "item.discerning_the_eldritch.casters_mantle": "Caster's Mantle",
   "item.discerning_the_eldritch.ironbound_feather": "Ironbound Feather",
   "item.discerning_the_eldritch.ironbound_feather.desc": "A beautiful brooch that feels lighter than it seems",
+  "item.discerning_the_eldritch.staff_of_eldritch": "Staff of Vehemence",
+  "item.discerning_the_eldritch.staff_of_ascension": "Staff of Ascension",
 
   "item.discerning_the_eldritch.eldritch_warlock_hood": "Apothic Acolyte Hood",
   "item.discerning_the_eldritch.eldritch_warlock_robes": "Apothic Acolyte Robes",
@@ -125,6 +127,10 @@
 
   "advancements.discerning_the_eldritch.apocrypha_spellbook.title": "The Gardener of Men",
   "advancements.discerning_the_eldritch.apocrypha_spellbook.description": "Obtain The Apocrypha spell book",
+
   "advancements.discerning_the_eldritch.black_book_spellbook.title": "The Path of Knowledge",
-  "advancements.discerning_the_eldritch.black_book_spellbook.description": "Obtain The Black Book"
+  "advancements.discerning_the_eldritch.black_book_spellbook.description": "Obtain The Black Book",
+
+  "advancements.discerning_the_eldritch.staff_of_ascension.title": "Ascensionism",
+  "advancements.discerning_the_eldritch.staff_of_ascension.description": "Obtain The Staff of Ascension"
 }

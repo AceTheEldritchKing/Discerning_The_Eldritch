@@ -123,6 +123,10 @@
         {
           "type": "minecraft:item",
           "name": "discerning_the_eldritch:black_book_spellbook"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "discerning_the_eldritch:staff_of_ascension"
         }
       ],
       "rolls": 1

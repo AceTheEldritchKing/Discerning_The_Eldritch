@@ -340,11 +340,13 @@ public class AscendedOneBoss extends GenericBossEntity {
         this.setItemSlot(EquipmentSlot.LEGS, new ItemStack(ItemRegistries.ASCENDED_ONE_LEGGINGS.get()));
         this.setItemSlot(EquipmentSlot.FEET, new ItemStack(ItemRegistries.ASCENDED_ONE_GREAVES.get()));
         this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ItemRegistries.BLACK_BOOK_SPELLBOOK.get()));
+        this.setItemSlot(EquipmentSlot.OFFHAND, new ItemStack(ItemRegistries.STAFF_OF_ASCENSION.get()));
         this.setDropChance(EquipmentSlot.HEAD, 0.0F);
         this.setDropChance(EquipmentSlot.CHEST, 0.0F);
         this.setDropChance(EquipmentSlot.LEGS, 0.0F);
         this.setDropChance(EquipmentSlot.FEET, 0.0F);
         this.setDropChance(EquipmentSlot.MAINHAND, 0.0F);
+        this.setDropChance(EquipmentSlot.OFFHAND, 0.0F);
     }
 
     @Override
