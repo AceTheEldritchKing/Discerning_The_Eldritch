@@ -256,19 +256,17 @@ public abstract class UniqueAbstractSpellCastingMob extends AbstractSpellCasting
     private PlayState instantCastPredicate(AnimationState event)
     {
         //System.out.println("Instant predicate");
-        var controller = event.getController();
-
-        if (cancelCastAnimation) {
+        if (cancelCastAnimation)
+        {
             return PlayState.STOP;
         }
 
+        var controller = event.getController();
         if (instantCastSpellType != SpellRegistry.none() && controller.getAnimationState() == AnimationController.State.STOPPED)
         {
-            //System.out.println("Set instant cast animation");
             setStartAnimationFromSpell(controller, instantCastSpellType);
             instantCastSpellType = SpellRegistry.none();
         }
-
         return PlayState.CONTINUE;
     }
 
@@ -289,11 +287,10 @@ public abstract class UniqueAbstractSpellCastingMob extends AbstractSpellCasting
             {
                 //System.out.println("Set long cast animation");
                 setStartAnimationFromSpell(controller, castingSpell.getSpell());
-                return PlayState.CONTINUE;
             }
         }
 
-        return PlayState.STOP;
+        return PlayState.CONTINUE;
     }
 
     private PlayState continuousCastPredicate(AnimationState event)
@@ -313,11 +310,10 @@ public abstract class UniqueAbstractSpellCastingMob extends AbstractSpellCasting
             {
                 //System.out.println("Set continuous cast animation");
                 setStartAnimationFromSpell(controller, castingSpell.getSpell());
-                return PlayState.CONTINUE;
             }
         }
 
-        return PlayState.STOP;
+        return PlayState.CONTINUE;
     }
 
     // For testing purposes
@@ -340,17 +336,14 @@ public abstract class UniqueAbstractSpellCastingMob extends AbstractSpellCasting
             controller.forceAnimationReset();
             if(DTEUtils.isLongAnimCast(spell)) {
                 //System.out.println("Set Start long cast");
-                controller.forceAnimationReset();
                 controller.setAnimation(RawAnimation.begin().then("long_cast", Animation.LoopType.PLAY_ONCE));
             }
             else if (DTEUtils.isContAnimCast(spell)) {
                 //System.out.println("Set Start cont. cast");
-                controller.forceAnimationReset();
                 controller.setAnimation(RawAnimation.begin().then("continous_cast", Animation.LoopType.PLAY_ONCE));
             }
             else {
                 //System.out.println("Set Start instant cast");
-                controller.forceAnimationReset();
                 controller.setAnimation(RawAnimation.begin().then("instant_cast", Animation.LoopType.PLAY_ONCE));
             }
             lastCastSpellType = spell;

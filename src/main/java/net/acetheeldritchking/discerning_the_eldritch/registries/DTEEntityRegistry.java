@@ -48,6 +48,13 @@ public class DTEEntityRegistry {
             );
 
     // Sightless Maw
+    public static final DeferredHolder<EntityType<?>, EntityType<SightlessMawEntity>> SIGHTLESS_MAW =
+            ENTITIES.register("sightless_maw", () -> EntityType.Builder.<SightlessMawEntity>of
+                            (SightlessMawEntity::new, MobCategory.MONSTER).
+                    sized(.6f, 1.8f)
+                    .build(
+                            ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "sightless_maw").toString()
+                    ));
 
     // Untold Behemoth
 

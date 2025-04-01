@@ -5,12 +5,16 @@ import io.redspace.ironsspellbooks.api.events.SpellSummonEvent;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
+import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.SightlessMawEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.TheApostleEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForge;
@@ -71,14 +75,26 @@ public class ConjureForsakenAidSpell extends AbstractSpell {
 
     private void spawnForsakenAid(double x, double y, double z, LivingEntity caster, Level level, int timer, int spellLevel)
     {
+        boolean isMaw = Utils.random.nextDouble() < 0.5;
+        boolean isBehemoth = Utils.random.nextDouble() < 0.4;
+        boolean isApostle = Utils.random.nextDouble() < 0.2;
+
+        boolean isBase = Utils.random.nextDouble() < 0.6;
+
         TheApostleEntity apostleEntity = new TheApostleEntity(level, caster);
+        SightlessMawEntity sightlessMaw = new SightlessMawEntity(level, caster);
 
-        apostleEntity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.FORSAKEN_TIMER, timer, 0, false, false, true));
+        AbstractSpellCastingMob isMeleeMobs = isMaw ? sightlessMaw : apostleEntity;
+        AbstractSpellCastingMob isCaster = isApostle ? apostleEntity : isMeleeMobs;
 
-        apostleEntity.setPos(x, y, z);
-        apostleEntity.setOldPosAndRot();
+        AbstractSpellCastingMob baseArmy = isBase ? isMeleeMobs : isCaster;
 
-        var event = NeoForge.EVENT_BUS.post(new SpellSummonEvent<>(caster, apostleEntity, this.spellId, spellLevel));
+        baseArmy.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.FORSAKEN_TIMER, timer, 0, false, false, true));
+
+        baseArmy.setPos(x, y, z);
+        baseArmy.setOldPosAndRot();
+
+        var event = NeoForge.EVENT_BUS.post(new SpellSummonEvent<>(caster, baseArmy, this.spellId, spellLevel));
 
         level.addFreshEntity(event.getCreature());
     }

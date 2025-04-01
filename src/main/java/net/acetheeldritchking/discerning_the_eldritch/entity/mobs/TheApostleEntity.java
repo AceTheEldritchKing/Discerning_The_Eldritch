@@ -212,16 +212,14 @@ public class TheApostleEntity extends UniqueAbstractSpellCastingMob implements I
         // No fall damage please <3
     }
 
-    // Geckolib & Animations
+    public boolean hurt(DamageSource pSource, float pAmount) {
+        return this.shouldIgnoreDamage(pSource) ? false : super.hurt(pSource, pAmount);
+    }
 
+    // Geckolib & Animations
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.cache;
-    }
-
-    @Override
-    public double getTick(Object object) {
-        return this.tickCount;
     }
 
     // NBT

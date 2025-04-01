@@ -1,0 +1,257 @@
+package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
+
+import io.redspace.ironsspellbooks.IronsSpellbooks;
+import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
+import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
+import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
+import io.redspace.ironsspellbooks.entity.mobs.goals.*;
+import io.redspace.ironsspellbooks.entity.mobs.goals.melee.AttackAnimationData;
+import io.redspace.ironsspellbooks.entity.mobs.wizards.GenericAnimatedWarlockAttackGoal;
+import io.redspace.ironsspellbooks.util.OwnerHelper;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.LookControl;
+import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import software.bernie.geckolib.animatable.GeoAnimatable;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.*;
+import software.bernie.geckolib.animation.AnimationState;
+import software.bernie.geckolib.util.GeckoLibUtil;
+
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.UUID;
+
+public class SightlessMawEntity extends AbstractSpellCastingMob implements IMagicSummon, GeoAnimatable, IAnimatedAttacker {
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    protected LivingEntity cachedSummoner;
+    protected UUID summonerUUID;
+
+    public SightlessMawEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
+        super(pEntityType, pLevel);
+        xpReward = 0;
+        this.lookControl = createLookControl();
+        this.moveControl = createMoveControl();
+    }
+
+    public SightlessMawEntity(Level level, LivingEntity owner) {
+        this(DTEEntityRegistry.SIGHTLESS_MAW.get(), level);
+        setSummoner(owner);
+    }
+
+    protected LookControl createLookControl()
+    {
+        return new LookControl(this)
+        {
+            @Override
+            protected float rotateTowards(float from, float to, float maxDelta) {
+                return super.rotateTowards(from, to, maxDelta * 2.5F);
+            }
+
+            @Override
+            protected boolean resetXRotOnTick() {
+                return getTarget() == null;
+            }
+        };
+    }
+
+    protected MoveControl createMoveControl()
+    {
+        return new MoveControl(this)
+        {
+            @Override
+            protected float rotlerp(float sourceAngle, float targetAngle, float maximumChange) {
+                double x = this.wantedX - this.mob.getX();
+                double z = this.wantedZ - this.mob.getZ();
+
+                if (x * x + z * z < 0.5F)
+                {
+                    return sourceAngle;
+                }
+                else
+                {
+                    return super.rotlerp(sourceAngle, targetAngle, maximumChange * 0.25F);
+                }
+            }
+        };
+    }
+
+    @Override
+    public void registerGoals() {
+        this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(1, new GenericAnimatedWarlockAttackGoal<>(this, 1.5F, 5, 10)
+                .setMoveset(List.of(
+                        new AttackAnimationData(18, "walk_bite", 15)
+                ))
+                .setComboChance(3.5f)
+                .setMeleeAttackInverval(5, 10)
+                .setMeleeMovespeedModifier(1.0f)
+        );
+        this.goalSelector.addGoal(7, new GenericFollowOwnerGoal(this, this::getSummoner, 0.9f, 8, 2, false, 50));
+        this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.9D));
+        this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
+        this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Mob.class, 8.0F));
+
+        this.targetSelector.addGoal(1, new GenericOwnerHurtByTargetGoal(this, this::getSummoner));
+        this.targetSelector.addGoal(2, new GenericOwnerHurtTargetGoal(this, this::getSummoner));
+        this.targetSelector.addGoal(3, new GenericCopyOwnerTargetGoal(this, this::getSummoner));
+        this.targetSelector.addGoal(4, (new GenericHurtByTargetGoal(this, (entity) -> entity == getSummoner())).setAlertOthers());
+
+    }
+
+    public static AttributeSupplier.Builder createAttributes()
+    {
+        return LivingEntity.createLivingAttributes()
+                .add(Attributes.ATTACK_DAMAGE, 5.5)
+                .add(Attributes.MAX_HEALTH, 30.0)
+                .add(Attributes.FOLLOW_RANGE, 45.0)
+                .add(Attributes.ENTITY_INTERACTION_RANGE, 2.0)
+                .add(Attributes.MOVEMENT_SPEED, .45);
+    }
+
+    @Override
+    public LivingEntity getSummoner() {
+        return OwnerHelper.getAndCacheOwner(level(), cachedSummoner, summonerUUID);
+    }
+
+    public void setSummoner(@Nullable LivingEntity owner)
+    {
+        if (owner != null)
+        {
+            this.summonerUUID = owner.getUUID();
+            this.cachedSummoner = owner;
+        }
+    }
+
+    @Override
+    public boolean isAlliedTo(Entity entityIn) {
+        return super.isAlliedTo(entityIn) || this.isAlliedHelper(entityIn);
+    }
+
+    // Attacks and Death
+    @Override
+    public void die(DamageSource pDamageSource) {
+        this.onDeathHelper();
+        super.die(pDamageSource);
+    }
+
+    @Override
+    public void onRemovedFromLevel() {
+        this.onRemovedHelper(this, DTEPotionEffectRegistry.FORSAKEN_TIMER);
+        super.onRemovedFromLevel();
+    }
+
+    @Override
+    public void onUnSummon() {
+        if (!this.level().isClientSide)
+        {
+            MagicManager.spawnParticles(this.level(), ParticleTypes.ENCHANT,
+                    getX(), getY(), getZ(),
+                    25, 0.4, 0.8, 0.4, 0.03, false);
+            discard();
+        }
+    }
+
+    @Override
+    public boolean doHurtTarget(Entity entity) {
+        return Utils.doMeleeAttack(this, entity, SpellRegistries.CONJURE_FORSAKE_AID.get().getDamageSource(this, getSummoner()));
+    }
+
+    public boolean hurt(DamageSource pSource, float pAmount) {
+        return this.shouldIgnoreDamage(pSource) ? false : super.hurt(pSource, pAmount);
+    }
+
+    // Geckolib & Animations
+    RawAnimation animationToPlay = null;
+    private final AnimationController<SightlessMawEntity> animationController = new AnimationController<>(this, "controller", 0, this::predicate);
+    private final AnimationController<SightlessMawEntity> attackAnimationController = new AnimationController<>(this, "attack_controller", 0, this::attackPredicate);
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(animationController);
+        controllers.add(attackAnimationController);
+    }
+
+    private PlayState predicate(AnimationState<SightlessMawEntity> event)
+    {
+        if (event.isMoving() && this.animationToPlay == null)
+        {
+            event.getController().setAnimation(RawAnimation.begin().then("walking", Animation.LoopType.LOOP));
+            return PlayState.CONTINUE;
+        }
+        else if (!event.isMoving() && this.animationToPlay == null)
+        {
+            event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
+            return PlayState.CONTINUE;
+        }
+
+        return PlayState.STOP;
+    }
+
+    private PlayState attackPredicate(AnimationState<SightlessMawEntity> event)
+    {
+        var controller = event.getController();
+
+        if (this.animationToPlay != null)
+        {
+            // This should do the custom attack animations
+            controller.forceAnimationReset();
+            controller.setAnimation(animationToPlay);
+            animationToPlay = null;
+        }
+
+        return PlayState.CONTINUE;
+    }
+
+    @Override
+    public void playAnimation(String animationId) {
+        try {
+            animationToPlay = RawAnimation.begin().thenPlay(animationId);
+        } catch (Exception ignored) {
+            IronsSpellbooks.LOGGER.error("Entity {} Failed to play animation: {}", this, animationId);
+        }
+    }
+
+    @Override
+    public boolean isAnimating() {
+        return animationController.getAnimationState() != AnimationController.State.STOPPED || super.isAnimating();
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.cache;
+    }
+
+    @Override
+    public double getTick(Object object) {
+        return this.tickCount;
+    }
+
+    // NBT
+    @Override
+    public void readAdditionalSaveData(CompoundTag pCompound) {
+        super.readAdditionalSaveData(pCompound);
+        this.summonerUUID = OwnerHelper.deserializeOwner(pCompound);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag pCompound) {
+        super.addAdditionalSaveData(pCompound);
+        OwnerHelper.serializeOwner(pCompound, summonerUUID);
+    }
+}
