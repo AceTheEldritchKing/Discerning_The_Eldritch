@@ -16,9 +16,8 @@ public class BlackBookSpellbook extends UniqueSpellBook {
                         new SpellDataRegistryHolder(SpellRegistries.CONJURE_FORSAKE_AID, 3),
                         new SpellDataRegistryHolder(SpellRegistry.SONIC_BOOM_SPELL, 3),
                         new SpellDataRegistryHolder(SpellRegistry.COUNTERSPELL_SPELL, 1),
-                        new SpellDataRegistryHolder(SpellRegistry.ABYSSAL_SHROUD_SPELL, 2),
-                        new SpellDataRegistryHolder(SpellRegistries.ESOTERIC_EDGE, 4)
-                ), 4
+                        new SpellDataRegistryHolder(SpellRegistry.ABYSSAL_SHROUD_SPELL, 2)
+                ), 5
         );
         withSpellbookAttributes(
                 new AttributeContainer(AttributeRegistry.MAX_MANA, 200, AttributeModifier.Operation.ADD_VALUE),

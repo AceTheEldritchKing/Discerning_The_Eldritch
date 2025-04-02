@@ -96,7 +96,8 @@ public class SightlessMawEntity extends AbstractSpellCastingMob implements IMagi
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new GenericAnimatedWarlockAttackGoal<>(this, 1.5F, 5, 10)
                 .setMoveset(List.of(
-                        new AttackAnimationData(18, "walk_bite", 15)
+                        new AttackAnimationData(13, "walk_bite", 6),
+                        new AttackAnimationData(20, "leap_bite", 16)
                 ))
                 .setComboChance(3.5f)
                 .setMeleeAttackInverval(5, 10)
