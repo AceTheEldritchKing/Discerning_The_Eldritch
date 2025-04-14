@@ -2,10 +2,7 @@
     "parent": "minecraft:item/handheld",
     "loader": "neoforge:separate_transforms",
     "base": {
-        "parent": "irons_spellbooks:item/template_large_sword",
-        "textures": {
-            "layer0": "discerning_the_eldritch:item/ymir"
-        }
+        "parent": "discerning_the_eldritch:item/ymir_item_model"
     },
     "perspectives": {
         "gui": {

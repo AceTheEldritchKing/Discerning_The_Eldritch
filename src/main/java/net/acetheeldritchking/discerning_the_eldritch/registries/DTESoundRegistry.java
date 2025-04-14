@@ -11,6 +11,9 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class DTESoundRegistry {
     private static final DeferredRegister<SoundEvent> SOUND_EVENT = DeferredRegister.create(Registries.SOUND_EVENT, DiscerningTheEldritch.MOD_ID);
 
+    /***
+     * Spell Sounds
+     */
     // Silence Spell Cast
     public static DeferredHolder<SoundEvent, SoundEvent> SILENCE_SPELL_CAST = registerSoundEvent("silence_cast");
 
@@ -20,6 +23,12 @@ public class DTESoundRegistry {
     // Esoteric Edge
     public static DeferredHolder<SoundEvent, SoundEvent> ESOTERIC_EDGE_SLASH = registerSoundEvent("esoteric_edge_slash");
 
+    // Mend Flesh
+    public static DeferredHolder<SoundEvent, SoundEvent> MEND_FLESH_SOUND = registerSoundEvent("mend_flesh");
+
+    /***
+     * Entity Sounds
+     */
     // Gaoler Hurt
     public static DeferredHolder<SoundEvent, SoundEvent> GAOLER_HURT = registerSoundEvent("entity.gaoler.hurt");
 
@@ -35,6 +44,9 @@ public class DTESoundRegistry {
     // Gaoler Attack
     public static DeferredHolder<SoundEvent, SoundEvent> GAOLER_ATTACK_IMPACT = registerSoundEvent("entity.gaoler.attack_impact");
 
+    /***
+     * Music Sounds
+     */
     // Test Boss Music
     public static DeferredHolder<SoundEvent, SoundEvent> TEST_BOSS_MUSIC = registerSoundEvent("test_boss_music");
 

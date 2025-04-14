@@ -18,7 +18,7 @@ public class YmirSwordItem extends MagicSwordItem implements UniqueItem {
     public YmirSwordItem() {
         super(
                 DTEWeaponTiers.YMIR,
-                ItemPropertiesHelper.equipment().fireResistant().rarity(Rarity.EPIC).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.YMIR)
+                ItemPropertiesHelper.equipment(1).fireResistant().rarity(Rarity.EPIC).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.YMIR)
                 ),
                 SpellDataRegistryHolder.of(
                         new SpellDataRegistryHolder(SpellRegistries.ESOTERIC_EDGE, 6),

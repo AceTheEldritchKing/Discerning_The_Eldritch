@@ -97,12 +97,12 @@ public class ItemRegistries {
 
     // Deep Greatsword
     public static final DeferredHolder<Item, Item> DEEP_GREATSWORD = ITEMS.register("deep_greatsword", () ->
-            new MagicSwordItem(DTEWeaponTiers.DEEP_GREATSWORD, ItemPropertiesHelper.equipment().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.DEEP_GREATSWORD)),
+            new MagicSwordItem(DTEWeaponTiers.DEEP_GREATSWORD, ItemPropertiesHelper.equipment(1).rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.DEEP_GREATSWORD)),
                     SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.PLANAR_SIGHT_SPELL, 4))));
 
     // God Spear
     public static final DeferredHolder<Item, Item> GOD_SPEAR = ITEMS.register("god_spear", () ->
-            new MagicSwordItem(DTEWeaponTiers.GOD_SPEAR, ItemPropertiesHelper.equipment().rarity(Rarity.UNCOMMON).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.GOD_SPEAR)),
+            new MagicSwordItem(DTEWeaponTiers.GOD_SPEAR, ItemPropertiesHelper.equipment(1).rarity(Rarity.UNCOMMON).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.GOD_SPEAR)),
                     SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.DIVINE_SMITE_SPELL, 6))));
 
     // Ymir
@@ -113,12 +113,12 @@ public class ItemRegistries {
 
     // Ritual Dagger
     public static final DeferredHolder<Item, Item> RITUAL_DAGGER = ITEMS.register("ritual_dagger", () ->
-            new MagicSwordItem(DTEWeaponTiers.RITUAL_DAGGER, ItemPropertiesHelper.equipment().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.RITUAL_DAGGER)),
+            new MagicSwordItem(DTEWeaponTiers.RITUAL_DAGGER, ItemPropertiesHelper.equipment(1).rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.RITUAL_DAGGER)),
                     SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.SACRIFICE_SPELL, 1))));
 
     // Forlorn Rapier
     public static final DeferredHolder<Item, Item> FORLORN_RAPIER = ITEMS.register("forlorn_rapier", () ->
-            new MagicSwordItem(DTEWeaponTiers.FORLORN_RAPIER, ItemPropertiesHelper.equipment().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.FORLORN_RAPIER)),
+            new MagicSwordItem(DTEWeaponTiers.FORLORN_RAPIER, ItemPropertiesHelper.equipment(1).rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.FORLORN_RAPIER)),
                     SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistry.COUNTERSPELL_SPELL, 1))));
 
     // Lemon Spear

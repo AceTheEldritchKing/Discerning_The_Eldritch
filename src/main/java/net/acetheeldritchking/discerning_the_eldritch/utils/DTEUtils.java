@@ -2,6 +2,10 @@ package net.acetheeldritchking.discerning_the_eldritch.utils;
 
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.CastType;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -36,6 +40,28 @@ public class DTEUtils {
         else
         {
             return false;
+        }
+    }
+
+    // Circle of particles
+    public static void spawnParticlesInCircle(int count, float radius, float yHeight, float particleSpeed, LivingEntity entity, ParticleOptions particleTypes)
+    {
+        for (int i = 0; i < count; ++i)
+        {
+            double theta = Math.toRadians(360/count) * i;
+            double x = Math.cos(theta) * radius;
+            double z = Math.sin(theta) * radius;
+
+            MagicManager.spawnParticles(entity.level(), particleTypes,
+                    entity.position().x + x,
+                    entity.position().y + yHeight,
+                    entity.position().z + z,
+                    1,
+                    0,
+                    0,
+                    0,
+                    particleSpeed,
+                    false);
         }
     }
 }

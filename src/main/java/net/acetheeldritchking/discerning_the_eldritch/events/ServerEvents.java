@@ -1,38 +1,39 @@
 package net.acetheeldritchking.discerning_the_eldritch.events;
 
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
-import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
-import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
+import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
+import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
+import io.redspace.ironsspellbooks.api.spells.SchoolType;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTEUtils;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.Holder;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import top.theillusivec4.curios.api.CuriosApi;
+import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 
 import java.util.logging.Level;
 
+import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.INSANITY_METER;
 import static net.acetheeldritchking.discerning_the_eldritch.utils.DTEUtils.hasCurio;
 
 @EventBusSubscriber
@@ -41,6 +42,9 @@ public class ServerEvents {
     public static void onPlayerCastEvent(SpellPreCastEvent event)
     {
         var entity = event.getEntity();
+        var spell = SpellRegistry.getSpell(event.getSpellId());
+
+        // Silence
         boolean hasSilenceEffect = entity.hasEffect(DTEPotionEffectRegistry.SILENCE_POTION_EFFECT);
         if (entity instanceof ServerPlayer player && !player.level().isClientSide())
         {
@@ -62,6 +66,30 @@ public class ServerEvents {
                 }
             }
         }
+
+        // Insanity system
+        // WIP, doesn't work
+        /*
+        if (DTEConfig.enableInsanitySystem)
+        {
+            System.out.println("System enabled?");
+
+            if (spell.getSchoolType() == SchoolRegistry.ELDRITCH.get())
+            {
+                if (entity.getData(INSANITY_METER) <= DTEConfig.maxInsanityValue)
+                {
+                    System.out.println("Increment?");
+                    entity.setData(INSANITY_METER, entity.getData(INSANITY_METER) + 1);
+
+                    if (entity.getData(INSANITY_METER) >= DTEConfig.maxInsanityValue)
+                    {
+                        System.out.println("Do effect?");
+                        entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS));
+                    }
+                }
+            }
+        }
+        */
     }
 
     public static String convertTicksToTime(int ticks) {
@@ -110,6 +138,19 @@ public class ServerEvents {
                     livingTarget.setTicksFrozen(20*20);
                 }
             }
+
+            // Mend Flesh
+            if (livingEntity.hasEffect(DTEPotionEffectRegistry.MEND_FLESH_EFFECT) && DTEConfig.mendFleshLifesteal)
+            {
+                livingEntity.heal(1.5F);
+
+                int count = 8;
+                float radius = 0.25F;
+
+                DTEUtils.spawnParticlesInCircle(count, radius, 0.5F, 0.1F, livingEntity, ParticleTypes.SCULK_SOUL);
+
+                livingEntity.level().playSound(livingEntity, BlockPos.containing(livingEntity.position()), SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.PLAYERS, 1.0F, 1.0F);
+            }
         }
     }
 
@@ -148,6 +189,27 @@ public class ServerEvents {
             {
                 event.setCanceled(true);
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onExperienceGainedEvent(PlayerXpEvent.XpChange event)
+    {
+        LivingEntity attacker = event.getEntity();
+
+        // Mend Flesh
+        if (attacker.hasEffect(DTEPotionEffectRegistry.MEND_FLESH_EFFECT) && DTEConfig.mendFleshEXPGain)
+        {
+            float experienceGained = (float) event.getAmount() / 2;
+
+            attacker.heal(experienceGained);
+
+            int count = 8;
+            float radius = 0.25F;
+
+            DTEUtils.spawnParticlesInCircle(count, radius, 0.5F, 0.1F, attacker, ParticleTypes.SCULK_SOUL);
+
+            attacker.level().playSound(attacker, BlockPos.containing(attacker.position()), SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.PLAYERS, 1.0F, 1.0F);
         }
     }
 }

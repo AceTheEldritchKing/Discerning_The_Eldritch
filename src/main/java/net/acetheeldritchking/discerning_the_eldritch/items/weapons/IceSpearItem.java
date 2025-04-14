@@ -17,7 +17,7 @@ public class IceSpearItem extends MagicSwordItem {
     public IceSpearItem() {
         super(
             DTEWeaponTiers.ICE_SPEAR,
-            ItemPropertiesHelper.equipment().fireResistant().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.ICE_SPEAR)),
+            ItemPropertiesHelper.equipment(1).fireResistant().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.ICE_SPEAR)),
                 SpellDataRegistryHolder.of(
                         new SpellDataRegistryHolder(SpellRegistry.FROST_STEP_SPELL, 9)
                 )

@@ -24,7 +24,7 @@ public class StaffOfVehemenceStaffItem extends ImbuableStaffItem implements GeoI
 
     public StaffOfVehemenceStaffItem() {
         super(
-                ItemPropertiesHelper.equipment().fireResistant().rarity(Rarity.EPIC).attributes(ExtendedSwordItem.createAttributes(DTEStaffTier.STAFF_OF_VEHEMENCE)),
+                ItemPropertiesHelper.equipment(1).fireResistant().rarity(Rarity.EPIC).attributes(ExtendedSwordItem.createAttributes(DTEStaffTier.STAFF_OF_VEHEMENCE)),
                 SpellDataRegistryHolder.of(
                         new SpellDataRegistryHolder(SpellRegistries.ESOTERIC_EDGE, 6),
                         new SpellDataRegistryHolder(SpellRegistries.SILENCE, 6))

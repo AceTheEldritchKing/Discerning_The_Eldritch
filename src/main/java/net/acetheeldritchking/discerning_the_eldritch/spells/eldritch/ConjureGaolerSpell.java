@@ -126,7 +126,8 @@ public class ConjureGaolerSpell extends AbstractSpell {
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-        int summonTimer = (int) (20 * (20 * getSpellPower(spellLevel, entity)));
+        // This is the strongest summon possible, hard limit to one minute
+        int summonTimer = (20 * 60);
 
         BlockPos pos = new BlockPos((int) entity.getX(), (int) entity.getY(), (int) entity.getZ());
 

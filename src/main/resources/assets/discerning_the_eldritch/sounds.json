@@ -67,5 +67,10 @@
         "sounds": [
             "discerning_the_eldritch:test_boss_music"
         ]
+    },
+    "mend_flesh": {
+        "sounds": [
+            "discerning_the_eldritch:mend_flesh"
+        ]
     }
 }

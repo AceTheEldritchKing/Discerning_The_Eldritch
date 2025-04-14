@@ -52,6 +52,7 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> OTHERWORLDLY_PRESENCE = registerSpell(new OtherworldlyPresenceSpell());
 
     // Mend Flesh - Healing spell; heals you for a small amount, but grants an effect that'll heal you for X amount every time you attack or gain XP
+    public static final Supplier<AbstractSpell> MEND_FLESH = registerSpell(new MendFleshSpell());
 
     // Rift Walker - Teleport based spell, leaves an unstable rift at your original location and at your new location. Rift deals damage
 
