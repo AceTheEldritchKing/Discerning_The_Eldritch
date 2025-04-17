@@ -16,31 +16,34 @@
   "curios.identifier.artifact": "Artifact",
 
 
+  "item.discerning_the_eldritch.corrupted_cloth": "Corrupted Cloth",
+
   "item.discerning_the_eldritch.black_book_spellbook": "Black Book",
   "item.discerning_the_eldritch.the_apocrypha_spellbook": "The Apocrypha",
-  "item.discerning_the_eldritch.corrupted_cloth": "Corrupted Cloth",
-  "item.discerning_the_eldritch.echo_vibration_ring": "Echo Vibration Ring",
-  "item.discerning_the_eldritch.echo_vibration_ring.desc": "Provides bonus recasts for Boogie Woogie",
-  "item.discerning_the_eldritch.deep_greatsword": "Greatsword of the Depths",
   "item.discerning_the_eldritch.tempestuous_tome": "Tempestuous Tome",
   "item.discerning_the_eldritch.frozen_folio": "Frozen Folios",
   "item.discerning_the_eldritch.diary_of_decay": "Diary of Decay",
   "item.discerning_the_eldritch.guardian_guidebook": "Guardian's Guidebook",
+
+  "item.discerning_the_eldritch.echo_vibration_ring": "Echo Vibration Ring",
+  "item.discerning_the_eldritch.echo_vibration_ring.desc": "Provides bonus recasts for Boogie Woogie",
+  "item.discerning_the_eldritch.kings_effigy": "King's Effigy",
+  "item.discerning_the_eldritch.kings_effigy.desc": "Being torn apart over and over again, is this what you want?",
+  "item.discerning_the_eldritch.amulet_of_sculk_treasure": "Amulet of Hidden Treasure",
+  "item.discerning_the_eldritch.amulet_of_sculk_treasure.desc": "The gem reflects an ancient enemy before your eyes",
+  "item.discerning_the_eldritch.casters_mantle": "Caster's Mantle",
+  "item.discerning_the_eldritch.ironbound_feather": "Ironbound Feather",
+  "item.discerning_the_eldritch.ironbound_feather.desc": "A beautiful brooch that feels lighter than it seems",
+
+  "item.discerning_the_eldritch.deep_greatsword": "Greatsword of the Depths",
   "item.discerning_the_eldritch.ymir": "Ymir, Apothic Eldritch Blade",
   "item.discerning_the_eldritch.ymir_description": "A blade forged from Eldritch dreams",
   "item.discerning_the_eldritch.god_spear": "The God Spear",
   "item.discerning_the_eldritch.ice_spear": "The Ice Spear",
   "item.discerning_the_eldritch.ice_spear_description": "Frozen tears formed into cold vengeance",
-  "item.discerning_the_eldritch.kings_effigy": "King's Effigy",
-  "item.discerning_the_eldritch.kings_effigy.desc": "Being torn apart over and over again, is this what you want?",
-  "item.discerning_the_eldritch.amulet_of_sculk_treasure": "Amulet of Hidden Treasure",
-  "item.discerning_the_eldritch.amulet_of_sculk_treasure.desc": "The gem reflects an ancient enemy before your eyes",
-  "item.discerning_the_eldritch.apothic_acolyte_spawn_egg": "Apothic Acolyte Spawn Egg",
-  "item.discerning_the_eldritch.apothic_summoner_spawn_egg": "Apothic Summoner Spawn Egg",
-  "item.discerning_the_eldritch.apothic_crusader_spawn_egg": "Apothic Crusader Spawn Egg",
-  "item.discerning_the_eldritch.casters_mantle": "Caster's Mantle",
-  "item.discerning_the_eldritch.ironbound_feather": "Ironbound Feather",
-  "item.discerning_the_eldritch.ironbound_feather.desc": "A beautiful brooch that feels lighter than it seems",
+  "item.discerning_the_eldritch.ritual_dagger": "Ritual Dagger",
+  "item.discerning_the_eldritch.forlorn_rapier": "Forlorn Rapier",
+
   "item.discerning_the_eldritch.staff_of_eldritch": "Staff of Vehemence",
   "item.discerning_the_eldritch.staff_of_ascension": "Staff of Ascension",
 
@@ -56,6 +59,10 @@
   "item.discerning_the_eldritch.eldritch_upgrade_template": "Eldritch Upgrade Template",
   "item.discerning_the_eldritch.ritual_upgrade_orb": "Ritual Upgrade Orb",
   "item.discerning_the_eldritch.ritual_rune": "Ritual Rune",
+
+  "item.discerning_the_eldritch.apothic_acolyte_spawn_egg": "Apothic Acolyte Spawn Egg",
+  "item.discerning_the_eldritch.apothic_summoner_spawn_egg": "Apothic Summoner Spawn Egg",
+  "item.discerning_the_eldritch.apothic_crusader_spawn_egg": "Apothic Crusader Spawn Egg",
 
 
   "spell.discerning_the_eldritch.silence": "Silence",

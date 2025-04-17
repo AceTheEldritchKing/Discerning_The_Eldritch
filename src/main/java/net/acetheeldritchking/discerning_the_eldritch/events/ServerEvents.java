@@ -5,6 +5,7 @@ import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
@@ -54,7 +55,7 @@ public class ServerEvents {
                 // Effect Duration
                 int time = player.getEffect(DTEPotionEffectRegistry.SILENCE_POTION_EFFECT).getDuration();
                 // convert duration to time format  using the method convertTicksToTime
-                String formattedTime = convertTicksToTime(time);
+                String formattedTime = DTEUtils.convertTicksToTime(time);
 
                 if (player instanceof ServerPlayer serverPlayer)
                 {
@@ -74,34 +75,31 @@ public class ServerEvents {
         {
             System.out.println("System enabled?");
 
-            if (spell.getSchoolType() == SchoolRegistry.ELDRITCH.get())
+            if (!entity.hasData(INSANITY_METER))
             {
-                if (entity.getData(INSANITY_METER) <= DTEConfig.maxInsanityValue)
-                {
-                    System.out.println("Increment?");
-                    entity.setData(INSANITY_METER, entity.getData(INSANITY_METER) + 1);
+                System.out.println("Check if have meter?");
 
-                    if (entity.getData(INSANITY_METER) >= DTEConfig.maxInsanityValue)
+                entity.getData(INSANITY_METER);
+
+                if (spell.getSchoolType() == SchoolRegistry.ELDRITCH.get())
+                {
+                    System.out.println("Is Eldritch?");
+
+                    if (entity.getData(INSANITY_METER) <= DTEConfig.maxInsanityValue)
                     {
-                        System.out.println("Do effect?");
-                        entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS));
+                        System.out.println("Increment?");
+                        entity.setData(INSANITY_METER, entity.getData(INSANITY_METER) + 1);
+
+                        if (entity.getData(INSANITY_METER) >= DTEConfig.maxInsanityValue)
+                        {
+                            System.out.println("Do effect?");
+                            entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS));
+                        }
                     }
                 }
             }
         }
         */
-    }
-
-    public static String convertTicksToTime(int ticks) {
-        // Convert ticks to seconds
-        int totalSeconds = ticks / 20;
-
-        // Calculate minutes and seconds
-        int minutes = totalSeconds / 60;
-        int seconds = totalSeconds % 60;
-
-        // Format the result as mm:ss
-        return String.format("%02d:%02d" , minutes , seconds);
     }
 
     @SubscribeEvent
@@ -149,7 +147,10 @@ public class ServerEvents {
 
                 DTEUtils.spawnParticlesInCircle(count, radius, 0.5F, 0.1F, livingEntity, ParticleTypes.SCULK_SOUL);
 
-                livingEntity.level().playSound(livingEntity, BlockPos.containing(livingEntity.position()), SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.PLAYERS, 1.0F, 1.0F);
+                if (!livingEntity.level().isClientSide)
+                {
+                    livingEntity.level().playSound(livingEntity, livingEntity.blockPosition(), SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.PLAYERS, 1.0F, 1.0F);
+                }
             }
         }
     }
@@ -209,7 +210,10 @@ public class ServerEvents {
 
             DTEUtils.spawnParticlesInCircle(count, radius, 0.5F, 0.1F, attacker, ParticleTypes.SCULK_SOUL);
 
-            attacker.level().playSound(attacker, BlockPos.containing(attacker.position()), SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.PLAYERS, 1.0F, 1.0F);
+            if (!attacker.level().isClientSide)
+            {
+                attacker.level().playSound(attacker, attacker.blockPosition(), SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.PLAYERS, 1.0F, 1.0F);
+            }
         }
     }
 }

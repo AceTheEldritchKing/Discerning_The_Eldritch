@@ -4,7 +4,6 @@ import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -63,5 +62,18 @@ public class DTEUtils {
                     particleSpeed,
                     false);
         }
+    }
+
+    // Formated Ticks to Time
+    public static String convertTicksToTime(int ticks) {
+        // Convert ticks to seconds
+        int totalSeconds = ticks / 20;
+
+        // Calculate minutes and seconds
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+
+        // Format the result as mm:ss
+        return String.format("%02d:%02d" , minutes , seconds);
     }
 }
