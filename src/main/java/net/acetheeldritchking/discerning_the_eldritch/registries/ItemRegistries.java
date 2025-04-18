@@ -141,6 +141,15 @@ public class ItemRegistries {
     // Ritual Rune
     public static final DeferredHolder<Item, Item> RITUAL_RUNE = ITEMS.register("ritual_rune", () -> new Item(ItemPropertiesHelper.material()));
 
+    // Apothic Key
+    public static final DeferredHolder<Item, Item> APOTHIC_KEY = ITEMS.register("apothic_key", () -> new Item(ItemPropertiesHelper.material()));
+
+    // Ascended Key
+    public static final DeferredHolder<Item, Item> ASCENDED_KEY = ITEMS.register("ascended_key", () -> new Item(ItemPropertiesHelper.material()));
+
+    // Ritual Key
+    public static final DeferredHolder<Item, Item> RITUAL_KEY = ITEMS.register("ritual_key", () -> new Item(ItemPropertiesHelper.material()));
+
     /***
      * Upgrade Orbs
      */

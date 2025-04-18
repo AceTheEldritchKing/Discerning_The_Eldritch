@@ -31,6 +31,10 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.CASTERS_MANTLE.get());
                         output.accept(ItemRegistries.IRONBOUND_FEATHER.get());
                         //output.accept(ItemRegistries.KINGS_EFFIGY.get());
+                        // Treasure
+                        output.accept(ItemRegistries.APOTHIC_KEY.get());
+                        output.accept(ItemRegistries.ASCENDED_KEY.get());
+                        output.accept(ItemRegistries.RITUAL_KEY.get());
                         // Spellbooks
                         output.accept(ItemRegistries.BLACK_BOOK_SPELLBOOK.get());
                         output.accept(ItemRegistries.THE_APOCRYPHA_SPELLBOOK.get());
