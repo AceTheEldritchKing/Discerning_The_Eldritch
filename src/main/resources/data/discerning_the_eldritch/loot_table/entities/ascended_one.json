@@ -62,7 +62,7 @@
           "value": "irons_spellbooks:magic_items/reward_ink"
         }
       ],
-      "rolls": 3
+      "rolls": 4
     },
     {
       "bonus_rolls": 0.0,
@@ -127,6 +127,15 @@
         {
           "type": "minecraft:item",
           "name": "discerning_the_eldritch:staff_of_ascension"
+        }
+      ],
+      "rolls": 1
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "discerning_the_eldritch:ascended_key"
         }
       ],
       "rolls": 1

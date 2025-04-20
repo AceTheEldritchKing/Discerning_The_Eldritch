@@ -69,7 +69,7 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy {
         this.setDropChance(EquipmentSlot.CHEST, 0.0F);
         this.setDropChance(EquipmentSlot.LEGS, 0.0F);
         this.setDropChance(EquipmentSlot.FEET, 0.0F);
-        this.setDropChance(EquipmentSlot.MAINHAND, 0.0F);
+        this.setDropChance(EquipmentSlot.MAINHAND, 0.1F);
     }
 
     @Override

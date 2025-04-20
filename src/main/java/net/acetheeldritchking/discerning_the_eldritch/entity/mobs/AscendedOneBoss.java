@@ -19,6 +19,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
+import net.minecraft.network.protocol.game.ClientboundSetTitleTextPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -284,6 +285,20 @@ public class AscendedOneBoss extends GenericBossEntity {
         {
             if (this.getHealth() <= halfHealth)
             {
+                int radius = 15;
+
+                List<LivingEntity> entitiesNearby = level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(radius));
+
+                // Used for displaying the taunt message to all players nearby who are fighting the boss
+                for (LivingEntity targets : entitiesNearby)
+                {
+                    if (targets instanceof ServerPlayer player)
+                    {
+                        player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("discerning_the_eldritch:ascended_one_taunt_2")
+                                .withStyle(s -> s.withColor(TextColor.fromRgb(0xC71B8B)))));
+                    }
+                }
+
                 setPhase(Phase.SecondPhase);
                 setHealth(halfHealth);
 
@@ -293,9 +308,10 @@ public class AscendedOneBoss extends GenericBossEntity {
             }
         }
 
-        // Used for displaying the taunt message to all players nearby who are fighting the boss
+
         if (isPhase(Phase.SecondPhase))
         {
+            /*
             int radius = 15;
 
             List<LivingEntity> entitiesNearby = level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(radius));
@@ -304,10 +320,12 @@ public class AscendedOneBoss extends GenericBossEntity {
             {
                 if (targets instanceof ServerPlayer player)
                 {
+                    //                         ClientboundSetTitleTextPacket
                     player.connection.send(new ClientboundSetActionBarTextPacket(Component.translatable("discerning_the_eldritch:ascended_one_taunt")
                             .withStyle(s -> s.withColor(TextColor.fromRgb(0xC71B8B)))));
                 }
             }
+            */
 
             // This "refills" the boss' health bar even though it is at half health
             this.bossEvent.setProgress(health / (MAX_HEALTH - halfHealth));
