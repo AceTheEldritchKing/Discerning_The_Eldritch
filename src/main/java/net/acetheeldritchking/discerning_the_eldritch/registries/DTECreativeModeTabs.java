@@ -47,6 +47,9 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.GOD_SPEAR.get());
                         output.accept(ItemRegistries.YMIR.get());
                         output.accept(ItemRegistries.ICE_SPEAR.get());
+                        output.accept(ItemRegistries.RITUAL_DAGGER.get());
+                        output.accept(ItemRegistries.FORLORN_RAPIER.get());
+                        // Staves
                         output.accept(ItemRegistries.STAFF_OF_VEHEMENCE.get());
                         output.accept(ItemRegistries.STAFF_OF_ASCENSION.get());
                         // Armor
