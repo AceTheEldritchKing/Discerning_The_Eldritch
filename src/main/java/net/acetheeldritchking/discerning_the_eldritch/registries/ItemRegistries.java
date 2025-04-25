@@ -215,7 +215,7 @@ public class ItemRegistries {
 
 
     /***
-     * Armor
+     * Spawn Eggs
      */
     // Apothic Acolyte
     public static final DeferredItem<Item> ACOLYTE_SPAWN_EGG = ITEMS.register("apothic_acolyte_spawn_egg",
@@ -233,6 +233,9 @@ public class ItemRegistries {
                     new Item.Properties()));
 
 
+    /***
+     * Gecko Armor
+     */
     // GECKOLIB ARMOR VERSIONS FOR NPCS/NON-PLAYER ENTITIES - THESE ARE NOT OBTAINABLE)
 
     // Eldritch Set

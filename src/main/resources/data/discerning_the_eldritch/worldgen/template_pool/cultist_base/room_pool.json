@@ -1,0 +1,166 @@
+{
+  "name": "discerning_the_eldritch:room_pool",
+  "fallback": "discerning_the_eldritch:cultist_fallback_pool",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "discerning_the_eldritch:room/cultist_small_armory",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "irons_spellbooks:individual_terrain_element",
+        "terrain_adjustment": "bury"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "discerning_the_eldritch:room/cultist_small_occult_room",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "irons_spellbooks:individual_terrain_element",
+        "terrain_adjustment": "bury"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "discerning_the_eldritch:room/cultist_small_portal_room",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "irons_spellbooks:individual_terrain_element",
+        "terrain_adjustment": "bury"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "discerning_the_eldritch:room/cultist_small_spawner_room",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "irons_spellbooks:individual_terrain_element",
+        "terrain_adjustment": "bury"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "discerning_the_eldritch:room/cultist_small_treasure_room",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "irons_spellbooks:individual_terrain_element",
+        "terrain_adjustment": "bury"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "discerning_the_eldritch:unique_room/cultist_unique_room_big_armory",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "irons_spellbooks:individual_terrain_element",
+        "terrain_adjustment": "bury"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "discerning_the_eldritch:unique_room/cultist_unique_room_catacomb",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "irons_spellbooks:individual_terrain_element",
+        "terrain_adjustment": "bury"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "discerning_the_eldritch:unique_room/cultist_unique_room_cathedral",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "irons_spellbooks:individual_terrain_element",
+        "terrain_adjustment": "bury"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "discerning_the_eldritch:unique_room/cultist_unique_room_garden",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "irons_spellbooks:individual_terrain_element",
+        "terrain_adjustment": "bury"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "discerning_the_eldritch:unique_room/cultist_unique_room_gathering",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "irons_spellbooks:individual_terrain_element",
+        "terrain_adjustment": "bury"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "discerning_the_eldritch:unique_room/cultist_unique_room_kitchen",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "irons_spellbooks:individual_terrain_element",
+        "terrain_adjustment": "bury"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "discerning_the_eldritch:unique_room/cultist_unique_room_lab",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "irons_spellbooks:individual_terrain_element",
+        "terrain_adjustment": "bury"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "discerning_the_eldritch:unique_room/cultist_unique_room_library",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "irons_spellbooks:individual_terrain_element",
+        "terrain_adjustment": "bury"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "discerning_the_eldritch:unique_room/cultist_unique_room_living_quarters",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "irons_spellbooks:individual_terrain_element",
+        "terrain_adjustment": "bury"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "discerning_the_eldritch:unique_room/cultist_unique_room_prayer_room",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "irons_spellbooks:individual_terrain_element",
+        "terrain_adjustment": "bury"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "discerning_the_eldritch:unique_room/cultist_unique_room_prison",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "irons_spellbooks:individual_terrain_element",
+        "terrain_adjustment": "bury"
+      }
+    }
+  ]
+}

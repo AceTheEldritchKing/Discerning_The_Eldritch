@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "discerning_the_eldritch:cultist_base",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 76,
+    "separation": 55,
+    "salt": 6129040833
+  }
+}
