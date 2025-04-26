@@ -1,55 +1,50 @@
 {
-  "name": "discerning_the_eldritch:fallback_pool",
+  "name": "discerning_the_eldritch:cultist_base/rallback_pool",
   "fallback": "minecraft:empty",
   "elements": [
     {
       "weight": 1,
       "element": {
-        "location": "discerning_the_eldritch:cultist_base/room/cultist_small_armory_room",
+        "element_type": "minecraft:single_pool_element",
+        "location": "discerning_the_eldritch:cultist_base/room/small/armory",
         "processors": "minecraft:empty",
-        "projection": "rigid",
-        "element_type": "irons_spellbooks:individual_terrain_element",
-        "terrain_adjustment": "bury"
+        "projection": "rigid"
       }
     },
     {
       "weight": 1,
       "element": {
-        "location": "discerning_the_eldritch:cultist_base/room/cultist_small_occult_room",
+        "element_type": "minecraft:single_pool_element",
+        "location": "discerning_the_eldritch:cultist_base/room/small/occult",
         "processors": "minecraft:empty",
-        "projection": "rigid",
-        "element_type": "irons_spellbooks:individual_terrain_element",
-        "terrain_adjustment": "bury"
+        "projection": "rigid"
       }
     },
     {
       "weight": 1,
       "element": {
-        "location": "discerning_the_eldritch:cultist_base/room/cultist_small_portal_room",
+        "element_type": "minecraft:single_pool_element",
+        "location": "discerning_the_eldritch:cultist_base/room/small/portal",
         "processors": "minecraft:empty",
-        "projection": "rigid",
-        "element_type": "irons_spellbooks:individual_terrain_element",
-        "terrain_adjustment": "bury"
+        "projection": "rigid"
       }
     },
     {
       "weight": 1,
       "element": {
-        "location": "discerning_the_eldritch:cultist_base/room/cultist_small_spawner_room",
+        "element_type": "minecraft:single_pool_element",
+        "location": "discerning_the_eldritch:cultist_base/room/small/spawner",
         "processors": "minecraft:empty",
-        "projection": "rigid",
-        "element_type": "irons_spellbooks:individual_terrain_element",
-        "terrain_adjustment": "bury"
+        "projection": "rigid"
       }
     },
     {
       "weight": 1,
       "element": {
-        "location": "discerning_the_eldritch:cultist_base/room/cultist_small_treasure_room",
+        "element_type": "minecraft:single_pool_element",
+        "location": "discerning_the_eldritch:cultist_base/room/small/treasure",
         "processors": "minecraft:empty",
-        "projection": "rigid",
-        "element_type": "irons_spellbooks:individual_terrain_element",
-        "terrain_adjustment": "bury"
+        "projection": "rigid"
       }
     }
   ]
