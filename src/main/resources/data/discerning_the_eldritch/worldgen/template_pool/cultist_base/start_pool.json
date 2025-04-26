@@ -5,7 +5,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "discerning_the_eldritch:boss_room/ascended_boss_room",
+        "location": "discerning_the_eldritch:cultist_base/boss_room/ascended_boss_room",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",

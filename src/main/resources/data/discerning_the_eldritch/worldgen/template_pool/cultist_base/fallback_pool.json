@@ -1,11 +1,11 @@
 {
-  "name": "discerning_the_eldritch:cultist_fallback_pool",
+  "name": "discerning_the_eldritch:fallback_pool",
   "fallback": "minecraft:empty",
   "elements": [
     {
       "weight": 1,
       "element": {
-        "location": "discerning_the_eldritch:room/cultist_small_armory",
+        "location": "discerning_the_eldritch:cultist_base/room/cultist_small_armory_room",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -15,7 +15,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "discerning_the_eldritch:room/cultist_small_occult_room",
+        "location": "discerning_the_eldritch:cultist_base/room/cultist_small_occult_room",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -25,7 +25,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "discerning_the_eldritch:room/cultist_small_portal_room",
+        "location": "discerning_the_eldritch:cultist_base/room/cultist_small_portal_room",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -35,7 +35,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "discerning_the_eldritch:room/cultist_small_spawner_room",
+        "location": "discerning_the_eldritch:cultist_base/room/cultist_small_spawner_room",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -45,7 +45,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "discerning_the_eldritch:room/cultist_small_treasure_room",
+        "location": "discerning_the_eldritch:cultist_base/room/cultist_small_treasure_room",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",

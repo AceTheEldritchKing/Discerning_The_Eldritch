@@ -1,11 +1,11 @@
 {
-  "name": "discerning_the_eldritch:room_pool",
-  "fallback": "discerning_the_eldritch:cultist_fallback_pool",
+  "name": "discerning_the_eldritch:room_or_hallway_pool",
+  "fallback": "discerning_the_eldritch:cultist_base/fallback_pool",
   "elements": [
     {
       "weight": 1,
       "element": {
-        "location": "discerning_the_eldritch:room/cultist_small_armory",
+        "location": "discerning_the_eldritch:cultist_base/room/cultist_small_armory_room",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -15,7 +15,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "discerning_the_eldritch:room/cultist_small_occult_room",
+        "location": "discerning_the_eldritch:cultist_base/room/cultist_small_occult_room",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -25,7 +25,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "discerning_the_eldritch:room/cultist_small_portal_room",
+        "location": "discerning_the_eldritch:cultist_base/room/cultist_small_portal_room",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -35,7 +35,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "discerning_the_eldritch:room/cultist_small_spawner_room",
+        "location": "discerning_the_eldritch:cultist_base/room/cultist_small_spawner_room",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -45,7 +45,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "discerning_the_eldritch:room/cultist_small_treasure_room",
+        "location": "discerning_the_eldritch:cultist_base/room/cultist_small_treasure_room",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -55,7 +55,7 @@
     {
       "weight": 3,
       "element": {
-        "location": "discerning_the_eldritch:hallway/cultist_corner_north_1",
+        "location": "discerning_the_eldritch:cultist_base/hallway/cultist_corner_north_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -65,7 +65,7 @@
     {
       "weight": 3,
       "element": {
-        "location": "discerning_the_eldritch:hallway/cultist_corner_north_2",
+        "location": "discerning_the_eldritch:cultist_base/hallway/cultist_corner_north_2",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -75,7 +75,7 @@
     {
       "weight": 3,
       "element": {
-        "location": "discerning_the_eldritch:hallway/cultist_corner_south_1",
+        "location": "discerning_the_eldritch:cultist_base/hallway/cultist_corner_south_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -85,7 +85,7 @@
     {
       "weight": 3,
       "element": {
-        "location": "discerning_the_eldritch:hallway/cultist_corner_south_2",
+        "location": "discerning_the_eldritch:cultist_base/hallway/cultist_corner_south_2",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -95,7 +95,7 @@
     {
       "weight": 3,
       "element": {
-        "location": "discerning_the_eldritch:hallway/cultist_hallway_1",
+        "location": "discerning_the_eldritch:cultist_base/hallway/cultist_hallway_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -105,7 +105,7 @@
     {
       "weight": 3,
       "element": {
-        "location": "discerning_the_eldritch:hallway/cultist_hallway_2",
+        "location": "discerning_the_eldritch:cultist_base/hallway/cultist_hallway_2",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -115,7 +115,7 @@
     {
       "weight": 3,
       "element": {
-        "location": "discerning_the_eldritch:hallway/cultist_hallway_3",
+        "location": "discerning_the_eldritch:cultist_base/hallway/cultist_hallway_3",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -125,7 +125,7 @@
     {
       "weight": 3,
       "element": {
-        "location": "discerning_the_eldritch:hallway/cultist_hallway_4",
+        "location": "discerning_the_eldritch:cultist_base/hallway/cultist_hallway_4",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -135,7 +135,7 @@
     {
       "weight": 4,
       "element": {
-        "location": "discerning_the_eldritch:connector/cultist_four_way_1",
+        "location": "discerning_the_eldritch:cultist_base/connector/cultist_four_way_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -145,7 +145,7 @@
     {
       "weight": 4,
       "element": {
-        "location": "discerning_the_eldritch:connector/cultist_four_way_2",
+        "location": "discerning_the_eldritch:cultist_base/connector/cultist_four_way_2",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -155,7 +155,7 @@
     {
       "weight": 4,
       "element": {
-        "location": "discerning_the_eldritch:connector/cultist_junction_corridor_1",
+        "location": "discerning_the_eldritch:cultist_base/connector/cultist_junction_corridor_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
@@ -165,7 +165,7 @@
     {
       "weight": 4,
       "element": {
-        "location": "discerning_the_eldritch:connector/cultist_junction_corridor_2",
+        "location": "discerning_the_eldritch:cultist_base/connector/cultist_junction_corridor_2",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "irons_spellbooks:individual_terrain_element",
