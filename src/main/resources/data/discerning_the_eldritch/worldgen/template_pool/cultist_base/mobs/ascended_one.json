@@ -1,12 +1,12 @@
 {
-  "name": "discerning_the_eldritch:cultist_base/start_pool",
+  "name": "discerning_the_eldritch:cultist_base/mobs/ascended_one",
   "fallback": "minecraft:empty",
   "elements": [
     {
       "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "discerning_the_eldritch:cultist_base/room/unique/ascended_boss",
+        "location": "discerning_the_eldritch:cultist_base/mobs/ascended_one",
         "processors": "minecraft:empty",
         "projection": "rigid"
       }
