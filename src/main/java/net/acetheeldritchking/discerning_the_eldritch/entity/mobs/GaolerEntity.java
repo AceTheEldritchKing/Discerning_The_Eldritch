@@ -426,9 +426,9 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
                 }
             }
             // Screenshake when it walks
-            if (this.tickCount % 60 == 0)
+            if (this.tickCount % 20 == 0)
             {
-                if (this.getDeltaMovement().x < 0 || this.getDeltaMovement().z < 0)
+                if (this.getDeltaMovement().x < 0 || this.getDeltaMovement().z < 0 || this.getDeltaMovement().z > 0 || this.getDeltaMovement().x > 0)
                 {
                     CameraShakeManager.addCameraShake(new CameraShakeData(4, this.position(), 20));
                 }
