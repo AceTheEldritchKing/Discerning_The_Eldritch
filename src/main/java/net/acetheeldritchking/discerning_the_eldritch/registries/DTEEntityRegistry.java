@@ -84,6 +84,13 @@ public class DTEEntityRegistry {
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "ascended_one").toString())
             );
 
+    public static final DeferredHolder<EntityType<?>, EntityType<AscendedOneCultistEntity>> ASCENDED_ONE_CULTIST =
+            ENTITIES.register("ascended_one_cultist", () -> EntityType.Builder.of(AscendedOneCultistEntity::new, MobCategory.MISC)
+                    .sized(.6f, 1.8f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "ascended_one_cultist").toString())
+            );
+
     public static void register(IEventBus eventBus)
     {
         ENTITIES.register(eventBus);

@@ -22,6 +22,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.APOTHIC_CRUSADER.get(), ApothicCrusaderRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.APOTHIC_ACOLYTE.get(), ApothicAcolyteRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.ASCENDED_ONE.get(), AscendedOneRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.ASCENDED_ONE_CULTIST.get(), AscendedOneRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.GAOLER_ENTITY.get(), context -> {return new GaolerRenderer(context, new GaolerModel());});
         event.registerEntityRenderer(DTEEntityRegistry.APOSTLE_ENTITY.get(), context -> {return new TheApostleRenderer(context, new TheApostleModel());});
         event.registerEntityRenderer(DTEEntityRegistry.SIGHTLESS_MAW.get(), context -> {return new SightlessMawRenderer(context, new SightlessMawModel());});

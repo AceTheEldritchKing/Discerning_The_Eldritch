@@ -222,8 +222,8 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
     @Override
     public boolean doHurtTarget(Entity entity) {
         CameraShakeManager.addCameraShake(new CameraShakeData(15, this.position(), 12));
-        MagicManager.spawnParticles(entity.level(), new BlastwaveParticleOptions(SchoolRegistry.ELDRITCH.get().getTargetingColor(), 5),
-                entity.getX(), 0.3, entity.getZ(), 1, 0, 0, 0, 0, true);
+
+        MagicManager.spawnParticles(entity.level(), new BlastwaveParticleOptions(SchoolRegistry.ELDRITCH.get().getTargetingColor(), 5.0f), entity.getX(), 0.3, entity.getZ(), 1, 0, 0, 0, 0, true);
 
         return Utils.doMeleeAttack(this, entity, SpellRegistries.CONJURE_GAOLER.get().getDamageSource(this, getSummoner()));
     }
@@ -426,10 +426,13 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
                 }
             }
             // Screenshake when it walks
-            /*if (this.getDeltaMovement().x < 0 || this.getDeltaMovement().z < 0)
+            if (this.tickCount % 60 == 0)
             {
-                CameraShakeManager.addCameraShake(new CameraShakeData(4, this.position(), 20));
-            }*/
+                if (this.getDeltaMovement().x < 0 || this.getDeltaMovement().z < 0)
+                {
+                    CameraShakeManager.addCameraShake(new CameraShakeData(4, this.position(), 20));
+                }
+            }
         }
     }
 
