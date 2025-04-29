@@ -16,6 +16,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
+import net.minecraft.network.protocol.game.ClientboundSetTitleTextPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -31,6 +32,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.logging.Level;
 
@@ -60,7 +62,7 @@ public class ServerEvents {
                 if (player instanceof ServerPlayer serverPlayer)
                 {
                     // display a message to the player
-                    serverPlayer.connection.send(new ClientboundSetActionBarTextPacket(Component.literal(ChatFormatting.BOLD + "Unable to cast for : " + formattedTime)
+                    serverPlayer.connection.send(new ClientboundSetActionBarTextPacket(Component.translatable("display.discerning_the_eldritch.silence_warning").append(formattedTime)
                             .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
                     serverPlayer.level().playSound(null , player.getX() , player.getY() , player.getZ() ,
                             SoundEvents.FIRE_EXTINGUISH , SoundSource.PLAYERS , 0.5f , 1f);
@@ -69,37 +71,56 @@ public class ServerEvents {
         }
 
         // Insanity system
-        // WIP, doesn't work
-        /*
         if (DTEConfig.enableInsanitySystem)
         {
             System.out.println("System enabled?");
 
-            if (!entity.hasData(INSANITY_METER))
+            entity.getData(INSANITY_METER);
+
+            if (spell.getSchoolType() == SchoolRegistry.ELDRITCH.get())
             {
-                System.out.println("Check if have meter?");
+                System.out.println("Is Eldritch?");
 
-                entity.getData(INSANITY_METER);
-
-                if (spell.getSchoolType() == SchoolRegistry.ELDRITCH.get())
+                if (entity.getData(INSANITY_METER) <= DTEConfig.maxInsanityValue)
                 {
-                    System.out.println("Is Eldritch?");
+                    System.out.println("Increment?");
+                    entity.setData(INSANITY_METER, entity.getData(INSANITY_METER) + 1);
 
-                    if (entity.getData(INSANITY_METER) <= DTEConfig.maxInsanityValue)
+                    System.out.println("Meter: " + entity.getData(INSANITY_METER));
+
+                    if (entity.getData(INSANITY_METER) == DTEConfig.maxInsanityValue)
                     {
-                        System.out.println("Increment?");
-                        entity.setData(INSANITY_METER, entity.getData(INSANITY_METER) + 1);
-
-                        if (entity.getData(INSANITY_METER) >= DTEConfig.maxInsanityValue)
+                        System.out.println("Do effect?");
+                        if (entity instanceof ServerPlayer player)
                         {
-                            System.out.println("Do effect?");
-                            entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS));
+                            player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning")
+                                    .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
                         }
                     }
                 }
             }
+
+            // Debugging
+            if (spell.getSchoolType() == SchoolRegistry.HOLY.get())
+            {
+                System.out.println("Is Holy?");
+
+                entity.setData(INSANITY_METER, 0);
+                System.out.println("Meter: " + entity.getData(INSANITY_METER));
+            }
         }
-        */
+    }
+
+    @SubscribeEvent
+    public static void onPlayerTickEvent(PlayerTickEvent.Post event)
+    {
+        LivingEntity entity = event.getEntity();
+
+        // Do this every three seconds
+        if (entity.getData(INSANITY_METER) == DTEConfig.maxInsanityValue && entity.tickCount % 60 == 0)
+        {
+            entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 20*5, 9, false, false, false));
+        }
     }
 
     @SubscribeEvent

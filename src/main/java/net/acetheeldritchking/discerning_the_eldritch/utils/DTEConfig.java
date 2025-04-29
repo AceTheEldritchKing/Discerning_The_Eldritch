@@ -22,16 +22,16 @@ public class DTEConfig
             .define("Mend flesh exp gain", true);
 
 
-    /*
+
     private static final ModConfigSpec.BooleanValue ELDRITCH_INSANITY_SYSTEM = BUILDER
             .comment("Defines whether or not to enable the insanity system. Everytime an Eldritch spell is cast, it increases your insanity.")
             .comment("Default is false")
-            .define("Enable insanity system", false);
+            .define("Enable insanity system", true);
 
     private static final ModConfigSpec.ConfigValue<Integer> ELDRITCH_MAX_INSANITY = BUILDER
             .comment("Defines the max value for insanity. At the max value, the insanity debuffs will be applied to the player.")
             .define("Max value for insanity", 15);
-    */
+
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 
@@ -47,7 +47,7 @@ public class DTEConfig
         mendFleshLifesteal = MEND_FLESH_LIFESTEAL.get();
         mendFleshEXPGain = MEND_FLESH_EXP_GAIN.get();
 
-        //enableInsanitySystem = ELDRITCH_INSANITY_SYSTEM.get();
-        //maxInsanityValue = ELDRITCH_MAX_INSANITY.get();
+        enableInsanitySystem = ELDRITCH_INSANITY_SYSTEM.get();
+        maxInsanityValue = ELDRITCH_MAX_INSANITY.get();
     }
 }

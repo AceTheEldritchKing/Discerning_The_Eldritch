@@ -18,7 +18,6 @@ import net.acetheeldritchking.discerning_the_eldritch.utils.boss_music.BossMusic
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
-import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.network.protocol.game.ClientboundSetTitleTextPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -67,7 +66,7 @@ public class AscendedOneBoss extends GenericBossEntity {
 
     // These are used for doing boss bars, setting up the phase serializer for NBT, and stopping and starting music
     private final ServerBossEvent bossEvent =
-            new ServerBossEvent(Component.translatable("discerning_the_eldritch:ascended_one_boss"), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS);
+            new ServerBossEvent(Component.translatable("bossbar.discerning_the_eldritch.ascended_one_boss"), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS);
     private final static EntityDataAccessor<Integer> PHASE = SynchedEntityData.defineId(AscendedOneBoss.class, EntityDataSerializers.INT);
     public static final byte STOP_MUSIC = 0;
     public static final byte START_MUSIC = 1;
@@ -294,7 +293,7 @@ public class AscendedOneBoss extends GenericBossEntity {
                 {
                     if (targets instanceof ServerPlayer player)
                     {
-                        player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("discerning_the_eldritch:ascended_one_taunt_2")
+                        player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.ascended_one_taunt_2")
                                 .withStyle(s -> s.withColor(TextColor.fromRgb(0xC71B8B)))));
                     }
                 }

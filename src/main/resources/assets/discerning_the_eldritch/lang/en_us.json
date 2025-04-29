@@ -115,10 +115,14 @@
 
 
 
-  "discerning_the_eldritch:ascended_one_boss": "The Ascended One",
+  "bossbar.discerning_the_eldritch.ascended_one_boss": "The Ascended One",
 
-  "discerning_the_eldritch:ascended_one_taunt_1": "Do you really think you can stop me?",
-  "discerning_the_eldritch:ascended_one_taunt_2": "BEHOLD, MY APOTHEOSIS!",
+
+
+  "display.discerning_the_eldritch.ascended_one_taunt_1": "Do you really think you can stop me?",
+  "display.discerning_the_eldritch.ascended_one_taunt_2": "BEHOLD, MY APOTHEOSIS!",
+  "display.discerning_the_eldritch.insanity_warning": "YOU'VE LOST IT",
+  "display.discerning_the_eldritch.silence_warning": "Unable to cast for : ",
 
 
 
