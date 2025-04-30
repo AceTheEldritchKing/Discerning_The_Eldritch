@@ -72,5 +72,10 @@
         "sounds": [
             "discerning_the_eldritch:mend_flesh"
         ]
+    },
+    "insanity_voices": {
+        "sounds": [
+            "discerning_the_eldritch:insanity_voices"
+        ]
     }
 }

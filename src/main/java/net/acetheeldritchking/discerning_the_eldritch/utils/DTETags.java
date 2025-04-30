@@ -9,4 +9,7 @@ import net.minecraft.world.item.Item;
 public class DTETags {
     // Items
     public static final TagKey<Item> RITUAL_FOCUS = ItemTags.create(ResourceLocation.parse(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "ritual_focus").toString()));
+
+    // Armor Items For Idle
+    public static final TagKey<Item> ARMORS_FOR_IDLE = ItemTags.create(ResourceLocation.parse(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "armors_for_idle").toString()));
 }

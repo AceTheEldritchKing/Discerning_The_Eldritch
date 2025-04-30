@@ -2,6 +2,11 @@ package net.acetheeldritchking.discerning_the_eldritch;
 
 import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
+import mod.azure.azurelib.rewrite.animation.cache.AzIdentityRegistry;
+import mod.azure.azurelib.rewrite.render.armor.AzArmorRendererRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockArmorRenderer;
+import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockHelmetRenderer;
+import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockMaskRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.DTEArmorMaterialRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.loot.DTELootModifiers;
 import net.acetheeldritchking.discerning_the_eldritch.registries.*;
@@ -85,6 +90,22 @@ public class DiscerningTheEldritch
             event.enqueueWork(() -> {
                 ItemRegistries.getDTEItems().stream().filter(item -> item.get() instanceof SpellBook).forEach((item) -> CuriosRendererRegistry.register(item.get(), SpellBookCurioRenderer::new));
             });
+
+            // Armor Rendering Registry
+            AzArmorRendererRegistry.register(EldritchWarlockArmorRenderer::new, ItemRegistries.ELDRITCH_WARLOCK_HOOD.get(), ItemRegistries.ELDRITCH_WARLOCK_ROBES.get(), ItemRegistries.ELDRITCH_WARLOCK_LEGGINGS.get(), ItemRegistries.ELDRITCH_WARLOCK_GREAVES.get());
+            AzArmorRendererRegistry.register(EldritchWarlockMaskRenderer::new, ItemRegistries.ELDRITCH_WARLOCK_MASK.get());
+            AzArmorRendererRegistry.register(EldritchWarlockHelmetRenderer::new, ItemRegistries.ELDRITCH_WARLOCK_HELMET.get());
+
+            // Item Rendering Registry
+
+            // Animation Registry
+            AzIdentityRegistry.register(
+                    ItemRegistries.ELDRITCH_WARLOCK_HOOD.get(),
+                    ItemRegistries.ELDRITCH_WARLOCK_ROBES.get(),
+                    ItemRegistries.ELDRITCH_WARLOCK_LEGGINGS.get(),
+                    ItemRegistries.ELDRITCH_WARLOCK_GREAVES.get(),
+                    ItemRegistries.ELDRITCH_WARLOCK_MASK.get(),
+                    ItemRegistries.ELDRITCH_WARLOCK_HELMET.get());
         }
     }
 

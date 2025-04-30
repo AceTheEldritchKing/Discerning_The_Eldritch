@@ -5,6 +5,7 @@ import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.*;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.BoogieWoogieSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.GuardiansGazeSpell;
+import net.acetheeldritchking.discerning_the_eldritch.spells.holy.ExorcismSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.ritual.CallAscendedOneSpell;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -74,6 +75,7 @@ public class SpellRegistries {
      */
 
     // Exorcism - Resets insanity
+    public static final Supplier<AbstractSpell> EXORCISM = registerSpell(new ExorcismSpell());
 
 
     /***

@@ -1,34 +1,34 @@
-package net.acetheeldritchking.discerning_the_eldritch.items.armor;
+package net.acetheeldritchking.discerning_the_eldritch.items.armor.old;
 
 import com.google.common.base.Suppliers;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
-import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
-import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
+import mod.azure.azurelib.common.api.common.animatable.GeoItem;
+import mod.azure.azurelib.common.internal.client.RenderProvider;
+import mod.azure.azurelib.common.internal.common.util.AzureLibUtil;
+import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
+import mod.azure.azurelib.core.animation.AnimatableManager;
+import mod.azure.azurelib.core.animation.AnimationController;
+import mod.azure.azurelib.core.animation.RawAnimation;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.minecraft.world.level.Level;
 
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class DTEArmorItem extends ArmorItem {
+public class OldDTEArmorItem extends ArmorItem implements GeoItem {
+    private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
     private final Supplier<ItemAttributeModifiers> defaultModifiers;
-    public final DTEDispatcher dispatcher;
 
-    public DTEArmorItem(Holder<ArmorMaterial> material, Type type, Properties properties, AttributeContainer... attributeContainers) {
+    public OldDTEArmorItem(Holder<ArmorMaterial> material, Type type, Properties properties, AttributeContainer... attributeContainers) {
         super(material, type, properties);
-        this.dispatcher = new DTEDispatcher();
-
         this.defaultModifiers = Suppliers.memoize(() ->
         {
             // Looking at how ISS does this because it is 1 AM and I am tired
@@ -77,15 +77,22 @@ public class DTEArmorItem extends ArmorItem {
         return this.defaultModifiers.get();
     }
 
+    // AzureLib
+     @Override
+    public void createRenderer(Consumer<RenderProvider> consumer) {
+        // Can I just leave this empty?
+    }
+
     @Override
-    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
-        if (!level.isClientSide && entity instanceof Player player ) {
-            player.getArmorSlots().forEach(wornArmor -> {
-                // Doing this through tags rather than listing everything in an or condition
-                if (wornArmor != null && wornArmor.is(DTETags.ARMORS_FOR_IDLE)) {
-                    dispatcher.idle(player, wornArmor);
-                }
-            });
-        }
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, "controler", 0, event ->
+        {
+            return event.setAndContinue(RawAnimation.begin().thenLoop("idle"));
+        }));
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
     }
 }

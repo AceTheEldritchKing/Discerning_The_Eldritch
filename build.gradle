@@ -187,8 +187,8 @@ dependencies {
     //localRuntime "curse.maven:apothic-curios-950712:5108911"
 
     // AZURELIB
-    //implementation "mod.azure.azurelib:azurelib-neo-1.21:2.3.28"
-    implementation "curse.maven:azurelib-817423:6004979"
+    implementation "mod.azure.azurelib:azurelib-neo-1.21.1:3.0.13"
+    //implementation "curse.maven:azurelib-817423:6004979"
 
     // Spell Collector Lib
     implementation "curse.maven:spell-collector-lib-1149858:6174572"

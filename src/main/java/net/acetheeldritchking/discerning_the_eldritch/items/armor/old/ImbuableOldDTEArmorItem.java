@@ -1,4 +1,4 @@
-package net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib;
+package net.acetheeldritchking.discerning_the_eldritch.items.armor.old;
 
 import io.redspace.ironsspellbooks.api.spells.IPresetSpellContainer;
 import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
@@ -9,8 +9,8 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 
-public class ImbuableGeckolibDTEArmorItem extends DTEGeckolibArmorItem implements IPresetSpellContainer {
-    public ImbuableGeckolibDTEArmorItem(Holder<ArmorMaterial> material, Type type, Properties properties, AttributeContainer... attributeContainers) {
+public class ImbuableOldDTEArmorItem extends OldDTEArmorItem implements IPresetSpellContainer {
+    public ImbuableOldDTEArmorItem(Holder<ArmorMaterial> material, Type type, Properties properties, AttributeContainer... attributeContainers) {
         super(material, type, properties, attributeContainers);
     }
 

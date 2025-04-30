@@ -26,7 +26,7 @@ public class DTEConfig
     private static final ModConfigSpec.BooleanValue ELDRITCH_INSANITY_SYSTEM = BUILDER
             .comment("Defines whether or not to enable the insanity system. Everytime an Eldritch spell is cast, it increases your insanity.")
             .comment("Default is false")
-            .define("Enable insanity system", true);
+            .define("Enable insanity system", false);
 
     private static final ModConfigSpec.ConfigValue<Integer> ELDRITCH_MAX_INSANITY = BUILDER
             .comment("Defines the max value for insanity. At the max value, the insanity debuffs will be applied to the player.")

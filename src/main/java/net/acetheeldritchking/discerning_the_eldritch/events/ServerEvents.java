@@ -99,15 +99,6 @@ public class ServerEvents {
                     }
                 }
             }
-
-            // Debugging
-            if (spell.getSchoolType() == SchoolRegistry.HOLY.get())
-            {
-                System.out.println("Is Holy?");
-
-                entity.setData(INSANITY_METER, 0);
-                System.out.println("Meter: " + entity.getData(INSANITY_METER));
-            }
         }
     }
 

@@ -26,6 +26,9 @@ public class DTESoundRegistry {
     // Mend Flesh
     public static DeferredHolder<SoundEvent, SoundEvent> MEND_FLESH_SOUND = registerSoundEvent("mend_flesh");
 
+    // Insanity Voices
+    public static DeferredHolder<SoundEvent, SoundEvent> INSANITY_VOICES = registerSoundEvent("insanity_voices");
+
     /***
      * Entity Sounds
      */

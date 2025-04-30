@@ -96,6 +96,9 @@
   "spell.discerning_the_eldritch.mend_flesh": "Mend Flesh",
   "spell.discerning_the_eldritch.mend_flesh.guide": "Mend your wounds using Sculk, healing you for damage you deal and experience you take in",
 
+  "spell.discerning_the_eldritch.exorcism": "Exorcism",
+  "spell.discerning_the_eldritch.exorcism.guide": "Cleanse your mind and soul of the Eldritch Madness that haunts you",
+
 
   "ui.discerning_the_eldritch.extra_damage": "Deals extra damage while holding a weapon in your mainhand",
   "ui.discerning_the_eldritch.ritual_cast_failure": "Rituals cannot be casted in a mere spellbook",
