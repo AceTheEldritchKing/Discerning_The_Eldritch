@@ -3,11 +3,13 @@ package net.acetheeldritchking.discerning_the_eldritch.items.armor.animators;
 import mod.azure.azurelib.rewrite.animation.AzAnimator;
 import mod.azure.azurelib.rewrite.animation.controller.AzAnimationController;
 import mod.azure.azurelib.rewrite.animation.controller.AzAnimationControllerContainer;
+import mod.azure.azurelib.rewrite.animation.impl.AzItemAnimator;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class EldritchArmorAnimator extends AzAnimator {
+public class EldritchArmorAnimator extends AzItemAnimator {
     private static final ResourceLocation ANIMATIONS = ResourceLocation.fromNamespaceAndPath(
             DiscerningTheEldritch.MOD_ID,
             "animations/eldritch_armor.animation.json"
@@ -22,7 +24,7 @@ public class EldritchArmorAnimator extends AzAnimator {
     }
 
     @Override
-    public @NotNull ResourceLocation getAnimationLocation(Object animatable) {
+    public @NotNull ResourceLocation getAnimationLocation(ItemStack animatable) {
         return ANIMATIONS;
     }
 }

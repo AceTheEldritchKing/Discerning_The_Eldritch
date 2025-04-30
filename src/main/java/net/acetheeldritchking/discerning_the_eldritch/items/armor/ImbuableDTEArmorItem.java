@@ -9,8 +9,8 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 
-public class ImbueableDTEArmorItem extends DTEArmorItem implements IPresetSpellContainer {
-    public ImbueableDTEArmorItem(Holder<ArmorMaterial> material, Type type, Properties properties, AttributeContainer... attributeContainers) {
+public class ImbuableDTEArmorItem extends DTEArmorItem implements IPresetSpellContainer {
+    public ImbuableDTEArmorItem(Holder<ArmorMaterial> material, Type type, Properties properties, AttributeContainer... attributeContainers) {
         super(material, type, properties, attributeContainers);
     }
 

@@ -92,7 +92,11 @@ public class DiscerningTheEldritch
             });
 
             // Armor Rendering Registry
-            AzArmorRendererRegistry.register(EldritchWarlockArmorRenderer::new, ItemRegistries.ELDRITCH_WARLOCK_HOOD.get(), ItemRegistries.ELDRITCH_WARLOCK_ROBES.get(), ItemRegistries.ELDRITCH_WARLOCK_LEGGINGS.get(), ItemRegistries.ELDRITCH_WARLOCK_GREAVES.get());
+            AzArmorRendererRegistry.register(EldritchWarlockArmorRenderer::new,
+                    ItemRegistries.ELDRITCH_WARLOCK_HOOD.get(),
+                    ItemRegistries.ELDRITCH_WARLOCK_ROBES.get(),
+                    ItemRegistries.ELDRITCH_WARLOCK_LEGGINGS.get(),
+                    ItemRegistries.ELDRITCH_WARLOCK_GREAVES.get());
             AzArmorRendererRegistry.register(EldritchWarlockMaskRenderer::new, ItemRegistries.ELDRITCH_WARLOCK_MASK.get());
             AzArmorRendererRegistry.register(EldritchWarlockHelmetRenderer::new, ItemRegistries.ELDRITCH_WARLOCK_HELMET.get());
 
