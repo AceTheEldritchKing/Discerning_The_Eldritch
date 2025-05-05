@@ -108,7 +108,7 @@ public class ServerEvents {
         LivingEntity entity = event.getEntity();
 
         // Do this every three seconds
-        if (entity.getData(INSANITY_METER) == DTEConfig.maxInsanityValue && entity.tickCount % 60 == 0)
+        if (entity.getData(INSANITY_METER) >= DTEConfig.maxInsanityValue && entity.tickCount % 60 == 0)
         {
             entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 20*5, 9, false, false, false));
         }

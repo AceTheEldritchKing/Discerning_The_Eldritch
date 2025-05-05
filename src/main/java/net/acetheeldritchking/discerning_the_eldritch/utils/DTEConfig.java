@@ -30,6 +30,7 @@ public class DTEConfig
 
     private static final ModConfigSpec.ConfigValue<Integer> ELDRITCH_MAX_INSANITY = BUILDER
             .comment("Defines the max value for insanity. At the max value, the insanity debuffs will be applied to the player.")
+            .comment("Default is [15]")
             .define("Max value for insanity", 15);
 
 

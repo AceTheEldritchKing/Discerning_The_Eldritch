@@ -1,4 +1,4 @@
-package net.acetheeldritchking.discerning_the_eldritch.items.armor.animators;
+package net.acetheeldritchking.discerning_the_eldritch.items.staffs.animators;
 
 import mod.azure.azurelib.rewrite.animation.controller.AzAnimationController;
 import mod.azure.azurelib.rewrite.animation.controller.AzAnimationControllerContainer;
@@ -8,14 +8,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class EldritchArmorAnimator extends AzItemAnimator {
+public class StaffOfVehemenceAnimator extends AzItemAnimator {
     private static final ResourceLocation ANIMATIONS = ResourceLocation.fromNamespaceAndPath(
             DiscerningTheEldritch.MOD_ID,
-            "animations/eldritch_armor.animation.json"
+            "animations/staff_of_eldritch.animation.json"
     );
 
     @Override
-    public void registerControllers(AzAnimationControllerContainer animationControllerContainer) {
+    public void registerControllers(AzAnimationControllerContainer<ItemStack> animationControllerContainer) {
         animationControllerContainer.add(
                 AzAnimationController.builder(this, "base_controller")
                         .build()

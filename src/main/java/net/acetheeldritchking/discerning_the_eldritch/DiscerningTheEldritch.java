@@ -4,9 +4,11 @@ import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import mod.azure.azurelib.rewrite.animation.cache.AzIdentityRegistry;
 import mod.azure.azurelib.rewrite.render.armor.AzArmorRendererRegistry;
+import mod.azure.azurelib.rewrite.render.item.AzItemRendererRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockArmorRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockHelmetRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockMaskRenderer;
+import net.acetheeldritchking.discerning_the_eldritch.entity.render.items.StaffOfVehemenceRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.DTEArmorMaterialRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.loot.DTELootModifiers;
 import net.acetheeldritchking.discerning_the_eldritch.registries.*;
@@ -101,6 +103,7 @@ public class DiscerningTheEldritch
             AzArmorRendererRegistry.register(EldritchWarlockHelmetRenderer::new, ItemRegistries.ELDRITCH_WARLOCK_HELMET.get());
 
             // Item Rendering Registry
+            AzItemRendererRegistry.register(StaffOfVehemenceRenderer::new, ItemRegistries.STAFF_OF_VEHEMENCE.get());
 
             // Animation Registry
             AzIdentityRegistry.register(
@@ -109,7 +112,9 @@ public class DiscerningTheEldritch
                     ItemRegistries.ELDRITCH_WARLOCK_LEGGINGS.get(),
                     ItemRegistries.ELDRITCH_WARLOCK_GREAVES.get(),
                     ItemRegistries.ELDRITCH_WARLOCK_MASK.get(),
-                    ItemRegistries.ELDRITCH_WARLOCK_HELMET.get());
+                    ItemRegistries.ELDRITCH_WARLOCK_HELMET.get(),
+                    ItemRegistries.STAFF_OF_VEHEMENCE.get()
+            );
         }
     }
 

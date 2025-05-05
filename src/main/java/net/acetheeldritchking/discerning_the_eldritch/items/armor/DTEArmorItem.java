@@ -3,7 +3,7 @@ package net.acetheeldritchking.discerning_the_eldritch.items.armor;
 import com.google.common.base.Suppliers;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
-import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.items.custom.DTEItemDispatcher;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
@@ -23,11 +23,11 @@ import java.util.function.Supplier;
 
 public class DTEArmorItem extends ArmorItem {
     private final Supplier<ItemAttributeModifiers> defaultModifiers;
-    public final DTEDispatcher dispatcher;
+    public final DTEItemDispatcher dispatcher;
 
     public DTEArmorItem(Holder<ArmorMaterial> material, Type type, Properties properties, AttributeContainer... attributeContainers) {
         super(material, type, properties);
-        this.dispatcher = new DTEDispatcher();
+        this.dispatcher = new DTEItemDispatcher();
 
         this.defaultModifiers = Suppliers.memoize(() ->
         {

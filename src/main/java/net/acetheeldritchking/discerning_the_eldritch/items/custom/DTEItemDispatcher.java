@@ -1,11 +1,11 @@
-package net.acetheeldritchking.discerning_the_eldritch.items.armor;
+package net.acetheeldritchking.discerning_the_eldritch.items.custom;
 
 import mod.azure.azurelib.rewrite.animation.dispatch.command.AzCommand;
 import mod.azure.azurelib.rewrite.animation.play_behavior.AzPlayBehaviors;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 
-public class DTEDispatcher {
+public class DTEItemDispatcher {
     private static final AzCommand EQUIP_COMMAND = AzCommand.create(
             "base_controller",
             "equipping",
@@ -18,9 +18,15 @@ public class DTEDispatcher {
             AzPlayBehaviors.LOOP
     );
 
-    private static final AzCommand FLIGHT_COMMAND = AzCommand.create(
+    private static final AzCommand ELYTRA_FLIGHT_COMMAND = AzCommand.create(
             "base_controller",
-            "idle",
+            "flying",
+            AzPlayBehaviors.LOOP
+    );
+
+    private static final AzCommand CASTING_SPELL_COMMAND = AzCommand.create(
+            "base_controller",
+            "casting",
             AzPlayBehaviors.LOOP
     );
 
@@ -33,6 +39,10 @@ public class DTEDispatcher {
     }
 
     public void flight(Entity entity, ItemStack itemStack) {
-        FLIGHT_COMMAND.sendForItem(entity, itemStack);
+        ELYTRA_FLIGHT_COMMAND.sendForItem(entity, itemStack);
+    }
+
+    public void casting(Entity entity, ItemStack itemStack) {
+        CASTING_SPELL_COMMAND.sendForItem(entity, itemStack);
     }
 }
