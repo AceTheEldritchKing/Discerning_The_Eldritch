@@ -3,6 +3,7 @@ package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.PatrolNearLocationGoal;
@@ -10,6 +11,7 @@ import io.redspace.ironsspellbooks.entity.mobs.goals.SpellBarrageGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
 import io.redspace.ironsspellbooks.network.EntityEventPacket;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
@@ -22,12 +24,16 @@ import net.minecraft.network.protocol.game.ClientboundSetTitleTextPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -42,12 +48,18 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.animation.*;
+import software.bernie.geckolib.animation.AnimationState;
 
 import java.util.List;
 
-public class AscendedOneBoss extends GenericBossEntity {
+public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttacker {
     // This method is only needed if you plan on summoning the boss with a spell
     public AscendedOneBoss(Level level)
     {
@@ -73,6 +85,13 @@ public class AscendedOneBoss extends GenericBossEntity {
 
     // Boss music
     public static SoundEvent bossMusic = DTESoundRegistry.TEST_BOSS_MUSIC.get();
+
+    // Animation ticks
+    public int transitionAnimationTime = 73;
+    public int deathAnimationTime = 55;
+
+    // Loot
+    SimpleContainer deathLoot = null;
 
     @Override
     public SoundEvent getBossMusic() {
@@ -217,6 +236,59 @@ public class AscendedOneBoss extends GenericBossEntity {
 
         this.goalSelector.addGoal(1, new FloatGoal(this));
         // Magic Spells
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 50, 80, 3));
+        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 20, 35)
+                .setSpells(
+                        // Attack
+                        List.of(
+                                SpellRegistry.SONIC_BOOM_SPELL.get(),
+                                SpellRegistry.SHOCKWAVE_SPELL.get(),
+                                SpellRegistry.BLOOD_SLASH_SPELL.get(),
+                                SpellRegistry.BLOOD_NEEDLES_SPELL.get(),
+                                SpellRegistry.ACUPUNCTURE_SPELL.get(),
+                                SpellRegistry.FIRE_ARROW_SPELL.get(),
+                                SpellRegistry.MAGIC_ARROW_SPELL.get(),
+                                SpellRegistry.CHAIN_LIGHTNING_SPELL.get(),
+                                SpellRegistry.LIGHTNING_LANCE_SPELL.get(),
+                                SpellRegistry.SUMMON_SWORDS.get()
+                        ),
+                        // Defense
+                        List.of(
+                                SpellRegistry.COUNTERSPELL_SPELL.get(),
+                                SpellRegistry.HEAL_SPELL.get(),
+                                SpellRegistry.CHARGE_SPELL.get(),
+                                SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
+                                SpellRegistry.BLIGHT_SPELL.get(),
+                                SpellRegistry.THUNDERSTORM_SPELL.get()
+                        ),
+                        // Movement
+                        List.of(
+                                SpellRegistry.BLOOD_STEP_SPELL.get()
+                        ),
+                        // Support
+                        List.of(
+                                SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
+                                SpellRegistry.RAISE_DEAD_SPELL.get(),
+                                SpellRegistry.SUMMON_VEX_SPELL.get(),
+                                SpellRegistry.COUNTERSPELL_SPELL.get(),
+                                SpellRegistry.SACRIFICE_SPELL.get(),
+                                SpellRegistries.CONJURE_FORSAKE_AID.get()
+                        )
+                ).setSingleUseSpell(SpellRegistries.CONJURE_FORSAKE_AID.get(), 70, 100, 3, 5)
+                .setSpellQuality(1.3f, 1.3f)
+                .setDrinksPotions());
+        this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, 0.9));
+        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
+    }
+
+    // Final phase spells
+    private void finalPhaseGoals()
+    {
+        this.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
+        this.goalSelector.removeAllGoals((x) -> true);
+
+        this.goalSelector.addGoal(1, new FloatGoal(this));
+        // Magic Spells
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 30, 50, 5));
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ABYSSAL_SHROUD_SPELL.get(), 1, 3, 80, 100, 0));
         this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 10, 25)
@@ -232,7 +304,10 @@ public class AscendedOneBoss extends GenericBossEntity {
                                 SpellRegistry.SCULK_TENTACLES_SPELL.get(),
                                 SpellRegistry.COUNTERSPELL_SPELL.get(),
                                 SpellRegistry.FIRE_ARROW_SPELL.get(),
-                                SpellRegistry.SUMMON_SWORDS.get()
+                                SpellRegistry.MAGIC_ARROW_SPELL.get(),
+                                SpellRegistry.SUMMON_SWORDS.get(),
+                                SpellRegistry.SACRIFICE_SPELL.get(),
+                                SpellRegistries.CONJURE_FORSAKE_AID.get()
                         ),
                         // Defense
                         List.of(
@@ -243,15 +318,18 @@ public class AscendedOneBoss extends GenericBossEntity {
                                 SpellRegistry.SLOW_SPELL.get(),
                                 SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
                                 SpellRegistry.BLOOD_STEP_SPELL.get(),
+                                SpellRegistries.CONJURE_FORSAKE_AID.get(),
                                 SpellRegistry.THUNDERSTORM_SPELL.get()
                         ),
                         // Movement
                         List.of(
                                 SpellRegistry.BLOOD_STEP_SPELL.get(),
-                                SpellRegistry.PLANAR_SIGHT_SPELL.get()
+                                SpellRegistry.PLANAR_SIGHT_SPELL.get(),
+                                SpellRegistry.ABYSSAL_SHROUD_SPELL.get()
                         ),
                         // Support
                         List.of(
+                                SpellRegistry.COUNTERSPELL_SPELL.get(),
                                 SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
                                 SpellRegistry.SUMMON_VEX_SPELL.get(),
                                 SpellRegistries.CONJURE_FORSAKE_AID.get(),
@@ -274,8 +352,10 @@ public class AscendedOneBoss extends GenericBossEntity {
         // These are used for getting health; very handy for doing phases based on health
         float health = this.getHealth();
         float MAX_HEALTH = this.getMaxHealth();
+        float healthPercentage = (health/MAX_HEALTH) * 100;
 
         float halfHealth = MAX_HEALTH/2;
+        float almostDead = MAX_HEALTH/4;
 
         // Once the boss is at half health or less, it will set the boss to its second phase
         // This will increase its spell power attribute, set its second goals
@@ -293,41 +373,147 @@ public class AscendedOneBoss extends GenericBossEntity {
                 {
                     if (targets instanceof ServerPlayer player)
                     {
-                        player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.ascended_one_taunt_2")
+                        player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.ascended_one_taunt_1")
                                 .withStyle(s -> s.withColor(TextColor.fromRgb(0xC71B8B)))));
                     }
                 }
 
                 setPhase(Phase.SecondPhase);
-                setHealth(halfHealth);
+
+                if (!isDeadOrDying())
+                {
+                    setHealth(halfHealth);
+                }
 
                 secondPhaseGoals();
 
                 this.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(1.5F);
+                this.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(1.1F);
             }
         }
-
-
-        if (isPhase(Phase.SecondPhase))
+        // Second
+        else if (isPhase(Phase.SecondPhase))
         {
-            /*
-            int radius = 15;
-
-            List<LivingEntity> entitiesNearby = level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(radius));
-
-            for (LivingEntity targets : entitiesNearby)
+            if (this.getHealth() <= almostDead)
             {
-                if (targets instanceof ServerPlayer player)
+                setInvulnerable(true);
+
+                setPhase(Phase.TransitionPhase1);
+
+                if (!isDeadOrDying())
                 {
-                    //                         ClientboundSetTitleTextPacket
-                    player.connection.send(new ClientboundSetActionBarTextPacket(Component.translatable("discerning_the_eldritch:ascended_one_taunt")
-                            .withStyle(s -> s.withColor(TextColor.fromRgb(0xC71B8B)))));
+                    setHealth(almostDead);
                 }
             }
-            */
+        }
+        // Transition
+        else if (isPhase(Phase.TransitionPhase1))
+        {
+            if (--transitionAnimationTime <= 0)
+            {
+                int radius = 15;
 
+                List<LivingEntity> entitiesNearby = level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(radius));
+
+                // Used for displaying the taunt message to all players nearby who are fighting the boss
+                for (LivingEntity targets : entitiesNearby)
+                {
+                    if (targets instanceof ServerPlayer player)
+                    {
+                        player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.ascended_one_taunt_2")
+                                .withStyle(s -> s.withColor(TextColor.fromRgb(0xC71B8B)))));
+                    }
+                }
+
+                setPhase(Phase.DesperationPhase);
+                setHealth(halfHealth);
+
+                finalPhaseGoals();
+
+                this.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(2F);
+
+                setInvulnerable(false);
+            }
+        }
+        // Final
+        else if (isPhase(Phase.DesperationPhase))
+        {
             // This "refills" the boss' health bar even though it is at half health
-            this.bossEvent.setProgress(health / (MAX_HEALTH - halfHealth));
+            this.bossEvent.setProgress(health / (MAX_HEALTH - almostDead));
+        }
+    }
+
+    @Override
+    public void kill() {
+        if (this.isDeadOrDying())
+        {
+            discard();
+        }
+        else {
+            super.kill();
+        }
+    }
+
+    @Override
+    public void die(DamageSource damageSource) {
+        super.die(damageSource);
+
+        if (this.isDeadOrDying() && !this.level().isClientSide)
+        {
+            this.castComplete();
+            this.serverTriggerAnimation("ascended_death");
+            this.serverTriggerEvent(STOP_MUSIC);
+        }
+    }
+
+    @Override
+    protected void dropAllDeathLoot(ServerLevel level, DamageSource damageSource) {
+        // Looking at how ISS does it for Tyros
+        this.dropEquipment();
+        this.dropExperience(damageSource.getEntity());
+
+        boolean deathByPlayer = this.lastHurtByPlayerTime > 0;
+
+        this.dropCustomDeathLoot(level, damageSource, deathByPlayer);
+
+        ResourceKey<LootTable> lootTable = this.getLootTable();
+        LootTable mainLoot = this.level().getServer().reloadableRegistries().getLootTable(lootTable);
+
+        LootParams.Builder builder = new LootParams.Builder(level)
+                .withParameter(LootContextParams.THIS_ENTITY, this)
+                .withParameter(LootContextParams.ORIGIN, this.position())
+                .withParameter(LootContextParams.DAMAGE_SOURCE, damageSource)
+                .withOptionalParameter(LootContextParams.ATTACKING_ENTITY, damageSource.getEntity())
+                .withOptionalParameter(LootContextParams.DIRECT_ATTACKING_ENTITY, damageSource.getDirectEntity());
+
+        if (deathByPlayer && this.lastHurtByPlayer != null)
+        {
+            builder = builder.withParameter(LootContextParams.LAST_DAMAGE_PLAYER, this.lastHurtByPlayer)
+                    .withLuck(this.lastHurtByPlayer.getLuck());
+        }
+
+        LootParams lootParams = builder.create(LootContextParamSets.ENTITY);
+        ObjectArrayList<ItemStack> objectArrayList = new ObjectArrayList<>();
+        mainLoot.getRandomItems(lootParams, this.getLootTableSeed(), objectArrayList::add);
+
+        this.deathLoot = new SimpleContainer(objectArrayList.size());
+        objectArrayList.forEach(deathLoot::addItem);
+    }
+
+    @Override
+    protected void tickDeath() {
+        this.deathTime++;
+
+        if (!level().isClientSide)
+        {
+            if (this.deathTime >= deathAnimationTime && !this.level().isClientSide() && !this.isRemoved())
+            {
+                if (this.deathLoot != null)
+                {
+                    deathLoot.getItems().forEach(this::spawnAtLocation);
+                }
+                this.remove(RemovalReason.KILLED);
+            }
         }
     }
 
@@ -396,6 +582,12 @@ public class AscendedOneBoss extends GenericBossEntity {
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
         pCompound.putInt("phase", getPhase());
+        if (pCompound.contains("deathLootItems", 9))
+        {
+            var tag = pCompound.getList("deathLootItems", 10);
+            this.deathLoot = new SimpleContainer(tag.size());
+            this.deathLoot.fromTag(tag, this.registryAccess());
+        }
     }
 
     @Override
@@ -410,6 +602,14 @@ public class AscendedOneBoss extends GenericBossEntity {
         {
             secondPhaseGoals();
         }
+        if (isPhase(Phase.FinalPhase))
+        {
+            finalPhaseGoals();
+        }
+        if (deathLoot != null)
+        {
+            pCompound.put("deathLootItems", deathLoot.createTag(this.registryAccess()));
+        }
     }
 
     @Override
@@ -420,6 +620,48 @@ public class AscendedOneBoss extends GenericBossEntity {
 
     @Override
     protected boolean isImmobile() {
-        return false;
+        return isPhase(Phase.TransitionPhase1) || super.isImmobile();
+    }
+
+    @Override
+    public boolean isPushable() {
+        return !isTransitionPhase();
+    }
+
+    /***
+     * Geckolib anims
+     */
+    private final RawAnimation transitionPhaseAnimation = RawAnimation.begin().thenPlay("ascended_desperation");
+
+    private final AnimationController<AscendedOneBoss> transitionController = new AnimationController<>(this, "ascended_one_transition", 0, this::transitionPredicate);
+
+    RawAnimation animationToPlay = null;
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+        controllerRegistrar.add(transitionController);
+        super.registerControllers(controllerRegistrar);
+    }
+
+    private PlayState transitionPredicate(AnimationState<AscendedOneBoss> animationState)
+    {
+        var controller = animationState.getController();
+        if (isTransitionPhase())
+        {
+            controller.setAnimation(transitionPhaseAnimation);
+            return PlayState.CONTINUE;
+        }
+
+        return PlayState.STOP;
+    }
+
+    public boolean isTransitionPhase()
+    {
+        return isPhase(Phase.TransitionPhase1);
+    }
+
+    @Override
+    public void playAnimation(String animationId) {
+        animationToPlay = RawAnimation.begin().thenPlay(animationId);
     }
 }

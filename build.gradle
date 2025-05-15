@@ -137,11 +137,11 @@ repositories {
 
 dependencies {
     // ISS ***************************************************************************************************
-    implementation "io.redspace:irons_spellbooks:1.21.1-3.11.0"
+    implementation "io.redspace:irons_spellbooks:1.21.1-3.12.0"
     //implementation "curse.maven:irons-spells-n-spellbooks-855414:6359979"
 
     // GECKOLIB ***************************************************************************************************
-    implementation "curse.maven:geckolib-388172:6027599"
+    implementation "curse.maven:geckolib-388172:6304958"
 
     // CAELUS *****************************************************************************************************
     compileOnly "com.illusivesoulworks.caelus:caelus-neoforge:${caelus_version}:api"
@@ -149,7 +149,8 @@ dependencies {
 
     // PLAYER ANIMATOR ********************************************************************************************
     //compileOnly "dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}"
-    implementation "dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}"
+    //implementation "dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}"
+    implementation "curse.maven:playeranimator-658587:6024462"
     //jarJar(group: "dev.kosmx.player-anim", name: "player-animation-lib-forge", version: "[${player_animator_version},${player_animator_version}]")
 
     // TETRA ******************************************************************************************************

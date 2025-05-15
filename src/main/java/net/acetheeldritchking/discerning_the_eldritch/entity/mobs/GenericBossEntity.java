@@ -42,7 +42,12 @@ public abstract class GenericBossEntity extends AbstractSpellCastingMob implemen
         FourthPhase(3),
         FifthPhase(4),
         SixthPhase(5),
-        SeventhPhase(6);
+        SeventhPhase(6),
+        TransitionPhase1(7),
+        TransitionPhase2(8),
+        TransitionPhase3(9),
+        DesperationPhase(10),
+        FinalPhase(11);
 
         final int value;
 
