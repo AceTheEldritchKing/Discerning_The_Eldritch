@@ -52,6 +52,7 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animation.*;
@@ -388,7 +389,15 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 secondPhaseGoals();
 
                 this.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(1.5F);
-                this.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(1.1F);
+                this.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(1.2F);
+
+                var player = level().getNearestPlayer(this, 16);
+                if (player != null)
+                {
+                    lookAt(player, 360, 360);
+
+                    jumpBackwards(this, player);
+                }
             }
         }
         // Second
@@ -396,7 +405,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         {
             if (this.getHealth() <= almostDead)
             {
-                setInvulnerable(true);
+                //setInvulnerable(true);
 
                 setPhase(Phase.TransitionPhase1);
 
@@ -404,11 +413,21 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 {
                     setHealth(almostDead);
                 }
+
+                var player = level().getNearestPlayer(this, 16);
+                if (player != null)
+                {
+                    lookAt(player, 360, 360);
+
+                    jumpBackwards(this, player);
+                }
             }
         }
         // Transition
         else if (isPhase(Phase.TransitionPhase1))
         {
+            //setInvulnerable(true);
+
             if (--transitionAnimationTime <= 0)
             {
                 int radius = 15;
@@ -431,15 +450,56 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 finalPhaseGoals();
 
                 this.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(2F);
+                this.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(1.3F);
 
-                setInvulnerable(false);
+                var player = level().getNearestPlayer(this, 16);
+                if (player != null)
+                {
+                    lookAt(player, 360, 360);
+
+                    jumpBackwards(this, player);
+                }
             }
         }
         // Final
         else if (isPhase(Phase.DesperationPhase))
         {
+            setInvulnerable(false);
+
             // This "refills" the boss' health bar even though it is at half health
             this.bossEvent.setProgress(health / (MAX_HEALTH - almostDead));
+        }
+    }
+
+    private void jumpBackwards(LivingEntity entity, LivingEntity player)
+    {
+        // Took this from Art of Forging
+        this.isJumping = true;
+
+        // Getting target coords
+        int xTarget = (int) entity.getX();
+        int zTarget = (int) entity.getZ();
+        // Getting attacker coords
+        int xAttacker = (int) player.getX();
+        int zAttacker = (int) player.getZ();
+
+        // Normalize vec
+        Vec3 vec3 = new Vec3(xAttacker, 0, zAttacker).subtract(xTarget, 0, zTarget).normalize();
+        Vec3 vec3r = new Vec3(xTarget, 0, zTarget).subtract(xAttacker, 0, zAttacker).normalize();
+
+        // Does the knockback
+        entity.push(vec3r.x, 0.5, vec3r.z);
+    }
+
+    @Override
+    public boolean hurt(DamageSource source, float amount) {
+        if (isTransitionPhase() || isJumpingBack())
+        {
+            // Prevent any damage if he's in his transition phase or jumping backwards
+            return false;
+        }
+        else {
+            return super.hurt(source, amount);
         }
     }
 
@@ -539,11 +599,11 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
         this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(ItemRegistries.ASCENDED_ONE_HOOD.get()));
-        this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(ItemRegistries.ASCENDED_ONE_ROBES.get()));
+        this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(ItemRegistries.CAPELESS_ASCENDED_ONE_ROBES.get()));
         this.setItemSlot(EquipmentSlot.LEGS, new ItemStack(ItemRegistries.ASCENDED_ONE_LEGGINGS.get()));
         this.setItemSlot(EquipmentSlot.FEET, new ItemStack(ItemRegistries.ASCENDED_ONE_GREAVES.get()));
-        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ItemRegistries.BLACK_BOOK_SPELLBOOK.get()));
-        this.setItemSlot(EquipmentSlot.OFFHAND, new ItemStack(ItemRegistries.STAFF_OF_ASCENSION.get()));
+        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ItemRegistries.STAFF_OF_ASCENSION.get()));
+        this.setItemSlot(EquipmentSlot.OFFHAND, new ItemStack(ItemRegistries.BLACK_BOOK_SPELLBOOK.get()));
         this.setDropChance(EquipmentSlot.HEAD, 0.0F);
         this.setDropChance(EquipmentSlot.CHEST, 0.0F);
         this.setDropChance(EquipmentSlot.LEGS, 0.0F);
@@ -632,14 +692,22 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
      * Geckolib anims
      */
     private final RawAnimation transitionPhaseAnimation = RawAnimation.begin().thenPlay("ascended_desperation");
+    private final RawAnimation deathAnimation = RawAnimation.begin().thenPlay("ascended_death");
+    private final RawAnimation jumpAnimation = RawAnimation.begin().thenPlay("ascended_jump");
 
     private final AnimationController<AscendedOneBoss> transitionController = new AnimationController<>(this, "ascended_one_transition", 0, this::transitionPredicate);
+    private final AnimationController<AscendedOneBoss> deathController = new AnimationController<>(this, "ascended_one_death", 0, this::deathPredicate);
+    private final AnimationController<AscendedOneBoss> jumpController = new AnimationController<>(this, "ascended_one_jump", 0, this::jumpPredicate);
 
     RawAnimation animationToPlay = null;
+
+    public boolean isJumping;
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(transitionController);
+        controllerRegistrar.add(deathController);
+        controllerRegistrar.add(jumpController);
         super.registerControllers(controllerRegistrar);
     }
 
@@ -655,13 +723,49 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         return PlayState.STOP;
     }
 
+    private PlayState deathPredicate(AnimationState<AscendedOneBoss> animationState)
+    {
+        var controller = animationState.getController();
+        if (this.isDeadOrDying())
+        {
+            controller.setAnimation(deathAnimation);
+            return PlayState.CONTINUE;
+        }
+
+        return PlayState.STOP;
+    }
+
+    private PlayState jumpPredicate(AnimationState<AscendedOneBoss> animationState)
+    {
+        var controller = animationState.getController();
+        if (isJumpingBack() == true)
+        {
+            controller.forceAnimationReset();
+            controller.setAnimation(jumpAnimation);
+
+            this.isJumping = false;
+        }
+
+        return transitionController.getAnimationState() == AnimationController.State.STOPPED ? PlayState.CONTINUE : PlayState.STOP;
+    }
+
     public boolean isTransitionPhase()
     {
         return isPhase(Phase.TransitionPhase1);
     }
 
+    public boolean isJumpingBack()
+    {
+        return this.isJumping;
+    }
+
     @Override
     public void playAnimation(String animationId) {
         animationToPlay = RawAnimation.begin().thenPlay(animationId);
+    }
+
+    @Override
+    public boolean shouldAlwaysAnimateHead() {
+        return !isTransitionPhase() || this.isDeadOrDying();
     }
 }

@@ -73,24 +73,24 @@ public class ServerEvents {
         // Insanity system
         if (DTEConfig.enableInsanitySystem)
         {
-            System.out.println("System enabled?");
+            //System.out.println("System enabled?");
 
             entity.getData(INSANITY_METER);
 
             if (spell.getSchoolType() == SchoolRegistry.ELDRITCH.get())
             {
-                System.out.println("Is Eldritch?");
+                //System.out.println("Is Eldritch?");
 
                 if (entity.getData(INSANITY_METER) <= DTEConfig.maxInsanityValue)
                 {
-                    System.out.println("Increment?");
+                    //System.out.println("Increment?");
                     entity.setData(INSANITY_METER, entity.getData(INSANITY_METER) + 1);
 
-                    System.out.println("Meter: " + entity.getData(INSANITY_METER));
+                    //System.out.println("Meter: " + entity.getData(INSANITY_METER));
 
                     if (entity.getData(INSANITY_METER) == DTEConfig.maxInsanityValue)
                     {
-                        System.out.println("Do effect?");
+                        //System.out.println("Do effect?");
                         if (entity instanceof ServerPlayer player)
                         {
                             player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning")
@@ -107,10 +107,10 @@ public class ServerEvents {
     {
         LivingEntity entity = event.getEntity();
 
-        // Do this every three seconds
-        if (entity.getData(INSANITY_METER) >= DTEConfig.maxInsanityValue && entity.tickCount % 60 == 0)
+        // Do this every two seconds
+        if (entity.getData(INSANITY_METER) >= DTEConfig.maxInsanityValue && entity.tickCount % 40 == 0)
         {
-            entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 20*5, 9, false, false, false));
+            entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 20*2, 9, false, false, false));
         }
     }
 
