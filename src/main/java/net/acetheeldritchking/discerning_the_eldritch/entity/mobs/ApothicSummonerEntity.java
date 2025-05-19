@@ -9,6 +9,7 @@ import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
@@ -40,7 +41,7 @@ public class ApothicSummonerEntity extends NeutralWizard implements Enemy {
         this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 35, 45)
                 .setSpells(
                         // Attack
-                        List.of(SpellRegistry.BLOOD_SLASH_SPELL.get(), SpellRegistry.TELEKINESIS_SPELL.get(), SpellRegistry.RAISE_DEAD_SPELL.get(), SpellRegistry.SACRIFICE_SPELL.get()),
+                        List.of(SpellRegistry.BLOOD_SLASH_SPELL.get(), SpellRegistry.RAISE_DEAD_SPELL.get(), SpellRegistry.SACRIFICE_SPELL.get(), SpellRegistries.CONJURE_FORSAKE_AID.get()),
                         // Defense
                         List.of(SpellRegistry.COUNTERSPELL_SPELL.get(), SpellRegistry.HEAL_SPELL.get(), SpellRegistry.ROOT_SPELL.get()),
                         // Movement
@@ -64,7 +65,7 @@ public class ApothicSummonerEntity extends NeutralWizard implements Enemy {
         {
             return true;
         }
-        else if (entityIn instanceof ApothicCrusaderEntity || entityIn instanceof ApothicSummonerEntity)
+        else if (entityIn.getType().is(DTETags.APOTHIC_ALLIES))
         {
             return true;
         }

@@ -10,12 +10,14 @@ import io.redspace.ironsspellbooks.entity.mobs.goals.PatrolNearLocationGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.SpellBarrageGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
+import io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.NotIdioticNavigation;
 import io.redspace.ironsspellbooks.network.EntityEventPacket;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
 import net.acetheeldritchking.discerning_the_eldritch.utils.boss_music.BossMusicManager;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -44,6 +46,7 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -90,6 +93,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
     // Animation ticks
     public int transitionAnimationTime = 73;
     public int deathAnimationTime = 55;
+    public int jumpAnimationTime = 20;
 
     // Loot
     SimpleContainer deathLoot = null;
@@ -168,6 +172,11 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 }
             }
         };
+    }
+
+    @Override
+    protected PathNavigation createNavigation(Level level) {
+        return new NotIdioticNavigation(this, level);
     }
 
     // Register the basic goals for the boss
@@ -353,7 +362,6 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         // These are used for getting health; very handy for doing phases based on health
         float health = this.getHealth();
         float MAX_HEALTH = this.getMaxHealth();
-        float healthPercentage = (health/MAX_HEALTH) * 100;
 
         float halfHealth = MAX_HEALTH/2;
         float almostDead = MAX_HEALTH/4;
@@ -417,9 +425,10 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 var player = level().getNearestPlayer(this, 16);
                 if (player != null)
                 {
+                    // Just stare at the nearest player, aura farm this shit
                     lookAt(player, 360, 360);
 
-                    jumpBackwards(this, player);
+                    //jumpBackwards(this, player);
                 }
             }
         }
@@ -476,24 +485,28 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         // Took this from Art of Forging
         this.isJumping = true;
 
-        // Getting target coords
-        int xTarget = (int) entity.getX();
-        int zTarget = (int) entity.getZ();
-        // Getting attacker coords
-        int xAttacker = (int) player.getX();
-        int zAttacker = (int) player.getZ();
+        // Jump back once the animation winds up
+        if (++jumpAnimationTime >= 5)
+        {
+            // Getting target coords
+            int xTarget = (int) entity.getX();
+            int zTarget = (int) entity.getZ();
+            // Getting attacker coords
+            int xAttacker = (int) player.getX();
+            int zAttacker = (int) player.getZ();
 
-        // Normalize vec
-        Vec3 vec3 = new Vec3(xAttacker, 0, zAttacker).subtract(xTarget, 0, zTarget).normalize();
-        Vec3 vec3r = new Vec3(xTarget, 0, zTarget).subtract(xAttacker, 0, zAttacker).normalize();
+            // Normalize vec
+            Vec3 vec3 = new Vec3(xAttacker, 0, zAttacker).subtract(xTarget, 0, zTarget).normalize();
+            Vec3 vec3r = new Vec3(xTarget, 0, zTarget).subtract(xAttacker, 0, zAttacker).normalize();
 
-        // Does the knockback
-        entity.push(vec3r.x, 0.5, vec3r.z);
+            // Does the knockback
+            entity.push(vec3r.x, 0.5, vec3r.z);
+        }
     }
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        if (isTransitionPhase() || isJumpingBack())
+        if (isTransitionPhase())
         {
             // Prevent any damage if he's in his transition phase or jumping backwards
             return false;
@@ -584,8 +597,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         {
             return true;
         }
-        // Should eventually replace this with mob tags instead
-        else if (entityIn instanceof ApothicCrusaderEntity || entityIn instanceof ApothicSummonerEntity || entityIn instanceof ApothicAcolyteEntity)
+        else if (entityIn.getType().is(DTETags.APOTHIC_ALLIES))
         {
             return true;
         }

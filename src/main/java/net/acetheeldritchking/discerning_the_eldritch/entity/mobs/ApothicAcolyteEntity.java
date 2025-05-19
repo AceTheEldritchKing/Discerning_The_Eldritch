@@ -8,6 +8,7 @@ import io.redspace.ironsspellbooks.entity.mobs.goals.SpellBarrageGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
@@ -63,7 +64,7 @@ public class ApothicAcolyteEntity extends NeutralWizard implements Enemy {
         {
             return true;
         }
-        else if (entityIn instanceof ApothicCrusaderEntity || entityIn instanceof ApothicAcolyteEntity)
+        else if (entityIn.getType().is(DTETags.APOTHIC_ALLIES))
         {
             return true;
         }

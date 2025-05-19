@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "discerning_the_eldritch:apothic_summoner",
+    "discerning_the_eldritch:apothic_crusader",
+    "discerning_the_eldritch:apothic_acolyte",
+    "discerning_the_eldritch:ascended_one",
+    "discerning_the_eldritch:ascended_one_cultist"
+  ]
+}

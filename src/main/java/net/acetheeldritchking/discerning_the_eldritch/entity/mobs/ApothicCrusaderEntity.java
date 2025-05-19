@@ -2,13 +2,19 @@ package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.NeutralWizard;
 import io.redspace.ironsspellbooks.entity.mobs.goals.SpellBarrageGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
+import io.redspace.ironsspellbooks.entity.mobs.goals.melee.AttackAnimationData;
+import io.redspace.ironsspellbooks.entity.mobs.keeper.KeeperEntity;
+import io.redspace.ironsspellbooks.entity.mobs.wizards.GenericAnimatedWarlockAttackGoal;
+import io.redspace.ironsspellbooks.entity.mobs.wizards.priest.PriestEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
@@ -24,10 +30,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.animation.*;
+import software.bernie.geckolib.animation.AnimationState;
 
 import java.util.List;
 
-public class ApothicCrusaderEntity extends NeutralWizard implements Enemy {
+public class ApothicCrusaderEntity extends NeutralWizard implements Enemy, IAnimatedAttacker {
     public ApothicCrusaderEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         xpReward = 25;
@@ -37,7 +45,18 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy {
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 1, 5, 100, 250, 1));
-        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 30, 55)
+        this.goalSelector.addGoal(3, new GenericAnimatedWarlockAttackGoal<>(this, 1.5f, 25, 40)
+                .setMoveset(List.of(
+                        new AttackAnimationData(9, "simple_sword_upward_swipe", 5),
+                        new AttackAnimationData(8, "simple_sword_lunge_stab", 6),
+                        new AttackAnimationData(10, "simple_sword_stab_alternate", 8),
+                        new AttackAnimationData(10, "simple_sword_horizontal_cross_swipe", 8),
+                        new AttackAnimationData(10, "simple_sword_downstrike", 8),
+                        new AttackAnimationData(10, "sword_slash_stab", 20)
+                ))
+                .setComboChance(0.8F)
+                .setMeleeAttackInverval(10, 15)
+                .setMeleeMovespeedModifier(1.5F)
                 .setSpells(
                         // Attack
                         List.of(SpellRegistries.ESOTERIC_EDGE.get(), SpellRegistry.ECHOING_STRIKES_SPELL.get(), SpellRegistry.FLAMING_STRIKE_SPELL.get()),
@@ -47,15 +66,18 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy {
                         List.of(SpellRegistry.BLOOD_STEP_SPELL.get()),
                         // Support
                         List.of(SpellRegistry.ABYSSAL_SHROUD_SPELL.get())
-                        // Silence down here is a temp thing
                 ).setSingleUseSpell(SpellRegistries.ESOTERIC_EDGE.get(), 80, 400, 1, 3)
                 .setSpellQuality(1.0f, 1.0f)
-                .setDrinksPotions());
+                .setDrinksPotions()
+        );
         //this.goalSelector.addGoal(4, new PatrolNearLocationGoal(this, 30, .75f));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(10, new WizardRecoverGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+        // They HATE these guys
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, KeeperEntity.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PriestEntity.class, true));
     }
 
     @Override
@@ -78,7 +100,7 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy {
         {
             return true;
         }
-        else if (entityIn instanceof ApothicSummonerEntity || entityIn instanceof ApothicAcolyteEntity)
+        else if (entityIn.getType().is(DTETags.APOTHIC_ALLIES))
         {
             return true;
         }
@@ -104,5 +126,42 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy {
                 .add(Attributes.FOLLOW_RANGE, 24.0)
                 .add(Attributes.ENTITY_INTERACTION_RANGE, 3.0)
                 .add(Attributes.MOVEMENT_SPEED, .15);
+    }
+
+    @Override
+    public boolean shouldSheathSword() {
+        return true;
+    }
+
+    RawAnimation animationToPlay = null;
+    private final AnimationController<ApothicCrusaderEntity> meleeController = new AnimationController<>(this, "keeper_animations", 0, this::predicate);
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+        controllerRegistrar.add(meleeController);
+        super.registerControllers(controllerRegistrar);
+    }
+
+    @Override
+    public void playAnimation(String animationId) {
+        animationToPlay = RawAnimation.begin().thenPlay(animationId);
+    }
+
+    private PlayState predicate(AnimationState<ApothicCrusaderEntity> animationState)
+    {
+        var controller = animationState.getController();
+
+        if (this.animationToPlay != null)
+        {
+            controller.forceAnimationReset();
+            controller.setAnimation(animationToPlay);
+            animationToPlay = null;
+        }
+        return PlayState.CONTINUE;
+    }
+
+    @Override
+    public boolean isAnimating() {
+        return meleeController.getAnimationState() != AnimationController.State.STOPPED || super.isAnimating();
     }
 }
