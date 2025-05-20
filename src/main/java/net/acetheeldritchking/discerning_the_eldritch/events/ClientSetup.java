@@ -1,5 +1,7 @@
 package net.acetheeldritchking.discerning_the_eldritch.events;
 
+import io.redspace.ironsspellbooks.item.weapons.StaffItem;
+import io.redspace.ironsspellbooks.render.ClientStaffItemExtensions;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.GaolerModel;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.SightlessMawModel;
@@ -7,10 +9,13 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.TheApostleMode
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.mobs.*;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdgeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
+import net.minecraft.world.item.Item;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 
 @EventBusSubscriber(modid = DiscerningTheEldritch.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientSetup {
@@ -26,5 +31,11 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.GAOLER_ENTITY.get(), context -> {return new GaolerRenderer(context, new GaolerModel());});
         event.registerEntityRenderer(DTEEntityRegistry.APOSTLE_ENTITY.get(), context -> {return new TheApostleRenderer(context, new TheApostleModel());});
         event.registerEntityRenderer(DTEEntityRegistry.SIGHTLESS_MAW.get(), context -> {return new SightlessMawRenderer(context, new SightlessMawModel());});
+    }
+
+    @SubscribeEvent
+    public static void registerClientExtensions(RegisterClientExtensionsEvent event)
+    {
+        event.registerItem(new ClientStaffItemExtensions(), ItemRegistries.getDTEItems().stream().filter(item -> item.get() instanceof StaffItem staffItem && !staffItem.hasCustomRendering()).map(holder -> (Item) holder.get()).toArray(Item[]::new));
     }
 }

@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 
 public class DTEWeaponTiers implements Tier, IronsWeaponTier {
     // Greatsword Of The Depths
-    public static DTEWeaponTiers DEEP_GREATSWORD = new DTEWeaponTiers(1680, 7, -3.0F, 10, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+    public static DTEWeaponTiers DEEP_GREATSWORD = new DTEWeaponTiers(1680, 7.5F, -3.0F, 10, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
     // God Spear
@@ -40,7 +40,7 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
             new AttributeContainer(AttributeRegistry.ICE_SPELL_POWER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
     // Ymir
-    public static DTEWeaponTiers YMIR = new DTEWeaponTiers(2670, 9.5F, -3.1F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+    public static DTEWeaponTiers YMIR = new DTEWeaponTiers(2670, 12.5F, -3.1F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.20, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(DTEAttributeRegistry.RITUAL_MAGIC_POWER, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)

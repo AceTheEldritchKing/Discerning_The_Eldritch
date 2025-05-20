@@ -1,4 +1,7 @@
 {
+  "replace": false,
   "values": [
+    "discerning_the_eldritch:staff_of_eldritch",
+    "discerning_the_eldritch:staff_of_ascension"
   ]
 }

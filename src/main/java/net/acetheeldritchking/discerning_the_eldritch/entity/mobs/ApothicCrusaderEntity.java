@@ -57,6 +57,7 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy, IAnim
                 .setComboChance(0.8F)
                 .setMeleeAttackInverval(10, 15)
                 .setMeleeMovespeedModifier(1.5F)
+                .setMeleeBias(0.3f, 0.8f)
                 .setSpells(
                         // Attack
                         List.of(SpellRegistries.ESOTERIC_EDGE.get(), SpellRegistry.ECHOING_STRIKES_SPELL.get(), SpellRegistry.FLAMING_STRIKE_SPELL.get()),

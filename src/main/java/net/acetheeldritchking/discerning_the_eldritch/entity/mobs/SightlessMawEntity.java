@@ -101,6 +101,7 @@ public class SightlessMawEntity extends AbstractSpellCastingMob implements IMagi
                 ))
                 .setComboChance(3.5f)
                 .setMeleeAttackInverval(5, 10)
+                .setMeleeBias(1.0f, 1.0f)
                 .setMeleeMovespeedModifier(1.0f)
         );
         this.goalSelector.addGoal(7, new GenericFollowOwnerGoal(this, this::getSummoner, 0.9f, 8, 2, false, 50));

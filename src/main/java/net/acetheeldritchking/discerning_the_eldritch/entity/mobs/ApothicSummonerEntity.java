@@ -41,15 +41,15 @@ public class ApothicSummonerEntity extends NeutralWizard implements Enemy {
         this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 35, 45)
                 .setSpells(
                         // Attack
-                        List.of(SpellRegistry.BLOOD_SLASH_SPELL.get(), SpellRegistry.RAISE_DEAD_SPELL.get(), SpellRegistry.SACRIFICE_SPELL.get(), SpellRegistries.CONJURE_FORSAKE_AID.get()),
+                        List.of(SpellRegistry.BLOOD_SLASH_SPELL.get(), SpellRegistry.RAISE_DEAD_SPELL.get(), SpellRegistry.SACRIFICE_SPELL.get(), SpellRegistry.SUMMON_SWORDS.get()),
                         // Defense
                         List.of(SpellRegistry.COUNTERSPELL_SPELL.get(), SpellRegistry.HEAL_SPELL.get(), SpellRegistry.ROOT_SPELL.get()),
                         // Movement
-                        List.of(SpellRegistry.BLOOD_STEP_SPELL.get()),
+                        List.of(SpellRegistry.BLOOD_STEP_SPELL.get(), SpellRegistries.BOOGIE_WOOGIE.get()),
                         // Support
                         List.of(SpellRegistry.ABYSSAL_SHROUD_SPELL.get())
                         // Silence down here is a temp thing
-                ).setSingleUseSpell(SpellRegistries.BOOGIE_WOOGIE.get(), 80, 400, 1, 3)
+                ).setSingleUseSpell(SpellRegistries.CONJURE_FORSAKE_AID.get(), 150, 400, 1, 1)
                 .setSpellQuality(1.0f, 1.0f)
                 .setDrinksPotions());
         //this.goalSelector.addGoal(4, new PatrolNearLocationGoal(this, 30, .75f));

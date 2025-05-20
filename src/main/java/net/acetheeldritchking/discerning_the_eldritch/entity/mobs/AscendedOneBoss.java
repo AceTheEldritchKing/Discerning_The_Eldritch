@@ -185,7 +185,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
 
         firstPhaseGoals();
-        this.goalSelector.addGoal(10, new WizardRecoverGoal(this));
+        //this.goalSelector.addGoal(10, new WizardRecoverGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
@@ -199,7 +199,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         this.goalSelector.addGoal(1, new FloatGoal(this));
         // Magic Spells
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 80, 150, 1));
-        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 20, 35)
+        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 50, 80)
                 .setSpells(
                         // Attack
                         List.of(
@@ -208,13 +208,11 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                                 SpellRegistry.BLOOD_SLASH_SPELL.get(),
                                 SpellRegistry.BLOOD_NEEDLES_SPELL.get(),
                                 SpellRegistry.FIRE_ARROW_SPELL.get(),
-                                SpellRegistry.CHAIN_LIGHTNING_SPELL.get(),
-                                SpellRegistry.SUMMON_SWORDS.get()
+                                SpellRegistry.CHAIN_LIGHTNING_SPELL.get()
                         ),
                         // Defense
                         List.of(
                                 SpellRegistry.COUNTERSPELL_SPELL.get(),
-                                SpellRegistry.HEAL_SPELL.get(),
                                 SpellRegistry.CHARGE_SPELL.get(),
                                 SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
                                 SpellRegistry.THUNDERSTORM_SPELL.get()
@@ -225,15 +223,13 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                         ),
                         // Support
                         List.of(
-                                SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
                                 SpellRegistry.RAISE_DEAD_SPELL.get(),
                                 SpellRegistry.SUMMON_VEX_SPELL.get(),
                                 SpellRegistry.COUNTERSPELL_SPELL.get(),
                                 SpellRegistry.SACRIFICE_SPELL.get()
                         )
                 ).setSingleUseSpell(SpellRegistries.BOOGIE_WOOGIE.get(), 70, 100, 3, 5)
-                .setSpellQuality(1.2f, 1.2f)
-                .setDrinksPotions());
+                .setSpellQuality(1.0f, 1.0f));
         this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, 0.9));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }
@@ -247,7 +243,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         this.goalSelector.addGoal(1, new FloatGoal(this));
         // Magic Spells
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 50, 80, 3));
-        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 20, 35)
+        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 35, 50)
                 .setSpells(
                         // Attack
                         List.of(
@@ -285,8 +281,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                                 SpellRegistries.CONJURE_FORSAKE_AID.get()
                         )
                 ).setSingleUseSpell(SpellRegistries.CONJURE_FORSAKE_AID.get(), 70, 100, 3, 5)
-                .setSpellQuality(1.3f, 1.3f)
-                .setDrinksPotions());
+                .setSpellQuality(1.2f, 1.2f));
         this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, 0.9));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }
@@ -301,7 +296,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         // Magic Spells
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 30, 50, 5));
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ABYSSAL_SHROUD_SPELL.get(), 1, 3, 80, 100, 0));
-        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 10, 25)
+        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 20, 35)
                 .setSpells(
                         // Attack
                         List.of(
@@ -347,8 +342,8 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                                 SpellRegistry.SACRIFICE_SPELL.get()
                         )
                         // Silence down here is a temp thing
-                ).setSingleUseSpell(SpellRegistries.SILENCE.get(), 100, 250, 5, 5)
-                .setSpellQuality(1.5f, 1.5f));
+                ).setSingleUseSpell(SpellRegistries.SILENCE.get(), 300, 550, 1, 1)
+                .setSpellQuality(1.3f, 1.3f));
         this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, 0.9));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }
@@ -396,7 +391,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
 
                 secondPhaseGoals();
 
-                this.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(1.5F);
+                this.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(1.1F);
                 this.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(1.2F);
 
                 var player = level().getNearestPlayer(this, 16);
@@ -458,7 +453,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
 
                 finalPhaseGoals();
 
-                this.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(2F);
+                this.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(1.5F);
                 this.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(1.3F);
 
                 var player = level().getNearestPlayer(this, 16);
@@ -475,8 +470,8 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         {
             setInvulnerable(false);
 
-            // This "refills" the boss' health bar even though it is at half health
-            this.bossEvent.setProgress(health / (MAX_HEALTH - almostDead));
+            // This "refills" the boss' health bar even though it is at almost dead health
+            this.bossEvent.setProgress(health / (MAX_HEALTH - halfHealth));
         }
     }
 
@@ -635,17 +630,18 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
     public static AttributeSupplier.Builder createAttributes()
     {
         return LivingEntity.createLivingAttributes()
-                .add(Attributes.ATTACK_DAMAGE, 15.5)
+                .add(Attributes.ATTACK_DAMAGE, 12.5)
                 .add(Attributes.ATTACK_KNOCKBACK, 0.5)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 1.5)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.8)
                 .add(Attributes.MAX_HEALTH, 550.0)
-                .add(Attributes.ARMOR, 60)
+                .add(Attributes.ARMOR, 50)
                 .add(Attributes.ARMOR_TOUGHNESS, 20)
                 .add(Attributes.FOLLOW_RANGE, 80.0)
                 .add(Attributes.ENTITY_INTERACTION_RANGE, 4.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.25)
                 .add(AttributeRegistry.SPELL_POWER, 1.35)
-                .add(AttributeRegistry.SPELL_RESIST, 1.7)
+                .add(AttributeRegistry.SPELL_RESIST, 1.35)
+                .add(AttributeRegistry.MAX_MANA, 1000)
                 ;
     }
 

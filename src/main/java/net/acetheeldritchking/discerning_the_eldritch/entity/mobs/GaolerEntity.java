@@ -130,6 +130,7 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
                 .setComboChance(1.2f)
                 .setMeleeAttackInverval(10, 25)
                 .setMeleeMovespeedModifier(1.5f)
+                .setMeleeBias(0.5f, 1.0f)
                 .setSingleUseSpell(SpellRegistry.SONIC_BOOM_SPELL.get(), 10, 15, 10, 10)
                 .setSpellQuality(15, 15)
         );

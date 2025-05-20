@@ -1,11 +1,9 @@
 package net.acetheeldritchking.discerning_the_eldritch.items.weapons;
 
-import io.redspace.ironsspellbooks.api.item.UpgradeData;
 import io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem;
 import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
 import io.redspace.ironsspellbooks.item.UniqueItem;
-import io.redspace.ironsspellbooks.registries.ComponentRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.ChatFormatting;
@@ -20,7 +18,7 @@ public class YmirSwordItem extends MagicSwordItem implements UniqueItem {
     public YmirSwordItem() {
         super(
                 DTEWeaponTiers.YMIR,
-                ItemPropertiesHelper.equipment(1).fireResistant().rarity(Rarity.EPIC).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.YMIR)).component(ComponentRegistry.UPGRADE_DATA, UpgradeData.NONE),
+                ItemPropertiesHelper.equipment(1).fireResistant().rarity(Rarity.EPIC).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.YMIR)),
                 SpellDataRegistryHolder.of(
                         new SpellDataRegistryHolder(SpellRegistries.ESOTERIC_EDGE, 6),
                         new SpellDataRegistryHolder(SpellRegistries.SILENCE, 6))
