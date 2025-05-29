@@ -47,6 +47,9 @@ public class DTESoundRegistry {
     // Gaoler Attack
     public static DeferredHolder<SoundEvent, SoundEvent> GAOLER_ATTACK_IMPACT = registerSoundEvent("entity.gaoler.attack_impact");
 
+    // Gaoler Roar
+    public static DeferredHolder<SoundEvent, SoundEvent> GAOLER_ROAR = registerSoundEvent("entity.gaoler.roar");
+
     /***
      * Music Sounds
      */

@@ -407,6 +407,11 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
             {
                 this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.WARDEN_EMERGE, this.getSoundSource(), 5.0F, this.getVoicePitch(), false);
             }
+            // Timing the roar with part of the animation
+            if (--riseAnimationTime <= 5)
+            {
+                this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), DTESoundRegistry.GAOLER_ROAR.get(), this.getSoundSource(), 10.5F, this.getVoicePitch(), false);
+            }
             if (--riseAnimationTime < 0)
             {
                 entityData.set(DATA_IS_PLAYING_RISE_ANIM, false);

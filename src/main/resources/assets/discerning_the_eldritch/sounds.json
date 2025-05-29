@@ -77,5 +77,15 @@
         "sounds": [
             "discerning_the_eldritch:insanity_voices"
         ]
+    },
+    "entity.gaoler.roar": {
+        "sounds": [
+            "discerning_the_eldritch:mob/gaoler/roar_1",
+            "discerning_the_eldritch:mob/gaoler/roar_2",
+            "discerning_the_eldritch:mob/gaoler/roar_3",
+            "discerning_the_eldritch:mob/gaoler/roar_4",
+            "discerning_the_eldritch:mob/gaoler/roar_5"
+        ],
+        "subtitle": "subtitles.entity.gaoler.roar"
     }
 }

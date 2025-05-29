@@ -135,6 +135,7 @@
   "subtitles.entity.gaoler.ambient": "Gaoler snarls",
   "subtitles.entity.gaoler.attack_impact": "Gaoler attacks",
   "subtitles.entity.gaoler.death": "Gaoler dies",
+  "subtitles.entity.gaoler.roar": "Gaoler roars angrily",
 
 
   "death.attack.discerning_the_eldritch.guardians_gaze": "%1$s fell from %2$s's gaze",
