@@ -198,7 +198,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
 
         this.goalSelector.addGoal(1, new FloatGoal(this));
         // Magic Spells
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 80, 150, 1));
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 1, 3, 80, 150, 1));
         this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 50, 80)
                 .setSpells(
                         // Attack
@@ -242,7 +242,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
 
         this.goalSelector.addGoal(1, new FloatGoal(this));
         // Magic Spells
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 50, 80, 3));
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 1, 3, 50, 80, 3));
         this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 35, 50)
                 .setSpells(
                         // Attack
@@ -294,8 +294,8 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
 
         this.goalSelector.addGoal(1, new FloatGoal(this));
         // Magic Spells
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 30, 50, 5));
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ABYSSAL_SHROUD_SPELL.get(), 1, 3, 80, 100, 0));
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 3, 5, 30, 50, 5));
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ABYSSAL_SHROUD_SPELL.get(), 1, 3, 100, 250, 0));
         this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 20, 35)
                 .setSpells(
                         // Attack
@@ -311,8 +311,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                                 SpellRegistry.FIRE_ARROW_SPELL.get(),
                                 SpellRegistry.MAGIC_ARROW_SPELL.get(),
                                 SpellRegistry.SUMMON_SWORDS.get(),
-                                SpellRegistry.SACRIFICE_SPELL.get(),
-                                SpellRegistries.CONJURE_FORSAKE_AID.get()
+                                SpellRegistry.SACRIFICE_SPELL.get()
                         ),
                         // Defense
                         List.of(
@@ -329,20 +328,15 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                         // Movement
                         List.of(
                                 SpellRegistry.BLOOD_STEP_SPELL.get(),
-                                SpellRegistry.PLANAR_SIGHT_SPELL.get(),
-                                SpellRegistry.ABYSSAL_SHROUD_SPELL.get()
-                        ),
+                                SpellRegistry.PLANAR_SIGHT_SPELL.get()),
                         // Support
                         List.of(
-                                SpellRegistry.COUNTERSPELL_SPELL.get(),
                                 SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
                                 SpellRegistry.SUMMON_VEX_SPELL.get(),
-                                SpellRegistries.CONJURE_FORSAKE_AID.get(),
-                                SpellRegistry.COUNTERSPELL_SPELL.get(),
                                 SpellRegistry.SACRIFICE_SPELL.get()
                         )
                         // Silence down here is a temp thing
-                ).setSingleUseSpell(SpellRegistries.SILENCE.get(), 300, 550, 1, 1)
+                ).setSingleUseSpell(SpellRegistries.SILENCE.get(), 450, 650, 1, 1)
                 .setSpellQuality(1.3f, 1.3f));
         this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, 0.9));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -479,6 +473,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
     {
         // Took this from Art of Forging
         this.isJumping = true;
+        cancelCast();
 
         // Jump back once the animation winds up
         if (++jumpAnimationTime >= 5)

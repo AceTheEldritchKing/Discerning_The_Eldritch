@@ -10,4 +10,9 @@ public class AscendedOneModel extends AbstractSpellCastingMobModel {
     public ResourceLocation getTextureResource(AbstractSpellCastingMob mob) {
         return ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "textures/entity/apothic_cultists/ascended_one.png");
     }
+
+    @Override
+    public ResourceLocation getAnimationResource(AbstractSpellCastingMob object) {
+        return ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "animations/casting_animations.json");
+    }
 }
