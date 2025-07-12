@@ -8,10 +8,10 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
+import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
-import net.acetheeldritchking.discerning_the_eldritch.utils.DTEUtils;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -88,7 +88,7 @@ public class MendFleshSpell extends AbstractSpell {
         int count = 8;
         float radius = 0.25F;
 
-        DTEUtils.spawnParticlesInCircle(count, radius, 0.5F, 0.1F, entity, ParticleTypes.SCULK_SOUL);
+        ASUtils.spawnParticlesInCircle(count, radius, 0.5F, 0.1F, entity, ParticleTypes.SCULK_SOUL);
 
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }

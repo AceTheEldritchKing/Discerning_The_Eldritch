@@ -4,12 +4,12 @@ import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
+import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
-import net.acetheeldritchking.discerning_the_eldritch.utils.DTEUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -37,7 +37,6 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import java.util.logging.Level;
 
 import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.INSANITY_METER;
-import static net.acetheeldritchking.discerning_the_eldritch.utils.DTEUtils.hasCurio;
 
 @EventBusSubscriber
 public class ServerEvents {
@@ -57,7 +56,7 @@ public class ServerEvents {
                 // Effect Duration
                 int time = player.getEffect(DTEPotionEffectRegistry.SILENCE_POTION_EFFECT).getDuration();
                 // convert duration to time format  using the method convertTicksToTime
-                String formattedTime = DTEUtils.convertTicksToTime(time);
+                String formattedTime = ASUtils.convertTicksToTime(time);
 
                 if (player instanceof ServerPlayer serverPlayer)
                 {
@@ -126,7 +125,7 @@ public class ServerEvents {
         {
             if (sourceEntity instanceof Player player)
             {
-                if (hasCurio(player, ItemRegistries.DIARY_OF_DECAY.get()))
+                if (ASUtils.hasCurio(player, ItemRegistries.DIARY_OF_DECAY.get()))
                 {
                     if (projectile instanceof Projectile)
                     {
@@ -157,7 +156,7 @@ public class ServerEvents {
                 int count = 8;
                 float radius = 0.25F;
 
-                DTEUtils.spawnParticlesInCircle(count, radius, 0.5F, 0.1F, livingEntity, ParticleTypes.SCULK_SOUL);
+                ASUtils.spawnParticlesInCircle(count, radius, 0.5F, 0.1F, livingEntity, ParticleTypes.SCULK_SOUL);
 
                 if (!livingEntity.level().isClientSide)
                 {
@@ -198,7 +197,7 @@ public class ServerEvents {
 
         if (entity instanceof Player player)
         {
-            if (DTEUtils.hasCurio(player, ItemRegistries.IRONBOUND_FEATHER.get()))
+            if (ASUtils.hasCurio(player, ItemRegistries.IRONBOUND_FEATHER.get()))
             {
                 event.setCanceled(true);
             }
@@ -220,7 +219,7 @@ public class ServerEvents {
             int count = 8;
             float radius = 0.25F;
 
-            DTEUtils.spawnParticlesInCircle(count, radius, 0.5F, 0.1F, attacker, ParticleTypes.SCULK_SOUL);
+            ASUtils.spawnParticlesInCircle(count, radius, 0.5F, 0.1F, attacker, ParticleTypes.SCULK_SOUL);
 
             if (!attacker.level().isClientSide)
             {

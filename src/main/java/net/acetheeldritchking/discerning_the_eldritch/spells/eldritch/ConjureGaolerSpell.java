@@ -7,11 +7,12 @@ import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import net.acetheeldritchking.aces_spell_utils.spells.ASSpellAnimations;
+import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.GaolerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
-import net.acetheeldritchking.discerning_the_eldritch.spells.DTESpellAnimations;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -29,8 +30,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
-
-import static net.acetheeldritchking.discerning_the_eldritch.utils.DTEUtils.hasCurio;
 
 @AutoSpellConfig
 public class ConjureGaolerSpell extends AbstractSpell {
@@ -97,7 +96,7 @@ public class ConjureGaolerSpell extends AbstractSpell {
 
     @Override
     public AnimationHolder getCastStartAnimation() {
-        return DTESpellAnimations.ANIMATION_GAOLER_SUMMON;
+        return ASSpellAnimations.ANIMATION_GAOLER_SUMMON;
     }
 
     @Override
@@ -131,7 +130,7 @@ public class ConjureGaolerSpell extends AbstractSpell {
 
         BlockPos pos = new BlockPos((int) entity.getX(), (int) entity.getY(), (int) entity.getZ());
 
-        if (entity instanceof Player player && hasCurio(player, ItemRegistries.KINGS_EFFIGY.get()))
+        if (entity instanceof Player player && ASUtils.hasCurio(player, ItemRegistries.KINGS_EFFIGY.get()))
         {
             spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, entity, level, summonTimer, spellLevel);
         }

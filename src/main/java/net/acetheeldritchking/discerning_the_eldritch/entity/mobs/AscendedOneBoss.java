@@ -9,16 +9,16 @@ import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.Abstra
 import io.redspace.ironsspellbooks.entity.mobs.goals.PatrolNearLocationGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.SpellBarrageGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
-import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.NotIdioticNavigation;
 import io.redspace.ironsspellbooks.network.EntityEventPacket;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.acetheeldritchking.aces_spell_utils.entity.mobs.GenericBossEntity;
+import net.acetheeldritchking.aces_spell_utils.utils.boss_music.BossMusicManager;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
-import net.acetheeldritchking.discerning_the_eldritch.utils.boss_music.BossMusicManager;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
@@ -404,7 +404,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
             {
                 //setInvulnerable(true);
 
-                setPhase(Phase.TransitionPhase1);
+                setPhase(Phase.ThirdPhase);
 
                 if (!isDeadOrDying())
                 {
@@ -422,7 +422,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
             }
         }
         // Transition
-        else if (isPhase(Phase.TransitionPhase1))
+        else if (isPhase(Phase.ThirdPhase))
         {
             //setInvulnerable(true);
 
@@ -442,13 +442,12 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                     }
                 }
 
-                setPhase(Phase.DesperationPhase);
-                setHealth(halfHealth);
+                setPhase(Phase.FourthPhase);
 
                 finalPhaseGoals();
 
                 this.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(1.5F);
-                this.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(1.3F);
+                this.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(1.4F);
 
                 var player = level().getNearestPlayer(this, 16);
                 if (player != null)
@@ -460,12 +459,12 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
             }
         }
         // Final
-        else if (isPhase(Phase.DesperationPhase))
+        else if (isPhase(Phase.FourthPhase))
         {
             setInvulnerable(false);
 
             // This "refills" the boss' health bar even though it is at almost dead health
-            this.bossEvent.setProgress(health / (MAX_HEALTH - halfHealth));
+            this.bossEvent.setProgress(health / (halfHealth - almostDead));
         }
     }
 
@@ -640,19 +639,17 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 ;
     }
 
-    // NBT
     @Override
-    public void readAdditionalSaveData(CompoundTag pCompound) {
-        super.readAdditionalSaveData(pCompound);
-        pCompound.putInt("phase", getPhase());
-        if (pCompound.contains("deathLootItems", 9))
-        {
-            var tag = pCompound.getList("deathLootItems", 10);
-            this.deathLoot = new SimpleContainer(tag.size());
-            this.deathLoot.fromTag(tag, this.registryAccess());
-        }
+    public void setPhase(int phase) {
+        this.entityData.set(PHASE, phase);
     }
 
+    @Override
+    public int getPhase() {
+        return this.entityData.get(PHASE);
+    }
+
+    // NBT
     @Override
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
@@ -660,6 +657,14 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         {
             this.bossEvent.setName(this.getDisplayName());
         }
+        // Phases
+        pCompound.putInt("phase", getPhase());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag pCompound) {
+        super.readAdditionalSaveData(pCompound);
+        // Phases
         setPhase(pCompound.getInt("phase"));
         if (isPhase(Phase.SecondPhase))
         {
@@ -669,9 +674,17 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         {
             finalPhaseGoals();
         }
+        // Loot
         if (deathLoot != null)
         {
             pCompound.put("deathLootItems", deathLoot.createTag(this.registryAccess()));
+        }
+        // Loot
+        if (pCompound.contains("deathLootItems", 9))
+        {
+            var tag = pCompound.getList("deathLootItems", 10);
+            this.deathLoot = new SimpleContainer(tag.size());
+            this.deathLoot.fromTag(tag, this.registryAccess());
         }
     }
 
