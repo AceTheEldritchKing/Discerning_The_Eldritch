@@ -2,6 +2,7 @@ package net.acetheeldritchking.discerning_the_eldritch.entity.mobs.goals;
 
 import io.redspace.ironsspellbooks.api.entity.IMagicEntity;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -10,7 +11,7 @@ import java.util.EnumSet;
 import java.util.List;
 
 public class WizardSpellComboGoal extends Goal {
-    protected static final int interval = 20;
+    protected static final int interval = 5;
     protected final PathfinderMob mob;
     protected final IMagicEntity spellCastingMob;
     protected LivingEntity target;
@@ -21,11 +22,12 @@ public class WizardSpellComboGoal extends Goal {
     protected final int spellListLength;
     protected final List<AbstractSpell> spells;
     protected int attackTime;
+    protected int firstSpell = 0;
 
-    protected final int minSpellLevel;
-    protected final int maxSpellLevel;
+    protected final float minSpellQuality;
+    protected final float maxSpellQuality;
 
-    public WizardSpellComboGoal(IMagicEntity abstractSpellCastingMob, List<AbstractSpell> spells, int minLevel, int maxLevel, int pAttackIntervalMin, int pAttackIntervalMax)
+    public WizardSpellComboGoal(IMagicEntity abstractSpellCastingMob, List<AbstractSpell> spells, float minQuality, float maxQuality, int pAttackIntervalMin, int pAttackIntervalMax)
     {
         this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK, Flag.TARGET));
 
@@ -38,10 +40,12 @@ public class WizardSpellComboGoal extends Goal {
         this.attackIntervalMax = pAttackIntervalMax;
         this.attackRadius = 20;
         this.attackRadiusSqr = attackRadius * attackRadius;
-        this.minSpellLevel = minLevel;
-        this.maxSpellLevel = maxLevel;
+        this.minSpellQuality = minQuality;
+        this.maxSpellQuality = maxQuality;
         this.spellListLength = spells.toArray().length;
+
         this.spells = spells;
+
         resetAttackTimer();
     }
 
@@ -91,27 +95,25 @@ public class WizardSpellComboGoal extends Goal {
         double distanceSquared = this.mob.distanceToSqr(target.getX(), target.getY(), target.getZ());
         if (distanceSquared < attackRadiusSqr)
         {
-            System.out.println("Begin loop");
             this.mob.getLookControl().setLookAt(target, 45, 45);
 
-            for (int i = 0; i < spellListLength; i++)
+            if (firstSpell < spellListLength)
             {
-                AbstractSpell currentSpell = spells.get(i);
+                AbstractSpell currentSpell = spells.get(firstSpell);
+                int spellLevel = (int) (currentSpell.getMaxLevel() * Mth.lerp(mob.getRandom().nextFloat(), minSpellQuality, maxSpellQuality));
+                spellLevel = Math.max(spellLevel, 1);
+                spellCastingMob.initiateCastSpell(currentSpell, spellLevel);
 
-                spellCastingMob.initiateCastSpell(currentSpell, mob.getRandom().nextIntBetweenInclusive(minSpellLevel, maxSpellLevel));
+                firstSpell++;
                 stop();
-
-                if (spellCastingMob.getMagicData().getCastDurationRemaining() <= 0)
-                {
-
-                }
             }
-            //stop();
         }
     }
 
     protected void resetAttackTimer()
     {
         this.attackTime = mob.getRandom().nextIntBetweenInclusive(attackIntervalMin, attackIntervalMax);
+        // Bring this back to the first entry in the list
+        this.firstSpell = 0;
     }
 }

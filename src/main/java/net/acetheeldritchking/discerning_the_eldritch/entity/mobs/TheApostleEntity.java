@@ -92,8 +92,8 @@ public class TheApostleEntity extends UniqueAbstractSpellCastingMob implements I
         //this.goalSelector.addGoal(0, new FloatGoal(this));
 
         // Magic Spells
-        //this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 80, 150, 1));
-        /*this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 30, 55)
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 5, 5, 80, 150, 1));
+        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 30, 55)
                 .setSpells(
                         // Attack
                         List.of(
@@ -124,14 +124,7 @@ public class TheApostleEntity extends UniqueAbstractSpellCastingMob implements I
                 .setIsFlying()
                 .setSpellQuality(0.8f, 0.8f)
                 .setAllowFleeing(false)
-        );*/
-        this.goalSelector.addGoal(3, new WizardSpellComboGoal(this,
-                List.of(
-                        SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
-                        SpellRegistry.FIRE_ARROW_SPELL.get(),
-                        SpellRegistry.ACUPUNCTURE_SPELL.get()
-                ),
-                1, 8, 15, 30));
+        );
 
         this.goalSelector.addGoal(7, new GenericFollowOwnerGoal(this, this::getSummoner, 0.9f, 10, 1, true, 50));
         this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.9D));
