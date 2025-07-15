@@ -97,8 +97,26 @@ public class ServerEvents {
                         //System.out.println("Do effect?");
                         if (entity instanceof ServerPlayer player)
                         {
-                            player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning")
-                                    .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
+                            if (player.getRandom().nextFloat() * 100.0F < 35.0F)
+                            {
+                                player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_1")
+                                        .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
+                            }
+                            if (player.getRandom().nextFloat() * 100.0F < 32.0F)
+                            {
+                                player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_2")
+                                        .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
+                            }
+                            if (player.getRandom().nextFloat() * 100.0F < 35.0F)
+                            {
+                                player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_3")
+                                        .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
+                            }
+                            if (player.getRandom().nextFloat() * 100.0F < 5.0F)
+                            {
+                                player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_4")
+                                        .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
+                            }
                         }
                     }
                 }
@@ -112,9 +130,9 @@ public class ServerEvents {
         LivingEntity entity = event.getEntity();
 
         // Do this every two seconds
-        if (entity.getData(INSANITY_METER) >= DTEConfig.maxInsanityValue && entity.tickCount % 40 == 0)
+        if (entity.getData(INSANITY_METER) >= DTEConfig.maxInsanityValue && entity.tickCount % 100 == 0)
         {
-            entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 20*2, 9, false, false, false));
+            entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 100, 9, false, false, false));
         }
     }
 

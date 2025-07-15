@@ -85,8 +85,8 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
     private final ServerBossEvent bossEvent =
             new ServerBossEvent(Component.translatable("bossbar.discerning_the_eldritch.ascended_one_boss"), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS);
     private final static EntityDataAccessor<Integer> PHASE = SynchedEntityData.defineId(AscendedOneBoss.class, EntityDataSerializers.INT);
-    public static final byte STOP_MUSIC = 0;
-    public static final byte START_MUSIC = 1;
+    public static final byte START_MUSIC = 0;
+    public static final byte STOP_MUSIC = 1;
 
     // Boss music
     public static SoundEvent bossMusic = DTESoundRegistry.TEST_BOSS_MUSIC.get();
@@ -110,8 +110,8 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
     {
         switch (eventId)
         {
-            case STOP_MUSIC -> BossMusicManager.stop(this);
             case START_MUSIC -> BossMusicManager.createOrResumeInstance(this);
+            case STOP_MUSIC -> BossMusicManager.stop(this);
         }
     }
 
@@ -405,7 +405,6 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 secondPhaseGoals();
 
                 this.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(1.1F);
-                this.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(1.2F);
 
                 var player = level().getNearestPlayer(this, 16);
                 if (player != null)
@@ -462,6 +461,11 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 }
 
                 setPhase(Phase.FourthPhase);
+
+                if (!isDeadOrDying())
+                {
+                    setHealth(almostDead);
+                }
 
                 finalPhaseGoals();
 
@@ -647,13 +651,13 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 .add(Attributes.ATTACK_KNOCKBACK, 0.5)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.8)
                 .add(Attributes.MAX_HEALTH, 550.0)
-                .add(Attributes.ARMOR, 50)
-                .add(Attributes.ARMOR_TOUGHNESS, 20)
+                .add(Attributes.ARMOR, 45)
+                .add(Attributes.ARMOR_TOUGHNESS, 25)
                 .add(Attributes.FOLLOW_RANGE, 80.0)
                 .add(Attributes.ENTITY_INTERACTION_RANGE, 4.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.25)
                 .add(AttributeRegistry.SPELL_POWER, 1.35)
-                .add(AttributeRegistry.SPELL_RESIST, 1.35)
+                .add(AttributeRegistry.SPELL_RESIST, 0.45)
                 .add(AttributeRegistry.MAX_MANA, 1000)
                 ;
     }

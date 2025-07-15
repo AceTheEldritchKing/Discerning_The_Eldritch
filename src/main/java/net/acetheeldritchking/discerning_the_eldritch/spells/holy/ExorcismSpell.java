@@ -7,6 +7,8 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
@@ -14,6 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
 import java.util.Optional;
@@ -63,6 +66,28 @@ public class ExorcismSpell extends AbstractSpell {
     @Override
     public AnimationHolder getCastStartAnimation() {
         return SpellAnimations.CAST_KNEELING_PRAYER;
+    }
+
+    @Override
+    public CastResult canBeCastedBy(int spellLevel, CastSource castSource, MagicData playerMagicData, Player player) {
+        if (!DTEConfig.enableInsanitySystem)
+        {
+            if (player instanceof ServerPlayer serverPlayer)
+            {
+                return new CastResult(CastResult.Type.FAILURE, Component.translatable("ui.discerning_the_eldritch.no_insanity_system", new Object[]{this.getDisplayName(player)}).withStyle(ChatFormatting.RED));
+            }
+        } else if (player.hasData(INSANITY_METER))
+        {
+            if (player.getData(INSANITY_METER) <= 0)
+            {
+                if (player instanceof ServerPlayer serverPlayer)
+                {
+                    return new CastResult(CastResult.Type.FAILURE, Component.translatable("ui.discerning_the_eldritch.exorcism_no_insanity", new Object[]{this.getDisplayName(player)}).withStyle(ChatFormatting.RED));
+                }
+            }
+        }
+
+        return super.canBeCastedBy(spellLevel, castSource, playerMagicData, player);
     }
 
     @Override

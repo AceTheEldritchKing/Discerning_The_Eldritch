@@ -104,6 +104,8 @@
   "ui.discerning_the_eldritch.ritual_cast_failure": "Rituals cannot be casted in a mere spellbook",
   "ui.discerning_the_eldritch.spell_power": "%d Spell Power",
   "ui.discerning_the_eldritch.spell_resist": "%d Spell Resist",
+  "ui.discerning_the_eldritch.exorcism_no_insanity": "There is nothing to cleanse",
+  "ui.discerning_the_eldritch.no_insanity_system": "Insanity does not reside in your heart",
 
 
   "entity.discerning_the_eldritch.apothic_acolyte": "Apothic Acolyte",
@@ -124,9 +126,11 @@
 
   "display.discerning_the_eldritch.ascended_one_taunt_1": "You think you can stop me?",
   "display.discerning_the_eldritch.ascended_one_taunt_2": "BEHOLD, MY APOTHEOSIS!",
-  "display.discerning_the_eldritch.insanity_warning": "YOU'VE LOST IT",
+  "display.discerning_the_eldritch.insanity_warning_1": "YOU'VE LOST IT",
+  "display.discerning_the_eldritch.insanity_warning_2": "NO GOING BACK",
+  "display.discerning_the_eldritch.insanity_warning_3": "YOUR MIND IS GONE",
+  "display.discerning_the_eldritch.insanity_warning_4": "THE KING COMES",
   "display.discerning_the_eldritch.silence_warning": "Unable to cast for : ",
-  "display.discerning_the_eldritch.exorcism_no_insanity": "There is nothing to cleanse",
 
 
 
