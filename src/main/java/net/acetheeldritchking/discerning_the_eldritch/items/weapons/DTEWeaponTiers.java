@@ -4,6 +4,7 @@ import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.item.weapons.IronsWeaponTier;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
+import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttributeRegistry;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -43,8 +44,8 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
     public static DTEWeaponTiers YMIR = new DTEWeaponTiers(2670, 15.5F, -3.1F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.20, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(DTEAttributeRegistry.RITUAL_MAGIC_POWER, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-            new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
-            //new AttributeContainer(DTEAttributeRegistry.MANA_STEAL, 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+            new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(ASAttributeRegistry.MANA_STEAL, 0.20D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
     );
 
     // Ritual Dagger

@@ -13,6 +13,7 @@ import io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.NotIdioticNavig
 import io.redspace.ironsspellbooks.network.EntityEventPacket;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.acetheeldritchking.aces_spell_utils.entity.mobs.GenericBossEntity;
+import net.acetheeldritchking.aces_spell_utils.entity.mobs.goals.WizardSpellComboGoal;
 import net.acetheeldritchking.aces_spell_utils.utils.boss_music.BossMusicManager;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
@@ -295,7 +296,25 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         this.goalSelector.addGoal(1, new FloatGoal(this));
         // Magic Spells
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 3, 5, 30, 50, 5));
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ABYSSAL_SHROUD_SPELL.get(), 1, 3, 100, 250, 0));
+        this.goalSelector.addGoal(3, new WizardSpellComboGoal(this,
+                List.of(
+                        SpellRegistry.COUNTERSPELL_SPELL.get(),
+                        SpellRegistry.ROOT_SPELL.get(),
+                        SpellRegistries.ESOTERIC_EDGE.get()
+                ), 1.3f, 1.3f, 100, 250));
+        this.goalSelector.addGoal(3, new WizardSpellComboGoal(this,
+                List.of(
+                        SpellRegistry.COUNTERSPELL_SPELL.get(),
+                        SpellRegistry.BLIGHT_SPELL.get(),
+                        SpellRegistry.SLOW_SPELL.get(),
+                        SpellRegistry.LIGHTNING_LANCE_SPELL.get()
+                ), 1.3f, 1.3f, 100, 250));
+        this.goalSelector.addGoal(3, new WizardSpellComboGoal(this,
+                List.of(
+                        SpellRegistry.COUNTERSPELL_SPELL.get(),
+                        SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
+                        SpellRegistry.CHARGE_SPELL.get()
+                ), 1.3f, 1.3f, 75, 100));
         this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 20, 35)
                 .setSpells(
                         // Attack
@@ -670,7 +689,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         {
             secondPhaseGoals();
         }
-        if (isPhase(Phase.FinalPhase))
+        if (isPhase(Phase.FourthPhase))
         {
             finalPhaseGoals();
         }
@@ -696,7 +715,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
 
     @Override
     protected boolean isImmobile() {
-        return isPhase(Phase.TransitionPhase1) || super.isImmobile();
+        return isPhase(Phase.ThirdPhase) || super.isImmobile();
     }
 
     @Override
@@ -767,7 +786,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
 
     public boolean isTransitionPhase()
     {
-        return isPhase(Phase.TransitionPhase1);
+        return isPhase(Phase.ThirdPhase);
     }
 
     public boolean isJumpingBack()
