@@ -7,6 +7,7 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.PercentageAttribute;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -15,8 +16,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class DTEAttributeRegistry {
     private static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(Registries.ATTRIBUTE, DiscerningTheEldritch.MOD_ID);
 
+    // Ritual
     public static final DeferredHolder<Attribute, Attribute> RITUAL_MAGIC_RESIST = registerResistanceAttribute("ritual");
-
     public static final DeferredHolder<Attribute, Attribute> RITUAL_MAGIC_POWER = registerPowerAttribute("ritual");
 
     public static void register(IEventBus eventBus)
@@ -46,5 +47,10 @@ public class DTEAttributeRegistry {
         return ATTRIBUTES.register(id + "_spell_power", () ->
                 (new MagicRangedAttribute("attribute.discerning_the_eldritch." + id + "_spell_power",
                         1.0D, 0, 10).setSyncable(true)));
+    }
+
+    private static DeferredHolder<Attribute, Attribute> registerAttribute(String id)
+    {
+        return ATTRIBUTES.register(id, () -> new PercentageAttribute("attribute.discerning_the_eldritch." + id, 0.0D, 0.0D, 10.0D).setSyncable(true));
     }
 }

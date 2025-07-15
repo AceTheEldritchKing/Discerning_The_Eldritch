@@ -1,12 +1,15 @@
 package net.acetheeldritchking.discerning_the_eldritch.events;
 
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
+import io.redspace.ironsspellbooks.api.magic.MagicData;
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttributeRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
@@ -120,11 +123,12 @@ public class ServerEvents {
         var target = event.getEntity();
         var projectile = event.getSource().getDirectEntity();
 
-        // Diary of Decay
+        // Curios
         if (sourceEntity != null)
         {
             if (sourceEntity instanceof Player player)
             {
+                // Diary of Decay
                 if (ASUtils.hasCurio(player, ItemRegistries.DIARY_OF_DECAY.get()))
                 {
                     if (projectile instanceof Projectile)
@@ -135,6 +139,7 @@ public class ServerEvents {
             }
         }
 
+        // Other stuff
         if (sourceEntity instanceof LivingEntity livingEntity)
         {
             // Ice Spear
