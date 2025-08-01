@@ -7,6 +7,8 @@ import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.capabilities.magic.SummonManager;
+import io.redspace.ironsspellbooks.capabilities.magic.SummonedEntitiesCastData;
 import net.acetheeldritchking.aces_spell_utils.spells.ASSpellAnimations;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
@@ -126,29 +128,27 @@ public class ConjureGaolerSpell extends AbstractSpell {
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         // This is the strongest summon possible, hard limit to one minute
+        // This is also not following the standard recast stuff for summons, this is fucking Mahoraga you are letting him LOOSE
         int summonTimer = (20 * 60);
+        SummonedEntitiesCastData summonedEntitiesCastData = new SummonedEntitiesCastData();
 
         BlockPos pos = new BlockPos((int) entity.getX(), (int) entity.getY(), (int) entity.getZ());
 
         if (entity instanceof Player player && ASUtils.hasCurio(player, ItemRegistries.KINGS_EFFIGY.get()))
         {
-            spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, entity, level, summonTimer, spellLevel);
+            spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, entity, level, summonTimer, spellLevel, summonedEntitiesCastData);
         }
         else
         {
-            spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, null, level, summonTimer, spellLevel);
+            spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, null, level, summonTimer, spellLevel, summonedEntitiesCastData);
         }
-
-        entity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.GAOLER_TIMER, summonTimer, 0, false, false, true));
 
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 
-    private void spawnGaoler(double x, double y, double z, LivingEntity caster, Level level, int timer, int spellLevel)
+    private void spawnGaoler(double x, double y, double z, LivingEntity caster, Level level, int timer, int spellLevel, SummonedEntitiesCastData castData)
     {
         GaolerEntity gaoler = new GaolerEntity(level, caster, true);
-
-        gaoler.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.GAOLER_TIMER, timer, 0, false, false, true));
 
         gaoler.setPos(x, y, z);
         gaoler.setOldPosAndRot();
@@ -156,9 +156,11 @@ public class ConjureGaolerSpell extends AbstractSpell {
         gaoler.getAttributes().getInstance(Attributes.MAX_HEALTH).setBaseValue(getGaolerHealth(spellLevel, caster));
         gaoler.setHealth(gaoler.getMaxHealth());
 
-        var event = NeoForge.EVENT_BUS.post(new SpellSummonEvent<>(caster, gaoler, this.spellId, spellLevel));
+        var event = NeoForge.EVENT_BUS.post(new SpellSummonEvent<>(caster, gaoler, this.spellId, spellLevel)).getCreature();
 
-        level.addFreshEntity(event.getCreature());
+        level.addFreshEntity(event);
+
+        SummonManager.initSummon(caster, event, timer, castData);
 
         /*
         System.out.println("////");

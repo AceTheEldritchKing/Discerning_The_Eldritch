@@ -68,6 +68,19 @@ public class ExorcismSpell extends AbstractSpell {
         return SpellAnimations.CAST_KNEELING_PRAYER;
     }
 
+    // This should make this spell only craftable if the insanity config is enabled
+    @Override
+    public boolean allowCrafting() {
+        if (DTEConfig.enableInsanitySystem)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+    // If somehow someone gets the scroll and doesn't have insanity enabled, they can't cast it
     @Override
     public CastResult canBeCastedBy(int spellLevel, CastSource castSource, MagicData playerMagicData, Player player) {
         if (!DTEConfig.enableInsanitySystem)

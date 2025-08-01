@@ -46,6 +46,7 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
             new AttributeContainer(DTEAttributeRegistry.RITUAL_MAGIC_POWER, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(ASAttributeRegistry.MANA_STEAL, 0.20D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+            //new AttributeContainer(DTEAttributeRegistry.MANA_REND, 0.10D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
     );
 
     // Ritual Dagger

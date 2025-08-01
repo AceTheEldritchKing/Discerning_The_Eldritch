@@ -75,7 +75,6 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
 
     public GaolerEntity(Level level, LivingEntity owner, boolean playAnimation) {
         this(DTEEntityRegistry.GAOLER_ENTITY.get(), level);
-        setSummoner(owner);
         if (playAnimation)
         {
             triggerRiseAnimation();
@@ -161,20 +160,6 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
     }
 
     @Override
-    public LivingEntity getSummoner() {
-        return OwnerHelper.getAndCacheOwner(level(), cachedSummoner, summonerUUID);
-    }
-
-    public void setSummoner(@Nullable LivingEntity owner)
-    {
-        if (owner != null)
-        {
-            this.summonerUUID = owner.getUUID();
-            this.cachedSummoner = owner;
-        }
-    }
-
-    @Override
     public boolean isAlliedTo(Entity entityIn) {
         return super.isAlliedTo(entityIn) || this.isAlliedHelper(entityIn);
     }
@@ -205,7 +190,6 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
 
     @Override
     public void onRemovedFromLevel() {
-        this.onRemovedHelper(this, DTEPotionEffectRegistry.GAOLER_TIMER);
         super.onRemovedFromLevel();
     }
 

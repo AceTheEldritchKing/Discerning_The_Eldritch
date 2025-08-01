@@ -1,5 +1,6 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
@@ -104,6 +105,7 @@ public class ApothicSummonerEntity extends NeutralWizard implements Enemy {
                 .add(Attributes.MAX_HEALTH, 50.0)
                 .add(Attributes.FOLLOW_RANGE, 24.0)
                 .add(Attributes.ENTITY_INTERACTION_RANGE, 3.0)
-                .add(Attributes.MOVEMENT_SPEED, .25);
+                .add(Attributes.MOVEMENT_SPEED, .25)
+                .add(AttributeRegistry.MAX_MANA, 350);
     }
 }

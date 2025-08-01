@@ -6,17 +6,20 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.capabilities.magic.*;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.SightlessMawEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.TheApostleEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForge;
+import org.jetbrains.annotations.Nullable;
 
 @AutoSpellConfig
 public class ConjureForsakenAidSpell extends AbstractSpell {
@@ -54,25 +57,49 @@ public class ConjureForsakenAidSpell extends AbstractSpell {
     }
 
     @Override
-    public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-        int summonTimer = (int) (20 * (20 * getSpellPower(spellLevel, entity)));
+    public int getRecastCount(int spellLevel, @Nullable LivingEntity entity) {
+        return 2;
+    }
 
-        for (int i = 0; i < spellLevel; i++)
-        {
-            Vec3 vec = entity.getEyePosition();
-
-            double randomNearbyX = vec.x + entity.getRandom().nextGaussian() * 3;
-            double randomNearbyZ = vec.z + entity.getRandom().nextGaussian() * 3;
-
-            spawnForsakenAid(randomNearbyX, vec.y, randomNearbyZ, entity, level, summonTimer, spellLevel);
+    @Override
+    public void onRecastFinished(ServerPlayer serverPlayer, RecastInstance recastInstance, RecastResult recastResult, ICastDataSerializable castDataSerializable) {
+        if (SummonManager.recastFinishedHelper(serverPlayer, recastInstance, recastResult, castDataSerializable)) {
+            super.onRecastFinished(serverPlayer, recastInstance, recastResult, castDataSerializable);
         }
+    }
 
-        entity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.FORSAKEN_TIMER, summonTimer, 0, false, false, true));
+    @Override
+    public ICastDataSerializable getEmptyCastData() {
+        return new SummonedEntitiesCastData();
+    }
+
+    @Override
+    public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
+        PlayerRecasts recasts = playerMagicData.getPlayerRecasts();
+
+        if (!recasts.hasRecastForSpell(this))
+        {
+            SummonedEntitiesCastData summonedEntitiesCastData = new SummonedEntitiesCastData();
+            int summonTimer = (int) (20 * (20 * getSpellPower(spellLevel, entity)));
+
+            for (int i = 0; i < spellLevel; i++)
+            {
+                Vec3 vec = entity.getEyePosition();
+
+                double randomNearbyX = vec.x + entity.getRandom().nextGaussian() * 3;
+                double randomNearbyZ = vec.z + entity.getRandom().nextGaussian() * 3;
+
+                spawnForsakenAid(randomNearbyX, vec.y, randomNearbyZ, entity, level, summonTimer, spellLevel, summonedEntitiesCastData);
+            }
+
+            RecastInstance recastInstance = new RecastInstance(this.getSpellId(), spellLevel, getRecastCount(spellLevel, entity), summonTimer, castSource, summonedEntitiesCastData);
+            recasts.addRecast(recastInstance, playerMagicData);
+        }
 
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 
-    private void spawnForsakenAid(double x, double y, double z, LivingEntity caster, Level level, int timer, int spellLevel)
+    private void spawnForsakenAid(double x, double y, double z, LivingEntity caster, Level level, int timer, int spellLevel, SummonedEntitiesCastData castData)
     {
         boolean isMaw = Utils.random.nextDouble() < 0.5;
         boolean isBehemoth = Utils.random.nextDouble() < 0.4;
@@ -88,13 +115,13 @@ public class ConjureForsakenAidSpell extends AbstractSpell {
 
         AbstractSpellCastingMob baseArmy = isBase ? isMeleeMobs : isCaster;
 
-        baseArmy.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.FORSAKEN_TIMER, timer, 0, false, false, true));
-
         baseArmy.setPos(x, y, z);
         baseArmy.setOldPosAndRot();
 
-        var event = NeoForge.EVENT_BUS.post(new SpellSummonEvent<>(caster, baseArmy, this.spellId, spellLevel));
+        var event = NeoForge.EVENT_BUS.post(new SpellSummonEvent<>(caster, baseArmy, this.spellId, spellLevel)).getCreature();
 
-        level.addFreshEntity(event.getCreature());
+        level.addFreshEntity(event);
+
+        SummonManager.initSummon(caster, event, timer, castData);
     }
 }

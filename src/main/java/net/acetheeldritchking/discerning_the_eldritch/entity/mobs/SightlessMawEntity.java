@@ -51,7 +51,6 @@ public class SightlessMawEntity extends AbstractSpellCastingMob implements IMagi
 
     public SightlessMawEntity(Level level, LivingEntity owner) {
         this(DTEEntityRegistry.SIGHTLESS_MAW.get(), level);
-        setSummoner(owner);
     }
 
     protected LookControl createLookControl()
@@ -127,20 +126,6 @@ public class SightlessMawEntity extends AbstractSpellCastingMob implements IMagi
     }
 
     @Override
-    public LivingEntity getSummoner() {
-        return OwnerHelper.getAndCacheOwner(level(), cachedSummoner, summonerUUID);
-    }
-
-    public void setSummoner(@Nullable LivingEntity owner)
-    {
-        if (owner != null)
-        {
-            this.summonerUUID = owner.getUUID();
-            this.cachedSummoner = owner;
-        }
-    }
-
-    @Override
     public boolean isAlliedTo(Entity entityIn) {
         return super.isAlliedTo(entityIn) || this.isAlliedHelper(entityIn);
     }
@@ -154,7 +139,6 @@ public class SightlessMawEntity extends AbstractSpellCastingMob implements IMagi
 
     @Override
     public void onRemovedFromLevel() {
-        this.onRemovedHelper(this, DTEPotionEffectRegistry.FORSAKEN_TIMER);
         super.onRemovedFromLevel();
     }
 

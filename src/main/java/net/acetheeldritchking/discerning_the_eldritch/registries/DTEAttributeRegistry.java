@@ -54,7 +54,7 @@ public class DTEAttributeRegistry {
     private static DeferredHolder<Attribute, Attribute> registerAttribute(String id)
     {
         return ATTRIBUTES.register(id, () ->
-                (new MagicRangedAttribute("attribute.discerning_the_eldritch." + id,
+                (new MagicRangedAttribute("attribute.aces_spell_utils." + id,
                         1.0D, -100, 100).setSyncable(true)));
     }
 }

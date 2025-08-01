@@ -53,7 +53,6 @@ public class TheApostleEntity extends UniqueAbstractSpellCastingMob implements I
 
     public TheApostleEntity(Level level, LivingEntity owner) {
         this(DTEEntityRegistry.APOSTLE_ENTITY.get(), level);
-        setSummoner(owner);
     }
 
     protected LookControl createLookControl()
@@ -151,20 +150,6 @@ public class TheApostleEntity extends UniqueAbstractSpellCastingMob implements I
                 ;
     }
 
-    @Override
-    public LivingEntity getSummoner() {
-        return OwnerHelper.getAndCacheOwner(level(), cachedSummoner, summonerUUID);
-    }
-
-    public void setSummoner(@Nullable LivingEntity owner)
-    {
-        if (owner != null)
-        {
-            this.summonerUUID = owner.getUUID();
-            this.cachedSummoner = owner;
-        }
-    }
-
     public boolean isAlliedTo(Entity pEntity) {
         return super.isAlliedTo(pEntity) || this.isAlliedHelper(pEntity);
     }
@@ -178,7 +163,6 @@ public class TheApostleEntity extends UniqueAbstractSpellCastingMob implements I
 
     @Override
     public void onRemovedFromLevel() {
-        this.onRemovedHelper(this, DTEPotionEffectRegistry.FORSAKEN_TIMER);
         super.onRemovedFromLevel();
     }
 
