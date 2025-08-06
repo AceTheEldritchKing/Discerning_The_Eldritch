@@ -21,11 +21,14 @@ import net.acetheeldritchking.discerning_the_eldritch.items.curios.*;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.BlackBookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.GuardianGuidebookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.TempestuousTomeSpellbook;
+import net.acetheeldritchking.discerning_the_eldritch.items.staffs.BrokenLegendsStaff;
 import net.acetheeldritchking.discerning_the_eldritch.items.staffs.DTEStaffTier;
 import net.acetheeldritchking.discerning_the_eldritch.items.staffs.StaffOfVehemenceStaffItem;
+import net.acetheeldritchking.discerning_the_eldritch.items.weapons.BrokenLegendsBlade;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.DTEWeaponTiers;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.YmirSwordItem;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTERarities;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
@@ -76,6 +79,7 @@ public class ItemRegistries {
     // Guardian's Gaze
     public static final DeferredHolder<Item, Item> GUARDIANS_GAZE = ITEMS.register("guardian_guidebook", GuardianGuidebookSpellbook::new);
 
+
     /***
      * Staffs and Gauntlets
      */
@@ -87,6 +91,10 @@ public class ItemRegistries {
 
     // Staff of Ascension
     public static final DeferredHolder<Item, Item> STAFF_OF_ASCENSION = ITEMS.register("staff_of_ascension", () -> new StaffItem(ItemPropertiesHelper.equipment(1).fireResistant().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEStaffTier.STAFF_OF_ASCENSION))));
+
+    // Broken Legend's Staff
+    public static final DeferredHolder<Item, Item> BROKEN_LEGENDS_STAFF = ITEMS.register("broken_legends_staff", BrokenLegendsStaff::new);
+
 
     /***
      * Weapons
@@ -120,6 +128,14 @@ public class ItemRegistries {
 
     // Lemon Spear
 
+    // Broken Legend's Blade
+    public static final DeferredHolder<Item, Item> BROKEN_LEGENDS_BLADE = ITEMS.register("broken_legends_blade", BrokenLegendsBlade::new);
+
+    // Forsaken Flamberge
+    public static final DeferredHolder<Item, Item> FORSAKEN_FLAMBERGE = ITEMS.register("forsaken_flamberge", () ->
+            new ExtendedSwordItem(DTEWeaponTiers.FORSAKEN_FLAMBERGE, ItemPropertiesHelper.equipment(1).rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.FORSAKEN_FLAMBERGE))));
+
+
     /***
      * Generic Items
      */
@@ -147,6 +163,10 @@ public class ItemRegistries {
     // Ritual Key
     public static final DeferredHolder<Item, Item> RITUAL_KEY = ITEMS.register("ritual_key", () -> new Item(ItemPropertiesHelper.material()));
 
+    // Eldritch Soul Shard
+    public static final DeferredHolder<Item, Item> ELDRITCH_SOUL_SHARD = ITEMS.register("eldritch_soul_shard", () -> new Item(ItemPropertiesHelper.material().rarity(DTERarities.APOTHIC_RARITY_PROXY.getValue())));
+
+
     /***
      * Upgrade Orbs
      */
@@ -158,6 +178,7 @@ public class ItemRegistries {
     // Ritual Upgrade Orb
     public static final DeferredHolder<Item, Item> RITUAL_UPGRADE_ORB = ITEMS.register("ritual_upgrade_orb",
             () -> new UpgradeOrbItem(ItemPropertiesHelper.material().rarity(Rarity.UNCOMMON).component(ComponentRegistry.UPGRADE_ORB_TYPE, DTEUpgradeOrbTypeRegistry.RITUAL_SPELL_POWER)));
+
 
     /***
      * Curios
@@ -177,6 +198,7 @@ public class ItemRegistries {
 
     // Ironbound Feather - Trial Chamber loot
     public static final Supplier<CurioBaseItem> IRONBOUND_FEATHER = ITEMS.register("ironbound_feather", IronboundFeatherCurio::new);
+
 
     /***
      * Armor
@@ -227,6 +249,11 @@ public class ItemRegistries {
     // Apothic Crusader
     public static final DeferredItem<Item> CRUSADER_SPAWN_EGG = ITEMS.register("apothic_crusader_spawn_egg",
             () -> new DeferredSpawnEggItem(DTEEntityRegistry.APOTHIC_CRUSADER, 1973277, 12556098,
+                    new Item.Properties()));
+
+    // Ascended Cultist
+    public static final DeferredItem<Item> ASCENDED_CULTIST_SPAWN_EGG = ITEMS.register("ascended_cultist_spawn_egg",
+            () -> new DeferredSpawnEggItem(DTEEntityRegistry.ASCENDED_ONE_CULTIST, 1973277, 10554050,
                     new Item.Properties()));
 
 

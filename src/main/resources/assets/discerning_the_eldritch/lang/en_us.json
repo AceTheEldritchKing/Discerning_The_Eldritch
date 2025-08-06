@@ -17,6 +17,7 @@
 
 
   "item.discerning_the_eldritch.corrupted_cloth": "Corrupted Cloth",
+  "item.discerning_the_eldritch.eldritch_soul_shard": "Eldritch Soulshard",
 
   "item.discerning_the_eldritch.black_book_spellbook": "Black Book",
   "item.discerning_the_eldritch.the_apocrypha_spellbook": "The Apocrypha",
@@ -27,7 +28,7 @@
 
   "item.discerning_the_eldritch.echo_vibration_ring": "Echo Vibration Ring",
   "item.discerning_the_eldritch.echo_vibration_ring.desc": "Provides bonus recasts for Boogie Woogie",
-  "item.discerning_the_eldritch.kings_effigy": "King's Effigy",
+  "item.discerning_the_eldritch.kings_effigy": "King's Visage",
   "item.discerning_the_eldritch.kings_effigy.desc": "Being torn apart over and over again, is this what you want?",
   "item.discerning_the_eldritch.amulet_of_sculk_treasure": "Amulet of Hidden Treasure",
   "item.discerning_the_eldritch.amulet_of_sculk_treasure.desc": "The gem reflects an ancient enemy before your eyes",
@@ -43,9 +44,14 @@
   "item.discerning_the_eldritch.ice_spear_description": "Frozen tears formed into cold vengeance",
   "item.discerning_the_eldritch.ritual_dagger": "Ritual Dagger",
   "item.discerning_the_eldritch.forlorn_rapier": "Forlorn Rapier",
+  "item.discerning_the_eldritch.broken_legends_blade": "Broken Legend's Blade",
+  "item.discerning_the_eldritch.broken_legends_blade_description": "An ancient blade forged centuries ago, perhaps it once had a use?",
+  "item.discerning_the_eldritch.forsaken_flamberge": "Forsaken Flamberge",
 
   "item.discerning_the_eldritch.staff_of_eldritch": "Staff of Vehemence",
   "item.discerning_the_eldritch.staff_of_ascension": "Staff of Ascension",
+  "item.discerning_the_eldritch.broken_legends_staff": "Broken Legend's Staff",
+  "item.discerning_the_eldritch.broken_legends_staff_description": "An ancient staff constructed centuries ago, perhaps it once had a use?",
 
   "item.discerning_the_eldritch.eldritch_warlock_hood": "Apothic Acolyte Hood",
   "item.discerning_the_eldritch.eldritch_warlock_robes": "Apothic Acolyte Robes",
@@ -67,6 +73,7 @@
   "item.discerning_the_eldritch.apothic_acolyte_spawn_egg": "Apothic Acolyte Spawn Egg",
   "item.discerning_the_eldritch.apothic_summoner_spawn_egg": "Apothic Summoner Spawn Egg",
   "item.discerning_the_eldritch.apothic_crusader_spawn_egg": "Apothic Crusader Spawn Egg",
+  "item.discerning_the_eldritch.ascended_cultist_spawn_egg": "Ascended Cultist Spawn Egg",
 
 
   "spell.discerning_the_eldritch.silence": "Silence",

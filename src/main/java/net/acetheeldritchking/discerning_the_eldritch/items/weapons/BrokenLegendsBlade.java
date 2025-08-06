@@ -1,0 +1,28 @@
+package net.acetheeldritchking.discerning_the_eldritch.items.weapons;
+
+import io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem;
+import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
+
+import java.util.List;
+
+public class BrokenLegendsBlade extends ExtendedSwordItem {
+    public BrokenLegendsBlade() {
+        super(
+                DTEWeaponTiers.BROKEN_LEGENDS_SWORD,
+                ItemPropertiesHelper.equipment(1).fireResistant().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.BROKEN_LEGENDS_SWORD))
+        );
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+        tooltipComponents.add(Component.translatable("item.discerning_the_eldritch.broken_legends_blade_description").
+                withStyle(ChatFormatting.DARK_GRAY).
+                withStyle(ChatFormatting.ITALIC));
+    }
+}

@@ -25,6 +25,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.ELDRITCH_UPGRADE_ORB.get());
                         output.accept(ItemRegistries.RITUAL_UPGRADE_ORB.get());
                         output.accept(ItemRegistries.ELDRITCH_UPGRADE_TEMPLATE.get());
+                        output.accept(ItemRegistries.ELDRITCH_SOUL_SHARD.get());
                         // Curios
                         output.accept(ItemRegistries.ECHO_VIBRATION_RING.get());
                         output.accept(ItemRegistries.AMULET_OF_SCULK_TREASURE.get());
@@ -45,13 +46,16 @@ public class DTECreativeModeTabs {
                         // Weapons
                         output.accept(ItemRegistries.DEEP_GREATSWORD.get());
                         output.accept(ItemRegistries.GOD_SPEAR.get());
-                        output.accept(ItemRegistries.YMIR.get());
+                        output.accept(ItemRegistries.FORSAKEN_FLAMBERGE.get());
                         output.accept(ItemRegistries.ICE_SPEAR.get());
                         output.accept(ItemRegistries.RITUAL_DAGGER.get());
                         output.accept(ItemRegistries.FORLORN_RAPIER.get());
+                        output.accept(ItemRegistries.BROKEN_LEGENDS_BLADE.get());
+                        output.accept(ItemRegistries.YMIR.get());
                         // Staves
                         output.accept(ItemRegistries.STAFF_OF_VEHEMENCE.get());
                         output.accept(ItemRegistries.STAFF_OF_ASCENSION.get());
+                        output.accept(ItemRegistries.BROKEN_LEGENDS_STAFF.get());
                         // Armor
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_HOOD.get());
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_MASK.get());
@@ -63,6 +67,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.ACOLYTE_SPAWN_EGG.get());
                         output.accept(ItemRegistries.SUMMONER_SPAWN_EGG.get());
                         output.accept(ItemRegistries.CRUSADER_SPAWN_EGG.get());
+                        output.accept(ItemRegistries.ASCENDED_CULTIST_SPAWN_EGG.get());
                     }).build());
 
     public static void register(IEventBus eventBus)

@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:smithing_transform",
+    "addition": {
+        "item": "discerning_the_eldritch:broken_legends_staff"
+    },
+    "base": {
+        "item": "discerning_the_eldritch:staff_of_ascension"
+    },
+    "result": {
+        "count": 1,
+        "id": "discerning_the_eldritch:staff_of_eldritch"
+    },
+    "template": {
+        "item": "discerning_the_eldritch:eldritch_soul_shard"
+    }
+}

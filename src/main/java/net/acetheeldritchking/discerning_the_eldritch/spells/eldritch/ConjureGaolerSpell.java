@@ -7,8 +7,7 @@ import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.capabilities.magic.SummonManager;
-import io.redspace.ironsspellbooks.capabilities.magic.SummonedEntitiesCastData;
+import io.redspace.ironsspellbooks.capabilities.magic.*;
 import net.acetheeldritchking.aces_spell_utils.spells.ASSpellAnimations;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
@@ -19,6 +18,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -112,6 +112,31 @@ public class ConjureGaolerSpell extends AbstractSpell {
     }
 
     @Override
+    public int getRecastCount(int spellLevel, @Nullable LivingEntity entity) {
+        if (entity instanceof Player player)
+        {
+            if (ASUtils.hasCurio(player, ItemRegistries.KINGS_EFFIGY.get()))
+            {
+                return 2;
+            }
+        }
+
+        return 1;
+    }
+
+    @Override
+    public void onRecastFinished(ServerPlayer serverPlayer, RecastInstance recastInstance, RecastResult recastResult, ICastDataSerializable castDataSerializable) {
+        if (SummonManager.recastFinishedHelper(serverPlayer, recastInstance, recastResult, castDataSerializable) && ASUtils.hasCurio(serverPlayer, ItemRegistries.KINGS_EFFIGY.get())) {
+            super.onRecastFinished(serverPlayer, recastInstance, recastResult, castDataSerializable);
+        }
+    }
+
+    @Override
+    public ICastDataSerializable getEmptyCastData() {
+        return new SummonedEntitiesCastData();
+    }
+
+    @Override
     public void onServerPreCast(Level level, int spellLevel, LivingEntity entity, @Nullable MagicData playerMagicData) {
         double radius = 15;
 
@@ -129,6 +154,8 @@ public class ConjureGaolerSpell extends AbstractSpell {
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         // This is the strongest summon possible, hard limit to one minute
         // This is also not following the standard recast stuff for summons, this is fucking Mahoraga you are letting him LOOSE
+        // Unless you are wearing King's Visage, then he acts like the typical summon
+        PlayerRecasts recasts = playerMagicData.getPlayerRecasts();
         int summonTimer = (20 * 60);
         SummonedEntitiesCastData summonedEntitiesCastData = new SummonedEntitiesCastData();
 
@@ -136,11 +163,16 @@ public class ConjureGaolerSpell extends AbstractSpell {
 
         if (entity instanceof Player player && ASUtils.hasCurio(player, ItemRegistries.KINGS_EFFIGY.get()))
         {
-            spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, entity, level, summonTimer, spellLevel, summonedEntitiesCastData);
+            if (!recasts.hasRecastForSpell(this))
+            {
+                spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, entity, level, summonTimer, spellLevel, summonedEntitiesCastData);
+                RecastInstance recastInstance = new RecastInstance(this.getSpellId(), spellLevel, getRecastCount(spellLevel, entity), summonTimer, castSource, summonedEntitiesCastData);
+                recasts.addRecast(recastInstance, playerMagicData);
+            }
         }
         else
         {
-            spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, null, level, summonTimer, spellLevel, summonedEntitiesCastData);
+            spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, entity, level, summonTimer, spellLevel, summonedEntitiesCastData);
         }
 
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
