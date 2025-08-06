@@ -188,7 +188,7 @@ dependencies {
     //localRuntime "curse.maven:apothic-curios-950712:5108911"
 
     // AZURELIB
-    implementation "mod.azure.azurelib:azurelib-neo-1.21.1:3.0.13"
+    implementation "mod.azure.azurelib:azurelib-neo-1.21.1:3.0.27"
     //implementation "curse.maven:azurelib-817423:6004979"
 
     // Spell Collector Lib
@@ -198,7 +198,7 @@ dependencies {
     implementation "curse.maven:worldedit-225608:5830452"
 
     // Ace's Spell Utils (REQUIRED - It's literally my API mod)
-    implementation "curse.maven:aces-spell-utils-1299492:6772134"
+    implementation "curse.maven:aces-spell-utils-1299492:6845096"
 
     //QOL
     //todo: 1.21: update these mods
