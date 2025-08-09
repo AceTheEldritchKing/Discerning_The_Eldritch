@@ -165,20 +165,20 @@ public class ConjureGaolerSpell extends AbstractSpell {
         {
             if (!recasts.hasRecastForSpell(this))
             {
-                spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, entity, level, summonTimer, spellLevel, summonedEntitiesCastData);
+                spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, entity, level, summonTimer, spellLevel, summonedEntitiesCastData, false);
                 RecastInstance recastInstance = new RecastInstance(this.getSpellId(), spellLevel, getRecastCount(spellLevel, entity), summonTimer, castSource, summonedEntitiesCastData);
                 recasts.addRecast(recastInstance, playerMagicData);
             }
         }
         else
         {
-            spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, entity, level, summonTimer, spellLevel, summonedEntitiesCastData);
+            spawnGaoler(pos.getX(), pos.getY(), pos.getZ() - 2.5, entity, level, summonTimer, spellLevel, summonedEntitiesCastData, true);
         }
 
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 
-    private void spawnGaoler(double x, double y, double z, LivingEntity caster, Level level, int timer, int spellLevel, SummonedEntitiesCastData castData)
+    private void spawnGaoler(double x, double y, double z, LivingEntity caster, Level level, int timer, int spellLevel, SummonedEntitiesCastData castData, boolean isFeral)
     {
         GaolerEntity gaoler = new GaolerEntity(level, caster, true);
 
@@ -193,6 +193,11 @@ public class ConjureGaolerSpell extends AbstractSpell {
         level.addFreshEntity(event);
 
         SummonManager.initSummon(caster, event, timer, castData);
+
+        if (isFeral)
+        {
+            SummonManager.removeSummon(gaoler);
+        }
 
         /*
         System.out.println("////");
