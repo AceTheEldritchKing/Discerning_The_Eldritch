@@ -9,11 +9,11 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
-import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import io.redspace.ironsspellbooks.entity.mobs.goals.melee.AttackAnimationData;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
+import net.acetheeldritchking.aces_spell_utils.entity.mobs.UniqueAbstractSpellCastingMob;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.goals.GaolerAnimatedWarlockAttackGoal;
 import net.acetheeldritchking.discerning_the_eldritch.registries.*;
 import net.minecraft.core.BlockPos;
@@ -59,14 +59,14 @@ import java.util.List;
 import java.util.UUID;
 
 
-public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummon, GeoAnimatable, IAnimatedAttacker {
+public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagicSummon, GeoAnimatable, IAnimatedAttacker {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     protected LivingEntity cachedSummoner;
     protected UUID summonerUUID;
     private int riseAnimationTime = 130;
     private static final EntityDataAccessor<Boolean> DATA_IS_PLAYING_RISE_ANIM = SynchedEntityData.defineId(GaolerEntity.class, EntityDataSerializers.BOOLEAN);
 
-    public GaolerEntity(EntityType<? extends AbstractSpellCastingMob> entityType, Level level) {
+    public GaolerEntity(EntityType<? extends UniqueAbstractSpellCastingMob> entityType, Level level) {
         super(entityType, level);
         xpReward = 0;
         this.lookControl = createLookControl();
@@ -249,7 +249,7 @@ public class GaolerEntity extends AbstractSpellCastingMob implements IMagicSummo
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(animationController);
         controllers.add(attackAnimationController);
-        controllers.add(castingAnimationController);
+        //controllers.add(castingAnimationController);
     }
 
     private PlayState predicate(AnimationState<GaolerEntity> event)

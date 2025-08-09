@@ -139,6 +139,21 @@
         }
       ],
       "rolls": 1
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 4,
+          "name": "discerning_the_eldritch:broken_legends_blade"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "discerning_the_eldritch:broken_legends_staff"
+        }
+      ],
+      "rolls": 1
     }
   ]
 }

@@ -1,0 +1,14 @@
+{
+  "type": "irons_spellbooks:alchemist_cauldron_brew",
+  "base_fluid": {
+    "amount": 1000,
+    "id": "irons_spellbooks:blood"
+  },
+  "byproduct": {
+    "id": "discerning_the_eldritch:eldritch_soul_shard"
+  },
+  "input": {
+    "item": "irons_spellbooks:divine_soulshard"
+  },
+  "results": []
+}
