@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.aces_spell_utils.items.staves.ImbuableStaffItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.custom.DTEItemDispatcher;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTERarities;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -17,7 +18,7 @@ public class StaffOfVehemenceStaffItem extends ImbuableStaffItem {
 
     public StaffOfVehemenceStaffItem() {
         super(
-                ItemPropertiesHelper.equipment(1).fireResistant().rarity(Rarity.EPIC).attributes(ExtendedSwordItem.createAttributes(DTEStaffTier.STAFF_OF_VEHEMENCE)),
+                ItemPropertiesHelper.equipment(1).fireResistant().rarity(DTERarities.APOTHIC_RARITY_PROXY.getValue()).attributes(ExtendedSwordItem.createAttributes(DTEStaffTier.STAFF_OF_VEHEMENCE)),
                 SpellDataRegistryHolder.of(
                         new SpellDataRegistryHolder(SpellRegistries.ESOTERIC_EDGE, 6),
                         new SpellDataRegistryHolder(SpellRegistries.SILENCE, 6))
