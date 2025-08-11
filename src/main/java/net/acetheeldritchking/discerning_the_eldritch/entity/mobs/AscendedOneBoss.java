@@ -200,7 +200,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         this.goalSelector.addGoal(1, new FloatGoal(this));
         // Magic Spells
         this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 1, 3, 80, 150, 1));
-        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 50, 80)
+        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.25f, 50, 75)
                 .setSpells(
                         // Attack
                         List.of(
@@ -642,16 +642,16 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
     public static AttributeSupplier.Builder createAttributes()
     {
         return LivingEntity.createLivingAttributes()
-                .add(Attributes.ATTACK_DAMAGE, 12.5)
+                .add(Attributes.ATTACK_DAMAGE, 14.5)
                 .add(Attributes.ATTACK_KNOCKBACK, 0.5)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.8)
-                .add(Attributes.MAX_HEALTH, 550.0)
-                .add(Attributes.ARMOR, 45)
-                .add(Attributes.ARMOR_TOUGHNESS, 25)
+                .add(Attributes.MAX_HEALTH, 600.0)
+                .add(Attributes.ARMOR, 50)
+                .add(Attributes.ARMOR_TOUGHNESS, 35)
                 .add(Attributes.FOLLOW_RANGE, 80.0)
                 .add(Attributes.ENTITY_INTERACTION_RANGE, 4.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.25)
-                .add(AttributeRegistry.SPELL_POWER, 1.35)
+                .add(AttributeRegistry.SPELL_POWER, 1.4)
                 .add(AttributeRegistry.SPELL_RESIST, 1.65)
                 .add(AttributeRegistry.MAX_MANA, 1000)
                 ;

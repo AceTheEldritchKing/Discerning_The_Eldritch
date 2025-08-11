@@ -55,7 +55,7 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
             new AttributeContainer(DTEAttributeRegistry.RITUAL_MAGIC_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
     // Forlorn Rapier
-    public static DTEWeaponTiers FORLORN_RAPIER = new DTEWeaponTiers(1061, 5, -2.8F, 10, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+    public static DTEWeaponTiers FORLORN_RAPIER = new DTEWeaponTiers(1061, 5, -1.5F, 10, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
     // Broken Legend's Blade

@@ -7,6 +7,8 @@ import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
 import io.redspace.ironsspellbooks.network.SyncManaPacket;
+import io.redspace.ironsspellbooks.player.ClientMagicData;
+import io.redspace.ironsspellbooks.spells.ender.CounterspellSpell;
 import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
@@ -40,6 +42,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
+import java.util.Objects;
 import java.util.logging.Level;
 
 import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.INSANITY_METER;
@@ -120,6 +123,29 @@ public class ServerEvents {
                             }
                         }
                     }
+                }
+            }
+        }
+
+        // Otherworldly Presence
+        boolean hasPresenceEffect = entity.hasEffect(DTEPotionEffectRegistry.METAPHYSICAL_POTION_EFFECT);
+        if (entity instanceof ServerPlayer player && !player.level().isClientSide())
+        {
+            if (hasPresenceEffect)
+            {
+                event.setCanceled(true);
+                // Effect Duration
+                int time2 = player.getEffect(DTEPotionEffectRegistry.METAPHYSICAL_POTION_EFFECT).getDuration();
+                // convert duration to time format  using the method convertTicksToTime
+                String formattedTime2 = ASUtils.convertTicksToTime(time2);
+
+                if (player instanceof ServerPlayer serverPlayer)
+                {
+                    // display a message to the player
+                    serverPlayer.connection.send(new ClientboundSetActionBarTextPacket(Component.translatable("display.discerning_the_eldritch.presence_warning").append(formattedTime2)
+                            .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
+                    serverPlayer.level().playSound(null , player.getX() , player.getY() , player.getZ() ,
+                            SoundEvents.FIRE_EXTINGUISH , SoundSource.PLAYERS , 0.5f , 1f);
                 }
             }
         }
