@@ -2,6 +2,7 @@ package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
+import io.redspace.ironsspellbooks.api.util.BossbarManager;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
@@ -9,17 +10,20 @@ import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.Abstra
 import io.redspace.ironsspellbooks.entity.mobs.goals.PatrolNearLocationGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.SpellBarrageGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
+import io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.ExtendedServerBossEvent;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.NotIdioticNavigation;
 import io.redspace.ironsspellbooks.network.EntityEventPacket;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.acetheeldritchking.aces_spell_utils.entity.mobs.GenericBossEntity;
 import net.acetheeldritchking.aces_spell_utils.entity.mobs.goals.WizardSpellComboGoal;
 import net.acetheeldritchking.aces_spell_utils.utils.boss_music.BossMusicManager;
+import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
@@ -79,17 +83,24 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         xpReward = 60;
         this.lookControl = createLookControl();
         this.moveControl = createMoveControl();
+        createBossEvent();
     }
 
+    // Boss Bar
+    private static final BossbarManager.BossbarSprite BOSSBAR_SPRITE = new BossbarManager.BossbarSprite(DiscerningTheEldritch.id("boss_bars/ascended_one_boss_bar"), 192, 18, 3, -1);
+
     // These are used for doing boss bars, setting up the phase serializer for NBT, and stopping and starting music
-    private final ServerBossEvent bossEvent =
-            new ServerBossEvent(Component.translatable("bossbar.discerning_the_eldritch.ascended_one_boss"), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS);
+    private ExtendedServerBossEvent bossEvent;
     private final static EntityDataAccessor<Integer> PHASE = SynchedEntityData.defineId(AscendedOneBoss.class, EntityDataSerializers.INT);
-    public static final byte START_MUSIC = 0;
-    public static final byte STOP_MUSIC = 1;
+    public static final byte CLIENT_STOP_TRACKING = 0;
+    public static final byte CLIENT_START_TRACKING = 1;
+    public static final byte START_MUSIC = 2;
+    public static final byte STOP_MUSIC = 3;
 
     // Boss music
-    public static SoundEvent bossMusic = DTESoundRegistry.TEST_BOSS_MUSIC.get();
+    public static SoundEvent bossMusic = DTESoundRegistry.ASCENDED_ONE_THEME.get();
+    public static SoundEvent bossTransitionMusic = DTESoundRegistry.ASCENDED_ONE_TRANSITION.get();
+    public static SoundEvent bossFinalMusic = DTESoundRegistry.ASCENDED_ONE_FINAL_PHASE.get();
 
     // Animation ticks
     public int transitionAnimationTime = 73;
@@ -99,9 +110,30 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
     // Loot
     SimpleContainer deathLoot = null;
 
+    // Music
+    @Override
+    public boolean getChangeMusicOnPhaseChange() {
+        return false;
+    }
+
+    @Override
+    public boolean getUseSecondPhaseAsTransition() {
+        return false;
+    }
+
     @Override
     public SoundEvent getBossMusic() {
         return bossMusic;
+    }
+
+    @Override
+    public SoundEvent getTransitionMusic() {
+        return bossTransitionMusic;
+    }
+
+    @Override
+    public SoundEvent getOtherPhaseMusic() {
+        return bossFinalMusic;
     }
 
     // Helps handle the starting and stopping of boss music
@@ -110,6 +142,13 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
     {
         switch (eventId)
         {
+            case CLIENT_STOP_TRACKING -> {
+                BossbarManager.stopTracking(this.uuid);
+            }
+            case CLIENT_START_TRACKING ->
+            {
+                BossbarManager.startTracking(this.uuid, BOSSBAR_SPRITE);
+            }
             case START_MUSIC -> BossMusicManager.createOrResumeInstance(this);
             case STOP_MUSIC -> BossMusicManager.stop(this);
         }
@@ -704,12 +743,32 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
             this.deathLoot = new SimpleContainer(tag.size());
             this.deathLoot.fromTag(tag, this.registryAccess());
         }
+
+        // Boss Bar
+        if (this.hasCustomName())
+        {
+            this.bossEvent.setName(this.getDisplayName());
+        }
     }
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
         super.defineSynchedData(pBuilder);
         pBuilder.define(PHASE, 0);
+    }
+
+    @Override
+    public void load(CompoundTag compound) {
+        super.load(compound);
+        if (!this.level().isClientSide)
+        {
+            createBossEvent();
+        }
+    }
+
+    protected void createBossEvent()
+    {
+        this.bossEvent = (ExtendedServerBossEvent) (new ExtendedServerBossEvent(this.getUUID(), this.getDisplayName().copy().withStyle(ChatFormatting.LIGHT_PURPLE/*, ChatFormatting.BOLD*/), BossEvent.BossBarColor.PURPLE, BossEvent.BossBarOverlay.PROGRESS)).setCreateWorldFog(false);
     }
 
     @Override

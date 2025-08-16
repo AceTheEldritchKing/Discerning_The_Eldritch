@@ -87,5 +87,20 @@
             "discerning_the_eldritch:mob/gaoler/roar_5"
         ],
         "subtitle": "subtitles.entity.gaoler.roar"
+    },
+    "ascended_one_theme": {
+        "sounds": [
+            "discerning_the_eldritch:mob/ascended_one/music/the_ascended_one"
+        ]
+    },
+    "ascended_one_transition": {
+        "sounds": [
+            "discerning_the_eldritch:mob/ascended_one/music/behold"
+        ]
+    },
+    "ascended_one_final_phase": {
+        "sounds": [
+            "discerning_the_eldritch:mob/ascended_one/music/behold_my_apotheosis"
+        ]
     }
 }

@@ -56,6 +56,16 @@ public class DTESoundRegistry {
     // Test Boss Music
     public static DeferredHolder<SoundEvent, SoundEvent> TEST_BOSS_MUSIC = registerSoundEvent("test_boss_music");
 
+    // Ascended One Theme
+    public static DeferredHolder<SoundEvent, SoundEvent> ASCENDED_ONE_THEME = registerSoundEvent("ascended_one_theme");
+
+    // Ascended One Transition
+    public static DeferredHolder<SoundEvent, SoundEvent> ASCENDED_ONE_TRANSITION = registerSoundEvent("ascended_one_transition");
+
+    // Ascended One Final Phase
+    public static DeferredHolder<SoundEvent, SoundEvent> ASCENDED_ONE_FINAL_PHASE = registerSoundEvent("ascended_one_final_phase");
+
+
     private static DeferredHolder<SoundEvent, SoundEvent> registerSoundEvent(String name)
     {
         return SOUND_EVENT.register(name, () -> SoundEvent.createVariableRangeEvent
