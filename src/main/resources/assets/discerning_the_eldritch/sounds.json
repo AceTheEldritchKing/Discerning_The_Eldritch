@@ -100,6 +100,11 @@
     },
     "ascended_one_final_phase": {
         "sounds": [
+            "discerning_the_eldritch:mob/ascended_one/music/my_apotheosis"
+        ]
+    },
+    "ascended_one_final_phase_full": {
+        "sounds": [
             "discerning_the_eldritch:mob/ascended_one/music/behold_my_apotheosis"
         ]
     }

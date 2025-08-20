@@ -62,8 +62,11 @@ public class DTESoundRegistry {
     // Ascended One Transition
     public static DeferredHolder<SoundEvent, SoundEvent> ASCENDED_ONE_TRANSITION = registerSoundEvent("ascended_one_transition");
 
-    // Ascended One Final Phase
+    // // Ascended One Final Phase - START
     public static DeferredHolder<SoundEvent, SoundEvent> ASCENDED_ONE_FINAL_PHASE = registerSoundEvent("ascended_one_final_phase");
+
+    // Ascended One Final Phase - FULL
+    public static DeferredHolder<SoundEvent, SoundEvent> ASCENDED_ONE_FINAL_PHASE_FULL = registerSoundEvent("ascended_one_final_phase_full");
 
 
     private static DeferredHolder<SoundEvent, SoundEvent> registerSoundEvent(String name)

@@ -1,5 +1,6 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
 
+import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.BossbarManager;
@@ -94,8 +95,8 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
     private final static EntityDataAccessor<Integer> PHASE = SynchedEntityData.defineId(AscendedOneBoss.class, EntityDataSerializers.INT);
     public static final byte CLIENT_STOP_TRACKING = 0;
     public static final byte CLIENT_START_TRACKING = 1;
-    public static final byte START_MUSIC = 2;
-    public static final byte STOP_MUSIC = 3;
+    //public static final byte START_MUSIC = 2;
+    //public static final byte STOP_MUSIC = 3;
 
     // Boss music
     public static SoundEvent bossMusic = DTESoundRegistry.ASCENDED_ONE_THEME.get();
@@ -112,13 +113,28 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
 
     // Music
     @Override
-    public boolean getChangeMusicOnPhaseChange() {
-        return false;
+    public boolean hasCustomMusic() {
+        return true;
     }
 
     @Override
-    public boolean getUseSecondPhaseAsTransition() {
-        return false;
+    public boolean changeMusicOnPhaseChange() {
+        return true;
+    }
+
+    @Override
+    public boolean hasTransitionPhase() {
+        return true;
+    }
+
+    @Override
+    public int usePhaseAsTransition() {
+        return 2;
+    }
+
+    @Override
+    public int usePhaseForMusicChange() {
+        return 3;
     }
 
     @Override
@@ -144,13 +160,15 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         {
             case CLIENT_STOP_TRACKING -> {
                 BossbarManager.stopTracking(this.uuid);
+                BossMusicManager.stop(this);
             }
             case CLIENT_START_TRACKING ->
             {
                 BossbarManager.startTracking(this.uuid, BOSSBAR_SPRITE);
+                BossMusicManager.createOrResumeInstance(this);
             }
-            case START_MUSIC -> BossMusicManager.createOrResumeInstance(this);
-            case STOP_MUSIC -> BossMusicManager.stop(this);
+            //case START_MUSIC -> BossMusicManager.createOrResumeInstance(this);
+            //case STOP_MUSIC -> BossMusicManager.stop(this);
         }
     }
 
@@ -159,14 +177,14 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
     public void startSeenByPlayer(ServerPlayer serverPlayer) {
         super.startSeenByPlayer(serverPlayer);
         this.bossEvent.addPlayer(serverPlayer);
-        PacketDistributor.sendToPlayer(serverPlayer, new EntityEventPacket<AscendedOneBoss>(this, START_MUSIC));
+        PacketDistributor.sendToPlayer(serverPlayer, new EntityEventPacket<AscendedOneBoss>(this, CLIENT_START_TRACKING));
     }
 
     @Override
     public void stopSeenByPlayer(ServerPlayer serverPlayer) {
         super.stopSeenByPlayer(serverPlayer);
         this.bossEvent.removePlayer(serverPlayer);
-        PacketDistributor.sendToPlayer(serverPlayer, new EntityEventPacket<AscendedOneBoss>(this, STOP_MUSIC));
+        PacketDistributor.sendToPlayer(serverPlayer, new EntityEventPacket<AscendedOneBoss>(this, CLIENT_STOP_TRACKING));
     }
 
     // For updating the boss health
@@ -581,7 +599,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         {
             this.castComplete();
             this.serverTriggerAnimation("ascended_death");
-            this.serverTriggerEvent(STOP_MUSIC);
+            this.serverTriggerEvent(CLIENT_STOP_TRACKING);
         }
     }
 
