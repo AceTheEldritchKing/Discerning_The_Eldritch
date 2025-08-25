@@ -5,6 +5,8 @@ import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import mod.azure.azurelib.rewrite.animation.cache.AzIdentityRegistry;
 import mod.azure.azurelib.rewrite.render.armor.AzArmorRendererRegistry;
 import mod.azure.azurelib.rewrite.render.item.AzItemRendererRegistry;
+import net.acetheeldritchking.aces_spell_utils.entity.render.items.SheathCurioRenderer;
+import net.acetheeldritchking.aces_spell_utils.items.curios.SheathCurioItem;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockArmorRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockHelmetRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockMaskRenderer;
@@ -73,7 +75,16 @@ public class DiscerningTheEldritch
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-        //
+        // Animation Registry
+        AzIdentityRegistry.register(
+                ItemRegistries.ELDRITCH_WARLOCK_HOOD.get(),
+                ItemRegistries.ELDRITCH_WARLOCK_ROBES.get(),
+                ItemRegistries.ELDRITCH_WARLOCK_LEGGINGS.get(),
+                ItemRegistries.ELDRITCH_WARLOCK_GREAVES.get(),
+                ItemRegistries.ELDRITCH_WARLOCK_MASK.get(),
+                ItemRegistries.ELDRITCH_WARLOCK_HELMET.get(),
+                ItemRegistries.STAFF_OF_VEHEMENCE.get()
+        );
     }
 
     @SubscribeEvent
@@ -91,6 +102,7 @@ public class DiscerningTheEldritch
             // curios
             event.enqueueWork(() -> {
                 ItemRegistries.getDTEItems().stream().filter(item -> item.get() instanceof SpellBook).forEach((item) -> CuriosRendererRegistry.register(item.get(), SpellBookCurioRenderer::new));
+                ItemRegistries.getDTEItems().stream().filter(item -> item.get() instanceof SheathCurioItem).forEach((item) -> CuriosRendererRegistry.register(item.get(), SheathCurioRenderer::new));
             });
 
             // Armor Rendering Registry
@@ -104,17 +116,6 @@ public class DiscerningTheEldritch
 
             // Item Rendering Registry
             AzItemRendererRegistry.register(StaffOfVehemenceRenderer::new, ItemRegistries.STAFF_OF_VEHEMENCE.get());
-
-            // Animation Registry
-            AzIdentityRegistry.register(
-                    ItemRegistries.ELDRITCH_WARLOCK_HOOD.get(),
-                    ItemRegistries.ELDRITCH_WARLOCK_ROBES.get(),
-                    ItemRegistries.ELDRITCH_WARLOCK_LEGGINGS.get(),
-                    ItemRegistries.ELDRITCH_WARLOCK_GREAVES.get(),
-                    ItemRegistries.ELDRITCH_WARLOCK_MASK.get(),
-                    ItemRegistries.ELDRITCH_WARLOCK_HELMET.get(),
-                    ItemRegistries.STAFF_OF_VEHEMENCE.get()
-            );
         }
     }
 

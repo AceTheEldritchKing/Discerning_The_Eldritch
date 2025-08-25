@@ -199,6 +199,9 @@ public class ItemRegistries {
     // Ironbound Feather - Trial Chamber loot
     public static final Supplier<CurioBaseItem> IRONBOUND_FEATHER = ITEMS.register("ironbound_feather", IronboundFeatherCurio::new);
 
+    // Pyrium Sheath
+    public static final Supplier<CurioBaseItem> PYRIUM_SHEATH = ITEMS.register("pyrium_sheath", PyriumSheathCurio::new);
+
 
     /***
      * Armor

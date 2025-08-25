@@ -31,6 +31,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.AMULET_OF_SCULK_TREASURE.get());
                         output.accept(ItemRegistries.CASTERS_MANTLE.get());
                         output.accept(ItemRegistries.IRONBOUND_FEATHER.get());
+                        output.accept(ItemRegistries.PYRIUM_SHEATH.get());
                         //output.accept(ItemRegistries.KINGS_EFFIGY.get());
                         // Treasure
                         output.accept(ItemRegistries.APOTHIC_KEY.get());
