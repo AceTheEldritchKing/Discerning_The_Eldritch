@@ -17,6 +17,7 @@ import io.redspace.ironsspellbooks.network.EntityEventPacket;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.acetheeldritchking.aces_spell_utils.entity.mobs.GenericBossEntity;
 import net.acetheeldritchking.aces_spell_utils.entity.mobs.goals.WizardSpellComboGoal;
+import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
 import net.acetheeldritchking.aces_spell_utils.utils.boss_music.BossMusicManager;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
@@ -101,7 +102,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
     // Boss music
     public static SoundEvent bossMusic = DTESoundRegistry.ASCENDED_ONE_THEME.get();
     public static SoundEvent bossTransitionMusic = DTESoundRegistry.ASCENDED_ONE_TRANSITION.get();
-    public static SoundEvent bossFinalMusic = DTESoundRegistry.ASCENDED_ONE_FINAL_PHASE.get();
+    public static SoundEvent bossFinalMusic = DTESoundRegistry.ASCENDED_ONE_FINAL_PHASE_FULL.get();
 
     // Animation ticks
     public int transitionAnimationTime = 73;
@@ -711,6 +712,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 .add(AttributeRegistry.SPELL_POWER, 1.4)
                 .add(AttributeRegistry.SPELL_RESIST, 1.65)
                 .add(AttributeRegistry.MAX_MANA, 1000)
+                .add(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.10)
                 ;
     }
 

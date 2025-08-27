@@ -88,27 +88,11 @@
       ]
     },
     {
-      "rolls": 1,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "irons_spellbooks:blank_rune",
-          "weight": 1,
-          "conditions": [
-            {
-              "condition": "minecraft:random_chance",
-              "chance": 0.1
-            }
-          ]
-        }
-      ]
-    },
-    {
       "rolls": 4,
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "irons_spellbooks:magic_items/decent_ink"
+          "value": "irons_spellbooks:magic_items/poor_ink"
         }
       ]
     },
@@ -123,7 +107,7 @@
       "conditions": [
         {
           "condition": "minecraft:random_chance",
-          "chance": 0.1
+          "chance": 0.05
         }
       ]
     }

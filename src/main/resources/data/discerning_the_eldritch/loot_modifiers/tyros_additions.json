@@ -1,0 +1,14 @@
+{
+    "conditions": [
+        {
+            "condition": "neoforge:loot_table_id",
+            "loot_table_id": "irons_spellbooks:entities/fire_boss"
+        },
+        {
+            "condition": "minecraft:random_chance",
+            "chance": 0.9
+        }
+    ],
+    "type": "discerning_the_eldritch:add_to_table",
+    "loot_table": "discerning_the_eldritch:entities/pyrium_sheath"
+}
