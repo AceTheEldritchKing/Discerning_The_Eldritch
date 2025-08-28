@@ -64,11 +64,21 @@ public class SpellRegistries {
 
 
     /***
-     * Ritual Spells
+     * Blood Spells
      */
-    // Call: Ascended One
-    public static final Supplier<AbstractSpell> CALL_ASCENDED_ONE = registerSpell(new CallAscendedOneSpell());
 
+    // Bloodlust - Damage dealt by user gets turned into health; lifesteal on hit
+
+
+    /***
+     * Evocation Spells
+     */
+
+    // Boogie Woogie - Switch places with a target
+    public static final Supplier<AbstractSpell> BOOGIE_WOOGIE = registerSpell(new BoogieWoogieSpell());
+
+    // Guardian's Gaze - Special version of Ray of Frost that inflicts Mining Fatigue (By request of Ama)
+    public static final Supplier<AbstractSpell> GUARDIANS_GAZE = registerSpell(new GuardiansGazeSpell());
 
     /***
      * Holy Spells
@@ -77,12 +87,13 @@ public class SpellRegistries {
     // Exorcism - Resets insanity
     public static final Supplier<AbstractSpell> EXORCISM = registerSpell(new ExorcismSpell());
 
-
     /***
-     * Blood Spells
+     * Ice Spells
      */
 
-    // Bloodlust - Damage dealt by user gets turned into health; lifesteal on hit
+    // Glacial Edge (Low damage projectile for crowd control & inflicts Chilled
+
+    // Crystalline Carver
 
 
     /***
@@ -95,14 +106,11 @@ public class SpellRegistries {
 
 
     /***
-     * Evocation Spells
+     * Ritual Spells
      */
 
-    // Boogie Woogie - Switch places with a target
-    public static final Supplier<AbstractSpell> BOOGIE_WOOGIE = registerSpell(new BoogieWoogieSpell());
-
-    // Guardian's Gaze - Special version of Ray of Frost that inflicts Mining Fatigue (By request of Ama)
-    public static final Supplier<AbstractSpell> GUARDIANS_GAZE = registerSpell(new GuardiansGazeSpell());
+    // Call: Ascended One
+    public static final Supplier<AbstractSpell> CALL_ASCENDED_ONE = registerSpell(new CallAscendedOneSpell());
 
 
     public static void register(IEventBus eventBus)
