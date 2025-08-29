@@ -4,7 +4,7 @@ import io.redspace.ironsspellbooks.entity.mobs.wizards.GenericAnimatedWarlockAtt
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 
-public class GaolerAnimatedWarlockAttackGoal extends GenericAnimatedWarlockAttackGoal {
+public class GaolerAnimatedWarlockAttackGoal extends GenericAnimatedWarlockAttackGoal<GaolerEntity> {
     final GaolerEntity gaoler;
 
     public GaolerAnimatedWarlockAttackGoal(GaolerEntity entity, double pSpeedModifier, int minAttackInterval, int maxAttackInterval) {
