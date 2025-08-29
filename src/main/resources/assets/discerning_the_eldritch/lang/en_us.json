@@ -1,11 +1,11 @@
 {
   "creative_tab.discerning_the_eldritch.items": "Discerning The Eldritch",
 
-  "attribute.discerning_the_eldritch.ritual_magic_resist": "Ritual Magic Resist",
-  "attribute.discerning_the_eldritch.ritual_spell_power": "Ritual Spell Power",
+  "attribute.discerning_the_eldritch.ritual_magic_resist": "Occult Magic Resist",
+  "attribute.discerning_the_eldritch.ritual_spell_power": "Occult Spell Power",
 
 
-  "school.discerning_the_eldritch.ritual": "Ritual",
+  "school.discerning_the_eldritch.ritual": "Occult",
 
 
   "effect.discerning_the_eldritch.silence_potion_effect": "Silenced",
@@ -65,8 +65,8 @@
   "item.discerning_the_eldritch.eldritch_upgrade_orb": "Eldritch Upgrade Orb",
   "item.discerning_the_eldritch.eldritch_rune": "Eldritch Rune",
   "item.discerning_the_eldritch.eldritch_upgrade_template": "Eldritch Upgrade Template",
-  "item.discerning_the_eldritch.ritual_upgrade_orb": "Ritual Upgrade Orb",
-  "item.discerning_the_eldritch.ritual_rune": "Ritual Rune",
+  "item.discerning_the_eldritch.ritual_upgrade_orb": "Occult Upgrade Orb",
+  "item.discerning_the_eldritch.ritual_rune": "Occult Rune",
 
   "item.discerning_the_eldritch.apothic_key": "Apothic Key",
   "item.discerning_the_eldritch.ascended_key": "Ascended Key",
