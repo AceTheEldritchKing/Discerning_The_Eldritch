@@ -88,7 +88,7 @@
   "spell.discerning_the_eldritch.guardians_gaze.guide": "A unique variant of Ray of Frost that inflicts mining fatigue",
 
   "spell.discerning_the_eldritch.esoteric_edge": "Esoteric Edge",
-  "spell.discerning_the_eldritch.esoteric_edge.guide": "Unleash a devastating slash of pure eldritch energy, inflicting darkness upon hit",
+  "spell.discerning_the_eldritch.esoteric_edge.guide": "Unleash a devastating slash of pure eldritch energy, inflicting darkness on impact",
 
   "spell.discerning_the_eldritch.otherworldly_presence": "Otherworldly Presence",
   "spell.discerning_the_eldritch.otherworldly_presence.guide": "Teleport and shift between reality, causing you to be unable to take any damage but also unable to deal any damage",
@@ -108,6 +108,9 @@
   "spell.discerning_the_eldritch.exorcism": "Exorcism",
   "spell.discerning_the_eldritch.exorcism.guide": "Cleanse your mind and soul of the Eldritch Madness that haunts you",
 
+  "spell.discerning_the_eldritch.glacial_edge": "Glacial Cleave",
+  "spell.discerning_the_eldritch.glacial_edge.guide": "Unleash a slash formed of raw ice, inflicted Chilled on impact",
+
 
   "ui.discerning_the_eldritch.extra_damage": "Deals extra damage while holding a weapon in your mainhand",
   "ui.discerning_the_eldritch.ritual_cast_failure": "Rituals cannot be casted in a mere spellbook",
@@ -115,6 +118,7 @@
   "ui.discerning_the_eldritch.spell_resist": "%d Spell Resist",
   "ui.discerning_the_eldritch.exorcism_no_insanity": "There is nothing to cleanse",
   "ui.discerning_the_eldritch.no_insanity_system": "Insanity does not reside in your heart",
+  "ui.discerning_the_eldritch.frozen_weapon_bonus": "Deals 50% more damage if a frozen weapon is held in the mainhand",
 
 
   "entity.discerning_the_eldritch.apothic_acolyte": "Apothic Acolyte",
@@ -123,8 +127,9 @@
   "entity.discerning_the_eldritch.gaoler": "Gaoler",
   "entity.discerning_the_eldritch.ascended_one": "The Ascended One",
   "entity.discerning_the_eldritch.esoteric_edge": "Esoteric Edge",
-  "entity.discerning_the_eldritch.apostle": "Apostle",
+  "entity.discerning_the_eldritch.apostle": "Void Acolyte",
   "entity.discerning_the_eldritch.sightless_maw": "Sightless Maw",
+  "entity.discerning_the_eldritch.untold_behemoth": "Untold Behemoth",
   "entity.discerning_the_eldritch.ascended_one_cultist": "Ascended Cultist",
 
 
@@ -159,12 +164,14 @@
   "death.attack.discerning_the_eldritch.ascended_one": "%1$s saw the truth by %2$s",
   "death.attack.discerning_the_eldritch.apostle": "%1$s unmade by %2$s",
   "death.attack.discerning_the_eldritch.sightless_maw": "%1$s torn to shreds by %2$s",
+  "death.attack.discerning_the_eldritch.untold_behemoth": "%1$s beaten to death by %2$s",
 
   "death.attack.discerning_the_eldritch.esoteric_edge.item": "%1$s was torn asunder by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.gaoler.item": "%1$s maimed and gored by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.conjure_gaoler.item": "%1$s maimed and gored by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.apostle.item": "%1$s unmade by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.sightless_maw.item": "%1$s torn to shreds by %2$s using %3$s",
+  "death.attack.discerning_the_eldritch.untold_behemoth.item": "%1$s beaten to death by %2$s using %3$s",
 
 
 

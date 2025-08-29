@@ -6,6 +6,7 @@ import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.*;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.BoogieWoogieSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.GuardiansGazeSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.holy.ExorcismSpell;
+import net.acetheeldritchking.discerning_the_eldritch.spells.ice.GlacialEdgeSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.ritual.CallAscendedOneSpell;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -91,7 +92,8 @@ public class SpellRegistries {
      * Ice Spells
      */
 
-    // Glacial Edge (Low damage projectile for crowd control & inflicts Chilled
+    // Glacial Edge (Low damage projectile for crowd control & inflicts Chilled)
+    public static final Supplier<AbstractSpell> GLACIAL_EDGE = registerSpell(new GlacialEdgeSpell());
 
     // Crystalline Carver
 

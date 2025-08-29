@@ -11,6 +11,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerE
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sightless_maw.SightlessMawEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdge;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdge;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -105,6 +106,15 @@ public class DTEEntityRegistry {
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "ascended_one_cultist").toString())
             );
+
+    // Glacial Edge
+    public static final DeferredHolder<EntityType<?>, EntityType<GlacialEdge>> GLACIAL_EDGE =
+            ENTITIES.register("glacial_edge", () -> EntityType.Builder.<GlacialEdge>of(GlacialEdge::new, MobCategory.MISC)
+                    .sized(5f, 1f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "glacial_edge").toString())
+            );
+
 
     public static void register(IEventBus eventBus)
     {

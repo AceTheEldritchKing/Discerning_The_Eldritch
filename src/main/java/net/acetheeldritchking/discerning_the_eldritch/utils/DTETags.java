@@ -18,6 +18,9 @@ public class DTETags {
     // Armor Items For Idle
     public static final TagKey<Item> ARMORS_FOR_IDLE = ItemTags.create(ResourceLocation.parse(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "armors_for_idle").toString()));
 
+    // Frozen Weapons
+    public static final TagKey<Item> FROZEN_WEAPONS = ItemTags.create(ResourceLocation.parse(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "frozen_weapons").toString()));
+
     /***
      * Entities
      */

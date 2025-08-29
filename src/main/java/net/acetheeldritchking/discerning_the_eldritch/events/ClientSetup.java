@@ -9,6 +9,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caste
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothModel;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.mobs.*;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdgeRenderer;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdgeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.minecraft.world.item.Item;
@@ -33,6 +34,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.APOSTLE_ENTITY.get(), context -> {return new TheApostleRenderer(context, new TheApostleModel());});
         event.registerEntityRenderer(DTEEntityRegistry.SIGHTLESS_MAW.get(), context -> {return new SightlessMawRenderer(context, new SightlessMawModel());});
         event.registerEntityRenderer(DTEEntityRegistry.UNTOLD_BEHEMOTH.get(), context -> {return new UntoldBehemothRenderer(context, new UntoldBehemothModel());});
+        event.registerEntityRenderer(DTEEntityRegistry.GLACIAL_EDGE.get(), GlacialEdgeRenderer::new);
     }
 
     @SubscribeEvent
