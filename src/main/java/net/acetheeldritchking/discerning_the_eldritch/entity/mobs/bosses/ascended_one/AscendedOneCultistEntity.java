@@ -1,4 +1,4 @@
-package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
+package net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one;
 
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;

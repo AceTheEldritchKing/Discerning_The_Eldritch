@@ -1,4 +1,4 @@
-package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
+package net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;

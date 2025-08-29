@@ -1,4 +1,4 @@
-package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
+package net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sightless_maw;
 
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.minecraft.resources.ResourceLocation;

@@ -1,4 +1,4 @@
-package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
+package net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists;
 
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMobModel;

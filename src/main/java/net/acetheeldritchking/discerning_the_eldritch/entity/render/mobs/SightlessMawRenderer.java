@@ -2,7 +2,7 @@ package net.acetheeldritchking.discerning_the_eldritch.entity.render.mobs;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.SightlessMawEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sightless_maw.SightlessMawEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;

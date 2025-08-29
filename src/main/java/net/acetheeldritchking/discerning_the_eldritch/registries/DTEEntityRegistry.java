@@ -1,7 +1,15 @@
 package net.acetheeldritchking.discerning_the_eldritch.registries;
 
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.*;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicAcolyteEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicCrusaderEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicSummonerEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneCultistEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caster.TheApostleEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sightless_maw.SightlessMawEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdge;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -57,6 +65,13 @@ public class DTEEntityRegistry {
                     ));
 
     // Untold Behemoth
+    public static final DeferredHolder<EntityType<?>, EntityType<UntoldBehemothEntity>> UNTOLD_BEHEMOTH =
+            ENTITIES.register("untold_behemoth", () -> EntityType.Builder.<UntoldBehemothEntity>of
+                            (UntoldBehemothEntity::new, MobCategory.MONSTER).
+                    sized(.6f, 1.8f)
+                    .build(
+                            ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "untold_behemoth").toString()
+                    ));
 
     // The Apostle
     public static final DeferredHolder<EntityType<?>, EntityType<TheApostleEntity>> APOSTLE_ENTITY =

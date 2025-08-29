@@ -9,8 +9,9 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.*;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.SightlessMawEntity;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.TheApostleEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sightless_maw.SightlessMawEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caster.TheApostleEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -107,8 +108,9 @@ public class ConjureForsakenAidSpell extends AbstractSpell {
 
         TheApostleEntity apostleEntity = new TheApostleEntity(level, caster);
         SightlessMawEntity sightlessMaw = new SightlessMawEntity(level, caster);
+        UntoldBehemothEntity untoldBehemoth = new UntoldBehemothEntity(level, caster);
 
-        AbstractSpellCastingMob isMeleeMobs = isMaw ? sightlessMaw : apostleEntity;
+        AbstractSpellCastingMob isMeleeMobs = isMaw ? sightlessMaw : untoldBehemoth;
         AbstractSpellCastingMob isCaster = isApostle ? apostleEntity : isMeleeMobs;
 
         AbstractSpellCastingMob baseArmy = isBase ? isMeleeMobs : isCaster;

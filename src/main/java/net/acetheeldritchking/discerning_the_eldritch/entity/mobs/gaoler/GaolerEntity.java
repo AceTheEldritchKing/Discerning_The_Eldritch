@@ -1,4 +1,4 @@
-package net.acetheeldritchking.discerning_the_eldritch.entity.mobs;
+package net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler;
 
 import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
@@ -154,6 +154,8 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
                 .add(Attributes.ATTACK_DAMAGE, 25.5)
                 .add(Attributes.ATTACK_KNOCKBACK, 1.0)
                 .add(Attributes.MAX_HEALTH, 350.0)
+                .add(Attributes.ARMOR, 15.0)
+                .add(Attributes.ARMOR_TOUGHNESS, 4.0)
                 .add(Attributes.FOLLOW_RANGE, 45.0)
                 .add(Attributes.ENTITY_INTERACTION_RANGE, 5.5)
                 .add(Attributes.MOVEMENT_SPEED, .25);
@@ -249,7 +251,7 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(animationController);
         controllers.add(attackAnimationController);
-        //controllers.add(castingAnimationController);
+        controllers.add(castingAnimationController);
     }
 
     private PlayState predicate(AnimationState<GaolerEntity> event)
@@ -258,7 +260,7 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
         {
             if (event.isMoving() && this.animationToPlay == null)
             {
-                event.getController().setAnimation(RawAnimation.begin().then("walking", Animation.LoopType.LOOP));
+                event.getController().setAnimation(RawAnimation.begin().then("walk", Animation.LoopType.LOOP));
                 return PlayState.CONTINUE;
             }
             else if (!event.isMoving() && this.animationToPlay == null)
