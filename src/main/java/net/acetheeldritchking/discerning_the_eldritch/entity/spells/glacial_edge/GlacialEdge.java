@@ -8,9 +8,12 @@ import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import io.redspace.ironsspellbooks.entity.spells.AbstractShieldEntity;
 import io.redspace.ironsspellbooks.entity.spells.ShieldPart;
+import io.redspace.ironsspellbooks.particle.FlameStrikeParticleOptions;
 import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
+import net.acetheeldritchking.discerning_the_eldritch.particle.DTEParticleHelper;
+import net.acetheeldritchking.discerning_the_eldritch.particle.GlacialShadowParticleOptions;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.Holder;
@@ -40,6 +43,7 @@ import java.util.stream.Collectors;
 
 public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSusceptible {
     private List<Entity> entities;
+    private int lifetimeInTicks = 20 * 10;
 
     public GlacialEdge(EntityType<? extends Projectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -83,6 +87,11 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
                 damageEntity(entity);
             }
         }
+        lifetimeInTicks--;
+        if (lifetimeInTicks <= 0)
+        {
+            this.discard();
+        }
 
         Vec3 deltaMovement = getDeltaMovement();
         double distance = deltaMovement.horizontalDistance();
@@ -103,13 +112,23 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
     public void trailParticles() {
         for (int i = 0; i < 3; i++)
         {
+            // Middle
             double speed = 0.05F;
             double dx = Utils.random.nextDouble() * 2 * speed - speed;
             double dy = Utils.random.nextDouble() * 2 * speed - speed;
             double dz = Utils.random.nextDouble() * 2 * speed - speed;
 
-            level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, this.getX() + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+            // Left
+            level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, (this.getX() + 4) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+            level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, (this.getX() + 2) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+
+            // Right
+            level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, (this.getX() - 4) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+            level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, (this.getX() - 2) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
         }
+
+        Vec3 forward = this.getForward();
+        level().addParticle(new GlacialShadowParticleOptions((float) this.getX(), (float) this.getY(), (float) this.getZ()), this.getX(), this.getY(), this.getZ(), 0, 0, 0);
     }
 
     @Override

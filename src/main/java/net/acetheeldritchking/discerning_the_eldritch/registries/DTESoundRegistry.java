@@ -29,6 +29,14 @@ public class DTESoundRegistry {
     // Insanity Voices
     public static DeferredHolder<SoundEvent, SoundEvent> INSANITY_VOICES = registerSoundEvent("insanity_voices");
 
+    // Glacial Cleave Start
+
+    // Glacial Cleave Finish
+
+    // Glacial Cleave Full
+    public static DeferredHolder<SoundEvent, SoundEvent> GLACIAL_CLEAVE_FULL = registerSoundEvent("glacial_cleave_full");
+
+
     /***
      * Entity Sounds
      */
@@ -49,6 +57,7 @@ public class DTESoundRegistry {
 
     // Gaoler Roar
     public static DeferredHolder<SoundEvent, SoundEvent> GAOLER_ROAR = registerSoundEvent("entity.gaoler.roar");
+
 
     /***
      * Music Sounds

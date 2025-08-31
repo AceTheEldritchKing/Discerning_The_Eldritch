@@ -107,5 +107,10 @@
         "sounds": [
             "discerning_the_eldritch:mob/ascended_one/music/behold_my_apotheosis"
         ]
+    },
+    "glacial_cleave_full": {
+        "sounds": [
+            "discerning_the_eldritch:glacial_cleave_full"
+        ]
     }
 }

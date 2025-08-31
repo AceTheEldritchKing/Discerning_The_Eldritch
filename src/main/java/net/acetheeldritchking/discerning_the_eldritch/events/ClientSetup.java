@@ -10,13 +10,16 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemot
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.mobs.*;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdgeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdgeRenderer;
+import net.acetheeldritchking.discerning_the_eldritch.particle.GlacialShadowParticle;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEParticleRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.minecraft.world.item.Item;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 
 @EventBusSubscriber(modid = DiscerningTheEldritch.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -41,5 +44,11 @@ public class ClientSetup {
     public static void registerClientExtensions(RegisterClientExtensionsEvent event)
     {
         event.registerItem(new ClientStaffItemExtensions(), ItemRegistries.getDTEItems().stream().filter(item -> item.get() instanceof StaffItem staffItem && !staffItem.hasCustomRendering()).map(holder -> (Item) holder.get()).toArray(Item[]::new));
+    }
+
+    @SubscribeEvent
+    public static void registerParticles(RegisterParticleProvidersEvent event)
+    {
+        event.registerSpriteSet(DTEParticleRegistry.GLACIAL_SHADOW_PARTICLE.get(), GlacialShadowParticle.Provider::new);
     }
 }

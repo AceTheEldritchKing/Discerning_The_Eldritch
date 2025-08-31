@@ -72,7 +72,7 @@ public class GlacialEdgeSpell extends AbstractSpell {
 
     @Override
     public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.of(DTESoundRegistry.ESOTERIC_EDGE_SLASH.get());
+        return Optional.of(DTESoundRegistry.GLACIAL_CLEAVE_FULL.get());
     }
 
     @Override

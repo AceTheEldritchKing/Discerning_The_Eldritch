@@ -69,6 +69,8 @@ public class DiscerningTheEldritch
         DTESchoolRegistry.register(modEventBus);
         // Attachment Types
         DTEAttachmentRegistry.register(modEventBus);
+        // Particles
+        DTEParticleRegistry.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, DTEConfig.SPEC);
     }
