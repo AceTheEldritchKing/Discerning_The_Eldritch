@@ -128,7 +128,7 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
         }
 
         Vec3 forward = this.getForward();
-        level().addParticle(new GlacialShadowParticleOptions((float) this.getX(), (float) this.getY(), (float) this.getZ()), this.getX(), this.getY(), this.getZ(), 0, 0, 0);
+        level().addParticle(new GlacialShadowParticleOptions((float) forward.x, (float) forward.y, (float) forward.z), this.getX(), this.getY(), this.getZ(), 0, 0, 0);
     }
 
     @Override
