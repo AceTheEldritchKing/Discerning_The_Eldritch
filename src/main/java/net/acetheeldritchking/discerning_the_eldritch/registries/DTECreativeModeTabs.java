@@ -49,6 +49,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.GOD_SPEAR.get());
                         output.accept(ItemRegistries.FORSAKEN_FLAMBERGE.get());
                         output.accept(ItemRegistries.ICE_SPEAR.get());
+                        output.accept(ItemRegistries.SNOWGRAVE.get());
                         output.accept(ItemRegistries.RITUAL_DAGGER.get());
                         output.accept(ItemRegistries.FORLORN_RAPIER.get());
                         output.accept(ItemRegistries.BROKEN_LEGENDS_BLADE.get());

@@ -3,7 +3,7 @@
   "fallback": "discerning_the_eldritch:cultist_base/fallback_pool",
   "elements": [
     {
-      "weight": 1,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/small/armory",
@@ -12,7 +12,7 @@
       }
     },
     {
-      "weight": 1,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/small/occult",
@@ -21,7 +21,7 @@
       }
     },
     {
-      "weight": 1,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/small/portal",
@@ -30,7 +30,7 @@
       }
     },
     {
-      "weight": 1,
+      "weight": 3,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/small/spawner",
@@ -39,7 +39,7 @@
       }
     },
     {
-      "weight": 1,
+      "weight": 3,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/small/treasure",

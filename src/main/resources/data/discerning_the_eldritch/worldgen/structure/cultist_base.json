@@ -10,7 +10,7 @@
     }
   },
   "start_pool": "discerning_the_eldritch:cultist_base/start_pool",
-  "size": 20,
+  "size": 15,
   "start_height": {
     "type": "minecraft:uniform",
     "min_inclusive": {

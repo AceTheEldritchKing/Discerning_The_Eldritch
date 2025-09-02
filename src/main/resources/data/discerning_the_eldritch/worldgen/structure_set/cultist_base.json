@@ -7,8 +7,12 @@
   ],
   "placement": {
     "type": "minecraft:random_spread",
-    "spacing": 76,
-    "separation": 55,
+    "exclusion_zone": {
+      "chunk_count": 10,
+      "other_set": "irons_spellbooks:catacombs"
+    },
+    "spacing": 85,
+    "separation": 35,
     "salt": 6129040833
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "discerning_the_eldritch:cultist_base/rallback_pool",
+  "name": "discerning_the_eldritch:cultist_base/fallback_pool",
   "fallback": "minecraft:empty",
   "elements": [
     {

@@ -24,10 +24,7 @@ import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.Tempestuo
 import net.acetheeldritchking.discerning_the_eldritch.items.staffs.BrokenLegendsStaff;
 import net.acetheeldritchking.discerning_the_eldritch.items.staffs.DTEStaffTier;
 import net.acetheeldritchking.discerning_the_eldritch.items.staffs.StaffOfVehemenceStaffItem;
-import net.acetheeldritchking.discerning_the_eldritch.items.weapons.BrokenLegendsBlade;
-import net.acetheeldritchking.discerning_the_eldritch.items.weapons.DTEWeaponTiers;
-import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
-import net.acetheeldritchking.discerning_the_eldritch.items.weapons.YmirSwordItem;
+import net.acetheeldritchking.discerning_the_eldritch.items.weapons.*;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTERarities;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ArmorItem;
@@ -134,6 +131,9 @@ public class ItemRegistries {
     // Forsaken Flamberge
     public static final DeferredHolder<Item, Item> FORSAKEN_FLAMBERGE = ITEMS.register("forsaken_flamberge", () ->
             new ExtendedSwordItem(DTEWeaponTiers.FORSAKEN_FLAMBERGE, ItemPropertiesHelper.equipment(1).rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.FORSAKEN_FLAMBERGE))));
+
+    // Snowgrave
+    public static final DeferredHolder<Item, Item> SNOWGRAVE = ITEMS.register("snowgrave", TheSnowgraveItem::new);
 
 
     /***

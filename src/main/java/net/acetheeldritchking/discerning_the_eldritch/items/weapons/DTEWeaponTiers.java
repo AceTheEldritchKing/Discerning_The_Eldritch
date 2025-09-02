@@ -37,7 +37,7 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
     // Skull Staff
 
     // Ice Spear
-    public static DTEWeaponTiers ICE_SPEAR = new DTEWeaponTiers(1600, 7F, -3.2F, 10, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+    public static DTEWeaponTiers ICE_SPEAR = new DTEWeaponTiers(1500, 6F, -2.8F, 8, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.ICE_SPELL_POWER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
     // Ymir
@@ -69,6 +69,10 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
             new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(ASAttributeRegistry.MANA_STEAL, 0.05D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
     );
+
+    // Snowgrave
+    public static DTEWeaponTiers SNOWGRAVE = new DTEWeaponTiers(1785, 9.5F, -3.2F, 10, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.ICE_SPELL_POWER, 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
     //private final int level;
     private final int uses;

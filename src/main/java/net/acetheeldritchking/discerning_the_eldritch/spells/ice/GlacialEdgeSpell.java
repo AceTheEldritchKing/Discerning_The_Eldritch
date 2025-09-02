@@ -5,6 +5,7 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
+import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.damage.SpellDamageSource;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdge;
@@ -29,7 +30,7 @@ public class GlacialEdgeSpell extends AbstractSpell {
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
-                Component.translatable("ui.irons_spellbooks.damage", getDamage(spellLevel, caster)),
+                Component.translatable("ui.irons_spellbooks.damage", Utils.stringTruncation(getDamage(spellLevel, caster), 1)),
                 Component.translatable("ui.discerning_the_eldritch.frozen_weapon_bonus")
         );
     }
@@ -46,7 +47,7 @@ public class GlacialEdgeSpell extends AbstractSpell {
         this.manaCostPerLevel = 5;
         this.baseSpellPower = 15;
         this.spellPowerPerLevel = 2;
-        this.castTime = 0;
+        this.castTime = 20;
         this.baseManaCost = 55;
     }
 
@@ -62,7 +63,7 @@ public class GlacialEdgeSpell extends AbstractSpell {
 
     @Override
     public CastType getCastType() {
-        return CastType.INSTANT;
+        return CastType.LONG;
     }
 
     @Override
@@ -71,7 +72,7 @@ public class GlacialEdgeSpell extends AbstractSpell {
     }
 
     @Override
-    public Optional<SoundEvent> getCastFinishSound() {
+    public Optional<SoundEvent> getCastStartSound() {
         return Optional.of(DTESoundRegistry.GLACIAL_CLEAVE_FULL.get());
     }
 

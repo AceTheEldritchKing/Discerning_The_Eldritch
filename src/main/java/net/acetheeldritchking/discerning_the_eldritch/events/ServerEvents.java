@@ -12,6 +12,7 @@ import io.redspace.ironsspellbooks.spells.ender.CounterspellSpell;
 import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
+import net.acetheeldritchking.discerning_the_eldritch.items.weapons.TheSnowgraveItem;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttributeRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
@@ -189,7 +190,7 @@ public class ServerEvents {
         // Other stuff
         if (sourceEntity instanceof LivingEntity livingEntity)
         {
-            // Ice Spear
+            // Ice Spear && Snowgrave
             ItemStack mainhandItem = livingEntity.getMainHandItem();
 
             if (mainhandItem.getItem() instanceof IceSpearItem)
@@ -197,6 +198,13 @@ public class ServerEvents {
                 if (target instanceof LivingEntity livingTarget)
                 {
                     livingTarget.setTicksFrozen(20*20);
+                }
+            }
+            if (mainhandItem.getItem() instanceof TheSnowgraveItem)
+            {
+                if (target instanceof LivingEntity livingTarget)
+                {
+                    livingTarget.setTicksFrozen(50*20);
                 }
             }
 

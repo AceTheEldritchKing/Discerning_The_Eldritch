@@ -8,6 +8,7 @@ import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import io.redspace.ironsspellbooks.entity.spells.AbstractShieldEntity;
 import io.redspace.ironsspellbooks.entity.spells.ShieldPart;
+import io.redspace.ironsspellbooks.entity.spells.snowball.FrostField;
 import io.redspace.ironsspellbooks.particle.FlameStrikeParticleOptions;
 import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
@@ -118,17 +119,20 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
             double dy = Utils.random.nextDouble() * 2 * speed - speed;
             double dz = Utils.random.nextDouble() * 2 * speed - speed;
 
+            level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, (this.getX()) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+
             // Left
             level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, (this.getX() + 4) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
-            level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, (this.getX() + 2) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+            level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, (this.getX() + 3.5) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
 
             // Right
             level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, (this.getX() - 4) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
-            level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, (this.getX() - 2) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+            level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, (this.getX() - 3.5) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
         }
 
-        Vec3 forward = this.getForward();
-        level().addParticle(new GlacialShadowParticleOptions((float) forward.x, (float) forward.y, (float) forward.z), this.getX(), this.getY(), this.getZ(), 0, 0, 0);
+        // Not having the particle for now...
+        //Vec3 forward = this.getForward();
+        //level().addParticle(new GlacialShadowParticleOptions((float) forward.x, (float) forward.y, (float) forward.z), this.getX(), this.getY(), this.getZ(), 0, 0, 0);
     }
 
     @Override
@@ -138,7 +142,7 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
 
     @Override
     public float getSpeed() {
-        return 1.2F;
+        return 1.0F;
     }
 
     @Override
@@ -161,14 +165,27 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
             //Do effects
             if (entity instanceof LivingEntity livingTarget)
             {
-                livingTarget.addEffect(new MobEffectInstance(MobEffectRegistry.CHILLED, 30, 0));
-            }
-            if (entity instanceof ShieldPart || entity instanceof AbstractShieldEntity)
-            {
-                entity.kill();
+                livingTarget.addEffect(new MobEffectInstance(MobEffectRegistry.CHILLED, 200, 1));
+
+                livingTarget.setTicksFrozen(
+                        Math.min(livingTarget.getTicksFrozen() + 100, livingTarget.getTicksRequiredToFreeze() * 5));
             }
 
             entities.add(entity);
+        }
+    }
+
+    private void createFrostField(Vec3 location)
+    {
+        if (!level().isClientSide)
+        {
+            FrostField frostField = new FrostField(level());
+            frostField.setOwner(getOwner());
+            frostField.setDuration((int) getDamage());
+            frostField.setRadius(6);
+            frostField.setCircular();
+            frostField.moveTo(location);
+            level().addFreshEntity(frostField);
         }
     }
 
@@ -176,6 +193,12 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
     protected void onHitBlock(BlockHitResult result) {
         super.onHitBlock(result);
         this.discard();
+    }
+
+    @Override
+    protected void onHit(HitResult hitresult) {
+        super.onHit(hitresult);
+        createFrostField(Utils.moveToRelativeGroundLevel(level(), hitresult.getLocation(), 2));
     }
 
     @Override
