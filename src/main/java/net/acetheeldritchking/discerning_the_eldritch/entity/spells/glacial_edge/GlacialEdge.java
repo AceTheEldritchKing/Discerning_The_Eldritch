@@ -161,25 +161,6 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
         entombEntity(pResult.getEntity());
     }
 
-    /*private void damageEntity(Entity entity)
-    {
-        if (!entities.contains(entity))
-        {
-            DamageSources.applyDamage(entity, damage,
-                    SpellRegistries.GLACIAL_EDGE.get().getDamageSource(this, getOwner()));
-
-            //Do effects
-            if (entity instanceof LivingEntity livingTarget)
-            {
-                livingTarget.addEffect(new MobEffectInstance(MobEffectRegistry.CHILLED, 200, 1));
-            }
-
-            entombEntity(entity);
-
-            entities.add(entity);
-        }
-    }*/
-
     private void createFrostField(Vec3 location)
     {
         if (!level().isClientSide)

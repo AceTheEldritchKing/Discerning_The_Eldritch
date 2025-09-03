@@ -97,6 +97,8 @@ public class SpellRegistries {
 
     // Crystalline Carver
 
+    // Ice Shock (A quick projectile that freezes an entity completely)
+
 
     /***
      * Lightning Spells
