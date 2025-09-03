@@ -8,6 +8,7 @@ import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import io.redspace.ironsspellbooks.entity.spells.AbstractShieldEntity;
 import io.redspace.ironsspellbooks.entity.spells.ShieldPart;
+import io.redspace.ironsspellbooks.entity.spells.ice_tomb.IceTombEntity;
 import io.redspace.ironsspellbooks.entity.spells.snowball.FrostField;
 import io.redspace.ironsspellbooks.particle.FlameStrikeParticleOptions;
 import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
@@ -34,6 +35,7 @@ import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
@@ -43,13 +45,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSusceptible {
-    private List<Entity> entities;
     private int lifetimeInTicks = 20 * 10;
 
     public GlacialEdge(EntityType<? extends Projectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
 
-        entities = new ArrayList<>();
         this.setNoGravity(true);
     }
 
@@ -78,16 +78,6 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
 
     @Override
     public void tick() {
-        if (!level().isClientSide)
-        {
-            HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
-            if (hitresult.getType() == HitResult.Type.BLOCK) {
-                onHitBlock((BlockHitResult) hitresult);
-            }
-            for (Entity entity : level().getEntities(this, this.getBoundingBox()).stream().filter(target -> canHitEntity(target) && !entities.contains(target)).collect(Collectors.toSet())) {
-                damageEntity(entity);
-            }
-        }
         lifetimeInTicks--;
         if (lifetimeInTicks <= 0)
         {
@@ -155,7 +145,23 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
         this.damage = damage;
     }
 
-    private void damageEntity(Entity entity)
+    @Override
+    protected void onHitEntity(EntityHitResult pResult) {
+        super.onHitEntity(pResult);
+
+        DamageSources.applyDamage(pResult.getEntity(), getDamage(),
+                SpellRegistries.GLACIAL_EDGE.get().getDamageSource(this, getOwner()));
+
+        //Do effects
+        if (pResult.getEntity() instanceof LivingEntity livingTarget)
+        {
+            livingTarget.addEffect(new MobEffectInstance(MobEffectRegistry.CHILLED, 200, 1));
+        }
+
+        entombEntity(pResult.getEntity());
+    }
+
+    /*private void damageEntity(Entity entity)
     {
         if (!entities.contains(entity))
         {
@@ -166,14 +172,13 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
             if (entity instanceof LivingEntity livingTarget)
             {
                 livingTarget.addEffect(new MobEffectInstance(MobEffectRegistry.CHILLED, 200, 1));
-
-                livingTarget.setTicksFrozen(
-                        Math.min(livingTarget.getTicksFrozen() + 100, livingTarget.getTicksRequiredToFreeze() * 5));
             }
+
+            entombEntity(entity);
 
             entities.add(entity);
         }
-    }
+    }*/
 
     private void createFrostField(Vec3 location)
     {
@@ -186,6 +191,20 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
             frostField.setCircular();
             frostField.moveTo(location);
             level().addFreshEntity(frostField);
+        }
+    }
+
+    private void entombEntity(Entity entity)
+    {
+        if (!entity.isPassenger())
+        {
+            IceTombEntity iceTombEntity = new IceTombEntity(level(), getOwner());
+            iceTombEntity.moveTo(entity.position());
+            iceTombEntity.setDeltaMovement(entity.getDeltaMovement());
+            iceTombEntity.setLifetime(20*5);
+            iceTombEntity.setEvil();
+            level().addFreshEntity(iceTombEntity);
+            entity.startRiding(iceTombEntity, true);
         }
     }
 

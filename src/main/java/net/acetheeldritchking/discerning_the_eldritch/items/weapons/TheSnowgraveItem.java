@@ -5,6 +5,7 @@ import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTERarities;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -18,7 +19,7 @@ public class TheSnowgraveItem extends MagicSwordItem {
     public TheSnowgraveItem() {
         super(
                 DTEWeaponTiers.SNOWGRAVE,
-                ItemPropertiesHelper.equipment(1).fireResistant().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.SNOWGRAVE)),
+                ItemPropertiesHelper.equipment(1).fireResistant().rarity(DTERarities.GLACIAL_RARITY_PROXY.getValue()).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.SNOWGRAVE)),
                 SpellDataRegistryHolder.of(
                         new SpellDataRegistryHolder(SpellRegistry.ICE_TOMB_SPELL, 10),
                         new SpellDataRegistryHolder(SpellRegistry.ICE_SPIKES_SPELL, 10)
