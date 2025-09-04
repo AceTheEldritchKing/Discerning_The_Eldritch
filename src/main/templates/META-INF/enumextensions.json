@@ -14,21 +14,6 @@
         "class": "net/acetheeldritchking/discerning_the_eldritch/utils/DTERarities",
         "field": "APOTHIC_RARITY_PROXY"
       }
-    },
-    {
-      //https://docs.neoforged.net/docs/advanced/extensibleenums/
-      // The enum class the entry should be added to
-      "enum": "net/minecraft/world/item/Rarity",
-      // The field name of the new entry, must be prefixed with the mod ID
-      "name": "DISCERNING_THE_ELDRITCH_RARITY_GLACIAL",
-      // The constructor to be used
-      //Lnet/minecraft/world/item/Rarity;<init>(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V
-      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
-      // Constant parameters provided directly.
-      "parameters": {
-        "class": "net/acetheeldritchking/discerning_the_eldritch/utils/DTERarities",
-        "field": "GLACIAL_RARITY_PROXY"
-      }
     }
   ]
 }

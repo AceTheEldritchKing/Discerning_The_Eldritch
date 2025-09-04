@@ -77,6 +77,11 @@ public class GlacialEdgeSpell extends AbstractSpell {
     }
 
     @Override
+    public Optional<SoundEvent> getCastFinishSound() {
+        return Optional.empty();
+    }
+
+    @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         GlacialEdge glacialEdge = new GlacialEdge(level, entity);
         glacialEdge.setPos(entity.position().add(0, entity.getEyeHeight() - glacialEdge.getBoundingBox().getYsize() * .5f, 0));

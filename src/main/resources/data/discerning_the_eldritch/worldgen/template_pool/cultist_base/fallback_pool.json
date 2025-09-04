@@ -1,6 +1,6 @@
 {
   "name": "discerning_the_eldritch:cultist_base/fallback_pool",
-  "fallback": "minecraft:empty",
+  "fallback": "discerning_the_eldritch:cultist_base/fallback_fallback_pool",
   "elements": [
     {
       "weight": 1,
