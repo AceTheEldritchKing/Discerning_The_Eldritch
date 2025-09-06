@@ -202,6 +202,9 @@ public class ItemRegistries {
     // Pyrium Sheath
     public static final Supplier<CurioBaseItem> PYRIUM_SHEATH = ITEMS.register("pyrium_sheath", PyriumSheathCurio::new);
 
+    // Frostbourne Sheath
+    public static final Supplier<CurioBaseItem> FROSTBOURNE_SHEATH = ITEMS.register("frostbourne_sheath", FrostbourneSheathCurio::new);
+
 
     /***
      * Armor

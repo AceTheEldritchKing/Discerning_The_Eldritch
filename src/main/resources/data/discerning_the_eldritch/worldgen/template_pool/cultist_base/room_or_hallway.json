@@ -3,7 +3,7 @@
   "fallback": "discerning_the_eldritch:cultist_base/fallback_pool",
   "elements": [
     {
-      "weight": 2,
+      "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/small/armory",
@@ -12,7 +12,7 @@
       }
     },
     {
-      "weight": 2,
+      "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/small/occult",
@@ -21,7 +21,7 @@
       }
     },
     {
-      "weight": 2,
+      "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/small/portal",
@@ -30,7 +30,7 @@
       }
     },
     {
-      "weight": 2,
+      "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/small/spawner",
@@ -39,7 +39,7 @@
       }
     },
     {
-      "weight": 2,
+      "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/small/treasure",
@@ -138,7 +138,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 5,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/connector/junction_corridor_1",
@@ -147,7 +147,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 5,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/connector/junction_corridor_2",
@@ -156,7 +156,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/unique/big_armory",
@@ -165,7 +165,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/unique/catacomb",
@@ -174,7 +174,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/unique/cathedral",
@@ -183,7 +183,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/unique/garden",
@@ -192,7 +192,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/unique/gathering",
@@ -201,7 +201,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/unique/kitchen",
@@ -210,7 +210,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/unique/lab",
@@ -219,7 +219,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/unique/library",
@@ -228,7 +228,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/unique/living_quarters",
@@ -237,7 +237,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/unique/prayer_room",
@@ -246,7 +246,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "discerning_the_eldritch:cultist_base/room/unique/prison",

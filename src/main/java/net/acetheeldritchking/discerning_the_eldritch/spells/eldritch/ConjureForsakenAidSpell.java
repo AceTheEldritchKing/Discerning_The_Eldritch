@@ -27,13 +27,13 @@ public class ConjureForsakenAidSpell extends AbstractSpell {
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.LEGENDARY)
             .setSchoolResource(SchoolRegistry.ELDRITCH_RESOURCE)
-            .setMaxLevel(5)
+            .setMaxLevel(8)
             .setCooldownSeconds(100)
             .build();
 
     public ConjureForsakenAidSpell()
     {
-        this.manaCostPerLevel = 20;
+        this.manaCostPerLevel = 10;
         this.baseSpellPower = 10;
         this.spellPowerPerLevel = 5;
         this.castTime = 30;
@@ -100,11 +100,10 @@ public class ConjureForsakenAidSpell extends AbstractSpell {
 
     private void spawnForsakenAid(double x, double y, double z, LivingEntity caster, Level level, int timer, int spellLevel, SummonedEntitiesCastData castData)
     {
-        boolean isMaw = Utils.random.nextDouble() < 0.5;
-        boolean isBehemoth = Utils.random.nextDouble() < 0.4;
-        boolean isApostle = Utils.random.nextDouble() < 0.2;
+        boolean isMaw = Utils.random.nextDouble() < 0.65;
+        boolean isApostle = Utils.random.nextDouble() < 0.25;
 
-        boolean isBase = Utils.random.nextDouble() < 0.6;
+        boolean isBase = Utils.random.nextDouble() < 0.75;
 
         TheApostleEntity apostleEntity = new TheApostleEntity(level, caster);
         SightlessMawEntity sightlessMaw = new SightlessMawEntity(level, caster);

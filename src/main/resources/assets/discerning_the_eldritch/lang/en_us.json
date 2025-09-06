@@ -37,6 +37,8 @@
   "item.discerning_the_eldritch.ironbound_feather.desc": "A beautiful brooch that feels lighter than it seems",
   "item.discerning_the_eldritch.pyrium_sheath": "Pyrium Sheath",
   "item.discerning_the_eldritch.pyrium_sheath.desc": "On hit, ignite entities on fire for 3 seconds and deal increased damage to entities on fire",
+  "item.discerning_the_eldritch.frostbourne_sheath": "Frostbourne Sheath",
+  "item.discerning_the_eldritch.frostbourne_sheath.desc": "On hit, encase entities in an ice tomb for 2 seconds",
 
   "item.discerning_the_eldritch.deep_greatsword": "Greatsword of the Depths",
   "item.discerning_the_eldritch.ymir": "Ymir, Apothic Eldritch Blade",
