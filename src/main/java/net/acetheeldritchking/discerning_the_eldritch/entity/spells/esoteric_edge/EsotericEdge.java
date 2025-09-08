@@ -115,15 +115,11 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
             double dy = Utils.random.nextDouble() * 2 * speed - speed;
             double dz = Utils.random.nextDouble() * 2 * speed - speed;
 
-            level().addParticle(DTEParticleHelper.ESOTERIC_SPARKS, (this.getX()) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
-
             // Left
             level().addParticle(DTEParticleHelper.ESOTERIC_SPARKS, (this.getX() + 4) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
-            level().addParticle(DTEParticleHelper.ESOTERIC_SPARKS, (this.getX() + 3.5) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
 
             // Right
             level().addParticle(DTEParticleHelper.ESOTERIC_SPARKS, (this.getX() - 4) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
-            level().addParticle(DTEParticleHelper.ESOTERIC_SPARKS, (this.getX() - 3.5) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
         }
     }
 

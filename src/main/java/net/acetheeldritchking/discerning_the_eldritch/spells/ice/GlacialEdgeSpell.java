@@ -7,6 +7,7 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.damage.SpellDamageSource;
+import net.acetheeldritchking.aces_spell_utils.spells.ASSpellAnimations;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdge;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
@@ -68,7 +69,12 @@ public class GlacialEdgeSpell extends AbstractSpell {
 
     @Override
     public AnimationHolder getCastStartAnimation() {
-        return SpellAnimations.SLASH_ANIMATION;
+        return ASSpellAnimations.ANIMATION_RUDE_BUSTER_SLASH;
+    }
+
+    @Override
+    public AnimationHolder getCastFinishAnimation() {
+        return AnimationHolder.pass();
     }
 
     @Override

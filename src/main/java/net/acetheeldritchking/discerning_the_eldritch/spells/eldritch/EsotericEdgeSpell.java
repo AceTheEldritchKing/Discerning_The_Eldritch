@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import net.acetheeldritchking.aces_spell_utils.spells.ASSpellAnimations;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdge;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
@@ -64,7 +65,12 @@ public class EsotericEdgeSpell extends AbstractSpell {
 
     @Override
     public AnimationHolder getCastStartAnimation() {
-        return SpellAnimations.SLASH_ANIMATION;
+        return ASSpellAnimations.ANIMATION_RIGHT_HORIZONTAL_SWORD_SLASH;
+    }
+
+    @Override
+    public AnimationHolder getCastFinishAnimation() {
+        return AnimationHolder.pass();
     }
 
     @Override

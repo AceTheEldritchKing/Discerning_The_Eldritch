@@ -11,6 +11,7 @@ import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import io.redspace.ironsspellbooks.entity.mobs.goals.melee.AttackAnimationData;
+import io.redspace.ironsspellbooks.entity.spells.EarthquakeAoe;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
 import net.acetheeldritchking.aces_spell_utils.entity.mobs.UniqueAbstractSpellCastingMob;
@@ -306,7 +307,7 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
         {
             if (isCasting() && this.animationToPlay == null)
             {
-                event.getController().setAnimation(RawAnimation.begin().thenPlay("charged_spit"));
+                event.getController().setAnimation(RawAnimation.begin().thenPlay("long_cast"));
                 return PlayState.CONTINUE;
             }
             else
@@ -382,6 +383,36 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
     }
 
     @Override
+    protected boolean isImmobile() {
+        return isPlayingRiseAnimation() || super.isImmobile();
+    }
+
+    @Override
+    public boolean hurt(DamageSource source, float amount) {
+        if (isPlayingRiseAnimation())
+        {
+            return false;
+        } else
+        {
+            return super.hurt(source, amount);
+        }
+    }
+
+    private void spawnVisualEarthquake()
+    {
+        EarthquakeAoe aoe = new EarthquakeAoe(this.level());
+        aoe.moveTo(this.position());
+        aoe.setOwner(this);
+        aoe.setCircular();
+        aoe.setRadius(5);
+        aoe.setDuration(riseAnimationTime);
+        aoe.setDamage(1.0F);
+        aoe.setSlownessAmplifier(0);
+
+        this.level().addFreshEntity(aoe);
+    }
+
+    @Override
     public void tick() {
         if (isPlayingRiseAnimation())
         {
@@ -392,6 +423,7 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
             if (riseAnimationTime >= 130)
             {
                 this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.WARDEN_EMERGE, this.getSoundSource(), 5.0F, this.getVoicePitch(), false);
+                spawnVisualEarthquake();
             }
             // Timing the roar with part of the animation
             if (--riseAnimationTime <= 5)
