@@ -30,6 +30,9 @@ public class DTEParticleRegistry {
         }
     });
 
+    // Esoteric Sparks
+    public static final Supplier<SimpleParticleType> ESOTERIC_SPARKS_PARTICLE = PARTICLE_TYPES.register("esoteric_sparks", () -> new SimpleParticleType(false));
+
 
     public static void register(IEventBus eventBus)
     {

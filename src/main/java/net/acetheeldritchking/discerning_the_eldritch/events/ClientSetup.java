@@ -10,6 +10,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemot
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.mobs.*;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdgeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdgeRenderer;
+import net.acetheeldritchking.discerning_the_eldritch.particle.EsotericSparksParticle;
 import net.acetheeldritchking.discerning_the_eldritch.particle.GlacialShadowParticle;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEParticleRegistry;
@@ -50,5 +51,6 @@ public class ClientSetup {
     public static void registerParticles(RegisterParticleProvidersEvent event)
     {
         event.registerSpriteSet(DTEParticleRegistry.GLACIAL_SHADOW_PARTICLE.get(), GlacialShadowParticle.Provider::new);
+        event.registerSpriteSet(DTEParticleRegistry.ESOTERIC_SPARKS_PARTICLE.get(), EsotericSparksParticle.Provider::new);
     }
 }

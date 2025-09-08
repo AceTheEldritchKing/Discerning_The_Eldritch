@@ -1,6 +1,7 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge;
 
 import io.redspace.ironsspellbooks.api.magic.MagicData;
+import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
@@ -8,9 +9,11 @@ import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import io.redspace.ironsspellbooks.entity.spells.AbstractShieldEntity;
 import io.redspace.ironsspellbooks.entity.spells.ShieldPart;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
+import net.acetheeldritchking.discerning_the_eldritch.particle.DTEParticleHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -36,6 +39,7 @@ import java.util.stream.Collectors;
 
 public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSusceptible {
     private List<Entity> entities;
+    private int lifetimeInTicks = 20 * 15;
 
     public EsotericEdge(EntityType<? extends Projectile> entityType, Level level) {
         super(entityType, level);
@@ -69,6 +73,12 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
 
     @Override
     public void tick() {
+        lifetimeInTicks--;
+        if (lifetimeInTicks <= 0)
+        {
+            this.discard();
+        }
+
         if (!level().isClientSide)
         {
             HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
@@ -97,7 +107,24 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
 
     @Override
     public void trailParticles() {
+        for (int i = 0; i < 3; i++)
+        {
+            // Middle
+            double speed = 0.05F;
+            double dx = Utils.random.nextDouble() * 2 * speed - speed;
+            double dy = Utils.random.nextDouble() * 2 * speed - speed;
+            double dz = Utils.random.nextDouble() * 2 * speed - speed;
 
+            level().addParticle(DTEParticleHelper.ESOTERIC_SPARKS, (this.getX()) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+
+            // Left
+            level().addParticle(DTEParticleHelper.ESOTERIC_SPARKS, (this.getX() + 4) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+            level().addParticle(DTEParticleHelper.ESOTERIC_SPARKS, (this.getX() + 3.5) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+
+            // Right
+            level().addParticle(DTEParticleHelper.ESOTERIC_SPARKS, (this.getX() - 4) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+            level().addParticle(DTEParticleHelper.ESOTERIC_SPARKS, (this.getX() - 3.5) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+        }
     }
 
     @Override
