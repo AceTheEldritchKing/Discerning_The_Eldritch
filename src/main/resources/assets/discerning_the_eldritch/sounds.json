@@ -112,5 +112,34 @@
         "sounds": [
             "discerning_the_eldritch:glacial_cleave_full"
         ]
+    },
+    "entity.ascended_one.hurt": {
+        "sounds": [
+            "discerning_the_eldritch:mob/ascended_one/voice/ao_hurt_1",
+            "discerning_the_eldritch:mob/ascended_one/voice/ao_hurt_2",
+            "discerning_the_eldritch:mob/ascended_one/voice/ao_hurt_3",
+            "discerning_the_eldritch:mob/ascended_one/voice/ao_hurt_4",
+            "discerning_the_eldritch:mob/ascended_one/voice/ao_hurt_5",
+            "discerning_the_eldritch:mob/ascended_one/voice/ao_hurt_6"
+        ],
+        "subtitle": "subtitles.entity.ascended_one.hurt"
+    },
+    "entity.ascended_one.death": {
+        "sounds": [
+            "discerning_the_eldritch:mob/ascended_one/voice/ascended_one_death"
+        ],
+        "subtitle": "subtitles.entity.ascended_one.death"
+    },
+    "entity.ascended_one.taunt_1": {
+        "sounds": [
+            "discerning_the_eldritch:mob/ascended_one/voice/you_think_you_can_stop_me"
+        ],
+        "subtitle": "subtitles.entity.ascended_one.taunt_1"
+    },
+    "entity.ascended_one.taunt_2": {
+        "sounds": [
+            "discerning_the_eldritch:mob/ascended_one/voice/behold_my_apotheosis_cry"
+        ],
+        "subtitle": "subtitles.entity.ascended_one.taunt_2"
     }
 }

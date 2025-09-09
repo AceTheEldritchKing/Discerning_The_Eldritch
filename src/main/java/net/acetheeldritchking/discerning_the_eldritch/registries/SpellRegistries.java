@@ -57,6 +57,7 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> MEND_FLESH = registerSpell(new MendFleshSpell());
 
     // Rift Walker - Teleport based spell, leaves an unstable rift at your original location and at your new location. Rift deals damage
+    public static final Supplier<AbstractSpell> RIFT_WALKER = registerSpell(new RiftWalkerSpell());
 
     // Entangled - Prevents the user from being counterspelled at the cost of reduced spell power
 

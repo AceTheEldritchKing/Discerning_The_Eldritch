@@ -58,6 +58,18 @@ public class DTESoundRegistry {
     // Gaoler Roar
     public static DeferredHolder<SoundEvent, SoundEvent> GAOLER_ROAR = registerSoundEvent("entity.gaoler.roar");
 
+    // Ascended One Hurt
+    public static DeferredHolder<SoundEvent, SoundEvent> ASCENDED_ONE_HURT = registerSoundEvent("entity.ascended_one.hurt");
+
+    // Ascended One Death
+    public static DeferredHolder<SoundEvent, SoundEvent> ASCENDED_ONE_DEATH = registerSoundEvent("entity.ascended_one.death");
+
+    // Ascended One Taunt 1
+    public static DeferredHolder<SoundEvent, SoundEvent> ASCENDED_ONE_TAUNT_ONE = registerSoundEvent("entity.ascended_one.taunt_1");
+
+    // Ascended One Taunt 2
+    public static DeferredHolder<SoundEvent, SoundEvent> ASCENDED_ONE_TAUNT_TWO = registerSoundEvent("entity.ascended_one.taunt_2");
+
 
     /***
      * Music Sounds

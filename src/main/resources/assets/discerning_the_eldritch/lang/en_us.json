@@ -38,7 +38,7 @@
   "item.discerning_the_eldritch.pyrium_sheath": "Pyrium Sheath",
   "item.discerning_the_eldritch.pyrium_sheath.desc": "On hit, ignite entities on fire for 3 seconds and deal increased damage to entities on fire",
   "item.discerning_the_eldritch.frostbourne_sheath": "Frostbourne Sheath",
-  "item.discerning_the_eldritch.frostbourne_sheath.desc": "On hit, encase entities in an ice tomb for 2 seconds",
+  "item.discerning_the_eldritch.frostbourne_sheath.desc": "On hit, encase entities in an ice tomb for 10 seconds",
 
   "item.discerning_the_eldritch.deep_greatsword": "Greatsword of the Depths",
   "item.discerning_the_eldritch.ymir": "Ymir, Apothic Eldritch Blade",
@@ -116,6 +116,9 @@
   "spell.discerning_the_eldritch.glacial_edge": "Glacial Cleave",
   "spell.discerning_the_eldritch.glacial_edge.guide": "Unleash a slash formed of raw ice, inflicted Chilled on impact",
 
+  "spell.discerning_the_eldritch.rift_walker": "Rift Walker",
+  "spell.discerning_the_eldritch.rift_walker.guide": "Carve an unstable teleportation rift using raw mana which explode after teleporting",
+
 
   "ui.discerning_the_eldritch.extra_damage": "Deals extra damage while holding a weapon in your mainhand",
   "ui.discerning_the_eldritch.ritual_cast_failure": "Rituals cannot be casted in a mere spellbook",
@@ -160,6 +163,10 @@
   "subtitles.entity.gaoler.attack_impact": "Gaoler attacks",
   "subtitles.entity.gaoler.death": "Gaoler dies",
   "subtitles.entity.gaoler.roar": "Gaoler roars angrily",
+  "subtitles.entity.ascended_one.hurt": "Ascended One hurts",
+  "subtitles.entity.ascended_one.death": "Ascended One dies",
+  "subtitles.entity.ascended_one.taunt_1": "Ascended One taunts you",
+  "subtitles.entity.ascended_one.taunt_2": "Ascended One challenges you",
 
 
   "death.attack.discerning_the_eldritch.guardians_gaze": "%1$s fell from %2$s's gaze",

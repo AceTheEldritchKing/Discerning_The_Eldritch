@@ -1,5 +1,7 @@
 package net.acetheeldritchking.discerning_the_eldritch.registries;
 
+import io.redspace.ironsspellbooks.IronsSpellbooks;
+import io.redspace.ironsspellbooks.entity.spells.EchoingStrikeEntity;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicAcolyteEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicCrusaderEntity;
@@ -12,6 +14,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sightless_maw.
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdge;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdge;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.rift_walker.UnstableRiftEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -114,6 +117,13 @@ public class DTEEntityRegistry {
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "glacial_edge").toString())
             );
+
+    // Unstable Rift
+    public static final DeferredHolder<EntityType<?>, EntityType<UnstableRiftEntity>> UNSTABLE_RIFT =
+            ENTITIES.register("unstable_rift", () -> EntityType.Builder.<UnstableRiftEntity>of(UnstableRiftEntity::new, MobCategory.MISC)
+                    .sized(1f, 1f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(IronsSpellbooks.MODID, "unstable_rift").toString()));
 
 
     public static void register(IEventBus eventBus)

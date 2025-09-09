@@ -15,6 +15,7 @@ import net.acetheeldritchking.discerning_the_eldritch.particle.GlacialShadowPart
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEParticleRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
+import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.world.item.Item;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -39,6 +40,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.SIGHTLESS_MAW.get(), context -> {return new SightlessMawRenderer(context, new SightlessMawModel());});
         event.registerEntityRenderer(DTEEntityRegistry.UNTOLD_BEHEMOTH.get(), context -> {return new UntoldBehemothRenderer(context, new UntoldBehemothModel());});
         event.registerEntityRenderer(DTEEntityRegistry.GLACIAL_EDGE.get(), GlacialEdgeRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.UNSTABLE_RIFT.get(), NoopRenderer::new);
     }
 
     @SubscribeEvent

@@ -440,6 +440,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 {
                     if (targets instanceof ServerPlayer player)
                     {
+                        playSound(DTESoundRegistry.ASCENDED_ONE_TAUNT_ONE.get(), 1.5F, 1);
                         player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.ascended_one_taunt_1")
                                 .withStyle(s -> s.withColor(TextColor.fromRgb(0xC71B8B)))));
                     }
@@ -506,6 +507,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 {
                     if (targets instanceof ServerPlayer player)
                     {
+                        playSound(DTESoundRegistry.ASCENDED_ONE_TAUNT_TWO.get(), 1.5F, 1);
                         player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.ascended_one_taunt_2")
                                 .withStyle(s -> s.withColor(TextColor.fromRgb(0xC71B8B)))));
                     }
@@ -577,6 +579,16 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         else {
             return super.hurt(source, amount);
         }
+    }
+
+    @Override
+    protected @Nullable SoundEvent getHurtSound(DamageSource damageSource) {
+        return DTESoundRegistry.ASCENDED_ONE_HURT.get();
+    }
+
+    @Override
+    protected @Nullable SoundEvent getDeathSound() {
+        return DTESoundRegistry.ASCENDED_ONE_DEATH.get();
     }
 
     @Override
