@@ -141,5 +141,10 @@
             "discerning_the_eldritch:mob/ascended_one/voice/behold_my_apotheosis_cry"
         ],
         "subtitle": "subtitles.entity.ascended_one.taunt_2"
+    },
+    "rift_walker_cast": {
+        "sounds": [
+            "discerning_the_eldritch:rift_walker_cast"
+        ]
     }
 }

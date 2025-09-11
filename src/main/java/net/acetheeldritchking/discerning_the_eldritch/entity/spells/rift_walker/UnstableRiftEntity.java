@@ -7,15 +7,20 @@ import io.redspace.ironsspellbooks.entity.spells.AoeEntity;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.registries.EntityRegistry;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
+import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.acetheeldritchking.discerning_the_eldritch.particle.DTEParticleHelper;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.Optional;
 
@@ -29,7 +34,7 @@ public class UnstableRiftEntity extends AoeEntity {
     }
 
     public UnstableRiftEntity(Level level, LivingEntity owner, float damage, float radius) {
-        this(EntityRegistry.ECHOING_STRIKE.get(), level);
+        this(DTEEntityRegistry.UNSTABLE_RIFT.get(), level);
         setOwner(owner);
         this.setRadius(radius);
         this.setDamage(damage);
@@ -51,10 +56,11 @@ public class UnstableRiftEntity extends AoeEntity {
         {
             this.setPos(toTrack.position());
         } else if (tickCount == delay) {
-            this.playSound(SoundRegistry.FORCE_IMPACT.get(), 1, Utils.random.nextIntBetweenInclusive(8, 12) * .1f);
+            this.playSound(DTESoundRegistry.RIFT_WALKER_CAST.get(), 1, Utils.random.nextIntBetweenInclusive(8, 12) * .1f);
             if (!level().isClientSide)
             {
                 var center = this.getBoundingBox().getCenter();
+                MagicManager.spawnParticles(level(), DTEParticleHelper.RIFT_SLICE, center.x, center.y, center.z, 10, 0, 0, 0, .18, false);
                 MagicManager.spawnParticles(level(), new BlastwaveParticleOptions(SpellRegistries.RIFT_WALKER.get().getSchoolType().getTargetingColor(), this.getRadius() * .9f), center.x, center.y, center.z, 1, 0, 0, 0, 0, true);
 
                 float explosionRadius = getRadius();
@@ -76,6 +82,18 @@ public class UnstableRiftEntity extends AoeEntity {
             }
         } else if (tickCount > delay) {
             discard();
+        }
+        if (level().isClientSide && tickCount < delay / 2)
+        {
+            Vec3 pos = this.getBoundingBox().getCenter();
+
+            for (int i = 0; i < 3; i++)
+            {
+                Vec3 vec3 = Utils.getRandomVec3(1F);
+                vec3 = vec3.multiply(vec3).multiply(Mth.sign(vec3.x), Mth.sign(vec3.y), Mth.sign(vec3.z)).scale(this.getRadius()).add(pos);
+                Vec3 motion = position().subtract(vec3).scale(0.125F);
+                level().addParticle(ParticleTypes.SMOKE, vec3.x, vec3.y - .5, vec3.z, motion.x, motion.y, motion.z);
+            }
         }
     }
 

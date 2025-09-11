@@ -39,7 +39,7 @@ import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 public class DiscerningTheEldritch
 {
     public static final String MOD_ID = "discerning_the_eldritch";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public DiscerningTheEldritch(IEventBus modEventBus, ModContainer modContainer)
     {

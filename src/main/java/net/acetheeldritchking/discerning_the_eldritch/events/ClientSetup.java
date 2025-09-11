@@ -12,6 +12,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edg
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdgeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.particle.EsotericSparksParticle;
 import net.acetheeldritchking.discerning_the_eldritch.particle.GlacialShadowParticle;
+import net.acetheeldritchking.discerning_the_eldritch.particle.RiftSliceParticle;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEParticleRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
@@ -54,5 +55,6 @@ public class ClientSetup {
     {
         event.registerSpriteSet(DTEParticleRegistry.GLACIAL_SHADOW_PARTICLE.get(), GlacialShadowParticle.Provider::new);
         event.registerSpriteSet(DTEParticleRegistry.ESOTERIC_SPARKS_PARTICLE.get(), EsotericSparksParticle.Provider::new);
+        event.registerSpriteSet(DTEParticleRegistry.RIFT_SLICE_PARTICLE.get(), RiftSliceParticle.Provider::new);
     }
 }

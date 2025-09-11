@@ -7,16 +7,20 @@ import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
+import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import io.redspace.ironsspellbooks.spells.ender.TeleportSpell;
 import io.redspace.ironsspellbooks.util.Log;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.rift_walker.UnstableRiftEntity;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -29,6 +33,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Optional;
 
 @AutoSpellConfig
 public class RiftWalkerSpell extends AbstractSpell {
@@ -72,6 +77,16 @@ public class RiftWalkerSpell extends AbstractSpell {
     @Override
     public CastType getCastType() {
         return CastType.INSTANT;
+    }
+
+    @Override
+    public Optional<SoundEvent> getCastStartSound() {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<SoundEvent> getCastFinishSound() {
+        return Optional.of(SoundRegistry.ELDRITCH_PREPARE.get());
     }
 
     @Override
@@ -126,13 +141,14 @@ public class RiftWalkerSpell extends AbstractSpell {
         }
 
         entity.resetFallDistance();
+        level.playSound(null, dest.x, dest.y, dest.z, getCastFinishSound().get(), SoundSource.NEUTRAL, 1f, 1f);
 
         // Invis & Spawn Rift
         entity.setInvisible(true);
         entity.addEffect(new MobEffectInstance(MobEffectRegistry.TRUE_INVISIBILITY, 100, 0, false, false, true));
 
         UnstableRiftEntity unstableRift = new UnstableRiftEntity(level, entity, getDamage(spellLevel, entity), RADIUS);
-        unstableRift.setTracking(entity);
+        //unstableRift.setTracking(entity);
         unstableRift.setPos(entity.getBoundingBox().getCenter().subtract(0, unstableRift.getBbHeight() * .5f, 0));
         level.addFreshEntity(unstableRift);
 

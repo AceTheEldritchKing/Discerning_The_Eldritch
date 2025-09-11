@@ -36,6 +36,9 @@ public class DTESoundRegistry {
     // Glacial Cleave Full
     public static DeferredHolder<SoundEvent, SoundEvent> GLACIAL_CLEAVE_FULL = registerSoundEvent("glacial_cleave_full");
 
+    // Rift Walker Cast
+    public static DeferredHolder<SoundEvent, SoundEvent> RIFT_WALKER_CAST = registerSoundEvent("rift_walker_cast");
+
 
     /***
      * Entity Sounds
