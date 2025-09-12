@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.capabilities.magic.RecastInstance;
 import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import io.redspace.ironsspellbooks.spells.ender.TeleportSpell;
@@ -13,6 +14,7 @@ import io.redspace.ironsspellbooks.util.Log;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.rift_walker.UnstableRiftEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
@@ -52,7 +54,7 @@ public class RiftWalkerSpell extends AbstractSpell {
             .setMinRarity(SpellRarity.LEGENDARY)
             .setSchoolResource(SchoolRegistry.ELDRITCH_RESOURCE)
             .setMaxLevel(5)
-            .setCooldownSeconds(15)
+            .setCooldownSeconds(12)
             .build();
 
     public RiftWalkerSpell()
@@ -86,7 +88,18 @@ public class RiftWalkerSpell extends AbstractSpell {
 
     @Override
     public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.of(SoundRegistry.ELDRITCH_PREPARE.get());
+        return Optional.of(SoundRegistry.ABYSSAL_TELEPORT.get());
+    }
+
+    @Override
+    public int getRecastCount(int spellLevel, @Nullable LivingEntity entity) {
+        if (ItemRegistries.RIFT_RIPPER_EMBLEM.get().isEquippedBy(entity) || ItemRegistries.KINGS_EFFIGY.get().isEquippedBy(entity))
+        {
+            return 3;
+        }
+        else {
+            return 1;
+        }
     }
 
     @Override
@@ -100,6 +113,12 @@ public class RiftWalkerSpell extends AbstractSpell {
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
+        if (!playerMagicData.getPlayerRecasts().hasRecastForSpell(getSpellId()))
+        {
+            playerMagicData.getPlayerRecasts().addRecast
+                    (new RecastInstance(getSpellId(), spellLevel, getRecastCount(spellLevel, entity), 80, castSource, null), playerMagicData);
+        }
+
         Vec3 dest = null;
         var teleportData = (TeleportSpell.TeleportData) playerMagicData.getAdditionalCastData();
 
@@ -157,7 +176,7 @@ public class RiftWalkerSpell extends AbstractSpell {
 
     private float getDamage(int spellLevel, LivingEntity caster)
     {
-        return getSpellPower(spellLevel, caster) * 0.5F;
+        return getSpellPower(spellLevel, caster) * 0.15F;
     }
 
     private float getDistance(int spellLevel, LivingEntity entity)

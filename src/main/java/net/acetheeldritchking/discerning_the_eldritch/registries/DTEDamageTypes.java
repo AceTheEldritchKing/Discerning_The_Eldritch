@@ -11,7 +11,7 @@ import net.minecraft.world.damagesource.DamageType;
 public class DTEDamageTypes {
     public static ResourceKey<DamageType> register(String name)
     {
-        return ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.parse(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "ritual_magic").toString()));
+        return ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.parse(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, name).toString()));
     }
 
     public static final ResourceKey<DamageType> RITUAL_MAGIC = register("ritual_magic");

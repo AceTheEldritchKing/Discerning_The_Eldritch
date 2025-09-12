@@ -21,6 +21,7 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.joml.Vector3f;
 
 import java.util.Optional;
 
@@ -59,9 +60,23 @@ public class UnstableRiftEntity extends AoeEntity {
             this.playSound(DTESoundRegistry.RIFT_WALKER_CAST.get(), 1, Utils.random.nextIntBetweenInclusive(8, 12) * .1f);
             if (!level().isClientSide)
             {
+                // Colors - Thanks Google
+                int r = 184;
+                int g = 11;
+                int b = 106;
+
+                float rf = r / 255F;
+                float gf = g / 255F;
+                float bf = b / 255F;
+
+                Vector3f colorRGB = new Vector3f(rf, gf, bf);
+
                 var center = this.getBoundingBox().getCenter();
                 MagicManager.spawnParticles(level(), DTEParticleHelper.RIFT_SLICE, center.x, center.y, center.z, 10, 0, 0, 0, .18, false);
-                MagicManager.spawnParticles(level(), new BlastwaveParticleOptions(SpellRegistries.RIFT_WALKER.get().getSchoolType().getTargetingColor(), this.getRadius() * .9f), center.x, center.y, center.z, 1, 0, 0, 0, 0, true);
+
+                MagicManager.spawnParticles(level(), new BlastwaveParticleOptions(colorRGB, this.getRadius() * .55f), center.x, center.y - 0.75, center.z, 1, 0, 0, 0, 0, true);
+                MagicManager.spawnParticles(level(), new BlastwaveParticleOptions(colorRGB, this.getRadius() * .9f), center.x, center.y, center.z, 1, 0, 0, 0, 0, true);
+                MagicManager.spawnParticles(level(), new BlastwaveParticleOptions(colorRGB, this.getRadius() * .55f), center.x, center.y + 0.75, center.z, 1, 0, 0, 0, 0, true);
 
                 float explosionRadius = getRadius();
                 var explosionRadiusSqr = explosionRadius * explosionRadius;

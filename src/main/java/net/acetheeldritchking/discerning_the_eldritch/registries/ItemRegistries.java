@@ -205,6 +205,9 @@ public class ItemRegistries {
     // Frostbourne Sheath
     public static final Supplier<CurioBaseItem> FROSTBOURNE_SHEATH = ITEMS.register("frostbourne_sheath", FrostbourneSheathCurio::new);
 
+    // Emblem of The Rift Ripper
+    public static final Supplier<CurioBaseItem> RIFT_RIPPER_EMBLEM = ITEMS.register("rift_ripper_emblem", RiftRipperEmblemCurio::new);
+
 
     /***
      * Armor

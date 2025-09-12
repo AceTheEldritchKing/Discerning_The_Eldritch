@@ -14,6 +14,7 @@
 
 
   "curios.identifier.artifact": "Artifact",
+  "curios.modifier.artifact": "Artifact",
 
 
   "item.discerning_the_eldritch.corrupted_cloth": "Corrupted Cloth",
@@ -39,6 +40,8 @@
   "item.discerning_the_eldritch.pyrium_sheath.desc": "On hit, ignite entities on fire for 3 seconds and deal increased damage to entities on fire",
   "item.discerning_the_eldritch.frostbourne_sheath": "Frostbourne Sheath",
   "item.discerning_the_eldritch.frostbourne_sheath.desc": "On hit, encase entities in an ice tomb for 10 seconds",
+  "item.discerning_the_eldritch.rift_ripper_emblem": "Emblem of The Rift Ripper",
+  "item.discerning_the_eldritch.rift_ripper_emblem.desc": "An ancient emblem, allows you to cast Rift Walker multiple times",
 
   "item.discerning_the_eldritch.deep_greatsword": "Greatsword of the Depths",
   "item.discerning_the_eldritch.ymir": "Ymir, Apothic Eldritch Blade",
