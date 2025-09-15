@@ -1,6 +1,7 @@
 package net.acetheeldritchking.discerning_the_eldritch.registries;
 
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.effects.AbracadabraPotionEffect;
 import net.acetheeldritchking.discerning_the_eldritch.effects.MendFleshPotionEffect;
 import net.acetheeldritchking.discerning_the_eldritch.effects.MetaphysicalPotionEffect;
 import net.acetheeldritchking.discerning_the_eldritch.effects.SilencePotionEffect;
@@ -21,6 +22,10 @@ public class DTEPotionEffectRegistry {
 
     // Mend Flesh Effect
     public static final DeferredHolder<MobEffect, MobEffect> MEND_FLESH_EFFECT = MOB_EFFECTS.register("mend_flesh_potion_effect", MendFleshPotionEffect::new);
+
+    // Abracadabra Potion Effect
+    public static final DeferredHolder<MobEffect, MobEffect> ABRACADABRA_EFFECT = MOB_EFFECTS.register("abracadabra_potion_effect", AbracadabraPotionEffect::new);
+
 
     public static void register(IEventBus eventBus)
     {

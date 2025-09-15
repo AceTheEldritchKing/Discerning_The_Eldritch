@@ -5,6 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 
@@ -26,4 +27,9 @@ public class DTETags {
      */
     // Apothic Cultists
     public static final TagKey<EntityType<?>> APOTHIC_ALLIES = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "apothic_allies"));
+
+    /***
+     * Potion Effects
+     */
+    public static final TagKey<MobEffect> BYPASS_ABRACADABRA = TagKey.create(Registries.MOB_EFFECT, ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "bypass_abracadabra"));
 }

@@ -64,6 +64,9 @@ public class SpellRegistries {
     // Subjugation - AoE Silence that damages targets, prevents them from doing anything of their agency, damages them for doing anything, stops healing, stops mana regen, blindness and darkness, weakness and reduced armor, more suseptible to spells,
     // Yeah this is cancerous for a reason, this won't be casted by a player, only by a boss
 
+    // Abracadabra
+    public static final Supplier<AbstractSpell> ABRACADABRA = registerSpell(new AbracadabraSpell());
+
 
     /***
      * Blood Spells
