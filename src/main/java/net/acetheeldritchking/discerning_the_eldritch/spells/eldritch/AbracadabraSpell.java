@@ -5,16 +5,19 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
+import java.util.Optional;
 
 @AutoSpellConfig
 public class AbracadabraSpell extends AbstractSpell {
@@ -59,8 +62,13 @@ public class AbracadabraSpell extends AbstractSpell {
     }
 
     @Override
+    public Optional<SoundEvent> getCastFinishSound() {
+        return Optional.of(SoundRegistry.DARK_SPELL_02.get());
+    }
+
+    @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-        entity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.ABRACADABRA_EFFECT, getEffectDuration(entity, spellLevel), spellLevel, false, false, true));
+        entity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.ABRACADABRA_EFFECT, getEffectDuration(entity, spellLevel), spellLevel - 1, false, false, true));
 
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }

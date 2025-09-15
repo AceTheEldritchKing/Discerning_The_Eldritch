@@ -13,6 +13,7 @@ public class DTEConfig
 {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
+
     private static final ModConfigSpec.BooleanValue MEND_FLESH_LIFESTEAL = BUILDER
             .comment("Defines whether or not mend flesh will heal on entity hit. Default is true")
             .define("Mend flesh lifesteal", true);
@@ -34,12 +35,32 @@ public class DTEConfig
             .define("Max value for insanity", 15);
 
 
+    private static final ModConfigSpec.BooleanValue ENABLE_ABRACADABRA_DAMAGE_CAP = BUILDER
+            .comment("Defines whether or not to enable Abracadabra's damage cap abilities.")
+            .comment("Default is true")
+            .define("Enable Abracadabra's damage cap", true);
+
+    private static final ModConfigSpec.ConfigValue<Integer> ABRACADABRA_DAMAGE_CAP_VALUE = BUILDER
+            .comment("Defines the base damage cap value for Abracadabra spell")
+            .comment("Default is [80]")
+            .define("Base damage cap", 80);
+
+    private static final ModConfigSpec.BooleanValue ENABLE_ABRACADABRA_HEX_PREVENTION = BUILDER
+            .comment("Defines whether or not to enable Abracadabra's hex prevention abilities. This prevents the user from gaining negative potion effects.")
+            .comment("Default is true")
+            .define("Enable Abracadabra's hex prevention", true);
+
+
     public static final ModConfigSpec SPEC = BUILDER.build();
+
 
     public static boolean mendFleshLifesteal;
     public static boolean mendFleshEXPGain;
     public static boolean enableInsanitySystem;
     public static int maxInsanityValue;
+    public static int abracadabraDamageCap;
+    public static boolean enableDamageCap;
+    public static boolean enableHexPrevention;
 
 
     @SubscribeEvent
@@ -50,5 +71,9 @@ public class DTEConfig
 
         enableInsanitySystem = ELDRITCH_INSANITY_SYSTEM.get();
         maxInsanityValue = ELDRITCH_MAX_INSANITY.get();
+
+        enableDamageCap = ENABLE_ABRACADABRA_DAMAGE_CAP.get();
+        abracadabraDamageCap = ABRACADABRA_DAMAGE_CAP_VALUE.get();
+        enableHexPrevention = ENABLE_ABRACADABRA_HEX_PREVENTION.get();
     }
 }

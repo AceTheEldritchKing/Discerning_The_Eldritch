@@ -9,8 +9,13 @@
 
 
   "effect.discerning_the_eldritch.silence_potion_effect": "Silenced",
+  "effect.discerning_the_eldritch.silence_potion_effect.description": "Prevents the user from casting spells",
   "effect.discerning_the_eldritch.metaphysical_potion_effect": "Metaphysical",
+  "effect.discerning_the_eldritch.metaphysical_potion_effect.description": "Prevents the user from taking and dealing damage, as well as casting spells",
   "effect.discerning_the_eldritch.mend_flesh_potion_effect": "Mending Flesh",
+  "effect.discerning_the_eldritch.mend_flesh_potion_effect.description": "Provides lifesteal on hit as well as healing on gaining XP",
+  "effect.discerning_the_eldritch.abracadabra_potion_effect": "Abracadabra",
+  "effect.discerning_the_eldritch.abracadabra_potion_effect.description": "Gives the user a damage cap and prevents negative potion effects from applying",
 
 
   "curios.identifier.artifact": "Artifact",
