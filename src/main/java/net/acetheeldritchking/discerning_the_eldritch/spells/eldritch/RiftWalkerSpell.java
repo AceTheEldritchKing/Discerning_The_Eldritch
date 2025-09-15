@@ -116,7 +116,7 @@ public class RiftWalkerSpell extends AbstractSpell {
         if (!playerMagicData.getPlayerRecasts().hasRecastForSpell(getSpellId()))
         {
             playerMagicData.getPlayerRecasts().addRecast
-                    (new RecastInstance(getSpellId(), spellLevel, getRecastCount(spellLevel, entity), 80, castSource, null), playerMagicData);
+                    (new RecastInstance(getSpellId(), spellLevel, getRecastCount(spellLevel, entity), 100, castSource, null), playerMagicData);
         }
 
         Vec3 dest = null;
@@ -164,7 +164,7 @@ public class RiftWalkerSpell extends AbstractSpell {
 
         // Invis & Spawn Rift
         entity.setInvisible(true);
-        entity.addEffect(new MobEffectInstance(MobEffectRegistry.TRUE_INVISIBILITY, 100, 0, false, false, true));
+        entity.addEffect(new MobEffectInstance(MobEffectRegistry.TRUE_INVISIBILITY, 60, 0, false, false, true));
 
         UnstableRiftEntity unstableRift = new UnstableRiftEntity(level, entity, getDamage(spellLevel, entity), RADIUS);
         //unstableRift.setTracking(entity);

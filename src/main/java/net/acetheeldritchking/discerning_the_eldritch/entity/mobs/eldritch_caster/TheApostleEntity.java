@@ -115,7 +115,7 @@ public class TheApostleEntity extends UniqueAbstractSpellCastingMob implements I
                                 SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
                                 SpellRegistry.HASTE_SPELL.get()
                         )
-                ).setSingleUseSpell(SpellRegistries.SILENCE.get(), 100, 250, 5, 5)
+                ).setSingleUseSpell(SpellRegistry.SCULK_TENTACLES_SPELL.get(), 100, 250, 5, 5)
                 .setSpellQuality(1.0f, 1.0f)
                 .setIsFlying()
                 .setSpellQuality(0.8f, 0.8f)

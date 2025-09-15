@@ -10,7 +10,7 @@ import net.acetheeldritchking.aces_spell_utils.items.curios.SheathCurioItem;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockArmorRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockHelmetRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockMaskRenderer;
-import net.acetheeldritchking.discerning_the_eldritch.entity.render.items.StaffOfVehemenceRenderer;
+import net.acetheeldritchking.discerning_the_eldritch.entity.render.items.*;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.DTEArmorMaterialRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.loot.DTELootModifiers;
 import net.acetheeldritchking.discerning_the_eldritch.registries.*;
@@ -115,9 +115,19 @@ public class DiscerningTheEldritch
                     ItemRegistries.ELDRITCH_WARLOCK_GREAVES.get());
             AzArmorRendererRegistry.register(EldritchWarlockMaskRenderer::new, ItemRegistries.ELDRITCH_WARLOCK_MASK.get());
             AzArmorRendererRegistry.register(EldritchWarlockHelmetRenderer::new, ItemRegistries.ELDRITCH_WARLOCK_HELMET.get());
+            AzArmorRendererRegistry.register(KingsEffigyCurioItemRenderer::new, ItemRegistries.KINGS_EFFIGY.get());
+            AzArmorRendererRegistry.register(CastersMantleCurioItemRenderer::new, ItemRegistries.CASTERS_MANTLE.get());
 
             // Item Rendering Registry
             AzItemRendererRegistry.register(StaffOfVehemenceRenderer::new, ItemRegistries.STAFF_OF_VEHEMENCE.get());
+
+            // Curio Rendering
+            CuriosRendererRegistry.register(
+                    ItemRegistries.KINGS_EFFIGY.get(), KingsEffigyCurioRenderer::new
+            );
+            CuriosRendererRegistry.register(
+                    ItemRegistries.CASTERS_MANTLE.get(), CastersMantleCurioRenderer::new
+            );
         }
     }
 
