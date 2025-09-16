@@ -405,7 +405,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                                 SpellRegistry.ABYSSAL_SHROUD_SPELL.get(),
                                 SpellRegistry.SACRIFICE_SPELL.get()
                         )
-                ).setSingleUseSpell(SpellRegistries.CONJURE_FORSAKE_AID.get(), 70, 100, 3, 5)
+                ).setSingleUseSpell(SpellRegistries.ABRACADABRA.get(), 70, 100, 3, 5)
                 .setSpellQuality(1.3f, 1.3f));
         this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, 0.9));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
