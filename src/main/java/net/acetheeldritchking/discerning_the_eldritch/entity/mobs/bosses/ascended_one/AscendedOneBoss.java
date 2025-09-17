@@ -28,6 +28,7 @@ import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegist
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
@@ -41,6 +42,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
@@ -588,8 +590,21 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
             return false;
         }
         else {
-            return super.hurt(source, amount);
+            // Damage cap
+            if (DTEConfig.enableAscendedOneDamageCap)
+            {
+                return super.hurt(source, damageCap(amount));
+            } else
+            {
+                return super.hurt(source, amount);
+            }
         }
+    }
+
+    // We're gonna make a damage cap so he can't be Snowgrave'd
+    private float damageCap(float amount)
+    {
+        return Mth.clamp(amount, 0, DTEConfig.ascendedOneDamageCap);
     }
 
     @Override
@@ -726,14 +741,14 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.8)
                 .add(Attributes.MAX_HEALTH, 600.0)
                 .add(Attributes.ARMOR, 50)
-                .add(Attributes.ARMOR_TOUGHNESS, 35)
+                .add(Attributes.ARMOR_TOUGHNESS, 45)
                 .add(Attributes.FOLLOW_RANGE, 80.0)
                 .add(Attributes.ENTITY_INTERACTION_RANGE, 4.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.25)
                 .add(AttributeRegistry.SPELL_POWER, 1.4)
                 .add(AttributeRegistry.SPELL_RESIST, 1.65)
                 .add(AttributeRegistry.MAX_MANA, 1000)
-                .add(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.10)
+                .add(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.12)
                 ;
     }
 
