@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "equipment",
+    "pattern": [
+      "  p",
+      " f ",
+      "w  "
+    ],
+    "result": {
+      "count": 1,
+      "id": "discerning_the_eldritch:ice_spear"
+    },
+    "key": {
+      "p": {
+        "item": "irons_spellbooks:permafrost_shard"
+      },
+      "f": {
+        "item": "irons_spellbooks:frosted_helve"
+      },
+      "w": {
+        "item": "irons_spellbooks:weapon_parts"
+      }
+    }
+}

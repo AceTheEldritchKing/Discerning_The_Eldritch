@@ -1,0 +1,10 @@
+{
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/ancient_city"
+    }
+  ],
+  "type": "discerning_the_eldritch:add_to_table",
+  "loot_table": "discerning_the_eldritch:chests/amulet_of_sculk"
+}

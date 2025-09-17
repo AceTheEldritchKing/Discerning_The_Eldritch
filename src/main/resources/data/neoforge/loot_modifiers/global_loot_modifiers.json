@@ -1,6 +1,9 @@
 {
   "replace": false,
   "entries": [
-    "discerning_the_eldritch:tyros_additions"
+    "discerning_the_eldritch:tyros_additions",
+    "discerning_the_eldritch:reward_additions",
+    "discerning_the_eldritch:end_city_treasure_additions",
+    "discerning_the_eldritch:ancient_city_additions"
   ]
 }

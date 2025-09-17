@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "equipment",
+    "pattern": [
+      "   ",
+      "ccc",
+      "a a"
+    ],
+    "result": {
+      "count": 1,
+      "id": "discerning_the_eldritch:casters_mantle"
+    },
+    "key": {
+        "c": {
+          "item": "discerning_the_eldritch:corrupted_cloth"
+        },
+        "a": {
+          "item": "minecraft:amethyst_shard"
+        }
+    }
+}

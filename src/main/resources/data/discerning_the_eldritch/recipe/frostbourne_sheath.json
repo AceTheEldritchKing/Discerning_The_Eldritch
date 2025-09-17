@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "equipment",
+    "pattern": [
+      "   ",
+      "mvm",
+      "ccc"
+    ],
+    "result": {
+      "count": 1,
+      "id": "discerning_the_eldritch:frostbourne_sheath"
+    },
+    "key": {
+      "m": {
+        "tag": "c:ingots/mithril"
+      },
+      "c": {
+        "item": "irons_spellbooks:magic_cloth"
+      },
+      "v": {
+        "item": "irons_spellbooks:ice_venom_vial"
+      }
+    }
+}

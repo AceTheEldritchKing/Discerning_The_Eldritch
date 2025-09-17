@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "equipment",
+    "pattern": [
+      " vp",
+      " fp",
+      " w "
+    ],
+    "result": {
+      "count": 1,
+      "id": "discerning_the_eldritch:snowgrave"
+    },
+    "key": {
+      "p": {
+        "item": "irons_spellbooks:permafrost_shard"
+      },
+      "f": {
+        "item": "irons_spellbooks:frosted_helve"
+      },
+      "w": {
+        "item": "irons_spellbooks:weapon_parts"
+      },
+      "v": {
+        "item": "irons_spellbooks:ice_venom_vial"
+      }
+    }
+}
