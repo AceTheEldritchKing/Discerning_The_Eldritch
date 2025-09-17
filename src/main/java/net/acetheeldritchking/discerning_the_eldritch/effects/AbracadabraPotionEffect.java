@@ -57,13 +57,13 @@ public class AbracadabraPotionEffect extends CustomDescriptionMobEffect {
                 float newDamage = getDamageCapAmount(level, baseDamage);
 
                 event.setAmount(newDamage);
-                DiscerningTheEldritch.LOGGER.debug("Old damage: " + baseDamage);
-                DiscerningTheEldritch.LOGGER.debug("Level: " + level);
-                DiscerningTheEldritch.LOGGER.debug("Base cap: " + DTEConfig.abracadabraDamageCap);
-                DiscerningTheEldritch.LOGGER.debug("Math: " + (DTEConfig.abracadabraDamageCap / level));
-                DiscerningTheEldritch.LOGGER.debug("Damage cap: " + getCapAmount(level));
-                DiscerningTheEldritch.LOGGER.debug("Damage caped at: " + newDamage);
-                DiscerningTheEldritch.LOGGER.debug("New damage: " + event.getAmount());
+                //DiscerningTheEldritch.LOGGER.debug("Old damage: " + baseDamage);
+                //DiscerningTheEldritch.LOGGER.debug("Level: " + level);
+                //DiscerningTheEldritch.LOGGER.debug("Base cap: " + DTEConfig.abracadabraDamageCap);
+                //DiscerningTheEldritch.LOGGER.debug("Math: " + (DTEConfig.abracadabraDamageCap / level));
+                //DiscerningTheEldritch.LOGGER.debug("Damage cap: " + getCapAmount(level));
+                //DiscerningTheEldritch.LOGGER.debug("Damage caped at: " + newDamage);
+                //DiscerningTheEldritch.LOGGER.debug("New damage: " + event.getAmount());
             }
         }
     }

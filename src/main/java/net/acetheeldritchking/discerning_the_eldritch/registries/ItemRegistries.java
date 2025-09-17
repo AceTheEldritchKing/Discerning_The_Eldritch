@@ -51,10 +51,13 @@ public class ItemRegistries {
 
     // The Apocrypha
     public static final DeferredHolder<Item, Item> THE_APOCRYPHA_SPELLBOOK  = ITEMS.register("the_apocrypha_spellbook", () ->
-            new SpellBook(13).withSpellbookAttributes(
-                    new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, .20F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-                    new AttributeContainer(AttributeRegistry.MAX_MANA, 300, AttributeModifier.Operation.ADD_VALUE)
-            ));
+            new SpellBook(13, ItemPropertiesHelper.equipment().rarity(DTERarities.APOTHIC_RARITY_PROXY.getValue()).fireResistant())
+                    .withSpellbookAttributes
+                            (
+                                new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, .20F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                                new AttributeContainer(AttributeRegistry.MAX_MANA, 300, AttributeModifier.Operation.ADD_VALUE)
+                            )
+    );
 
     // Tempestuous Time
     public static final DeferredHolder<Item, Item> TEMPESTUOUS_TOME = ITEMS.register("tempestuous_tome", TempestuousTomeSpellbook::new);
