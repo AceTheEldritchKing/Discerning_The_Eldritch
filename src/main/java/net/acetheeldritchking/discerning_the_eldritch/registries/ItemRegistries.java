@@ -12,12 +12,14 @@ import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import io.redspace.ironsspellbooks.registries.ComponentRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
+import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockArmorItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockHelmetItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockMaskItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.*;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.*;
+import net.acetheeldritchking.discerning_the_eldritch.items.custom.FadingSculkLantern;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.BlackBookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.GuardianGuidebookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.TempestuousTomeSpellbook;
@@ -168,6 +170,9 @@ public class ItemRegistries {
 
     // Eldritch Soul Shard
     public static final DeferredHolder<Item, Item> ELDRITCH_SOUL_SHARD = ITEMS.register("eldritch_soul_shard", () -> new Item(ItemPropertiesHelper.material().rarity(DTERarities.APOTHIC_RARITY_PROXY.getValue())));
+
+    // Fading Sculk Lantern
+    public static final DeferredHolder<Item, Item> FADING_SCULK_LANTERN = ITEMS.register("fading_sculk_lantern", FadingSculkLantern::new);
 
 
     /***

@@ -1,8 +1,12 @@
 package net.acetheeldritchking.discerning_the_eldritch.registries;
 
+import io.redspace.ironsspellbooks.IronsSpellbooks;
+import io.redspace.ironsspellbooks.item.FurledMapItem;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
@@ -26,6 +30,8 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.RITUAL_UPGRADE_ORB.get());
                         output.accept(ItemRegistries.ELDRITCH_UPGRADE_TEMPLATE.get());
                         output.accept(ItemRegistries.ELDRITCH_SOUL_SHARD.get());
+                        output.accept(FurledMapItem.of(DiscerningTheEldritch.id("cultist_base"),
+                                ResourceKey.create(Registries.DIMENSION, ResourceLocation.withDefaultNamespace("overworld")), Component.translatable("item.discerning_the_eldritch.cultist_base_map"), true));
                         // Curios
                         output.accept(ItemRegistries.ECHO_VIBRATION_RING.get());
                         output.accept(ItemRegistries.AMULET_OF_SCULK_TREASURE.get());
@@ -39,6 +45,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.APOTHIC_KEY.get());
                         output.accept(ItemRegistries.ASCENDED_KEY.get());
                         output.accept(ItemRegistries.RITUAL_KEY.get());
+                        output.accept(ItemRegistries.FADING_SCULK_LANTERN.get());
                         // Spellbooks
                         output.accept(ItemRegistries.BLACK_BOOK_SPELLBOOK.get());
                         output.accept(ItemRegistries.THE_APOCRYPHA_SPELLBOOK.get());

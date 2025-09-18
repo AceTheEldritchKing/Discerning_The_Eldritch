@@ -144,6 +144,15 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "discerning_the_eldritch:fading_sculk_lantern"
+        }
+      ],
+      "rolls": 1
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
           "weight": 4,
           "name": "discerning_the_eldritch:broken_legends_blade"
         },

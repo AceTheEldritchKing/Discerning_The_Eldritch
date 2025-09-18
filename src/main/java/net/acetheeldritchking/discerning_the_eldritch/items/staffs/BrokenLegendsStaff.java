@@ -19,7 +19,7 @@ public class BrokenLegendsStaff extends StaffItem {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-        tooltipComponents.add(Component.translatable("item.discerning_the_eldritch.broken_legends_staff_description").
+        tooltipComponents.add(Component.translatable("item.discerning_the_eldritch.broken_legends_staff.description").
                 withStyle(ChatFormatting.DARK_GRAY).
                 withStyle(ChatFormatting.ITALIC));
     }

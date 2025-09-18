@@ -16,6 +16,8 @@
   "effect.discerning_the_eldritch.mend_flesh_potion_effect.description": "Provides lifesteal on hit as well as healing on gaining XP",
   "effect.discerning_the_eldritch.abracadabra_potion_effect": "Abracadabra",
   "effect.discerning_the_eldritch.abracadabra_potion_effect.description": "Gives the user a damage cap and prevents negative potion effects from applying",
+  "effect.discerning_the_eldritch.portent_effect": "Portentous",
+  "effect.discerning_the_eldritch.portent_effect.description": "You feel the color around you fade.",
 
 
   "curios.identifier.artifact": "Artifact",
@@ -50,23 +52,23 @@
 
   "item.discerning_the_eldritch.deep_greatsword": "Greatsword of the Depths",
   "item.discerning_the_eldritch.ymir": "Ymir, Apothic Eldritch Blade",
-  "item.discerning_the_eldritch.ymir_description": "A blade forged from Eldritch dreams",
+  "item.discerning_the_eldritch.ymir.description": "A blade forged from Eldritch dreams",
   "item.discerning_the_eldritch.god_spear": "The God Spear",
   "item.discerning_the_eldritch.ice_spear": "The Ice Spear",
-  "item.discerning_the_eldritch.ice_spear_description": "Frozen tears formed into cold vengeance",
+  "item.discerning_the_eldritch.ice_spear.description": "Frozen tears formed into cold vengeance",
   "item.discerning_the_eldritch.ritual_dagger": "Ritual Dagger",
   "item.discerning_the_eldritch.forlorn_rapier": "Forlorn Rapier",
   "item.discerning_the_eldritch.broken_legends_blade": "Broken Legend's Blade",
-  "item.discerning_the_eldritch.broken_legends_blade_description": "An ancient blade forged centuries ago, perhaps it once had a use?",
+  "item.discerning_the_eldritch.broken_legends_blade.description": "An ancient blade forged centuries ago, perhaps it once had a use?",
   "item.discerning_the_eldritch.forsaken_flamberge": "Forsaken Flamberge",
   "item.discerning_the_eldritch.snowgrave": "The Snowgrave",
-  "item.discerning_the_eldritch.snowgrave_description_1": "The North Wind blows fiercely",
-  "item.discerning_the_eldritch.snowgrave_description_2": "Will you cast a spell you don't know?",
+  "item.discerning_the_eldritch.snowgrave.description_1": "The North Wind blows fiercely",
+  "item.discerning_the_eldritch.snowgrave.description_2": "Will you cast a spell you don't know?",
 
   "item.discerning_the_eldritch.staff_of_eldritch": "Staff of Vehemence",
   "item.discerning_the_eldritch.staff_of_ascension": "Staff of Ascension",
   "item.discerning_the_eldritch.broken_legends_staff": "Broken Legend's Staff",
-  "item.discerning_the_eldritch.broken_legends_staff_description": "An ancient staff constructed centuries ago, perhaps it once had a use?",
+  "item.discerning_the_eldritch.broken_legends_staff.description": "An ancient staff constructed centuries ago, perhaps it once had a use?",
 
   "item.discerning_the_eldritch.eldritch_warlock_hood": "Apothic Acolyte Hood",
   "item.discerning_the_eldritch.eldritch_warlock_robes": "Apothic Acolyte Robes",
@@ -89,6 +91,11 @@
   "item.discerning_the_eldritch.apothic_summoner_spawn_egg": "Apothic Summoner Spawn Egg",
   "item.discerning_the_eldritch.apothic_crusader_spawn_egg": "Apothic Crusader Spawn Egg",
   "item.discerning_the_eldritch.ascended_cultist_spawn_egg": "Ascended Cultist Spawn Egg",
+
+  "item.discerning_the_eldritch.cultist_base_map": "Cultist Headquarters",
+
+  "item.discerning_the_eldritch.fading_sculk_lantern": "Faded Sculk Lantern",
+  "item.discerning_the_eldritch.fading_sculk_lantern.description": "It looks like it can be used, but when?",
 
 
   "spell.discerning_the_eldritch.silence": "Silence",
@@ -135,8 +142,6 @@
   "ui.discerning_the_eldritch.ritual_cast_failure": "Rituals cannot be casted in a mere spellbook",
   "ui.discerning_the_eldritch.spell_power": "%d Spell Power",
   "ui.discerning_the_eldritch.spell_resist": "%d Spell Resist",
-  "ui.discerning_the_eldritch.exorcism_no_insanity": "There is nothing to cleanse",
-  "ui.discerning_the_eldritch.no_insanity_system": "Insanity does not reside in your heart",
   "ui.discerning_the_eldritch.frozen_weapon_bonus": "Deals 50% more damage if a frozen weapon is held in the mainhand",
 
 
@@ -168,6 +173,9 @@
   "display.discerning_the_eldritch.insanity_warning_4": "THE KING COMES",
   "display.discerning_the_eldritch.silence_warning": "Unable to cast for : ",
   "display.discerning_the_eldritch.presence_warning": "Your metaphysical form cannot cast spells for : ",
+  "display.discerning_the_eldritch.exorcism_no_insanity": "There is nothing to cleanse",
+  "display.discerning_the_eldritch.no_insanity_system": "Insanity does not reside in your heart",
+  "display.discerning_the_eldritch.fading_sculk_lantern_fail": "You call, but there is no response",
 
 
 
@@ -181,6 +189,8 @@
   "subtitles.entity.ascended_one.death": "Ascended One dies",
   "subtitles.entity.ascended_one.taunt_1": "Ascended One taunts you",
   "subtitles.entity.ascended_one.taunt_2": "Ascended One challenges you",
+  "subtitles.item.fading_lantern_rings": "Fading Lantern echoes",
+  "subtitles.item.fading_lantern_beckons": "Fading Lantern beckons Her",
 
 
   "death.attack.discerning_the_eldritch.guardians_gaze": "%1$s fell from %2$s's gaze",

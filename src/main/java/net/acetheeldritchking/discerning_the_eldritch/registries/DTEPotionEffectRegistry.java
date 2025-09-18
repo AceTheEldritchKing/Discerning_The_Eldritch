@@ -1,10 +1,7 @@
 package net.acetheeldritchking.discerning_the_eldritch.registries;
 
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
-import net.acetheeldritchking.discerning_the_eldritch.effects.AbracadabraPotionEffect;
-import net.acetheeldritchking.discerning_the_eldritch.effects.MendFleshPotionEffect;
-import net.acetheeldritchking.discerning_the_eldritch.effects.MetaphysicalPotionEffect;
-import net.acetheeldritchking.discerning_the_eldritch.effects.SilencePotionEffect;
+import net.acetheeldritchking.discerning_the_eldritch.effects.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
 import net.neoforged.bus.api.IEventBus;
@@ -25,6 +22,9 @@ public class DTEPotionEffectRegistry {
 
     // Abracadabra Potion Effect
     public static final DeferredHolder<MobEffect, MobEffect> ABRACADABRA_EFFECT = MOB_EFFECTS.register("abracadabra_potion_effect", AbracadabraPotionEffect::new);
+
+    // Portent Effect
+    public static final DeferredHolder<MobEffect, MobEffect> PORTENT_EFFECT = MOB_EFFECTS.register("portent_effect", PortentEffect::new);
 
 
     public static void register(IEventBus eventBus)

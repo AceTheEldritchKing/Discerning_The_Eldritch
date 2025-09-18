@@ -39,6 +39,12 @@ public class DTESoundRegistry {
     // Rift Walker Cast
     public static DeferredHolder<SoundEvent, SoundEvent> RIFT_WALKER_CAST = registerSoundEvent("rift_walker_cast");
 
+    // Sculk Lantern Toll
+    public static DeferredHolder<SoundEvent, SoundEvent> SCULK_LANTERN_TOLL = registerSoundEvent("sculk_lantern_ominous_normal");
+
+    // Sculk Lantern Toll Success
+    public static DeferredHolder<SoundEvent, SoundEvent> SCULK_LANTERN_TOLL_SUCCESS = registerSoundEvent("sculk_lantern_ominous_success");
+
 
     /***
      * Entity Sounds

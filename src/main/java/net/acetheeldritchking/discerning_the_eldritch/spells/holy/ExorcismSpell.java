@@ -87,7 +87,7 @@ public class ExorcismSpell extends AbstractSpell {
         {
             if (player instanceof ServerPlayer serverPlayer)
             {
-                return new CastResult(CastResult.Type.FAILURE, Component.translatable("ui.discerning_the_eldritch.no_insanity_system", new Object[]{this.getDisplayName(player)}).withStyle(ChatFormatting.RED));
+                return new CastResult(CastResult.Type.FAILURE, Component.translatable("display.discerning_the_eldritch.no_insanity_system", new Object[]{this.getDisplayName(player)}).withStyle(ChatFormatting.RED));
             }
         } else if (player.hasData(INSANITY_METER))
         {
@@ -95,7 +95,7 @@ public class ExorcismSpell extends AbstractSpell {
             {
                 if (player instanceof ServerPlayer serverPlayer)
                 {
-                    return new CastResult(CastResult.Type.FAILURE, Component.translatable("ui.discerning_the_eldritch.exorcism_no_insanity", new Object[]{this.getDisplayName(player)}).withStyle(ChatFormatting.RED));
+                    return new CastResult(CastResult.Type.FAILURE, Component.translatable("display.discerning_the_eldritch.exorcism_no_insanity", new Object[]{this.getDisplayName(player)}).withStyle(ChatFormatting.RED));
                 }
             }
         }

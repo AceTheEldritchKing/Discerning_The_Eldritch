@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "pfp",
+    "cec",
+    "pfp"
+  ],
+  "key": {
+    "p": {
+      "item": "minecraft:paper"
+    },
+    "c": {
+      "item": "discerning_the_eldritch:corrupted_cloth"
+    },
+    "f": {
+      "item": "irons_spellbooks:ancient_knowledge_fragment"
+    },
+    "e": {
+      "item": "minecraft:echo_shard"
+    }
+  },
+  "result": {
+    "id": "irons_spellbooks:furled_map_ancient",
+    "components": {
+      "irons_spellbooks:furled_map_data": {
+        "destination": "discerning_the_eldritch:cultist_base",
+        "dimension": "minecraft:overworld",
+        "descriptionOverride": {
+          "translate": "item.discerning_the_eldritch.cultist_base_map"
+        }
+      },
+      "minecraft:lore": [
+        "{\"translate\":\"item.irons_spellbooks.furled_map_descriptor_framing\",\"color\":\"gold\",\"with\":[{\"translate\":\"item.discerning_the_eldritch.cultist_base_map\"}]}"
+      ]
+    }
+  }
+}

@@ -15,6 +15,7 @@ import net.acetheeldritchking.aces_spell_utils.spells.ASSpellAnimations;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -150,6 +151,7 @@ public class ConjureGaolerSpell extends AbstractSpell {
             targets.addEffect(new MobEffectInstance(MobEffects.DARKNESS, getCastTime(spellLevel), 1, false, false, false));
         }
         entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, getCastTime(spellLevel), 1, false, false, false));
+        entity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.PORTENT_EFFECT, 100, 1, false, false, false));
 
         if (entity instanceof ServerPlayer serverPlayer)
         {
@@ -188,6 +190,7 @@ public class ConjureGaolerSpell extends AbstractSpell {
         {
             spawnGaoler(spawnPos.x, spawnPos.y, spawnPos.z, entity, level, summonTimer, spellLevel, summonedEntitiesCastData, true);
         }
+
         if (entity instanceof ServerPlayer serverPlayer)
         {
             PacketDistributor.sendToPlayer(serverPlayer, new RemoveShaderEffectPacket());
@@ -202,7 +205,7 @@ public class ConjureGaolerSpell extends AbstractSpell {
 
         gaoler.setPos(x, y, z);
         gaoler.setOldPosAndRot();
-        gaoler.getLookAngle().reverse();
+        gaoler.lookAt(caster, 1, 1);
         gaoler.getAttributes().getInstance(Attributes.ATTACK_DAMAGE).setBaseValue(getGaolerDamage(spellLevel, caster));
         gaoler.getAttributes().getInstance(Attributes.MAX_HEALTH).setBaseValue(getGaolerHealth(spellLevel, caster));
         gaoler.setHealth(gaoler.getMaxHealth());

@@ -48,6 +48,7 @@ import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -116,6 +117,9 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
 
     // Loot
     SimpleContainer deathLoot = null;
+
+    // Block Destroying
+    private int destroyBlockDelay;
 
     // Music
     @Override
@@ -584,6 +588,12 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
+        /*if (source.is(DamageTypes.IN_WALL) && this.destroyBlockDelay <- 0)
+        {
+            Utils.doMobBreakSuffocatingBlocks(this);
+            destroyBlockDelay = 40;
+        }*/
+
         if (isTransitionPhase())
         {
             // Prevent any damage if he's in his transition phase or jumping backwards
@@ -593,9 +603,11 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
             // Damage cap
             if (DTEConfig.enableAscendedOneDamageCap)
             {
+                DiscerningTheEldritch.LOGGER.debug("Damage cap");
                 return super.hurt(source, damageCap(amount));
             } else
             {
+                DiscerningTheEldritch.LOGGER.debug("No cap");
                 return super.hurt(source, amount);
             }
         }

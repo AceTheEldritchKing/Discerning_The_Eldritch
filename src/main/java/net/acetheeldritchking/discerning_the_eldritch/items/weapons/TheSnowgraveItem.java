@@ -29,10 +29,10 @@ public class TheSnowgraveItem extends MagicSwordItem {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-        tooltipComponents.add(Component.translatable("item.discerning_the_eldritch.snowgrave_description_1").
+        tooltipComponents.add(Component.translatable("item.discerning_the_eldritch.snowgrave.description_1").
                 withStyle(ChatFormatting.DARK_GRAY).
                 withStyle(ChatFormatting.ITALIC));
-        tooltipComponents.add(Component.translatable("item.discerning_the_eldritch.snowgrave_description_2").
+        tooltipComponents.add(Component.translatable("item.discerning_the_eldritch.snowgrave.description_2").
                 withStyle(ChatFormatting.DARK_GRAY).
                 withStyle(ChatFormatting.ITALIC));
     }

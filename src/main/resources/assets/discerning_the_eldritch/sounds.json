@@ -146,5 +146,17 @@
         "sounds": [
             "discerning_the_eldritch:rift_walker_cast"
         ]
+    },
+    "sculk_lantern_ominous_normal": {
+        "sounds": [
+            "discerning_the_eldritch:sculk_lantern_ominous_normal"
+        ],
+        "subtitle": "subtitles.item.fading_lantern_rings"
+    },
+    "sculk_lantern_ominous_success": {
+        "sounds": [
+            "discerning_the_eldritch:sculk_lantern_ominous_success"
+        ],
+        "subtitle": "subtitles.item.fading_lantern_beckons"
     }
 }
