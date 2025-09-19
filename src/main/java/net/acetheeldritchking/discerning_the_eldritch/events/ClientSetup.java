@@ -44,6 +44,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.GLACIAL_EDGE.get(), GlacialEdgeRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.UNSTABLE_RIFT.get(), NoopRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.ESOTERIC_STRIKE.get(), EsotericStrikeRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.APOTHIC_TRAITOR.get(), ApothicTraitorRenderer::new);
     }
 
     @SubscribeEvent

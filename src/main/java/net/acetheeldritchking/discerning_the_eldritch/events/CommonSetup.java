@@ -4,6 +4,7 @@ import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicAcolyteEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicCrusaderEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicSummonerEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicTraitorEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caster.TheApostleEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
@@ -28,5 +29,6 @@ public class CommonSetup {
         event.put(DTEEntityRegistry.APOSTLE_ENTITY.get(), TheApostleEntity.createAttributes().build());
         event.put(DTEEntityRegistry.SIGHTLESS_MAW.get(), SightlessMawEntity.createAttributes().build());
         event.put(DTEEntityRegistry.UNTOLD_BEHEMOTH.get(), UntoldBehemothEntity.createAttributes().build());
+        event.put(DTEEntityRegistry.APOTHIC_TRAITOR.get(), ApothicTraitorEntity.createAttributes().build());
     }
 }
