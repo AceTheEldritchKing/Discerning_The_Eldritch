@@ -13,6 +13,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerE
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sightless_maw.SightlessMawEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdge;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_strike.EsotericStrike;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdge;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.rift_walker.UnstableRiftEntity;
 import net.minecraft.core.registries.Registries;
@@ -124,6 +125,14 @@ public class DTEEntityRegistry {
                     .sized(1f, 1f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(IronsSpellbooks.MODID, "unstable_rift").toString()));
+
+    // Esoteric Strike
+    public static final DeferredHolder<EntityType<?>, EntityType<EsotericStrike>> ESOTERIC_STRIKE =
+            ENTITIES.register("esoteric_strike", () -> EntityType.Builder.<EsotericStrike>of(EsotericStrike::new, MobCategory.MISC)
+                    .sized(2f, 1f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "esoteric_strike").toString())
+            );
 
 
     public static void register(IEventBus eventBus)

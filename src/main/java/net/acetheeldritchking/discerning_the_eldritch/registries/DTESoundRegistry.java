@@ -45,6 +45,9 @@ public class DTESoundRegistry {
     // Sculk Lantern Toll Success
     public static DeferredHolder<SoundEvent, SoundEvent> SCULK_LANTERN_TOLL_SUCCESS = registerSoundEvent("sculk_lantern_ominous_success");
 
+    // Esoteric Strike
+    public static DeferredHolder<SoundEvent, SoundEvent> ESOTERIC_STRIKE = registerSoundEvent("esoteric_strike");
+
 
     /***
      * Entity Sounds

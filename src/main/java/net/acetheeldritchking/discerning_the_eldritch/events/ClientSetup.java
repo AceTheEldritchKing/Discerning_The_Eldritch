@@ -9,6 +9,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caste
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothModel;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.mobs.*;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdgeRenderer;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_strike.EsotericStrikeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdgeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.particle.EsotericSparksParticle;
 import net.acetheeldritchking.discerning_the_eldritch.particle.GlacialShadowParticle;
@@ -42,6 +43,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.UNTOLD_BEHEMOTH.get(), context -> {return new UntoldBehemothRenderer(context, new UntoldBehemothModel());});
         event.registerEntityRenderer(DTEEntityRegistry.GLACIAL_EDGE.get(), GlacialEdgeRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.UNSTABLE_RIFT.get(), NoopRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.ESOTERIC_STRIKE.get(), EsotericStrikeRenderer::new);
     }
 
     @SubscribeEvent

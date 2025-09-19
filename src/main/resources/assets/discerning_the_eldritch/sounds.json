@@ -158,5 +158,10 @@
             "discerning_the_eldritch:sculk_lantern_ominous_success"
         ],
         "subtitle": "subtitles.item.fading_lantern_beckons"
+    },
+    "esoteric_strike": {
+        "sounds": [
+            "discerning_the_eldritch:esoteric_strike"
+        ]
     }
 }

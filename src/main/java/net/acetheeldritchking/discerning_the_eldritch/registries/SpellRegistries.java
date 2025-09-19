@@ -64,8 +64,21 @@ public class SpellRegistries {
     // Subjugation - AoE Silence that damages targets, prevents them from doing anything of their agency, damages them for doing anything, stops healing, stops mana regen, blindness and darkness, weakness and reduced armor, more suseptible to spells,
     // Yeah this is cancerous for a reason, this won't be casted by a player, only by a boss
 
-    // Abracadabra
+    // Abracadabra - Prevents the user from being hexed. Prevents any fatal damage from being taken (configurable)
     public static final Supplier<AbstractSpell> ABRACADABRA = registerSpell(new AbracadabraSpell());
+
+    // Esoteric Strike - Harness raw eldritch mana into an empowered strike. Damage scales based on melee damage
+    public static final Supplier<AbstractSpell> ESOTERIC_STRIKE = registerSpell(new EsotericStrikeSpell());
+
+    // Eternal Chains
+
+    // Malevolent Maelstrom
+
+    // Abhorrent Inferno
+
+    // Precipice Blades
+
+    // Conjure: Arcadian Stag
 
 
     /***
@@ -84,6 +97,16 @@ public class SpellRegistries {
 
     // Guardian's Gaze - Special version of Ray of Frost that inflicts Mining Fatigue (By request of Ama)
     public static final Supplier<AbstractSpell> GUARDIANS_GAZE = registerSpell(new GuardiansGazeSpell());
+
+
+    /***
+     * Fire Spells
+     */
+
+    // Soul Charged
+
+    // Soul Set Ablaze
+
 
     /***
      * Holy Spells
@@ -119,6 +142,8 @@ public class SpellRegistries {
 
     // Call: Ascended One
     public static final Supplier<AbstractSpell> CALL_ASCENDED_ONE = registerSpell(new CallAscendedOneSpell());
+
+    // Blades of Rancor
 
 
     public static void register(IEventBus eventBus)
