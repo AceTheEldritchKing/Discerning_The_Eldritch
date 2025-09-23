@@ -152,6 +152,9 @@
   "tooltip.discerning_the_eldritch.abracadabra_description": "Damage taken caps at +%d%%",
 
 
+  "material.discerning_the_eldritch.rune_eldritch": "Eldritch Rune",
+
+
   "entity.discerning_the_eldritch.apothic_acolyte": "Apothic Acolyte",
   "entity.discerning_the_eldritch.apothic_crusader": "Apothic Crusader",
   "entity.discerning_the_eldritch.apothic_summoner": "Apothic Summoner",

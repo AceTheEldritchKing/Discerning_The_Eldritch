@@ -92,7 +92,7 @@ public class ItemRegistries {
     // Hand of Apocrypha
 
     // Staff of Ascension
-    public static final DeferredHolder<Item, Item> STAFF_OF_ASCENSION = ITEMS.register("staff_of_ascension", () -> new StaffItem(ItemPropertiesHelper.equipment(1).fireResistant().rarity(Rarity.RARE).attributes(ExtendedSwordItem.createAttributes(DTEStaffTier.STAFF_OF_ASCENSION))));
+    public static final DeferredHolder<Item, Item> STAFF_OF_ASCENSION = ITEMS.register("staff_of_ascension", () -> new StaffItem(ItemPropertiesHelper.equipment(1).fireResistant().rarity(Rarity.EPIC).attributes(ExtendedSwordItem.createAttributes(DTEStaffTier.STAFF_OF_ASCENSION))));
 
     // Broken Legend's Staff
     public static final DeferredHolder<Item, Item> BROKEN_LEGENDS_STAFF = ITEMS.register("broken_legends_staff", BrokenLegendsStaff::new);

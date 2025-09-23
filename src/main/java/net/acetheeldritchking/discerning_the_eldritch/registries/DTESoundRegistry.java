@@ -23,6 +23,9 @@ public class DTESoundRegistry {
     // Esoteric Edge
     public static DeferredHolder<SoundEvent, SoundEvent> ESOTERIC_EDGE_SLASH = registerSoundEvent("esoteric_edge_slash");
 
+    // Esoteric Edge 2
+    public static DeferredHolder<SoundEvent, SoundEvent> ESOTERIC_EDGE_SLASH_2 = registerSoundEvent("esoteric_edge_slash_2");
+
     // Mend Flesh
     public static DeferredHolder<SoundEvent, SoundEvent> MEND_FLESH_SOUND = registerSoundEvent("mend_flesh");
 

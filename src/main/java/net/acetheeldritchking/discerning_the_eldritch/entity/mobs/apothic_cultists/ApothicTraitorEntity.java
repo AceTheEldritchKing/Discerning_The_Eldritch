@@ -246,6 +246,7 @@ public class ApothicTraitorEntity extends NeutralWizard implements IMerchantWiza
 
             this.offer.addAll(createRandomOffers(2, 3));
 
+            // Ink
             if (this.random.nextFloat() < 0.25f) {
                 this.offer.add(new AdditionalWanderingTrades.InkBuyTrade((InkItem) ItemRegistry.INK_UNCOMMON.get()).getOffer(this, this.random));
             }
@@ -257,6 +258,20 @@ public class ApothicTraitorEntity extends NeutralWizard implements IMerchantWiza
             }
 
             this.offer.add(new AdditionalWanderingTrades.RandomScrollTrade(new SpellFilter(SchoolRegistry.ELDRITCH.get()), 0F, 0.25F).getOffer(this, this.random));
+            if (this.random.nextFloat() < .8f) {
+                this.offer.add(new AdditionalWanderingTrades.RandomScrollTrade(new SpellFilter(SchoolRegistry.ELDRITCH.get()), .3f, .7f).getOffer(this, this.random));
+            }
+            if (this.random.nextFloat() < .8f) {
+                this.offer.add(new AdditionalWanderingTrades.RandomScrollTrade(new SpellFilter(SchoolRegistry.ELDRITCH.get()), .8f, 1f).getOffer(this, this.random));
+            }
+
+            this.offer.add(new MerchantOffer(
+                    new ItemCost(Items.ECHO_SHARD, 16),
+                    new ItemStack(ItemRegistries.ECHO_VIBRATION_RING.get(), 1),
+                    2,
+                    0,
+                    0.2F
+            ));
 
             this.offer.removeIf(Objects::isNull);
 

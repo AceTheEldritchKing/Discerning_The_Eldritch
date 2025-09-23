@@ -163,5 +163,10 @@
         "sounds": [
             "discerning_the_eldritch:esoteric_strike"
         ]
+    },
+    "esoteric_edge_slash_2": {
+        "sounds": [
+            "discerning_the_eldritch:esoteric_edge_slash_2"
+        ]
     }
 }
