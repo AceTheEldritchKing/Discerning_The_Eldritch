@@ -6,6 +6,7 @@ import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.*;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.BoogieWoogieSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.GuardiansGazeSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.holy.ExorcismSpell;
+import net.acetheeldritchking.discerning_the_eldritch.spells.ice.CrystallineCarverSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.ice.GlacialEdgeSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.ritual.CallAscendedOneSpell;
 import net.neoforged.bus.api.IEventBus;
@@ -123,6 +124,7 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> GLACIAL_EDGE = registerSpell(new GlacialEdgeSpell());
 
     // Crystalline Carver
+    public static final Supplier<AbstractSpell> CRYSTALLINE_CARVER = registerSpell(new CrystallineCarverSpell());
 
     // Ice Shock (A quick projectile that freezes an entity completely)
 
