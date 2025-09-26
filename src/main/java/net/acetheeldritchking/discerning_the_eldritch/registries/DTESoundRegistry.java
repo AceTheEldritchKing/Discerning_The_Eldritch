@@ -57,6 +57,9 @@ public class DTESoundRegistry {
     // Crystalline Carver Finish
     public static DeferredHolder<SoundEvent, SoundEvent> CRYSTALLINE_CARVER_FINISH = registerSoundEvent("crystalline_carver_finish");
 
+    // Ymir Slash
+    public static DeferredHolder<SoundEvent, SoundEvent> YMIR_SLASH = registerSoundEvent("ymir_slash");
+
 
     /***
      * Entity Sounds

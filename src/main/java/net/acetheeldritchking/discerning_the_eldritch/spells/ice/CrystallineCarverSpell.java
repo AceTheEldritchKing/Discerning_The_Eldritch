@@ -31,6 +31,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -106,6 +107,22 @@ public class CrystallineCarverSpell extends AbstractSpell {
     }
 
     @Override
+    public boolean canBeInterrupted(@Nullable Player player) {
+        if (isFinalCast)
+        {
+            return false;
+        } else
+        {
+            return true;
+        }
+    }
+
+    @Override
+    public int getEffectiveCastTime(int spellLevel, @Nullable LivingEntity entity) {
+        return getCastTime(spellLevel);
+    }
+
+    @Override
     public AnimationHolder getCastFinishAnimation() {
         return AnimationHolder.pass();
     }
@@ -166,6 +183,7 @@ public class CrystallineCarverSpell extends AbstractSpell {
         CrystalCarveEntity swipe = new CrystalCarveEntity(level, mirrored);
         swipe.moveTo(hitLocation);
         swipe.setYRot(entity.getYRot());
+        swipe.setIsFinal(false);
         level.addFreshEntity(swipe);
 
         isFinalCast = playerMagicData.getPlayerRecasts().getRemainingRecastsForSpell(spellId.toString()) == 2;
@@ -259,6 +277,7 @@ public class CrystallineCarverSpell extends AbstractSpell {
         CrystalCarveEntity swipe = new CrystalCarveEntity(serverPlayer.level(), false);
         swipe.moveTo(hitLocation);
         swipe.setYRot(serverPlayer.getYRot());
+        swipe.setIsFinal(true);
         serverPlayer.level().addFreshEntity(swipe);
     }
 

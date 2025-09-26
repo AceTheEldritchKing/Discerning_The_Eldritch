@@ -16,6 +16,7 @@ import java.util.Optional;
 
 public class CrystalCarveEntity extends AoeEntity {
     private static final EntityDataAccessor<Boolean> DATA_IS_MIRRORED = SynchedEntityData.defineId(CrystalCarveEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_IS_FINAL = SynchedEntityData.defineId(CrystalCarveEntity.class, EntityDataSerializers.BOOLEAN);
     protected int effectAmplifier;
     protected float effectDuration;
 
@@ -59,11 +60,22 @@ public class CrystalCarveEntity extends AoeEntity {
     protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
         super.defineSynchedData(pBuilder);
         pBuilder.define(DATA_IS_MIRRORED, false);
+        pBuilder.define(DATA_IS_FINAL, false);
     }
 
     public boolean isMirrored()
     {
         return this.getEntityData().get(DATA_IS_MIRRORED);
+    }
+
+    public boolean getIsFinal()
+    {
+        return this.entityData.get(DATA_IS_FINAL);
+    }
+
+    public void setIsFinal(boolean isFinal)
+    {
+        this.entityData.set(DATA_IS_FINAL, isFinal);
     }
 
     @Override

@@ -178,5 +178,10 @@
         "sounds": [
             "discerning_the_eldritch:crystalline_carver_finish"
         ]
+    },
+    "ymir_slash": {
+        "sounds": [
+            "discerning_the_eldritch:ymir_slash"
+        ]
     }
 }

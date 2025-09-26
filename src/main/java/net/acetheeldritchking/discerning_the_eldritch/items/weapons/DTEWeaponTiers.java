@@ -64,7 +64,7 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
     );
 
     // Forsaken Flamberge
-    public static DTEWeaponTiers FORSAKEN_FLAMBERGE = new DTEWeaponTiers(2031, 10F, -2.5F, 6, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+    public static DTEWeaponTiers FORSAKEN_FLAMBERGE = new DTEWeaponTiers(2031, 10F, -2.7F, 6, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(ASAttributeRegistry.MANA_STEAL, 0.05D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)

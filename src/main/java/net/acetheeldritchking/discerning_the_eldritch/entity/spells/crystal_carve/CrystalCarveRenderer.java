@@ -23,6 +23,13 @@ public class CrystalCarveRenderer extends EntityRenderer<CrystalCarveEntity> {
             DiscerningTheEldritch.id("textures/entity/crystal_carve/crystal_carve_3.png"),
             DiscerningTheEldritch.id("textures/entity/crystal_carve/crystal_carve_4.png")
     };
+
+    private static final ResourceLocation[] TEXTURES_FINAL = {
+            DiscerningTheEldritch.id("textures/entity/crystal_carve_final/crystal_carve_final_1.png"),
+            DiscerningTheEldritch.id("textures/entity/crystal_carve_final/crystal_carve_final_2.png"),
+            DiscerningTheEldritch.id("textures/entity/crystal_carve_final/crystal_carve_final_3.png"),
+            DiscerningTheEldritch.id("textures/entity/crystal_carve_final/crystal_carve_final_4.png")
+    };
     
     public CrystalCarveRenderer(EntityRendererProvider.Context context) {
         super(context);
@@ -62,7 +69,14 @@ public class CrystalCarveRenderer extends EntityRenderer<CrystalCarveEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(CrystalCarveEntity crystalCarveEntity) {
-        int frame = (crystalCarveEntity.tickCount / crystalCarveEntity.ticksPerFrame) % TEXTURES.length;
-        return TEXTURES[frame];
+        if (crystalCarveEntity.getIsFinal())
+        {
+            int frame = (crystalCarveEntity.tickCount / crystalCarveEntity.ticksPerFrame) % TEXTURES_FINAL.length;
+            return TEXTURES_FINAL[frame];
+        } else
+        {
+            int frame = (crystalCarveEntity.tickCount / crystalCarveEntity.ticksPerFrame) % TEXTURES.length;
+            return TEXTURES[frame];
+        }
     }
 }
