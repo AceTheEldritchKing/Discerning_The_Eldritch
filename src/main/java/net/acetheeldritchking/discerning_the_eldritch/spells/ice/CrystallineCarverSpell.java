@@ -16,7 +16,9 @@ import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.acetheeldritchking.aces_spell_utils.spells.ASSpellAnimations;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.crystal_carve.CrystalCarveEntity;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -40,6 +42,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.FROSTBITE_LEVEL;
+
 @AutoSpellConfig
 public class CrystallineCarverSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "crystalline_carver");
@@ -48,7 +52,8 @@ public class CrystallineCarverSpell extends AbstractSpell {
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
-                Component.translatable("ui.irons_spellbooks.damage", getDamageText(spellLevel, caster))
+                Component.translatable("ui.irons_spellbooks.damage", Utils.stringTruncation(getDamage(spellLevel, caster), 1)),
+                Component.translatable("ui.discerning_the_eldritch.frozen_weapon_bonus")
         );
     }
 
@@ -107,7 +112,13 @@ public class CrystallineCarverSpell extends AbstractSpell {
 
     @Override
     public Optional<SoundEvent> getCastStartSound() {
-        return Optional.of(DTESoundRegistry.ESOTERIC_STRIKE.get());
+        if (isFinalCast)
+        {
+            return Optional.of(DTESoundRegistry.CRYSTALLINE_CARVER_FINISH.get());
+        } else
+        {
+            return Optional.of(DTESoundRegistry.CRYSTALLINE_CARVER_BASE.get());
+        }
     }
 
     @Override
@@ -125,7 +136,7 @@ public class CrystallineCarverSpell extends AbstractSpell {
         if (!playerMagicData.getPlayerRecasts().hasRecastForSpell(getSpellId()))
         {
             playerMagicData.getPlayerRecasts().addRecast
-                    (new RecastInstance(getSpellId(), spellLevel, getRecastCount(spellLevel, entity), 80, castSource, null), playerMagicData);
+                    (new RecastInstance(getSpellId(), spellLevel, getRecastCount(spellLevel, entity), 8*20, castSource, null), playerMagicData);
         }
 
         float radius = 3.25F;
@@ -137,30 +148,15 @@ public class CrystallineCarverSpell extends AbstractSpell {
         {
             if (entity.isPickable() && entity.distanceToSqr(target) < radius * radius && Utils.hasLineOfSight(level, entity.getEyePosition(), target.getBoundingBox().getCenter(), true) && !(target instanceof ItemEntity))
             {
-                if (entity instanceof LivingEntity livingEntity)
+                if (target instanceof LivingEntity livingEntity)
                 {
-                    // Looked at how Tetruitls did effect stacking - Sorry Panda for using your 3 y/o code </3
-                    Collection<MobEffectInstance> activeEffects = livingEntity.getActiveEffects();
-                    ArrayList<MobEffectInstance> effects = new ArrayList<>(activeEffects);
+                    int frostbiteLevel = target.getData(FROSTBITE_LEVEL);
 
-                    MobEffectInstance mobEffect = getEffect(effects, MobEffectRegistry.CHILLED.get());
+                    DiscerningTheEldritch.LOGGER.debug("Applying chilled");
+                    target.setData(FROSTBITE_LEVEL, frostbiteLevel + 1);
+                    livingEntity.addEffect(new MobEffectInstance(MobEffectRegistry.CHILLED, 3 * 20, 0, false, false, false));
 
-                    int amplifier = mobEffect != null ? mobEffect.getAmplifier() : -1;
-                    int duration =  mobEffect != null ? mobEffect.getDuration() : -1;
-                    int actualDuration = 3 * 20;
-
-                    if (livingEntity.hasEffect(MobEffectRegistry.CHILLED))
-                    {
-                        if (mobEffect != null)
-                        {
-                            mobEffect.update(new MobEffectInstance(MobEffectRegistry.CHILLED, duration + (actualDuration/2), amplifier + 1, false, false, false));
-                        }
-                    }
-
-                    if (!livingEntity.hasEffect(MobEffectRegistry.CHILLED))
-                    {
-                        livingEntity.addEffect(new MobEffectInstance(MobEffectRegistry.CHILLED, actualDuration, 0, false, false, false));
-                    }
+                    DiscerningTheEldritch.LOGGER.debug("Frostbite: " + target.getData(FROSTBITE_LEVEL));
                 }
             }
         }
@@ -170,7 +166,6 @@ public class CrystallineCarverSpell extends AbstractSpell {
         CrystalCarveEntity swipe = new CrystalCarveEntity(level, mirrored);
         swipe.moveTo(hitLocation);
         swipe.setYRot(entity.getYRot());
-        swipe.setDamage(0);
         level.addFreshEntity(swipe);
 
         isFinalCast = playerMagicData.getPlayerRecasts().getRemainingRecastsForSpell(spellId.toString()) == 2;
@@ -180,6 +175,8 @@ public class CrystallineCarverSpell extends AbstractSpell {
 
     @Override
     public void onRecastFinished(ServerPlayer serverPlayer, RecastInstance recastInstance, RecastResult recastResult, ICastDataSerializable castDataSerializable) {
+        super.onRecastFinished(serverPlayer, recastInstance, recastResult, castDataSerializable);
+
         float radius = 2.15F;
         float distance = 1.2F;
         Vec3 hitLocation = serverPlayer.position().add(0, serverPlayer.getBbHeight() * 0.3F, 0).add(serverPlayer.getForward().multiply(distance, 0.35F, distance));
@@ -195,14 +192,51 @@ public class CrystallineCarverSpell extends AbstractSpell {
                 {
                     if (livingTarget.hasEffect(MobEffectRegistry.CHILLED))
                     {
-                        int amplifier = livingTarget.getEffect(MobEffectRegistry.CHILLED).getAmplifier();
+                        int amplifier = target.getData(FROSTBITE_LEVEL);
 
-                        float extraDamage = baseDamage + amplifier;
-
-                        if (DamageSources.applyDamage(target, extraDamage, this.getDamageSource(serverPlayer)))
+                        if (serverPlayer.getMainHandItem().is(DTETags.FROZEN_WEAPONS))
                         {
-                            MagicManager.spawnParticles(serverPlayer.level(), ParticleHelper.SNOWFLAKE, target.getX(), target.getY() + target.getBbHeight() * .5f, target.getZ(), 50, target.getBbWidth() * .5f, target.getBbHeight() * .5f, target.getBbWidth() * .5f, .03, false);
-                            EnchantmentHelper.doPostAttackEffects((ServerLevel) serverPlayer.level(), target, this.getDamageSource(serverPlayer));
+                            float extraDamage = (baseDamage + amplifier) * 1.5F;
+
+                            if (DamageSources.applyDamage(target, extraDamage, this.getDamageSource(serverPlayer)))
+                            {
+                                MagicManager.spawnParticles(serverPlayer.level(), ParticleHelper.SNOWFLAKE, target.getX(), target.getY() + target.getBbHeight() * .5f, target.getZ(), 50, target.getBbWidth() * .5f, target.getBbHeight() * .5f, target.getBbWidth() * .5f, .03, false);
+                                EnchantmentHelper.doPostAttackEffects((ServerLevel) serverPlayer.level(), target, this.getDamageSource(serverPlayer));
+
+                                DiscerningTheEldritch.LOGGER.debug("Bonus damage (Icy): " + extraDamage);
+                            }
+                        } else
+                        {
+                            float extraDamage = baseDamage + amplifier;
+
+                            if (DamageSources.applyDamage(target, extraDamage, this.getDamageSource(serverPlayer)))
+                            {
+                                MagicManager.spawnParticles(serverPlayer.level(), ParticleHelper.SNOWFLAKE, target.getX(), target.getY() + target.getBbHeight() * .5f, target.getZ(), 50, target.getBbWidth() * .5f, target.getBbHeight() * .5f, target.getBbWidth() * .5f, .03, false);
+                                EnchantmentHelper.doPostAttackEffects((ServerLevel) serverPlayer.level(), target, this.getDamageSource(serverPlayer));
+
+                                DiscerningTheEldritch.LOGGER.debug("Bonus damage: " + extraDamage);
+                            }
+                        }
+                    } else
+                    {
+                        if (serverPlayer.getMainHandItem().is(DTETags.FROZEN_WEAPONS))
+                        {
+                            if (DamageSources.applyDamage(target, (baseDamage * 1.5F), this.getDamageSource(serverPlayer)))
+                            {
+                                MagicManager.spawnParticles(serverPlayer.level(), ParticleHelper.SNOWFLAKE, target.getX(), target.getY() + target.getBbHeight() * .5f, target.getZ(), 50, target.getBbWidth() * .5f, target.getBbHeight() * .5f, target.getBbWidth() * .5f, .03, false);
+                                EnchantmentHelper.doPostAttackEffects((ServerLevel) serverPlayer.level(), target, this.getDamageSource(serverPlayer));
+
+                                DiscerningTheEldritch.LOGGER.debug("Base damage (in living.hasEffect() (Icy)): " + baseDamage);
+                            }
+                        } else
+                        {
+                            if (DamageSources.applyDamage(target, baseDamage, this.getDamageSource(serverPlayer)))
+                            {
+                                MagicManager.spawnParticles(serverPlayer.level(), ParticleHelper.SNOWFLAKE, target.getX(), target.getY() + target.getBbHeight() * .5f, target.getZ(), 50, target.getBbWidth() * .5f, target.getBbHeight() * .5f, target.getBbWidth() * .5f, .03, false);
+                                EnchantmentHelper.doPostAttackEffects((ServerLevel) serverPlayer.level(), target, this.getDamageSource(serverPlayer));
+
+                                DiscerningTheEldritch.LOGGER.debug("Base damage (in living.hasEffect()): " + baseDamage);
+                            }
                         }
                     }
                 } else
@@ -211,9 +245,13 @@ public class CrystallineCarverSpell extends AbstractSpell {
                     {
                         MagicManager.spawnParticles(serverPlayer.level(), ParticleHelper.SNOWFLAKE, target.getX(), target.getY() + target.getBbHeight() * .5f, target.getZ(), 50, target.getBbWidth() * .5f, target.getBbHeight() * .5f, target.getBbWidth() * .5f, .03, false);
                         EnchantmentHelper.doPostAttackEffects((ServerLevel) serverPlayer.level(), target, this.getDamageSource(serverPlayer));
+
+                        DiscerningTheEldritch.LOGGER.debug("Base damage (outside): " + baseDamage);
                     }
                 }
             }
+
+            target.setData(FROSTBITE_LEVEL, 0);
         }
 
         //boolean mirrored = playerMagicData.getCastingEquipmentSlot().equals(SpellSelectionManager.OFFHAND);
@@ -222,8 +260,6 @@ public class CrystallineCarverSpell extends AbstractSpell {
         swipe.moveTo(hitLocation);
         swipe.setYRot(serverPlayer.getYRot());
         serverPlayer.level().addFreshEntity(swipe);
-
-        super.onRecastFinished(serverPlayer, recastInstance, recastResult, castDataSerializable);
     }
 
     private float getDamage(int spellLevel, LivingEntity caster)

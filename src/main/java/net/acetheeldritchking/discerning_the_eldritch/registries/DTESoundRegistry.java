@@ -51,6 +51,12 @@ public class DTESoundRegistry {
     // Esoteric Strike
     public static DeferredHolder<SoundEvent, SoundEvent> ESOTERIC_STRIKE = registerSoundEvent("esoteric_strike");
 
+    // Crystalline Carver Base
+    public static DeferredHolder<SoundEvent, SoundEvent> CRYSTALLINE_CARVER_BASE = registerSoundEvent("crystalline_carver_base");
+
+    // Crystalline Carver Finish
+    public static DeferredHolder<SoundEvent, SoundEvent> CRYSTALLINE_CARVER_FINISH = registerSoundEvent("crystalline_carver_finish");
+
 
     /***
      * Entity Sounds

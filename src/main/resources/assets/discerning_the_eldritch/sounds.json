@@ -168,5 +168,15 @@
         "sounds": [
             "discerning_the_eldritch:esoteric_edge_slash_2"
         ]
+    },
+    "crystalline_carver_base": {
+        "sounds": [
+            "discerning_the_eldritch:crystalline_carver_base"
+        ]
+    },
+    "crystalline_carver_finish": {
+        "sounds": [
+            "discerning_the_eldritch:crystalline_carver_finish"
+        ]
     }
 }

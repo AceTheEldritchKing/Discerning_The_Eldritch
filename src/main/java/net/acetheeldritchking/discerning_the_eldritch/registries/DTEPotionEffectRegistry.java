@@ -26,6 +26,9 @@ public class DTEPotionEffectRegistry {
     // Portent Effect
     public static final DeferredHolder<MobEffect, MobEffect> PORTENT_EFFECT = MOB_EFFECTS.register("portent_effect", PortentEffect::new);
 
+    // Frostbite Effect
+    public static final DeferredHolder<MobEffect, MobEffect> FROSTBITE_EFFECT = MOB_EFFECTS.register("frostbite_effect", FrostbitePotionEffect::new);
+
 
     public static void register(IEventBus eventBus)
     {
