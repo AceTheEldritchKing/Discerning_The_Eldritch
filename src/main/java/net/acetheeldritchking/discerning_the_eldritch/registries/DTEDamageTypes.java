@@ -16,6 +16,9 @@ public class DTEDamageTypes {
 
     public static final ResourceKey<DamageType> RITUAL_MAGIC = register("ritual_magic");
 
+    public static final ResourceKey<DamageType> RAZOR_DAMAGE = register("razor_damage");
+
+
     public static void bootstrap(BootstrapContext<DamageType> context)
     {
         context.register(RITUAL_MAGIC, new DamageType(RITUAL_MAGIC.location().getPath(), DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER, 0F));

@@ -16,6 +16,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.spells.crystal_carv
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdge;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_strike.EsotericStrike;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdge;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.razor_blade.RazorBlade;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.rift_walker.UnstableRiftEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -150,6 +151,15 @@ public class DTEEntityRegistry {
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "crystal_carve").toString())
             );
+
+    // Razor Blade
+    public static final DeferredHolder<EntityType<?>, EntityType<RazorBlade>> RAZOR_BLADE =
+            ENTITIES.register("razor_blade", () -> EntityType.Builder.<RazorBlade>of
+                            (RazorBlade::new, MobCategory.MISC).
+                    sized(1f, 2f)
+                    .build(
+                            ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "razor_blade").toString()
+                    ));
 
 
     public static void register(IEventBus eventBus)

@@ -85,7 +85,8 @@ public class DiscerningTheEldritch
                 ItemRegistries.ELDRITCH_WARLOCK_GREAVES.get(),
                 ItemRegistries.ELDRITCH_WARLOCK_MASK.get(),
                 ItemRegistries.ELDRITCH_WARLOCK_HELMET.get(),
-                ItemRegistries.STAFF_OF_VEHEMENCE.get()
+                ItemRegistries.STAFF_OF_VEHEMENCE.get(),
+                ItemRegistries.KINGS_EFFIGY.get()
         );
     }
 

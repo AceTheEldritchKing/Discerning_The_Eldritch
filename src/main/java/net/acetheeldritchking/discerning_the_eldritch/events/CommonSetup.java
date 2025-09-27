@@ -10,6 +10,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caste
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sightless_maw.SightlessMawEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.razor_blade.RazorBlade;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -30,5 +31,6 @@ public class CommonSetup {
         event.put(DTEEntityRegistry.SIGHTLESS_MAW.get(), SightlessMawEntity.createAttributes().build());
         event.put(DTEEntityRegistry.UNTOLD_BEHEMOTH.get(), UntoldBehemothEntity.createAttributes().build());
         event.put(DTEEntityRegistry.APOTHIC_TRAITOR.get(), ApothicTraitorEntity.createAttributes().build());
+        event.put(DTEEntityRegistry.RAZOR_BLADE.get(), RazorBlade.createLivingAttributes().build());
     }
 }

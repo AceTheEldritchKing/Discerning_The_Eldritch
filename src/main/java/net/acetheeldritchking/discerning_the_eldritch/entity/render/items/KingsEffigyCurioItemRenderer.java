@@ -4,6 +4,7 @@ import mod.azure.azurelib.rewrite.render.armor.AzArmorRenderer;
 import mod.azure.azurelib.rewrite.render.armor.AzArmorRendererConfig;
 import mod.azure.azurelib.rewrite.render.layer.AzAutoGlowingLayer;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.items.curios.animators.KingsVisageAnimator;
 import net.minecraft.resources.ResourceLocation;
 
 public class KingsEffigyCurioItemRenderer extends AzArmorRenderer {
@@ -20,6 +21,7 @@ public class KingsEffigyCurioItemRenderer extends AzArmorRenderer {
     public KingsEffigyCurioItemRenderer() {
         super(
                 AzArmorRendererConfig.builder(GEO, TEX)
+                        .setAnimatorProvider(KingsVisageAnimator::new)
                         .addRenderLayer(new AzAutoGlowingLayer<>())
                         .build()
         );

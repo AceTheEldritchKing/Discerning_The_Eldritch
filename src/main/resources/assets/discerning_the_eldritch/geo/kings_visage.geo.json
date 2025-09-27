@@ -82,6 +82,14 @@
 					]
 				},
 				{
+					"name": "glow",
+					"parent": "armorHead",
+					"pivot": [-1.75, 27.6, -5.25],
+					"cubes": [
+						{"origin": [-4.25, 25.1, -5.25], "size": [5, 5, 0], "uv": [50, 48]}
+					]
+				},
+				{
 					"name": "bipedBody",
 					"pivot": [0, 24, 0]
 				},

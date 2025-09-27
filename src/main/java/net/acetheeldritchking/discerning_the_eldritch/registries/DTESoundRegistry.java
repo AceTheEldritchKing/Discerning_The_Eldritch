@@ -60,6 +60,12 @@ public class DTESoundRegistry {
     // Ymir Slash
     public static DeferredHolder<SoundEvent, SoundEvent> YMIR_SLASH = registerSoundEvent("ymir_slash");
 
+    // Razor Unsheathed
+    public static DeferredHolder<SoundEvent, SoundEvent> RAZOR_UNSHEATHED = registerSoundEvent("razor_unsheathed");
+
+    // Razor Sheathed
+    public static DeferredHolder<SoundEvent, SoundEvent> RAZOR_SHEATHED = registerSoundEvent("razor_sheathed");
+
 
     /***
      * Entity Sounds

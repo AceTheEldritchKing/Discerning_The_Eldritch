@@ -39,6 +39,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.IRONBOUND_FEATHER.get());
                         output.accept(ItemRegistries.PYRIUM_SHEATH.get());
                         output.accept(ItemRegistries.FROSTBOURNE_SHEATH.get());
+                        output.accept(ItemRegistries.RAZOR_SHEATH.get());
                         output.accept(ItemRegistries.RIFT_RIPPER_EMBLEM.get());
                         //output.accept(ItemRegistries.KINGS_EFFIGY.get());
                         // Treasure

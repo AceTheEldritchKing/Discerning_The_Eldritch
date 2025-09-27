@@ -12,6 +12,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.spells.crystal_carv
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdgeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_strike.EsotericStrikeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdgeRenderer;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.razor_blade.RazorBladeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.particle.EsotericSparksParticle;
 import net.acetheeldritchking.discerning_the_eldritch.particle.GlacialShadowParticle;
 import net.acetheeldritchking.discerning_the_eldritch.particle.RiftSliceParticle;
@@ -47,6 +48,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.ESOTERIC_STRIKE.get(), EsotericStrikeRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.APOTHIC_TRAITOR.get(), ApothicTraitorRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.CRYSTAL_CARVE.get(), CrystalCarveRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.RAZOR_BLADE.get(), RazorBladeRenderer::new);
     }
 
     @SubscribeEvent

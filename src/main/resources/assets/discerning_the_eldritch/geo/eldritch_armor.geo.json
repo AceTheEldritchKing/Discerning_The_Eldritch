@@ -121,8 +121,6 @@
 					"parent": "bipedBody",
 					"pivot": [0, 24, 0],
 					"cubes": [
-						{"origin": [2, 4, -2], "size": [2, 8.5, 4], "inflate": 0.9, "pivot": [4.75, 11, 0], "rotation": [0, 0, -27.5], "uv": [0, 59]},
-						{"origin": [-4, 4, -2], "size": [2, 8.5, 4], "inflate": 0.9, "pivot": [-4.75, 11, 0], "rotation": [0, 0, 27.5], "uv": [12, 59], "mirror": true},
 						{"origin": [-4, 12, -2], "size": [8, 12, 4], "inflate": 1, "uv": [0, 16]},
 						{"origin": [-4, 4, 0.5], "size": [8, 6.25, 1.5], "inflate": 1, "pivot": [0, 11, 3], "rotation": [20, 0, 0], "uv": [24, 62]}
 					]
@@ -142,7 +140,7 @@
 				{
 					"name": "armorRightArm",
 					"parent": "bipedRightArm",
-					"pivot": [-4, 22, 0],
+					"pivot": [-5, 22, 0],
 					"cubes": [
 						{"origin": [-8, 11, -2], "size": [4, 13, 4], "inflate": 0.75, "uv": [24, 16]},
 						{"origin": [-8.5, 18, -2], "size": [2, 4, 4], "inflate": 0.8, "uv": [57, 22]},
@@ -156,7 +154,7 @@
 				{
 					"name": "armorLeftArm",
 					"parent": "bipedLeftArm",
-					"pivot": [4, 22, 0],
+					"pivot": [5, 22, 0],
 					"cubes": [
 						{"origin": [4, 11, -2], "size": [4, 13, 4], "inflate": 0.75, "uv": [40, 16]},
 						{"origin": [5.5, 23.15, -2], "size": [4.5, 2, 4], "inflate": 0.81, "pivot": [5.25, 25.65, 0], "rotation": [0, 0, 12.5], "uv": [72, 16], "mirror": true},
@@ -172,6 +170,7 @@
 					"parent": "bipedRightLeg",
 					"pivot": [-2, 12, 0],
 					"cubes": [
+						{"origin": [-4, 4, -2], "size": [2, 8.5, 4], "inflate": 0.9, "pivot": [-4.75, 11, 0], "rotation": [0, 0, 27.5], "uv": [12, 59], "mirror": true},
 						{"origin": [-4, 4, -2], "size": [4, 8, 4], "inflate": 0.5, "uv": [40, 33]},
 						{"origin": [-4, 4, -2], "size": [4, 2, 4], "inflate": 0.6, "uv": [40, 45], "mirror": true}
 					]
@@ -193,6 +192,7 @@
 					"parent": "bipedLeftLeg",
 					"pivot": [2, 12, 0],
 					"cubes": [
+						{"origin": [2, 4, -2], "size": [2, 8.5, 4], "inflate": 0.9, "pivot": [4.75, 11, 0], "rotation": [0, 0, -27.5], "uv": [0, 59]},
 						{"origin": [0, 4, -2], "size": [4, 8, 4], "inflate": 0.5, "uv": [24, 33]},
 						{"origin": [0, 4, -2], "size": [4, 2, 4], "inflate": 0.6, "uv": [24, 45]}
 					]

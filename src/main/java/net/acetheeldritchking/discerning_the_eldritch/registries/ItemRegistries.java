@@ -216,6 +216,9 @@ public class ItemRegistries {
     // Emblem of The Rift Ripper
     public static final Supplier<CurioBaseItem> RIFT_RIPPER_EMBLEM = ITEMS.register("rift_ripper_emblem", RiftRipperEmblemCurio::new);
 
+    // Razor Sheath
+    public static final Supplier<CurioBaseItem> RAZOR_SHEATH = ITEMS.register("razor_sheath", RazorSheathCurio::new);
+
 
     /***
      * Armor
