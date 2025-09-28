@@ -6,6 +6,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultis
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicCrusaderEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicSummonerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicTraitorEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistCaptainEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneCultistEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caster.TheApostleEntity;
@@ -160,6 +161,14 @@ public class DTEEntityRegistry {
                     .build(
                             ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "razor_blade").toString()
                     ));
+
+    // Blood Cultist Captain
+    public static final DeferredHolder<EntityType<?>, EntityType<BloodCultistCaptainEntity>> BLOOD_CULTIST_CAPTAIN =
+            ENTITIES.register("blood_cultist_captain", () -> EntityType.Builder.of(BloodCultistCaptainEntity::new, MobCategory.MONSTER)
+                    .sized(.6f, 1.8f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "blood_cultist_captain").toString())
+            );
 
 
     public static void register(IEventBus eventBus)

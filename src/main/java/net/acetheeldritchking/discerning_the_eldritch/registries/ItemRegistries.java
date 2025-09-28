@@ -276,6 +276,11 @@ public class ItemRegistries {
             () -> new DeferredSpawnEggItem(DTEEntityRegistry.ASCENDED_ONE_CULTIST, 1973277, 10554050,
                     new Item.Properties()));
 
+    // Ascended Cultist
+    public static final DeferredItem<Item> BLOOD_CULTIST_CAPTAIN_SPAWN_EGG = ITEMS.register("blood_cultist_captain_spawn_egg",
+            () -> new DeferredSpawnEggItem(DTEEntityRegistry.BLOOD_CULTIST_CAPTAIN, 4203295, 10357001,
+                    new Item.Properties()));
+
 
     /***
      * Gecko Armor

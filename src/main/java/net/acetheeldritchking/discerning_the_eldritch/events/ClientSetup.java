@@ -49,6 +49,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.APOTHIC_TRAITOR.get(), ApothicTraitorRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.CRYSTAL_CARVE.get(), CrystalCarveRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.RAZOR_BLADE.get(), RazorBladeRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.BLOOD_CULTIST_CAPTAIN.get(), BloodCultistCaptainRenderer::new);
     }
 
     @SubscribeEvent

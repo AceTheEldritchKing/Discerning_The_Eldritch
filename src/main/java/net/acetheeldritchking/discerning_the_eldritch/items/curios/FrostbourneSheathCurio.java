@@ -8,6 +8,7 @@ import io.redspace.ironsspellbooks.render.CinderousRarity;
 import net.acetheeldritchking.aces_spell_utils.items.curios.SheathCurioItem;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -24,7 +25,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 @EventBusSubscriber
 public class FrostbourneSheathCurio extends SheathCurioItem {
-    public static final int COOLDOWN = 5 * 20;
+    public static int COOLDOWN = DTEConfig.frostbourneSheathCooldown * 20;
 
     public FrostbourneSheathCurio() {
         super(new Properties().stacksTo(1).rarity(ASRarities.GLACIAL_RARITY_PROXY.getValue()).fireResistant(), null);
@@ -32,7 +33,7 @@ public class FrostbourneSheathCurio extends SheathCurioItem {
 
     @Override
     protected int getCooldownTicks() {
-        return COOLDOWN;
+        return DTEConfig.frostbourneSheathCooldown * 20;
     }
 
     @SubscribeEvent

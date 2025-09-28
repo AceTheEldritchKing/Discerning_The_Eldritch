@@ -28,6 +28,12 @@ public class DTETags {
     // Apothic Cultists
     public static final TagKey<EntityType<?>> APOTHIC_ALLIES = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "apothic_allies"));
 
+    // Blood Cultists
+    public static final TagKey<EntityType<?>> BLOOD_ALLIES = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "blood_allies"));
+
+    // Holy Crusaders
+    public static final TagKey<EntityType<?>> CRUSADER_ALLIES = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "crusader_allies"));
+
     /***
      * Potion Effects
      */

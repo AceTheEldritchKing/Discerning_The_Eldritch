@@ -80,6 +80,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.SUMMONER_SPAWN_EGG.get());
                         output.accept(ItemRegistries.CRUSADER_SPAWN_EGG.get());
                         output.accept(ItemRegistries.ASCENDED_CULTIST_SPAWN_EGG.get());
+                        output.accept(ItemRegistries.BLOOD_CULTIST_CAPTAIN_SPAWN_EGG.get());
                     }).build());
 
     public static void register(IEventBus eventBus)

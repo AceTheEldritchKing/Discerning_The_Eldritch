@@ -10,6 +10,7 @@ import net.acetheeldritchking.aces_spell_utils.items.curios.SheathCurioItem;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.razor_blade.RazorBlade;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
@@ -30,15 +31,15 @@ import top.theillusivec4.curios.api.SlotContext;
 
 @EventBusSubscriber
 public class RazorSheathCurio extends SheathCurioItem {
-    public static final int COOLDOWN = 10 * 20;
+    public static int COOLDOWN = DTEConfig.razorSheathCooldown * 20;
 
     public RazorSheathCurio() {
-        super(new Properties().stacksTo(1).rarity(ASRarities.FORBIDDEN_RARITY_PROXY.getValue()).fireResistant(), null);
+        super(new Properties().stacksTo(1).rarity(ASRarities.ACCURSED_RARITY_PROXY.getValue()).fireResistant(), null);
     }
 
     @Override
     protected int getCooldownTicks() {
-        return COOLDOWN;
+        return DTEConfig.razorSheathCooldown * 20;
     }
 
     @SubscribeEvent

@@ -22,7 +22,7 @@ public class BrokenLegendsBlade extends ExtendedSwordItem {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
         tooltipComponents.add(Component.translatable("item.discerning_the_eldritch.broken_legends_blade.description").
-                withStyle(ChatFormatting.DARK_GRAY).
+                withStyle(ChatFormatting.GRAY).
                 withStyle(ChatFormatting.ITALIC));
     }
 }

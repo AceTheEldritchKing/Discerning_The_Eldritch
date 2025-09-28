@@ -7,7 +7,6 @@ import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
-import net.acetheeldritchking.discerning_the_eldritch.utils.DTERarities;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -31,10 +30,10 @@ public class TheSnowgraveItem extends MagicSwordItem {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
         tooltipComponents.add(Component.translatable("item.discerning_the_eldritch.snowgrave.description_1").
-                withStyle(ChatFormatting.DARK_GRAY).
+                withStyle(ChatFormatting.GRAY).
                 withStyle(ChatFormatting.ITALIC));
         tooltipComponents.add(Component.translatable("item.discerning_the_eldritch.snowgrave.description_2").
-                withStyle(ChatFormatting.DARK_GRAY).
+                withStyle(ChatFormatting.GRAY).
                 withStyle(ChatFormatting.ITALIC));
     }
 }

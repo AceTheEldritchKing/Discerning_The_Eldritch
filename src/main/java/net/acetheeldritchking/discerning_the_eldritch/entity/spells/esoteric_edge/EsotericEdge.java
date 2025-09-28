@@ -111,15 +111,20 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
         {
             // Middle
             double speed = 0.05F;
-            double dx = Utils.random.nextDouble() * 2 * speed - speed;
-            double dy = Utils.random.nextDouble() * 2 * speed - speed;
-            double dz = Utils.random.nextDouble() * 2 * speed - speed;
+            double dx = Math.random() * 2 * speed - speed;
+            double dy = Math.random() * 2 * speed - speed;
+            double dz = Math.random() * 2 * speed - speed;
+
+            double radius = 4;
+
+            Vec3 leftAdjust = this.position().add(new Vec3(Math.sin(Math.toRadians(getYRot() + 90)), 0, Math.cos(Math.toRadians(getYRot() + 90))).scale(radius));
+            Vec3 rightAdjust = this.position().add(new Vec3(Math.sin(Math.toRadians(getYRot() - 90)), 0, Math.cos(Math.toRadians(getYRot() - 90))).scale(radius));
 
             // Left
-            level().addParticle(DTEParticleHelper.ESOTERIC_SPARKS, (this.getX() + 4) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+            level().addParticle(DTEParticleHelper.ESOTERIC_SPARKS, leftAdjust.x, leftAdjust.y, leftAdjust.z, dx, dy, dz);
 
             // Right
-            level().addParticle(DTEParticleHelper.ESOTERIC_SPARKS, (this.getX() - 4) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+            level().addParticle(DTEParticleHelper.ESOTERIC_SPARKS, rightAdjust.x, rightAdjust.y, rightAdjust.z, dx, dy, dz);
         }
     }
 

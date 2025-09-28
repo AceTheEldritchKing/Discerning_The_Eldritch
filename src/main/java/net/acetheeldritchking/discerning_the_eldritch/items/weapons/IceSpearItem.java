@@ -6,7 +6,6 @@ import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
-import net.acetheeldritchking.discerning_the_eldritch.utils.DTERarities;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -30,7 +29,7 @@ public class IceSpearItem extends MagicSwordItem {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
         tooltipComponents.add(Component.translatable("item.discerning_the_eldritch.ice_spear.description").
-                withStyle(ChatFormatting.DARK_GRAY).
+                withStyle(ChatFormatting.GRAY).
                 withStyle(ChatFormatting.ITALIC));
     }
 }

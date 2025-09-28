@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "net.acetheeldritchking.discerning_the_eldritch.mixins",
+  "refmap": "cataclysm_spellbooks.refmap.json",
+  "plugin": "net.acetheeldritchking.discerning_the_eldritch.mixins.MixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "entity.CultistEntityMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}

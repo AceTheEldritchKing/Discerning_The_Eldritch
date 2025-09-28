@@ -1,4 +1,4 @@
-package net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists;
+package net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
@@ -14,7 +14,11 @@ import io.redspace.ironsspellbooks.entity.mobs.wizards.GenericAnimatedWarlockAtt
 import io.redspace.ironsspellbooks.entity.mobs.wizards.cultist.CultistEntity;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.NotIdioticNavigation;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.priest.PriestEntity;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistCaptainEntity;
+import io.redspace.ironsspellbooks.registries.ItemRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicAcolyteEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicCrusaderEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicSummonerEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
@@ -36,13 +40,16 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animation.*;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.AnimationState;
+import software.bernie.geckolib.animation.PlayState;
+import software.bernie.geckolib.animation.RawAnimation;
 
 import java.util.List;
 
-public class ApothicCrusaderEntity extends NeutralWizard implements Enemy, IAnimatedAttacker {
-    public ApothicCrusaderEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
+public class BloodCultistCaptainEntity extends NeutralWizard implements Enemy, IAnimatedAttacker {
+    public BloodCultistCaptainEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         xpReward = 25;
         this.lookControl = createLookControl();
@@ -97,8 +104,8 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy, IAnim
                         new AttackAnimationData(8, "simple_sword_lunge_stab", 6),
                         new AttackAnimationData(10, "simple_sword_stab_alternate", 8),
                         new AttackAnimationData(10, "simple_sword_horizontal_cross_swipe", 8),
-                        new AttackAnimationData(10, "simple_sword_downstrike", 8),
-                        new AttackAnimationData(10, "sword_slash_stab", 20)
+                        new AttackAnimationData(17, "overhead_sword_slam", 13),
+                        new AttackAnimationData(24, "spin_slash_normal", 12, 15, 19, 22)
                 ))
                 .setComboChance(0.8F)
                 .setMeleeAttackInverval(10, 15)
@@ -106,14 +113,14 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy, IAnim
                 .setMeleeBias(0.3f, 0.8f)
                 .setSpells(
                         // Attack
-                        List.of(SpellRegistries.ESOTERIC_EDGE.get(), SpellRegistry.ECHOING_STRIKES_SPELL.get(), SpellRegistry.FLAMING_STRIKE_SPELL.get()),
+                        List.of(SpellRegistry.BLOOD_NEEDLES_SPELL.get(), SpellRegistry.BLOOD_NEEDLES_SPELL.get(), SpellRegistry.WITHER_SKULL_SPELL.get(), SpellRegistry.BLOOD_SLASH_SPELL.get()),
                         // Defense
-                        List.of(SpellRegistry.COUNTERSPELL_SPELL.get(), SpellRegistry.HEAL_SPELL.get(), SpellRegistry.CHARGE_SPELL.get(), SpellRegistry.STOMP_SPELL.get()),
+                        List.of(SpellRegistry.COUNTERSPELL_SPELL.get(), SpellRegistry.HEAL_SPELL.get(), SpellRegistry.CHARGE_SPELL.get(), SpellRegistry.RAY_OF_SIPHONING_SPELL.get()),
                         // Movement
                         List.of(SpellRegistry.BLOOD_STEP_SPELL.get()),
                         // Support
-                        List.of(SpellRegistry.ABYSSAL_SHROUD_SPELL.get())
-                ).setSingleUseSpell(SpellRegistries.ESOTERIC_EDGE.get(), 80, 400, 1, 3)
+                        List.of(SpellRegistry.HEARTSTOP_SPELL.get())
+                ).setSingleUseSpell(SpellRegistry.ACUPUNCTURE_SPELL.get(), 50, 100, 2, 5)
                 .setSpellQuality(1.0f, 1.0f)
                 .setDrinksPotions()
         );
@@ -123,24 +130,25 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy, IAnim
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
         // They HATE these guys
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, KeeperEntity.class, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PriestEntity.class, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, CultistEntity.class, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, BloodCultistCaptainEntity.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, ApothicCrusaderEntity.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, ApothicAcolyteEntity.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, ApothicSummonerEntity.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, AscendedOneBoss.class, true));
     }
 
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
-        this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_HELMET.get()));
-        this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_ROBES.get()));
-        this.setItemSlot(EquipmentSlot.LEGS, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_LEGGINGS.get()));
-        this.setItemSlot(EquipmentSlot.FEET, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_GREAVES.get()));
-        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ItemRegistries.DEEP_GREATSWORD.get()));
+        this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(ItemRegistry.CULTIST_CHESTPLATE.get()));
+        this.setItemSlot(EquipmentSlot.LEGS, new ItemStack(ItemRegistry.CULTIST_LEGGINGS.get()));
+        this.setItemSlot(EquipmentSlot.FEET, new ItemStack(ItemRegistry.CULTIST_BOOTS.get()));
+        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ItemRegistry.MISERY.get()));
+        this.setItemSlot(EquipmentSlot.OFFHAND, new ItemStack(ItemRegistries.RAZOR_SHEATH.get()));
         this.setDropChance(EquipmentSlot.HEAD, 0.0F);
         this.setDropChance(EquipmentSlot.CHEST, 0.0F);
         this.setDropChance(EquipmentSlot.LEGS, 0.0F);
         this.setDropChance(EquipmentSlot.FEET, 0.0F);
-        this.setDropChance(EquipmentSlot.MAINHAND, 0.1F);
+        this.setDropChance(EquipmentSlot.MAINHAND, 0.01F);
+        this.setDropChance(EquipmentSlot.OFFHAND, 0.45F);
     }
 
     @Override
@@ -149,7 +157,7 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy, IAnim
         {
             return true;
         }
-        else if (entityIn.getType().is(DTETags.APOTHIC_ALLIES))
+        else if (entityIn.getType().is(DTETags.BLOOD_ALLIES))
         {
             return true;
         }
@@ -169,13 +177,14 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy, IAnim
     public static AttributeSupplier.Builder createAttributes()
     {
         return LivingEntity.createLivingAttributes()
-                .add(Attributes.ATTACK_DAMAGE, 4.0)
+                .add(Attributes.ATTACK_DAMAGE, 5.5)
                 .add(Attributes.ATTACK_KNOCKBACK, 0.5)
-                .add(Attributes.MAX_HEALTH, 60.0)
+                .add(Attributes.MAX_HEALTH, 85.0)
                 .add(Attributes.FOLLOW_RANGE, 24.0)
                 .add(Attributes.ENTITY_INTERACTION_RANGE, 3.0)
                 .add(Attributes.MOVEMENT_SPEED, .15)
-                .add(AttributeRegistry.MAX_MANA, 300);
+                .add(AttributeRegistry.MAX_MANA, 500)
+                .add(Attributes.SCALE, 1.2);
     }
 
     @Override
@@ -184,7 +193,7 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy, IAnim
     }
 
     RawAnimation animationToPlay = null;
-    private final AnimationController<ApothicCrusaderEntity> meleeController = new AnimationController<>(this, "keeper_animations", 0, this::predicate);
+    private final AnimationController<BloodCultistCaptainEntity> meleeController = new AnimationController<>(this, "keeper_animations", 0, this::predicate);
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
@@ -197,7 +206,7 @@ public class ApothicCrusaderEntity extends NeutralWizard implements Enemy, IAnim
         animationToPlay = RawAnimation.begin().thenPlay(animationId);
     }
 
-    private PlayState predicate(AnimationState<ApothicCrusaderEntity> animationState)
+    private PlayState predicate(AnimationState<BloodCultistCaptainEntity> animationState)
     {
         var controller = animationState.getController();
 

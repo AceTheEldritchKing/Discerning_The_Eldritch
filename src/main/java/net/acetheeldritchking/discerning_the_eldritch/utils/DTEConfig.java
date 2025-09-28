@@ -50,6 +50,25 @@ public class DTEConfig
             .comment("Default is true")
             .define("Enable Abracadabra's hex prevention", true);
 
+    // Curio Configs //
+    // Pyrium Sheath
+    private static final ModConfigSpec.ConfigValue<Integer> PYRIUM_SHEATH_COOLDOWN = BUILDER
+            .comment("Defines the cooldown in seconds value for the Pyrium Sheath's ability")
+            .comment("Default is [5]")
+            .define("Pyrium Sheath CD", 5);
+
+    // Frostbourne Sheath
+    private static final ModConfigSpec.ConfigValue<Integer> FROSTBOURNE_SHEATH_COOLDOWN = BUILDER
+            .comment("Defines the cooldown in seconds value for the Frostbourne Sheath's ability")
+            .comment("Default is [5]")
+            .define("Frostbourne Sheath CD", 5);
+
+    // Frostbourne Sheath
+    private static final ModConfigSpec.ConfigValue<Integer> RAZOR_SHEATH_COOLDOWN = BUILDER
+            .comment("Defines the cooldown in seconds value for the Sheath of The Razor's ability")
+            .comment("Default is [10]")
+            .define("Sheath of The Razor CD", 10);
+
     // Boss Damage Caps //
     // Ascended One
     private static final ModConfigSpec.BooleanValue ENABLED_ASCENDED_ONE_DAMAGE_CAP = BUILDER
@@ -75,6 +94,9 @@ public class DTEConfig
     public static boolean enableHexPrevention;
     public static boolean enableAscendedOneDamageCap;
     public static int ascendedOneDamageCap;
+    public static int pyriumSheathCooldown;
+    public static int frostbourneSheathCooldown;
+    public static int razorSheathCooldown;
 
 
     @SubscribeEvent
@@ -89,6 +111,10 @@ public class DTEConfig
         enableDamageCap = ENABLE_ABRACADABRA_DAMAGE_CAP.get();
         abracadabraDamageCap = ABRACADABRA_DAMAGE_CAP_VALUE.get();
         enableHexPrevention = ENABLE_ABRACADABRA_HEX_PREVENTION.get();
+
+        pyriumSheathCooldown = PYRIUM_SHEATH_COOLDOWN.get();
+        frostbourneSheathCooldown = FROSTBOURNE_SHEATH_COOLDOWN.get();
+        razorSheathCooldown = RAZOR_SHEATH_COOLDOWN.get();
 
         enableAscendedOneDamageCap = ENABLED_ASCENDED_ONE_DAMAGE_CAP.get();
         ascendedOneDamageCap = ASCENDED_ONE_DAMAGE_CAP_VALUE.get();
