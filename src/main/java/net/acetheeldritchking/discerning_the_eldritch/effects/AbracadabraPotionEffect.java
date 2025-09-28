@@ -81,11 +81,11 @@ public class AbracadabraPotionEffect extends CustomDescriptionMobEffect {
             {
                 if (hexEffect.is(DTETags.BYPASS_ABRACADABRA))
                 {
-                    DiscerningTheEldritch.LOGGER.debug("Cannot prevent this hex");
+                    //DiscerningTheEldritch.LOGGER.debug("Cannot prevent this hex");
                     event.setResult(MobEffectEvent.Applicable.Result.APPLY);
                 } else
                 {
-                    DiscerningTheEldritch.LOGGER.debug("Prevented a hex");
+                    //DiscerningTheEldritch.LOGGER.debug("Prevented a hex");
                     event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
                 }
             }

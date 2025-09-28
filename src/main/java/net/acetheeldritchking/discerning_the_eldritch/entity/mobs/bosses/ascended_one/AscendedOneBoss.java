@@ -605,11 +605,11 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
             // Damage cap
             if (DTEConfig.enableAscendedOneDamageCap)
             {
-                DiscerningTheEldritch.LOGGER.debug("Damage cap");
+                //DiscerningTheEldritch.LOGGER.debug("Damage cap");
                 return super.hurt(source, damageCap(amount));
             } else
             {
-                DiscerningTheEldritch.LOGGER.debug("No cap");
+                //DiscerningTheEldritch.LOGGER.debug("No cap");
                 return super.hurt(source, amount);
             }
         }
