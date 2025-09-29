@@ -10,7 +10,6 @@ import net.acetheeldritchking.discerning_the_eldritch.utils.DTERarities;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
 
 public class StaffOfVehemenceStaffItem extends ImbuableStaffItem {
@@ -21,7 +20,7 @@ public class StaffOfVehemenceStaffItem extends ImbuableStaffItem {
                 ItemPropertiesHelper.equipment(1).fireResistant().rarity(DTERarities.APOTHIC_RARITY_PROXY.getValue()).attributes(ExtendedSwordItem.createAttributes(DTEStaffTier.STAFF_OF_VEHEMENCE)),
                 SpellDataRegistryHolder.of(
                         new SpellDataRegistryHolder(SpellRegistries.ESOTERIC_EDGE, 6),
-                        new SpellDataRegistryHolder(SpellRegistries.SILENCE, 6))
+                        new SpellDataRegistryHolder(SpellRegistries.ABRACADABRA, 6))
         );
         this.dispatcher = new DTEItemDispatcher();
     }
