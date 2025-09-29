@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:echo_shard"
+    },
+    "title": {
+      "translate": "advancements.discerning_the_eldritch.root.title"
+    },
+    "description": {
+      "translate": "advancements.discerning_the_eldritch.root.description"
+    },
+    "background": "irons_spellbooks:textures/block/scroll_forge_top.png",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "echo_shard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:echo_shard"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "echo_shard"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

@@ -174,6 +174,10 @@
   "entity.discerning_the_eldritch.apothic_traitor": "Apothic Trader",
   "entity.discerning_the_eldritch.razor_blade": "Razor Blade",
   "entity.discerning_the_eldritch.blood_cultist_captain": "Blood Cultist Captain",
+  "entity.discerning_the_eldritch.glacial_edge": "Glacial Edge",
+  "entity.discerning_the_eldritch.unstable_rift": "Unstable Rift",
+  "entity.discerning_the_eldritch.esoteric_strike": "Esoteric Strike",
+  "entity.discerning_the_eldritch.crystal_carve": "Crystalline Shard",
 
 
 
@@ -218,6 +222,13 @@
   "death.attack.discerning_the_eldritch.apostle": "%1$s unmade by %2$s",
   "death.attack.discerning_the_eldritch.sightless_maw": "%1$s torn to shreds by %2$s",
   "death.attack.discerning_the_eldritch.untold_behemoth": "%1$s beaten to death by %2$s",
+  "death.attack.discerning_the_eldritch.apothic_traitor": "%1$s had their life traded for six silver by %2$s",
+  "death.attack.discerning_the_eldritch.razor_blade": "%1$s enjoyed the mutual subtext of their murder by %2$s",
+  "death.attack.discerning_the_eldritch.blood_cultist_captain": "%1$s had their heart ripped by %2$s",
+  "death.attack.discerning_the_eldritch.glacial_edge": "%1$s had their body parts frozen by %2$s",
+  "death.attack.discerning_the_eldritch.unstable_rift": "%1$s flesh was torn from their skeleton by %2$s unstable rift",
+  "death.attack.discerning_the_eldritch.esoteric_strike": "%1$s was punched into oblivion by %2$s",
+  "death.attack.discerning_the_eldritch.crystal_carve": "%1$s was turned into icy ribbons by %2$s",
 
   "death.attack.discerning_the_eldritch.esoteric_edge.item": "%1$s was torn asunder by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.gaoler.item": "%1$s maimed and gored by %2$s using %3$s",
@@ -225,6 +236,13 @@
   "death.attack.discerning_the_eldritch.apostle.item": "%1$s unmade by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.sightless_maw.item": "%1$s torn to shreds by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.untold_behemoth.item": "%1$s beaten to death by %2$s using %3$s",
+  "death.attack.discerning_the_eldritch.apothic_traitor.item": "%1$s had their life traded for six silver by %2$s using %3$s",
+  "death.attack.discerning_the_eldritch.razor_blade.item": "%1$s enjoyed the mutual subtext of their murder by %2$s using %3$s",
+  "death.attack.discerning_the_eldritch.blood_cultist_captain.item": "%1$s had their heart ripped by %2$s using %3$s",
+  "death.attack.discerning_the_eldritch.glacial_edge.item": "%1$s had their body parts frozen by %2$s using %3$s",
+  "death.attack.discerning_the_eldritch.unstable_rift.item": "%1$s flesh was torn from their skeleton by %2$s unstable rift using %3$s",
+  "death.attack.discerning_the_eldritch.esoteric_strike.item": "%1$s was punched into oblivion by %2$s using %3$s",
+  "death.attack.discerning_the_eldritch.crystal_carve.item": "%1$s was turned into icy ribbons by %2$s using %3$s",
 
 
 
@@ -235,5 +253,26 @@
   "advancements.discerning_the_eldritch.black_book_spellbook.description": "Obtain The Black Book",
 
   "advancements.discerning_the_eldritch.staff_of_ascension.title": "Ascensionism",
-  "advancements.discerning_the_eldritch.staff_of_ascension.description": "Obtain The Staff of Ascension"
+  "advancements.discerning_the_eldritch.staff_of_ascension.description": "Obtain The Staff of Ascension",
+
+  "advancements.discerning_the_eldritch.root.title": "Discerning The Eldritch",
+  "advancements.discerning_the_eldritch.root.description": "Delve into the untold world of Eldritch magic",
+
+  "advancements.discerning_the_eldritch.forsaken_flamberge.title": "Blade of The Forsaken",
+  "advancements.discerning_the_eldritch.forsaken_flamberge.description": "Craft a Forsaken Flamberge",
+
+  "advancements.discerning_the_eldritch.ymir.title": "Eldritch Dream Eater",
+  "advancements.discerning_the_eldritch.ymir.description": "Craft the legendary Ymir blade",
+
+  "advancements.discerning_the_eldritch.eldritch_soul_shard.title": "A Dead God's Dream",
+  "advancements.discerning_the_eldritch.eldritch_soul_shard.description": "Craft an Eldritch Soulshard",
+
+  "advancements.discerning_the_eldritch.enter_cultist_base.title": "A Hidden Society",
+  "advancements.discerning_the_eldritch.enter_cultist_base.description": "Locate the Apothic Cultist base",
+
+  "advancements.discerning_the_eldritch.ascended_one_fight.title": "Will You Behold?",
+  "advancements.discerning_the_eldritch.ascended_one_fight.description": "Fight The Ascended One",
+
+  "advancements.discerning_the_eldritch.kill_ascended_one.title": "My Apotheosis",
+  "advancements.discerning_the_eldritch.kill_ascended_one.description": "Kill The Ascended One"
 }

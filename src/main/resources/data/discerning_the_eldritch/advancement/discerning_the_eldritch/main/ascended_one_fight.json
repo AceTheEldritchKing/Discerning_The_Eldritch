@@ -1,0 +1,40 @@
+{
+  "display": {
+    "icon": {
+      "id": "discerning_the_eldritch:apothic_key"
+    },
+    "title": {
+      "translate": "advancements.discerning_the_eldritch.ascended_one_fight.title"
+    },
+    "description": {
+      "translate": "advancements.discerning_the_eldritch.ascended_one_fight.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "discerning_the_eldritch:discerning_the_eldritch/main/enter_cultist_base",
+  "criteria": {
+    "ascended_one": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "discerning_the_eldritch:ascended_one"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ascended_one"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

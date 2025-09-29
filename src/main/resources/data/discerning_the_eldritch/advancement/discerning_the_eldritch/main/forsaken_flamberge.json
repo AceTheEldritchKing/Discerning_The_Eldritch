@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "id": "discerning_the_eldritch:forsaken_flamberge"
+    },
+    "title": {
+      "translate": "advancements.discerning_the_eldritch.forsaken_flamberge.title"
+    },
+    "description": {
+      "translate": "advancements.discerning_the_eldritch.forsaken_flamberge.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "discerning_the_eldritch:discerning_the_eldritch/main/root",
+  "criteria": {
+    "flamberge": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "discerning_the_eldritch:forsaken_flamberge"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "flamberge"
+    ]
+  ],
+  "sends_telemetry_event": false
+}
