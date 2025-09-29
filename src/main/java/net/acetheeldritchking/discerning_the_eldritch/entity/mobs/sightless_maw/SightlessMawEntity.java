@@ -44,6 +44,7 @@ public class SightlessMawEntity extends AbstractSpellCastingMob implements IMagi
         xpReward = 0;
         this.lookControl = createLookControl();
         this.moveControl = createMoveControl();
+        noCulling = true;
     }
 
     public SightlessMawEntity(Level level, LivingEntity owner) {

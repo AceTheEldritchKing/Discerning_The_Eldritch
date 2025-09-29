@@ -45,7 +45,7 @@ public class PortentEffect extends MobEffect {
         {
             if (entity.hasEffect(effect) && entity instanceof ServerPlayer serverPlayer)
             {
-                DiscerningTheEldritch.LOGGER.debug("Removed - Removed");
+                //DiscerningTheEldritch.LOGGER.debug("Removed - Removed");
                 PacketDistributor.sendToPlayer(serverPlayer, new RemoveShaderEffectPacket());
             }
         }
@@ -58,7 +58,7 @@ public class PortentEffect extends MobEffect {
 
         if (entity.hasEffect(DTEPotionEffectRegistry.PORTENT_EFFECT) && entity instanceof ServerPlayer serverPlayer)
         {
-            DiscerningTheEldritch.LOGGER.debug("Removed - Expired");
+            //DiscerningTheEldritch.LOGGER.debug("Removed - Expired");
             PacketDistributor.sendToPlayer(serverPlayer, new RemoveShaderEffectPacket());
         }
     }

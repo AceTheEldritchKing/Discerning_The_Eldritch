@@ -45,6 +45,7 @@ public class UntoldBehemothEntity extends UniqueAbstractSpellCastingMob implemen
         xpReward = 0;
         this.lookControl = createLookControl();
         this.moveControl = createMoveControl();
+        noCulling = true;
     }
 
     public UntoldBehemothEntity(Level level, LivingEntity owner) {

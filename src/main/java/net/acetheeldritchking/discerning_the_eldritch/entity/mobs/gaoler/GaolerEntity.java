@@ -74,6 +74,7 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
         xpReward = 0;
         this.lookControl = createLookControl();
         this.moveControl = createMoveControl();
+        noCulling = true;
     }
 
     public GaolerEntity(Level level, LivingEntity owner, boolean playAnimation) {
@@ -165,7 +166,7 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
                 .add(Attributes.ARMOR, 15.0)
                 .add(Attributes.ARMOR_TOUGHNESS, 4.0)
                 .add(Attributes.FOLLOW_RANGE, 45.0)
-                .add(Attributes.ENTITY_INTERACTION_RANGE, 5.5)
+                .add(Attributes.ENTITY_INTERACTION_RANGE, 6.5)
                 .add(Attributes.MOVEMENT_SPEED, .25);
     }
 

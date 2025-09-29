@@ -43,6 +43,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.BossEvent;
@@ -596,22 +597,28 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
             destroyBlockDelay = 40;
         }*/
 
-        if (isTransitionPhase())
+        if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
         {
-            // Prevent any damage if he's in his transition phase or jumping backwards
-            return false;
-        }
-        else {
-            // Damage cap
-            if (DTEConfig.enableAscendedOneDamageCap)
+            if (isTransitionPhase())
             {
-                //DiscerningTheEldritch.LOGGER.debug("Damage cap");
-                return super.hurt(source, damageCap(amount));
-            } else
-            {
-                //DiscerningTheEldritch.LOGGER.debug("No cap");
-                return super.hurt(source, amount);
+                // Prevent any damage if he's in his transition phase or jumping backwards
+                return false;
             }
+            else {
+                // Damage cap
+                if (DTEConfig.enableAscendedOneDamageCap)
+                {
+                    //DiscerningTheEldritch.LOGGER.debug("Damage cap");
+                    return super.hurt(source, damageCap(amount));
+                } else
+                {
+                    //DiscerningTheEldritch.LOGGER.debug("No cap");
+                    return super.hurt(source, amount);
+                }
+            }
+        } else
+        {
+            return super.hurt(source, amount);
         }
     }
 
