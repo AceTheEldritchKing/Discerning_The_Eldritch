@@ -105,19 +105,22 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
         {
             // Middle
             double speed = 0.05F;
-            double dx = Utils.random.nextDouble() * 2 * speed - speed;
-            double dy = Utils.random.nextDouble() * 2 * speed - speed;
-            double dz = Utils.random.nextDouble() * 2 * speed - speed;
+            double dx = Math.random() * 2 * speed - speed;
+            double dy = Math.random() * 2 * speed - speed;
+            double dz = Math.random() * 2 * speed - speed;
+
+            double radius = 4;
+
+            Vec3 leftAdjust = this.position().add(new Vec3(Math.sin(Math.toRadians(getYRot() + 90)), 0, Math.cos(Math.toRadians(getYRot() + 90))).scale(radius));
+            Vec3 rightAdjust = this.position().add(new Vec3(Math.sin(Math.toRadians(getYRot() - 90)), 0, Math.cos(Math.toRadians(getYRot() - 90))).scale(radius));
 
             level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, (this.getX()) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
 
             // Left
-            level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, (this.getX() + 4) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
-            level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, (this.getX() + 3.5) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+            level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, leftAdjust.x, leftAdjust.y, leftAdjust.z, dx, dy, dz);
 
             // Right
-            level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, (this.getX() - 4) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
-            level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, (this.getX() - 3.5) + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+            level().addParticle(Utils.random.nextDouble() < 0.3 ? ParticleHelper.SNOWFLAKE : ParticleTypes.SNOWFLAKE, rightAdjust.x, rightAdjust.y, rightAdjust.z, dx, dy, dz);
         }
 
         // Not having the particle for now...
