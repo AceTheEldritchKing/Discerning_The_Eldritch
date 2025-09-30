@@ -4,15 +4,19 @@ import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.entity.spells.ice_tomb.IceTombEntity;
+import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
 import io.redspace.ironsspellbooks.render.CinderousRarity;
 import net.acetheeldritchking.aces_spell_utils.items.curios.SheathCurioItem;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
+import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -37,7 +41,7 @@ public class FrostbourneSheathCurio extends SheathCurioItem {
     }
 
     @SubscribeEvent
-    public static void handleAbility(LivingDamageEvent.Pre event)
+    public static void handleAbility(LivingIncomingDamageEvent event)
     {
         var sheath = ((FrostbourneSheathCurio) ItemRegistries.FROSTBOURNE_SHEATH.get());
         Entity attacker = event.getSource().getEntity();
@@ -50,13 +54,20 @@ public class FrostbourneSheathCurio extends SheathCurioItem {
                 {
                     var victim = event.getEntity();
 
-                    IceTombEntity iceTombEntity = new IceTombEntity(player.level(), player);
-                    iceTombEntity.setEvil();
-                    iceTombEntity.setLifetime(20 * 10);
-                    iceTombEntity.moveTo(victim.position());
+                    float getBaseDamage = event.getOriginalAmount();
 
-                    player.level().addFreshEntity(iceTombEntity);
-                    victim.startRiding(iceTombEntity, true);
+                    if (victim instanceof LivingEntity livingVictim)
+                    {
+                        if (livingVictim.hasEffect(MobEffectRegistry.CHILLED) || livingVictim.getTicksFrozen() > 20)
+                        {
+                            event.setAmount(getBaseDamage * 1.5F);
+                            DiscerningTheEldritch.LOGGER.debug("Damage: " + event.getAmount());
+                        }
+
+                        // Inflict chilled & ticks frozen instead of This Place Will Become Your Tomb
+                        victim.setTicksFrozen(5*20);
+                        livingVictim.addEffect(new MobEffectInstance(MobEffectRegistry.CHILLED, 100, 1));
+                    }
                 }
             }
         }

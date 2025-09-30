@@ -7,4 +7,9 @@ public class RazorBladeRenderer extends GeoEntityRenderer<RazorBlade> {
     public RazorBladeRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new RazorBladeModel());
     }
+
+    @Override
+    public boolean shouldShowName(RazorBlade animatable) {
+        return false;
+    }
 }

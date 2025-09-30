@@ -54,7 +54,7 @@ public class RazorSheathCurio extends SheathCurioItem {
                 {
                     var victim = event.getEntity();
 
-                    Vec3 victimPos = victim.getEyePosition();
+                    Vec3 victimPos = victim.position();
                     int count = 7;
                     int rings = 2;
 
@@ -66,7 +66,7 @@ public class RazorSheathCurio extends SheathCurioItem {
                             Vec3 spawn = victimPos.add(new Vec3(0, 0, 0.5 * (r + 1)).yRot(victim.getYRot() * Mth.DEG_TO_RAD + ((6.281f / fangs) * i)));
                             spawn = Utils.moveToRelativeGroundLevel(player.level(), spawn, 2);
                             if (!player.level().getBlockState(BlockPos.containing(spawn).below()).isAir()) {
-                                RazorBlade razorBlade = new RazorBlade(player.level(), player, (float) (2 + player.getAttributeValue(Attributes.ATTACK_DAMAGE)));
+                                RazorBlade razorBlade = new RazorBlade(player.level(), player, (float) (2 + (player.getAttributeValue(Attributes.ATTACK_DAMAGE) * ((double) DTEConfig.razorSheathMultiplier / 100))));
                                 razorBlade.moveTo(spawn);
                                 razorBlade.setOwner(player);
                                 player.level().addFreshEntity(razorBlade);

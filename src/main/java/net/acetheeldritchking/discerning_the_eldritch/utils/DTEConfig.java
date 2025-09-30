@@ -63,9 +63,16 @@ public class DTEConfig
             .comment("Default is [5]")
             .define("Frostbourne Sheath CD", 5);
 
-    // Frostbourne Sheath
+    // Razor Sheath
     private static final ModConfigSpec.ConfigValue<Integer> RAZOR_SHEATH_COOLDOWN = BUILDER
             .comment("Defines the cooldown in seconds value for the Sheath of The Razor's ability")
+            .comment("Default is [10]")
+            .define("Sheath of The Razor CD", 10);
+
+    private static final ModConfigSpec.ConfigValue<Integer> RAZOR_SHEATH_MULTIPLIER = BUILDER
+            .comment("Defines the multiplier to be added when evaluating the damage from the razor blades")
+            .comment("Math is: 2 + (base attack damage * (config value / 100))")
+            .comment("Dividing by 100 gets the percentage of what the config value, so if you input 10, it will result in 0.10 aka 10%")
             .comment("Default is [10]")
             .define("Sheath of The Razor CD", 10);
 
@@ -97,6 +104,7 @@ public class DTEConfig
     public static int pyriumSheathCooldown;
     public static int frostbourneSheathCooldown;
     public static int razorSheathCooldown;
+    public static int razorSheathMultiplier;
 
 
     @SubscribeEvent
@@ -115,6 +123,7 @@ public class DTEConfig
         pyriumSheathCooldown = PYRIUM_SHEATH_COOLDOWN.get();
         frostbourneSheathCooldown = FROSTBOURNE_SHEATH_COOLDOWN.get();
         razorSheathCooldown = RAZOR_SHEATH_COOLDOWN.get();
+        razorSheathMultiplier = RAZOR_SHEATH_MULTIPLIER.get();
 
         enableAscendedOneDamageCap = ENABLED_ASCENDED_ONE_DAMAGE_CAP.get();
         ascendedOneDamageCap = ASCENDED_ONE_DAMAGE_CAP_VALUE.get();
