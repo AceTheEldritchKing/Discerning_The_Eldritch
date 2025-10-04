@@ -158,10 +158,10 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
         //Do effects
         if (pResult.getEntity() instanceof LivingEntity livingTarget)
         {
-            livingTarget.addEffect(new MobEffectInstance(MobEffectRegistry.CHILLED, 200, 1));
+            livingTarget.addEffect(new MobEffectInstance(MobEffectRegistry.CHILLED, 100, 1));
         }
 
-        entombEntity(pResult.getEntity());
+        //entombEntity(pResult.getEntity());
     }
 
     private void createFrostField(Vec3 location)
@@ -170,7 +170,7 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
         {
             FrostField frostField = new FrostField(level());
             frostField.setOwner(getOwner());
-            frostField.setDuration((int) getDamage());
+            frostField.setDuration(100);
             frostField.setRadius(6);
             frostField.setCircular();
             frostField.moveTo(location);

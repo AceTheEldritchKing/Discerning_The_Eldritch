@@ -56,7 +56,7 @@ public class FrostbourneSheathCurio extends SheathCurioItem {
 
                     float getBaseDamage = event.getOriginalAmount();
 
-                    if (victim instanceof LivingEntity livingVictim)
+                    if (victim instanceof LivingEntity livingVictim && victim != attacker)
                     {
                         if (livingVictim.hasEffect(MobEffectRegistry.CHILLED) || livingVictim.getTicksFrozen() > 20)
                         {

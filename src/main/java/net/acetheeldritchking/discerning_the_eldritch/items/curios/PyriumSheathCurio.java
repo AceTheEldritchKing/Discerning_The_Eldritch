@@ -47,14 +47,17 @@ public class PyriumSheathCurio extends SheathCurioItem {
                 {
                     var victim = event.getEntity();
 
-                    float getBaseDamage = event.getOriginalAmount();
-
-                    if (victim.isOnFire())
+                    if (victim != attacker)
                     {
-                        event.setAmount(getBaseDamage * 1.5F);
-                    }
+                        float getBaseDamage = event.getOriginalAmount();
 
-                    victim.setRemainingFireTicks(6*20);
+                        if (victim.isOnFire())
+                        {
+                            event.setAmount(getBaseDamage * 1.5F);
+                        }
+
+                        victim.setRemainingFireTicks(6*20);
+                    }
                 }
             }
         }

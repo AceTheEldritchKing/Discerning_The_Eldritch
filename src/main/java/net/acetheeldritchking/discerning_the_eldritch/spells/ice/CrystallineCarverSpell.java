@@ -39,7 +39,6 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,7 +53,8 @@ public class CrystallineCarverSpell extends AbstractSpell {
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
                 Component.translatable("ui.irons_spellbooks.damage", Utils.stringTruncation(getDamage(spellLevel, caster), 1)),
-                Component.translatable("ui.discerning_the_eldritch.frozen_weapon_bonus")
+                Component.translatable("ui.discerning_the_eldritch.frozen_weapon_bonus"),
+                Component.translatable("ui.discerning_the_eldritch.damage_on_last_recast")
         );
     }
 

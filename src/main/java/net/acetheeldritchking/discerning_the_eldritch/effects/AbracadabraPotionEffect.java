@@ -8,6 +8,7 @@ import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -48,9 +49,11 @@ public class AbracadabraPotionEffect extends CustomDescriptionMobEffect {
         if (DTEConfig.enableDamageCap)
         {
             var entity = event.getEntity();
+            var source = event.getSource();
             var effect = entity.getEffect(DTEPotionEffectRegistry.ABRACADABRA_EFFECT);
 
-            if (effect != null)
+            // Should prevent it from bypassing /kill
+            if (effect != null && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
             {
                 int level = effect.getAmplifier() + 1;
                 float baseDamage = event.getAmount();

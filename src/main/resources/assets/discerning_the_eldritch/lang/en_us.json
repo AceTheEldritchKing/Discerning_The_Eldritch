@@ -153,6 +153,7 @@
   "ui.discerning_the_eldritch.spell_resist": "%d Spell Resist",
   "ui.discerning_the_eldritch.frozen_weapon_bonus": "Deals 50% more damage if a frozen weapon is held in the mainhand",
   "ui.discerning_the_eldritch.melee_damage": "Scales with melee attack attribute",
+  "ui.discerning_the_eldritch.damage_on_last_recast": "Deals damage on final recast",
 
 
   "tooltip.discerning_the_eldritch.abracadabra_description": "Damage taken caps at +%d%%",
