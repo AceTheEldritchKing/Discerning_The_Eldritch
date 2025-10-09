@@ -601,31 +601,14 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         {
             if (isTransitionPhase())
             {
-                // Prevent any damage if he's in his transition phase or jumping backwards
                 return false;
+            } else
+            {
+                return super.hurt(source, amount);
             }
-            else {
-                // Damage cap
-                if (DTEConfig.enableAscendedOneDamageCap)
-                {
-                    //DiscerningTheEldritch.LOGGER.debug("Damage cap");
-                    return super.hurt(source, damageCap(amount));
-                } else
-                {
-                    //DiscerningTheEldritch.LOGGER.debug("No cap");
-                    return super.hurt(source, amount);
-                }
-            }
-        } else
-        {
+        } else {
             return super.hurt(source, amount);
         }
-    }
-
-    // We're gonna make a damage cap so he can't be Snowgrave'd
-    private float damageCap(float amount)
-    {
-        return Mth.clamp(amount, 0, DTEConfig.ascendedOneDamageCap);
     }
 
     @Override

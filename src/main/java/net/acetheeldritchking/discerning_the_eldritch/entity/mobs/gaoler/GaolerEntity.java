@@ -429,7 +429,7 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
                 clientDiggingParticles(this);
             }
             // Putting this in a separate place
-            if (!this.level().isClientSide() && riseAnimationTime >= 130)
+            if (!this.level().isClientSide() && riseAnimationTime == 130)
             {
                 spawnVisualEarthquake();
             }
@@ -453,7 +453,7 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
             super.tick();
 
             // Screenshake when it walks
-            if (this.tickCount % 20 == 0)
+            if (this.tickCount % 20 == 0 && !isPlayingRiseAnimation())
             {
                 if (this.getDeltaMovement().x < 0 || this.getDeltaMovement().z < 0 || this.getDeltaMovement().z > 0 || this.getDeltaMovement().x > 0)
                 {

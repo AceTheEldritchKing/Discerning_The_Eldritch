@@ -11,6 +11,8 @@ import io.redspace.ironsspellbooks.player.ClientMagicData;
 import io.redspace.ironsspellbooks.spells.ender.CounterspellSpell;
 import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
+import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.TheSnowgraveItem;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry;
@@ -28,6 +30,8 @@ import net.minecraft.network.protocol.game.ClientboundSetTitleTextPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -285,6 +289,39 @@ public class ServerEvents {
             if (!attacker.level().isClientSide)
             {
                 attacker.level().playSound(attacker, attacker.blockPosition(), SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.PLAYERS, 1.0F, 1.0F);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void entityDamageCapEvent(LivingDamageEvent.Pre event)
+    {
+        var entity = event.getEntity();
+        var source = event.getSource();
+
+        if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
+        {
+            if (entity instanceof LivingEntity livingEntity)
+            {
+                //Ascended One
+                if (livingEntity instanceof AscendedOneBoss ascendedOneBoss && DTEConfig.enableAscendedOneDamageCap)
+                {
+                    float baseDamage = event.getOriginalDamage();
+                    float newDamage = ASUtils.basicDamageCap(baseDamage, 0, DTEConfig.ascendedOneDamageCap);
+                    event.setNewDamage(newDamage);
+                    //DiscerningTheEldritch.LOGGER.debug("Old Damage: " + event.getOriginalDamage());
+                    //DiscerningTheEldritch.LOGGER.debug("New Damage: " + event.getNewDamage());
+                }
+
+                // Boss Two
+
+                // Boss Three
+
+                // Boss Four
+
+                // Boss Five
+
+                // Boss Six
             }
         }
     }
