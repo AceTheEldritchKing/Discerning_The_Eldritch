@@ -14,6 +14,7 @@ import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegist
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -227,12 +228,14 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+    public void onAntiMagic(MagicData playerMagicData) {
         //
     }
 
     @Override
-    public void onAntiMagic(MagicData playerMagicData) {
-        //
+    public void recreateFromPacket(ClientboundAddEntityPacket pPacket) {
+        super.recreateFromPacket(pPacket);
+        this.xRotO = this.getXRot();
+        this.yRotO = this.getYRot();
     }
 }

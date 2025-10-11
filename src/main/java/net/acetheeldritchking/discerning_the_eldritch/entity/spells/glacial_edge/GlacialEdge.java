@@ -20,6 +20,7 @@ import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegist
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -210,12 +211,14 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        //
+    public void onAntiMagic(MagicData playerMagicData) {
+        MagicManager.spawnParticles(level(), ParticleHelper.ICY_FOG, this.getX(), this.getY(), this.getZ(), 1, 0, 0, 0, 0.1, true);
     }
 
     @Override
-    public void onAntiMagic(MagicData playerMagicData) {
-        MagicManager.spawnParticles(level(), ParticleHelper.ICY_FOG, this.getX(), this.getY(), this.getZ(), 1, 0, 0, 0, 0.1, true);
+    public void recreateFromPacket(ClientboundAddEntityPacket pPacket) {
+        super.recreateFromPacket(pPacket);
+        this.xRotO = this.getXRot();
+        this.yRotO = this.getYRot();
     }
 }

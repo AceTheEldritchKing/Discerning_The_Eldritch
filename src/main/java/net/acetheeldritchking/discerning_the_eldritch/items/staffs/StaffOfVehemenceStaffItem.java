@@ -3,7 +3,7 @@ package net.acetheeldritchking.discerning_the_eldritch.items.staffs;
 import io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
-import net.acetheeldritchking.aces_spell_utils.items.staves.ImbuableStaffItem;
+import net.acetheeldritchking.aces_spell_utils.items.staves.PresetImbueStaffItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.custom.DTEItemDispatcher;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTERarities;
@@ -12,7 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class StaffOfVehemenceStaffItem extends ImbuableStaffItem {
+public class StaffOfVehemenceStaffItem extends PresetImbueStaffItem {
     public final DTEItemDispatcher dispatcher;
 
     public StaffOfVehemenceStaffItem() {
