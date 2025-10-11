@@ -1,27 +1,15 @@
 package net.acetheeldritchking.discerning_the_eldritch.events;
 
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
-import io.redspace.ironsspellbooks.api.magic.MagicData;
-import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
-import io.redspace.ironsspellbooks.api.spells.SchoolType;
-import io.redspace.ironsspellbooks.network.SyncManaPacket;
-import io.redspace.ironsspellbooks.player.ClientMagicData;
-import io.redspace.ironsspellbooks.spells.ender.CounterspellSpell;
-import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
-import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.TheSnowgraveItem;
-import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry;
-import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttributeRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
@@ -31,8 +19,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -46,10 +32,6 @@ import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import net.neoforged.neoforge.network.PacketDistributor;
-
-import java.util.Objects;
-import java.util.logging.Level;
 
 import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.INSANITY_METER;
 

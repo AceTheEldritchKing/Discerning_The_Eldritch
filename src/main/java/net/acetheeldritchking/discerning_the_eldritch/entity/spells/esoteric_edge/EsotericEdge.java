@@ -1,21 +1,16 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge;
 
 import io.redspace.ironsspellbooks.api.magic.MagicData;
-import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import io.redspace.ironsspellbooks.entity.spells.AbstractShieldEntity;
 import io.redspace.ironsspellbooks.entity.spells.ShieldPart;
-import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.acetheeldritchking.discerning_the_eldritch.particle.DTEParticleHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
@@ -39,14 +34,14 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSusceptible {
-    private List<Entity> entities;
+    private final List<Entity> entities = new ArrayList<>();;
     private int lifetimeInTicks = 20 * 15;
 
     public EsotericEdge(EntityType<? extends Projectile> entityType, Level level) {
         super(entityType, level);
 
-        entities = new ArrayList<>();
         this.setNoGravity(true);
+        this.setPierceLevel(-1);
     }
 
     public EsotericEdge(EntityType<? extends Projectile> entityType, Level level, LivingEntity shooter)
@@ -77,7 +72,7 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
         lifetimeInTicks--;
         if (lifetimeInTicks <= 0)
         {
-            this.discard();
+            this.pierceOrDiscard();
         }
 
         if (!level().isClientSide)
@@ -87,7 +82,11 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
                 onHitBlock((BlockHitResult) hitresult);
             }
             for (Entity entity : level().getEntities(this, this.getBoundingBox()).stream().filter(target -> canHitEntity(target) && !entities.contains(target)).collect(Collectors.toSet())) {
-                damageEntity(entity);
+                if (getPierceLevel() != 0)
+                {
+                    damageEntity(entity);
+                }
+                this.pierceOrDiscard();
             }
         }
 
@@ -203,18 +202,20 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
 
             entities.add(entity);
         }
+        this.pierceOrDiscard();
     }
 
     /*@Override
     protected void onHit(HitResult hitresult) {
         super.onHit(hitresult);
         this.discard();
+        pierceOrDiscard();
     }*/
 
     @Override
     protected void onHitBlock(BlockHitResult result) {
         super.onHitBlock(result);
-        this.discard();
+        this.pierceOrDiscard();
     }
 
     @Override
