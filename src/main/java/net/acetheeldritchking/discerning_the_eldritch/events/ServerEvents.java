@@ -184,14 +184,14 @@ public class ServerEvents {
             {
                 if (target instanceof LivingEntity livingTarget)
                 {
-                    livingTarget.setTicksFrozen(20*20);
+                    livingTarget.setTicksFrozen(5*20);
                 }
             }
             if (mainhandItem.getItem() instanceof TheSnowgraveItem)
             {
                 if (target instanceof LivingEntity livingTarget)
                 {
-                    livingTarget.setTicksFrozen(50*20);
+                    livingTarget.setTicksFrozen(15*20);
                 }
             }
 

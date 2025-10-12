@@ -429,10 +429,10 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
                 clientDiggingParticles(this);
             }
             // Putting this in a separate place
-            /*if (!this.level().isClientSide() && riseAnimationTime == 130)
+            if (!this.level().isClientSide() && riseAnimationTime == 130)
             {
                 spawnVisualEarthquake();
-            }*/
+            }
             if (riseAnimationTime >= 130)
             {
                 this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.WARDEN_EMERGE, this.getSoundSource(), 5.0F, this.getVoicePitch(), false);
@@ -453,13 +453,13 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
             super.tick();
 
             // Screenshake when it walks
-            if (this.tickCount % 20 == 0 && !isPlayingRiseAnimation())
+            /*if (this.tickCount % 20 == 0 && !isPlayingRiseAnimation())
             {
                 if (this.getDeltaMovement().x < 0 || this.getDeltaMovement().z < 0 || this.getDeltaMovement().z > 0 || this.getDeltaMovement().x > 0)
                 {
                     CameraShakeManager.addCameraShake(new CameraShakeData(4, this.position(), 20));
                 }
-            }
+            }*/
         }
         // Client side stuff
         if (this.level().isClientSide())

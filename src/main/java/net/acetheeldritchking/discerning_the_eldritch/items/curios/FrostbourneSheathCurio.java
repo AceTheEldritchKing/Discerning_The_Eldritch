@@ -4,10 +4,12 @@ import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.entity.spells.ice_tomb.IceTombEntity;
+import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
 import io.redspace.ironsspellbooks.render.CinderousRarity;
 import net.acetheeldritchking.aces_spell_utils.items.curios.SheathCurioItem;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
+import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
@@ -20,6 +22,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -65,8 +68,11 @@ public class FrostbourneSheathCurio extends SheathCurioItem {
                         }
 
                         // Inflict chilled & ticks frozen instead of This Place Will Become Your Tomb
-                        victim.setTicksFrozen(5*20);
-                        livingVictim.addEffect(new MobEffectInstance(MobEffectRegistry.CHILLED, 100, 1));
+                        if (livingVictim instanceof Player victimPlayer && !ASUtils.hasCurio(victimPlayer, ItemRegistry.FROSTWARD_RING.get()))
+                        {
+                            victim.setTicksFrozen(5*20);
+                            livingVictim.addEffect(new MobEffectInstance(MobEffectRegistry.CHILLED, 100, 1));
+                        }
                     }
                 }
             }
