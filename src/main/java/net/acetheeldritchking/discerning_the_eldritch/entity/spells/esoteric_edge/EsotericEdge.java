@@ -41,7 +41,6 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
         super(entityType, level);
 
         this.setNoGravity(true);
-        this.setPierceLevel(-1);
     }
 
     public EsotericEdge(EntityType<? extends Projectile> entityType, Level level, LivingEntity shooter)
@@ -72,7 +71,7 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
         lifetimeInTicks--;
         if (lifetimeInTicks <= 0)
         {
-            this.pierceOrDiscard();
+            this.discard();
         }
 
         if (!level().isClientSide)
@@ -82,11 +81,7 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
                 onHitBlock((BlockHitResult) hitresult);
             }
             for (Entity entity : level().getEntities(this, this.getBoundingBox()).stream().filter(target -> canHitEntity(target) && !entities.contains(target)).collect(Collectors.toSet())) {
-                if (getPierceLevel() != 0)
-                {
-                    damageEntity(entity);
-                }
-                this.pierceOrDiscard();
+                damageEntity(entity);
             }
         }
 
@@ -202,7 +197,6 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
 
             entities.add(entity);
         }
-        this.pierceOrDiscard();
     }
 
     /*@Override
@@ -215,7 +209,6 @@ public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSu
     @Override
     protected void onHitBlock(BlockHitResult result) {
         super.onHitBlock(result);
-        this.pierceOrDiscard();
     }
 
     @Override

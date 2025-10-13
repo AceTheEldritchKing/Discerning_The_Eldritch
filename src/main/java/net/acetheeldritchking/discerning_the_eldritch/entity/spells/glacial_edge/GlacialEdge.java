@@ -52,7 +52,6 @@ public class GlacialEdge extends AbstractMagicProjectile implements AntiMagicSus
         super(pEntityType, pLevel);
 
         this.setNoGravity(true);
-        this.setPierceLevel(2);
     }
 
     public GlacialEdge(EntityType<? extends Projectile> entityType, Level level, LivingEntity shooter)
