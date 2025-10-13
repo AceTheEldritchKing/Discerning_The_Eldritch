@@ -91,7 +91,7 @@ enumExtensions="META-INF/enumextensions.json"
     modId="azurelib"
     type="required"
     # This version range declares a minimum of the current minecraft version up to but not including the next major version
-    versionRange="[2.3.15,)"
+    versionRange="[3.0.34,)"
     ordering="NONE"
     side="BOTH"
 
