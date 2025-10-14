@@ -174,7 +174,7 @@ public class DTEEntityRegistry {
     // Blade of Rancor
     public static final DeferredHolder<EntityType<?>, EntityType<BladeOfRancorProjectile>> BLADE_OF_RANCOR =
             ENTITIES.register("blade_of_rancor", () -> EntityType.Builder.<BladeOfRancorProjectile>of(BladeOfRancorProjectile::new, MobCategory.MONSTER)
-                    .sized(.6f, 1.8f)
+                    .sized(1f, 1f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "blade_of_rancor").toString())
             );

@@ -140,6 +140,9 @@ public class ItemRegistries {
     // Snowgrave
     public static final DeferredHolder<Item, Item> SNOWGRAVE = ITEMS.register("snowgrave", TheSnowgraveItem::new);
 
+    // Soul Fire Scythe
+    public static final DeferredHolder<Item, Item> SOUL_FIRE_SCYTHE = ITEMS.register("soul_fire_scythe", SoulFireScytheItem::new);
+
 
     /***
      * Generic Items

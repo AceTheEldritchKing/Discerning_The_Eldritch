@@ -74,6 +74,20 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
     public static DTEWeaponTiers SNOWGRAVE = new DTEWeaponTiers(1785, 9.5F, -3.2F, 10, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.ICE_SPELL_POWER, 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
+    // Soul Fire Scythe
+    public static DTEWeaponTiers SOUL_FIRE_SCYTHE = new DTEWeaponTiers(2061, 12F, -2.2F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.FIRE_SPELL_POWER, 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.FIRE_MAGIC_RESIST, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.05D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+    );
+
+    // Cataclysm
+
+    // Devourer
+
+    // Mourning Star
+
+
     //private final int level;
     private final int uses;
     private final float speed;
