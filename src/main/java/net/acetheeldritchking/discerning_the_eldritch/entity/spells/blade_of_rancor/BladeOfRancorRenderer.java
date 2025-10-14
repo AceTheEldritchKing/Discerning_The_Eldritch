@@ -5,17 +5,19 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
-import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
+import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer;
 
 public class BladeOfRancorRenderer extends GeoEntityRenderer<BladeOfRancorProjectile> {
     public BladeOfRancorRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new BladeOfRancorModel());
+        //addRenderLayer(new AutoGlowingGeoLayer<>(this));
     }
 
     @Override
@@ -29,5 +31,10 @@ public class BladeOfRancorRenderer extends GeoEntityRenderer<BladeOfRancorProjec
         poseStack.mulPose(Axis.XP.rotationDegrees(-Mth.lerp(partialTick, animatable.xRotO, animatable.getXRot())));
 
         super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
+    }
+
+    @Override
+    public @Nullable RenderType getRenderType(BladeOfRancorProjectile animatable, ResourceLocation texture, @Nullable MultiBufferSource bufferSource, float partialTick) {
+        return RenderType.energySwirl(texture, 0, 0);
     }
 }

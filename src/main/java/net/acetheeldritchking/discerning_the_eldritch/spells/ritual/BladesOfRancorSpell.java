@@ -17,6 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -84,11 +85,16 @@ public class BladesOfRancorSpell extends AbstractRitualSpell {
         }
 
         BladeOfRancorProjectile bladeOfRancor = new BladeOfRancorProjectile(level, entity);
-        bladeOfRancor.setPos(entity.position().add(0, entity.getEyeHeight() - bladeOfRancor.getBoundingBox().getYsize() * .5f, 0));
-        bladeOfRancor.shootFromRotation(entity, entity.getXRot(), entity.getYHeadRot(), 0, 0.90F, 0.4F);
+        Vec3 origin = entity.getEyePosition().add(entity.getForward().normalize().scale(0.2F)).subtract(0, 0.15,0);
+        bladeOfRancor.setPos(origin.subtract(0, bladeOfRancor.getBbHeight(), 0));
+        Vec3 vec3 = entity.getForward().add(0, 0.2, 0).normalize();
+
+        //bladeOfRancor.shootFromRotation(entity, entity.getXRot(), entity.getYHeadRot(), 0, 0.90F, 0.4F);
+        bladeOfRancor.shoot(vec3.scale(0.5F), 0.4F);
 
         bladeOfRancor.setDamage(getDamage(spellLevel, entity));
         bladeOfRancor.setCursorHoming(true);
+        bladeOfRancor.setNoGravity(true);
         level.addFreshEntity(bladeOfRancor);
 
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);

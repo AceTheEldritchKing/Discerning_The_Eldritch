@@ -46,7 +46,8 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
             new AttributeContainer(DTEAttributeRegistry.RITUAL_MAGIC_POWER, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(ASAttributeRegistry.MANA_STEAL, 0.10D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-            new AttributeContainer(ASAttributeRegistry.MANA_REND, 0.25D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+            new AttributeContainer(ASAttributeRegistry.MANA_REND, 0.25D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.1D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
     );
 
     // Ritual Dagger
@@ -81,11 +82,50 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
             new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.05D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
     );
 
-    // Cataclysm
+    // Cataclysm (Dormant)
+    public static DTEWeaponTiers CATACLYSM = new DTEWeaponTiers(1281, 10.0F, -2.7F, 9, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.BLOOD_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(DTEAttributeRegistry.RITUAL_MAGIC_POWER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(ASAttributeRegistry.GOLIATH_SLAYER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+    );
+    // Cataclysm (Awakened)
+    public static DTEWeaponTiers CATACLYSM_AWAKENED = new DTEWeaponTiers(2370, 12.0F, -2.7F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.BLOOD_SPELL_POWER, 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(DTEAttributeRegistry.RITUAL_MAGIC_POWER, 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(ASAttributeRegistry.GOLIATH_SLAYER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+    );
 
-    // Devourer
+    // Devourer (Dormant)
+    public static DTEWeaponTiers DEVOURER = new DTEWeaponTiers(1281, 12.0F, -3.15F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.BLOOD_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(DTEAttributeRegistry.RITUAL_MAGIC_POWER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(ASAttributeRegistry.HUNGER_STEAL, 5, AttributeModifier.Operation.ADD_VALUE)
+    );
+    // Devourer (Awakened)
+    public static DTEWeaponTiers DEVOURER_AWAKENED = new DTEWeaponTiers(2370, 13.0F, -3.15F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.BLOOD_SPELL_POWER, 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(DTEAttributeRegistry.RITUAL_MAGIC_POWER, 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(ASAttributeRegistry.HUNGER_STEAL, 10, AttributeModifier.Operation.ADD_VALUE),
+            new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+    );
 
-    // Mourning Star
+    // Mourning Star (Dormant)
+    public static DTEWeaponTiers MOURNING_STAR = new DTEWeaponTiers(1281, 10.5F, -2.9F, 9, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.BLOOD_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(DTEAttributeRegistry.RITUAL_MAGIC_POWER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(ASAttributeRegistry.MANA_REND, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+    );
+    // Mourning Star (Awakened)
+    public static DTEWeaponTiers MOURNING_STAR_AWAKENED = new DTEWeaponTiers(2370, 12.5F, -2.9F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.BLOOD_SPELL_POWER, 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(DTEAttributeRegistry.RITUAL_MAGIC_POWER, 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(ASAttributeRegistry.MANA_REND, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+    );
 
 
     //private final int level;

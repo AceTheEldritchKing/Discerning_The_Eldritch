@@ -30,6 +30,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.RITUAL_UPGRADE_ORB.get());
                         output.accept(ItemRegistries.ELDRITCH_UPGRADE_TEMPLATE.get());
                         output.accept(ItemRegistries.ELDRITCH_SOUL_SHARD.get());
+                        output.accept(ItemRegistries.SHARD_OF_MALICE.get());
                         output.accept(FurledMapItem.of(DiscerningTheEldritch.id("cultist_base"),
                                 ResourceKey.create(Registries.DIMENSION, ResourceLocation.withDefaultNamespace("overworld")), Component.translatable("item.discerning_the_eldritch.cultist_base_map"), true));
                         // Curios
@@ -64,6 +65,12 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.RITUAL_DAGGER.get());
                         output.accept(ItemRegistries.FORLORN_RAPIER.get());
                         output.accept(ItemRegistries.BROKEN_LEGENDS_BLADE.get());
+                        output.accept(ItemRegistries.CATACLYSM.get());
+                        output.accept(ItemRegistries.DEVOURER.get());
+                        output.accept(ItemRegistries.MOURNING_STAR.get());
+                        output.accept(ItemRegistries.CATACLYSM_AWAKENED.get());
+                        output.accept(ItemRegistries.DEVOURER_AWAKENED.get());
+                        output.accept(ItemRegistries.MOURNING_STAR_AWAKENED.get());
                         output.accept(ItemRegistries.YMIR.get());
                         // Staves
                         output.accept(ItemRegistries.STAFF_OF_VEHEMENCE.get());

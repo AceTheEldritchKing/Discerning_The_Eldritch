@@ -143,6 +143,21 @@ public class ItemRegistries {
     // Soul Fire Scythe
     public static final DeferredHolder<Item, Item> SOUL_FIRE_SCYTHE = ITEMS.register("soul_fire_scythe", SoulFireScytheItem::new);
 
+    // Cataclysm (Dormant)
+    public static final DeferredHolder<Item, Item> CATACLYSM = ITEMS.register("cataclysm", CataclysmBladeItem::new);
+    // Cataclysm (Awakened)
+    public static final DeferredHolder<Item, Item> CATACLYSM_AWAKENED = ITEMS.register("cataclysm_awakened", CataclysmBladeAwakenedItem::new);
+
+    // Devourer (Dormant)
+    public static final DeferredHolder<Item, Item> DEVOURER = ITEMS.register("devourer", DevourerAxeItem::new);
+    // Devourer (Awakened)
+    public static final DeferredHolder<Item, Item> DEVOURER_AWAKENED = ITEMS.register("devourer_awakened", DevourerAxeAwakenedItem::new);
+
+    // Mourning Star (Dormant)
+    public static final DeferredHolder<Item, Item> MOURNING_STAR = ITEMS.register("mourning_star", MourningStarMaceItem::new);
+    // Mourning Star (Awakened)
+    public static final DeferredHolder<Item, Item> MOURNING_STAR_AWAKENED = ITEMS.register("mourning_star_awakened", MourningStarMaceAwakenedItem::new);
+
 
     /***
      * Generic Items
@@ -176,6 +191,10 @@ public class ItemRegistries {
 
     // Fading Sculk Lantern
     public static final DeferredHolder<Item, Item> FADING_SCULK_LANTERN = ITEMS.register("fading_sculk_lantern", FadingSculkLantern::new);
+
+    // Shard of Malice
+    public static final DeferredHolder<Item, Item> SHARD_OF_MALICE = ITEMS.register("shard_of_malice",
+            () -> new Item(ItemPropertiesHelper.material().stacksTo(16).rarity(ASRarities.ACCURSED_RARITY_PROXY.getValue())));
 
 
     /***

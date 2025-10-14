@@ -1,5 +1,6 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.spells.blade_of_rancor;
 
+import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
@@ -35,7 +36,14 @@ public class BladeOfRancorProjectile extends AbstractMagicProjectile implements 
         this.setOwner(pShooter);
     }
 
-    @Override
+    public void shoot(Vec3 rotation, float inaccuracy) {
+        var speed = rotation.length();
+        Vec3 offset = Utils.getRandomVec3(1).normalize().scale(inaccuracy);
+        var motion = rotation.normalize().add(offset).normalize().scale(speed);
+        super.shoot(motion);
+    }
+
+    /*@Override
     public void travel() {
         this.setPos(this.position().add(this.getDeltaMovement()));
         if (!this.isNoGravity())
@@ -43,7 +51,7 @@ public class BladeOfRancorProjectile extends AbstractMagicProjectile implements 
             Vec3 vec3 = this.getDeltaMovement();
             this.setDeltaMovement(vec3.x, vec3.y - 0.05000000074505806, vec3.z);
         }
-    }
+    }*/
 
     @Override
     protected void setRot(float y, float x) {

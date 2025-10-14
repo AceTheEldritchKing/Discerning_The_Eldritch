@@ -1,0 +1,15 @@
+{
+    "parent": "minecraft:item/handheld",
+    "loader": "neoforge:separate_transforms",
+    "base": {
+        "parent": "discerning_the_eldritch:item/devourer_awakened_model"
+    },
+    "perspectives": {
+        "gui": {
+            "parent": "minecraft:item/handheld",
+            "textures": {
+                "layer0": "discerning_the_eldritch:item/devourer_awakened_gui"
+            }
+        }
+    }
+}

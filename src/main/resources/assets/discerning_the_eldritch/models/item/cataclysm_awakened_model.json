@@ -1,0 +1,19 @@
+{
+    "loader": "neoforge:item_layers",
+    "parent": "irons_spellbooks:item/template_large_sword",
+    "render_type": "cutout",
+    "textures": {
+        "layer0": "discerning_the_eldritch:item/cataclysm_awakened",
+        "layer1": "discerning_the_eldritch:item/cataclysm_awakened_glowmask"
+    },
+    "neoforge_data": {
+        "layers": {
+            "1": {
+                "color": "FFFFFFFF",
+                "block_light": 15,
+                "sky_light": 15,
+                "ambient_occlusion": false
+            }
+        }
+    }
+}
