@@ -8,6 +8,7 @@ import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.Guardians
 import net.acetheeldritchking.discerning_the_eldritch.spells.holy.ExorcismSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.ice.CrystallineCarverSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.ice.GlacialEdgeSpell;
+import net.acetheeldritchking.discerning_the_eldritch.spells.ritual.BladesOfRancorSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.ritual.CallAscendedOneSpell;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -146,6 +147,7 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> CALL_ASCENDED_ONE = registerSpell(new CallAscendedOneSpell());
 
     // Blades of Rancor
+    public static final Supplier<AbstractSpell> BLADES_OF_RANCOR = registerSpell(new BladesOfRancorSpell());
 
 
     public static void register(IEventBus eventBus)

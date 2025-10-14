@@ -13,6 +13,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caste
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sightless_maw.SightlessMawEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.blade_of_rancor.BladeOfRancorProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.crystal_carve.CrystalCarveEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdge;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_strike.EsotericStrike;
@@ -168,6 +169,14 @@ public class DTEEntityRegistry {
                     .sized(.6f, 1.8f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "blood_cultist_captain").toString())
+            );
+
+    // Blade of Rancor
+    public static final DeferredHolder<EntityType<?>, EntityType<BladeOfRancorProjectile>> BLADE_OF_RANCOR =
+            ENTITIES.register("blade_of_rancor", () -> EntityType.Builder.<BladeOfRancorProjectile>of(BladeOfRancorProjectile::new, MobCategory.MONSTER)
+                    .sized(.6f, 1.8f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "blade_of_rancor").toString())
             );
 
 

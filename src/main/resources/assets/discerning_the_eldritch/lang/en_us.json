@@ -146,6 +146,9 @@
   "spell.discerning_the_eldritch.crystalline_carver": "Crystalline Carver",
   "spell.discerning_the_eldritch.crystalline_carver.guide": "Slash forwards, inflicting chilled on nearby entities. On the final slash, inflict bonus damage based on the level of chilled an entity has",
 
+  "spell.discerning_the_eldritch.blades_of_rancor": "Blades of Rancor",
+  "spell.discerning_the_eldritch.blades_of_rancor.guide": "Summon a flurry of blades that home in on where you gaze",
+
 
   "ui.discerning_the_eldritch.extra_damage": "Deals extra damage while holding a weapon in your mainhand",
   "ui.discerning_the_eldritch.ritual_cast_failure": "Rituals cannot be casted in a mere spellbook",
