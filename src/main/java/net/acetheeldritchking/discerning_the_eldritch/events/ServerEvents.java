@@ -4,6 +4,7 @@ import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
+import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.TheSnowgraveItem;
@@ -34,6 +35,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.INSANITY_METER;
+import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.IS_INSANE;
 
 @EventBusSubscriber
 public class ServerEvents {
@@ -72,24 +74,28 @@ public class ServerEvents {
             //System.out.println("System enabled?");
 
             entity.getData(INSANITY_METER);
+            entity.getData(IS_INSANE);
 
             if (spell.getSchoolType() == SchoolRegistry.ELDRITCH.get())
             {
                 //System.out.println("Is Eldritch?");
 
-                if (entity.getData(INSANITY_METER) <= DTEConfig.maxInsanityValue)
+                if (entity.getData(INSANITY_METER) <= (DTEConfig.maxInsanityValue - 1))
                 {
                     //System.out.println("Increment?");
                     entity.setData(INSANITY_METER, entity.getData(INSANITY_METER) + 1);
 
-                    //System.out.println("Meter: " + entity.getData(INSANITY_METER));
+                    DiscerningTheEldritch.LOGGER.debug("Meter: " + entity.getData(INSANITY_METER));
+                    DiscerningTheEldritch.LOGGER.debug("Max: " + DTEConfig.maxInsanityValue);
 
                     if (entity.getData(INSANITY_METER) == DTEConfig.maxInsanityValue)
                     {
-                        //System.out.println("Do effect?");
+                        // We're doing new logic now, having this in a variable instead
+                        entity.setData(IS_INSANE, true);
+
                         if (entity instanceof ServerPlayer player)
                         {
-                            if (player.getRandom().nextFloat() * 100.0F < 35.0F)
+                            if (player.getRandom().nextFloat() * 100.0F < 32.0F)
                             {
                                 player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_1")
                                         .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
@@ -99,12 +105,12 @@ public class ServerEvents {
                                 player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_2")
                                         .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
                             }
-                            if (player.getRandom().nextFloat() * 100.0F < 35.0F)
+                            if (player.getRandom().nextFloat() * 100.0F < 32.0F)
                             {
                                 player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_3")
                                         .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
                             }
-                            if (player.getRandom().nextFloat() * 100.0F < 5.0F)
+                            if (player.getRandom().nextFloat() * 100.0F < 4.0F)
                             {
                                 player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_4")
                                         .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
@@ -143,11 +149,13 @@ public class ServerEvents {
     public static void onPlayerTickEvent(PlayerTickEvent.Post event)
     {
         LivingEntity entity = event.getEntity();
+        entity.getData(IS_INSANE);
 
         // Do this every two seconds
-        if (entity.getData(INSANITY_METER) >= DTEConfig.maxInsanityValue && entity.tickCount % 100 == 0)
+        // Handling this with a bool now
+        if (entity.getData(IS_INSANE) == true && entity.tickCount % 100 == 0)
         {
-            entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 100, 9, false, false, false));
+            entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 110, 9, false, false, false));
         }
     }
 

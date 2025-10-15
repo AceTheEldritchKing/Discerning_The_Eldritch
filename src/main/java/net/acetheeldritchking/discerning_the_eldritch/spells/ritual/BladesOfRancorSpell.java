@@ -107,7 +107,7 @@ public class BladesOfRancorSpell extends AbstractRitualSpell {
 
     private float getDamage(int spellLevel, LivingEntity caster)
     {
-        return (float) ((getSpellPower(spellLevel, caster) * 0.77) + getWeaponDamage(caster));
+        return (float) ((getSpellPower(spellLevel, caster) * 0.45) + getWeaponDamage(caster));
     }
 
     private float getWeaponDamage(LivingEntity caster)

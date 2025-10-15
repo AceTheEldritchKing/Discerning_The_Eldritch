@@ -22,6 +22,7 @@ import net.minecraft.world.level.Level;
 import java.util.Optional;
 
 import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.INSANITY_METER;
+import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.IS_INSANE;
 
 @AutoSpellConfig
 public class ExorcismSpell extends AbstractSpell {
@@ -89,9 +90,9 @@ public class ExorcismSpell extends AbstractSpell {
             {
                 return new CastResult(CastResult.Type.FAILURE, Component.translatable("display.discerning_the_eldritch.no_insanity_system", new Object[]{this.getDisplayName(player)}).withStyle(ChatFormatting.RED));
             }
-        } else if (player.hasData(INSANITY_METER))
+        } else if (player.hasData(INSANITY_METER) && player.hasData(IS_INSANE))
         {
-            if (player.getData(INSANITY_METER) <= 0)
+            if (player.getData(INSANITY_METER) <= 0 && !player.getData(IS_INSANE))
             {
                 if (player instanceof ServerPlayer serverPlayer)
                 {
@@ -105,7 +106,7 @@ public class ExorcismSpell extends AbstractSpell {
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-        if (entity.hasData(INSANITY_METER))
+        if (entity.hasData(INSANITY_METER) && entity.hasData(IS_INSANE))
         {
             if (entity.getData(INSANITY_METER) <= 0)
             {
@@ -118,6 +119,7 @@ public class ExorcismSpell extends AbstractSpell {
             else
             {
                 entity.setData(INSANITY_METER, 0);
+                entity.setData(IS_INSANE, false);
             }
         }
         else

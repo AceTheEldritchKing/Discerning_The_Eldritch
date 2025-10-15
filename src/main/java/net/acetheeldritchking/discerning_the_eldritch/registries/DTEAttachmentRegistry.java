@@ -16,6 +16,9 @@ public class DTEAttachmentRegistry {
     public static final Supplier<AttachmentType<Integer>> INSANITY_METER = ATTACHMENT_TYPES.register(
             "insanity_meter", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build());
 
+    public static final Supplier<AttachmentType<Boolean>> IS_INSANE = ATTACHMENT_TYPES.register(
+            "is_insane", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).build());
+
     // Frostbite Stacking
     public static final Supplier<AttachmentType<Integer>> FROSTBITE_LEVEL = ATTACHMENT_TYPES.register(
             "frostbite_level", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build());

@@ -89,7 +89,7 @@ public class BladeOfRancorProjectile extends AbstractMagicProjectile implements 
 
     @Override
     public float getSpeed() {
-        return 1.85F;
+        return 1.0F;
     }
 
     @Override

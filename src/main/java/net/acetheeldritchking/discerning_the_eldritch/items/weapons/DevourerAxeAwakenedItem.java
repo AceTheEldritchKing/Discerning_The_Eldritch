@@ -3,8 +3,11 @@ package net.acetheeldritchking.discerning_the_eldritch.items.weapons;
 import io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem;
 import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
+import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.effect.ImmolateEffect;
 import io.redspace.ironsspellbooks.item.UniqueItem;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
+import io.redspace.ironsspellbooks.util.MinecraftInstanceHelper;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.ChatFormatting;
@@ -16,6 +19,8 @@ import net.minecraft.world.item.TooltipFlag;
 import java.util.List;
 
 public class DevourerAxeAwakenedItem extends MagicSwordItem implements UniqueItem {
+    public static final int COOLDOWN = 15 * 20;
+
     public DevourerAxeAwakenedItem() {
         super(
                 DTEWeaponTiers.DEVOURER_AWAKENED,
@@ -28,8 +33,15 @@ public class DevourerAxeAwakenedItem extends MagicSwordItem implements UniqueIte
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-        tooltipComponents.add(Component.translatable("item.discerning_the_eldritch.ancient_item.description").
-                withStyle(ChatFormatting.GRAY).
-                withStyle(ChatFormatting.ITALIC));
+        tooltipComponents.add(
+                Component.translatable(
+                        "tooltip.irons_spellbooks.passive_ability",
+                        Component.literal(Utils.timeFromTicks(Utils.applyCooldownReduction(COOLDOWN, MinecraftInstanceHelper.getPlayer()), 1)).withStyle(ChatFormatting.AQUA)
+                ).withStyle(ChatFormatting.GREEN)
+        );
+        tooltipComponents.add(Component.literal(" ").append(Component.translatable(this.getDescriptionId() + ".desc")).withStyle(ChatFormatting.YELLOW));
+        tooltipComponents.add(Component.literal(" ").append(Component.translatable(this.getDescriptionId() + ".ravenous.desc",
+                Component.literal(Utils.stringTruncation(ImmolateEffect.damageFor(MinecraftInstanceHelper.getPlayer()), 1)).withStyle(ChatFormatting.RED))
+        ).withStyle(ChatFormatting.GOLD));
     }
 }
