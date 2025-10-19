@@ -72,15 +72,21 @@ public class SpellRegistries {
     // Esoteric Strike - Harness raw eldritch mana into an empowered strike. Damage scales based on melee damage
     public static final Supplier<AbstractSpell> ESOTERIC_STRIKE = registerSpell(new EsotericStrikeSpell());
 
-    // Eternal Chains
+    // Eternal Chains -
 
-    // Malevolent Maelstrom
+    // Malevolent Maelstrom -
 
-    // Abhorrent Inferno
+    // Abhorrent Inferno -
 
-    // Precipice Blades
+    // Precipice Blades -
 
-    // Conjure: Arcadian Stag
+    // Conjure: Arcadian Stag -
+
+    // Umbral Miasma - Create a field of miasma that disorients targets and leaves the susceptible to Eldritch spells
+
+    // Shadow Splitter - Send out a blade of shadow that homes in on the nearest target, cutting through them repeatedly
+
+    // Night's Edge - Conjure a group of shadow blades with down upon a selected area. Blades cause hit entities to take more Eldritch damage
 
 
     /***
@@ -146,8 +152,14 @@ public class SpellRegistries {
     // Call: Ascended One
     public static final Supplier<AbstractSpell> CALL_ASCENDED_ONE = registerSpell(new CallAscendedOneSpell());
 
-    // Blades of Rancor
+    // Blades of Rancor - Summon a set of blades that home in where ever the caster is looking
     public static final Supplier<AbstractSpell> BLADES_OF_RANCOR = registerSpell(new BladesOfRancorSpell());
+
+    // Zealous Harbinger - Summon smaller variants of the Cataclysm blade around the target which impales
+
+    // Ravenous Revenant - Unleash a mighty roar, nearby entities are marked as Prey. Hitting Prey entities causes a ravenous maw to lash at them
+
+    // Libra's Judgement - Target an entity; if they are above 50% health, a larger version of Mourning Star slams down on them. If they are below 50% health, they are immolated with vicious flames
 
 
     public static void register(IEventBus eventBus)
