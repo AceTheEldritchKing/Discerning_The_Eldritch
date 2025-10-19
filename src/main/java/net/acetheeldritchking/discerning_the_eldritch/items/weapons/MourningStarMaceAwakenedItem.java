@@ -36,12 +36,9 @@ public class MourningStarMaceAwakenedItem extends MagicSwordItem implements Uniq
         tooltipComponents.add(
                 Component.translatable(
                         "tooltip.irons_spellbooks.passive_ability",
-                        Component.literal(Utils.timeFromTicks(Utils.applyCooldownReduction(COOLDOWN, MinecraftInstanceHelper.getPlayer()), 1)).withStyle(ChatFormatting.AQUA)
-                ).withStyle(ChatFormatting.GREEN)
+                        Component.literal(Utils.timeFromTicks(Utils.applyCooldownReduction(COOLDOWN, MinecraftInstanceHelper.getPlayer()), 1)).withStyle(ChatFormatting.LIGHT_PURPLE)
+                ).withStyle(ChatFormatting.DARK_PURPLE)
         );
         tooltipComponents.add(Component.literal(" ").append(Component.translatable(this.getDescriptionId() + ".desc")).withStyle(ChatFormatting.YELLOW));
-        tooltipComponents.add(Component.literal(" ").append(Component.translatable(this.getDescriptionId() + ".judgement.desc",
-                Component.literal(Utils.stringTruncation(ImmolateEffect.damageFor(MinecraftInstanceHelper.getPlayer()), 1)).withStyle(ChatFormatting.RED))
-        ).withStyle(ChatFormatting.GOLD));
     }
 }

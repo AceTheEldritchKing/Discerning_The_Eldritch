@@ -73,8 +73,11 @@
   "item.discerning_the_eldritch.ancient_item.description": "An weapon forged long ago. It requires malicious energy to be reawakened.",
   "item.discerning_the_eldritch.shard_of_malice": "Shard of Malice",
   "item.discerning_the_eldritch.cataclysm_awakened": "Awakened Cataclysm",
+  "item.discerning_the_eldritch.cataclysm_awakened.desc": "Zealous - Entities with over 50% of their health take extra damage, summoning smaller blades to slice them on hit",
   "item.discerning_the_eldritch.devourer_awakened": "Awakened Devourer",
+  "item.discerning_the_eldritch.devourer_awakened.desc": "Ravenous - Entities on death are consumed. After consuming 5 entities, spew their innards on the next attack",
   "item.discerning_the_eldritch.mourning_star_awakened": "Awakened Mourning Star",
+  "item.discerning_the_eldritch.mourning_star_awakened.desc": "Judgement - Entities with less than 10% of their health have a 50% chance of taking mortal damage or being cursed",
 
   "item.discerning_the_eldritch.staff_of_eldritch": "Staff of Vehemence",
   "item.discerning_the_eldritch.staff_of_ascension": "Staff of Ascension",
