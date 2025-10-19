@@ -217,7 +217,7 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
 
     @Override
     public boolean doHurtTarget(Entity entity) {
-        CameraShakeManager.addCameraShake(new CameraShakeData(15, this.position(), 12));
+        CameraShakeManager.addCameraShake(new CameraShakeData(this.level(), 15, this.position(), 12));
 
         MagicManager.spawnParticles(entity.level(), new BlastwaveParticleOptions(SchoolRegistry.ELDRITCH.get().getTargetingColor(), 5.0f), entity.getX(), 0.3, entity.getZ(), 1, 0, 0, 0, 0, true);
 
@@ -453,13 +453,13 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
             super.tick();
 
             // Screenshake when it walks
-            /*if (this.tickCount % 20 == 0 && !isPlayingRiseAnimation())
+            if (this.tickCount % 20 == 0 && !isPlayingRiseAnimation())
             {
                 if (this.getDeltaMovement().x < 0 || this.getDeltaMovement().z < 0 || this.getDeltaMovement().z > 0 || this.getDeltaMovement().x > 0)
                 {
-                    CameraShakeManager.addCameraShake(new CameraShakeData(4, this.position(), 20));
+                    CameraShakeManager.addCameraShake(new CameraShakeData(this.level(), 4, this.position(), 20));
                 }
-            }*/
+            }
         }
         // Client side stuff
         if (this.level().isClientSide())
