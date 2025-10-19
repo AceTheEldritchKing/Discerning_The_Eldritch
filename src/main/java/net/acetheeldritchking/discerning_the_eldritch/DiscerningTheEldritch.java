@@ -2,9 +2,9 @@ package net.acetheeldritchking.discerning_the_eldritch;
 
 import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
-import mod.azure.azurelib.rewrite.animation.cache.AzIdentityRegistry;
-import mod.azure.azurelib.rewrite.render.armor.AzArmorRendererRegistry;
-import mod.azure.azurelib.rewrite.render.item.AzItemRendererRegistry;
+import mod.azure.azurelib.common.animation.cache.AzIdentityRegistry;
+import mod.azure.azurelib.common.render.armor.AzArmorRendererRegistry;
+import mod.azure.azurelib.common.render.item.AzItemRendererRegistry;
 import net.acetheeldritchking.aces_spell_utils.entity.render.items.SheathCurioRenderer;
 import net.acetheeldritchking.aces_spell_utils.items.curios.SheathCurioItem;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockArmorRenderer;

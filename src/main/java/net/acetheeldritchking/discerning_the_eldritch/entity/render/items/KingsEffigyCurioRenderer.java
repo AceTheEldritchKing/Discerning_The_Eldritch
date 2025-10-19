@@ -2,7 +2,7 @@ package net.acetheeldritchking.discerning_the_eldritch.entity.render.items;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import mod.azure.azurelib.rewrite.model.AzBakedModel;
+import mod.azure.azurelib.common.model.AzBakedModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -42,7 +42,7 @@ public class KingsEffigyCurioRenderer implements ICurioRenderer {
 
         curioRenderer.prepForRender(entity, stack, EquipmentSlot.HEAD, (HumanoidModel<?>) renderLayerParent.getModel());
 
-        AzBakedModel model = curioRenderer.provider().provideBakedModel(stack);
+        AzBakedModel model = curioRenderer.provider().provideBakedModel(entity, stack);
         ResourceLocation textureLocation = KingsEffigyCurioItemRenderer.TEX;
         RenderType renderType = RenderType.entityCutout(textureLocation);
         VertexConsumer buffer = renderTypeBuffer.getBuffer(renderType);

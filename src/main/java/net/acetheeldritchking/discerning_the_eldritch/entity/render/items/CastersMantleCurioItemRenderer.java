@@ -1,8 +1,7 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.render.items;
 
-import mod.azure.azurelib.rewrite.render.AzRendererConfig;
-import mod.azure.azurelib.rewrite.render.armor.AzArmorRenderer;
-import mod.azure.azurelib.rewrite.render.armor.AzArmorRendererConfig;
+import mod.azure.azurelib.common.render.armor.AzArmorRenderer;
+import mod.azure.azurelib.common.render.armor.AzArmorRendererConfig;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;

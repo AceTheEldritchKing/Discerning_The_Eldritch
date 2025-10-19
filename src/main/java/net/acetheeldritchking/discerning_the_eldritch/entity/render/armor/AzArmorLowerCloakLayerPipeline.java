@@ -1,19 +1,21 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.render.armor;
 
-import mod.azure.azurelib.common.internal.client.util.RenderUtils;
-import mod.azure.azurelib.rewrite.model.AzBakedModel;
-import mod.azure.azurelib.rewrite.model.AzBone;
-import mod.azure.azurelib.rewrite.render.AzRendererPipeline;
-import mod.azure.azurelib.rewrite.render.armor.AzArmorRendererPipelineContext;
-import mod.azure.azurelib.rewrite.render.armor.bone.AzArmorBoneContext;
-import mod.azure.azurelib.rewrite.render.armor.bone.AzArmorBoneProvider;
+import mod.azure.azurelib.common.model.AzBakedModel;
+import mod.azure.azurelib.common.model.AzBone;
+import mod.azure.azurelib.common.render.AzRendererPipeline;
+import mod.azure.azurelib.common.render.armor.AzArmorRendererPipelineContext;
+import mod.azure.azurelib.common.render.armor.bone.AzArmorBoneContext;
+import mod.azure.azurelib.common.render.armor.bone.AzArmorBoneProvider;
+import mod.azure.azurelib.common.util.client.RenderUtils;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.UUID;
+
 public class AzArmorLowerCloakLayerPipeline extends AzArmorRendererPipelineContext {
-    public AzArmorLowerCloakLayerPipeline(AzRendererPipeline<ItemStack> rendererPipeline) {
+    public AzArmorLowerCloakLayerPipeline(AzRendererPipeline<UUID, ItemStack> rendererPipeline) {
         super(rendererPipeline);
     }
 

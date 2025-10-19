@@ -1,8 +1,8 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.render.items;
 
-import mod.azure.azurelib.rewrite.render.item.AzItemRenderer;
-import mod.azure.azurelib.rewrite.render.item.AzItemRendererConfig;
-import mod.azure.azurelib.rewrite.render.layer.AzAutoGlowingLayer;
+import mod.azure.azurelib.common.render.item.AzItemRenderer;
+import mod.azure.azurelib.common.render.item.AzItemRendererConfig;
+import mod.azure.azurelib.common.render.layer.AzAutoGlowingLayer;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.items.staffs.animators.StaffOfVehemenceAnimator;
 import net.minecraft.resources.ResourceLocation;

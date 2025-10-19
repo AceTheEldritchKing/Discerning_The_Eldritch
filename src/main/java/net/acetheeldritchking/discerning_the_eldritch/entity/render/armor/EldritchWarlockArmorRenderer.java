@@ -1,18 +1,8 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.render.armor;
 
-import mod.azure.azurelib.common.internal.client.util.RenderUtils;
-import mod.azure.azurelib.rewrite.model.AzBakedModel;
-import mod.azure.azurelib.rewrite.model.AzBone;
-import mod.azure.azurelib.rewrite.render.AzRendererConfig;
-import mod.azure.azurelib.rewrite.render.AzRendererPipeline;
-import mod.azure.azurelib.rewrite.render.AzRendererPipelineContext;
-import mod.azure.azurelib.rewrite.render.armor.AzArmorRenderer;
-import mod.azure.azurelib.rewrite.render.armor.AzArmorRendererConfig;
-import mod.azure.azurelib.rewrite.render.armor.AzArmorRendererPipeline;
-import mod.azure.azurelib.rewrite.render.armor.AzArmorRendererPipelineContext;
-import mod.azure.azurelib.rewrite.render.armor.bone.AzArmorBoneContext;
-import mod.azure.azurelib.rewrite.render.armor.bone.AzArmorBoneProvider;
-import mod.azure.azurelib.rewrite.render.layer.AzAutoGlowingLayer;
+import mod.azure.azurelib.common.render.armor.AzArmorRenderer;
+import mod.azure.azurelib.common.render.armor.AzArmorRendererConfig;
+import mod.azure.azurelib.common.render.layer.AzAutoGlowingLayer;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.animators.EldritchArmorAnimator;
 import net.minecraft.client.model.HumanoidModel;
