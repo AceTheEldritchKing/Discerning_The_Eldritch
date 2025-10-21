@@ -7,6 +7,7 @@ import mod.azure.azurelib.common.render.armor.AzArmorRendererRegistry;
 import mod.azure.azurelib.common.render.item.AzItemRendererRegistry;
 import net.acetheeldritchking.aces_spell_utils.entity.render.items.SheathCurioRenderer;
 import net.acetheeldritchking.aces_spell_utils.items.curios.SheathCurioItem;
+import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.CrimsonStagArmorRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockArmorRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockHelmetRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockMaskRenderer;
@@ -118,6 +119,11 @@ public class DiscerningTheEldritch
             AzArmorRendererRegistry.register(EldritchWarlockHelmetRenderer::new, ItemRegistries.ELDRITCH_WARLOCK_HELMET.get());
             AzArmorRendererRegistry.register(KingsEffigyCurioItemRenderer::new, ItemRegistries.KINGS_EFFIGY.get());
             AzArmorRendererRegistry.register(CastersMantleCurioItemRenderer::new, ItemRegistries.CASTERS_MANTLE.get());
+            AzArmorRendererRegistry.register(CrimsonStagArmorRenderer::new,
+                    ItemRegistries.CRIMSON_STAG_ANTLERS.get(),
+                    ItemRegistries.CRIMSON_STAG_ROBES.get(),
+                    ItemRegistries.CRIMSON_STAG_LEGGINGS.get(),
+                    ItemRegistries.CRIMSON_STAG_BOOTS.get());
 
             // Item Rendering Registry
             AzItemRendererRegistry.register(StaffOfVehemenceRenderer::new, ItemRegistries.STAFF_OF_VEHEMENCE.get());

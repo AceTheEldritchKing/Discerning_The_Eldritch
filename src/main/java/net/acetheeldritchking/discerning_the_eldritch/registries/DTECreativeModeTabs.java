@@ -83,6 +83,11 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_ROBES.get());
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_LEGGINGS.get());
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_GREAVES.get());
+
+                        output.accept(ItemRegistries.CRIMSON_STAG_ANTLERS.get());
+                        output.accept(ItemRegistries.CRIMSON_STAG_ROBES.get());
+                        output.accept(ItemRegistries.CRIMSON_STAG_LEGGINGS.get());
+                        output.accept(ItemRegistries.CRIMSON_STAG_BOOTS.get());
                         // Spawn Eggs
                         output.accept(ItemRegistries.ACOLYTE_SPAWN_EGG.get());
                         output.accept(ItemRegistries.SUMMONER_SPAWN_EGG.get());

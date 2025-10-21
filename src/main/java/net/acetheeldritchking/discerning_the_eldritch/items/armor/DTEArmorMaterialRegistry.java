@@ -49,6 +49,13 @@ public class DTEArmorMaterialRegistry {
     // Void Seeker Warlock Armor
 
     // Crimson Stag Armor
+    public static DeferredHolder<ArmorMaterial, ArmorMaterial> CRIMSON_STAG = register("crimson_stag_armor",
+            warlockArmorMap(),
+            25,
+            SoundEvents.ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.of(ItemRegistries.CORRUPTED_CLOTH.get()),
+            3,
+            0.1F);
 
     private static DeferredHolder<ArmorMaterial, ArmorMaterial> register(
             String name,

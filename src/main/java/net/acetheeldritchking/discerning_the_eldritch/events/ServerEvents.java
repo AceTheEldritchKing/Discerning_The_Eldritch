@@ -6,8 +6,7 @@ import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
-import net.acetheeldritchking.discerning_the_eldritch.items.weapons.IceSpearItem;
-import net.acetheeldritchking.discerning_the_eldritch.items.weapons.TheSnowgraveItem;
+import net.acetheeldritchking.discerning_the_eldritch.items.weapons.*;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
@@ -216,6 +215,39 @@ public class ServerEvents {
                 if (!livingEntity.level().isClientSide)
                 {
                     livingEntity.level().playSound(livingEntity, livingEntity.blockPosition(), SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.PLAYERS, 1.0F, 1.0F);
+                }
+            }
+
+            // Awakened Cataclysm
+            if (mainhandItem.getItem() instanceof CataclysmBladeAwakenedItem && (!(livingEntity instanceof Player player) || !player.getCooldowns().isOnCooldown(ItemRegistries.CATACLYSM_AWAKENED.get())))
+            {
+                // Zealous - Entities with over 50% of their health take extra damage, summoning smaller blades to slice them on hit
+
+                if (livingEntity instanceof Player player)
+                {
+                    player.getCooldowns().addCooldown(ItemRegistries.CATACLYSM_AWAKENED.get(), CataclysmBladeAwakenedItem.COOLDOWN);
+                }
+            }
+
+            // Awakened Devourer
+            if (mainhandItem.getItem() instanceof DevourerAxeAwakenedItem && (!(livingEntity instanceof Player player) || !player.getCooldowns().isOnCooldown(ItemRegistries.DEVOURER_AWAKENED.get())))
+            {
+                // Ravenous - Entities on death are consumed. After consuming 5 entities, spew their innards on the next attack
+
+                if (livingEntity instanceof Player player)
+                {
+                    player.getCooldowns().addCooldown(ItemRegistries.DEVOURER_AWAKENED.get(), DevourerAxeAwakenedItem.COOLDOWN);
+                }
+            }
+
+            // Awakened Mourning Star
+            if (mainhandItem.getItem() instanceof MourningStarMaceAwakenedItem && (!(livingEntity instanceof Player player) || !player.getCooldowns().isOnCooldown(ItemRegistries.MOURNING_STAR_AWAKENED.get())))
+            {
+                // Judgement - Entities with less than 10% of their health have a 50% chance of taking mortal damage or being cursed
+
+                if (livingEntity instanceof Player player)
+                {
+                    player.getCooldowns().addCooldown(ItemRegistries.MOURNING_STAR_AWAKENED.get(), MourningStarMaceAwakenedItem.COOLDOWN);
                 }
             }
         }

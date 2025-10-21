@@ -14,6 +14,7 @@ import io.redspace.ironsspellbooks.registries.ComponentRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.items.armor.CrimsonStagArmorItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockArmorItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockHelmetItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockMaskItem;
@@ -273,6 +274,10 @@ public class ItemRegistries {
     // Void Seeker Warlock Armor
 
     // Crimson Stag Armor (Blood & Nature set)
+    public static final DeferredHolder<Item, Item> CRIMSON_STAG_ANTLERS = ITEMS.register("crimson_stag_antlers", () -> new CrimsonStagArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredHolder<Item, Item> CRIMSON_STAG_ROBES = ITEMS.register("crimson_stag_robes", () -> new CrimsonStagArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
+    public static final DeferredHolder<Item, Item> CRIMSON_STAG_LEGGINGS = ITEMS.register("crimson_stag_leggings", () -> new CrimsonStagArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
+    public static final DeferredHolder<Item, Item> CRIMSON_STAG_BOOTS = ITEMS.register("crimson_stag_boots", () -> new CrimsonStagArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
 
     /***
