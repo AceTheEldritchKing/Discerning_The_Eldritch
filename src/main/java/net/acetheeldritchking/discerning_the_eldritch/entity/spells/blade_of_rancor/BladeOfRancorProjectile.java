@@ -1,13 +1,21 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.spells.blade_of_rancor;
 
+import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
+import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
+import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.particle.DTEParticleHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTESchoolRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.Holder;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -79,12 +87,19 @@ public class BladeOfRancorProjectile extends AbstractMagicProjectile implements 
 
     @Override
     public void trailParticles() {
-
+        for (int i = 0; i < 2; i++)
+        {
+            double speed = 0.05;
+            double x = Utils.random.nextDouble() * 2 * speed - speed;
+            double y = Utils.random.nextDouble() * 2 * speed - speed;
+            double z = Utils.random.nextDouble() * 2 * speed - speed;
+            this.level().addParticle(DTEParticleHelper.MALIGNANT_SOUL, this.getX(), this.getY(), this.getZ(), x, y, z);
+        }
     }
 
     @Override
     public void impactParticles(double x, double y, double z) {
-
+        MagicManager.spawnParticles(this.level(), new BlastwaveParticleOptions(DTESchoolRegistry.RITUAL.get().getTargetingColor(), 1.5f), this.getX(), this.getY() + 0.165F, this.getZ(), 1, 0, 0, 0, 0, true);
     }
 
     @Override
@@ -105,6 +120,13 @@ public class BladeOfRancorProjectile extends AbstractMagicProjectile implements 
             var owner = getOwner();
 
             DamageSources.applyDamage(target, damage, SpellRegistries.BLADES_OF_RANCOR.get().getDamageSource(this, owner));
+
+            if (target instanceof LivingEntity livingEntity)
+            {
+                livingEntity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.MALIGNANT_BURN_EFFECT, 5*20, 0, true, true, true));
+
+                //DiscerningTheEldritch.LOGGER.debug("Effect: " + livingEntity.hasEffect(DTEPotionEffectRegistry.MALIGNANT_BURN_EFFECT));
+            }
         }
     }
 

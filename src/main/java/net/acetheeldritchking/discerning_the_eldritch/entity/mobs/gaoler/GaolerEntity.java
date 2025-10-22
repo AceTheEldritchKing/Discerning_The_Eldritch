@@ -219,7 +219,8 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
     public boolean doHurtTarget(Entity entity) {
         CameraShakeManager.addCameraShake(new CameraShakeData(this.level(), 15, this.position(), 12));
 
-        MagicManager.spawnParticles(entity.level(), new BlastwaveParticleOptions(SchoolRegistry.ELDRITCH.get().getTargetingColor(), 5.0f), entity.getX(), 0.3, entity.getZ(), 1, 0, 0, 0, 0, true);
+        //MagicManager.spawnParticles(entity.level(), new BlastwaveParticleOptions(SchoolRegistry.ELDRITCH.get().getTargetingColor(), 5.0f), entity.getX(), 0.3, entity.getZ(), 1, 0, 0, 0, 0, true);
+        MagicManager.spawnParticles(this.level(), new BlastwaveParticleOptions(SchoolRegistry.ELDRITCH.get().getTargetingColor(), 1.5f), entity.getX(), entity.getY() + .165f, entity.getZ(), 1, 0, 0, 0, 0, true);
 
         return Utils.doMeleeAttack(this, entity, SpellRegistries.CONJURE_GAOLER.get().getDamageSource(this, getSummoner()));
     }

@@ -2,7 +2,6 @@ package net.acetheeldritchking.discerning_the_eldritch.spells.ritual;
 
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
-import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MultiTargetEntityCastData;
@@ -11,9 +10,11 @@ import io.redspace.ironsspellbooks.damage.SpellDamageSource;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.blade_of_rancor.BladeOfRancorProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESchoolRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -21,6 +22,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Optional;
 
 @AutoSpellConfig
 public class BladesOfRancorSpell extends AbstractRitualSpell {
@@ -73,6 +75,11 @@ public class BladesOfRancorSpell extends AbstractRitualSpell {
     @Override
     public int getRecastCount(int spellLevel, @Nullable LivingEntity entity) {
         return spellLevel;
+    }
+
+    @Override
+    public Optional<SoundEvent> getCastFinishSound() {
+        return Optional.of(DTESoundRegistry.MAGIC_SWORD_CAST.get());
     }
 
     @Override

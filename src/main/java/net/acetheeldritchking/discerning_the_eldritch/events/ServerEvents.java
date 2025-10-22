@@ -3,11 +3,15 @@ package net.acetheeldritchking.discerning_the_eldritch.events;
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.blade_of_rancor.BladeOfRancorProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.*;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTESchoolRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
 import net.minecraft.core.particles.ParticleTypes;
@@ -25,6 +29,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -221,7 +226,34 @@ public class ServerEvents {
             // Awakened Cataclysm
             if (mainhandItem.getItem() instanceof CataclysmBladeAwakenedItem && (!(livingEntity instanceof Player player) || !player.getCooldowns().isOnCooldown(ItemRegistries.CATACLYSM_AWAKENED.get())))
             {
-                // Zealous - Entities with over 50% of their health take extra damage, summoning smaller blades to slice them on hit
+                // Zealous - Entities with over 50% of their health are inflicted with Malignant Burn, summoning smaller blades to slice them on hit
+                final float MAX_HEALTH = target.getMaxHealth();
+                float baseHealth = target.getHealth();
+                double percent = (baseHealth/MAX_HEALTH) * 100;
+
+                if (percent > 0.5)
+                {
+                    MagicManager.spawnParticles(target.level(), new BlastwaveParticleOptions(DTESchoolRegistry.RITUAL.get().getTargetingColor(), 1.5f), target.getX(), target.getY() + 0.165F, target.getZ(), 1, 0, 0, 0, 0, true);
+
+                    for (int i = 0; i < 5; i++)
+                    {
+                        BladeOfRancorProjectile bladeOfRancor = new BladeOfRancorProjectile(livingEntity.level(), livingEntity);
+
+                        Vec3 origin = target.getEyePosition().add(target.getForward().normalize().scale(1.2F)).subtract(0, 0.15,0);
+                        bladeOfRancor.setPos(origin.subtract(0, bladeOfRancor.getBbHeight(), 0));
+                        Vec3 vec3 = target.getForward().add(0, 0.05, 0).normalize();
+                        bladeOfRancor.shoot(vec3.scale(0.5F), 0.4F);
+                        bladeOfRancor.setDamage(10);
+                        bladeOfRancor.setHomingTarget(target);
+
+                        livingEntity.level().addFreshEntity(bladeOfRancor);
+                    }
+                }
+
+                if (target instanceof LivingEntity livingTarget)
+                {
+                    livingTarget.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.MALIGNANT_BURN_EFFECT, 3*20, 0, true, true, true));
+                }
 
                 if (livingEntity instanceof Player player)
                 {

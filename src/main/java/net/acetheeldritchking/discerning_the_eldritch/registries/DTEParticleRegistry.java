@@ -36,6 +36,9 @@ public class DTEParticleRegistry {
     // Rift Slice
     public static final Supplier<SimpleParticleType> RIFT_SLICE_PARTICLE = PARTICLE_TYPES.register("rift_slice", () -> new SimpleParticleType(false));
 
+    // Malignant Soul
+    public static final Supplier<SimpleParticleType> MALIGNANT_SOUL = PARTICLE_TYPES.register("malignant_soul", () -> new SimpleParticleType(false));
+
 
     public static void register(IEventBus eventBus)
     {

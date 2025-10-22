@@ -128,8 +128,8 @@ public class BloodCultistCaptainEntity extends NeutralWizard implements Enemy, I
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(10, new WizardRecoverGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-        // They HATE these guys
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        // They HATE these guys  - But not YOU
+        //this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, ApothicCrusaderEntity.class, true));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, ApothicAcolyteEntity.class, true));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, ApothicSummonerEntity.class, true));
@@ -227,5 +227,10 @@ public class BloodCultistCaptainEntity extends NeutralWizard implements Enemy, I
     @Override
     protected PathNavigation createNavigation(Level level) {
         return new NotIdioticNavigation(this, level);
+    }
+
+    @Override
+    public boolean isHostileTowards(LivingEntity pTarget) {
+        return super.isHostileTowards(pTarget) || pTarget.getAttributeValue(AttributeRegistry.BLOOD_SPELL_POWER) < 1.15;
     }
 }

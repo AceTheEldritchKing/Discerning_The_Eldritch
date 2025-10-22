@@ -18,7 +18,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 @EventBusSubscriber
 public class PortentEffect extends MobEffect {
     public PortentEffect() {
-        super(MobEffectCategory.BENEFICIAL, 1710620);
+        super(MobEffectCategory.NEUTRAL, 1710620);
     }
 
     /*@SubscribeEvent

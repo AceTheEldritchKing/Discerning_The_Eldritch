@@ -29,6 +29,11 @@ public class DTEPotionEffectRegistry {
     // Frostbite Effect
     public static final DeferredHolder<MobEffect, MobEffect> FROSTBITE_EFFECT = MOB_EFFECTS.register("frostbite_effect", FrostbitePotionEffect::new);
 
+    // Malignant Burn Effect
+    public static final DeferredHolder<MobEffect, MobEffect> MALIGNANT_BURN_EFFECT = MOB_EFFECTS.register("malignant_burn_potion_effect", MalignantBurnEffect::new);
+
+    // Ruin
+
 
     public static void register(IEventBus eventBus)
     {

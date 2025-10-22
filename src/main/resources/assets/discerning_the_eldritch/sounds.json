@@ -193,5 +193,10 @@
         "sounds": [
             "discerning_the_eldritch:razor_sheathed"
         ]
+    },
+    "magic_sword_cast": {
+        "sounds": [
+            "discerning_the_eldritch:magic_sword_cast"
+        ]
     }
 }

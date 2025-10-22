@@ -66,6 +66,9 @@ public class DTESoundRegistry {
     // Razor Sheathed
     public static DeferredHolder<SoundEvent, SoundEvent> RAZOR_SHEATHED = registerSoundEvent("razor_sheathed");
 
+    // Magic Sword Cast
+    public static DeferredHolder<SoundEvent, SoundEvent> MAGIC_SWORD_CAST = registerSoundEvent("magic_sword_cast");
+
 
     /***
      * Entity Sounds

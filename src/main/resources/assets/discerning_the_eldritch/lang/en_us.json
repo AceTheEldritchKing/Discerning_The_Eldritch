@@ -18,6 +18,8 @@
   "effect.discerning_the_eldritch.abracadabra_potion_effect.description": "Gives the user a damage cap and prevents negative potion effects from applying",
   "effect.discerning_the_eldritch.portent_effect": "Portentous",
   "effect.discerning_the_eldritch.portent_effect.description": "You feel the color around you fade.",
+  "effect.discerning_the_eldritch.malignant_burn_potion_effect": "Malignant Burn",
+  "effect.discerning_the_eldritch.malignant_burn_potion_effect.description": "Reduces the victim's spell resistance.",
 
 
   "curios.identifier.artifact": "Artifact",
@@ -73,7 +75,7 @@
   "item.discerning_the_eldritch.ancient_item.description": "An weapon forged long ago. It requires malicious energy to be reawakened.",
   "item.discerning_the_eldritch.shard_of_malice": "Shard of Malice",
   "item.discerning_the_eldritch.cataclysm_awakened": "Awakened Cataclysm",
-  "item.discerning_the_eldritch.cataclysm_awakened.desc": "Zealous - Entities with over 50% of their health take extra damage, summoning smaller blades to slice them on hit",
+  "item.discerning_the_eldritch.cataclysm_awakened.desc": "Zealous - Entities with over 50% of their health are inflicted with Malignant Burn, summoning smaller blades to slice them on hit",
   "item.discerning_the_eldritch.devourer_awakened": "Awakened Devourer",
   "item.discerning_the_eldritch.devourer_awakened.desc": "Ravenous - Entities on death are consumed. After consuming 5 entities, spew their innards on the next attack",
   "item.discerning_the_eldritch.mourning_star_awakened": "Awakened Mourning Star",
@@ -90,6 +92,7 @@
   "item.discerning_the_eldritch.eldritch_warlock_greaves": "Apothic Acolyte Greaves",
   "item.discerning_the_eldritch.eldritch_warlock_mask": "Apothic Acolyte Mask",
   "item.discerning_the_eldritch.eldritch_warlock_helmet": "Apothic Acolyte Helmet",
+
   "item.discerning_the_eldritch.crimson_stag_antlers": "Crimson Stag Antlers",
   "item.discerning_the_eldritch.crimson_stag_robes": "Crimson Stag Robes",
   "item.discerning_the_eldritch.crimson_stag_leggings": "Crimson Stag Breeches",
