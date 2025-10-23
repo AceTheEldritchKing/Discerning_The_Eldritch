@@ -53,6 +53,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.RAZOR_BLADE.get(), RazorBladeRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.BLOOD_CULTIST_CAPTAIN.get(), BloodCultistCaptainRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.BLADE_OF_RANCOR.get(), BladeOfRancorRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.GORE_BILE_AOE.get(), NoopRenderer::new);
     }
 
     @SubscribeEvent

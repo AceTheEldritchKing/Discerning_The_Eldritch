@@ -3,15 +3,18 @@ package net.acetheeldritchking.discerning_the_eldritch.events;
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
+import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.blade_of_rancor.BladeOfRancorProjectile;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.gore_bile.GoreBileAoE;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.*;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESchoolRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
 import net.minecraft.core.particles.ParticleTypes;
@@ -25,6 +28,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -33,13 +37,13 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
-import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.INSANITY_METER;
-import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.IS_INSANE;
+import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.*;
 
 @EventBusSubscriber
 public class ServerEvents {
@@ -266,9 +270,30 @@ public class ServerEvents {
             {
                 // Ravenous - Entities on death are consumed. After consuming 5 entities, spew their innards on the next attack
 
-                if (livingEntity instanceof Player player)
+                if (livingEntity.getData(DEVOURED_ENTITIES) == 5)
                 {
-                    player.getCooldowns().addCooldown(ItemRegistries.DEVOURER_AWAKENED.get(), DevourerAxeAwakenedItem.COOLDOWN);
+                    // spawn AoE here
+                    GoreBileAoE goreBileAoE = new GoreBileAoE(livingEntity.level());
+                    goreBileAoE.setOwner(livingEntity);
+                    goreBileAoE.moveTo(target.position());
+                    goreBileAoE.setDamage(5);
+                    goreBileAoE.setRadius(4);
+                    goreBileAoE.setDuration(5*20);
+                    goreBileAoE.setCircular();
+                    livingEntity.level().addFreshEntity(goreBileAoE);
+
+                    target.playSound(DTESoundRegistry.DEVOURER_WRETCH.get(), 1, 1);
+
+                    // Reset attachment
+                    livingEntity.setData(DEVOURED_ENTITIES, 0);
+
+                    // Only go on CD if we reach max stacks
+                    if (livingEntity instanceof Player player)
+                    {
+                        //livingEntity.level().playSound(player, livingEntity.blockPosition(), DTESoundRegistry.DEVOURER_WRETCH.get(), SoundSource.PLAYERS);
+
+                        player.getCooldowns().addCooldown(ItemRegistries.DEVOURER_AWAKENED.get(), DevourerAxeAwakenedItem.COOLDOWN);
+                    }
                 }
             }
 
@@ -281,6 +306,26 @@ public class ServerEvents {
                 {
                     player.getCooldowns().addCooldown(ItemRegistries.MOURNING_STAR_AWAKENED.get(), MourningStarMaceAwakenedItem.COOLDOWN);
                 }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onLivingDeathEvent(LivingDeathEvent event)
+    {
+        LivingEntity target = event.getEntity();
+        Entity attacker = event.getSource().getEntity();
+
+        if (attacker instanceof LivingEntity livingAttacker)
+        {
+            ItemStack mainhandItem = livingAttacker.getMainHandItem();
+
+            if (mainhandItem.getItem() instanceof DevourerAxeAwakenedItem)
+            {
+                attacker.getData(DEVOURED_ENTITIES);
+                attacker.setData(DEVOURED_ENTITIES, attacker.getData(DEVOURED_ENTITIES) + 1);
+
+                DiscerningTheEldritch.LOGGER.debug("Devour stacks: " + attacker.getData(DEVOURED_ENTITIES));
             }
         }
     }

@@ -69,6 +69,9 @@ public class DTESoundRegistry {
     // Magic Sword Cast
     public static DeferredHolder<SoundEvent, SoundEvent> MAGIC_SWORD_CAST = registerSoundEvent("magic_sword_cast");
 
+    // Devourer Wretch
+    public static DeferredHolder<SoundEvent, SoundEvent> DEVOURER_WRETCH = registerSoundEvent("devourer_wretch");
+
 
     /***
      * Entity Sounds

@@ -18,6 +18,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.spells.crystal_carv
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdge;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_strike.EsotericStrike;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdge;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.gore_bile.GoreBileAoE;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.razor_blade.RazorBlade;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.rift_walker.UnstableRiftEntity;
 import net.minecraft.core.registries.Registries;
@@ -177,6 +178,14 @@ public class DTEEntityRegistry {
                     .sized(1f, 1f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "blade_of_rancor").toString())
+            );
+
+    // Gore Bile
+    public static final DeferredHolder<EntityType<?>, EntityType<GoreBileAoE>> GORE_BILE_AOE =
+            ENTITIES.register("gore_bile_aoe", () -> EntityType.Builder.<GoreBileAoE>of(GoreBileAoE::new, MobCategory.MISC)
+                    .sized(1f, 1f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "gore_bile_aoe").toString())
             );
 
 

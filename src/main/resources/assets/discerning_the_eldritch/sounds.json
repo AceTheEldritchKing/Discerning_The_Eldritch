@@ -198,5 +198,10 @@
         "sounds": [
             "discerning_the_eldritch:magic_sword_cast"
         ]
+    },
+    "devourer_wretch": {
+        "sounds": [
+            "discerning_the_eldritch:devourer_wretch"
+        ]
     }
 }

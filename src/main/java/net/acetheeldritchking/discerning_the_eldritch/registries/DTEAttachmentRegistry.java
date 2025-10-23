@@ -23,6 +23,10 @@ public class DTEAttachmentRegistry {
     public static final Supplier<AttachmentType<Integer>> FROSTBITE_LEVEL = ATTACHMENT_TYPES.register(
             "frostbite_level", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build());
 
+    // Devourer Consumption
+    public static final Supplier<AttachmentType<Integer>> DEVOURED_ENTITIES = ATTACHMENT_TYPES.register(
+            "devoured_entities", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build());
+
 
     public static void register(IEventBus eventBus)
     {

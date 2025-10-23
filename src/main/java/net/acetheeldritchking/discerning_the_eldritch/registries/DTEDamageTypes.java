@@ -14,9 +14,16 @@ public class DTEDamageTypes {
         return ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.parse(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, name).toString()));
     }
 
+    // Ritual
     public static final ResourceKey<DamageType> RITUAL_MAGIC = register("ritual_magic");
 
+    // Razor
     public static final ResourceKey<DamageType> RAZOR_DAMAGE = register("razor_damage");
+
+    // Gore Bile
+    public static final ResourceKey<DamageType> GORE_BILE = register("gore_bile");
+
+    // Devoured
 
 
     public static void bootstrap(BootstrapContext<DamageType> context)
