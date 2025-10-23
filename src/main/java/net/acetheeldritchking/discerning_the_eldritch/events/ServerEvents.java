@@ -235,7 +235,11 @@ public class ServerEvents {
                 float baseHealth = target.getHealth();
                 double percent = (baseHealth/MAX_HEALTH) * 100;
 
-                if (percent > 0.5)
+                //DiscerningTheEldritch.LOGGER.debug("Max HP: " + MAX_HEALTH);
+                //DiscerningTheEldritch.LOGGER.debug("Base HP: " + baseHealth);
+                //DiscerningTheEldritch.LOGGER.debug("Percent: " + percent);
+
+                if (percent > 50)
                 {
                     MagicManager.spawnParticles(target.level(), new BlastwaveParticleOptions(DTESchoolRegistry.RITUAL.get().getTargetingColor(), 1.5f), target.getX(), target.getY() + 0.165F, target.getZ(), 1, 0, 0, 0, 0, true);
 
@@ -252,16 +256,16 @@ public class ServerEvents {
 
                         livingEntity.level().addFreshEntity(bladeOfRancor);
                     }
-                }
 
-                if (target instanceof LivingEntity livingTarget)
-                {
-                    livingTarget.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.MALIGNANT_BURN_EFFECT, 3*20, 0, true, true, true));
-                }
+                    if (target instanceof LivingEntity livingTarget)
+                    {
+                        livingTarget.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.MALIGNANT_BURN_EFFECT, 3*20, 0, true, true, true));
+                    }
 
-                if (livingEntity instanceof Player player)
-                {
-                    player.getCooldowns().addCooldown(ItemRegistries.CATACLYSM_AWAKENED.get(), CataclysmBladeAwakenedItem.COOLDOWN);
+                    if (livingEntity instanceof Player player)
+                    {
+                        player.getCooldowns().addCooldown(ItemRegistries.CATACLYSM_AWAKENED.get(), CataclysmBladeAwakenedItem.COOLDOWN);
+                    }
                 }
             }
 
@@ -296,17 +300,6 @@ public class ServerEvents {
                     }
                 }
             }
-
-            // Awakened Mourning Star
-            if (mainhandItem.getItem() instanceof MourningStarMaceAwakenedItem && (!(livingEntity instanceof Player player) || !player.getCooldowns().isOnCooldown(ItemRegistries.MOURNING_STAR_AWAKENED.get())))
-            {
-                // Judgement - Entities with less than 10% of their health have a 50% chance of taking mortal damage or being cursed
-
-                if (livingEntity instanceof Player player)
-                {
-                    player.getCooldowns().addCooldown(ItemRegistries.MOURNING_STAR_AWAKENED.get(), MourningStarMaceAwakenedItem.COOLDOWN);
-                }
-            }
         }
     }
 
@@ -325,7 +318,7 @@ public class ServerEvents {
                 attacker.getData(DEVOURED_ENTITIES);
                 attacker.setData(DEVOURED_ENTITIES, attacker.getData(DEVOURED_ENTITIES) + 1);
 
-                DiscerningTheEldritch.LOGGER.debug("Devour stacks: " + attacker.getData(DEVOURED_ENTITIES));
+                //DiscerningTheEldritch.LOGGER.debug("Devour stacks: " + attacker.getData(DEVOURED_ENTITIES));
             }
         }
     }
@@ -350,6 +343,73 @@ public class ServerEvents {
             if (livingAttacker.hasEffect(DTEPotionEffectRegistry.METAPHYSICAL_POTION_EFFECT))
             {
                 event.setCanceled(true);
+            }
+        }
+
+        // Awakened Mourning Star
+        if (attacker instanceof LivingEntity livingAttacker)
+        {
+            ItemStack mainhandItem = livingAttacker.getMainHandItem();
+
+            if (mainhandItem.getItem() instanceof MourningStarMaceAwakenedItem && (!(livingAttacker instanceof Player player) || !player.getCooldowns().isOnCooldown(ItemRegistries.MOURNING_STAR_AWAKENED.get())))
+            {
+                //DiscerningTheEldritch.LOGGER.debug("Is holding");
+                // Judgement - Entities with less than 50% of their health have a 50% chance of taking mortal damage or being cursed
+
+                final float MAX_HEALTH = target.getMaxHealth();
+                float baseHealth = target.getHealth();
+                double percent = (baseHealth/MAX_HEALTH) * 100;
+
+                //DiscerningTheEldritch.LOGGER.debug("Max HP: " + MAX_HEALTH);
+                //DiscerningTheEldritch.LOGGER.debug("Base HP: " + baseHealth);
+                //DiscerningTheEldritch.LOGGER.debug("Percent: " + percent);
+
+                if (percent < 50)
+                {
+                    //DiscerningTheEldritch.LOGGER.debug("Is less than 0.5");
+                    // Handling a 50% chance in a stupid way
+                    if (Utils.random.nextFloat() <= 0.5)
+                    {
+                        //DiscerningTheEldritch.LOGGER.debug("Instakill");
+
+                        if (livingAttacker instanceof ServerPlayer serverPlayer)
+                        {
+                            // display a message to the player
+                            serverPlayer.connection.send(new ClientboundSetActionBarTextPacket(Component.translatable("display.discerning_the_eldritch.judgement_decree_1")
+                                    .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
+                        }
+
+                        // Insta-kill w/o insta-killing
+                        float baseDamage = event.getOriginalAmount();
+                        float newDamage = baseDamage * 5.5F;
+
+                        event.setAmount(newDamage);
+
+                        //DiscerningTheEldritch.LOGGER.debug("Post Max HP: " + MAX_HEALTH);
+                        //DiscerningTheEldritch.LOGGER.debug("Post Base HP: " + baseHealth);
+                        //DiscerningTheEldritch.LOGGER.debug("Post Percent: " + percent);
+                    } else {
+                        //DiscerningTheEldritch.LOGGER.debug("Effect");
+
+                        if (livingAttacker instanceof ServerPlayer serverPlayer)
+                        {
+                            // display a message to the player
+                            serverPlayer.connection.send(new ClientboundSetActionBarTextPacket(Component.translatable("display.discerning_the_eldritch.judgement_decree_2")
+                                    .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
+                        }
+
+                        // Curse of Ra
+                        if (target instanceof LivingEntity livingTarget)
+                        {
+                            livingTarget.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.MALIGNANT_BURN_EFFECT, 3*20, 0, true, true, true));
+                        }
+                    }
+
+                    if (livingAttacker instanceof Player player)
+                    {
+                        player.getCooldowns().addCooldown(ItemRegistries.MOURNING_STAR_AWAKENED.get(), 40);
+                    }
+                }
             }
         }
     }
@@ -397,6 +457,7 @@ public class ServerEvents {
     {
         var entity = event.getEntity();
         var source = event.getSource();
+        var attacker = event.getSource().getEntity();
 
         if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
         {
@@ -423,5 +484,52 @@ public class ServerEvents {
                 // Boss Six
             }
         }
+
+        // Awakened Mourning Star
+        /*if (attacker instanceof LivingEntity livingAttacker)
+        {
+            ItemStack mainhandItem = livingAttacker.getMainHandItem();
+
+            if (mainhandItem.getItem() instanceof MourningStarMaceAwakenedItem && (!(livingAttacker instanceof Player player) || !player.getCooldowns().isOnCooldown(ItemRegistries.MOURNING_STAR_AWAKENED.get())))
+            {
+                DiscerningTheEldritch.LOGGER.debug("Is holding");
+                // Judgement - Entities with less than 10% of their health have a 50% chance of taking mortal damage or being cursed
+
+                final float MAX_HEALTH = entity.getMaxHealth();
+                float baseHealth = entity.getHealth();
+                double percent = (baseHealth/MAX_HEALTH) * 100;
+
+                DiscerningTheEldritch.LOGGER.debug("Max HP: " + MAX_HEALTH);
+                DiscerningTheEldritch.LOGGER.debug("Base HP: " + baseHealth);
+                DiscerningTheEldritch.LOGGER.debug("Percent: " + percent);
+
+                if (percent > 0.5)
+                {
+                    DiscerningTheEldritch.LOGGER.debug("Is less than 0.1");
+                    // Handling a 50% chance in a stupid way
+                    if (Utils.random.nextFloat() <= 0.5)
+                    {
+                        DiscerningTheEldritch.LOGGER.debug("Instakill");
+                        // Insta-kill w/o insta-killing
+                        float baseDamage = event.getOriginalDamage();
+                        float newDamage = baseDamage * 5.5F;
+
+                        event.setNewDamage(newDamage);
+                    } else {
+                        DiscerningTheEldritch.LOGGER.debug("Effect");
+                        // Curse of Ra
+                        if (entity instanceof LivingEntity livingTarget)
+                        {
+                            livingTarget.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.MALIGNANT_BURN_EFFECT, 3*20, 0, true, true, true));
+                        }
+                    }
+
+                    if (livingAttacker instanceof Player player)
+                    {
+                        player.getCooldowns().addCooldown(ItemRegistries.MOURNING_STAR_AWAKENED.get(), 40);
+                    }
+                }
+            }
+        }*/
     }
 }

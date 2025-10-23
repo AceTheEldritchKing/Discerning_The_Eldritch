@@ -79,7 +79,7 @@
   "item.discerning_the_eldritch.devourer_awakened": "Awakened Devourer",
   "item.discerning_the_eldritch.devourer_awakened.desc": "Ravenous - Entities on death are consumed. After consuming 5 entities, spew their innards on the next attack",
   "item.discerning_the_eldritch.mourning_star_awakened": "Awakened Mourning Star",
-  "item.discerning_the_eldritch.mourning_star_awakened.desc": "Judgement - Entities with less than 10% of their health have a 50% chance of taking mortal damage or being cursed",
+  "item.discerning_the_eldritch.mourning_star_awakened.desc": "Judgement - Entities with less than 50% of their health have a 50% chance of taking mortal damage or being cursed",
 
   "item.discerning_the_eldritch.staff_of_eldritch": "Staff of Vehemence",
   "item.discerning_the_eldritch.staff_of_ascension": "Staff of Ascension",
@@ -220,6 +220,8 @@
   "display.discerning_the_eldritch.no_insanity_system": "Insanity does not reside in your heart",
   "display.discerning_the_eldritch.fading_sculk_lantern_fail": "You call, but there is no response",
   "display.discerning_the_eldritch.fading_sculk_lantern_success": "You call, she's coming",
+  "display.discerning_the_eldritch.judgement_decree_1": "Judgement Decree: Mortal Damage on hit",
+  "display.discerning_the_eldritch.judgement_decree_2": "Judgement Decree: Affliction on hit",
 
 
 
