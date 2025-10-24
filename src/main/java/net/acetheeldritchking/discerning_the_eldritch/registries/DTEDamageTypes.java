@@ -23,7 +23,11 @@ public class DTEDamageTypes {
     // Gore Bile
     public static final ResourceKey<DamageType> GORE_BILE = register("gore_bile");
 
+    // Blood Rot
+    public static final ResourceKey<DamageType> BLOOD_ROT = register("blood_rot");
+
     // Devoured
+    public static final ResourceKey<DamageType> DEVOURED = register("devoured");
 
 
     public static void bootstrap(BootstrapContext<DamageType> context)

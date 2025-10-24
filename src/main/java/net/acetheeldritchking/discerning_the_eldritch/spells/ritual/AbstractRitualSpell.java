@@ -12,7 +12,13 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractRitualSpell extends AbstractSpell {
     @Override
     public boolean allowLooting() {
-        return false;
+        if (isComplex())
+        {
+            return false;
+        } else
+        {
+            return true;
+        }
     }
 
     @Override

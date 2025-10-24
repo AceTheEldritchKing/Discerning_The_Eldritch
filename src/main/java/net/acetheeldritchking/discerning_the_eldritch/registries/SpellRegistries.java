@@ -161,6 +161,8 @@ public class SpellRegistries {
 
     // Libra's Judgement - Target an entity; if they are above 50% health, a larger version of Mourning Star slams down on them. If they are below 50% health, they are immolated with vicious flames
 
+    // Transmutation - A generic spell used for transmutating certain materials for crafting
+
 
     public static void register(IEventBus eventBus)
     {

@@ -37,6 +37,11 @@ public class DTEPotionEffectRegistry {
     // Accursed Effect
     public static final DeferredHolder<MobEffect, MobEffect> ACCURSED_EFFECT = MOB_EFFECTS.register("accursed_potion_effect", AccursedPotionEffect::new);
 
+    // Blood Rot Effect
+    public static final DeferredHolder<MobEffect, MobEffect> BLOOD_ROT_EFFECT = MOB_EFFECTS.register("blood_rot_potion_effect", BloodRotPotionEffect::new);
+
+    // Devoured Effect
+
 
     public static void register(IEventBus eventBus)
     {

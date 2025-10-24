@@ -22,6 +22,8 @@
   "effect.discerning_the_eldritch.malignant_burn_potion_effect.description": "Reduces the victim's spell resistance",
   "effect.discerning_the_eldritch.accursed_potion_effect": "Accursed",
   "effect.discerning_the_eldritch.accursed_potion_effect.description": "Reduces spell resistance, armor and attack damage",
+  "effect.discerning_the_eldritch.blood_rot_potion_effect": "Blood Rot",
+  "effect.discerning_the_eldritch.blood_rot_potion_effect.description": "Reduces blood spell resistance and blood spell power, as well as damaging every 3 seconds",
 
 
   "curios.identifier.artifact": "Artifact",
@@ -251,12 +253,15 @@
   "death.attack.discerning_the_eldritch.sightless_maw": "%1$s torn to shreds by %2$s",
   "death.attack.discerning_the_eldritch.untold_behemoth": "%1$s beaten to death by %2$s",
   "death.attack.discerning_the_eldritch.apothic_traitor": "%1$s had their life traded for six silver by %2$s",
-  "death.attack.discerning_the_eldritch.razor_blade": "%1$s enjoyed the mutual subtext of their murder by %2$s",
+  "death.attack.discerning_the_eldritch.razor_blade": "%1$s enjoyed the mutual subtext of their murder",
   "death.attack.discerning_the_eldritch.blood_cultist_captain": "%1$s had their heart ripped by %2$s",
   "death.attack.discerning_the_eldritch.glacial_edge": "%1$s had their body parts frozen by %2$s",
   "death.attack.discerning_the_eldritch.unstable_rift": "%1$s flesh was torn from their skeleton by %2$s unstable rift",
   "death.attack.discerning_the_eldritch.esoteric_strike": "%1$s was punched into oblivion by %2$s",
   "death.attack.discerning_the_eldritch.crystal_carve": "%1$s was turned into icy ribbons by %2$s",
+  "death.attack.discerning_the_eldritch.gore_bile": "%1$s was disintegrated",
+  "death.attack.discerning_the_eldritch.blood_rot": "%1$s had they blood decayed",
+  "death.attack.discerning_the_eldritch.devoured": "%1$s was devoured by their own weapon",
 
   "death.attack.discerning_the_eldritch.esoteric_edge.item": "%1$s was torn asunder by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.gaoler.item": "%1$s maimed and gored by %2$s using %3$s",
@@ -271,6 +276,11 @@
   "death.attack.discerning_the_eldritch.unstable_rift.item": "%1$s flesh was torn from their skeleton by %2$s unstable rift using %3$s",
   "death.attack.discerning_the_eldritch.esoteric_strike.item": "%1$s was punched into oblivion by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.crystal_carve.item": "%1$s was turned into icy ribbons by %2$s using %3$s",
+
+  "death.attack.discerning_the_eldritch.razor_blade.player": "%1$s enjoyed the mutual subtext of their murder by %2$s",
+  "death.attack.discerning_the_eldritch.gore_bile.player": "%1$s was disintegrated by %2$s's stomach fluids",
+  "death.attack.discerning_the_eldritch.blood_rot.player": "%1$s had they blood decayed by %2$s",
+  "death.attack.discerning_the_eldritch.devoured.player": "%1$s was devoured by their own weapon while fighting %2$s",
 
 
 

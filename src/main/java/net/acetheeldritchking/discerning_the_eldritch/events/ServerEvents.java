@@ -11,6 +11,7 @@ import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.blade_of_rancor.BladeOfRancorProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.gore_bile.GoreBileAoE;
+import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.DiaryOfDecaySpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.*;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESchoolRegistry;
@@ -485,51 +486,21 @@ public class ServerEvents {
             }
         }
 
-        // Awakened Mourning Star
-        /*if (attacker instanceof LivingEntity livingAttacker)
+        if (entity != null)
         {
-            ItemStack mainhandItem = livingAttacker.getMainHandItem();
-
-            if (mainhandItem.getItem() instanceof MourningStarMaceAwakenedItem && (!(livingAttacker instanceof Player player) || !player.getCooldowns().isOnCooldown(ItemRegistries.MOURNING_STAR_AWAKENED.get())))
+            if (entity instanceof Player player)
             {
-                DiscerningTheEldritch.LOGGER.debug("Is holding");
-                // Judgement - Entities with less than 10% of their health have a 50% chance of taking mortal damage or being cursed
-
-                final float MAX_HEALTH = entity.getMaxHealth();
-                float baseHealth = entity.getHealth();
-                double percent = (baseHealth/MAX_HEALTH) * 100;
-
-                DiscerningTheEldritch.LOGGER.debug("Max HP: " + MAX_HEALTH);
-                DiscerningTheEldritch.LOGGER.debug("Base HP: " + baseHealth);
-                DiscerningTheEldritch.LOGGER.debug("Percent: " + percent);
-
-                if (percent > 0.5)
+                // Diary of Decay ability
+                if (ASUtils.hasCurio(player, ItemRegistries.DIARY_OF_DECAY.get()) && (!player.getCooldowns().isOnCooldown(ItemRegistries.DIARY_OF_DECAY.get())))
                 {
-                    DiscerningTheEldritch.LOGGER.debug("Is less than 0.1");
-                    // Handling a 50% chance in a stupid way
-                    if (Utils.random.nextFloat() <= 0.5)
+                    if (attacker instanceof LivingEntity livingAttacker )
                     {
-                        DiscerningTheEldritch.LOGGER.debug("Instakill");
-                        // Insta-kill w/o insta-killing
-                        float baseDamage = event.getOriginalDamage();
-                        float newDamage = baseDamage * 5.5F;
+                        livingAttacker.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.BLOOD_ROT_EFFECT, 100, 0, true, true, true));
 
-                        event.setNewDamage(newDamage);
-                    } else {
-                        DiscerningTheEldritch.LOGGER.debug("Effect");
-                        // Curse of Ra
-                        if (entity instanceof LivingEntity livingTarget)
-                        {
-                            livingTarget.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.MALIGNANT_BURN_EFFECT, 3*20, 0, true, true, true));
-                        }
-                    }
-
-                    if (livingAttacker instanceof Player player)
-                    {
-                        player.getCooldowns().addCooldown(ItemRegistries.MOURNING_STAR_AWAKENED.get(), 40);
+                        player.getCooldowns().addCooldown(ItemRegistries.DIARY_OF_DECAY.get(), DiaryOfDecaySpellbook.COOLDOWN);
                     }
                 }
             }
-        }*/
+        }
     }
 }
