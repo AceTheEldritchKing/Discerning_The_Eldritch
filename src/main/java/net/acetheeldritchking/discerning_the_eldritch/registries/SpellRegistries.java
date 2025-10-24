@@ -86,7 +86,7 @@ public class SpellRegistries {
 
     // Shadow Splitter - Send out a blade of shadow that homes in on the nearest target, cutting through them repeatedly
 
-    // Night's Edge - Conjure a group of shadow blades with down upon a selected area. Blades cause hit entities to take more Eldritch damage
+    // Knight's Edge - Conjure a group of shadow blades with down upon a selected area. Blades cause hit entities to take more Eldritch damage
 
 
     /***

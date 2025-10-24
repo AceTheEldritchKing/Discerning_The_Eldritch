@@ -597,6 +597,11 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
             destroyBlockDelay = 40;
         }*/
 
+        if (source == this.level().damageSources().drown())
+        {
+            return false;
+        }
+
         if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
         {
             if (isTransitionPhase())

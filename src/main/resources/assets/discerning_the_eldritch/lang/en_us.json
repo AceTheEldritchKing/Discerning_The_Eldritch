@@ -19,7 +19,9 @@
   "effect.discerning_the_eldritch.portent_effect": "Portentous",
   "effect.discerning_the_eldritch.portent_effect.description": "You feel the color around you fade.",
   "effect.discerning_the_eldritch.malignant_burn_potion_effect": "Malignant Burn",
-  "effect.discerning_the_eldritch.malignant_burn_potion_effect.description": "Reduces the victim's spell resistance.",
+  "effect.discerning_the_eldritch.malignant_burn_potion_effect.description": "Reduces the victim's spell resistance",
+  "effect.discerning_the_eldritch.accursed_potion_effect": "Accursed",
+  "effect.discerning_the_eldritch.accursed_potion_effect.description": "Reduces spell resistance, armor and attack damage",
 
 
   "curios.identifier.artifact": "Artifact",
@@ -28,6 +30,7 @@
 
   "item.discerning_the_eldritch.corrupted_cloth": "Corrupted Cloth",
   "item.discerning_the_eldritch.eldritch_soul_shard": "Eldritch Soulshard",
+  "item.discerning_the_eldritch.shard_of_malice": "Shard of Malice",
 
   "item.discerning_the_eldritch.black_book_spellbook": "Black Book",
   "item.discerning_the_eldritch.the_apocrypha_spellbook": "The Apocrypha",
@@ -73,7 +76,6 @@
   "item.discerning_the_eldritch.devourer": "Devourer",
   "item.discerning_the_eldritch.mourning_star": "Mourning Star",
   "item.discerning_the_eldritch.ancient_item.description": "An weapon forged long ago. It requires malicious energy to be reawakened.",
-  "item.discerning_the_eldritch.shard_of_malice": "Shard of Malice",
   "item.discerning_the_eldritch.cataclysm_awakened": "Awakened Cataclysm",
   "item.discerning_the_eldritch.cataclysm_awakened.desc": "Zealous - Entities with over 50% of their health are inflicted with Malignant Burn, summoning smaller blades to slice them on hit",
   "item.discerning_the_eldritch.devourer_awakened": "Awakened Devourer",

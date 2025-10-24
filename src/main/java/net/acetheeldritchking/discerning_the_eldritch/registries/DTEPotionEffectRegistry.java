@@ -32,7 +32,10 @@ public class DTEPotionEffectRegistry {
     // Malignant Burn Effect
     public static final DeferredHolder<MobEffect, MobEffect> MALIGNANT_BURN_EFFECT = MOB_EFFECTS.register("malignant_burn_potion_effect", MalignantBurnEffect::new);
 
-    // Ruin
+    // Ruin Effect
+
+    // Accursed Effect
+    public static final DeferredHolder<MobEffect, MobEffect> ACCURSED_EFFECT = MOB_EFFECTS.register("accursed_potion_effect", AccursedPotionEffect::new);
 
 
     public static void register(IEventBus eventBus)

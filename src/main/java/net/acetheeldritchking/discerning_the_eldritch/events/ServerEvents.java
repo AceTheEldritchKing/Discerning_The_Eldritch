@@ -401,13 +401,13 @@ public class ServerEvents {
                         // Curse of Ra
                         if (target instanceof LivingEntity livingTarget)
                         {
-                            livingTarget.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.MALIGNANT_BURN_EFFECT, 3*20, 0, true, true, true));
+                            livingTarget.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.ACCURSED_EFFECT, 5*20, 0, true, true, true));
                         }
                     }
 
                     if (livingAttacker instanceof Player player)
                     {
-                        player.getCooldowns().addCooldown(ItemRegistries.MOURNING_STAR_AWAKENED.get(), 40);
+                        player.getCooldowns().addCooldown(ItemRegistries.MOURNING_STAR_AWAKENED.get(), MourningStarMaceAwakenedItem.COOLDOWN);
                     }
                 }
             }
