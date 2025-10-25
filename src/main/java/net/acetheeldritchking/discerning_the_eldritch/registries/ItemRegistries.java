@@ -55,7 +55,7 @@ public class ItemRegistries {
 
     // The Apocrypha
     public static final DeferredHolder<Item, Item> THE_APOCRYPHA_SPELLBOOK  = ITEMS.register("the_apocrypha_spellbook", () ->
-            new SpellBook(13, ItemPropertiesHelper.equipment().rarity(DTERarities.APOTHIC_RARITY_PROXY.getValue()).fireResistant())
+            new SpellBook(13, ItemPropertiesHelper.equipment().rarity(DTERarities.APOTHIC_RARITY_PROXY.getValue()).fireResistant().stacksTo(1))
                     .withSpellbookAttributes
                             (
                                 new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, .20F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
@@ -192,6 +192,10 @@ public class ItemRegistries {
 
     // Shard of Malice
     public static final DeferredHolder<Item, Item> SHARD_OF_MALICE = ITEMS.register("shard_of_malice",
+            () -> new Item(ItemPropertiesHelper.material().stacksTo(16).rarity(ASRarities.ACCURSED_RARITY_PROXY.getValue())));
+
+    // Bottle of Liquid Malice
+    public static final DeferredHolder<Item, Item> BOTTLE_OF_LIQUID_MALICE = ITEMS.register("bottle_of_liquid_malice",
             () -> new Item(ItemPropertiesHelper.material().stacksTo(16).rarity(ASRarities.ACCURSED_RARITY_PROXY.getValue())));
 
 

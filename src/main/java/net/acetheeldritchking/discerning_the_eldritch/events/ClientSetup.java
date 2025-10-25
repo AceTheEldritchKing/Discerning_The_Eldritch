@@ -1,5 +1,7 @@
 package net.acetheeldritchking.discerning_the_eldritch.events;
 
+import io.redspace.ironsspellbooks.IronsSpellbooks;
+import io.redspace.ironsspellbooks.fluids.SimpleClientFluidType;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import io.redspace.ironsspellbooks.render.ClientStaffItemExtensions;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
@@ -19,6 +21,7 @@ import net.acetheeldritchking.discerning_the_eldritch.particle.GlacialShadowPart
 import net.acetheeldritchking.discerning_the_eldritch.particle.MalignantSoulParticle;
 import net.acetheeldritchking.discerning_the_eldritch.particle.RiftSliceParticle;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEFluidRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEParticleRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.minecraft.client.renderer.entity.NoopRenderer;
@@ -59,7 +62,11 @@ public class ClientSetup {
     @SubscribeEvent
     public static void registerClientExtensions(RegisterClientExtensionsEvent event)
     {
+        // Items
         event.registerItem(new ClientStaffItemExtensions(), ItemRegistries.getDTEItems().stream().filter(item -> item.get() instanceof StaffItem staffItem && !staffItem.hasCustomRendering()).map(holder -> (Item) holder.get()).toArray(Item[]::new));
+
+        // Fluids
+        event.registerFluidType(new SimpleClientFluidType(DiscerningTheEldritch.id("block/liquid_malice")), DTEFluidRegistry.LIQUID_MALICE_TYPE);
     }
 
     @SubscribeEvent

@@ -2,7 +2,7 @@
   "type": "irons_spellbooks:alchemist_cauldron_brew",
   "base_fluid": {
     "amount": 1000,
-    "id": "irons_spellbooks:blood"
+    "id": "discerning_the_eldritch:liquid_malice"
   },
   "byproduct": {
     "id": "discerning_the_eldritch:eldritch_soul_shard"

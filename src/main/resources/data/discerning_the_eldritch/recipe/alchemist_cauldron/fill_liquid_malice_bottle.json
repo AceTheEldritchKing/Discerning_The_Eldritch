@@ -1,0 +1,14 @@
+{
+  "type": "irons_spellbooks:alchemist_cauldron_fill",
+  "fluid": {
+    "amount": 250,
+    "id": "discerning_the_eldritch:liquid_malice"
+  },
+  "input": {
+    "item": "discerning_the_eldritch:bottle_of_liquid_malice"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:glass_bottle"
+  }
+}

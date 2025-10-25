@@ -72,6 +72,8 @@ public class DiscerningTheEldritch
         DTEAttachmentRegistry.register(modEventBus);
         // Particles
         DTEParticleRegistry.register(modEventBus);
+        // Fluids
+        DTEFluidRegistry.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, DTEConfig.SPEC);
     }

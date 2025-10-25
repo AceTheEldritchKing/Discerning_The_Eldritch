@@ -1,0 +1,16 @@
+{
+  "type": "irons_spellbooks:alchemist_cauldron_brew",
+  "base_fluid": {
+    "amount": 1000,
+    "id": "irons_spellbooks:blood"
+  },
+  "input": {
+    "item": "discerning_the_eldritch:shard_of_malice"
+  },
+  "results": [
+    {
+      "amount": 250,
+      "id": "discerning_the_eldritch:liquid_malice"
+    }
+  ]
+}

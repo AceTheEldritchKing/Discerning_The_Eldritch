@@ -30,6 +30,9 @@
   "curios.modifiers.artifact": "Artifact",
 
 
+  "fluid_type.discerning_the_eldritch.liquid_malice": "Liquid Malice",
+
+
   "item.discerning_the_eldritch.corrupted_cloth": "Corrupted Cloth",
   "item.discerning_the_eldritch.eldritch_soul_shard": "Eldritch Soulshard",
   "item.discerning_the_eldritch.shard_of_malice": "Shard of Malice",
@@ -85,6 +88,7 @@
   "item.discerning_the_eldritch.devourer_awakened.desc": "Ravenous - Entities on death are consumed. After consuming 5 entities, spew their innards on the next attack",
   "item.discerning_the_eldritch.mourning_star_awakened": "Awakened Mourning Star",
   "item.discerning_the_eldritch.mourning_star_awakened.desc": "Judgement - Entities with less than 50% of their health have a 50% chance of taking mortal damage or being cursed",
+  "item.discerning_the_eldritch.bottle_of_liquid_malice": "Vial of Liquid Malice",
 
   "item.discerning_the_eldritch.staff_of_eldritch": "Staff of Vehemence",
   "item.discerning_the_eldritch.staff_of_ascension": "Staff of Ascension",
