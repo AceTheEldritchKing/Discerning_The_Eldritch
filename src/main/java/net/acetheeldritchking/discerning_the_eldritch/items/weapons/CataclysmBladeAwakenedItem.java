@@ -26,7 +26,7 @@ public class CataclysmBladeAwakenedItem extends MagicSwordItem implements Unique
                 DTEWeaponTiers.CATACLYSM_AWAKENED,
                 ItemPropertiesHelper.equipment(1).fireResistant().rarity(ASRarities.ACCURSED_RARITY_PROXY.getValue()).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.CATACLYSM_AWAKENED)),
                 SpellDataRegistryHolder.of(
-                        new SpellDataRegistryHolder(SpellRegistries.BLADES_OF_RANCOR, 6)
+                        new SpellDataRegistryHolder(SpellRegistries.ZEALOUS_HARBINGER, 1)
                 )
         );
     }

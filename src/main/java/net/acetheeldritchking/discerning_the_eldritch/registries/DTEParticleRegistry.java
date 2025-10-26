@@ -39,6 +39,9 @@ public class DTEParticleRegistry {
     // Malignant Soul
     public static final Supplier<SimpleParticleType> MALIGNANT_SOUL = PARTICLE_TYPES.register("malignant_soul", () -> new SimpleParticleType(false));
 
+    // Malignant Flame
+    public static final Supplier<SimpleParticleType> MALIGNANT_FLAME = PARTICLE_TYPES.register("malignant_flame", () -> new SimpleParticleType(false));
+
 
     public static void register(IEventBus eventBus)
     {

@@ -10,6 +10,7 @@ import net.acetheeldritchking.discerning_the_eldritch.spells.ice.CrystallineCarv
 import net.acetheeldritchking.discerning_the_eldritch.spells.ice.GlacialEdgeSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.ritual.BladesOfRancorSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.ritual.CallAscendedOneSpell;
+import net.acetheeldritchking.discerning_the_eldritch.spells.ritual.ZealousHarbingerSpell;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -155,7 +156,8 @@ public class SpellRegistries {
     // Blades of Rancor - Summon a set of blades that home in where ever the caster is looking
     public static final Supplier<AbstractSpell> BLADES_OF_RANCOR = registerSpell(new BladesOfRancorSpell());
 
-    // Zealous Harbinger - Summon smaller variants of the Cataclysm blade around the target which impales
+    // Zealous Harbinger - Summon smaller variants of the Cataclysm blade in front of the caster which impales the target
+    public static final Supplier<AbstractSpell> ZEALOUS_HARBINGER = registerSpell(new ZealousHarbingerSpell());
 
     // Ravenous Revenant - Unleash a mighty roar, nearby entities are marked as Prey. Hitting Prey entities causes a ravenous maw to lash at them
 

@@ -14,6 +14,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerE
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sightless_maw.SightlessMawEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.blade_of_rancor.BladeOfRancorProjectile;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeSmallProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.crystal_carve.CrystalCarveEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdge;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_strike.EsotericStrike;
@@ -174,7 +175,7 @@ public class DTEEntityRegistry {
 
     // Blade of Rancor
     public static final DeferredHolder<EntityType<?>, EntityType<BladeOfRancorProjectile>> BLADE_OF_RANCOR =
-            ENTITIES.register("blade_of_rancor", () -> EntityType.Builder.<BladeOfRancorProjectile>of(BladeOfRancorProjectile::new, MobCategory.MONSTER)
+            ENTITIES.register("blade_of_rancor", () -> EntityType.Builder.<BladeOfRancorProjectile>of(BladeOfRancorProjectile::new, MobCategory.MISC)
                     .sized(1f, 1f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "blade_of_rancor").toString())
@@ -186,6 +187,14 @@ public class DTEEntityRegistry {
                     .sized(1f, 1f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "gore_bile_aoe").toString())
+            );
+
+    // Calamity Blade Small
+    public static final DeferredHolder<EntityType<?>, EntityType<CataclysmBladeSmallProjectile>> CATACLYSM_BLADE_SMALL =
+            ENTITIES.register("cataclysm_blade_small", () -> EntityType.Builder.<CataclysmBladeSmallProjectile>of(CataclysmBladeSmallProjectile::new, MobCategory.MISC)
+                    .sized(2f, 2f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "cataclysm_blade_small").toString())
             );
 
 

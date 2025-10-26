@@ -203,5 +203,15 @@
         "sounds": [
             "discerning_the_eldritch:devourer_wretch"
         ]
+    },
+    "dark_magic_sword_cast": {
+        "sounds": [
+            "discerning_the_eldritch:dark_magic_sword_cast"
+        ]
+    },
+    "dark_magic_charge_1": {
+        "sounds": [
+            "discerning_the_eldritch:dark_magic_charge_1"
+        ]
     }
 }

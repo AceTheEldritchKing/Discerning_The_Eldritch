@@ -287,7 +287,8 @@ public class ServerEvents {
                     goreBileAoE.setCircular();
                     livingEntity.level().addFreshEntity(goreBileAoE);
 
-                    target.playSound(DTESoundRegistry.DEVOURER_WRETCH.get(), 1, 1);
+                    //target.playSound(DTESoundRegistry.DEVOURER_WRETCH.get(), 1, 1);
+                    livingEntity.level().playLocalSound(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), DTESoundRegistry.DEVOURER_WRETCH.get(), SoundSource.PLAYERS, 1, 1, false);
 
                     // Reset attachment
                     livingEntity.setData(DEVOURED_ENTITIES, 0);

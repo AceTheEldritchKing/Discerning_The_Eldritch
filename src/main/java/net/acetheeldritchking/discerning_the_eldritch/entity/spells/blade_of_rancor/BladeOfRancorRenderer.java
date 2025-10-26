@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer;
+import software.bernie.geckolib.util.Color;
 
 public class BladeOfRancorRenderer extends GeoEntityRenderer<BladeOfRancorProjectile> {
     public BladeOfRancorRenderer(EntityRendererProvider.Context renderManager) {
@@ -34,7 +35,7 @@ public class BladeOfRancorRenderer extends GeoEntityRenderer<BladeOfRancorProjec
     }
 
     @Override
-    public @Nullable RenderType getRenderType(BladeOfRancorProjectile animatable, ResourceLocation texture, @Nullable MultiBufferSource bufferSource, float partialTick) {
-        return RenderType.energySwirl(texture, 0, 0);
+    public Color getRenderColor(BladeOfRancorProjectile animatable, float partialTick, int packedLight) {
+        return Color.LIGHT_GRAY;
     }
 }

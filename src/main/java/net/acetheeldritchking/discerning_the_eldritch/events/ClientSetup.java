@@ -11,15 +11,13 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caste
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothModel;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.mobs.*;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.blade_of_rancor.BladeOfRancorRenderer;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeSmallRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.crystal_carve.CrystalCarveRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdgeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_strike.EsotericStrikeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdgeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.razor_blade.RazorBladeRenderer;
-import net.acetheeldritchking.discerning_the_eldritch.particle.EsotericSparksParticle;
-import net.acetheeldritchking.discerning_the_eldritch.particle.GlacialShadowParticle;
-import net.acetheeldritchking.discerning_the_eldritch.particle.MalignantSoulParticle;
-import net.acetheeldritchking.discerning_the_eldritch.particle.RiftSliceParticle;
+import net.acetheeldritchking.discerning_the_eldritch.particle.*;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEFluidRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEParticleRegistry;
@@ -57,6 +55,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.BLOOD_CULTIST_CAPTAIN.get(), BloodCultistCaptainRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.BLADE_OF_RANCOR.get(), BladeOfRancorRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.GORE_BILE_AOE.get(), NoopRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.CATACLYSM_BLADE_SMALL.get(), CataclysmBladeSmallRenderer::new);
     }
 
     @SubscribeEvent
@@ -76,5 +75,6 @@ public class ClientSetup {
         event.registerSpriteSet(DTEParticleRegistry.ESOTERIC_SPARKS_PARTICLE.get(), EsotericSparksParticle.Provider::new);
         event.registerSpriteSet(DTEParticleRegistry.RIFT_SLICE_PARTICLE.get(), RiftSliceParticle.Provider::new);
         event.registerSpriteSet(DTEParticleRegistry.MALIGNANT_SOUL.get(), MalignantSoulParticle.Provider::new);
+        event.registerSpriteSet(DTEParticleRegistry.MALIGNANT_FLAME.get(), MalignantFlameParticle.Provider::new);
     }
 }

@@ -25,6 +25,12 @@ public class AccursedPotionEffect extends MobEffect {
             ServerLevel world = (ServerLevel) livingEntity.level();
 
             world.sendParticles(DTEParticleHelper.MALIGNANT_SOUL, livingEntity.getX(), livingEntity.getY(0.5), livingEntity.getZ(),
+                    1,
+                    world.random.nextGaussian() * 0.007D,
+                    world.random.nextGaussian() * 0.007D,
+                    world.random.nextGaussian() * 0.007D,
+                    0.02D);
+            world.sendParticles(DTEParticleHelper.MALIGNANT_FLAME, livingEntity.getX(), livingEntity.getY(0.5), livingEntity.getZ(),
                     2,
                     world.random.nextGaussian() * 0.007D,
                     world.random.nextGaussian() * 0.007D,
