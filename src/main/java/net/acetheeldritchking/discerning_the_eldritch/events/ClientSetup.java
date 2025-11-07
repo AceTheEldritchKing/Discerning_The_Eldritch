@@ -11,6 +11,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caste
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothModel;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.mobs.*;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.blade_of_rancor.BladeOfRancorRenderer;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeBigRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeSmallRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.crystal_carve.CrystalCarveRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdgeRenderer;
@@ -56,6 +57,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.BLADE_OF_RANCOR.get(), BladeOfRancorRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.GORE_BILE_AOE.get(), NoopRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.CATACLYSM_BLADE_SMALL.get(), CataclysmBladeSmallRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.CATACLYSM_BLADE_BIG.get(), CataclysmBladeBigRenderer::new);
     }
 
     @SubscribeEvent

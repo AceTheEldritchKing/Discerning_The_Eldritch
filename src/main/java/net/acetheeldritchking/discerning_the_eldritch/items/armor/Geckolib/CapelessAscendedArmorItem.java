@@ -1,10 +1,8 @@
 package net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-import io.redspace.ironsspellbooks.entity.armor.GenericCustomArmorRenderer;
-import io.redspace.ironsspellbooks.item.armor.IArmorCapeProvider;
+import net.acetheeldritchking.aces_spell_utils.entity.render.armor.EmissiveGenericCustomArmorRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
-import net.acetheeldritchking.discerning_the_eldritch.entity.armor.Geckolib.AscendedArmorModel;
 import net.acetheeldritchking.discerning_the_eldritch.entity.armor.Geckolib.CapelessAscendedArmorModel;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.DTEArmorMaterialRegistry;
 import net.minecraft.resources.ResourceLocation;
@@ -17,9 +15,13 @@ public class CapelessAscendedArmorItem extends ImbuableGeckolibDTEArmorItem {
         super(DTEArmorMaterialRegistry.ELDRITCH_WARLOCK, type, properties, schoolAttributesWithResistance(AttributeRegistry.ELDRITCH_SPELL_POWER, AttributeRegistry.MANA_REGEN, 150, 0.10F, 0.05F, 0.05F));
     }
 
+    private static final ResourceLocation LAYER = ResourceLocation.fromNamespaceAndPath(
+            DiscerningTheEldritch.MOD_ID,
+            "textures/models/armor/geckolib/ascended_armor_glowmask.png");
+
     @Override
     @OnlyIn(Dist.CLIENT)
     public GeoArmorRenderer<?> supplyRenderer() {
-        return new GenericCustomArmorRenderer<>(new CapelessAscendedArmorModel());
+        return new EmissiveGenericCustomArmorRenderer<>(new CapelessAscendedArmorModel(), LAYER);
     }
 }

@@ -34,7 +34,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class EsotericEdge extends AbstractMagicProjectile implements AntiMagicSusceptible {
-    private final List<Entity> entities = new ArrayList<>();;
+    private final List<Entity> entities = new ArrayList<>();
     private int lifetimeInTicks = 20 * 15;
 
     public EsotericEdge(EntityType<? extends Projectile> entityType, Level level) {

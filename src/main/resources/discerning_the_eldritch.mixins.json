@@ -1,13 +1,12 @@
 {
   "required": true,
   "package": "net.acetheeldritchking.discerning_the_eldritch.mixins",
-  "refmap": "cataclysm_spellbooks.refmap.json",
+  "refmap": "discerning_the_eldritch.refmap.json",
   "plugin": "net.acetheeldritchking.discerning_the_eldritch.mixins.MixinPlugin",
-  "compatibilityLevel": "JAVA_17",
+  "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "entity.CultistEntityMixin"
-  ],
-  "client": [
+    "entity.CultistEntityMixin",
+    "recipes.RecipeCraftingHolderMixin"
   ],
   "injectors": {
     "defaultRequire": 1

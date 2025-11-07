@@ -543,7 +543,9 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 finalPhaseGoals();
 
                 this.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(1.5F);
-                this.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(1.55F);
+                this.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(3.5F);
+                this.getAttributes().getInstance(Attributes.ARMOR_TOUGHNESS).setBaseValue(55);
+                this.getAttributes().getInstance(Attributes.ARMOR).setBaseValue(65);
 
                 var player = level().getNearestPlayer(this, 16);
                 if (player != null)

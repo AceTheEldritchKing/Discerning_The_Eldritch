@@ -14,6 +14,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerE
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sightless_maw.SightlessMawEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.blade_of_rancor.BladeOfRancorProjectile;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeBigProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeSmallProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.crystal_carve.CrystalCarveEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdge;
@@ -195,6 +196,14 @@ public class DTEEntityRegistry {
                     .sized(2f, 2f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "cataclysm_blade_small").toString())
+            );
+
+    // Calamity Blade Big
+    public static final DeferredHolder<EntityType<?>, EntityType<CataclysmBladeBigProjectile>> CATACLYSM_BLADE_BIG =
+            ENTITIES.register("cataclysm_blade_big", () -> EntityType.Builder.<CataclysmBladeBigProjectile>of(CataclysmBladeBigProjectile::new, MobCategory.MISC)
+                    .sized(2f, 2f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "cataclysm_blade_big").toString())
             );
 
 

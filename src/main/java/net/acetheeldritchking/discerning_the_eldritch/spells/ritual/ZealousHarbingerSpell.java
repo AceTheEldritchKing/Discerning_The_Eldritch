@@ -8,6 +8,7 @@ import io.redspace.ironsspellbooks.capabilities.magic.MultiTargetEntityCastData;
 import io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData;
 import io.redspace.ironsspellbooks.damage.SpellDamageSource;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeBigProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeSmallProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESchoolRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
@@ -104,7 +105,7 @@ public class ZealousHarbingerSpell extends AbstractRitualSpell {
                 {
                     //Vec3 origin = targetEntity.getEyePosition().add(targetEntity.getForward().normalize().scale(1.2F)).subtract(0, 0.15,0);
                     //cataclysmBlade.setPos(origin.subtract(0, cataclysmBlade.getBbHeight(), 0));
-                    CataclysmBladeSmallProjectile cataclysmBlade = new CataclysmBladeSmallProjectile(level, entity);
+                    CataclysmBladeBigProjectile cataclysmBlade = new CataclysmBladeBigProjectile(level, entity);
 
                     cataclysmBlade.setPos(spawnPos.x, spawnPos.y, spawnPos.z + i);
                     cataclysmBlade.setPos(spawnPos.x, spawnPos.y, spawnPos.z - i);
@@ -112,7 +113,7 @@ public class ZealousHarbingerSpell extends AbstractRitualSpell {
                     cataclysmBlade.shoot(vec3.scale(0.5F), 0.4F);
                     cataclysmBlade.setDamage(getDamage(spellLevel, entity));
                     cataclysmBlade.setHomingTarget(targetEntity);
-                    cataclysmBlade.setNoGravity(true);
+                    //cataclysmBlade.setNoGravity(true);
 
                     level.addFreshEntity(cataclysmBlade);
                 }

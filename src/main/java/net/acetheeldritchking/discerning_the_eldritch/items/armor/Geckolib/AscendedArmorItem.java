@@ -1,8 +1,8 @@
 package net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-import io.redspace.ironsspellbooks.entity.armor.GenericCustomArmorRenderer;
 import io.redspace.ironsspellbooks.item.armor.IArmorCapeProvider;
+import net.acetheeldritchking.aces_spell_utils.entity.render.armor.EmissiveGenericCustomArmorRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.armor.Geckolib.AscendedArmorModel;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.DTEArmorMaterialRegistry;
@@ -21,9 +21,13 @@ public class AscendedArmorItem extends ImbuableGeckolibDTEArmorItem implements I
         return ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "textures/models/armor/geckolib/ascended_armor_cape.png");
     }
 
+    private static final ResourceLocation LAYER = ResourceLocation.fromNamespaceAndPath(
+            DiscerningTheEldritch.MOD_ID,
+            "textures/models/armor/geckolib/ascended_armor_glowmask.png");
+
     @Override
     @OnlyIn(Dist.CLIENT)
     public GeoArmorRenderer<?> supplyRenderer() {
-        return new GenericCustomArmorRenderer<>(new AscendedArmorModel());
+        return new EmissiveGenericCustomArmorRenderer<>(new AscendedArmorModel(), LAYER);
     }
 }
