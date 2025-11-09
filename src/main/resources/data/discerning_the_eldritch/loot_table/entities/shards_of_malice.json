@@ -6,14 +6,14 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "discerning_the_eldritch:amulet_of_sculk_treasure",
+          "name": "discerning_the_eldritch:shard_of_malice",
           "weight": 2
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:random_chance",
-          "chance": 0.25
+          "chance": 0.65
         }
       ],
       "rolls": 1.0

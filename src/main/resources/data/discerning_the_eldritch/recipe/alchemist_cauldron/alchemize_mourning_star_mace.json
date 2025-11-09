@@ -1,0 +1,14 @@
+{
+  "type": "irons_spellbooks:alchemist_cauldron_brew",
+  "base_fluid": {
+    "amount": 1000,
+    "id": "discerning_the_eldritch:liquid_malice"
+  },
+  "byproduct": {
+    "id": "discerning_the_eldritch:mourning_star_awakened"
+  },
+  "input": {
+    "item": "discerning_the_eldritch:mourning_star"
+  },
+  "results": []
+}

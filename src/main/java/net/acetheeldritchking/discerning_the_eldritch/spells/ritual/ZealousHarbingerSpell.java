@@ -9,7 +9,6 @@ import io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData;
 import io.redspace.ironsspellbooks.damage.SpellDamageSource;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeBigProjectile;
-import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeSmallProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESchoolRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.minecraft.network.chat.Component;
