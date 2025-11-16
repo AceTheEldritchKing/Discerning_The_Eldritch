@@ -3,6 +3,8 @@ package net.acetheeldritchking.discerning_the_eldritch.registries;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.item.FurledMapItem;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.compat.CompatManager;
+import net.acetheeldritchking.discerning_the_eldritch.compat.pastel.PastelCompatItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -96,6 +98,13 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.CRUSADER_SPAWN_EGG.get());
                         output.accept(ItemRegistries.ASCENDED_CULTIST_SPAWN_EGG.get());
                         output.accept(ItemRegistries.BLOOD_CULTIST_CAPTAIN_SPAWN_EGG.get());
+
+                        // Compat
+                        if (CompatManager.isPastelLoaded())
+                        {
+                            // Weapons
+                            output.accept(PastelCompatItems.DREAM_REAVER_YMIR.get());
+                        }
                     }).build());
 
     public static void register(IEventBus eventBus)

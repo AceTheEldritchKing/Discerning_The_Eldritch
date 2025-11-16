@@ -7,6 +7,7 @@ import mod.azure.azurelib.common.render.armor.AzArmorRendererRegistry;
 import mod.azure.azurelib.common.render.item.AzItemRendererRegistry;
 import net.acetheeldritchking.aces_spell_utils.entity.render.items.SheathCurioRenderer;
 import net.acetheeldritchking.aces_spell_utils.items.curios.SheathCurioItem;
+import net.acetheeldritchking.discerning_the_eldritch.compat.CompatRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.CrimsonStagArmorRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockArmorRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockHelmetRenderer;
@@ -74,6 +75,9 @@ public class DiscerningTheEldritch
         DTEParticleRegistry.register(modEventBus);
         // Fluids
         DTEFluidRegistry.register(modEventBus);
+
+        // Compat
+        CompatRegistry.registerPastelItems(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, DTEConfig.SPEC);
     }

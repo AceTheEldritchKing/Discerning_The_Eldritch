@@ -146,6 +146,13 @@ repositories {
     maven { url = "https://maven.blamejared.com" }
     maven { url = "https://maven.kosmx.dev/" }
     maven { url = 'https://maven.azuredoom.com/mods'}
+
+    maven {
+        url "https://dl.cloudsmith.io/public/klikli-dev/mods/maven/"
+        content {
+            includeGroup "com.klikli_dev"
+        }
+    }
 }
 
 dependencies {
@@ -178,10 +185,11 @@ dependencies {
     localRuntime "curse.maven:cloth-config-348521:5623420"
 
     // JEI ********************************************************************************************************
-    compileOnly "mezz.jei:jei-${jei_mc_version}-common-api:${jei_version}"
-    compileOnly "mezz.jei:jei-${jei_mc_version}-neoforge-api:${jei_version}"
-    runtimeOnly "mezz.jei:jei-${jei_mc_version}-neoforge:${jei_version}"
+    //compileOnly "mezz.jei:jei-${jei_mc_version}-common-api:${jei_version}"
+    //compileOnly "mezz.jei:jei-${jei_mc_version}-neoforge-api:${jei_version}"
+    //runtimeOnly "mezz.jei:jei-${jei_mc_version}-neoforge:${jei_version}"
     //localRuntime "curse.maven:just-enough-effect-descriptions-jeed-532286:4599099")
+    implementation "curse.maven:jei-238222:6756166"
 
     // CURIOS *****************************************************************************************************
     implementation "curse.maven:curios-309927:6274154"
@@ -218,6 +226,17 @@ dependencies {
     //todo: 1.21: update these mods
 //    localRuntime "curse.maven:tslatentitystatus-tes-830420:4746241"
     //localRuntime "curse.maven:mouse-tweaks-60089:5637846"
+
+    // COMPAT //
+
+    // Pastel
+    localRuntime "curse.maven:pastel-1264556:6847961"
+    compileOnly "curse.maven:pastel-1264556:6847961"
+    localRuntime "curse.maven:databank-1181408:7007287"
+    compileOnly "curse.maven:databank-1181408:7007287"
+    implementation "curse.maven:modonomicon-538392:7086032"
+    localRuntime "curse.maven:pasteljei-1297526:6892907"
+    compileOnly "curse.maven:pasteljei-1297526:6892907"
 
     // JSON ******************************************************************************************************
     implementation "com.google.code.gson:gson:${gson_version}"

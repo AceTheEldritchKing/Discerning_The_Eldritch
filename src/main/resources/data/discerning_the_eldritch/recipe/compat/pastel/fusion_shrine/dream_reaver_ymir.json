@@ -1,0 +1,50 @@
+{
+  "type": "pastel:fusion_shrine",
+  "time": 1200,
+  "experience": 20.0,
+  "fluid": {
+    "fluid": "discerning_the_eldritch:liquid_malice"
+  },
+  "copy_components": true,
+  "ingredients": [
+    "discerning_the_eldritch:ymir",
+    {
+      "item": "pastel:bedrock_dust",
+      "count": 4
+    },
+    {
+      "item": "pastel:malachite_ultra_greatsword",
+      "count": 1
+    },
+    {
+      "item": "pastel:bedrock_sword",
+      "count": 1
+    },
+    {
+      "item": "irons_spellbooks:mithril_ingot",
+      "count": 2
+    },
+    {
+      "item": "pastel:pure_bloodstone",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "discerning_the_eldritch:dream_reaver_ymir",
+    "components": {
+      "enchantments": {
+        "minecraft:sharpness": 7
+      }
+    }
+  },
+  "required_advancement": "pastel:unlocks/malachite/malachite_tools",
+  "start_crafting_effect": "nothing",
+  "during_crafting_effects": [],
+  "finish_crafting_effect": "single_visual_explosion_on_shrine",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "pastel"
+    }
+  ]
+}
