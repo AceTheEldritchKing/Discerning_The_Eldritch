@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.item.SpellBook;
+import io.redspace.ironsspellbooks.item.SpellSlotUpgradeItem;
 import io.redspace.ironsspellbooks.item.UpgradeOrbItem;
 import io.redspace.ironsspellbooks.item.curios.CurioBaseItem;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
@@ -197,6 +198,10 @@ public class ItemRegistries {
     // Bottle of Liquid Malice
     public static final DeferredHolder<Item, Item> BOTTLE_OF_LIQUID_MALICE = ITEMS.register("bottle_of_liquid_malice",
             () -> new Item(ItemPropertiesHelper.material().stacksTo(16).rarity(ASRarities.ACCURSED_RARITY_PROXY.getValue())));
+
+    // Forbidden Spell Improvement
+    public static final DeferredHolder<Item, Item> FORBIDDEN_SPELL_IMPROVEMENT = ITEMS.register("forbidden_spell_improvement",
+            () -> new SpellSlotUpgradeItem(15));
 
 
     /***
