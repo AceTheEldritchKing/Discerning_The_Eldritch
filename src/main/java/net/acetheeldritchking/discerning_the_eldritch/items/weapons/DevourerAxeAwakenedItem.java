@@ -9,8 +9,10 @@ import io.redspace.ironsspellbooks.item.UniqueItem;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import io.redspace.ironsspellbooks.util.MinecraftInstanceHelper;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -33,12 +35,21 @@ public class DevourerAxeAwakenedItem extends MagicSwordItem implements UniqueIte
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-        tooltipComponents.add(
-                Component.translatable(
-                        "tooltip.irons_spellbooks.passive_ability",
-                        Component.literal(Utils.timeFromTicks(Utils.applyCooldownReduction(COOLDOWN, MinecraftInstanceHelper.getPlayer()), 1)).withStyle(ChatFormatting.LIGHT_PURPLE)
-                ).withStyle(ChatFormatting.DARK_PURPLE)
-        );
-        tooltipComponents.add(Component.literal(" ").append(Component.translatable(this.getDescriptionId() + ".desc")).withStyle(ChatFormatting.YELLOW));
+        if (Screen.hasShiftDown())
+        {
+            tooltipComponents.add(
+                    Component.translatable(
+                            "tooltip.irons_spellbooks.passive_ability",
+                            Component.literal(Utils.timeFromTicks(COOLDOWN, 1)).withStyle(ChatFormatting.LIGHT_PURPLE)
+                    ).withStyle(ChatFormatting.DARK_PURPLE)
+            );
+            tooltipComponents.add(Component.literal(" ").append(Component.translatable(this.getDescriptionId() + ".desc")).withStyle(ChatFormatting.YELLOW));
+            tooltipComponents.add(Component.translatable(this.getDescriptionId() + ".desc2").append(String.valueOf(MinecraftInstanceHelper.getPlayer().getData(DTEAttachmentRegistry.DEVOURED_ENTITIES))).
+                    withStyle(ChatFormatting.DARK_PURPLE).
+                    withStyle(ChatFormatting.ITALIC));
+        } else
+        {
+            tooltipComponents.add(Component.translatable("item.discerning_the_eldritch.more_details").withStyle(ChatFormatting.GRAY));
+        }
     }
 }

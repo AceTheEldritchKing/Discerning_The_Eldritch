@@ -430,10 +430,10 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
                 clientDiggingParticles(this);
             }
             // Putting this in a separate place
-            if (!this.level().isClientSide() && riseAnimationTime == 130)
+            /*if (!this.level().isClientSide() && riseAnimationTime == 130)
             {
                 spawnVisualEarthquake();
-            }
+            }*/
             if (riseAnimationTime >= 130)
             {
                 this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.WARDEN_EMERGE, this.getSoundSource(), 5.0F, this.getVoicePitch(), false);
