@@ -33,4 +33,14 @@ public class YmirSwordItem extends MagicSwordItem implements UniqueItem {
                 withStyle(ChatFormatting.DARK_RED).
                 withStyle(ChatFormatting.ITALIC));
     }
+
+    /*
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+        tooltipComponents.add(Component.translatable("item.discerning_the_eldritch.ymir.description").append(String.valueOf(MinecraftInstanceHelper.getPlayer().getAttributeValue(AttributeRegistry.ELDRITCH_SPELL_POWER))).
+                withStyle(ChatFormatting.DARK_RED).
+                withStyle(ChatFormatting.ITALIC));
+    }
+     */
 }
