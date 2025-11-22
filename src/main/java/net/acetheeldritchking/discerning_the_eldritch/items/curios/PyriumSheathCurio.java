@@ -6,7 +6,7 @@ import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.render.CinderousRarity;
 import net.acetheeldritchking.aces_spell_utils.items.curios.SheathCurioItem;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
-import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -22,7 +22,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 @EventBusSubscriber
 public class PyriumSheathCurio extends SheathCurioItem {
-    public static int COOLDOWN = DTEConfig.pyriumSheathCooldown * 20;
+    public static int COOLDOWN = DTEServerConfig.pyriumSheathCooldown * 20;
 
     public PyriumSheathCurio() {
         super(new Properties().stacksTo(1).rarity(CinderousRarity.CINDEROUS_RARITY_PROXY.getValue()).fireResistant(), null);
@@ -30,7 +30,7 @@ public class PyriumSheathCurio extends SheathCurioItem {
 
     @Override
     protected int getCooldownTicks() {
-        return DTEConfig.pyriumSheathCooldown * 20;
+        return DTEServerConfig.pyriumSheathCooldown * 20;
     }
 
     @SubscribeEvent

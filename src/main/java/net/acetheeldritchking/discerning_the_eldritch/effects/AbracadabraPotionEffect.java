@@ -1,10 +1,8 @@
 package net.acetheeldritchking.discerning_the_eldritch.effects;
 
 import io.redspace.ironsspellbooks.effect.CustomDescriptionMobEffect;
-import io.redspace.ironsspellbooks.util.ModTags;
-import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
-import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -35,7 +33,7 @@ public class AbracadabraPotionEffect extends CustomDescriptionMobEffect {
 
     public static float getCapAmount(int level)
     {
-        return (float) DTEConfig.abracadabraDamageCap / level;
+        return (float) DTEServerConfig.abracadabraDamageCap / level;
     }
 
     public static float getDamageCapAmount(int level, float damage)
@@ -46,7 +44,7 @@ public class AbracadabraPotionEffect extends CustomDescriptionMobEffect {
     @SubscribeEvent
     public static void damageCapEvent(LivingIncomingDamageEvent event)
     {
-        if (DTEConfig.enableDamageCap)
+        if (DTEServerConfig.enableDamageCap)
         {
             var entity = event.getEntity();
             var source = event.getSource();
@@ -74,7 +72,7 @@ public class AbracadabraPotionEffect extends CustomDescriptionMobEffect {
     @SubscribeEvent
     public static void preventHexes(MobEffectEvent.Applicable event)
     {
-        if (DTEConfig.enableHexPrevention)
+        if (DTEServerConfig.enableHexPrevention)
         {
             LivingEntity entity = event.getEntity();
             var hexEffect = event.getEffectInstance().getEffect();

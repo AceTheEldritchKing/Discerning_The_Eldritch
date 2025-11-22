@@ -9,16 +9,16 @@ import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
-import net.acetheeldritchking.discerning_the_eldritch.entity.spells.blade_of_rancor.BladeOfRancorProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeSmallProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.gore_bile.GoreBileAoE;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.DiaryOfDecaySpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.*;
+import net.acetheeldritchking.discerning_the_eldritch.networking.DTEAttachmentSync;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESchoolRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
-import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
@@ -79,7 +79,7 @@ public class ServerEvents {
         }
 
         // Insanity system
-        if (DTEConfig.enableInsanitySystem)
+        if (DTEServerConfig.enableInsanitySystem)
         {
             //System.out.println("System enabled?");
 
@@ -90,15 +90,15 @@ public class ServerEvents {
             {
                 //System.out.println("Is Eldritch?");
 
-                if (entity.getData(INSANITY_METER) <= (DTEConfig.maxInsanityValue - 1))
+                if (entity.getData(INSANITY_METER) <= (DTEServerConfig.maxInsanityValue - 1))
                 {
                     //System.out.println("Increment?");
                     entity.setData(INSANITY_METER, entity.getData(INSANITY_METER) + 1);
 
                     DiscerningTheEldritch.LOGGER.debug("Meter: " + entity.getData(INSANITY_METER));
-                    DiscerningTheEldritch.LOGGER.debug("Max: " + DTEConfig.maxInsanityValue);
+                    DiscerningTheEldritch.LOGGER.debug("Max: " + DTEServerConfig.maxInsanityValue);
 
-                    if (entity.getData(INSANITY_METER) == DTEConfig.maxInsanityValue)
+                    if (entity.getData(INSANITY_METER) == DTEServerConfig.maxInsanityValue)
                     {
                         // We're doing new logic now, having this in a variable instead
                         entity.setData(IS_INSANE, true);
@@ -214,7 +214,7 @@ public class ServerEvents {
             }
 
             // Mend Flesh
-            if (livingEntity.hasEffect(DTEPotionEffectRegistry.MEND_FLESH_EFFECT) && DTEConfig.mendFleshLifesteal)
+            if (livingEntity.hasEffect(DTEPotionEffectRegistry.MEND_FLESH_EFFECT) && DTEServerConfig.mendFleshLifesteal)
             {
                 livingEntity.heal(1.5F);
 
@@ -293,6 +293,7 @@ public class ServerEvents {
 
                     // Reset attachment
                     livingEntity.setData(DEVOURED_ENTITIES, 0);
+                    //DTEAttachmentSync.resetDevour();
 
                     // Only go on CD if we reach max stacks
                     if (livingEntity instanceof Player player)
@@ -319,9 +320,10 @@ public class ServerEvents {
             if (mainhandItem.getItem() instanceof DevourerAxeAwakenedItem)
             {
                 attacker.getData(DEVOURED_ENTITIES);
-                attacker.setData(DEVOURED_ENTITIES, attacker.getData(DEVOURED_ENTITIES) + 1);
+                //attacker.setData(DEVOURED_ENTITIES, attacker.getData(DEVOURED_ENTITIES) + 1);
+                DTEAttachmentSync.setDevour(1);
 
-                //DiscerningTheEldritch.LOGGER.debug("Devour stacks: " + attacker.getData(DEVOURED_ENTITIES));
+                DiscerningTheEldritch.LOGGER.debug("Devour stacks: " + attacker.getData(DEVOURED_ENTITIES));
             }
         }
     }
@@ -437,7 +439,7 @@ public class ServerEvents {
         LivingEntity attacker = event.getEntity();
 
         // Mend Flesh
-        if (attacker.hasEffect(DTEPotionEffectRegistry.MEND_FLESH_EFFECT) && DTEConfig.mendFleshEXPGain)
+        if (attacker.hasEffect(DTEPotionEffectRegistry.MEND_FLESH_EFFECT) && DTEServerConfig.mendFleshEXPGain)
         {
             float experienceGained = (float) event.getAmount() / 2;
 
@@ -467,10 +469,10 @@ public class ServerEvents {
             if (entity instanceof LivingEntity livingEntity)
             {
                 //Ascended One
-                if (livingEntity instanceof AscendedOneBoss ascendedOneBoss && DTEConfig.enableAscendedOneDamageCap)
+                if (livingEntity instanceof AscendedOneBoss ascendedOneBoss && DTEServerConfig.enableAscendedOneDamageCap)
                 {
                     float baseDamage = event.getOriginalDamage();
-                    float newDamage = ASUtils.basicDamageCap(baseDamage, 0, DTEConfig.ascendedOneDamageCap);
+                    float newDamage = ASUtils.basicDamageCap(baseDamage, 0, DTEServerConfig.ascendedOneDamageCap);
                     event.setNewDamage(newDamage);
                     //DiscerningTheEldritch.LOGGER.debug("Old Damage: " + event.getOriginalDamage());
                     //DiscerningTheEldritch.LOGGER.debug("New Damage: " + event.getNewDamage());

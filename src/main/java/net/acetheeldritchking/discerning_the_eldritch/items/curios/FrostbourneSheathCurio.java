@@ -3,16 +3,14 @@ package net.acetheeldritchking.discerning_the_eldritch.items.curios;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-import io.redspace.ironsspellbooks.entity.spells.ice_tomb.IceTombEntity;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
-import io.redspace.ironsspellbooks.render.CinderousRarity;
 import net.acetheeldritchking.aces_spell_utils.items.curios.SheathCurioItem;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
-import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -26,13 +24,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import top.theillusivec4.curios.api.SlotContext;
 
 @EventBusSubscriber
 public class FrostbourneSheathCurio extends SheathCurioItem {
-    public static int COOLDOWN = DTEConfig.frostbourneSheathCooldown * 20;
+    public static int COOLDOWN = DTEServerConfig.frostbourneSheathCooldown * 20;
 
     public FrostbourneSheathCurio() {
         super(new Properties().stacksTo(1).rarity(ASRarities.GLACIAL_RARITY_PROXY.getValue()).fireResistant(), null);
@@ -40,7 +37,7 @@ public class FrostbourneSheathCurio extends SheathCurioItem {
 
     @Override
     protected int getCooldownTicks() {
-        return DTEConfig.frostbourneSheathCooldown * 20;
+        return DTEServerConfig.frostbourneSheathCooldown * 20;
     }
 
     @SubscribeEvent

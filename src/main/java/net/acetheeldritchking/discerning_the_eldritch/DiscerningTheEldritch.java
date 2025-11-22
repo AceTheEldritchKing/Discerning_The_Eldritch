@@ -16,7 +16,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.render.items.*;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.DTEArmorMaterialRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.loot.DTELootModifiers;
 import net.acetheeldritchking.discerning_the_eldritch.registries.*;
-import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -79,7 +79,7 @@ public class DiscerningTheEldritch
         // Compat
         CompatRegistry.registerPastelItems(modEventBus);
 
-        modContainer.registerConfig(ModConfig.Type.COMMON, DTEConfig.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, DTEServerConfig.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

@@ -7,7 +7,7 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
-import net.acetheeldritchking.discerning_the_eldritch.utils.DTEConfig;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
@@ -72,7 +72,19 @@ public class ExorcismSpell extends AbstractSpell {
     // This should make this spell only craftable if the insanity config is enabled
     @Override
     public boolean allowCrafting() {
-        if (DTEConfig.enableInsanitySystem)
+        if (DTEServerConfig.enableInsanitySystem)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+    // Also only lootable if Insanity is enabled because somehow I did not catch that earlier
+    @Override
+    public boolean allowLooting() {
+        if (DTEServerConfig.enableInsanitySystem)
         {
             return true;
         } else
@@ -84,7 +96,7 @@ public class ExorcismSpell extends AbstractSpell {
     // If somehow someone gets the scroll and doesn't have insanity enabled, they can't cast it
     @Override
     public CastResult canBeCastedBy(int spellLevel, CastSource castSource, MagicData playerMagicData, Player player) {
-        if (!DTEConfig.enableInsanitySystem)
+        if (!DTEServerConfig.enableInsanitySystem)
         {
             if (player instanceof ServerPlayer serverPlayer)
             {

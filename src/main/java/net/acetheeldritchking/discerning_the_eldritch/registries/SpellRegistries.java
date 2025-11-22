@@ -93,6 +93,12 @@ public class SpellRegistries {
 
 
     /***
+     * Ender Spells
+     */
+    // Hocus Pocus - Tether to an entity on the first recast. On the second, summon that entity to your position
+
+
+    /***
      * Blood Spells
      */
 
