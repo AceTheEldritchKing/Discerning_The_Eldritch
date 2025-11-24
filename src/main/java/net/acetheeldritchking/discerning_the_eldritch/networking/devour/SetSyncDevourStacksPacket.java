@@ -14,7 +14,7 @@ public class SetSyncDevourStacksPacket implements CustomPacketPayload {
     public static final CustomPacketPayload.Type<SetSyncDevourStacksPacket> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "set_devour_sync"));
     public static final StreamCodec<RegistryFriendlyByteBuf, SetSyncDevourStacksPacket> STREAM_CODEC = CustomPacketPayload.codec(SetSyncDevourStacksPacket::write, SetSyncDevourStacksPacket::new);
 
-    private int devourStacks;
+    private final int devourStacks;
 
     public SetSyncDevourStacksPacket(LivingEntity entity)
     {

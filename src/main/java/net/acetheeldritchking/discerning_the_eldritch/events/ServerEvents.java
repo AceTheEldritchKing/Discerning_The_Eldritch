@@ -43,6 +43,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -52,7 +53,29 @@ import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttac
 @EventBusSubscriber
 public class ServerEvents {
     @SubscribeEvent
-    public static void onPlayerJoinLevelEvent(EntityJoinLevelEvent event)
+    public static void onEntityJoinLevelEvent(EntityJoinLevelEvent event)
+    {
+        Entity entity = event.getEntity();
+
+        if (entity instanceof ServerPlayer player)
+        {
+            PacketDistributor.sendToPlayer(player, new GetSyncDevourStacksPacket(player));
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerLogInEvent(PlayerEvent.PlayerLoggedInEvent event)
+    {
+        Entity entity = event.getEntity();
+
+        if (entity instanceof ServerPlayer player)
+        {
+            PacketDistributor.sendToPlayer(player, new SetSyncDevourStacksPacket(player));
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerLogOutEvent(PlayerEvent.PlayerLoggedOutEvent event)
     {
         Entity entity = event.getEntity();
 
@@ -338,7 +361,7 @@ public class ServerEvents {
             {
                 attacker.getData(DEVOURED_ENTITIES);
                 //attacker.setData(DEVOURED_ENTITIES, attacker.getData(DEVOURED_ENTITIES) + 1);
-                if (livingAttacker instanceof Player player)
+                if (livingAttacker instanceof Player player && (target != player))
                 {
                     PacketDistributor.sendToPlayer((ServerPlayer) player, new SetSyncDevourStacksPacket(player));
                     DTEAttachmentSync.setDevour(1, player);

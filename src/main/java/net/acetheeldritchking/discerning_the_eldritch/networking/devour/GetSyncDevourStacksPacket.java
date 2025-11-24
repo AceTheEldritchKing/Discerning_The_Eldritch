@@ -14,7 +14,7 @@ public class GetSyncDevourStacksPacket implements CustomPacketPayload {
     public static final Type<GetSyncDevourStacksPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "get_devour_sync"));
     public static final StreamCodec<RegistryFriendlyByteBuf, GetSyncDevourStacksPacket> STREAM_CODEC = CustomPacketPayload.codec(GetSyncDevourStacksPacket::write, GetSyncDevourStacksPacket::new);
 
-    private int devourStacks;
+    private final int devourStacks;
 
     public GetSyncDevourStacksPacket(LivingEntity entity)
     {
@@ -31,7 +31,7 @@ public class GetSyncDevourStacksPacket implements CustomPacketPayload {
     }
 
     public static void handle(GetSyncDevourStacksPacket packet, IPayloadContext context) {
-        context.enqueueWork(() -> DTEAttachmentSync.getDevour(context.player()));
+        context.enqueueWork(() -> DTEAttachmentSync.setDevour(0, context.player()));
     }
 
     @Override
