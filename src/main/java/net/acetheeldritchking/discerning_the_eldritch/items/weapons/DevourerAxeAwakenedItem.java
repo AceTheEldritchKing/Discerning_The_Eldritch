@@ -62,6 +62,6 @@ public class DevourerAxeAwakenedItem extends MagicSwordItem implements UniqueIte
         entity.getData(DTEAttachmentRegistry.DEVOURED_ENTITIES);
         int stacks = entity.getData(DTEAttachmentRegistry.DEVOURED_ENTITIES.get());
 
-        return String.format("%2d", DTEAttachmentSync.getDevour());
+        return String.format("%2d", stacks);
     }
 }

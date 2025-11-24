@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
+import io.redspace.ironsspellbooks.util.MinecraftInstanceHelper;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
@@ -14,11 +15,9 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.spells.gore_bile.Go
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.DiaryOfDecaySpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.*;
 import net.acetheeldritchking.discerning_the_eldritch.networking.DTEAttachmentSync;
-import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
-import net.acetheeldritchking.discerning_the_eldritch.registries.DTESchoolRegistry;
-import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
-import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.registries.*;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
@@ -320,8 +319,8 @@ public class ServerEvents {
             if (mainhandItem.getItem() instanceof DevourerAxeAwakenedItem)
             {
                 attacker.getData(DEVOURED_ENTITIES);
-                //attacker.setData(DEVOURED_ENTITIES, attacker.getData(DEVOURED_ENTITIES) + 1);
-                DTEAttachmentSync.setDevour(1);
+                attacker.setData(DEVOURED_ENTITIES, attacker.getData(DEVOURED_ENTITIES) + 1);
+                //DTEAttachmentSync.setDevour(1);
 
                 DiscerningTheEldritch.LOGGER.debug("Devour stacks: " + attacker.getData(DEVOURED_ENTITIES));
             }

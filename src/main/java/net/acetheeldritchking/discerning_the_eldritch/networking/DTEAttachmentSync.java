@@ -2,7 +2,6 @@ package net.acetheeldritchking.discerning_the_eldritch.networking;
 
 import io.redspace.ironsspellbooks.util.MinecraftInstanceHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
 import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.DEVOURED_ENTITIES;
@@ -28,7 +27,7 @@ public class DTEAttachmentSync {
     {
         Player player = MinecraftInstanceHelper.getPlayer();
         player.getData(DEVOURED_ENTITIES);
-        player.setData(DTEAttachmentRegistry.DEVOURED_ENTITIES, player.getData(DEVOURED_ENTITIES) + val);
+        player.setData(DTEAttachmentRegistry.DEVOURED_ENTITIES, devourerMeter + val);
     }
 
     public static void resetDevour()
