@@ -291,20 +291,25 @@ public class ServerEvents {
                     livingEntity.level().playLocalSound(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), DTESoundRegistry.DEVOURER_WRETCH.get(), SoundSource.PLAYERS, 1, 1, false);
 
                     // Reset attachment
-                    livingEntity.setData(DEVOURED_ENTITIES, 0);
-                    //DTEAttachmentSync.resetDevour();
+                    //livingEntity.setData(DEVOURED_ENTITIES, 0);
 
                     // Only go on CD if we reach max stacks
                     if (livingEntity instanceof Player player)
                     {
                         //livingEntity.level().playSound(player, livingEntity.blockPosition(), DTESoundRegistry.DEVOURER_WRETCH.get(), SoundSource.PLAYERS);
 
+                        DTEAttachmentSync.resetDevour(livingEntity);
                         player.getCooldowns().addCooldown(ItemRegistries.DEVOURER_AWAKENED.get(), DevourerAxeAwakenedItem.COOLDOWN);
+                    } else
+                    {
+                        livingEntity.setData(DEVOURED_ENTITIES, 0);
                     }
                 }
             }
         }
     }
+
+    public static int devourStacks;
 
     @SubscribeEvent
     public static void onLivingDeathEvent(LivingDeathEvent event)
@@ -319,10 +324,20 @@ public class ServerEvents {
             if (mainhandItem.getItem() instanceof DevourerAxeAwakenedItem)
             {
                 attacker.getData(DEVOURED_ENTITIES);
-                attacker.setData(DEVOURED_ENTITIES, attacker.getData(DEVOURED_ENTITIES) + 1);
-                //DTEAttachmentSync.setDevour(1);
+                //attacker.setData(DEVOURED_ENTITIES, attacker.getData(DEVOURED_ENTITIES) + 1);
+                if (livingAttacker instanceof Player player)
+                {
+                    DTEAttachmentSync.setDevour(1, player);
 
-                DiscerningTheEldritch.LOGGER.debug("Devour stacks: " + attacker.getData(DEVOURED_ENTITIES));
+                    devourStacks = DTEAttachmentSync.getDevour(player);
+
+                    DiscerningTheEldritch.LOGGER.debug("Devour stacks for player: " + player.getData(DEVOURED_ENTITIES));
+                } else
+                {
+                    attacker.setData(DEVOURED_ENTITIES, attacker.getData(DEVOURED_ENTITIES) + 1);
+
+                    DiscerningTheEldritch.LOGGER.debug("Devour stacks for mob: " + attacker.getData(DEVOURED_ENTITIES));
+                }
             }
         }
     }

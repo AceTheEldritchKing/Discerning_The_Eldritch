@@ -2,6 +2,8 @@ package net.acetheeldritchking.discerning_the_eldritch.networking;
 
 import io.redspace.ironsspellbooks.util.MinecraftInstanceHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry;
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
 import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.DEVOURED_ENTITIES;
@@ -18,22 +20,20 @@ public class DTEAttachmentSync {
      * Setters & Getters
      */
     // Devouring
-    public static int getDevour()
+    public static int getDevour(LivingEntity entity)
     {
-        return devourerMeter;
+        return entity.getData(DEVOURED_ENTITIES);
     }
 
-    public static void setDevour(int val)
+    public static void setDevour(int val, LivingEntity entity)
     {
-        Player player = MinecraftInstanceHelper.getPlayer();
-        player.getData(DEVOURED_ENTITIES);
-        player.setData(DTEAttachmentRegistry.DEVOURED_ENTITIES, devourerMeter + val);
+        entity.getData(DEVOURED_ENTITIES);
+        entity.setData(DTEAttachmentRegistry.DEVOURED_ENTITIES, entity.getData(DEVOURED_ENTITIES) + val);
     }
 
-    public static void resetDevour()
+    public static void resetDevour(LivingEntity entity)
     {
-        Player player = MinecraftInstanceHelper.getPlayer();
-        player.getData(DEVOURED_ENTITIES);
-        player.setData(DTEAttachmentRegistry.DEVOURED_ENTITIES, 0);
+        entity.getData(DEVOURED_ENTITIES);
+        entity.setData(DTEAttachmentRegistry.DEVOURED_ENTITIES, 0);
     }
 }

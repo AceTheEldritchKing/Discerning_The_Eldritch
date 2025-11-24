@@ -48,6 +48,7 @@ public class DevourerAxeAwakenedItem extends MagicSwordItem implements UniqueIte
                     ).withStyle(ChatFormatting.DARK_PURPLE)
             );
             tooltipComponents.add(Component.literal(" ").append(Component.translatable(this.getDescriptionId() + ".desc")).withStyle(ChatFormatting.YELLOW));
+            assert attacker != null;
             tooltipComponents.add(Component.translatable(this.getDescriptionId() + ".desc2").append(devourStacks(attacker)).
                     withStyle(ChatFormatting.DARK_PURPLE).
                     withStyle(ChatFormatting.ITALIC));
@@ -62,6 +63,6 @@ public class DevourerAxeAwakenedItem extends MagicSwordItem implements UniqueIte
         entity.getData(DTEAttachmentRegistry.DEVOURED_ENTITIES);
         int stacks = entity.getData(DTEAttachmentRegistry.DEVOURED_ENTITIES.get());
 
-        return String.format("%2d", stacks);
+        return String.format("%2d", DTEAttachmentSync.getDevour(entity));
     }
 }
