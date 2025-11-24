@@ -6,7 +6,6 @@ import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
-import io.redspace.ironsspellbooks.util.MinecraftInstanceHelper;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
@@ -15,9 +14,11 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.spells.gore_bile.Go
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.DiaryOfDecaySpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.*;
 import net.acetheeldritchking.discerning_the_eldritch.networking.DTEAttachmentSync;
+import net.acetheeldritchking.discerning_the_eldritch.networking.devour.GetSyncDevourStacksPacket;
+import net.acetheeldritchking.discerning_the_eldritch.networking.devour.ResetSyncDevourStacksPacket;
+import net.acetheeldritchking.discerning_the_eldritch.networking.devour.SetSyncDevourStacksPacket;
 import net.acetheeldritchking.discerning_the_eldritch.registries.*;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
@@ -37,17 +38,30 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.*;
 
 @EventBusSubscriber
 public class ServerEvents {
+    @SubscribeEvent
+    public static void onPlayerJoinLevelEvent(EntityJoinLevelEvent event)
+    {
+        Entity entity = event.getEntity();
+
+        if (entity instanceof ServerPlayer player)
+        {
+            PacketDistributor.sendToPlayer(player, new SetSyncDevourStacksPacket(player));
+        }
+    }
+
     @SubscribeEvent
     public static void onPlayerCastEvent(SpellPreCastEvent event)
     {
@@ -298,6 +312,7 @@ public class ServerEvents {
                     {
                         //livingEntity.level().playSound(player, livingEntity.blockPosition(), DTESoundRegistry.DEVOURER_WRETCH.get(), SoundSource.PLAYERS);
 
+                        PacketDistributor.sendToPlayer((ServerPlayer) player, new ResetSyncDevourStacksPacket(player));
                         DTEAttachmentSync.resetDevour(livingEntity);
                         player.getCooldowns().addCooldown(ItemRegistries.DEVOURER_AWAKENED.get(), DevourerAxeAwakenedItem.COOLDOWN);
                     } else
@@ -308,8 +323,6 @@ public class ServerEvents {
             }
         }
     }
-
-    public static int devourStacks;
 
     @SubscribeEvent
     public static void onLivingDeathEvent(LivingDeathEvent event)
@@ -327,11 +340,10 @@ public class ServerEvents {
                 //attacker.setData(DEVOURED_ENTITIES, attacker.getData(DEVOURED_ENTITIES) + 1);
                 if (livingAttacker instanceof Player player)
                 {
+                    PacketDistributor.sendToPlayer((ServerPlayer) player, new SetSyncDevourStacksPacket(player));
                     DTEAttachmentSync.setDevour(1, player);
 
-                    devourStacks = DTEAttachmentSync.getDevour(player);
-
-                    DiscerningTheEldritch.LOGGER.debug("Devour stacks for player: " + player.getData(DEVOURED_ENTITIES));
+                    DiscerningTheEldritch.LOGGER.debug("Devour stacks for player: " + DTEAttachmentSync.getDevour(player));
                 } else
                 {
                     attacker.setData(DEVOURED_ENTITIES, attacker.getData(DEVOURED_ENTITIES) + 1);

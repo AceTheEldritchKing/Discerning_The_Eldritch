@@ -1,7 +1,6 @@
 package net.acetheeldritchking.discerning_the_eldritch.networking.devour;
 
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
-import net.acetheeldritchking.discerning_the_eldritch.events.ServerEvents;
 import net.acetheeldritchking.discerning_the_eldritch.networking.DTEAttachmentSync;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -11,18 +10,18 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-public class SyncDevourStacksPacket implements CustomPacketPayload {
-    public static final CustomPacketPayload.Type<SyncDevourStacksPacket> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "devour_sync"));
-    public static final StreamCodec<RegistryFriendlyByteBuf, SyncDevourStacksPacket> STREAM_CODEC = CustomPacketPayload.codec(SyncDevourStacksPacket::write, SyncDevourStacksPacket::new);
+public class SetSyncDevourStacksPacket implements CustomPacketPayload {
+    public static final CustomPacketPayload.Type<SetSyncDevourStacksPacket> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "set_devour_sync"));
+    public static final StreamCodec<RegistryFriendlyByteBuf, SetSyncDevourStacksPacket> STREAM_CODEC = CustomPacketPayload.codec(SetSyncDevourStacksPacket::write, SetSyncDevourStacksPacket::new);
 
     private int devourStacks;
 
-    public SyncDevourStacksPacket(LivingEntity entity)
+    public SetSyncDevourStacksPacket(LivingEntity entity)
     {
         devourStacks = DTEAttachmentSync.getDevour(entity);
     }
 
-    public SyncDevourStacksPacket(RegistryFriendlyByteBuf buf)
+    public SetSyncDevourStacksPacket(RegistryFriendlyByteBuf buf)
     {
         devourStacks = buf.readInt();
     }
@@ -31,8 +30,8 @@ public class SyncDevourStacksPacket implements CustomPacketPayload {
         buf.writeInt(devourStacks);
     }
 
-    public static void handle(SyncDevourStacksPacket packet, IPayloadContext context) {
-        context.enqueueWork(() -> DTEAttachmentSync.setDevour(packet.devourStacks, context.player()));
+    public static void handle(SetSyncDevourStacksPacket packet, IPayloadContext context) {
+        context.enqueueWork(() -> DTEAttachmentSync.setDevour(1, context.player()));
     }
 
     @Override

@@ -12,9 +12,6 @@ public class DTEAttachmentSync {
     /***
      * Attachments
      */
-    public static int insanityMeter = MinecraftInstanceHelper.getPlayer().getData(DTEAttachmentRegistry.INSANITY_METER);
-    public static int frostbiteMeter = MinecraftInstanceHelper.getPlayer().getData(DTEAttachmentRegistry.FROSTBITE_LEVEL);
-    public static int devourerMeter = MinecraftInstanceHelper.getPlayer().getData(DTEAttachmentRegistry.DEVOURED_ENTITIES);
 
     /***
      * Setters & Getters
