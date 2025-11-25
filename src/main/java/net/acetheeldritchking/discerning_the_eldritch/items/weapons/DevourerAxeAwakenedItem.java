@@ -30,7 +30,7 @@ public class DevourerAxeAwakenedItem extends MagicSwordItem implements UniqueIte
                 DTEWeaponTiers.DEVOURER_AWAKENED,
                 ItemPropertiesHelper.equipment(1).fireResistant().rarity(ASRarities.ACCURSED_RARITY_PROXY.getValue()).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.DEVOURER_AWAKENED)),
                 SpellDataRegistryHolder.of(
-                        new SpellDataRegistryHolder(SpellRegistries.BLADES_OF_RANCOR, 6))
+                        new SpellDataRegistryHolder(SpellRegistries.RAVENOUS_REVENANT, 1))
         );
     }
 
@@ -62,8 +62,6 @@ public class DevourerAxeAwakenedItem extends MagicSwordItem implements UniqueIte
     private static String devourStacks(LivingEntity entity)
     {
         entity.getData(DTEAttachmentRegistry.DEVOURED_ENTITIES);
-        int stacks = entity.getData(DTEAttachmentRegistry.DEVOURED_ENTITIES.get());
-
         return String.format("%2d", DTEAttachmentSync.getDevour(entity));
     }
 }

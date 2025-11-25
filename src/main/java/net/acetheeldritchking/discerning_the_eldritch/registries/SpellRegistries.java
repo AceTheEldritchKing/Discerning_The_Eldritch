@@ -10,6 +10,7 @@ import net.acetheeldritchking.discerning_the_eldritch.spells.ice.CrystallineCarv
 import net.acetheeldritchking.discerning_the_eldritch.spells.ice.GlacialEdgeSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.ritual.BladesOfRancorSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.ritual.CallAscendedOneSpell;
+import net.acetheeldritchking.discerning_the_eldritch.spells.ritual.RavenousRevenantSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.ritual.ZealousHarbingerSpell;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -168,6 +169,7 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> ZEALOUS_HARBINGER = registerSpell(new ZealousHarbingerSpell());
 
     // Ravenous Revenant - Unleash a mighty roar, nearby entities are marked as Prey. Hitting Prey entities causes a ravenous maw to lash at them
+    public static final Supplier<AbstractSpell> RAVENOUS_REVENANT = registerSpell(new RavenousRevenantSpell());
 
     // Libra's Judgement - Target an entity; if they are above 50% health, a larger version of Mourning Star slams down on them. If they are below 50% health, they are immolated with vicious flames
 

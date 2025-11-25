@@ -182,8 +182,11 @@
   "spell.discerning_the_eldritch.blades_of_rancor": "Blades of Rancor",
   "spell.discerning_the_eldritch.blades_of_rancor.guide": "Summon a flurry of blades that home in on where you gaze",
 
-  "spell.discerning_the_eldritch.zealous_harbinger": "Zealous Harbinger",
+  "spell.discerning_the_eldritch.zealous_harbinger": "Zealous Executioner",
   "spell.discerning_the_eldritch.zealous_harbinger.guide": "Conjure forth echoes of the Cataclysm blade to slice your opponents to shreds and afflict them with a curse",
+
+  "spell.discerning_the_eldritch.ravenous_revenant": "Ravenous Revenant",
+  "spell.discerning_the_eldritch.ravenous_revenant.guide": "Unleash a terrifying roar, marking nearby entities as Prey. Hitting Prey entities causes a ravenous maw to lash at them",
 
 
   "ui.discerning_the_eldritch.extra_damage": "Deals extra damage while holding a weapon in your mainhand",

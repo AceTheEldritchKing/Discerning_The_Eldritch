@@ -42,6 +42,9 @@ public class DTEPotionEffectRegistry {
 
     // Devoured Effect
 
+    // Prey Effect
+    public static final DeferredHolder<MobEffect, MobEffect> PREY_POTION_EFFECT = MOB_EFFECTS.register("prey_potion_effect", PreyPotionEffect::new);
+
 
     public static void register(IEventBus eventBus)
     {
