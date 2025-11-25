@@ -50,8 +50,9 @@ public class DevourerAxeAwakenedItem extends MagicSwordItem implements UniqueIte
             tooltipComponents.add(Component.literal(" ").append(Component.translatable(this.getDescriptionId() + ".desc")).withStyle(ChatFormatting.YELLOW));
             assert attacker != null;
             tooltipComponents.add(Component.translatable(this.getDescriptionId() + ".desc2").append(devourStacks(attacker)).
-                    withStyle(ChatFormatting.DARK_PURPLE).
-                    withStyle(ChatFormatting.ITALIC));
+                    withStyle(ChatFormatting.RED).
+                    withStyle(ChatFormatting.ITALIC)
+            );
         } else
         {
             tooltipComponents.add(Component.translatable("item.discerning_the_eldritch.more_details").withStyle(ChatFormatting.GRAY));
