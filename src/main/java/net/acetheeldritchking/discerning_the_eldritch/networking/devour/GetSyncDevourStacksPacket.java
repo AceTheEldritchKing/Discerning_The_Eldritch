@@ -31,7 +31,7 @@ public class GetSyncDevourStacksPacket implements CustomPacketPayload {
     }
 
     public static void handle(GetSyncDevourStacksPacket packet, IPayloadContext context) {
-        context.enqueueWork(() -> DTEAttachmentSync.setDevour(0, context.player()));
+        context.enqueueWork(() -> DTEAttachmentSync.setDevour(packet.devourStacks, context.player()));
     }
 
     @Override

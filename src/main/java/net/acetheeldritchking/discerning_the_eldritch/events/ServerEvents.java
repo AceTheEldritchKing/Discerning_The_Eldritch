@@ -53,24 +53,14 @@ import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttac
 @EventBusSubscriber
 public class ServerEvents {
     @SubscribeEvent
-    public static void onEntityJoinLevelEvent(EntityJoinLevelEvent event)
-    {
-        Entity entity = event.getEntity();
-
-        if (entity instanceof ServerPlayer player)
-        {
-            PacketDistributor.sendToPlayer(player, new GetSyncDevourStacksPacket(player));
-        }
-    }
-
-    @SubscribeEvent
     public static void onPlayerLogInEvent(PlayerEvent.PlayerLoggedInEvent event)
     {
         Entity entity = event.getEntity();
 
+        // For syncing packets on log in
         if (entity instanceof ServerPlayer player)
         {
-            PacketDistributor.sendToPlayer(player, new SetSyncDevourStacksPacket(player));
+            PacketDistributor.sendToPlayer(player, new GetSyncDevourStacksPacket(player));
         }
     }
 
@@ -79,9 +69,10 @@ public class ServerEvents {
     {
         Entity entity = event.getEntity();
 
+        // For syncing packets on log out
         if (entity instanceof ServerPlayer player)
         {
-            PacketDistributor.sendToPlayer(player, new SetSyncDevourStacksPacket(player));
+            PacketDistributor.sendToPlayer(player, new GetSyncDevourStacksPacket(player));
         }
     }
 
