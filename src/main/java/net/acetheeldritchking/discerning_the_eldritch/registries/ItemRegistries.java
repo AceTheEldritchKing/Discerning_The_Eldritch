@@ -25,7 +25,7 @@ import net.acetheeldritchking.discerning_the_eldritch.items.custom.FadingSculkLa
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.BlackBookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.DiaryOfDecaySpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.GuardianGuidebookSpellbook;
-import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.TempestuousTomeSpellbook;
+import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.StormWeaverTomeSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.staffs.BrokenLegendsStaff;
 import net.acetheeldritchking.discerning_the_eldritch.items.staffs.DTEStaffTier;
 import net.acetheeldritchking.discerning_the_eldritch.items.staffs.StaffOfVehemenceStaffItem;
@@ -65,7 +65,7 @@ public class ItemRegistries {
     );
 
     // Tempestuous Time
-    public static final DeferredHolder<Item, Item> TEMPESTUOUS_TOME = ITEMS.register("tempestuous_tome", TempestuousTomeSpellbook::new);
+    public static final DeferredHolder<Item, Item> TEMPESTUOUS_TOME = ITEMS.register("tempestuous_tome", StormWeaverTomeSpellbook::new);
 
     // Frozen Folio
     public static final DeferredHolder<Item, Item> FROZEN_FOLIO = ITEMS.register("frozen_folio", () ->

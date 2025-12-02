@@ -55,7 +55,7 @@ public class DTECreativeModeTabs {
                         // Spellbooks
                         output.accept(ItemRegistries.BLACK_BOOK_SPELLBOOK.get());
                         output.accept(ItemRegistries.THE_APOCRYPHA_SPELLBOOK.get());
-                        //output.accept(ItemRegistries.TEMPESTUOUS_TOME.get());
+                        output.accept(ItemRegistries.TEMPESTUOUS_TOME.get());
                         //output.accept(ItemRegistries.FROZEN_FOLIO.get());
                         output.accept(ItemRegistries.DIARY_OF_DECAY.get());
                         //output.accept(ItemRegistries.GUARDIANS_GAZE.get());

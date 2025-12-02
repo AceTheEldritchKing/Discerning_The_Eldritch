@@ -13,13 +13,10 @@ import net.acetheeldritchking.aces_spell_utils.spells.ASSpellAnimations;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESchoolRegistry;
-import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 

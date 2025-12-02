@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "discerning_the_eldritch:item/tempestuous_tome"
+        "layer0": "discerning_the_eldritch:item/tempestuous_tome_gui"
     }
 }

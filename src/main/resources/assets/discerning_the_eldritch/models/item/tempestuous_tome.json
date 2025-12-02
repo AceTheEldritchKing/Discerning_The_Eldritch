@@ -1,26 +1,19 @@
 {
-    "parent": "minecraft:item/handheld",
-    "loader": "neoforge:separate_transforms",
-    "base": {
-      "textures": {
-        "book": "discerning_the_eldritch:item/spell_books/tempestuous_tome",
-        "particle": "discerning_the_eldritch:item/spell_books/tempestuous_tome"
-      },
-      "parent": "irons_spellbooks:item/template_spell_book_model"
+  "parent": "minecraft:item/handheld",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "discerning_the_eldritch:item/tempestuous_tome_model"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "discerning_the_eldritch:item/tempestuous_tome_gui"
     },
-    "perspectives": {
-      "gui": {
-        "parent": "item/generated",
-        "textures": {
-          "layer0": "discerning_the_eldritch:item/tempestuous_tome"
-        }
+    "head": {
+      "textures": {
+        "book": "discerning_the_eldritch:item/spell_books/tempestuous_tome_open",
+        "particle": "discerning_the_eldritch:item/spell_books/tempestuous_tome_open"
       },
-      "head": {
-        "textures": {
-          "book": "discerning_the_eldritch:item/spell_books/tempestuous_tome",
-          "particle": "discerning_the_eldritch:item/spell_books/tempestuous_tome"
-        },
-        "parent": "irons_spellbooks:item/template_spell_book_model_open"
-      }
+      "parent": "irons_spellbooks:item/template_spell_book_model_open"
     }
   }
+}
