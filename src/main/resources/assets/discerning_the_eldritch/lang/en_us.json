@@ -24,6 +24,10 @@
   "effect.discerning_the_eldritch.accursed_potion_effect.description": "Reduces spell resistance, armor and attack damage",
   "effect.discerning_the_eldritch.blood_rot_potion_effect": "Blood Rot",
   "effect.discerning_the_eldritch.blood_rot_potion_effect.description": "Reduces blood spell resistance and blood spell power, as well as damaging every 3 seconds",
+  "effect.discerning_the_eldritch.prey_potion_effect": "Prey",
+  "effect.discerning_the_eldritch.prey_potion_effect.description": "Ravenous jaws are summoned at your location when hit by a predator",
+  "effect.discerning_the_eldritch.predator_potion_effect": "Predator",
+  "effect.discerning_the_eldritch.predator_potion_effect.description": "Summon ravenous jaws when hitting prey",
 
 
   "curios.identifier.artifact": "Artifact",
@@ -239,7 +243,7 @@
   "display.discerning_the_eldritch.exorcism_no_insanity": "There is nothing to cleanse",
   "display.discerning_the_eldritch.no_insanity_system": "Insanity does not reside in your heart",
   "display.discerning_the_eldritch.fading_sculk_lantern_fail": "You call, but there is no response",
-  "display.discerning_the_eldritch.fading_sculk_lantern_success": "You call, she's coming",
+  "display.discerning_the_eldritch.fading_sculk_lantern_success": "You call, she's coming - prepare yourself",
   "display.discerning_the_eldritch.judgement_decree_1": "Judgement Decree: Mortal Damage on hit",
   "display.discerning_the_eldritch.judgement_decree_2": "Judgement Decree: Affliction on hit",
 

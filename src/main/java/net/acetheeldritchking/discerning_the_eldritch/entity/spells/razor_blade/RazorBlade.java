@@ -172,8 +172,6 @@ public class RazorBlade extends LivingEntity implements GeoEntity, AntiMagicSusc
     }
 
     // NBT
-
-
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);

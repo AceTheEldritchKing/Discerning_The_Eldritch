@@ -1,0 +1,57 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 96,
+				"texture_height": 96,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2,
+				"visible_bounds_offset": [0, 0, 0]
+			},
+			"bones": [
+				{
+					"name": "base",
+					"pivot": [0, 0.16667, 2]
+				},
+				{
+					"name": "left",
+					"parent": "base",
+					"pivot": [6.58333, 0.16667, 2],
+					"cubes": [
+						{"origin": [3, 0, -4], "size": [3, 20, 8], "uv": [22, 0]},
+						{"origin": [0, 0, -4], "size": [3, 20, 8], "uv": [22, 28]}
+					]
+				},
+				{
+					"name": "frills2",
+					"parent": "left",
+					"pivot": [4, 0, 6],
+					"cubes": [
+						{"origin": [4, 0, 2], "size": [6, 22, 0], "uv": [56, 34], "mirror": true},
+						{"origin": [4, 0, -2], "size": [6, 22, 0], "uv": [44, 34], "mirror": true}
+					]
+				},
+				{
+					"name": "right",
+					"parent": "base",
+					"pivot": [-6.58333, 0.16667, 2],
+					"cubes": [
+						{"origin": [-6, 0, -4], "size": [3, 20, 8], "uv": [0, 0]},
+						{"origin": [-3, 0, -4], "size": [3, 20, 8], "uv": [0, 28]}
+					]
+				},
+				{
+					"name": "frills",
+					"parent": "right",
+					"pivot": [-4, 0, 6],
+					"cubes": [
+						{"origin": [-10, 0, 2], "size": [6, 22, 0], "uv": [56, 6]},
+						{"origin": [-10, 0, -2], "size": [6, 22, 0], "uv": [44, 6]}
+					]
+				}
+			]
+		}
+	]
+}

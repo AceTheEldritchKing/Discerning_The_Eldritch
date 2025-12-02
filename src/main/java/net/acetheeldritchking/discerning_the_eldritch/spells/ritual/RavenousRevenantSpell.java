@@ -72,8 +72,13 @@ public class RavenousRevenantSpell extends AbstractRitualSpell {
         List<LivingEntity> entitiesNearby = level.getEntitiesOfClass(LivingEntity.class, entity.getBoundingBox().inflate(radius));
         for (LivingEntity targets : entitiesNearby)
         {
-            targets.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.PREY_POTION_EFFECT, getDuration(spellLevel, entity), 0, false, false, false));
+            if (targets != entity)
+            {
+                targets.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.PREY_POTION_EFFECT, getDuration(spellLevel, entity), 0, false, false, true));
+            }
         }
+
+        entity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.PREDATOR_POTION_EFFECT, getDuration(spellLevel, entity), 0, false, false, true));
 
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
