@@ -1,6 +1,7 @@
 package net.acetheeldritchking.discerning_the_eldritch.effects;
 
 import io.redspace.ironsspellbooks.entity.spells.devour_jaw.DevourJaw;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.ravenous_jaw.RavenousJawEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -28,7 +29,7 @@ public class PredatorPotionEffect extends MobEffect {
                     && livingEntity.hasEffect(DTEPotionEffectRegistry.PREDATOR_POTION_EFFECT))
             {
                 // Replace this with our own entity eventually
-                DevourJaw jaw = new DevourJaw(livingEntity.level(), livingEntity, entity);
+                RavenousJawEntity jaw = new RavenousJawEntity(livingEntity.level(), livingEntity, entity);
 
                 jaw.setPos(entity.position());
                 jaw.setYRot(livingEntity.getYRot());

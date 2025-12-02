@@ -21,6 +21,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edg
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_strike.EsotericStrike;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdge;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.gore_bile.GoreBileAoE;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.ravenous_jaw.RavenousJawEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.razor_blade.RazorBlade;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.rift_walker.UnstableRiftEntity;
 import net.minecraft.core.registries.Registries;
@@ -204,6 +205,14 @@ public class DTEEntityRegistry {
                     .sized(2f, 2f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "cataclysm_blade_big").toString())
+            );
+
+    // Ravenous Jaw
+    public static final DeferredHolder<EntityType<?>, EntityType<RavenousJawEntity>> RAVENOUS_JAW =
+            ENTITIES.register("ravenous_jaw", () -> EntityType.Builder.<RavenousJawEntity>of(RavenousJawEntity::new, MobCategory.MISC)
+                    .sized(2f, 2f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "ravenous_jaw").toString())
             );
 
 

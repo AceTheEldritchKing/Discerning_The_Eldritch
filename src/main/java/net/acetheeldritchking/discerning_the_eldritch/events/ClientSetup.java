@@ -17,6 +17,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.spells.crystal_carv
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdgeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_strike.EsotericStrikeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdgeRenderer;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.ravenous_jaw.RavenousJawRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.razor_blade.RazorBladeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.particle.*;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
@@ -58,6 +59,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.GORE_BILE_AOE.get(), NoopRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.CATACLYSM_BLADE_SMALL.get(), CataclysmBladeSmallRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.CATACLYSM_BLADE_BIG.get(), CataclysmBladeBigRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.RAVENOUS_JAW.get(), RavenousJawRenderer::new);
     }
 
     @SubscribeEvent
