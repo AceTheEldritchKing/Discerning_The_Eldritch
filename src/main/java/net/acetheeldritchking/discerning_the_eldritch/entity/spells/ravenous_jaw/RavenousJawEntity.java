@@ -94,8 +94,8 @@ public class RavenousJawEntity extends AoeEntity implements GeoEntity {
     private final RawAnimation FALL_ANIM = RawAnimation.begin().thenPlay("fall");
     private final RawAnimation IDLE_ANIM = RawAnimation.begin().thenPlay("idle");
     private int riseAnimTime = 15;
-    private int waitAnimTime = riseAnimTime + 15;
-    private int dueToFallAnimTime = waitAnimTime + 30;
+    private int waitAnimTime = riseAnimTime + 5;
+    private int dueToFallAnimTime = waitAnimTime + 40;
 
     private final AnimationController<RavenousJawEntity> animationController = new AnimationController<>(this, "controller", 0, this::predicate);
     private final AnimationController<RavenousJawEntity> riseAnimationController = new AnimationController<>(this, "rise_controller", 0, this::risePredicate);
