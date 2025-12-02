@@ -1,13 +1,17 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.spells.ravenous_jaw;
 
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AoeEntity;
 import io.redspace.ironsspellbooks.registries.EntityRegistry;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.particle.DTEParticleHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -37,7 +41,15 @@ public class RavenousJawEntity extends AoeEntity implements GeoEntity {
 
     @Override
     public void applyEffect(LivingEntity target) {
-        //
+        if (target == this.target)
+        {
+            if (DamageSources.applyDamage(target, getDamage(), SpellRegistries.RAVENOUS_REVENANT.get().getDamageSource(this, getOwner())) && getOwner() instanceof LivingEntity livingOwner)
+            {
+                target.setDeltaMovement(target.getDeltaMovement().add(0, 0.5F, 0));
+                target.hurtMarked = true;
+                target.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.ACCURSED_EFFECT, 20 * 60, 0, false, false, true));
+            }
+        }
     }
 
     @Override
@@ -48,6 +60,11 @@ public class RavenousJawEntity extends AoeEntity implements GeoEntity {
     @Override
     public Optional<ParticleOptions> getParticle() {
         return Optional.empty();
+    }
+
+    @Override
+    protected Vec3 getInflation() {
+        return new Vec3(2.5, 2.5, 2.5);
     }
 
     @Override
@@ -93,9 +110,9 @@ public class RavenousJawEntity extends AoeEntity implements GeoEntity {
     private final RawAnimation RISE_ANIM = RawAnimation.begin().thenPlay("rise");
     private final RawAnimation FALL_ANIM = RawAnimation.begin().thenPlay("fall");
     private final RawAnimation IDLE_ANIM = RawAnimation.begin().thenPlay("idle");
-    private int riseAnimTime = 15;
+    private int riseAnimTime = 10;
     private int waitAnimTime = riseAnimTime + 5;
-    private int dueToFallAnimTime = waitAnimTime + 40;
+    private int dueToFallAnimTime = waitAnimTime + 30;
 
     private final AnimationController<RavenousJawEntity> animationController = new AnimationController<>(this, "controller", 0, this::predicate);
     private final AnimationController<RavenousJawEntity> riseAnimationController = new AnimationController<>(this, "rise_controller", 0, this::risePredicate);
@@ -110,7 +127,7 @@ public class RavenousJawEntity extends AoeEntity implements GeoEntity {
     {
         var controller = event.getController();
 
-        if (tickCount > dueToFallAnimTime)
+        if (tickCount >= (dueToFallAnimTime - 12))
         {
             controller.setAnimation(FALL_ANIM);
         } else if (controller.getAnimationState() == AnimationController.State.STOPPED)

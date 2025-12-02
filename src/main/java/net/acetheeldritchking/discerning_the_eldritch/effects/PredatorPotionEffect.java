@@ -25,10 +25,9 @@ public class PredatorPotionEffect extends MobEffect {
 
         if (sourceEntity instanceof LivingEntity livingEntity)
         {
-            if (entity.hasEffect(DTEPotionEffectRegistry.PREY_POTION_EFFECT)
-                    && livingEntity.hasEffect(DTEPotionEffectRegistry.PREDATOR_POTION_EFFECT))
+            // Bonus damage if an entity has the prey effect
+            if (livingEntity.hasEffect(DTEPotionEffectRegistry.PREDATOR_POTION_EFFECT))
             {
-                // Replace this with our own entity eventually
                 RavenousJawEntity jaw = new RavenousJawEntity(livingEntity.level(), livingEntity, entity);
 
                 jaw.setPos(entity.position());
@@ -36,6 +35,13 @@ public class PredatorPotionEffect extends MobEffect {
                 jaw.setDamage(10);
 
                 livingEntity.level().addFreshEntity(jaw);
+            } else if (livingEntity.hasEffect(DTEPotionEffectRegistry.PREDATOR_POTION_EFFECT) && entity.hasEffect(DTEPotionEffectRegistry.PREY_POTION_EFFECT))
+            {
+                RavenousJawEntity jaw = new RavenousJawEntity(livingEntity.level(), livingEntity, entity);
+
+                jaw.setPos(entity.position());
+                jaw.setYRot(livingEntity.getYRot());
+                jaw.setDamage(15);
             }
         }
     }

@@ -2,16 +2,22 @@ package net.acetheeldritchking.discerning_the_eldritch.spells.ritual;
 
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
-import io.redspace.ironsspellbooks.api.spells.AutoSpellConfig;
-import io.redspace.ironsspellbooks.api.spells.CastSource;
-import io.redspace.ironsspellbooks.api.spells.CastType;
-import io.redspace.ironsspellbooks.api.spells.SpellRarity;
+import io.redspace.ironsspellbooks.api.spells.*;
+import io.redspace.ironsspellbooks.api.util.AnimationHolder;
+import io.redspace.ironsspellbooks.api.util.CameraShakeData;
+import io.redspace.ironsspellbooks.api.util.CameraShakeManager;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
+import net.acetheeldritchking.aces_spell_utils.spells.ASSpellAnimations;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESchoolRegistry;
+import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -61,8 +67,23 @@ public class RavenousRevenantSpell extends AbstractRitualSpell {
     }
 
     @Override
-    public Optional<SoundEvent> getCastFinishSound() {
+    public Optional<SoundEvent> getCastStartSound() {
         return Optional.of(SoundRegistry.BLIGHT_BEGIN.get());
+    }
+
+    @Override
+    public Optional<SoundEvent> getCastFinishSound() {
+        return Optional.of(SoundEvents.WARDEN_ROAR);
+    }
+
+    @Override
+    public AnimationHolder getCastStartAnimation() {
+        return SpellAnimations.CHARGE_SPIT_ANIMATION;
+    }
+
+    @Override
+    public AnimationHolder getCastFinishAnimation() {
+        return ASSpellAnimations.ANIMATION_WRATH_ROAR;
     }
 
     @Override
@@ -77,6 +98,9 @@ public class RavenousRevenantSpell extends AbstractRitualSpell {
                 targets.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.PREY_POTION_EFFECT, getDuration(spellLevel, entity), 0, false, false, true));
             }
         }
+
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(DTESchoolRegistry.RITUAL.get().getTargetingColor(), (float) radius), entity.getX(), entity.getY() + 0.165F, entity.getZ(), 1, 0, 0, 0, 0, true);
+        CameraShakeManager.addCameraShake(new CameraShakeData(level, 20, entity.position(), (float) radius));
 
         entity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.PREDATOR_POTION_EFFECT, getDuration(spellLevel, entity), 0, false, false, true));
 
