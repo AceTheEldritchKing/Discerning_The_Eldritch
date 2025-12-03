@@ -31,7 +31,7 @@ public class BloodRotPotionEffect extends MobEffect {
 
             if (DAMAGE_SOURCE == null)
             {
-                DAMAGE_SOURCE = new DamageSource(DamageSources.getHolderFromResource(livingEntity, DTEDamageTypes.GORE_BILE));
+                DAMAGE_SOURCE = new DamageSource(DamageSources.getHolderFromResource(livingEntity, DTEDamageTypes.BLOOD_ROT));
             }
             DamageSources.ignoreNextKnockback(livingEntity);
             livingEntity.hurt(DAMAGE_SOURCE, 3);

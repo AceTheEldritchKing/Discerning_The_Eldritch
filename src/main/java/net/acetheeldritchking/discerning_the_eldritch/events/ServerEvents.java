@@ -5,6 +5,8 @@ import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.damage.ISSDamageTypes;
+import io.redspace.ironsspellbooks.entity.spells.ChainLightning;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
@@ -12,6 +14,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascende
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeSmallProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.gore_bile.GoreBileAoE;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.DiaryOfDecaySpellbook;
+import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.StormWeaverTomeSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.*;
 import net.acetheeldritchking.discerning_the_eldritch.networking.DTEAttachmentSync;
 import net.acetheeldritchking.discerning_the_eldritch.networking.devour.GetSyncDevourStacksPacket;
@@ -197,7 +200,7 @@ public class ServerEvents {
     }
 
     @SubscribeEvent
-    public static void livingDamageEvent(LivingDamageEvent.Post event)
+    public static void livingDamageEventPost(LivingDamageEvent.Post event)
     {
         var sourceEntity = event.getSource().getEntity();
         var target = event.getEntity();
@@ -498,7 +501,7 @@ public class ServerEvents {
     }
 
     @SubscribeEvent
-    public static void entityDamageCapEvent(LivingDamageEvent.Pre event)
+    public static void livingDamageEventPre(LivingDamageEvent.Pre event)
     {
         var entity = event.getEntity();
         var source = event.getSource();
@@ -537,12 +540,33 @@ public class ServerEvents {
                 // Diary of Decay ability
                 if (ASUtils.hasCurio(player, ItemRegistries.DIARY_OF_DECAY.get()) && (!player.getCooldowns().isOnCooldown(ItemRegistries.DIARY_OF_DECAY.get())))
                 {
-                    if (attacker instanceof LivingEntity livingAttacker )
+                    if (attacker instanceof LivingEntity livingAttacker)
                     {
                         livingAttacker.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.BLOOD_ROT_EFFECT, 100, 0, true, true, true));
 
                         player.getCooldowns().addCooldown(ItemRegistries.DIARY_OF_DECAY.get(), DiaryOfDecaySpellbook.COOLDOWN);
                     }
+                }
+            }
+        }
+
+        if (attacker != null)
+        {
+            if (attacker instanceof Player player)
+            {
+                // Stormweaver's Spell Tome ability
+                if (ASUtils.hasCurio(player, ItemRegistries.TEMPESTUOUS_TOME.get()) && (!player.getCooldowns().isOnCooldown(ItemRegistries.TEMPESTUOUS_TOME.get())))
+                {
+                    if (event.getSource().is(ISSDamageTypes.LIGHTNING_MAGIC))
+                    {
+                        ChainLightning chainLightning = new ChainLightning(player.level(), player, entity);
+                        chainLightning.setDamage(8);
+                        chainLightning.range = 10;
+                        chainLightning.maxConnections = 7;
+                        player.level().addFreshEntity(chainLightning);
+                    }
+
+                    player.getCooldowns().addCooldown(ItemRegistries.TEMPESTUOUS_TOME.get(), StormWeaverTomeSpellbook.COOLDOWN);
                 }
             }
         }

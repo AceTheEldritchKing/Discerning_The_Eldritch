@@ -74,15 +74,15 @@ public class SpellRegistries {
     // Esoteric Strike - Harness raw eldritch mana into an empowered strike. Damage scales based on melee damage
     public static final Supplier<AbstractSpell> ESOTERIC_STRIKE = registerSpell(new EsotericStrikeSpell());
 
-    // Eternal Chains -
+    // Eternal Chains - Wrap the target in chains, preventing movement. The chains cannot be disspelled & the target cannot teleport. Any damage towards the target is halved.
 
-    // Malevolent Maelstrom -
+    // Malevolent Maelstrom - Conjure negative energy around the caster, manifesting in a swirling storm of Eso Edges slicing any nearby entities. Spell can be targeted as well to deal triple damage to a singular target
 
-    // Abhorrent Inferno -
+    // Abhorrent Inferno - Channel your mana into an eruption of Eldritch magic, swinging your weapon around into a fatal dance. Entities caught in your wicked ballet will be affected with the Abhorrent Burn debuff. At the end of your dance, your mana regeneration is halted for a few seconds. You may target another entity to "dance" with you, increasing the damage of your slashes
 
-    // Precipice Blades -
+    // Precipice Blades - Conjure blades from the ground to skewer entities. Entities hit are weaker to spell damage
 
-    // Conjure: Arcadian Stag -
+    // Conjure: Arcadian Stag - Conjure a stag from Arcadia itself. The spell scales off Eldritch & Occult SP. The stag can walk on fluids
 
     // Umbral Miasma - Create a field of miasma that disorients targets and leaves the susceptible to Eldritch spells
 
@@ -92,10 +92,13 @@ public class SpellRegistries {
 
     // Dark Rise - Recast; On first recast, ascend into the air. On the second, slam down on your opponent
 
+    // WATEOA - If you know, you know.
+
 
     /***
      * Ender Spells
      */
+
     // Hocus Pocus - Tether to an entity on the first recast. On the second, summon that entity to your position
 
 

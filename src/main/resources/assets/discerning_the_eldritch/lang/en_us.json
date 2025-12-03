@@ -46,9 +46,10 @@
   "item.discerning_the_eldritch.black_book_spellbook": "Black Book",
   "item.discerning_the_eldritch.the_apocrypha_spellbook": "The Apocrypha",
   "item.discerning_the_eldritch.tempestuous_tome": "Stormweaver's Spell Tome",
+  "item.discerning_the_eldritch.tempestuous_tome.desc": "Storm Within - Upon inflicting lightning damage, create a chain lightning on the hit target",
   "item.discerning_the_eldritch.frozen_folio": "Frozen Folios",
   "item.discerning_the_eldritch.diary_of_decay": "Diary of Decay",
-  "item.discerning_the_eldritch.diary_of_decay.desc": "Blood Rot - When attacked, the entity that harmed you is inflicted wither and reduced blood spell power and resist",
+  "item.discerning_the_eldritch.diary_of_decay.desc": "Blood Rot - When attacked, the entity that harmed you is inflicted damage and reduced blood spell power and resist",
   "item.discerning_the_eldritch.guardian_guidebook": "Guardian's Guidebook",
 
   "item.discerning_the_eldritch.echo_vibration_ring": "Echo Vibration Ring",
