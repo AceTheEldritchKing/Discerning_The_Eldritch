@@ -94,6 +94,8 @@ public class SpellRegistries {
 
     // WATEOA - If you know, you know.
 
+    // Black Sun - If you know, you know.
+
 
     /***
      * Ender Spells

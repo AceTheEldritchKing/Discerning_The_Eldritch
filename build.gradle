@@ -220,7 +220,7 @@ dependencies {
 
     // Ace's Spell Utils (REQUIRED - It's literally my API mod)
     implementation "curse.maven:aces-spell-utils-1299492:7196103"
-    //implementation "net.acetheeldritchking.aces_spell_utils:aces_spell_utils:1.1.6-a-1.21.1"
+    //implementation("net.acetheeldritchking.aces_spell_utils:aces_spell_utils:1.1.19-1.21.1-a")
 
     //QOL
     //todo: 1.21: update these mods
