@@ -1,33 +1,30 @@
-package net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists;
+package net.acetheeldritchking.discerning_the_eldritch.entity.mobs.electromancer;
 
 import com.google.common.collect.Sets;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
+import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.NeutralWizard;
 import io.redspace.ironsspellbooks.entity.mobs.goals.PatrolNearLocationGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.SpellBarrageGoal;
+import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
-import io.redspace.ironsspellbooks.entity.mobs.goals.melee.AttackAnimationData;
 import io.redspace.ironsspellbooks.entity.mobs.keeper.KeeperEntity;
-import io.redspace.ironsspellbooks.entity.mobs.wizards.GenericAnimatedWarlockAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.IMerchantWizard;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.cultist.CultistEntity;
-import io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.NotIdioticNavigation;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.priest.PriestEntity;
 import io.redspace.ironsspellbooks.item.InkItem;
 import io.redspace.ironsspellbooks.loot.SpellFilter;
 import io.redspace.ironsspellbooks.player.AdditionalWanderingTrades;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
+import net.acetheeldritchking.aces_spell_utils.entity.mobs.goals.WizardSpellComboGoal;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -38,34 +35,23 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.RangedCrossbowAttackGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animation.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.AnimationState;
-import software.bernie.geckolib.animation.PlayState;
-import software.bernie.geckolib.animation.RawAnimation;
 
 import java.util.*;
 
-// Btw, this entity won't be in the Apothic update, she'll be in the next one
-public class ApothicTraitorEntity extends NeutralWizard implements IMerchantWizard, IAnimatedAttacker {
-    //private static final EntityDataAccessor<Boolean> IS_CHARGING_CROSSBOW = SynchedEntityData.defineId(ApothicTraitorEntity.class, EntityDataSerializers.BOOLEAN);
-
-    public ApothicTraitorEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
+public class ElectromancerEntity extends NeutralWizard implements IMerchantWizard {
+    public ElectromancerEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         xpReward = 25;
     }
@@ -73,57 +59,51 @@ public class ApothicTraitorEntity extends NeutralWizard implements IMerchantWiza
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 1, 5, 100, 250, 4));
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.VOLT_STRIKE_SPELL.get(), 1, 3, 100, 250, 3));
 
-        this.goalSelector.addGoal(3, new GenericAnimatedWarlockAttackGoal<>(this, 1.5f, 25, 40)
-                .setMoveset(List.of(
-                        new AttackAnimationData(9, "simple_sword_upward_swipe", 5),
-                        new AttackAnimationData(8, "simple_sword_lunge_stab", 6),
-                        new AttackAnimationData(10, "simple_sword_stab_alternate", 8),
-                        new AttackAnimationData(10, "simple_sword_horizontal_cross_swipe", 8),
-                        new AttackAnimationData(10, "simple_sword_downstrike", 8),
-                        new AttackAnimationData(10, "sword_slash_stab", 20)
-                ))
-                .setComboChance(0.4F)
-                .setMeleeAttackInverval(15, 35)
-                .setMeleeMovespeedModifier(1.5F)
-                .setMeleeBias(0.1f, 0.5f)
-                .setSpells(
-                        // Attack
-                        List.of(SpellRegistries.ESOTERIC_STRIKE.get(), SpellRegistry.ECHOING_STRIKES_SPELL.get(), SpellRegistry.MAGIC_ARROW_SPELL.get()),
+        this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.5f, 25, 40)
+                .setSpells(// Attack
+                        List.of(SpellRegistry.CHAIN_LIGHTNING_SPELL.get(), SpellRegistry.ELECTROCUTE_SPELL.get(), SpellRegistry.BALL_LIGHTNING_SPELL.get()),
                         // Defense
                         List.of(SpellRegistry.COUNTERSPELL_SPELL.get(), SpellRegistry.HEAL_SPELL.get(), SpellRegistry.CHARGE_SPELL.get()),
                         // Movement
-                        List.of(SpellRegistry.BLOOD_STEP_SPELL.get()),
+                        List.of(SpellRegistry.TELEPORT_SPELL.get()),
                         // Support
-                        List.of(SpellRegistry.ABYSSAL_SHROUD_SPELL.get(), SpellRegistries.ABRACADABRA.get())
-                ).setSingleUseSpell(SpellRegistries.ESOTERIC_EDGE.get(), 80, 400, 1, 3)
-                .setSpellQuality(1.0f, 1.0f)
+                        List.of(SpellRegistry.CHARGE_SPELL.get())
+                ).setSingleUseSpell(SpellRegistry.LIGHTNING_BOLT_SPELL.get(), 80, 400, 1, 3)
+                .setSpellQuality(0.25F, 0.25F)
                 .setDrinksPotions()
+                .setAllowFleeing(true)
         );
+        this.goalSelector.addGoal(2, new WizardSpellComboGoal(this,
+                List.of(
+                        SpellRegistry.ASCENSION_SPELL.get(),
+                        SpellRegistry.VOLT_STRIKE_SPELL.get(),
+                        SpellRegistry.SHOCKWAVE_SPELL.get()
+                ), 1.3f, 1.3f, 65, 80));
+
         this.goalSelector.addGoal(3, new PatrolNearLocationGoal(this, 30, .75f));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(10, new WizardRecoverGoal(this));
 
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
         this.targetSelector.addGoal(5, new ResetUniversalAngerTargetGoal<>(this, false));
-        // She HATES these guys
+        // "Not quite fond of them" - Electromancer, when asked on its opinions of the Ancient Knights
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, KeeperEntity.class, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PriestEntity.class, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, CultistEntity.class, true));
     }
 
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
-        this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_ROBES.get()));
-        this.setItemSlot(EquipmentSlot.LEGS, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_LEGGINGS.get()));
-        this.setItemSlot(EquipmentSlot.FEET, new ItemStack(ItemRegistries.GECKOLIB_ELDRITCH_WARLOCK_GREAVES.get()));
-        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ItemRegistry.AUTOLOADER_CROSSBOW));
+        this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(ItemRegistry.ELECTROMANCER_HELMET.get()));
+        this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(ItemRegistry.ELECTROMANCER_CHESTPLATE.get()));
+        this.setItemSlot(EquipmentSlot.LEGS, new ItemStack(ItemRegistry.ELECTROMANCER_LEGGINGS.get()));
+        this.setItemSlot(EquipmentSlot.FEET, new ItemStack(ItemRegistry.ELECTROMANCER_BOOTS.get()));
+        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ItemRegistry.LIGHTNING_ROD_STAFF));
         this.setDropChance(EquipmentSlot.HEAD, 0.0F);
         this.setDropChance(EquipmentSlot.CHEST, 0.0F);
         this.setDropChance(EquipmentSlot.LEGS, 0.0F);
         this.setDropChance(EquipmentSlot.FEET, 0.0F);
-        this.setDropChance(EquipmentSlot.MAINHAND, 0.05F);
+        this.setDropChance(EquipmentSlot.MAINHAND, 0.0F);
     }
 
     @Override
@@ -136,18 +116,30 @@ public class ApothicTraitorEntity extends NeutralWizard implements IMerchantWiza
     public static AttributeSupplier.Builder createAttributes()
     {
         return LivingEntity.createLivingAttributes()
-                .add(Attributes.ATTACK_DAMAGE, 4.0)
-                .add(Attributes.ATTACK_KNOCKBACK, 0.5)
-                .add(Attributes.MAX_HEALTH, 100.0)
+                .add(Attributes.ATTACK_DAMAGE, 2.5)
+                .add(Attributes.ATTACK_KNOCKBACK, 0.2)
+                .add(Attributes.MAX_HEALTH, 40.0)
+                .add(Attributes.ARMOR, 10.0)
                 .add(Attributes.FOLLOW_RANGE, 24.0)
-                .add(Attributes.ENTITY_INTERACTION_RANGE, 3.5)
-                .add(Attributes.MOVEMENT_SPEED, .25)
-                .add(AttributeRegistry.MAX_MANA, 450);
+                .add(Attributes.ENTITY_INTERACTION_RANGE, 2.5)
+                .add(Attributes.MOVEMENT_SPEED, .35)
+                .add(AttributeRegistry.MAX_MANA, 100);
     }
 
     @Override
-    public boolean shouldSheathSword() {
-        return true;
+    public boolean isAlliedTo(Entity entityIn) {
+        if (entityIn instanceof IMagicSummon summon && summon.getSummoner() == this)
+        {
+            return true;
+        }
+        else if (entityIn instanceof ElectromancerEntity)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /***
@@ -244,7 +236,7 @@ public class ApothicTraitorEntity extends NeutralWizard implements IMerchantWiza
         {
             this.offer = new MerchantOffers();
 
-            this.offer.addAll(createRandomOffers(1, 2));
+            this.offer.addAll(createRandomOffers(2, 3));
 
             // Ink
             if (this.random.nextFloat() < 0.25f) {
@@ -257,20 +249,20 @@ public class ApothicTraitorEntity extends NeutralWizard implements IMerchantWiza
                 this.offer.add(new AdditionalWanderingTrades.InkBuyTrade((InkItem) ItemRegistry.INK_EPIC.get()).getOffer(this, this.random));
             }
 
-            this.offer.add(new AdditionalWanderingTrades.RandomScrollTrade(new SpellFilter(SchoolRegistry.ELDRITCH.get()), 0F, 0.25F).getOffer(this, this.random));
+            this.offer.add(new AdditionalWanderingTrades.RandomScrollTrade(new SpellFilter(SchoolRegistry.LIGHTNING.get()), 0F, 0.25F).getOffer(this, this.random));
             if (this.random.nextFloat() < .8f) {
-                this.offer.add(new AdditionalWanderingTrades.RandomScrollTrade(new SpellFilter(SchoolRegistry.ELDRITCH.get()), .3f, .7f).getOffer(this, this.random));
+                this.offer.add(new AdditionalWanderingTrades.RandomScrollTrade(new SpellFilter(SchoolRegistry.LIGHTNING.get()), .3f, .7f).getOffer(this, this.random));
             }
             if (this.random.nextFloat() < .8f) {
-                this.offer.add(new AdditionalWanderingTrades.RandomScrollTrade(new SpellFilter(SchoolRegistry.ELDRITCH.get()), .8f, 1f).getOffer(this, this.random));
+                this.offer.add(new AdditionalWanderingTrades.RandomScrollTrade(new SpellFilter(SchoolRegistry.LIGHTNING.get()), .8f, 1f).getOffer(this, this.random));
             }
 
             this.offer.add(new MerchantOffer(
-                    new ItemCost(Items.ECHO_SHARD, 16),
-                    new ItemStack(ItemRegistries.ECHO_VIBRATION_RING.get(), 1),
+                    new ItemCost(ItemRegistry.CHAINED_BOOK.get(), 1),
+                    new ItemStack(ItemRegistries.TEMPESTUOUS_TOME.get(), 1),
                     2,
                     0,
-                    0.2F
+                    1.2F
             ));
 
             this.offer.removeIf(Objects::isNull);
@@ -282,9 +274,9 @@ public class ApothicTraitorEntity extends NeutralWizard implements IMerchantWiza
     }
 
     private static final List<VillagerTrades.ItemListing> filler = List.of(
-            new AdditionalWanderingTrades.SimpleBuy(16, new ItemCost(Items.CANDLE, 1), 1, 2),
-            new AdditionalWanderingTrades.SimpleSell(8, new ItemStack(Items.ECHO_SHARD, 2), 5, 15),
-            new AdditionalWanderingTrades.SimpleSell(12, new ItemStack(Items.LANTERN, 3), 6, 10)
+            new AdditionalWanderingTrades.SimpleBuy(1, new ItemCost(ItemRegistry.LIGHTNING_BOTTLE.get(), 1), 6, 12),
+            new AdditionalWanderingTrades.SimpleSell(1, new ItemStack(ItemRegistry.LIGHTNING_RUNE.get(), 2), 25, 55),
+            new AdditionalWanderingTrades.SimpleSell(1, new ItemStack(ItemRegistry.LIGHTNING_BOTTLE.get(), 1), 6, 12)
     );
 
     private Collection<MerchantOffer> createRandomOffers(int min, int max)
@@ -337,46 +329,6 @@ public class ApothicTraitorEntity extends NeutralWizard implements IMerchantWiza
     @Override
     public SoundEvent getNotifyTradeSound() {
         return SoundRegistry.TRADER_YES.get();
-    }
-
-    /***
-     * Geckolibb & Anims
-     */
-    RawAnimation animationToPlay = null;
-    private final AnimationController<ApothicTraitorEntity> meleeController = new AnimationController<>(this, "keeper_animations", 0, this::predicate);
-
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        controllerRegistrar.add(meleeController);
-        super.registerControllers(controllerRegistrar);
-    }
-
-    @Override
-    public void playAnimation(String animationId) {
-        animationToPlay = RawAnimation.begin().thenPlay(animationId);
-    }
-
-    private PlayState predicate(AnimationState<ApothicTraitorEntity> animationState)
-    {
-        var controller = animationState.getController();
-
-        if (this.animationToPlay != null)
-        {
-            controller.forceAnimationReset();
-            controller.setAnimation(animationToPlay);
-            animationToPlay = null;
-        }
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    public boolean isAnimating() {
-        return meleeController.getAnimationState() != AnimationController.State.STOPPED || super.isAnimating();
-    }
-
-    @Override
-    protected PathNavigation createNavigation(Level level) {
-        return new NotIdioticNavigation(this, level);
     }
 
     /***

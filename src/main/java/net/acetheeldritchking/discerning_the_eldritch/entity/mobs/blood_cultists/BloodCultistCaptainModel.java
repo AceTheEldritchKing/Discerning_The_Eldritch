@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 public class BloodCultistCaptainModel extends AbstractSpellCastingMobModel {
     @Override
     public ResourceLocation getTextureResource(AbstractSpellCastingMob mob) {
-        return ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "textures/entity/blood_cultist_captain/blood_cultist_captain.png");
+        return ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "textures/entity/blood_cultists/blood_captain.png");
     }
 
     @Override

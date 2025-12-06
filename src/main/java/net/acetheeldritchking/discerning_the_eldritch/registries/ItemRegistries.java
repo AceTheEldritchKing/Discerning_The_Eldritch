@@ -309,9 +309,18 @@ public class ItemRegistries {
             () -> new DeferredSpawnEggItem(DTEEntityRegistry.ASCENDED_ONE_CULTIST, 1973277, 10554050,
                     new Item.Properties()));
 
-    // Ascended Cultist
+    // Blood Captain
     public static final DeferredItem<Item> BLOOD_CULTIST_CAPTAIN_SPAWN_EGG = ITEMS.register("blood_cultist_captain_spawn_egg",
             () -> new DeferredSpawnEggItem(DTEEntityRegistry.BLOOD_CULTIST_CAPTAIN, 4203295, 10357001,
+                    new Item.Properties()));
+
+    // Blood Mage
+
+    // Blood Witch
+
+    // Electromancer
+    public static final DeferredItem<Item> ELECTROMANCER_SPAWN_EGG = ITEMS.register("electromancer_spawn_egg",
+            () -> new DeferredSpawnEggItem(DTEEntityRegistry.ELECTROMANCER_MAGE, 16097366, 7729392,
                     new Item.Properties()));
 
 

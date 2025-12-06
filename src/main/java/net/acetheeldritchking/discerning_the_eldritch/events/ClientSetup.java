@@ -60,6 +60,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.CATACLYSM_BLADE_SMALL.get(), CataclysmBladeSmallRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.CATACLYSM_BLADE_BIG.get(), CataclysmBladeBigRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.RAVENOUS_JAW.get(), RavenousJawRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.ELECTROMANCER_MAGE.get(), ElectromancerRenderer::new);
     }
 
     @SubscribeEvent

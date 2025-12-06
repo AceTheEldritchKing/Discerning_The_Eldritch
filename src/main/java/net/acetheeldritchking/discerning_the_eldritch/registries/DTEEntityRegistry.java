@@ -10,6 +10,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneCultistEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caster.TheApostleEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.electromancer.ElectromancerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sightless_maw.SightlessMawEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothEntity;
@@ -213,6 +214,14 @@ public class DTEEntityRegistry {
                     .sized(2f, 2f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "ravenous_jaw").toString())
+            );
+
+    // Electromancer
+    public static final DeferredHolder<EntityType<?>, EntityType<ElectromancerEntity>> ELECTROMANCER_MAGE =
+            ENTITIES.register("electromancer", () -> EntityType.Builder.of(ElectromancerEntity::new, MobCategory.MONSTER)
+                    .sized(.6f, 1.8f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "electromancer").toString())
             );
 
 
