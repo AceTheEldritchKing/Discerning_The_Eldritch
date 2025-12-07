@@ -7,8 +7,11 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultis
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicSummonerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicTraitorEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistCaptainEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistMageEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistWitchEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneCultistEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.minibosses.blood_matriarch.BloodMatriarchEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caster.TheApostleEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.electromancer.ElectromancerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
@@ -174,6 +177,30 @@ public class DTEEntityRegistry {
                     .sized(.6f, 1.8f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "blood_cultist_captain").toString())
+            );
+
+    // Blood Cultist Mage
+    public static final DeferredHolder<EntityType<?>, EntityType<BloodCultistMageEntity>> BLOOD_CULTIST_MAGE =
+            ENTITIES.register("blood_cultist_mage", () -> EntityType.Builder.of(BloodCultistMageEntity::new, MobCategory.MONSTER)
+                    .sized(.6f, 1.8f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "blood_cultist_mage").toString())
+            );
+
+    // Blood Cultist Witch
+    public static final DeferredHolder<EntityType<?>, EntityType<BloodCultistWitchEntity>> BLOOD_CULTIST_WITCH =
+            ENTITIES.register("blood_cultist_witch", () -> EntityType.Builder.of(BloodCultistWitchEntity::new, MobCategory.MONSTER)
+                    .sized(.6f, 1.8f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "blood_cultist_witch").toString())
+            );
+
+    // Blood Matriarch
+    public static final DeferredHolder<EntityType<?>, EntityType<BloodMatriarchEntity>> BLOOD_MATRIARCH =
+            ENTITIES.register("blood_matriarch", () -> EntityType.Builder.of(BloodMatriarchEntity::new, MobCategory.MONSTER)
+                    .sized(.6f, 1.8f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "blood_matriarch").toString())
             );
 
     // Blade of Rancor

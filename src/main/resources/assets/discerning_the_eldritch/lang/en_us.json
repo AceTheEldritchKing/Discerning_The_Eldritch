@@ -131,6 +131,9 @@
   "item.discerning_the_eldritch.ascended_cultist_spawn_egg": "Ascended Cultist Spawn Egg",
   "item.discerning_the_eldritch.blood_cultist_captain_spawn_egg": "Blood Cultist Captain Spawn Egg",
   "item.discerning_the_eldritch.electromancer_spawn_egg": "Electromancer Spawn Egg",
+  "item.discerning_the_eldritch.blood_cultist_mage_spawn_egg": "Blood Cultist Mage Spawn Egg",
+  "item.discerning_the_eldritch.blood_cultist_witch_spawn_egg": "Blood Cultist Witch Spawn Egg",
+  "item.discerning_the_eldritch.blood_matriarch_spawn_egg": "Blood Matriarch Spawn Egg",
 
   "item.discerning_the_eldritch.cultist_base_map": "Cultist Headquarters",
 
@@ -228,6 +231,9 @@
   "entity.discerning_the_eldritch.esoteric_strike": "Esoteric Strike",
   "entity.discerning_the_eldritch.crystal_carve": "Crystalline Shard",
   "entity.discerning_the_eldritch.electromancer": "Electromancer",
+  "entity.discerning_the_eldritch.blood_cultist_mage": "Blood Cultist Mage",
+  "entity.discerning_the_eldritch.blood_cultist_witch": "Blood Cultist Witch",
+  "entity.discerning_the_eldritch.blood_matriarch": "Blood Matriarch",
 
 
 
@@ -276,7 +282,7 @@
   "death.attack.discerning_the_eldritch.untold_behemoth": "%1$s beaten to death by %2$s",
   "death.attack.discerning_the_eldritch.apothic_traitor": "%1$s had their life traded for six silver by %2$s",
   "death.attack.discerning_the_eldritch.razor_blade": "%1$s enjoyed the mutual subtext of their murder",
-  "death.attack.discerning_the_eldritch.blood_cultist_captain": "%1$s had their heart ripped by %2$s",
+  "death.attack.discerning_the_eldritch.blood_cultist_captain": "%1$s had their heart ripped out by %2$s",
   "death.attack.discerning_the_eldritch.glacial_edge": "%1$s had their body parts frozen by %2$s",
   "death.attack.discerning_the_eldritch.unstable_rift": "%1$s flesh was torn from their skeleton by %2$s unstable rift",
   "death.attack.discerning_the_eldritch.esoteric_strike": "%1$s was punched into oblivion by %2$s",
@@ -293,7 +299,7 @@
   "death.attack.discerning_the_eldritch.untold_behemoth.item": "%1$s beaten to death by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.apothic_traitor.item": "%1$s had their life traded for six silver by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.razor_blade.item": "%1$s enjoyed the mutual subtext of their murder by %2$s using %3$s",
-  "death.attack.discerning_the_eldritch.blood_cultist_captain.item": "%1$s had their heart ripped by %2$s using %3$s",
+  "death.attack.discerning_the_eldritch.blood_cultist_captain.item": "%1$s had their heart ripped out by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.glacial_edge.item": "%1$s had their body parts frozen by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.unstable_rift.item": "%1$s flesh was torn from their skeleton by %2$s unstable rift using %3$s",
   "death.attack.discerning_the_eldritch.esoteric_strike.item": "%1$s was punched into oblivion by %2$s using %3$s",

@@ -98,6 +98,9 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.CRUSADER_SPAWN_EGG.get());
                         output.accept(ItemRegistries.ASCENDED_CULTIST_SPAWN_EGG.get());
                         output.accept(ItemRegistries.BLOOD_CULTIST_CAPTAIN_SPAWN_EGG.get());
+                        output.accept(ItemRegistries.BLOOD_CULTIST_MAGE_SPAWN_EGG.get());
+                        output.accept(ItemRegistries.BLOOD_CULTIST_WITCH_SPAWN_EGG.get());
+                        output.accept(ItemRegistries.BLOOD_MATRIARCH_SPAWN_EGG.get());
                         output.accept(ItemRegistries.ELECTROMANCER_SPAWN_EGG.get());
 
                         // Compat

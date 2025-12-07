@@ -315,8 +315,19 @@ public class ItemRegistries {
                     new Item.Properties()));
 
     // Blood Mage
+    public static final DeferredItem<Item> BLOOD_CULTIST_MAGE_SPAWN_EGG = ITEMS.register("blood_cultist_mage_spawn_egg",
+            () -> new DeferredSpawnEggItem(DTEEntityRegistry.BLOOD_CULTIST_MAGE, 4203295, 16209219,
+                    new Item.Properties()));
 
     // Blood Witch
+    public static final DeferredItem<Item> BLOOD_CULTIST_WITCH_SPAWN_EGG = ITEMS.register("blood_cultist_witch_spawn_egg",
+            () -> new DeferredSpawnEggItem(DTEEntityRegistry.BLOOD_CULTIST_WITCH, 4203295, 10231815,
+                    new Item.Properties()));
+
+    // Blood Matriarch
+    public static final DeferredItem<Item> BLOOD_MATRIARCH_SPAWN_EGG = ITEMS.register("blood_matriarch_spawn_egg",
+            () -> new DeferredSpawnEggItem(DTEEntityRegistry.BLOOD_MATRIARCH, 4203295, 16066367,
+                    new Item.Properties()));
 
     // Electromancer
     public static final DeferredItem<Item> ELECTROMANCER_SPAWN_EGG = ITEMS.register("electromancer_spawn_egg",
@@ -343,6 +354,12 @@ public class ItemRegistries {
     public static final DeferredHolder<Item, Item> CAPELESS_ASCENDED_ONE_ROBES = ITEMS.register("capeless_ascended_one_robes", () -> new CapelessAscendedArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
     public static final DeferredHolder<Item, Item> ASCENDED_ONE_LEGGINGS = ITEMS.register("ascended_one_leggings", () -> new AscendedArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
     public static final DeferredHolder<Item, Item> ASCENDED_ONE_GREAVES = ITEMS.register("ascended_one_greaves", () -> new AscendedArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
+
+    // Crimson Stag
+    public static final DeferredHolder<Item, Item> GECKOLIB_CRIMSON_STAG_ANTLERS = ITEMS.register("gecko_crimson_stag_antlers", () -> new GeckolibCrimsonStagArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredHolder<Item, Item> GECKOLIB_CRIMSON_STAG_ROBES = ITEMS.register("gecko_crimson_stag_robes", () -> new GeckolibCrimsonStagArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
+    public static final DeferredHolder<Item, Item> GECKOLIB_CRIMSON_STAG_LEGGINGS = ITEMS.register("gecko_crimson_stag_leggings", () -> new GeckolibCrimsonStagArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
+    public static final DeferredHolder<Item, Item> GECKOLIB_CRIMSON_STAG_BOOTS = ITEMS.register("gecko_crimson_stag_boots", () -> new GeckolibCrimsonStagArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
 
     public static Collection<DeferredHolder<Item, ? extends Item>> getDTEItems()

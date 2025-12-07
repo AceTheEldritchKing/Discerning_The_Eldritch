@@ -5,6 +5,14 @@ import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttributeReg
 
 public class CrimsonStagArmorItem extends ImbuableDTEArmorItem {
     public CrimsonStagArmorItem(Type slot, Properties settings) {
-        super(DTEArmorMaterialRegistry.CRIMSON_STAG, slot, settings, schoolAttributesWithResistance(AttributeRegistry.BLOOD_SPELL_POWER, DTEAttributeRegistry.RITUAL_MAGIC_POWER, 150, 0.15F, 0.05F, 0.05F));
+        super(DTEArmorMaterialRegistry.CRIMSON_STAG, slot, settings,
+                schoolAttributesWithResistance(
+                        AttributeRegistry.BLOOD_SPELL_POWER,
+                        DTEAttributeRegistry.RITUAL_MAGIC_POWER,
+                        150,
+                        0.15F,
+                        0.05F,
+                        0.05F
+                ));
     }
 }

@@ -2,6 +2,9 @@
   "replace": false,
   "values": [
     "discerning_the_eldritch:blood_cultist_captain",
+    "discerning_the_eldritch:blood_cultist_mage",
+    "discerning_the_eldritch:blood_cultist_witch",
+    "discerning_the_eldritch:blood_matriarch",
     "irons_spellbooks:cultist"
   ]
 }

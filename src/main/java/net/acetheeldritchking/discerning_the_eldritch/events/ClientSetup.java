@@ -61,6 +61,9 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.CATACLYSM_BLADE_BIG.get(), CataclysmBladeBigRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.RAVENOUS_JAW.get(), RavenousJawRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.ELECTROMANCER_MAGE.get(), ElectromancerRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.BLOOD_CULTIST_MAGE.get(), BloodCultistMageRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.BLOOD_CULTIST_WITCH.get(), BloodCultistWitchRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.BLOOD_MATRIARCH.get(), BloodMatriarchRenderer::new);
     }
 
     @SubscribeEvent

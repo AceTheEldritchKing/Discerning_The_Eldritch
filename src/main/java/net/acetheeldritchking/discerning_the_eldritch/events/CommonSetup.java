@@ -6,7 +6,10 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultis
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicSummonerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicTraitorEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistCaptainEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistMageEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistWitchEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.minibosses.blood_matriarch.BloodMatriarchEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caster.TheApostleEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.electromancer.ElectromancerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
@@ -36,5 +39,8 @@ public class CommonSetup {
         event.put(DTEEntityRegistry.RAZOR_BLADE.get(), RazorBlade.createLivingAttributes().build());
         event.put(DTEEntityRegistry.BLOOD_CULTIST_CAPTAIN.get(), BloodCultistCaptainEntity.createAttributes().build());
         event.put(DTEEntityRegistry.ELECTROMANCER_MAGE.get(), ElectromancerEntity.createAttributes().build());
+        event.put(DTEEntityRegistry.BLOOD_CULTIST_MAGE.get(), BloodCultistMageEntity.createAttributes().build());
+        event.put(DTEEntityRegistry.BLOOD_CULTIST_WITCH.get(), BloodCultistWitchEntity.createAttributes().build());
+        event.put(DTEEntityRegistry.BLOOD_MATRIARCH.get(), BloodMatriarchEntity.createAttributes().build());
     }
 }

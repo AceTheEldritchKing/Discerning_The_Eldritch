@@ -13,8 +13,6 @@ import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
 import io.redspace.ironsspellbooks.entity.mobs.keeper.KeeperEntity;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.IMerchantWizard;
-import io.redspace.ironsspellbooks.entity.mobs.wizards.cultist.CultistEntity;
-import io.redspace.ironsspellbooks.entity.mobs.wizards.priest.PriestEntity;
 import io.redspace.ironsspellbooks.item.InkItem;
 import io.redspace.ironsspellbooks.loot.SpellFilter;
 import io.redspace.ironsspellbooks.player.AdditionalWanderingTrades;
@@ -22,8 +20,6 @@ import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.acetheeldritchking.aces_spell_utils.entity.mobs.goals.WizardSpellComboGoal;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
-import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
-import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
@@ -80,7 +76,7 @@ public class ElectromancerEntity extends NeutralWizard implements IMerchantWizar
                         SpellRegistry.ASCENSION_SPELL.get(),
                         SpellRegistry.VOLT_STRIKE_SPELL.get(),
                         SpellRegistry.SHOCKWAVE_SPELL.get()
-                ), 1.3f, 1.3f, 65, 80));
+                ), 1.3f, 1.3f, 100, 250));
 
         this.goalSelector.addGoal(3, new PatrolNearLocationGoal(this, 30, .75f));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
