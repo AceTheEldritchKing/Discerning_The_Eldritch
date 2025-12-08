@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:jigsaw",
+  "liquid_settings": "ignore_waterlogging",
+  "start_pool": "discerning_the_eldritch:electromancer_tower_pool",
+  "size": 2,
+  "max_distance_from_center": 25,
+  "step": "surface_structures",
+  "use_expansion_hack": false,
+  "start_height": {
+    "absolute": 0
+  },
+  "project_start_to_heightmap": "WORLD_SURFACE_WG",
+  "biomes": [
+    "minecraft:jagged_peaks",
+    "minecraft:stony_peaks",
+    "minecraft:windswept_gravelly_hills",
+    "minecraft:windswept_hills"
+  ],
+  "terrain_adaptation": "beard_thin",
+  "spawn_overrides": {
+  }
+}

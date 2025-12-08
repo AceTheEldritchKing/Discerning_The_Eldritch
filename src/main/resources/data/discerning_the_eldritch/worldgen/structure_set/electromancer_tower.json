@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "discerning_the_eldritch:electromancer_tower",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 35,
+    "separation": 23,
+    "salt": 6129841846
+  }
+}

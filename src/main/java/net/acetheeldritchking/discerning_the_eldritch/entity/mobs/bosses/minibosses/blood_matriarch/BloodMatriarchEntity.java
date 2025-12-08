@@ -19,6 +19,7 @@ import io.redspace.ironsspellbooks.loot.SpellFilter;
 import io.redspace.ironsspellbooks.player.AdditionalWanderingTrades;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
+import net.acetheeldritchking.aces_spell_utils.entity.mobs.goals.WizardSpellComboGoal;
 import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicAcolyteEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicCrusaderEntity;
@@ -109,7 +110,7 @@ public class BloodMatriarchEntity extends NeutralWizard implements Enemy, IMerch
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistry.ELDRITCH_BLAST_SPELL.get(), 1, 5, 100, 250, 1));
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, SpellRegistries.BLADES_OF_RANCOR.get(), 3, 5, 100, 250, 6));
 
         this.goalSelector.addGoal(3, new GenericAnimatedWarlockAttackGoal<>(this, 1.5f, 25, 40)
                 .setMoveset(List.of(
@@ -130,13 +131,21 @@ public class BloodMatriarchEntity extends NeutralWizard implements Enemy, IMerch
                         // Defense
                         List.of(SpellRegistry.COUNTERSPELL_SPELL.get(), SpellRegistry.HEAL_SPELL.get(), SpellRegistry.RAY_OF_SIPHONING_SPELL.get()),
                         // Movement
-                        List.of(SpellRegistry.BLOOD_STEP_SPELL.get()),
+                        List.of(SpellRegistry.BLOOD_STEP_SPELL.get(), SpellRegistry.COUNTERSPELL_SPELL.get()),
                         // Support
                         List.of()
                 ).setSingleUseSpell(SpellRegistry.ACUPUNCTURE_SPELL.get(), 50, 100, 2, 5)
                 .setSpellQuality(1.1f, 1.1f)
                 .setDrinksPotions()
         );
+
+        this.goalSelector.addGoal(2, new WizardSpellComboGoal(this,
+                List.of(
+                        SpellRegistry.BLOOD_STEP_SPELL.get(),
+                        SpellRegistry.COUNTERSPELL_SPELL.get(),
+                        SpellRegistry.ACUPUNCTURE_SPELL.get()
+                ), 1.3f, 1.3f, 100, 250));
+
         //this.goalSelector.addGoal(4, new PatrolNearLocationGoal(this, 30, .75f));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(10, new WizardRecoverGoal(this));
@@ -194,7 +203,7 @@ public class BloodMatriarchEntity extends NeutralWizard implements Enemy, IMerch
                 .add(Attributes.ATTACK_DAMAGE, 10.5)
                 .add(Attributes.ATTACK_KNOCKBACK, 0.5)
                 .add(Attributes.ARMOR, 10)
-                .add(Attributes.ARMOR_TOUGHNESS, 10)
+                .add(Attributes.ARMOR_TOUGHNESS, 5)
                 .add(Attributes.MAX_HEALTH, 200.0)
                 .add(Attributes.FOLLOW_RANGE, 45.0)
                 .add(Attributes.ENTITY_INTERACTION_RANGE, 3.5)

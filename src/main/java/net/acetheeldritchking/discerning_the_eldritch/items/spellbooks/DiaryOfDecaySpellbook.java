@@ -25,9 +25,10 @@ public class DiaryOfDecaySpellbook extends PassiveAbilitySpellbook {
     public DiaryOfDecaySpellbook() {
         super(12, ItemPropertiesHelper.equipment().fireResistant().stacksTo(1).rarity(ASRarities.ACCURSED_RARITY_PROXY.getValue()));
         this.withSpellbookAttributes(
-                new AttributeContainer(AttributeRegistry.BLOOD_SPELL_POWER, .10F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                new AttributeContainer(AttributeRegistry.BLOOD_SPELL_POWER, .15F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                new AttributeContainer(AttributeRegistry.SPELL_RESIST, .05F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
                 new AttributeContainer(DTEAttributeRegistry.RITUAL_MAGIC_POWER, .05F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-                new AttributeContainer(AttributeRegistry.MAX_MANA, 200, AttributeModifier.Operation.ADD_VALUE)
+                new AttributeContainer(AttributeRegistry.MAX_MANA, 250, AttributeModifier.Operation.ADD_VALUE)
         );
     }
 

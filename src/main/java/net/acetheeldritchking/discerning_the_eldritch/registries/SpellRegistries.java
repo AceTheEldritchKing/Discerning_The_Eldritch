@@ -110,6 +110,8 @@ public class SpellRegistries {
 
     // Bloodlust - Damage dealt by user gets turned into health; lifesteal on hit
 
+    // Vein Ripper - Blood melee spell, slash upwards, inflicting blood rot on hit and giving the caster vigor
+
 
     /***
      * Evocation Spells
