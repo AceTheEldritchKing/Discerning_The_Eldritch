@@ -13,6 +13,9 @@ import io.redspace.ironsspellbooks.entity.mobs.wizards.cultist.CultistEntity;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.NotIdioticNavigation;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.priest.PriestEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistCaptainEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistMageEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistWitchEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.minibosses.blood_matriarch.BloodMatriarchEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
@@ -69,6 +72,9 @@ public class ApothicSummonerEntity extends NeutralWizard implements Enemy {
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PriestEntity.class, true));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, CultistEntity.class, true));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, BloodCultistCaptainEntity.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, BloodCultistMageEntity.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, BloodCultistWitchEntity.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, BloodMatriarchEntity.class, true));
     }
 
     @Override

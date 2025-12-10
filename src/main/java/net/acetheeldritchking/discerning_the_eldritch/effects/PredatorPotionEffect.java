@@ -12,7 +12,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 @EventBusSubscriber
 public class PredatorPotionEffect extends MobEffect {
-    protected PredatorPotionEffect() {
+    public PredatorPotionEffect() {
         super(MobEffectCategory.BENEFICIAL, 11749198);
     }
 
@@ -32,7 +32,7 @@ public class PredatorPotionEffect extends MobEffect {
 
                 jaw.setPos(entity.position());
                 jaw.setYRot(livingEntity.getYRot());
-                jaw.setDamage(10);
+                jaw.setDamage(20);
 
                 livingEntity.level().addFreshEntity(jaw);
             } else if (livingEntity.hasEffect(DTEPotionEffectRegistry.PREDATOR_POTION_EFFECT) && entity.hasEffect(DTEPotionEffectRegistry.PREY_POTION_EFFECT))
@@ -41,7 +41,7 @@ public class PredatorPotionEffect extends MobEffect {
 
                 jaw.setPos(entity.position());
                 jaw.setYRot(livingEntity.getYRot());
-                jaw.setDamage(15);
+                jaw.setDamage(25);
             }
         }
     }

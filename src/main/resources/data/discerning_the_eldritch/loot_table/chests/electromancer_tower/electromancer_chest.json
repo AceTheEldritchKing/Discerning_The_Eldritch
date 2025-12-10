@@ -1,0 +1,114 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "irons_spellbooks:magic_items/basic_curios"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.15
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bundle",
+          "functions": [
+            {
+              "function": "minecraft:set_contents",
+              "component": "minecraft:bundle_contents",
+              "entries": [
+                {
+                  "type": "minecraft:item",
+                  "name": "irons_spellbooks:scroll",
+                  "functions": [
+                    {
+                      "function": "irons_spellbooks:randomize_spell",
+                      "quality": {
+                        "min": 0.3,
+                        "max": 0.8
+                      },
+                      "spell_filter": {
+                        "school": "irons_spellbooks:lightning"
+                      }
+                    },
+                    {
+                      "function": "minecraft:set_count",
+                      "count": {
+                        "min": 1,
+                        "max": 4
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "irons_spellbooks:energized_core"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "irons_spellbooks:lightning_bottle",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "irons_spellbooks:epic_ink"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 27,
+                "max": 35
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

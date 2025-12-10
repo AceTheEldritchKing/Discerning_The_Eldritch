@@ -8,6 +8,7 @@ import io.redspace.ironsspellbooks.api.util.CameraShakeData;
 import io.redspace.ironsspellbooks.api.util.CameraShakeManager;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.damage.SpellDamageSource;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.acetheeldritchking.aces_spell_utils.spells.ASSpellAnimations;
@@ -20,8 +21,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
@@ -47,7 +50,7 @@ public class RavenousRevenantSpell extends AbstractRitualSpell {
     public RavenousRevenantSpell()
     {
         this.manaCostPerLevel = 15;
-        this.baseSpellPower = 25;
+        this.baseSpellPower = 35;
         this.spellPowerPerLevel = 2;
         this.castTime = 20;
         this.baseManaCost = 100;
@@ -112,6 +115,11 @@ public class RavenousRevenantSpell extends AbstractRitualSpell {
         entity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.PREDATOR_POTION_EFFECT, getDuration(spellLevel, entity), 0, false, false, true));
 
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
+    }
+
+    @Override
+    public SpellDamageSource getDamageSource(@Nullable Entity projectile, Entity attacker) {
+        return super.getDamageSource(projectile, attacker).setIFrames(0);
     }
 
     private int getDuration(int spellLevel, LivingEntity caster)

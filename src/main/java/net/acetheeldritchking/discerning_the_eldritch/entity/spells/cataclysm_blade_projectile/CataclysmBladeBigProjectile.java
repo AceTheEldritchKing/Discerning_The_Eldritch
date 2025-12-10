@@ -5,6 +5,7 @@ import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
+import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.particle.DTEParticleHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
@@ -31,6 +32,7 @@ import java.util.Optional;
 
 public class CataclysmBladeBigProjectile extends AbstractMagicProjectile implements GeoEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    private int hitsPerTick;
 
     public CataclysmBladeBigProjectile(EntityType<? extends Projectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -71,6 +73,14 @@ public class CataclysmBladeBigProjectile extends AbstractMagicProjectile impleme
         setXRot(lerpRotation(xRotO, getXRot()));
         setYRot(lerpRotation(yRotO, getYRot()));
         super.tick();
+
+        hitsPerTick = 0;
+
+        // Limiting how much time these guys remain in the world
+        if (tickCount >= 60)
+        {
+            this.discard();
+        }
     }
 
     @Override
@@ -118,18 +128,23 @@ public class CataclysmBladeBigProjectile extends AbstractMagicProjectile impleme
             }
 
             target.invulnerableTime = 0;
+
+            if (hitsPerTick++ < 2)
+            {
+                discard();
+                //DiscerningTheEldritch.LOGGER.debug("Bai bai");
+            }
         }
     }
 
     @Override
     protected void onHitBlock(BlockHitResult result) {
-        super.onHitBlock(result);
+        //super.onHitBlock(result);
     }
 
     @Override
     protected void onHit(HitResult hitresult) {
         super.onHit(hitresult);
-        discardHelper(hitresult);
     }
 
     @Override

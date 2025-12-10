@@ -110,7 +110,6 @@ public class ApothicTraitorEntity extends NeutralWizard implements IMerchantWiza
         // She HATES these guys
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, KeeperEntity.class, true));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PriestEntity.class, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, CultistEntity.class, true));
     }
 
     @Override

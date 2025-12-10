@@ -11,6 +11,7 @@ import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.blade_of_rancor.BladeOfRancorProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeSmallProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.gore_bile.GoreBileAoE;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.DiaryOfDecaySpellbook;
@@ -216,7 +217,7 @@ public class ServerEvents {
                 {
                     if (projectile instanceof Projectile)
                     {
-                        target.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 0, true, true, true));
+                        target.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.BLOOD_ROT_EFFECT, 60, 0, true, true, true));
                     }
                 }
             }
@@ -267,9 +268,9 @@ public class ServerEvents {
                 float baseHealth = target.getHealth();
                 double percent = (baseHealth/MAX_HEALTH) * 100;
 
-                //DiscerningTheEldritch.LOGGER.debug("Max HP: " + MAX_HEALTH);
-                //DiscerningTheEldritch.LOGGER.debug("Base HP: " + baseHealth);
-                //DiscerningTheEldritch.LOGGER.debug("Percent: " + percent);
+                DiscerningTheEldritch.LOGGER.debug("Max HP: " + MAX_HEALTH);
+                DiscerningTheEldritch.LOGGER.debug("Base HP: " + baseHealth);
+                DiscerningTheEldritch.LOGGER.debug("Percent: " + percent);
 
                 if (percent > 50)
                 {
@@ -280,10 +281,11 @@ public class ServerEvents {
                         CataclysmBladeSmallProjectile cataclysmSmallBlade = new CataclysmBladeSmallProjectile(livingEntity.level(), livingEntity);
 
                         Vec3 origin = target.getEyePosition().add(target.getForward().normalize().scale(1.2F)).subtract(0, 0.15,0);
-                        cataclysmSmallBlade.setPos(origin.subtract(0, cataclysmSmallBlade.getBbHeight() + 1, 0));
+                        // Apparently adding it causes it to spawn underground... No clue so we're just subtracting it
+                        cataclysmSmallBlade.setPos(origin.subtract(0, cataclysmSmallBlade.getBbHeight() - 1.5, 0));
                         Vec3 vec3 = target.getForward().add(0, 0.05, 0).normalize();
                         cataclysmSmallBlade.shoot(vec3.scale(0.5F), 0.4F);
-                        cataclysmSmallBlade.setDamage(5);
+                        cataclysmSmallBlade.setDamage(2);
                         cataclysmSmallBlade.setHomingTarget(target);
 
                         livingEntity.level().addFreshEntity(cataclysmSmallBlade);

@@ -342,6 +342,8 @@ public class BloodMatriarchEntity extends NeutralWizard implements Enemy, IMerch
                     1.2F
             ));
 
+            this.offer.addAll(createRandomStagOffers(2, 4));
+
             this.offer.removeIf(Objects::isNull);
 
             numberOfRestocksToday++;
@@ -357,6 +359,37 @@ public class BloodMatriarchEntity extends NeutralWizard implements Enemy, IMerch
             new AdditionalWanderingTrades.SimpleSell(1, new ItemStack(ItemRegistry.BLOODY_VELLUM.get(), 4), 3, 8)
     );
 
+    private static final List<MerchantOffer> stagTrades = List.of(
+            new MerchantOffer(
+                    new ItemCost(ItemRegistries.BOTTLE_OF_LIQUID_MALICE.get(), 16),
+                    new ItemStack(ItemRegistries.CRIMSON_STAG_ANTLERS.get(), 1),
+                    1,
+                    0,
+                    1.0F
+            ),
+            new MerchantOffer(
+                    new ItemCost(ItemRegistries.BOTTLE_OF_LIQUID_MALICE.get(), 16),
+                    new ItemStack(ItemRegistries.CRIMSON_STAG_ROBES.get(), 1),
+                    1,
+                    0,
+                    1.0F
+            ),
+            new MerchantOffer(
+                    new ItemCost(ItemRegistries.BOTTLE_OF_LIQUID_MALICE.get(), 16),
+                    new ItemStack(ItemRegistries.CRIMSON_STAG_LEGGINGS.get(), 1),
+                    1,
+                    0,
+                    1.0F
+            ),
+            new MerchantOffer(
+                    new ItemCost(ItemRegistries.BOTTLE_OF_LIQUID_MALICE.get(), 16),
+                    new ItemStack(ItemRegistries.CRIMSON_STAG_BOOTS.get(), 1),
+                    1,
+                    0,
+                    1.0F
+            )
+    );
+
     private Collection<MerchantOffer> createRandomOffers(int min, int max)
     {
         Set<Integer> set = Sets.newHashSet();
@@ -369,6 +402,23 @@ public class BloodMatriarchEntity extends NeutralWizard implements Enemy, IMerch
         for (Integer integer : set)
         {
             offers.add(filler.get(integer).getOffer(this, this.random));
+        }
+
+        return offers;
+    }
+
+    private Collection<MerchantOffer> createRandomStagOffers(int min, int max)
+    {
+        Set<Integer> set = Sets.newHashSet();
+        int fillerTrades = random.nextIntBetweenInclusive(min, max);
+        for (int i = 0; i < 10 && set.size() < fillerTrades; i++)
+        {
+            set.add(random.nextInt(stagTrades.size()));
+        }
+        Collection<MerchantOffer> offers = new ArrayList<>();
+        for (Integer integer : set)
+        {
+            offers.add(stagTrades.get(integer));
         }
 
         return offers;

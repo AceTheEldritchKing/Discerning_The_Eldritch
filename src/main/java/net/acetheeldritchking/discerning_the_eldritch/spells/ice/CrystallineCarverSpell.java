@@ -119,7 +119,13 @@ public class CrystallineCarverSpell extends AbstractSpell {
 
     @Override
     public int getEffectiveCastTime(int spellLevel, @Nullable LivingEntity entity) {
-        return getCastTime(spellLevel);
+        if (isFinalCast)
+        {
+            return getCastTime(spellLevel);
+        } else
+        {
+            return getCastTime(spellLevel);
+        }
     }
 
     @Override

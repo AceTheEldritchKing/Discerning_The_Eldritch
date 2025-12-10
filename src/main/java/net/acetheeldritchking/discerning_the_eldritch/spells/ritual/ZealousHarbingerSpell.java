@@ -96,7 +96,7 @@ public class ZealousHarbingerSpell extends AbstractRitualSpell {
             if (targetEntity != null)
             {
                 Vec3 lookDir = entity.getLookAngle();
-                Vec3 flatDir = new Vec3(lookDir.x, 0.75, lookDir.z).normalize();
+                Vec3 flatDir = new Vec3(lookDir.x, 1.55, lookDir.z).normalize();
                 double offset = -2.0;
                 Vec3 spawnPos = entity.position().subtract(flatDir.scale(offset));
 
@@ -129,7 +129,7 @@ public class ZealousHarbingerSpell extends AbstractRitualSpell {
 
     private float getDamage(int spellLevel, LivingEntity caster)
     {
-        return (float) ((getSpellPower(spellLevel, caster) * 1.5) + getWeaponDamage(caster));
+        return (float) ((getSpellPower(spellLevel, caster) * 0.45) + getWeaponDamage(caster));
     }
 
     private float getWeaponDamage(LivingEntity caster)

@@ -1,0 +1,46 @@
+{
+  "type": "minecraft:jigsaw",
+  "liquid_settings": "ignore_waterlogging",
+  "start_pool": "discerning_the_eldritch:blood_cultist_hut_pool",
+  "size": 2,
+  "max_distance_from_center": 25,
+  "step": "surface_structures",
+  "use_expansion_hack": false,
+  "start_height": {
+    "absolute": 0
+  },
+  "project_start_to_heightmap": "WORLD_SURFACE_WG",
+  "biomes": [
+    "minecraft:dark_forest",
+    "minecraft:forest",
+    "minecraft:mangrove_swamp",
+    "minecraft:windswept_forest",
+    "minecraft:grove"
+  ],
+  "terrain_adaptation": "beard_thin",
+  "spawn_overrides": {
+    "monster": {
+      "bounding_box": "piece",
+      "spawns": [
+        {
+          "type": "discerning_the_eldritch:blood_cultist_captain",
+          "weight": 1,
+          "minCount": 2,
+          "maxCount": 3
+        },
+        {
+          "type": "discerning_the_eldritch:blood_cultist_mage",
+          "weight": 2,
+          "minCount": 2,
+          "maxCount": 3
+        },
+        {
+          "type": "discerning_the_eldritch:blood_cultist_witch",
+          "weight": 2,
+          "minCount": 2,
+          "maxCount": 3
+        }
+      ]
+    }
+  }
+}
