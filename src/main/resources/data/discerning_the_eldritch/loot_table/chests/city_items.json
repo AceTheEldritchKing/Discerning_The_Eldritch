@@ -24,13 +24,13 @@
         {
           "type": "minecraft:item",
           "name": "discerning_the_eldritch:cataclysm",
-          "weight": 2
+          "weight": 1
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:random_chance",
-          "chance": 0.25
+          "chance": 0.10
         }
       ],
       "rolls": 1.0
@@ -41,13 +41,13 @@
         {
           "type": "minecraft:item",
           "name": "discerning_the_eldritch:devourer",
-          "weight": 2
+          "weight": 1
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:random_chance",
-          "chance": 0.25
+          "chance": 0.10
         }
       ],
       "rolls": 1.0
@@ -58,13 +58,13 @@
         {
           "type": "minecraft:item",
           "name": "discerning_the_eldritch:mourning_star",
-          "weight": 2
+          "weight": 1
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:random_chance",
-          "chance": 0.25
+          "chance": 0.10
         }
       ],
       "rolls": 1.0

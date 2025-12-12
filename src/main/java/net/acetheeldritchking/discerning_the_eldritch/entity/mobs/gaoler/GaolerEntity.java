@@ -11,6 +11,7 @@ import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import io.redspace.ironsspellbooks.entity.mobs.goals.melee.AttackAnimationData;
+import io.redspace.ironsspellbooks.entity.mobs.goals.melee.AttackKeyframe;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.NotIdioticNavigation;
 import io.redspace.ironsspellbooks.entity.spells.EarthquakeAoe;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
@@ -132,8 +133,10 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new GaolerAnimatedWarlockAttackGoal(this, 1.5F, 10, 25)
                 .setMoveset(List.of(
-                        new AttackAnimationData(39, "slam_1", 24),
-                        new AttackAnimationData(37, "upper_cut", 22)
+                        //new AttackAnimationData(39, "slam_1", 24),
+                        new AttackAnimationData.Builder("slam_1").length(39).attacks(new AttackKeyframe(24, new Vec3(0, 0, 1))).area(20).build(),
+                        //new AttackAnimationData(37, "upper_cut", 22)
+                        new AttackAnimationData.Builder("upper_cut").length(37).attacks(22).build()
                 ))
                 .setComboChance(1.2f)
                 .setMeleeAttackInverval(10, 25)
@@ -167,6 +170,7 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
                 .add(Attributes.ARMOR_TOUGHNESS, 4.0)
                 .add(Attributes.FOLLOW_RANGE, 45.0)
                 .add(Attributes.ENTITY_INTERACTION_RANGE, 6.5)
+                .add(Attributes.STEP_HEIGHT, 1.5)
                 .add(Attributes.MOVEMENT_SPEED, .25);
     }
 

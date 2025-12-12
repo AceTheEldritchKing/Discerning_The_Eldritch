@@ -19,28 +19,5 @@
   ],
   "terrain_adaptation": "beard_thin",
   "spawn_overrides": {
-    "monster": {
-      "bounding_box": "piece",
-      "spawns": [
-        {
-          "type": "discerning_the_eldritch:blood_cultist_captain",
-          "weight": 1,
-          "minCount": 2,
-          "maxCount": 3
-        },
-        {
-          "type": "discerning_the_eldritch:blood_cultist_mage",
-          "weight": 2,
-          "minCount": 2,
-          "maxCount": 3
-        },
-        {
-          "type": "discerning_the_eldritch:blood_cultist_witch",
-          "weight": 2,
-          "minCount": 2,
-          "maxCount": 3
-        }
-      ]
-    }
   }
 }
