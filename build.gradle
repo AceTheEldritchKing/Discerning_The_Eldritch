@@ -153,6 +153,23 @@ repositories {
             includeGroup "com.klikli_dev"
         }
     }
+
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Crystal Nest"
+                url = "https://maven.crystalnest.it"
+            }
+        }
+        filter {
+            includeGroup "it.crystalnest"
+        }
+    }
+    // Fuzs repository where Soul Fire'd required dependency FCAP is hosted. Not needed since 1.21
+    maven {
+        name = "Fuzs Mod Resources"
+        url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
+    }
 }
 
 dependencies {
@@ -212,8 +229,10 @@ dependencies {
     implementation "mod.azure.azurelib:azurelib-neo-1.21.1:3.1.0"
     //implementation "curse.maven:azurelib-817423:6004979"
 
-    // Spell Collector Lib
-    implementation "curse.maven:spell-collector-lib-1149858:6174572"
+    // Soul Fire'd
+    implementation "it.crystalnest:soul-fire-d-neoforge:$minecraft_version-$soul_fire_d_version"
+    implementation "it.crystalnest:cobweb-neoforge:$minecraft_version-$cobweb_version"
+    implementation "it.crystalnest:prometheus-neoforge:$minecraft_version-$prometheus_version"
 
     // World Edit (Only for building)
     implementation "curse.maven:worldedit-225608:5830452"

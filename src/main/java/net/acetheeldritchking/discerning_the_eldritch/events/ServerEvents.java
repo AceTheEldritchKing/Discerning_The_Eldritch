@@ -8,6 +8,9 @@ import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.ISSDamageTypes;
 import io.redspace.ironsspellbooks.entity.spells.ChainLightning;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
+import it.crystalnest.prometheus.api.Fire;
+import it.crystalnest.prometheus.api.FireManager;
+import it.crystalnest.soul_fire_d.fire.FireRegistry;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
@@ -51,6 +54,8 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
+
+import java.util.function.UnaryOperator;
 
 import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.*;
 
@@ -340,6 +345,34 @@ public class ServerEvents {
                     }
                 }
             }
+
+            // Soul Fire Scythe
+            if (mainhandItem.getItem() instanceof SoulFireScytheItem)
+            {
+                // Soul Blazed - After killing 5 entities, your attacks inflict soul fire, and your weapon's special abilities are furthered
+
+                Integer soulFireStacks = mainhandItem.get(DTEDataComponentRegistry.SOUL_FIRE_STACKS);
+                DiscerningTheEldritch.LOGGER.debug("Start of Soul Fire Scythe? " + soulFireStacks);
+                assert soulFireStacks != null;
+
+                if (soulFireStacks >= 5)
+                {
+                    // Burn them all
+                    DiscerningTheEldritch.LOGGER.debug("Are we coming into this?: " + soulFireStacks);
+                    target.setRemainingFireTicks(10);
+
+                    FireManager.affect(target, FireManager.SOUL_FIRE_TYPE, Fire::getInFire);
+                    FireManager.setOnFire(target, 10, FireManager.SOUL_FIRE_TYPE);
+
+                    // Only go on CD if we reach max stacks
+                    /*if (livingEntity instanceof Player player)
+                    {
+                        player.getCooldowns().addCooldown(ItemRegistries.SOUL_FIRE_SCYTHE.get(), SoulFireScytheItem.COOLDOWN);
+                    }
+
+                    mainhandItem.set(DTEDataComponentRegistry.SOUL_FIRE_STACKS, 0);*/
+                }
+            }
         }
     }
 
@@ -353,6 +386,7 @@ public class ServerEvents {
         {
             ItemStack mainhandItem = livingAttacker.getMainHandItem();
 
+            // Devourer
             if (mainhandItem.getItem() instanceof DevourerAxeAwakenedItem)
             {
                 attacker.getData(DEVOURED_ENTITIES);
@@ -368,6 +402,18 @@ public class ServerEvents {
                     attacker.setData(DEVOURED_ENTITIES, attacker.getData(DEVOURED_ENTITIES) + 1);
 
                     DiscerningTheEldritch.LOGGER.debug("Devour stacks for mob: " + attacker.getData(DEVOURED_ENTITIES));
+                }
+            }
+
+            // Soul Fire Scythe
+            if (mainhandItem.getItem() instanceof SoulFireScytheItem && (target != livingAttacker))
+            {
+                Integer soulFireStacks = mainhandItem.get(DTEDataComponentRegistry.SOUL_FIRE_STACKS);
+
+                if (soulFireStacks != null)
+                {
+                    mainhandItem.set(DTEDataComponentRegistry.SOUL_FIRE_STACKS, soulFireStacks + 1);
+                    DiscerningTheEldritch.LOGGER.debug("Increment Soul Fire Stacks for player: " + soulFireStacks);
                 }
             }
         }
