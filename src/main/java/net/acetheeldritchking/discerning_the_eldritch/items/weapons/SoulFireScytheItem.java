@@ -13,6 +13,7 @@ import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import io.redspace.ironsspellbooks.util.MinecraftInstanceHelper;
 import it.crystalnest.prometheus.api.Fire;
 import it.crystalnest.prometheus.api.FireManager;
+import it.crystalnest.soul_fire_d.fire.FireRegistry;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.networking.DTEAttachmentSync;
@@ -107,25 +108,22 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
 
             if (soulFireStacks >= 5)
             {
-                if (getUseDuration(stack, player) <= 0)
+                // Do AoE that soul burns everything
+                double radius = 10;
+
+                List<LivingEntity> entitiesNearby = level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(radius));
+
+                for (LivingEntity targets : entitiesNearby)
                 {
-                    // Do AoE that soul burns everything
-                    double radius = 10;
-
-                    List<LivingEntity> entitiesNearby = level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(radius));
-
-                    for (LivingEntity targets : entitiesNearby)
+                    if (targets != player)
                     {
-                        if (targets != player)
-                        {
-                            FireManager.affect(targets, FireManager.SOUL_FIRE_TYPE, Fire::getInFire);
-                            MagicManager.spawnParticles(level, new BlastwaveParticleOptions(SchoolRegistry.FIRE.get().getTargetingColor(), (float) radius), player.getX(), player.getY() + 0.165F, player.getZ(), 1, 0, 0, 0, 0, true);
-                        }
+                        FireManager.setOnFire(targets, 10, FireRegistry.SOUL_FIRE_TYPE);
                     }
                 }
             }
 
             DiscerningTheEldritch.LOGGER.debug("Stacks cleared?: " + soulFireStacks);
+            player.getCooldowns().addCooldown(ItemRegistries.SOUL_FIRE_SCYTHE.get(), SoulFireScytheItem.COOLDOWN);
         }
     }
 
@@ -139,9 +137,9 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
 
         if (soulFireStacks >= 5)
         {
-            player.getCooldowns().addCooldown(ItemRegistries.SOUL_FIRE_SCYTHE.get(), SoulFireScytheItem.COOLDOWN);
             // Consume soul fire souls
             mainhandItem.set(DTEDataComponentRegistry.SOUL_FIRE_STACKS, soulFireStacks - 5);
+            player.startUsingItem(usedHand);
             return InteractionResultHolder.consume(mainhandItem);
         } else {
             return InteractionResultHolder.fail(mainhandItem);

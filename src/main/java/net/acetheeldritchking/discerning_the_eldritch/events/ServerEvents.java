@@ -361,8 +361,7 @@ public class ServerEvents {
                     DiscerningTheEldritch.LOGGER.debug("Are we coming into this?: " + soulFireStacks);
                     target.setRemainingFireTicks(10);
 
-                    FireManager.affect(target, FireManager.SOUL_FIRE_TYPE, Fire::getInFire);
-                    FireManager.setOnFire(target, 10, FireManager.SOUL_FIRE_TYPE);
+                    FireManager.setOnFire(target, 10, FireRegistry.SOUL_FIRE_TYPE);
 
                     // Only go on CD if we reach max stacks
                     /*if (livingEntity instanceof Player player)
