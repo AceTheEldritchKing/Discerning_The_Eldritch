@@ -359,7 +359,6 @@ public class ServerEvents {
                 {
                     // Burn them all
                     DiscerningTheEldritch.LOGGER.debug("Are we coming into this?: " + soulFireStacks);
-                    target.setRemainingFireTicks(10);
 
                     FireManager.setOnFire(target, 10, FireRegistry.SOUL_FIRE_TYPE);
 

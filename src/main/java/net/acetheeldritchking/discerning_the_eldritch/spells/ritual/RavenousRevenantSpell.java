@@ -77,6 +77,11 @@ public class RavenousRevenantSpell extends AbstractRitualSpell {
     }
 
     @Override
+    public boolean isSuperComplex() {
+        return false;
+    }
+
+    @Override
     public Optional<SoundEvent> getCastStartSound() {
         return Optional.of(SoundRegistry.BLIGHT_BEGIN.get());
     }

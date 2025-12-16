@@ -15,6 +15,7 @@ import it.crystalnest.prometheus.api.Fire;
 import it.crystalnest.prometheus.api.FireManager;
 import it.crystalnest.soul_fire_d.fire.FireRegistry;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
+import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.networking.DTEAttachmentSync;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry;
@@ -60,15 +61,18 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
 
             tooltipComponents.add(
                     Component.translatable(
-                            "tooltip.irons_spellbooks.passive_ability",
+                            "tooltip.discerning_the_eldritch.active_ability",
                             Component.literal(Utils.timeFromTicks(COOLDOWN, 1)).withStyle(ChatFormatting.LIGHT_PURPLE)
                     ).withStyle(ChatFormatting.DARK_PURPLE)
             );
             tooltipComponents.add(Component.literal(" ").append(Component.translatable(this.getDescriptionId() + ".desc")).withStyle(ChatFormatting.YELLOW));
-            if (stack.get(DTEDataComponentRegistry.SOUL_FIRE_STACKS) != null)
+            tooltipComponents.add(Component.translatable(this.getDescriptionId() + ".desc2").
+                    withStyle(ChatFormatting.GOLD).
+                    withStyle(ChatFormatting.ITALIC)
+            );
+            if (stack.get(DTEDataComponentRegistry.SOUL_FIRE_STACKS) != null && attacker != null)
             {
-                assert attacker != null;
-                tooltipComponents.add(Component.translatable(this.getDescriptionId() + ".desc2").append(soulFireStacks(attacker)).
+                tooltipComponents.add(Component.translatable(this.getDescriptionId() + ".desc3").append(soulFireStacks(attacker)).
                         withStyle(ChatFormatting.BLUE).
                         withStyle(ChatFormatting.ITALIC)
                 );
@@ -95,7 +99,7 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
     @Override
     public int getUseDuration(ItemStack stack, LivingEntity entity)
     {
-        return 15 * 20;
+        return 10 * 20;
     }
 
     @Override
@@ -106,7 +110,7 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
             Integer soulFireStacks = stack.get(DTEDataComponentRegistry.SOUL_FIRE_STACKS);
             assert soulFireStacks != null;
 
-            if (soulFireStacks >= 5)
+            if (soulFireStacks >= 5 && timeCharged >= (10 * 20))
             {
                 // Do AoE that soul burns everything
                 double radius = 10;
@@ -120,10 +124,12 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
                         FireManager.setOnFire(targets, 10, FireRegistry.SOUL_FIRE_TYPE);
                     }
                 }
-            }
 
-            DiscerningTheEldritch.LOGGER.debug("Stacks cleared?: " + soulFireStacks);
-            player.getCooldowns().addCooldown(ItemRegistries.SOUL_FIRE_SCYTHE.get(), SoulFireScytheItem.COOLDOWN);
+                level.addParticle(new BlastwaveParticleOptions(ASUtils.rbgToVector3F(39, 166, 245), (float) radius), player.getX(), player.getY() + 0.165F, player.getZ(), 0, 0, 0);
+
+                DiscerningTheEldritch.LOGGER.debug("Stacks cleared?: " + soulFireStacks);
+                player.getCooldowns().addCooldown(ItemRegistries.SOUL_FIRE_SCYTHE.get(), SoulFireScytheItem.COOLDOWN);
+            }
         }
     }
 

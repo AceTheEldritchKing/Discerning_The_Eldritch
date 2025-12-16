@@ -140,7 +140,7 @@ public class BloodCultistMageEntity extends BloodMageEntity implements Enemy, IA
         this.setDropChance(EquipmentSlot.CHEST, 0.0F);
         this.setDropChance(EquipmentSlot.LEGS, 0.0F);
         this.setDropChance(EquipmentSlot.FEET, 0.0F);
-        this.setDropChance(EquipmentSlot.MAINHAND, 0.01F);
+        this.setDropChance(EquipmentSlot.MAINHAND, 0.5F);
     }
 
     @Override

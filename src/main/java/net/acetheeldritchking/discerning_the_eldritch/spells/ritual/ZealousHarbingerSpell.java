@@ -74,6 +74,11 @@ public class ZealousHarbingerSpell extends AbstractRitualSpell {
     }
 
     @Override
+    public boolean isSuperComplex() {
+        return false;
+    }
+
+    @Override
     public Optional<SoundEvent> getCastStartSound() {
         return Optional.of(DTESoundRegistry.DARK_MAGIC_CHARGE_1.get());
     }

@@ -36,9 +36,17 @@ public abstract class AbstractRitualSpell extends AbstractSpell {
         return true;
     }
 
+    public boolean isSuperComplex()
+    {
+        return true;
+    }
+
     @Override
     public CastResult canBeCastedBy(int spellLevel, CastSource castSource, MagicData playerMagicData, Player player) {
-        if (castSource == CastSource.SPELLBOOK && isComplex())
+        if ((castSource == CastSource.SPELLBOOK || castSource == CastSource.SWORD) && isComplex() && isSuperComplex())
+        {
+            return new CastResult(CastResult.Type.FAILURE, Component.translatable("ui.discerning_the_eldritch.ritual_cast_failure", new Object[]{this.getDisplayName(player)}).withStyle(ChatFormatting.RED));
+        } else if ((castSource == CastSource.SPELLBOOK) && isComplex() && !isSuperComplex())
         {
             return new CastResult(CastResult.Type.FAILURE, Component.translatable("ui.discerning_the_eldritch.ritual_cast_failure", new Object[]{this.getDisplayName(player)}).withStyle(ChatFormatting.RED));
         }

@@ -73,6 +73,11 @@ public class BladesOfRancorSpell extends AbstractRitualSpell {
     }
 
     @Override
+    public boolean isSuperComplex() {
+        return false;
+    }
+
+    @Override
     public int getRecastCount(int spellLevel, @Nullable LivingEntity entity) {
         return spellLevel;
     }

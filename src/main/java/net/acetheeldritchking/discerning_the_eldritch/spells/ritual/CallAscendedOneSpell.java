@@ -74,6 +74,11 @@ public class CallAscendedOneSpell extends AbstractRitualSpell {
     }
 
     @Override
+    public boolean isSuperComplex() {
+        return true;
+    }
+
+    @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         Vec3 vec = entity.getEyePosition();
 

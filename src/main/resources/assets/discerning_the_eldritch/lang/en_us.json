@@ -87,7 +87,8 @@
   "item.discerning_the_eldritch.snowgrave.description_2": "Will you cast a spell you don't know?",
   "item.discerning_the_eldritch.soul_fire_scythe": "Soul Fire Scythe",
   "item.discerning_the_eldritch.soul_fire_scythe.desc": "Soul Blazed - Entities on death have their souls burned. After 5 kills, all of your hits inflict soul fire. Imbued spells on the scythe are empowered.",
-  "item.discerning_the_eldritch.soul_fire_scythe.desc2": "Soul-burned entities: ",
+  "item.discerning_the_eldritch.soul_fire_scythe.desc2": "[RIGHT-CLICK]: Send a shockwave of soul fire, spending 5 souls to do so",
+  "item.discerning_the_eldritch.soul_fire_scythe.desc3": "Soul-burned entities: ",
   "item.discerning_the_eldritch.cataclysm": "Cataclysm",
   "item.discerning_the_eldritch.devourer": "Devourer",
   "item.discerning_the_eldritch.mourning_star": "Mourning Star",
@@ -143,6 +144,7 @@
   "item.discerning_the_eldritch.fading_sculk_lantern.description": "It looks like it can be used, but when?",
 
   "item.discerning_the_eldritch.more_details": "Press [SHIFT] for more details",
+  "tooltip.discerning_the_eldritch.active_ability": "Active Ability (%s cooldown):",
 
 
   "spell.discerning_the_eldritch.silence": "Silence",
