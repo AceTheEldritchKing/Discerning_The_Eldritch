@@ -84,5 +84,6 @@ public class ClientSetup {
         event.registerSpriteSet(DTEParticleRegistry.RIFT_SLICE_PARTICLE.get(), RiftSliceParticle.Provider::new);
         event.registerSpriteSet(DTEParticleRegistry.MALIGNANT_SOUL.get(), MalignantSoulParticle.Provider::new);
         event.registerSpriteSet(DTEParticleRegistry.MALIGNANT_FLAME.get(), MalignantFlameParticle.Provider::new);
+        event.registerSpriteSet(DTEParticleRegistry.SOUL_FIRE_SLASH_PARTICLE.get(), SoulFireSlashParticle.Provider::new);
     }
 }

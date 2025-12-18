@@ -10,7 +10,6 @@ import io.redspace.ironsspellbooks.entity.spells.ChainLightning;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import it.crystalnest.prometheus.api.Fire;
 import it.crystalnest.prometheus.api.FireManager;
-import it.crystalnest.soul_fire_d.fire.FireRegistry;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
@@ -360,7 +359,7 @@ public class ServerEvents {
                     // Burn them all
                     DiscerningTheEldritch.LOGGER.debug("Are we coming into this?: " + soulFireStacks);
 
-                    FireManager.setOnFire(target, 10, FireRegistry.SOUL_FIRE_TYPE);
+                    FireManager.setOnFire(target, 5, FireManager.SOUL_FIRE_TYPE);
 
                     // Only go on CD if we reach max stacks
                     /*if (livingEntity instanceof Player player)

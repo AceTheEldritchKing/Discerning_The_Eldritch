@@ -2,29 +2,25 @@ package net.acetheeldritchking.discerning_the_eldritch.items.weapons;
 
 import io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem;
 import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
-import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.item.UniqueItem;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import io.redspace.ironsspellbooks.util.MinecraftInstanceHelper;
-import it.crystalnest.prometheus.api.Fire;
 import it.crystalnest.prometheus.api.FireManager;
-import it.crystalnest.soul_fire_d.fire.FireRegistry;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
-import net.acetheeldritchking.discerning_the_eldritch.networking.DTEAttachmentSync;
-import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEDataComponentRegistry;
-import net.acetheeldritchking.discerning_the_eldritch.registries.DTESchoolRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
@@ -46,7 +42,7 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
                         .component(DTEDataComponentRegistry.SOUL_FIRE_STACKS, 0)
                         .attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.SOUL_FIRE_SCYTHE)),
                 SpellDataRegistryHolder.of(
-                        new SpellDataRegistryHolder(SpellRegistry.FLAMING_BARRAGE_SPELL, 6),
+                        new SpellDataRegistryHolder(SpellRegistries.SOUL_SLICE, 1),
                         new SpellDataRegistryHolder(SpellRegistry.FLAMING_STRIKE_SPELL, 10)
                 )
         );
@@ -99,7 +95,7 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
     @Override
     public int getUseDuration(ItemStack stack, LivingEntity entity)
     {
-        return 10 * 20;
+        return 5 * 20;
     }
 
     @Override
@@ -110,8 +106,10 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
             Integer soulFireStacks = stack.get(DTEDataComponentRegistry.SOUL_FIRE_STACKS);
             assert soulFireStacks != null;
 
-            if (soulFireStacks >= 5 && timeCharged >= (10 * 20))
+            if (soulFireStacks >= 5 && timeCharged >= getUseDuration(stack, livingEntity))
             {
+                livingEntity.level().playLocalSound(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), DTESoundRegistry.DEVOURER_WRETCH.get(), SoundSource.PLAYERS, 1, 1, false);
+
                 // Do AoE that soul burns everything
                 double radius = 10;
 
@@ -121,13 +119,14 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
                 {
                     if (targets != player)
                     {
-                        FireManager.setOnFire(targets, 10, FireRegistry.SOUL_FIRE_TYPE);
+                        FireManager.setOnFire(targets, 10, FireManager.SOUL_FIRE_TYPE);
                     }
                 }
 
                 level.addParticle(new BlastwaveParticleOptions(ASUtils.rbgToVector3F(39, 166, 245), (float) radius), player.getX(), player.getY() + 0.165F, player.getZ(), 0, 0, 0);
 
                 DiscerningTheEldritch.LOGGER.debug("Stacks cleared?: " + soulFireStacks);
+                stack.set(DTEDataComponentRegistry.SOUL_FIRE_STACKS, soulFireStacks - 5);
                 player.getCooldowns().addCooldown(ItemRegistries.SOUL_FIRE_SCYTHE.get(), SoulFireScytheItem.COOLDOWN);
             }
         }
@@ -144,7 +143,6 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
         if (soulFireStacks >= 5)
         {
             // Consume soul fire souls
-            mainhandItem.set(DTEDataComponentRegistry.SOUL_FIRE_STACKS, soulFireStacks - 5);
             player.startUsingItem(usedHand);
             return InteractionResultHolder.consume(mainhandItem);
         } else {

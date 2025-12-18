@@ -3,6 +3,7 @@ package net.acetheeldritchking.discerning_the_eldritch.registries;
 import com.mojang.serialization.MapCodec;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.particle.GlacialShadowParticleOptions;
+import net.acetheeldritchking.discerning_the_eldritch.particle.SoulFireSlashParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
@@ -41,6 +42,20 @@ public class DTEParticleRegistry {
 
     // Malignant Flame
     public static final Supplier<SimpleParticleType> MALIGNANT_FLAME = PARTICLE_TYPES.register("malignant_flame", () -> new SimpleParticleType(false));
+
+    // Soul Fire Slash
+    public static final Supplier<ParticleType<SoulFireSlashParticleOptions>> SOUL_FIRE_SLASH_PARTICLE = PARTICLE_TYPES.register("soul_fire_slash",
+            () -> new ParticleType<>(true) {
+                @Override
+                public MapCodec<SoulFireSlashParticleOptions> codec() {
+                    return SoulFireSlashParticleOptions.MAP_CODEC;
+                }
+
+                @Override
+                public StreamCodec<? super RegistryFriendlyByteBuf, SoulFireSlashParticleOptions> streamCodec() {
+                    return SoulFireSlashParticleOptions.STREAM_CODEC;
+                }
+            });
 
 
     public static void register(IEventBus eventBus)

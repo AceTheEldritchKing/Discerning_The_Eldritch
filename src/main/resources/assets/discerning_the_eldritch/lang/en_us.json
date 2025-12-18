@@ -201,6 +201,9 @@
   "spell.discerning_the_eldritch.ravenous_revenant": "Ravenous Revenant",
   "spell.discerning_the_eldritch.ravenous_revenant.guide": "Unleash a terrifying roar, marking nearby entities as Prey. Hitting Prey entities causes a ravenous maw to lash at them",
 
+  "spell.discerning_the_eldritch.soul_slice": "Soul Slice",
+  "spell.discerning_the_eldritch.soul_slice.guide": "Slash forwards, engulfing your weapon in soul fire and igniting anything it touches. Spend 2 souls per cast to enhance damage",
+
 
   "ui.discerning_the_eldritch.extra_damage": "Deals extra damage while holding a weapon in your mainhand",
   "ui.discerning_the_eldritch.ritual_cast_failure": "Rituals cannot be casted in a mere spellbook",
@@ -209,6 +212,7 @@
   "ui.discerning_the_eldritch.frozen_weapon_bonus": "Deals 50% more damage if a frozen weapon is held in the mainhand",
   "ui.discerning_the_eldritch.melee_damage": "Scales with melee attack attribute",
   "ui.discerning_the_eldritch.damage_on_last_recast": "Deals damage on final recast",
+  "ui.discerning_the_eldritch.soul_slice_spending": "Spend 2 souls per cast to add +2 damage",
 
 
   "tooltip.discerning_the_eldritch.abracadabra_description": "Damage taken caps at +%d%%",
