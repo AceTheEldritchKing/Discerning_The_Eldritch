@@ -6,6 +6,7 @@ import net.acetheeldritchking.aces_spell_utils.entity.render.armor.EmissiveGener
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.armor.Geckolib.AscendedArmorModel;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.DTEArmorMaterialRegistry;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -25,9 +26,11 @@ public class AscendedArmorItem extends ImbuableGeckolibDTEArmorItem implements I
             DiscerningTheEldritch.MOD_ID,
             "textures/models/armor/geckolib/ascended_armor_glowmask.png");
 
+    private static final RenderType GLOW_RENDER_TYPE = RenderType.breezeEyes(LAYER);
+
     @Override
     @OnlyIn(Dist.CLIENT)
     public GeoArmorRenderer<?> supplyRenderer() {
-        return new EmissiveGenericCustomArmorRenderer<>(new AscendedArmorModel(), LAYER);
+        return new EmissiveGenericCustomArmorRenderer<>(new AscendedArmorModel(), LAYER, GLOW_RENDER_TYPE);
     }
 }

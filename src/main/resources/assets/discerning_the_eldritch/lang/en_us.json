@@ -213,6 +213,7 @@
   "ui.discerning_the_eldritch.melee_damage": "Scales with melee attack attribute",
   "ui.discerning_the_eldritch.damage_on_last_recast": "Deals damage on final recast",
   "ui.discerning_the_eldritch.soul_slice_spending": "Spend 2 souls per cast to add +2 damage",
+  "ui.discerning_the_eldritch.soul_set_ablaze_spending": "Spend 50 souls to double damage",
 
 
   "tooltip.discerning_the_eldritch.abracadabra_description": "Damage taken caps at +%d%%",

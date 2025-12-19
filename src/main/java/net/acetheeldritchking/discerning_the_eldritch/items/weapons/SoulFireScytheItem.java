@@ -7,6 +7,7 @@ import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.item.UniqueItem;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
+import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import io.redspace.ironsspellbooks.util.MinecraftInstanceHelper;
 import it.crystalnest.prometheus.api.FireManager;
@@ -95,7 +96,7 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
     @Override
     public int getUseDuration(ItemStack stack, LivingEntity entity)
     {
-        return 5 * 20;
+        return 10 * 20;
     }
 
     @Override
@@ -103,32 +104,70 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
     {
         if (livingEntity instanceof Player player)
         {
+            // I am looking at how the Incinerator is done because getting it to only consume soul fire stacks when completed is making me shit myself
+            int ticks = getUseDuration(stack, player) - timeCharged;
+            boolean success = false;
+
             Integer soulFireStacks = stack.get(DTEDataComponentRegistry.SOUL_FIRE_STACKS);
             assert soulFireStacks != null;
+            double radius = 10;
 
-            if (soulFireStacks >= 5 && timeCharged >= getUseDuration(stack, livingEntity))
+            if (ticks >= 25)
             {
-                livingEntity.level().playLocalSound(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), DTESoundRegistry.DEVOURER_WRETCH.get(), SoundSource.PLAYERS, 1, 1, false);
-
-                // Do AoE that soul burns everything
-                double radius = 10;
-
-                List<LivingEntity> entitiesNearby = level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(radius));
-
-                for (LivingEntity targets : entitiesNearby)
+                if (soulFireStacks >= 5)
                 {
-                    if (targets != player)
+                    if (doSoulFireBurn(level, player, radius))
                     {
-                        FireManager.setOnFire(targets, 10, FireManager.SOUL_FIRE_TYPE);
+                        success = true;
                     }
                 }
 
-                level.addParticle(new BlastwaveParticleOptions(ASUtils.rbgToVector3F(39, 166, 245), (float) radius), player.getX(), player.getY() + 0.165F, player.getZ(), 0, 0, 0);
+                if (success)
+                {
+                    livingEntity.level().playLocalSound(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), SoundRegistry.FLAMING_STRIKE_SWING.get(), SoundSource.PLAYERS, 1, 1, false);
 
-                DiscerningTheEldritch.LOGGER.debug("Stacks cleared?: " + soulFireStacks);
-                stack.set(DTEDataComponentRegistry.SOUL_FIRE_STACKS, soulFireStacks - 5);
-                player.getCooldowns().addCooldown(ItemRegistries.SOUL_FIRE_SCYTHE.get(), SoulFireScytheItem.COOLDOWN);
+                    level.addParticle(new BlastwaveParticleOptions(ASUtils.rbgToVector3F(39, 166, 245), (float) radius), player.getX(), player.getY() + 0.165F, player.getZ(), 0, 0, 0);
+
+                    DiscerningTheEldritch.LOGGER.debug("Stacks cleared?: " + soulFireStacks);
+                    stack.set(DTEDataComponentRegistry.SOUL_FIRE_STACKS, soulFireStacks - 5);
+                    player.getCooldowns().addCooldown(ItemRegistries.SOUL_FIRE_SCYTHE.get(), SoulFireScytheItem.COOLDOWN);
+                }
             }
+        }
+    }
+
+    @Override
+    public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int remainingUseDuration) {
+        int ticks = getUseDuration(stack, livingEntity) - remainingUseDuration;
+
+        if (ticks == 25)
+        {
+            level.addParticle(new BlastwaveParticleOptions(ASUtils.rbgToVector3F(39, 166, 245), 0.75F), livingEntity.getX(), livingEntity.getY() + 0.165F, livingEntity.getZ(), 0, 0, 0);
+            livingEntity.level().playLocalSound(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), SoundRegistry.FIRE_BOMB_CHARGE.get(), SoundSource.PLAYERS, 1, 1, false);
+        }
+    }
+
+    private boolean doSoulFireBurn(Level level, Player player, double radius)
+    {
+        boolean success = false;
+        // Do AoE that soul burns everything
+        List<LivingEntity> entitiesNearby = level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(radius));
+
+        for (LivingEntity targets : entitiesNearby)
+        {
+            if (targets != player)
+            {
+                FireManager.setOnFire(targets, 10, FireManager.SOUL_FIRE_TYPE);
+                success = true;
+            }
+        }
+
+        if (success)
+        {
+            return true;
+        } else
+        {
+            return false;
         }
     }
 

@@ -56,10 +56,10 @@ public class SoulSliceSpell extends AbstractSpell {
     public SoulSliceSpell()
     {
         this.manaCostPerLevel = 15;
-        this.baseSpellPower = 5;
-        this.spellPowerPerLevel = 2;
+        this.baseSpellPower = 35;
+        this.spellPowerPerLevel = 1;
         this.castTime = 10;
-        this.baseManaCost = 30;
+        this.baseManaCost = 75;
     }
 
     @Override
@@ -75,6 +75,21 @@ public class SoulSliceSpell extends AbstractSpell {
     @Override
     public CastType getCastType() {
         return CastType.LONG;
+    }
+
+    @Override
+    public boolean canBeCraftedBy(Player player) {
+        return false;
+    }
+
+    @Override
+    public boolean allowLooting() {
+        return false;
+    }
+
+    @Override
+    public boolean allowCrafting() {
+        return false;
     }
 
     @Override
@@ -156,7 +171,7 @@ public class SoulSliceSpell extends AbstractSpell {
 
     @Override
     public SpellDamageSource getDamageSource(Entity projectile, Entity attacker) {
-        return super.getDamageSource(projectile, attacker).setFireTicks(0);
+        return super.getDamageSource(projectile, attacker).setFireTicks(0).setLifestealPercent(0.10F);
     }
 
     private float getDamage(int spellLevel, LivingEntity caster)

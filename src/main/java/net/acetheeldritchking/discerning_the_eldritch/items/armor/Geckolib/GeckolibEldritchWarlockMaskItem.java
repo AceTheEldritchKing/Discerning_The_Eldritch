@@ -5,6 +5,7 @@ import net.acetheeldritchking.aces_spell_utils.entity.render.armor.EmissiveGener
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.armor.Geckolib.GeckolibEldritchWarlockMaskModel;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.DTEArmorMaterialRegistry;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -19,9 +20,11 @@ public class GeckolibEldritchWarlockMaskItem extends ImbuableGeckolibDTEArmorIte
             DiscerningTheEldritch.MOD_ID,
             "textures/models/armor/geckolib/eldritch_warlock_mask_glowmask.png");
 
+    private static final RenderType GLOW_RENDER_TYPE = RenderType.breezeEyes(LAYER);
+
     @Override
     @OnlyIn(Dist.CLIENT)
     public GeoArmorRenderer<?> supplyRenderer() {
-        return new EmissiveGenericCustomArmorRenderer<>(new GeckolibEldritchWarlockMaskModel(), LAYER);
+        return new EmissiveGenericCustomArmorRenderer<>(new GeckolibEldritchWarlockMaskModel(), LAYER, GLOW_RENDER_TYPE);
     }
 }
