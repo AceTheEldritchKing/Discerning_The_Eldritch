@@ -204,6 +204,9 @@
   "spell.discerning_the_eldritch.soul_slice": "Soul Slice",
   "spell.discerning_the_eldritch.soul_slice.guide": "Slash forwards, engulfing your weapon in soul fire and igniting anything it touches. Spend 2 souls per cast to enhance damage",
 
+  "spell.discerning_the_eldritch.soul_set_ablaze": "Soul Set Ablaze",
+  "spell.discerning_the_eldritch.soul_set_ablaze.guide": "Charge up your scythe, creating an outburst of pure soul fire that ignites everything around it. Consume 50 souls to double damage",
+
 
   "ui.discerning_the_eldritch.extra_damage": "Deals extra damage while holding a weapon in your mainhand",
   "ui.discerning_the_eldritch.ritual_cast_failure": "Rituals cannot be casted in a mere spellbook",

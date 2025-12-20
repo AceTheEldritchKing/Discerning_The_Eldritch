@@ -44,7 +44,7 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
                         .attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.SOUL_FIRE_SCYTHE)),
                 SpellDataRegistryHolder.of(
                         new SpellDataRegistryHolder(SpellRegistries.SOUL_SLICE, 1),
-                        new SpellDataRegistryHolder(SpellRegistry.FLAMING_STRIKE_SPELL, 10)
+                        new SpellDataRegistryHolder(SpellRegistries.SOUL_SET_ABLAZE, 1)
                 )
         );
     }
@@ -112,7 +112,7 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
             assert soulFireStacks != null;
             double radius = 10;
 
-            if (ticks >= 25)
+            if (ticks >= 10)
             {
                 if (soulFireStacks >= 5)
                 {
@@ -126,7 +126,7 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
                 {
                     livingEntity.level().playLocalSound(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), SoundRegistry.FLAMING_STRIKE_SWING.get(), SoundSource.PLAYERS, 1, 1, false);
 
-                    level.addParticle(new BlastwaveParticleOptions(ASUtils.rbgToVector3F(39, 166, 245), (float) radius), player.getX(), player.getY() + 0.165F, player.getZ(), 0, 0, 0);
+                    level.addParticle(new BlastwaveParticleOptions(ASUtils.rbgToVector3F(39, 166, 245), (float) radius), player.getX(), player.getY() + 0.35F, player.getZ(), 0, 0, 0);
 
                     DiscerningTheEldritch.LOGGER.debug("Stacks cleared?: " + soulFireStacks);
                     stack.set(DTEDataComponentRegistry.SOUL_FIRE_STACKS, soulFireStacks - 5);
@@ -140,7 +140,7 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
     public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int remainingUseDuration) {
         int ticks = getUseDuration(stack, livingEntity) - remainingUseDuration;
 
-        if (ticks == 25)
+        if (ticks == 10)
         {
             level.addParticle(new BlastwaveParticleOptions(ASUtils.rbgToVector3F(39, 166, 245), 0.75F), livingEntity.getX(), livingEntity.getY() + 0.165F, livingEntity.getZ(), 0, 0, 0);
             livingEntity.level().playLocalSound(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), SoundRegistry.FIRE_BOMB_CHARGE.get(), SoundSource.PLAYERS, 1, 1, false);

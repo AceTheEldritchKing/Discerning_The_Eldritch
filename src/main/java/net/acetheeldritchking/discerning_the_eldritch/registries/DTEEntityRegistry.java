@@ -28,6 +28,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.spells.gore_bile.Go
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.ravenous_jaw.RavenousJawEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.razor_blade.RazorBlade;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.rift_walker.UnstableRiftEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.soul_eruption.SoulEruptionAoe;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -249,6 +250,14 @@ public class DTEEntityRegistry {
                     .sized(.6f, 1.8f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "electromancer").toString())
+            );
+
+    // Soul Fire Eruption
+    public static final DeferredHolder<EntityType<?>, EntityType<SoulEruptionAoe>> SOUL_FIRE_ERUPTION_AOE =
+            ENTITIES.register("soul_fire_eruption", () -> EntityType.Builder.<SoulEruptionAoe>of(SoulEruptionAoe::new, MobCategory.MISC)
+                    .sized(4f, .8f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "soul_fire_eruption").toString())
             );
 
 

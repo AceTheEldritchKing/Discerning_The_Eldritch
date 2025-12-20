@@ -64,6 +64,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.BLOOD_CULTIST_MAGE.get(), BloodCultistMageRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.BLOOD_CULTIST_WITCH.get(), BloodCultistWitchRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.BLOOD_MATRIARCH.get(), BloodMatriarchRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.SOUL_FIRE_ERUPTION_AOE.get(), NoopRenderer::new);
     }
 
     @SubscribeEvent

@@ -7,6 +7,7 @@ import io.redspace.ironsspellbooks.registries.EntityRegistry;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
 import it.crystalnest.prometheus.api.FireManager;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -37,7 +38,7 @@ public class SoulEruptionAoe extends AoeEntity {
     }
 
     public SoulEruptionAoe(Level level, float radius) {
-        super(EntityRegistry.FIRE_ERUPTION_AOE.get(), level);
+        super(DTEEntityRegistry.SOUL_FIRE_ERUPTION_AOE.get(), level);
         this.setRadius(radius);
     }
 

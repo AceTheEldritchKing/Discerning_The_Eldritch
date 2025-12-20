@@ -5,6 +5,7 @@ import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.*;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.BoogieWoogieSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.GuardiansGazeSpell;
+import net.acetheeldritchking.discerning_the_eldritch.spells.fire.SoulSetAblazeSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.fire.SoulSliceSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.holy.ExorcismSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.ice.CrystallineCarverSpell;
@@ -133,6 +134,7 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> SOUL_SLICE = registerSpell(new SoulSliceSpell());
 
     // Soul Set Ablaze
+    public static final Supplier<AbstractSpell> SOUL_SET_ABLAZE = registerSpell(new SoulSetAblazeSpell());
 
 
     /***
