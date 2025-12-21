@@ -48,6 +48,9 @@ public class DTEPotionEffectRegistry {
     // Predator Effect
     public static final DeferredHolder<MobEffect, MobEffect> PREDATOR_POTION_EFFECT = MOB_EFFECTS.register("predator_potion_effect", PredatorPotionEffect::new);
 
+    // Scorched Soul Effect
+    public static final DeferredHolder<MobEffect, MobEffect> SCORCHED_SOUL_EFFECT = MOB_EFFECTS.register("scorched_soul_potion_effect", ScorchedSoulPotionEffect::new);
+
 
     public static void register(IEventBus eventBus)
     {

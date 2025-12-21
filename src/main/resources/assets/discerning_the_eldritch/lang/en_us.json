@@ -28,6 +28,8 @@
   "effect.discerning_the_eldritch.prey_potion_effect.description": "Ravenous jaws are summoned at your location when hit by a predator",
   "effect.discerning_the_eldritch.predator_potion_effect": "Predator",
   "effect.discerning_the_eldritch.predator_potion_effect.description": "Summon ravenous jaws when hitting prey",
+  "effect.discerning_the_eldritch.scorched_soul_potion_effect": "Scorched Soul",
+  "effect.discerning_the_eldritch.scorched_soul_potion_effect.description": "Take increased damage from fire magic or if you are on fire while the attacker is holding the Soul Fire Scythe",
 
 
   "curios.identifier.artifact": "Artifact",
@@ -217,6 +219,7 @@
   "ui.discerning_the_eldritch.damage_on_last_recast": "Deals damage on final recast",
   "ui.discerning_the_eldritch.soul_slice_spending": "Spend 2 souls per cast to add +2 damage",
   "ui.discerning_the_eldritch.soul_set_ablaze_spending": "Spend 50 souls to double damage",
+  "ui.discerning_the_eldritch.scorched_soul_effect": "Inflicted Scorched Soul effect to targets",
 
 
   "tooltip.discerning_the_eldritch.abracadabra_description": "Damage taken caps at +%d%%",

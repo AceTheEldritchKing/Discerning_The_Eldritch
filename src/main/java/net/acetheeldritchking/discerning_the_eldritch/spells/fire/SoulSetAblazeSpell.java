@@ -38,6 +38,7 @@ public class SoulSetAblazeSpell extends AbstractSpell {
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
                 Component.translatable("ui.irons_spellbooks.damage", getDamageText(spellLevel, caster)),
+                Component.translatable("ui.discerning_the_eldritch.scorched_soul_effect"),
                 Component.translatable("ui.discerning_the_eldritch.soul_set_ablaze_spending")
         );
     }
@@ -114,6 +115,7 @@ public class SoulSetAblazeSpell extends AbstractSpell {
         if (soulFireStacks != null && soulFireStacks >= 50)
         {
             soulEruptionAoe.setDamage((getDamage(spellLevel, entity) * 2));
+            mainhandItem.set(DTEDataComponentRegistry.SOUL_FIRE_STACKS, soulFireStacks - 50);
         } else
         {
             soulEruptionAoe.setDamage(getDamage(spellLevel, entity));
@@ -131,12 +133,12 @@ public class SoulSetAblazeSpell extends AbstractSpell {
 
     @Override
     public SpellDamageSource getDamageSource(Entity projectile, Entity attacker) {
-        return super.getDamageSource(projectile, attacker).setFireTicks(0).setLifestealPercent(0.10F);
+        return super.getDamageSource(projectile, attacker).setFireTicks(0).setLifestealPercent(0.25F);
     }
 
     private float getDamage(int spellLevel, LivingEntity caster)
     {
-        return ((getSpellPower(spellLevel, caster) * 1.1F) + getWeaponDamage(caster));
+        return ((getSpellPower(spellLevel, caster) * 1.3F) + getWeaponDamage(caster));
     }
 
     private float getWeaponDamage(LivingEntity caster)
