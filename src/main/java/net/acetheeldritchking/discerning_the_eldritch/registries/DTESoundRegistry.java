@@ -78,6 +78,12 @@ public class DTESoundRegistry {
     // Dark Magic Charge 1
     public static DeferredHolder<SoundEvent, SoundEvent> DARK_MAGIC_CHARGE_1 = registerSoundEvent("dark_magic_charge_1");
 
+    // Soul Slam
+    public static DeferredHolder<SoundEvent, SoundEvent> SOUL_SLAM = registerSoundEvent("soul_slam");
+
+    // Soul Slam Echo
+    public static DeferredHolder<SoundEvent, SoundEvent> SOUL_SLAM_ECHO = registerSoundEvent("soul_slam_echo");
+
 
     /***
      * Entity Sounds

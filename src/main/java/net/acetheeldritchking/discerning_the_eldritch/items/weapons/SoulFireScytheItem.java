@@ -128,7 +128,7 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
 
                     level.addParticle(new BlastwaveParticleOptions(ASUtils.rbgToVector3F(39, 166, 245), (float) radius), player.getX(), player.getY() + 0.35F, player.getZ(), 0, 0, 0);
 
-                    DiscerningTheEldritch.LOGGER.debug("Stacks cleared?: " + soulFireStacks);
+                    //DiscerningTheEldritch.LOGGER.debug("Stacks cleared?: " + soulFireStacks);
                     stack.set(DTEDataComponentRegistry.SOUL_FIRE_STACKS, soulFireStacks - 5);
                     player.getCooldowns().addCooldown(ItemRegistries.SOUL_FIRE_SCYTHE.get(), SoulFireScytheItem.COOLDOWN);
                 }

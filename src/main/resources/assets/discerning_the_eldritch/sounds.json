@@ -213,5 +213,15 @@
         "sounds": [
             "discerning_the_eldritch:dark_magic_charge_1"
         ]
+    },
+    "soul_slam": {
+        "sounds": [
+            "discerning_the_eldritch:soul_slam"
+        ]
+    },
+    "soul_slam_echo": {
+        "sounds": [
+            "discerning_the_eldritch:soul_slam_echo"
+        ]
     }
 }

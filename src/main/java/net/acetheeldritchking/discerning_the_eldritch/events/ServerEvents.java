@@ -351,13 +351,13 @@ public class ServerEvents {
                 // Soul Blazed - After killing 5 entities, your attacks inflict soul fire, and your weapon's special abilities are furthered
 
                 Integer soulFireStacks = mainhandItem.get(DTEDataComponentRegistry.SOUL_FIRE_STACKS);
-                DiscerningTheEldritch.LOGGER.debug("Start of Soul Fire Scythe? " + soulFireStacks);
+                //DiscerningTheEldritch.LOGGER.debug("Start of Soul Fire Scythe? " + soulFireStacks);
                 assert soulFireStacks != null;
 
                 if (soulFireStacks >= 5)
                 {
                     // Burn them all
-                    DiscerningTheEldritch.LOGGER.debug("Are we coming into this?: " + soulFireStacks);
+                    //DiscerningTheEldritch.LOGGER.debug("Are we coming into this?: " + soulFireStacks);
 
                     FireManager.setOnFire(target, 5, FireManager.SOUL_FIRE_TYPE);
 
@@ -393,12 +393,12 @@ public class ServerEvents {
                     PacketDistributor.sendToPlayer((ServerPlayer) player, new SetSyncDevourStacksPacket(player));
                     DTEAttachmentSync.setDevour(1, player);
 
-                    DiscerningTheEldritch.LOGGER.debug("Devour stacks for player: " + DTEAttachmentSync.getDevour(player));
+                    //DiscerningTheEldritch.LOGGER.debug("Devour stacks for player: " + DTEAttachmentSync.getDevour(player));
                 } else
                 {
                     attacker.setData(DEVOURED_ENTITIES, attacker.getData(DEVOURED_ENTITIES) + 1);
 
-                    DiscerningTheEldritch.LOGGER.debug("Devour stacks for mob: " + attacker.getData(DEVOURED_ENTITIES));
+                    //DiscerningTheEldritch.LOGGER.debug("Devour stacks for mob: " + attacker.getData(DEVOURED_ENTITIES));
                 }
             }
 
@@ -410,7 +410,7 @@ public class ServerEvents {
                 if (soulFireStacks != null)
                 {
                     mainhandItem.set(DTEDataComponentRegistry.SOUL_FIRE_STACKS, soulFireStacks + 1);
-                    DiscerningTheEldritch.LOGGER.debug("Increment Soul Fire Stacks for player: " + soulFireStacks);
+                    //DiscerningTheEldritch.LOGGER.debug("Increment Soul Fire Stacks for player: " + soulFireStacks);
                 }
             }
         }

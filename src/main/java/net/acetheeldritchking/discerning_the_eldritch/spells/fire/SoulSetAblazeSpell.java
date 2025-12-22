@@ -17,9 +17,12 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.spells.soul_eruptio
 import net.acetheeldritchking.discerning_the_eldritch.particle.SoulFireSlashParticleOptions;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEDataComponentRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESchoolRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -29,6 +32,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
+import java.util.Optional;
 
 @AutoSpellConfig
 public class SoulSetAblazeSpell extends AbstractSpell {
@@ -87,6 +91,16 @@ public class SoulSetAblazeSpell extends AbstractSpell {
     @Override
     public boolean allowCrafting() {
         return false;
+    }
+
+    @Override
+    public Optional<SoundEvent> getCastStartSound() {
+        return Optional.of(SoundEvents.WITHER_AMBIENT);
+    }
+
+    @Override
+    public Optional<SoundEvent> getCastFinishSound() {
+        return Optional.of(DTESoundRegistry.SOUL_SLAM_ECHO.get());
     }
 
     @Override

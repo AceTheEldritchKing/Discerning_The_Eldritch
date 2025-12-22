@@ -9,6 +9,7 @@ import io.redspace.ironsspellbooks.util.ParticleHelper;
 import it.crystalnest.prometheus.api.FireManager;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -73,7 +74,7 @@ public class SoulEruptionAoe extends AoeEntity {
                 if (waveAnimTime % 2 == 0)
                 {
                     float vol = (waveAnimTime + 8) / 16F;
-                    this.playSound(SoundEvents.WITHER_HURT, vol, Utils.random.nextIntBetweenInclusive(90, 110) * .01f);
+                    this.playSound(DTESoundRegistry.SOUL_SLAM.get(), vol, Utils.random.nextIntBetweenInclusive(90, 110) * .01f);
                 }
 
                 var circMin = (waveAnimTime - 1) * 2 * 3.14F;
