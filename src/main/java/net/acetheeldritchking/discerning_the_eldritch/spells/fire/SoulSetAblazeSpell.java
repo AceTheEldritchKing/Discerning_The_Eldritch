@@ -57,7 +57,7 @@ public class SoulSetAblazeSpell extends AbstractSpell {
     public SoulSetAblazeSpell()
     {
         this.manaCostPerLevel = 20;
-        this.baseSpellPower = 55;
+        this.baseSpellPower = 40;
         this.spellPowerPerLevel = 1;
         this.castTime = 60;
         this.baseManaCost = 150;

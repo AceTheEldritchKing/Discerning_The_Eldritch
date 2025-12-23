@@ -36,9 +36,9 @@ public class ScorchedSoulPotionEffect extends MobEffect {
                 float baseDamage = event.getOriginalDamage();
                 float newDamage = baseDamage * 1.5F;
                 event.setNewDamage(newDamage);
-                DiscerningTheEldritch.LOGGER.debug("New damage: " + newDamage);
-                DiscerningTheEldritch.LOGGER.debug("Base damage: " + baseDamage);
-                DiscerningTheEldritch.LOGGER.debug("Total damage: " + event.getNewDamage());
+                //DiscerningTheEldritch.LOGGER.debug("New damage: " + newDamage);
+                //DiscerningTheEldritch.LOGGER.debug("Base damage: " + baseDamage);
+                //DiscerningTheEldritch.LOGGER.debug("Total damage: " + event.getNewDamage());
             }
         }
     }

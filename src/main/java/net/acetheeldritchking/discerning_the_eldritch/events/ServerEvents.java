@@ -272,9 +272,9 @@ public class ServerEvents {
                 float baseHealth = target.getHealth();
                 double percent = (baseHealth/MAX_HEALTH) * 100;
 
-                DiscerningTheEldritch.LOGGER.debug("Max HP: " + MAX_HEALTH);
-                DiscerningTheEldritch.LOGGER.debug("Base HP: " + baseHealth);
-                DiscerningTheEldritch.LOGGER.debug("Percent: " + percent);
+                //DiscerningTheEldritch.LOGGER.debug("Max HP: " + MAX_HEALTH);
+                //DiscerningTheEldritch.LOGGER.debug("Base HP: " + baseHealth);
+                //DiscerningTheEldritch.LOGGER.debug("Percent: " + percent);
 
                 if (percent > 50)
                 {
