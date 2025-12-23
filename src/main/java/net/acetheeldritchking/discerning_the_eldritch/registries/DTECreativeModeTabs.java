@@ -35,6 +35,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.SHARD_OF_MALICE.get());
                         output.accept(ItemRegistries.BOTTLE_OF_LIQUID_MALICE.get());
                         output.accept(ItemRegistries.FORBIDDEN_SPELL_IMPROVEMENT.get());
+                        output.accept(ItemRegistries.SOUL_EMBER.get());
                         output.accept(FurledMapItem.of(DiscerningTheEldritch.id("cultist_base"),
                                 ResourceKey.create(Registries.DIMENSION, ResourceLocation.withDefaultNamespace("overworld")), Component.translatable("item.discerning_the_eldritch.cultist_base_map"), true));
                         // Curios

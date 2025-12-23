@@ -203,6 +203,10 @@ public class ItemRegistries {
     public static final DeferredHolder<Item, Item> FORBIDDEN_SPELL_IMPROVEMENT = ITEMS.register("forbidden_spell_improvement",
             () -> new SpellSlotUpgradeItem(15));
 
+    // Soul Ember
+    public static final DeferredHolder<Item, Item> SOUL_EMBER = ITEMS.register("soul_ember",
+            () -> new Item(ItemPropertiesHelper.material().rarity(ASRarities.AQUATIC_RARITY_PROXY.getValue())));
+
 
     /***
      * Upgrade Orbs

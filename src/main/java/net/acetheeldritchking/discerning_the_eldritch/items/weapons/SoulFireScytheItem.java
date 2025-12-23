@@ -96,7 +96,7 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
     @Override
     public int getUseDuration(ItemStack stack, LivingEntity entity)
     {
-        return 10 * 20;
+        return 5 * 20;
     }
 
     @Override
