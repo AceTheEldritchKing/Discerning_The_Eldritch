@@ -13,7 +13,7 @@
       "conditions": [
         {
           "condition": "minecraft:random_chance",
-          "chance": 0.25
+          "chance": 0.15
         }
       ],
       "rolls": 1.0
@@ -30,7 +30,7 @@
       "conditions": [
         {
           "condition": "minecraft:random_chance",
-          "chance": 0.10
+          "chance": 0.05
         }
       ],
       "rolls": 1.0
@@ -47,7 +47,7 @@
       "conditions": [
         {
           "condition": "minecraft:random_chance",
-          "chance": 0.10
+          "chance": 0.05
         }
       ],
       "rolls": 1.0
@@ -64,7 +64,7 @@
       "conditions": [
         {
           "condition": "minecraft:random_chance",
-          "chance": 0.10
+          "chance": 0.05
         }
       ],
       "rolls": 1.0

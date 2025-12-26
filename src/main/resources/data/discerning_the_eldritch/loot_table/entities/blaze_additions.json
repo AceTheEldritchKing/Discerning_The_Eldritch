@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "discerning_the_eldritch:soul_ember",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 1
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:location_check",
+              "predicate": {
+                "biome": "minecraft:soul_sand_valley"
+              }
+            },
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.65
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

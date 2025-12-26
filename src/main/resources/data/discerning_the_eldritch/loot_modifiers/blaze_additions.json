@@ -1,0 +1,10 @@
+{
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:entities/blaze"
+    }
+  ],
+  "type": "discerning_the_eldritch:add_to_table",
+  "loot_table": "discerning_the_eldritch:entities/blaze_additions"
+}

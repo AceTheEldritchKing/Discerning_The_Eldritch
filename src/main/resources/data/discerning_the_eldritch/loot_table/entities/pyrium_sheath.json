@@ -2,7 +2,7 @@
   "type": "minecraft:empty",
   "pools": [
     {
-      "name": "dte_tyros_additions",
+      "name": "discerning_the_eldritch:tyros_additions",
       "rolls": 1,
       "entries": [
         {
