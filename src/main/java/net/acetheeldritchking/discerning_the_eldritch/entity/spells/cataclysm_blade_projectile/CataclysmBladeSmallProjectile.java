@@ -118,7 +118,7 @@ public class CataclysmBladeSmallProjectile extends AbstractMagicProjectile imple
             var target = pResult.getEntity();
             var owner = getOwner();
 
-            DamageSources.applyDamage(target, damage, SpellRegistries.BLADES_OF_RANCOR.get().getDamageSource(this, owner));
+            DamageSources.applyDamage(target, damage, SpellRegistries.ZEALOUS_HARBINGER.get().getDamageSource(this, owner));
 
             if (target instanceof LivingEntity livingEntity)
             {
