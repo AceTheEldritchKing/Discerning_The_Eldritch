@@ -210,6 +210,9 @@
   "spell.discerning_the_eldritch.soul_set_ablaze": "Soul Set Ablaze",
   "spell.discerning_the_eldritch.soul_set_ablaze.guide": "Charge up your scythe, creating an outburst of pure soul fire that ignites everything around it. Consume 50 souls to double damage",
 
+  "spell.discerning_the_eldritch.libras_judgement": "Libra's Judgement",
+  "spell.discerning_the_eldritch.libras_judgement.guide": "Judge your opponent: If they are above 50% HP, conjure the Mourning Star above them. If they are below 50% HP, immolate them in vicious flames",
+
 
   "ui.discerning_the_eldritch.extra_damage": "Deals extra damage while holding a weapon in your mainhand",
   "ui.discerning_the_eldritch.ritual_cast_failure": "Rituals cannot be casted in a mere spellbook",
@@ -221,6 +224,8 @@
   "ui.discerning_the_eldritch.soul_slice_spending": "Spend 2 souls per cast to add +2 damage",
   "ui.discerning_the_eldritch.soul_set_ablaze_spending": "Spend 50 souls to double damage",
   "ui.discerning_the_eldritch.scorched_soul_effect": "Inflicted Scorched Soul effect to targets",
+  "ui.discerning_the_eldritch.libras_chance_1": "If target is above 50% HP conjure mourning above them",
+  "ui.discerning_the_eldritch.libras_chance_2": "If target is below 50% HP, inflict burns",
 
 
   "tooltip.discerning_the_eldritch.abracadabra_description": "Damage taken caps at +%d%%",
@@ -271,6 +276,8 @@
   "display.discerning_the_eldritch.fading_sculk_lantern_success": "You call, she's coming - prepare yourself",
   "display.discerning_the_eldritch.judgement_decree_1": "Judgement Decree: Mortal Damage on hit",
   "display.discerning_the_eldritch.judgement_decree_2": "Judgement Decree: Affliction on hit",
+  "display.discerning_the_eldritch.libras_judgement_1": "Judgement Decree: Mourning Star's Smite",
+  "display.discerning_the_eldritch.libras_judgement_2": "Judgement Decree: Immolate in Flames",
 
 
 

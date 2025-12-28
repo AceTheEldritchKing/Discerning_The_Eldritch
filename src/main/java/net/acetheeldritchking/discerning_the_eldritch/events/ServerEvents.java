@@ -421,6 +421,7 @@ public class ServerEvents {
     {
         var target = event.getEntity();
         var attacker = event.getSource().getEntity();
+        var directAttacker = event.getSource().getDirectEntity();
 
         // Otherworldly Presence
         if (target instanceof LivingEntity livingTarget)
@@ -440,7 +441,7 @@ public class ServerEvents {
         }
 
         // Awakened Mourning Star
-        if (attacker instanceof LivingEntity livingAttacker)
+        if (directAttacker instanceof LivingEntity livingAttacker)
         {
             ItemStack mainhandItem = livingAttacker.getMainHandItem();
 

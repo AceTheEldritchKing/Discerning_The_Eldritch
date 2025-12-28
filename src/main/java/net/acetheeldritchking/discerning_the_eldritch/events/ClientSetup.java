@@ -17,6 +17,8 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.spells.crystal_carv
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edge.EsotericEdgeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_strike.EsotericStrikeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdgeRenderer;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.mourning_star.MourningStarProjectile;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.mourning_star.MourningStarRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.ravenous_jaw.RavenousJawRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.razor_blade.RazorBladeRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.particle.*;
@@ -65,6 +67,8 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.BLOOD_CULTIST_WITCH.get(), BloodCultistWitchRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.BLOOD_MATRIARCH.get(), BloodMatriarchRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.SOUL_FIRE_ERUPTION_AOE.get(), NoopRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.MOURNING_STAR_PROJECTILE.get(), MourningStarRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.RITUAL_BURN_AOE.get(), NoopRenderer::new);
     }
 
     @SubscribeEvent

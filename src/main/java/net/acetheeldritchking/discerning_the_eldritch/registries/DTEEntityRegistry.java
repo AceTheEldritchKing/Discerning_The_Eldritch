@@ -25,9 +25,11 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_edg
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.esoteric_strike.EsotericStrike;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge.GlacialEdge;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.gore_bile.GoreBileAoE;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.mourning_star.MourningStarProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.ravenous_jaw.RavenousJawEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.razor_blade.RazorBlade;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.rift_walker.UnstableRiftEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.ritual_burn.RitualBurnAoE;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.soul_eruption.SoulEruptionAoe;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -258,6 +260,22 @@ public class DTEEntityRegistry {
                     .sized(4f, .8f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "soul_fire_eruption").toString())
+            );
+
+    // Mourning Star Projectile
+    public static final DeferredHolder<EntityType<?>, EntityType<MourningStarProjectile>> MOURNING_STAR_PROJECTILE =
+            ENTITIES.register("mourning_star_projectile", () -> EntityType.Builder.<MourningStarProjectile>of(MourningStarProjectile::new, MobCategory.MISC)
+                    .sized(3.5f, 3.5f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "mourning_star_projectile").toString())
+            );
+
+    // Ritual Burn
+    public static final DeferredHolder<EntityType<?>, EntityType<RitualBurnAoE>> RITUAL_BURN_AOE =
+            ENTITIES.register("ritual_burn_aoe", () -> EntityType.Builder.<RitualBurnAoE>of(RitualBurnAoE::new, MobCategory.MISC)
+                    .sized(1f, 1f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "ritual_burn_aoe").toString())
             );
 
 

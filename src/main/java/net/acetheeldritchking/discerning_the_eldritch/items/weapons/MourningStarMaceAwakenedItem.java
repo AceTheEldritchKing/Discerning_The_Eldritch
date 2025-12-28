@@ -27,7 +27,7 @@ public class MourningStarMaceAwakenedItem extends MagicSwordItem implements Uniq
                 DTEWeaponTiers.MOURNING_STAR_AWAKENED,
                 ItemPropertiesHelper.equipment(1).fireResistant().rarity(ASRarities.ACCURSED_RARITY_PROXY.getValue()).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.MOURNING_STAR_AWAKENED)),
                 SpellDataRegistryHolder.of(
-                        new SpellDataRegistryHolder(SpellRegistries.BLADES_OF_RANCOR, 6))
+                        new SpellDataRegistryHolder(SpellRegistries.LIBRAS_JUDGEMENT, 1))
         );
     }
 
