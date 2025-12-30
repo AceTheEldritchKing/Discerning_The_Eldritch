@@ -20,11 +20,11 @@ public class GeckolibEldritchWarlockHelmetItem extends ImbuableGeckolibDTEArmorI
             DiscerningTheEldritch.MOD_ID,
             "textures/models/armor/geckolib/eldritch_armor_helmet_glowmask.png");
 
-    private static final RenderType GLOW_RENDER_TYPE = RenderType.breezeEyes(LAYER);
-
     @Override
     @OnlyIn(Dist.CLIENT)
     public GeoArmorRenderer<?> supplyRenderer() {
+        RenderType GLOW_RENDER_TYPE = RenderType.breezeEyes(LAYER);
+
         return new EmissiveGenericCustomArmorRenderer<>(new GeckolibEldritchWarlockHelmetModel(), LAYER, GLOW_RENDER_TYPE);
     }
 }

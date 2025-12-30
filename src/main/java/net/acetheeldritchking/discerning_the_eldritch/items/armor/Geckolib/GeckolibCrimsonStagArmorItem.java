@@ -30,11 +30,11 @@ public class GeckolibCrimsonStagArmorItem extends ImbuableGeckolibDTEArmorItem{
             DiscerningTheEldritch.MOD_ID,
             "textures/models/armor/geckolib/crimson_stag_gecko_glowmask.png");
 
-    private static final RenderType GLOW_RENDER_TYPE = RenderType.breezeEyes(LAYER);
-
     @Override
     @OnlyIn(Dist.CLIENT)
     public GeoArmorRenderer<?> supplyRenderer() {
+        RenderType GLOW_RENDER_TYPE = RenderType.breezeEyes(LAYER);
+
         return new EmissiveGenericCustomArmorRenderer<>(new GeckolibCrimsonStagArmorModel(), LAYER, GLOW_RENDER_TYPE);
     }
 }
