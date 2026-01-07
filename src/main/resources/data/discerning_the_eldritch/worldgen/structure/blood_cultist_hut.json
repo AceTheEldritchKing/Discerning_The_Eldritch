@@ -2,7 +2,7 @@
   "type": "minecraft:jigsaw",
   "liquid_settings": "ignore_waterlogging",
   "start_pool": "discerning_the_eldritch:blood_cultist_hut_pool",
-  "size": 2,
+  "size": 10,
   "max_distance_from_center": 25,
   "step": "surface_structures",
   "use_expansion_hack": false,

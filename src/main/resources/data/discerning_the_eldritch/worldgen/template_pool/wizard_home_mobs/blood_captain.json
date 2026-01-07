@@ -1,0 +1,15 @@
+{
+  "name": "discerning_the_eldritch:wizard_home_mobs/blood_captain",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "discerning_the_eldritch:wizard_home_mobs/blood_captain",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      }
+    }
+  ]
+}
