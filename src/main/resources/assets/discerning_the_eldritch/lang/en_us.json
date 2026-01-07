@@ -213,6 +213,9 @@
   "spell.discerning_the_eldritch.libras_judgement": "Libra's Judgement",
   "spell.discerning_the_eldritch.libras_judgement.guide": "Judge your opponent: If they are above 50% HP, conjure the Mourning Star above them. If they are below 50% HP, immolate them in vicious flames",
 
+  "spell.discerning_the_eldritch.vein_ripper": "Vein Ripper",
+  "spell.discerning_the_eldritch.vein_ripper.guide": "Lash at your opponent, knocking them back and inflicting blood rot on them and gaining 15% lifesteal on hit.",
+
 
   "ui.discerning_the_eldritch.extra_damage": "Deals extra damage while holding a weapon in your mainhand",
   "ui.discerning_the_eldritch.ritual_cast_failure": "Rituals cannot be casted in a mere spellbook",

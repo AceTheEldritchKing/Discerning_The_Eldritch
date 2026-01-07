@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.particle.GlacialShadowParticleOptions;
 import net.acetheeldritchking.discerning_the_eldritch.particle.SoulFireSlashParticleOptions;
+import net.acetheeldritchking.discerning_the_eldritch.particle.VeinRipperVerticalParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
@@ -54,6 +55,20 @@ public class DTEParticleRegistry {
                 @Override
                 public StreamCodec<? super RegistryFriendlyByteBuf, SoulFireSlashParticleOptions> streamCodec() {
                     return SoulFireSlashParticleOptions.STREAM_CODEC;
+                }
+            });
+
+    // Vein Ripper Particle
+    public static final Supplier<ParticleType<VeinRipperVerticalParticleOptions>> VEIN_RIPPER_VERTICAL_PARTICLE = PARTICLE_TYPES.register("vein_ripper",
+            () -> new ParticleType<>(true) {
+                @Override
+                public MapCodec<VeinRipperVerticalParticleOptions> codec() {
+                    return VeinRipperVerticalParticleOptions.MAP_CODEC;
+                }
+
+                @Override
+                public StreamCodec<? super RegistryFriendlyByteBuf, VeinRipperVerticalParticleOptions> streamCodec() {
+                    return VeinRipperVerticalParticleOptions.STREAM_CODEC;
                 }
             });
 

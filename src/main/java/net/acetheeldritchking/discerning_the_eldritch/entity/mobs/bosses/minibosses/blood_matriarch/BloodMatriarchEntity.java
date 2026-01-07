@@ -135,11 +135,11 @@ public class BloodMatriarchEntity extends BloodMageEntity implements Enemy, IMer
                 .setMeleeBias(0.1f, 0.2f)
                 .setSpells(
                         // Attack
-                        List.of(SpellRegistry.BLOOD_NEEDLES_SPELL.get(), SpellRegistry.ACUPUNCTURE_SPELL.get(), SpellRegistry.WITHER_SKULL_SPELL.get(), SpellRegistry.BLOOD_SLASH_SPELL.get(), SpellRegistries.BLADES_OF_RANCOR.get()),
+                        List.of(SpellRegistry.BLOOD_NEEDLES_SPELL.get(), SpellRegistry.ACUPUNCTURE_SPELL.get(), SpellRegistry.WITHER_SKULL_SPELL.get(), SpellRegistry.BLOOD_SLASH_SPELL.get(), SpellRegistries.BLADES_OF_RANCOR.get(), SpellRegistries.VEIN_RIPPER.get()),
                         // Defense
                         List.of(SpellRegistry.COUNTERSPELL_SPELL.get(), SpellRegistry.HEAL_SPELL.get(), SpellRegistry.RAY_OF_SIPHONING_SPELL.get()),
                         // Movement
-                        List.of(SpellRegistry.BLOOD_STEP_SPELL.get(), SpellRegistry.COUNTERSPELL_SPELL.get()),
+                        List.of(SpellRegistry.BLOOD_STEP_SPELL.get(), SpellRegistry.COUNTERSPELL_SPELL.get(), SpellRegistries.VEIN_RIPPER.get()),
                         // Support
                         List.of()
                 ).setSingleUseSpell(SpellRegistry.ACUPUNCTURE_SPELL.get(), 50, 100, 2, 5)
@@ -152,6 +152,13 @@ public class BloodMatriarchEntity extends BloodMageEntity implements Enemy, IMer
                         SpellRegistry.BLOOD_STEP_SPELL.get(),
                         SpellRegistry.COUNTERSPELL_SPELL.get(),
                         SpellRegistry.ACUPUNCTURE_SPELL.get()
+                ), 1.3f, 1.3f, 100, 250));
+
+        this.goalSelector.addGoal(2, new WizardSpellComboGoal(this,
+                List.of(
+                        SpellRegistry.BLOOD_STEP_SPELL.get(),
+                        SpellRegistry.COUNTERSPELL_SPELL.get(),
+                        SpellRegistries.VEIN_RIPPER.get()
                 ), 1.3f, 1.3f, 100, 250));
 
         //this.goalSelector.addGoal(4, new PatrolNearLocationGoal(this, 30, .75f));
@@ -212,7 +219,7 @@ public class BloodMatriarchEntity extends BloodMageEntity implements Enemy, IMer
                 .add(Attributes.ATTACK_KNOCKBACK, 0.5)
                 .add(Attributes.ARMOR, 10)
                 .add(Attributes.ARMOR_TOUGHNESS, 5)
-                .add(Attributes.MAX_HEALTH, 200.0)
+                .add(Attributes.MAX_HEALTH, 130.0)
                 .add(Attributes.FOLLOW_RANGE, 45.0)
                 .add(Attributes.ENTITY_INTERACTION_RANGE, 3.5)
                 .add(Attributes.MOVEMENT_SPEED, .25)

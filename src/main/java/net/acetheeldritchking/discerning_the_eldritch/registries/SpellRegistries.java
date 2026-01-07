@@ -2,6 +2,7 @@ package net.acetheeldritchking.discerning_the_eldritch.registries;
 
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.spells.blood.VeinRipperSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.*;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.BoogieWoogieSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.GuardiansGazeSpell;
@@ -75,7 +76,7 @@ public class SpellRegistries {
 
     // Eternal Chains - Wrap the target in chains, preventing movement. The chains cannot be disspelled & the target cannot teleport. Any damage towards the target is halved.
 
-    // Malevolent Maelstrom - Conjure negative energy around the caster, manifesting in a swirling storm of Eso Edges slicing any nearby entities. Spell can be targeted as well to deal triple damage to a singular target
+    // Malevolent Maelstrom - Conjure negative energy around the caster, manifesting in a swirling storm of Eso Edges slicing any nearby entities. Spell can be targeted as well to deal triple damage to a singular target. Scales with Fire SP
 
     // Abhorrent Inferno - Channel your mana into an eruption of Eldritch magic, swinging your weapon around into a fatal dance. Entities caught in your wicked ballet will be affected with the Abhorrent Burn debuff. At the end of your dance, your mana regeneration is halted for a few seconds. You may target another entity to "dance" with you, increasing the damage of your slashes
 
@@ -110,6 +111,7 @@ public class SpellRegistries {
     // Bloodlust - Damage dealt by user gets turned into health; lifesteal on hit
 
     // Vein Ripper - Blood melee spell, slash upwards, inflicting blood rot on hit and giving the caster vigor
+    public static final Supplier<AbstractSpell> VEIN_RIPPER = registerSpell(new VeinRipperSpell());
 
 
     /***
@@ -132,6 +134,8 @@ public class SpellRegistries {
 
     // Soul Set Ablaze
     public static final Supplier<AbstractSpell> SOUL_SET_ABLAZE = registerSpell(new SoulSetAblazeSpell());
+
+    // Brimstone Apocalypse - Summon a storm of brimstone meteors from the sky. At the end of the spell, summon a giant meteor that does massive damage + griefing (including to the caster). Scales with Eldritch SP
 
 
     /***

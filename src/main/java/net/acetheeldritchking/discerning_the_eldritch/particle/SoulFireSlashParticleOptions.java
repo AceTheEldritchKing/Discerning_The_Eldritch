@@ -40,12 +40,12 @@ public class SoulFireSlashParticleOptions implements ParticleOptions {
 
     public static MapCodec<SoulFireSlashParticleOptions> MAP_CODEC = RecordCodecBuilder.mapCodec(object ->
             object.group(
-                    Codec.FLOAT.fieldOf("xf").forGetter(p -> ((SoulFireSlashParticleOptions) p).xf),
-                    Codec.FLOAT.fieldOf("xf").forGetter(p -> ((SoulFireSlashParticleOptions) p).yf),
-                    Codec.FLOAT.fieldOf("xf").forGetter(p -> ((SoulFireSlashParticleOptions) p).zf),
-                    Codec.BOOL.fieldOf("xf").forGetter(p -> ((SoulFireSlashParticleOptions) p).mirror),
-                    Codec.BOOL.fieldOf("xf").forGetter(p -> ((SoulFireSlashParticleOptions) p).vertical),
-                    Codec.FLOAT.fieldOf("xf").forGetter(p -> ((SoulFireSlashParticleOptions) p).scale)
+                    Codec.FLOAT.fieldOf("xf").forGetter(p -> (p).xf),
+                    Codec.FLOAT.fieldOf("xf").forGetter(p -> (p).yf),
+                    Codec.FLOAT.fieldOf("xf").forGetter(p -> (p).zf),
+                    Codec.BOOL.fieldOf("xf").forGetter(p -> (p).mirror),
+                    Codec.BOOL.fieldOf("xf").forGetter(p -> (p).vertical),
+                    Codec.FLOAT.fieldOf("xf").forGetter(p -> (p).scale)
             ).apply(object, SoulFireSlashParticleOptions::new)
     );
 

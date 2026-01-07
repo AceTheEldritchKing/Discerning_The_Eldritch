@@ -51,7 +51,8 @@ public class DiaryOfDecaySpellbook extends PassiveAbilitySpellbook {
         super.initializeSpellContainer(itemStack);
         AffinityData.set(itemStack, new AffinityData(Map.of(
                 SpellRegistries.BLADES_OF_RANCOR.get().getSpellResource(), 1,
-                SpellRegistry.ACUPUNCTURE_SPELL.get().getSpellResource(), 1
+                SpellRegistry.ACUPUNCTURE_SPELL.get().getSpellResource(), 1,
+                SpellRegistries.VEIN_RIPPER.get().getSpellResource(), 1
         )));
     }
 

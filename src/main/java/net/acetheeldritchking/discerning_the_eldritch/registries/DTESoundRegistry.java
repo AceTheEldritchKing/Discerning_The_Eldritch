@@ -84,6 +84,9 @@ public class DTESoundRegistry {
     // Soul Slam Echo
     public static DeferredHolder<SoundEvent, SoundEvent> SOUL_SLAM_ECHO = registerSoundEvent("soul_slam_echo");
 
+    // Magic Sword Blood Cast
+    public static DeferredHolder<SoundEvent, SoundEvent> MAGIC_SWORD_BLOOD_CAST = registerSoundEvent("magic_sword_blood_cast");
+
 
     /***
      * Entity Sounds

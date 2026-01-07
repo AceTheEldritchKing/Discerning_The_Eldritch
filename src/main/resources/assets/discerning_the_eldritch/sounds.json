@@ -223,5 +223,10 @@
         "sounds": [
             "discerning_the_eldritch:soul_slam_echo"
         ]
+    },
+    "magic_sword_blood_cast": {
+        "sounds": [
+            "discerning_the_eldritch:magic_sword_blood_cast"
+        ]
     }
 }
