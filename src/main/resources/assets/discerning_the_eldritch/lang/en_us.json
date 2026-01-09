@@ -353,7 +353,7 @@
   "advancements.discerning_the_eldritch.forsaken_flamberge.title": "Blade of The Forsaken",
   "advancements.discerning_the_eldritch.forsaken_flamberge.description": "Craft a Forsaken Flamberge",
 
-  "advancements.discerning_the_eldritch.ymir.title": "Eldritch Dream Eater",
+  "advancements.discerning_the_eldritch.ymir.title": "Blade of Dreams",
   "advancements.discerning_the_eldritch.ymir.description": "Craft the legendary Ymir blade",
 
   "advancements.discerning_the_eldritch.eldritch_soul_shard.title": "A Dead God's Dream",
@@ -366,5 +366,29 @@
   "advancements.discerning_the_eldritch.ascended_one_fight.description": "Fight The Ascended One",
 
   "advancements.discerning_the_eldritch.kill_ascended_one.title": "My Apotheosis",
-  "advancements.discerning_the_eldritch.kill_ascended_one.description": "Kill The Ascended One"
+  "advancements.discerning_the_eldritch.kill_ascended_one.description": "Kill The Ascended One",
+
+  "advancements.discerning_the_eldritch.find_demonic_item.title": "What Was Once Lost...",
+  "advancements.discerning_the_eldritch.find_demonic_item.description": "Rediscover a Demonic Weapon from the deep cities",
+
+  "advancements.discerning_the_eldritch.find_all_demonic_items.title": "Rebirth of The Vile",
+  "advancements.discerning_the_eldritch.find_all_demonic_items.description": "Obtain all Awakened Demonic Weapons from their slumber",
+
+  "advancements.discerning_the_eldritch.tempestuous_tome.title": "Rite of The Stormweaver",
+  "advancements.discerning_the_eldritch.tempestuous_tome.description": "Obtain The Stormweaver's Spell Tome",
+
+  "advancements.discerning_the_eldritch.diary_of_decay.title": "The Smell of Rotting Blood",
+  "advancements.discerning_the_eldritch.diary_of_decay.description": "Obtain The Diary of Decay",
+
+  "advancements.discerning_the_eldritch.soul_fire_scythe.title": "Soul-Blazing Glory",
+  "advancements.discerning_the_eldritch.soul_fire_scythe.description": "Craft the Soul Fire Scythe",
+
+  "advancements.discerning_the_eldritch.shard_of_malice.title": "Crystallized Malice",
+  "advancements.discerning_the_eldritch.shard_of_malice.description": "Obtain a shard of malice",
+
+  "advancements.discerning_the_eldritch.bottle_of_liquid_malice.title": "Hate in a Bottle",
+  "advancements.discerning_the_eldritch.bottle_of_liquid_malice.description": "Obtain liquid malice",
+
+  "advancements.discerning_the_eldritch.staff_of_eldritch.title": "Brutal, Stained Vehemence",
+  "advancements.discerning_the_eldritch.staff_of_eldritch.description": "Obtain The Staff of Vehemence"
 }

@@ -24,7 +24,7 @@
             "condition": "minecraft:entity_properties",
             "entity": "this",
             "predicate": {
-              "type": "discerning_the_eldritch:ascended_one"
+              "type": "discerning_the_eldritch:ascended_one_cultist"
             }
           }
         ]

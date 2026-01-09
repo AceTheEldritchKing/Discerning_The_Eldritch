@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "id": "discerning_the_eldritch:shard_of_malice"
+    },
+    "title": {
+      "translate": "advancements.discerning_the_eldritch.shard_of_malice.title"
+    },
+    "description": {
+      "translate": "advancements.discerning_the_eldritch.shard_of_malice.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "discerning_the_eldritch:discerning_the_eldritch/main/root",
+  "criteria": {
+    "malice": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "discerning_the_eldritch:shard_of_malice"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "malice"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

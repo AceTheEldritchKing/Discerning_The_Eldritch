@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "id": "discerning_the_eldritch:bottle_of_liquid_malice"
+    },
+    "title": {
+      "translate": "advancements.discerning_the_eldritch.bottle_of_liquid_malice.title"
+    },
+    "description": {
+      "translate": "advancements.discerning_the_eldritch.bottle_of_liquid_malice.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "discerning_the_eldritch:discerning_the_eldritch/main/shard_of_malice",
+  "criteria": {
+    "liquid": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "discerning_the_eldritch:bottle_of_liquid_malice"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "liquid"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

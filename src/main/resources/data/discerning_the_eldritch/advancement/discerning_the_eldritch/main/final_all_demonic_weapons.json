@@ -1,0 +1,62 @@
+{
+  "display": {
+    "icon": {
+      "id": "discerning_the_eldritch:cataclysm_awakened"
+    },
+    "title": {
+      "translate": "advancements.discerning_the_eldritch.find_all_demonic_items.title"
+    },
+    "description": {
+      "translate": "advancements.discerning_the_eldritch.find_all_demonic_items.description"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "discerning_the_eldritch:discerning_the_eldritch/main/find_demonic_weapon",
+  "criteria": {
+    "awakened_axe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "discerning_the_eldritch:devourer_awakened"
+          }
+        ]
+      }
+    },
+    "awakened_sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "discerning_the_eldritch:cataclysm_awakened"
+          }
+        ]
+      }
+    },
+    "awakened_flail": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "discerning_the_eldritch:mourning_star_awakened"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "awakened_axe"
+    ],
+    [
+      "awakened_sword"
+    ],
+    [
+      "awakened_flail"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

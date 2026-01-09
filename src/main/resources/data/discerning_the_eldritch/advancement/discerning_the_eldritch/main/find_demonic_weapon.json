@@ -1,0 +1,58 @@
+{
+  "display": {
+    "icon": {
+      "id": "discerning_the_eldritch:cataclysm"
+    },
+    "title": {
+      "translate": "advancements.discerning_the_eldritch.find_demonic_item.title"
+    },
+    "description": {
+      "translate": "advancements.discerning_the_eldritch.find_demonic_item.description"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "discerning_the_eldritch:discerning_the_eldritch/main/root",
+  "criteria": {
+    "axe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "discerning_the_eldritch:devourer"
+          }
+        ]
+      }
+    },
+    "sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "discerning_the_eldritch:cataclysm"
+          }
+        ]
+      }
+    },
+    "flail": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "discerning_the_eldritch:mourning_star"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "axe",
+      "sword",
+      "flail"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

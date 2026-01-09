@@ -1,0 +1,32 @@
+{
+    "display": {
+        "hidden": true,
+        "icon": {
+            "id": "discerning_the_eldritch:diary_of_decay"
+        },
+        "title": {
+            "translate": "advancements.discerning_the_eldritch.diary_of_decay.title"
+        },
+        "description": {
+            "translate": "advancements.discerning_the_eldritch.diary_of_decay.description"
+        },
+        "announce_to_chat": true,
+        "show_toast": true,
+        "frame": "goal"
+    },
+    "parent": "irons_spellbooks:irons_spellbooks/spell_book_equip",
+    "criteria": {
+        "requirement": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "discerning_the_eldritch:diary_of_decay"
+                        ]
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        }
+    }
+}

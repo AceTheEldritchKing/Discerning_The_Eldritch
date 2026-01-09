@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:smithing_transform",
+    "addition": {
+        "item": "discerning_the_eldritch:soul_ember"
+    },
+    "base": {
+        "item": "irons_spellbooks:decrepit_scythe"
+    },
+    "result": {
+        "count": 1,
+        "id": "discerning_the_eldritch:soul_fire_scythe"
+    },
+    "template": {
+        "item": "irons_spellbooks:timeless_slurry"
+    }
+}

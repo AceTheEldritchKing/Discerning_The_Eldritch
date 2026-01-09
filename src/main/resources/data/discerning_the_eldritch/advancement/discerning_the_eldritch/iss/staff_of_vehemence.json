@@ -1,0 +1,32 @@
+{
+    "display": {
+        "hidden": true,
+        "icon": {
+            "id": "discerning_the_eldritch:staff_of_eldritch"
+        },
+        "title": {
+            "translate": "advancements.discerning_the_eldritch.staff_of_eldritch.title"
+        },
+        "description": {
+            "translate": "advancements.discerning_the_eldritch.staff_of_eldritch.description"
+        },
+        "announce_to_chat": true,
+        "show_toast": true,
+        "frame": "challenge"
+    },
+    "parent": "irons_spellbooks:irons_spellbooks/staff_root",
+    "criteria": {
+        "requirement": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "discerning_the_eldritch:staff_of_eldritch"
+                        ]
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        }
+    }
+}

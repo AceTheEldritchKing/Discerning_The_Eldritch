@@ -1,0 +1,32 @@
+{
+    "display": {
+        "hidden": true,
+        "icon": {
+            "id": "discerning_the_eldritch:tempestuous_tome"
+        },
+        "title": {
+            "translate": "advancements.discerning_the_eldritch.tempestuous_tome.title"
+        },
+        "description": {
+            "translate": "advancements.discerning_the_eldritch.tempestuous_tome.description"
+        },
+        "announce_to_chat": true,
+        "show_toast": true,
+        "frame": "goal"
+    },
+    "parent": "irons_spellbooks:irons_spellbooks/spell_book_equip",
+    "criteria": {
+        "requirement": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "discerning_the_eldritch:tempestuous_tome"
+                        ]
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        }
+    }
+}

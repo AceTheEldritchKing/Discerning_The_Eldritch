@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "id": "discerning_the_eldritch:soul_fire_scythe"
+    },
+    "title": {
+      "translate": "advancements.discerning_the_eldritch.soul_fire_scythe.title"
+    },
+    "description": {
+      "translate": "advancements.discerning_the_eldritch.soul_fire_scythe.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "discerning_the_eldritch:discerning_the_eldritch/main/root",
+  "criteria": {
+    "scythe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "discerning_the_eldritch:soul_fire_scythe"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "scythe"
+    ]
+  ],
+  "sends_telemetry_event": false
+}
