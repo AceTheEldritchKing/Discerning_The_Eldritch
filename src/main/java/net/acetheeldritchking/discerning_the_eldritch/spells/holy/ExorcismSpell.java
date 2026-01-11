@@ -24,7 +24,6 @@ import java.util.Optional;
 import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.INSANITY_METER;
 import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.IS_INSANE;
 
-@AutoSpellConfig
 public class ExorcismSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "exorcism");
 

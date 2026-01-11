@@ -238,7 +238,7 @@ dependencies {
     implementation "curse.maven:worldedit-225608:5830452"
 
     // Ace's Spell Utils (REQUIRED - It's literally my API mod)
-    implementation "curse.maven:aces-spell-utils-1299492:7382269"
+    implementation "curse.maven:aces-spell-utils-1299492:7435761"
     //implementation("net.acetheeldritchking.aces_spell_utils:aces_spell_utils:1.1.19-1.21.1-a")
 
     //QOL

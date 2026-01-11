@@ -25,7 +25,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-@AutoSpellConfig
 public class ZealousHarbingerSpell extends AbstractRitualSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "zealous_harbinger");
 

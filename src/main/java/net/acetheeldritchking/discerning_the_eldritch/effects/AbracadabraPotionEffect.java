@@ -13,6 +13,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 
@@ -42,7 +43,7 @@ public class AbracadabraPotionEffect extends CustomDescriptionMobEffect {
     }
 
     @SubscribeEvent
-    public static void damageCapEvent(LivingIncomingDamageEvent event)
+    public static void damageCapEvent(LivingDamageEvent.Pre event)
     {
         if (DTEServerConfig.enableDamageCap)
         {
@@ -54,10 +55,10 @@ public class AbracadabraPotionEffect extends CustomDescriptionMobEffect {
             if (effect != null && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
             {
                 int level = effect.getAmplifier() + 1;
-                float baseDamage = event.getAmount();
+                float baseDamage = event.getOriginalDamage();
                 float newDamage = getDamageCapAmount(level, baseDamage);
 
-                event.setAmount(newDamage);
+                event.setNewDamage(newDamage);
                 //DiscerningTheEldritch.LOGGER.debug("Old damage: " + baseDamage);
                 //DiscerningTheEldritch.LOGGER.debug("Level: " + level);
                 //DiscerningTheEldritch.LOGGER.debug("Base cap: " + DTEConfig.abracadabraDamageCap);

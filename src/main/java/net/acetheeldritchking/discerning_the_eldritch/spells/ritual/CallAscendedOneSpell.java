@@ -23,7 +23,6 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
-@AutoSpellConfig
 public class CallAscendedOneSpell extends AbstractRitualSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "call_ascended_one");
 

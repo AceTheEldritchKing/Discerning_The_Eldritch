@@ -37,7 +37,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-@AutoSpellConfig
 public class RiftWalkerSpell extends AbstractSpell {
     public static final float RADIUS = 3;
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "rift_walker");

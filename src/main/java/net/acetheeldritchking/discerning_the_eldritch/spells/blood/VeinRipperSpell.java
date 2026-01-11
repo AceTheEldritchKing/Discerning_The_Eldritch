@@ -36,7 +36,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-@AutoSpellConfig
 public class VeinRipperSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "vein_ripper");
 

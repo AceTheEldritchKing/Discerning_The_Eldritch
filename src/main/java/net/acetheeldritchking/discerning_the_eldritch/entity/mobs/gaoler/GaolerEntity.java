@@ -458,11 +458,14 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
             super.tick();
 
             // Screenshake when it walks
-            if (this.tickCount % 20 == 0 && !isPlayingRiseAnimation())
+            if (this.level() != null)
             {
-                if (this.getDeltaMovement().x < 0 || this.getDeltaMovement().z < 0 || this.getDeltaMovement().z > 0 || this.getDeltaMovement().x > 0)
+                if (this.tickCount % 20 == 0 && !isPlayingRiseAnimation())
                 {
-                    CameraShakeManager.addCameraShake(new CameraShakeData(this.level(), 4, this.position(), 20));
+                    if (this.getDeltaMovement().x < 0 || this.getDeltaMovement().z < 0 || this.getDeltaMovement().z > 0 || this.getDeltaMovement().x > 0)
+                    {
+                        CameraShakeManager.addCameraShake(new CameraShakeData(this.level(), 4, this.position(), 20));
+                    }
                 }
             }
         }

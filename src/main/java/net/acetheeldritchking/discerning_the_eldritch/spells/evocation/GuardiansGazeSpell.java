@@ -25,7 +25,6 @@ import net.minecraft.world.phys.HitResult;
 
 import java.util.Optional;
 
-@AutoSpellConfig
 public class GuardiansGazeSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "guardians_gaze");
 

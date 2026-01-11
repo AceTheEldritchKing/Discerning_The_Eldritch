@@ -44,7 +44,6 @@ import java.util.Optional;
 
 import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.FROSTBITE_LEVEL;
 
-@AutoSpellConfig
 public class CrystallineCarverSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "crystalline_carver");
     private boolean isFinalCast;

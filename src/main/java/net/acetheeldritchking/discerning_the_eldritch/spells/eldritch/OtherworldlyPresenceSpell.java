@@ -18,7 +18,6 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
-@AutoSpellConfig
 public class OtherworldlyPresenceSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "otherworldly_presence");
 
