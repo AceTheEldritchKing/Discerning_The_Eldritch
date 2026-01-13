@@ -154,7 +154,7 @@ public class ConjureGaolerSpell extends AbstractSpell {
 
         if (entity instanceof ServerPlayer serverPlayer)
         {
-            PacketDistributor.sendToPlayer(serverPlayer, new AddShaderEffectPacket(DiscerningTheEldritch.MOD_ID, "shaders/grayscale_darker.json"));
+            PacketDistributor.sendToPlayer(serverPlayer, new AddShaderEffectPacket(DiscerningTheEldritch.MOD_ID, "shaders/post/creepy.json"));
         }
 
         super.onServerPreCast(level, spellLevel, entity, playerMagicData);

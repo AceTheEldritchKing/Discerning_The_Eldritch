@@ -17,11 +17,16 @@ public class CrimsonStagArmorRenderer extends AzArmorRenderer {
             "textures/models/armor/crimson_stag.png"
     );
 
+    private static final ResourceLocation TEX_GLOW = ResourceLocation.fromNamespaceAndPath(
+            DiscerningTheEldritch.MOD_ID,
+            "textures/models/armor/crimson_stag_glowmask.png"
+    );
+
     public CrimsonStagArmorRenderer() {
         super(
                 AzArmorRendererConfig.builder(GEO, TEX)
                         .setPipelineContext(AzArmorLeggingTorsoLayerPipeline::new)
-                        .addRenderLayer(new AzAutoGlowingLayer<>())
+                        .addRenderLayer(new CustomAZEmissiveLayer(TEX_GLOW))
                         .build()
         );
     }

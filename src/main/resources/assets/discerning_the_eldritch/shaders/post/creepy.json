@@ -1,0 +1,42 @@
+{
+  "targets": [
+    "swap"
+  ],
+  "passes": [
+    {
+      "name": "color_convolve",
+      "intarget": "minecraft:main",
+      "outtarget": "swap",
+      "uniforms": [
+        {
+          "name": "RedMatrix",
+          "values": [ 0.25, 0.25, 0.25 ]
+        },
+        {
+          "name": "GreenMatrix",
+          "values": [ 0.25, 0.25, 0.25 ]
+        },
+        {
+          "name": "BlueMatrix",
+          "values": [ 0.25, 0.25, 0.25 ]
+        }
+      ]
+    },
+    {
+      "name": "invert",
+      "intarget": "minecraft:main",
+      "outtarget": "swap",
+      "uniforms": [
+        {
+          "name": "InverseAmount",
+          "values": [ 0.05 ]
+        }
+      ]
+    },
+    {
+      "name": "blit",
+      "intarget": "swap",
+      "outtarget": "minecraft:main"
+    }
+  ]
+}
