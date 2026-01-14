@@ -1,0 +1,16 @@
+{
+  "type": "irons_spellbooks:alchemist_cauldron_fill",
+  "fluid": {
+    "amount": 1000,
+    "id": "discerning_the_eldritch:liquid_malice"
+  },
+  "input": {
+    "item": "discerning_the_eldritch:bucket_of_malice"
+  },
+  "mustFitAll": false,
+  "result": {
+    "count": 1,
+    "id": "minecraft:bucket"
+  },
+  "sound": "minecraft:item.bucket.empty"
+}

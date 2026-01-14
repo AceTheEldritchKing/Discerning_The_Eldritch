@@ -109,6 +109,7 @@ public class DTECreativeModeTabs {
                         {
                             // Weapons
                             output.accept(PastelCompatItems.DREAM_REAVER_YMIR.get());
+                            output.accept(PastelCompatItems.BUCKET_OF_MALICE.get());
                         }
                     }).build());
 

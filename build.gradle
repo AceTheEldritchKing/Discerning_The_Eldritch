@@ -249,13 +249,13 @@ dependencies {
     // COMPAT //
 
     // Pastel
-    /*localRuntime "curse.maven:pastel-1264556:6847961"
+    localRuntime "curse.maven:pastel-1264556:6847961"
     compileOnly "curse.maven:pastel-1264556:6847961"
     localRuntime "curse.maven:databank-1181408:7007287"
     compileOnly "curse.maven:databank-1181408:7007287"
     implementation "curse.maven:modonomicon-538392:7086032"
     localRuntime "curse.maven:pasteljei-1297526:6892907"
-    compileOnly "curse.maven:pasteljei-1297526:6892907"*/
+    compileOnly "curse.maven:pasteljei-1297526:6892907"
 
     // JSON ******************************************************************************************************
     implementation "com.google.code.gson:gson:${gson_version}"
