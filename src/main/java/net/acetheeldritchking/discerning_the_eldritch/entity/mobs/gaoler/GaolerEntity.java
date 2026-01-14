@@ -456,22 +456,20 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
         }
         else {
             super.tick();
-
-            // Screenshake when it walks
-            if (this.level() != null)
-            {
-                if (this.tickCount % 20 == 0 && !isPlayingRiseAnimation())
-                {
-                    if (this.getDeltaMovement().x < 0 || this.getDeltaMovement().z < 0 || this.getDeltaMovement().z > 0 || this.getDeltaMovement().x > 0)
-                    {
-                        CameraShakeManager.addCameraShake(new CameraShakeData(this.level(), 4, this.position(), 20));
-                    }
-                }
-            }
         }
         // Client side stuff
         if (this.level().isClientSide())
         {
+            Level level = this.level();
+            // Screenshake when it walks
+            if (this.tickCount % 20 == 0 && !isPlayingRiseAnimation() && this.level() != null)
+            {
+                if (this.getDeltaMovement().x < 0 || this.getDeltaMovement().z < 0 || this.getDeltaMovement().z > 0 || this.getDeltaMovement().x > 0)
+                {
+                    CameraShakeManager.addCameraShake(new CameraShakeData(level, 4, this.position(), 20));
+                }
+            }
+
             if (this.tickCount % this.getHeartBeatDelay() == 0)
             {
                 if (!this.isSilent()) {

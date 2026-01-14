@@ -26,7 +26,7 @@ public class CrimsonStagArmorRenderer extends AzArmorRenderer {
         super(
                 AzArmorRendererConfig.builder(GEO, TEX)
                         .setPipelineContext(AzArmorLeggingTorsoLayerPipeline::new)
-                        .addRenderLayer(new CustomAZEmissiveLayer(TEX_GLOW))
+                        .addRenderLayer(new AzAutoGlowingLayer<>())
                         .build()
         );
     }
