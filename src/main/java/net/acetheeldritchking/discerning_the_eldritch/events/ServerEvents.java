@@ -475,7 +475,7 @@ public class ServerEvents {
 
                         // Insta-kill w/o insta-killing
                         float baseDamage = event.getOriginalAmount();
-                        float newDamage = baseDamage * 5.5F;
+                        float newDamage = baseDamage * ((Float) DTEServerConfig.mourningStarMortalDamageMultiplier);
 
                         event.setAmount(newDamage);
 

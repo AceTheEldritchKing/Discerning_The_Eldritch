@@ -33,6 +33,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
@@ -526,7 +527,13 @@ public class BloodMatriarchEntity extends BloodMageEntity implements Enemy, IMer
 
     @Override
     public boolean isHostileTowards(LivingEntity pTarget) {
-        return super.isHostileTowards(pTarget) || pTarget.getAttributeValue(AttributeRegistry.BLOOD_SPELL_POWER) < 1.15;
+        if (DTEServerConfig.enableBloodCultistAggression == true)
+        {
+            return super.isHostileTowards(pTarget) || pTarget.getAttributeValue(AttributeRegistry.BLOOD_SPELL_POWER) < 1.15;
+        } else
+        {
+            return super.isHostileTowards(pTarget);
+        }
     }
 
     /***

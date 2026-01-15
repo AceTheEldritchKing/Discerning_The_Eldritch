@@ -18,6 +18,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultis
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultists.ApothicSummonerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.minibosses.blood_matriarch.BloodMatriarchEntity;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -233,6 +234,12 @@ public class BloodCultistMageEntity extends BloodMageEntity implements Enemy, IA
 
     @Override
     public boolean isHostileTowards(LivingEntity pTarget) {
-        return super.isHostileTowards(pTarget) || pTarget.getAttributeValue(AttributeRegistry.BLOOD_SPELL_POWER) < 1.15;
+        if (DTEServerConfig.enableBloodCultistAggression == true)
+        {
+            return super.isHostileTowards(pTarget) || pTarget.getAttributeValue(AttributeRegistry.BLOOD_SPELL_POWER) < 1.15;
+        } else
+        {
+            return super.isHostileTowards(pTarget);
+        }
     }
 }

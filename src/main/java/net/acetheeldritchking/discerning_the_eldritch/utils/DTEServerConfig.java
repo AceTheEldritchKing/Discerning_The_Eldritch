@@ -50,7 +50,7 @@ public class DTEServerConfig
             .comment("Default is true")
             .define("Enable Abracadabra's hex prevention", true);
 
-    // Curio Configs //
+    // Item Configs //
     // Pyrium Sheath
     private static final ModConfigSpec.ConfigValue<Integer> PYRIUM_SHEATH_COOLDOWN = BUILDER
             .comment("Defines the cooldown in seconds value for the Pyrium Sheath's ability")
@@ -74,7 +74,13 @@ public class DTEServerConfig
             .comment("Math is: 2 + (base attack damage * (config value / 100))")
             .comment("Dividing by 100 gets the percentage of what the config value, so if you input 10, it will result in 0.10 aka 10%")
             .comment("Default is [10]")
-            .define("Sheath of The Razor CD", 10);
+            .define("Sheath of The Razor Multiplier", 10);
+
+    // Mourning Star
+    private static final ModConfigSpec.ConfigValue<Float> MOURNING_STAR_MORTAL_DAMAGE_MULTIPLIER = BUILDER
+            .comment("Defines the multiplier for the Mourning Star's mortal damage decree")
+            .comment("Default is [5.5F]")
+            .define("Mourning Star Damage Multiplier", 5.5F);
 
     // Boss Damage Caps //
     // Ascended One
@@ -87,6 +93,14 @@ public class DTEServerConfig
             .comment("Defines the max damage the Ascended One can take for the damage cap")
             .comment("Default is [100]")
             .define("Base Ascended One damage cap", 100);
+
+    // Trading //
+    // Blood Cultist Aggro
+    private static final ModConfigSpec.BooleanValue BLOOD_CULTIST_AGGRESSION = BUILDER
+            .comment("Defines whether or not to enable blood cultist aggression.")
+            .comment("This means blood cultists will attack you on sight if your blood spell power is below 1.15x.")
+            .comment("Default is false")
+            .define("Enable Blood Cultist aggression", false);
 
     // CLIENT //
     // Gaoler Screenshake
@@ -113,6 +127,8 @@ public class DTEServerConfig
     public static int razorSheathCooldown;
     public static int razorSheathMultiplier;
     public static boolean gaolerWalkingScreenshake;
+    public static float mourningStarMortalDamageMultiplier;
+    public static boolean enableBloodCultistAggression;
 
 
     @SubscribeEvent
@@ -132,9 +148,12 @@ public class DTEServerConfig
         frostbourneSheathCooldown = FROSTBOURNE_SHEATH_COOLDOWN.get();
         razorSheathCooldown = RAZOR_SHEATH_COOLDOWN.get();
         razorSheathMultiplier = RAZOR_SHEATH_MULTIPLIER.get();
+        mourningStarMortalDamageMultiplier = MOURNING_STAR_MORTAL_DAMAGE_MULTIPLIER.get();
 
         enableAscendedOneDamageCap = ENABLED_ASCENDED_ONE_DAMAGE_CAP.get();
         ascendedOneDamageCap = ASCENDED_ONE_DAMAGE_CAP_VALUE.get();
+
+        enableBloodCultistAggression = BLOOD_CULTIST_AGGRESSION.get();
 
         gaolerWalkingScreenshake = ENABLE_GAOLER_SCREENSHAKE.get();
     }
