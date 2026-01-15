@@ -182,6 +182,11 @@ public class BloodCultistCaptainEntity extends BloodMageEntity implements Enemy,
         return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
 
+    @Override
+    public boolean isPersistenceRequired() {
+        return true;
+    }
+
     public static AttributeSupplier.Builder createAttributes()
     {
         return LivingEntity.createLivingAttributes()

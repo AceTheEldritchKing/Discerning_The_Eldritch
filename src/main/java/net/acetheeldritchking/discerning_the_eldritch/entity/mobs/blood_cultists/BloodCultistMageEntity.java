@@ -171,6 +171,11 @@ public class BloodCultistMageEntity extends BloodMageEntity implements Enemy, IA
         return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
 
+    @Override
+    public boolean isPersistenceRequired() {
+        return true;
+    }
+
     public static AttributeSupplier.Builder createAttributes()
     {
         return LivingEntity.createLivingAttributes()
