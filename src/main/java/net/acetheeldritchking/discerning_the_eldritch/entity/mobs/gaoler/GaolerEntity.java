@@ -19,6 +19,7 @@ import io.redspace.ironsspellbooks.util.OwnerHelper;
 import net.acetheeldritchking.aces_spell_utils.entity.mobs.UniqueAbstractSpellCastingMob;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.goals.GaolerAnimatedWarlockAttackGoal;
 import net.acetheeldritchking.discerning_the_eldritch.registries.*;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -389,9 +390,22 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
         super.customServerAiStep();
 
         ServerLevel serverLevel = (ServerLevel) this.level();
+
         if (this.tickCount % 120 == 0)
         {
             applyDarknessAround(serverLevel, this.position(), this, 25);
+        }
+
+        // Screenshake when it walks
+        if (DTEServerConfig.gaolerWalkingScreenshake == true)
+        {
+            if (this.tickCount % 20 == 0 && !isPlayingRiseAnimation())
+            {
+                if (this.getDeltaMovement().x < 0 || this.getDeltaMovement().z < 0 || this.getDeltaMovement().z > 0 || this.getDeltaMovement().x > 0)
+                {
+                    CameraShakeManager.addCameraShake(new CameraShakeData(serverLevel, 6, this.position(), 20));
+                }
+            }
         }
     }
 
@@ -460,16 +474,6 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
         // Client side stuff
         if (this.level().isClientSide())
         {
-            Level level = this.level();
-            // Screenshake when it walks
-            if (this.tickCount % 20 == 0 && !isPlayingRiseAnimation() && this.level() != null)
-            {
-                if (this.getDeltaMovement().x < 0 || this.getDeltaMovement().z < 0 || this.getDeltaMovement().z > 0 || this.getDeltaMovement().x > 0)
-                {
-                    CameraShakeManager.addCameraShake(new CameraShakeData(level, 4, this.position(), 20));
-                }
-            }
-
             if (this.tickCount % this.getHeartBeatDelay() == 0)
             {
                 if (!this.isSilent()) {

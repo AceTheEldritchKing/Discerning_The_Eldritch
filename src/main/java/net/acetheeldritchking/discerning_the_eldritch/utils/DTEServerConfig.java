@@ -88,6 +88,13 @@ public class DTEServerConfig
             .comment("Default is [100]")
             .define("Base Ascended One damage cap", 100);
 
+    // CLIENT //
+    // Gaoler Screenshake
+    private static final ModConfigSpec.BooleanValue ENABLE_GAOLER_SCREENSHAKE = BUILDER
+            .comment("Defines whether or not to enable the Gaoler's walking screenshake.")
+            .comment("Default is true")
+            .define("Enable Gaoler's walking screenshake", true);
+
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 
@@ -105,6 +112,7 @@ public class DTEServerConfig
     public static int frostbourneSheathCooldown;
     public static int razorSheathCooldown;
     public static int razorSheathMultiplier;
+    public static boolean gaolerWalkingScreenshake;
 
 
     @SubscribeEvent
@@ -127,5 +135,7 @@ public class DTEServerConfig
 
         enableAscendedOneDamageCap = ENABLED_ASCENDED_ONE_DAMAGE_CAP.get();
         ascendedOneDamageCap = ASCENDED_ONE_DAMAGE_CAP_VALUE.get();
+
+        gaolerWalkingScreenshake = ENABLE_GAOLER_SCREENSHAKE.get();
     }
 }

@@ -81,7 +81,8 @@ public class DiscerningTheEldritch
         // Compat
         CompatRegistry.registerPastelItems(modEventBus);
 
-        modContainer.registerConfig(ModConfig.Type.COMMON, DTEServerConfig.SPEC);
+        // Configs
+        modContainer.registerConfig(ModConfig.Type.COMMON, DTEServerConfig.SPEC, String.format("%s-common.toml", DiscerningTheEldritch.MOD_ID));
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
