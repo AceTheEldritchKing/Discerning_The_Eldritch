@@ -25,9 +25,13 @@
   "effect.discerning_the_eldritch.predator_potion_effect.description": "击中持有猎物状态的目标时召唤贪婪之颚",
   "effect.discerning_the_eldritch.scorched_soul_potion_effect": "魂灼",
   "effect.discerning_the_eldritch.scorched_soul_potion_effect.description": " 当攻击者持有魂火之镰时，受到的炽焰法术伤害增加，或者如果处于燃烧状态则受到伤害进一步提升",
+
   "curios.identifier.artifact": "人工制品",
   "curios.modifiers.artifact": "人工制品",
+
   "fluid_type.discerning_the_eldritch.liquid_malice": "恶意溶液",
+  "item.discerning_the_eldritch.bucket_of_malice": "桶装恶意溶液",
+  "item.discerning_the_eldritch.bucket_of_malice.description": "它拒绝被放置...",
   "item.discerning_the_eldritch.corrupted_cloth": "腐化布料",
   "item.discerning_the_eldritch.eldritch_soul_shard": "怪异灵魂碎片",
   "item.discerning_the_eldritch.shard_of_malice": "恶意碎片",
@@ -93,6 +97,7 @@
   "item.discerning_the_eldritch.staff_of_ascension": "升华之杖",
   "item.discerning_the_eldritch.broken_legends_staff": "破碎的传奇法杖",
   "item.discerning_the_eldritch.broken_legends_staff.description": "数百年前制造的古老手杖，也许它曾有过用武之地?",
+
   "item.discerning_the_eldritch.eldritch_warlock_hood": "秘术教徒兜帽",
   "item.discerning_the_eldritch.eldritch_warlock_robes": "秘术教徒长袍",
   "item.discerning_the_eldritch.eldritch_warlock_leggings": "秘术教徒护腿",
@@ -108,9 +113,11 @@
   "item.discerning_the_eldritch.eldritch_upgrade_template": "诡秘升级模板",
   "item.discerning_the_eldritch.ritual_upgrade_orb": "秘术升级法球",
   "item.discerning_the_eldritch.ritual_rune": "秘术符文",
+
   "item.discerning_the_eldritch.apothic_key": "奥秘之钥",
   "item.discerning_the_eldritch.ascended_key": "飞升之钥",
   "item.discerning_the_eldritch.ritual_key": "仪式之钥",
+
   "item.discerning_the_eldritch.apothic_acolyte_spawn_egg": "升华信众刷怪蛋",
   "item.discerning_the_eldritch.apothic_summoner_spawn_egg": "升华唤者刷怪蛋",
   "item.discerning_the_eldritch.apothic_crusader_spawn_egg": "升华先锋刷怪蛋",
@@ -120,11 +127,15 @@
   "item.discerning_the_eldritch.blood_cultist_mage_spawn_egg": "猩红术士刷怪蛋",
   "item.discerning_the_eldritch.blood_cultist_witch_spawn_egg": "猩红女巫刷怪蛋",
   "item.discerning_the_eldritch.blood_matriarch_spawn_egg": "猩红族长刷怪蛋",
+
   "item.discerning_the_eldritch.cultist_base_map": "升华秘教总部",
+
   "item.discerning_the_eldritch.fading_sculk_lantern": "失色幽匿灯",
   "item.discerning_the_eldritch.fading_sculk_lantern.description": "看起来还能用...但是要到什么时候呢?",
+
   "item.discerning_the_eldritch.more_details": "按住[SHIFT]键查看详情",
   "tooltip.discerning_the_eldritch.active_ability": "主动技能 (%s 冷却时间):",
+
   "spell.discerning_the_eldritch.silence": "缄默之咒",
   "spell.discerning_the_eldritch.silence.guide": "释放一个邪恶的咒语，使目标在一段时间内无法施法",
   "spell.discerning_the_eldritch.boogie_woogie": "布吉伍吉",
@@ -221,6 +232,7 @@
   "display.discerning_the_eldritch.judgement_decree_2": "审判令：命中时施加折磨",
   "display.discerning_the_eldritch.libras_judgement_1": "审判令：哀星之惩击",
   "display.discerning_the_eldritch.libras_judgement_2": "审判法令：烈焰焚尽",
+
   "subtitles.entity.gaoler.hurt": "看守者：受伤",
   "subtitles.entity.gaoler.step": "看守者：移动",
   "subtitles.entity.gaoler.ambient": "看守者：咆哮",
@@ -233,6 +245,7 @@
   "subtitles.entity.ascended_one.taunt_2": "飞升者：开启挑战",
   "subtitles.item.fading_lantern_rings": "渐熄的灯笼回声",
   "subtitles.item.fading_lantern_beckons": "渐熄之灯在召唤她",
+
   "death.attack.discerning_the_eldritch.guardians_gaze": "%1$s 从 %2$s's 的视线中消失了",
   "death.attack.discerning_the_eldritch.esoteric_edge": "%1$s被%2$s撕裂",
   "death.attack.discerning_the_eldritch.gaoler": "被%1$s用%2$s刺穿",
@@ -268,6 +281,7 @@
   "death.attack.discerning_the_eldritch.gore_bile.player": "%1$s被%2$s的胃液溶解了",
   "death.attack.discerning_the_eldritch.blood_rot.player": "%1$s的血液被%2$s腐化了",
   "death.attack.discerning_the_eldritch.devoured.player": "%1$s的血液被%2$s腐化了",
+
   "advancements.discerning_the_eldritch.apocrypha_spellbook.title": "人类园丁",
   "advancements.discerning_the_eldritch.apocrypha_spellbook.description": "获得伪经",
   "advancements.discerning_the_eldritch.black_book_spellbook.title": "知识之路",

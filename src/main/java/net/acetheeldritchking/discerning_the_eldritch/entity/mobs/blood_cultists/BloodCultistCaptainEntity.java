@@ -23,6 +23,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascende
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.minibosses.blood_matriarch.BloodMatriarchEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -182,6 +183,11 @@ public class BloodCultistCaptainEntity extends BloodMageEntity implements Enemy,
         return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
 
+    @Override
+    public boolean isPersistenceRequired() {
+        return true;
+    }
+
     public static AttributeSupplier.Builder createAttributes()
     {
         return LivingEntity.createLivingAttributes()
@@ -239,6 +245,12 @@ public class BloodCultistCaptainEntity extends BloodMageEntity implements Enemy,
 
     @Override
     public boolean isHostileTowards(LivingEntity pTarget) {
-        return super.isHostileTowards(pTarget) || pTarget.getAttributeValue(AttributeRegistry.BLOOD_SPELL_POWER) < 1.15;
+        if (DTEServerConfig.enableBloodCultistAggression == true)
+        {
+            return super.isHostileTowards(pTarget) || pTarget.getAttributeValue(AttributeRegistry.BLOOD_SPELL_POWER) < 1.15;
+        } else
+        {
+            return super.isHostileTowards(pTarget);
+        }
     }
 }
