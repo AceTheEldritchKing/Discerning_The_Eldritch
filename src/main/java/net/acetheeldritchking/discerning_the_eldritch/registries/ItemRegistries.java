@@ -158,6 +158,9 @@ public class ItemRegistries {
     // Mourning Star (Awakened)
     public static final DeferredHolder<Item, Item> MOURNING_STAR_AWAKENED = ITEMS.register("mourning_star_awakened", MourningStarMaceAwakenedItem::new);
 
+    // Starmetal Scythe
+    public static final DeferredHolder<Item, Item> STARMETAL_SCYTHE = ITEMS.register("starmetal_scythe", StarmetalScytheItem::new);
+
 
     /***
      * Generic Items

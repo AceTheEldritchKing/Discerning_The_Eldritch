@@ -127,6 +127,13 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
             new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
     );
 
+    // Starmetal Scythe
+    public static DTEWeaponTiers STARMETAL_SCYTHE = new DTEWeaponTiers(2061, 12F, -2.2F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.ENDER_SPELL_POWER, 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.ENDER_MAGIC_RESIST, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(ASAttributeRegistry.MAGIC_PROJECTILE_DAMAGE, 0.10D, AttributeModifier.Operation.ADD_VALUE)
+    );
+
 
     //private final int level;
     private final int uses;

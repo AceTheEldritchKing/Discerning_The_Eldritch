@@ -3,10 +3,10 @@ package net.acetheeldritchking.discerning_the_eldritch.items.curios;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-import io.redspace.ironsspellbooks.entity.spells.comet.Comet;
 import net.acetheeldritchking.aces_spell_utils.items.curios.SheathCurioItem;
 import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.stardust_aoe.StardustAoE;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
 import net.minecraft.core.Holder;
@@ -16,7 +16,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
@@ -50,7 +49,7 @@ public class StarstruckSheathCurio extends SheathCurioItem {
                     if (victim != attacker)
                     {
                         // Fuck your i-frames, LOSER!!!
-                        victim.invulnerableTime = 0;
+                        /*victim.invulnerableTime = 0;
                         Comet comet = new Comet(player.level(), player);
                         comet.setDamage(5);
                         comet.setPos(victim.getX(), victim.getY() + 7, victim.getZ());
@@ -58,7 +57,16 @@ public class StarstruckSheathCurio extends SheathCurioItem {
                         comet.shoot(trajectory, 0.045F);
                         comet.setExplosionRadius(10.5F);
 
-                        player.level().addFreshEntity(comet);
+                        player.level().addFreshEntity(comet);*/
+
+                        StardustAoE aoe = new StardustAoE(attacker.level());
+                        aoe.setOwner(attacker);
+                        aoe.moveTo(victim.position());
+                        aoe.setRadius(5.5F);
+                        aoe.setCircular();
+                        aoe.setDuration(5*20);
+
+                        attacker.level().addFreshEntity(aoe);
                     }
                 }
             }

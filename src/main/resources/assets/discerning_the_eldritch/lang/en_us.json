@@ -75,7 +75,8 @@
   "item.discerning_the_eldritch.razor_sheath": "Sheath of The Razor",
   "item.discerning_the_eldritch.razor_sheath.desc": "On hit, spawn a group of razor blades around the victim",
   "item.discerning_the_eldritch.starstruck_sheath": "Starstruck Sheath",
-  "item.discerning_the_eldritch.starstruck_sheath.desc": "On hit, create a cloud of stardust around the victim. Those who have stardust on them, on hit, will be struck by a comet",
+  "item.discerning_the_eldritch.starstruck_sheath.desc": "On hit, create a cloud of stardust around the victim. Those who have stardust on them take extra Ender magic damage",
+  "item.discerning_the_eldritch.starmetal_scythe": "Starmetal Scythe",
 
   "item.discerning_the_eldritch.deep_greatsword": "Greatsword of the Depths",
   "item.discerning_the_eldritch.ymir": "Ymir, Apothic Eldritch Blade",

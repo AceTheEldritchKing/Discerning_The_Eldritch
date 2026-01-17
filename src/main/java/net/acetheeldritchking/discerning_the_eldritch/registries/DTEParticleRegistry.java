@@ -72,6 +72,9 @@ public class DTEParticleRegistry {
                 }
             });
 
+    // Stardust Particle
+    public static final Supplier<SimpleParticleType> STARDUST_PARTICLE = PARTICLE_TYPES.register("stardust", () -> new SimpleParticleType(false));
+
 
     public static void register(IEventBus eventBus)
     {
