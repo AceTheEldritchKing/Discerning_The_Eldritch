@@ -74,6 +74,8 @@
   "item.discerning_the_eldritch.rift_ripper_emblem.desc": "An ancient emblem, allows you to cast Rift Walker multiple times",
   "item.discerning_the_eldritch.razor_sheath": "Sheath of The Razor",
   "item.discerning_the_eldritch.razor_sheath.desc": "On hit, spawn a group of razor blades around the victim",
+  "item.discerning_the_eldritch.starstruck_sheath": "Starstruck Sheath",
+  "item.discerning_the_eldritch.starstruck_sheath.desc": "On hit, create a cloud of stardust around the victim. Those who have stardust on them, on hit, will be struck by a comet",
 
   "item.discerning_the_eldritch.deep_greatsword": "Greatsword of the Depths",
   "item.discerning_the_eldritch.ymir": "Ymir, Apothic Eldritch Blade",
@@ -132,6 +134,9 @@
   "item.discerning_the_eldritch.apothic_key": "Apothic Key",
   "item.discerning_the_eldritch.ascended_key": "Ascended Key",
   "item.discerning_the_eldritch.ritual_key": "Ritual Key",
+
+  "item.discerning_the_eldritch.ascended_one_lootbag": "Ascended One Loot Bag",
+  "item.discerning_the_eldritch.ascended_one_lootbag.desc": "Contains loot from the Ascended One",
 
   "item.discerning_the_eldritch.apothic_acolyte_spawn_egg": "Apothic Acolyte Spawn Egg",
   "item.discerning_the_eldritch.apothic_summoner_spawn_egg": "Apothic Summoner Spawn Egg",

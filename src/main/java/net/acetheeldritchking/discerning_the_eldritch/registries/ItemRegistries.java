@@ -21,6 +21,7 @@ import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarloc
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockMaskItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.*;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.*;
+import net.acetheeldritchking.discerning_the_eldritch.items.custom.AscendedOneLootbag;
 import net.acetheeldritchking.discerning_the_eldritch.items.custom.FadingSculkLantern;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.BlackBookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.DiaryOfDecaySpellbook;
@@ -207,6 +208,9 @@ public class ItemRegistries {
     public static final DeferredHolder<Item, Item> SOUL_EMBER = ITEMS.register("soul_ember",
             () -> new Item(ItemPropertiesHelper.material().rarity(ASRarities.AQUATIC_RARITY_PROXY.getValue())));
 
+    // Ascended One Lootbag
+    public static final DeferredHolder<Item, Item> ASCENDED_ONE_LOOTBAG = ITEMS.register("ascended_one_lootbag", AscendedOneLootbag::new);
+
 
     /***
      * Upgrade Orbs
@@ -251,6 +255,9 @@ public class ItemRegistries {
 
     // Razor Sheath
     public static final Supplier<CurioBaseItem> RAZOR_SHEATH = ITEMS.register("razor_sheath", RazorSheathCurio::new);
+
+    // Starstruck Sheath
+    public static final Supplier<CurioBaseItem> STARSTRUCK_SHEATH = ITEMS.register("starstruck_sheath", StarstruckSheathCurio::new);
 
 
     /***

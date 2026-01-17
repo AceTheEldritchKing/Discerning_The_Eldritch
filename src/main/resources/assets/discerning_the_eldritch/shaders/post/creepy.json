@@ -1,11 +1,24 @@
 {
   "targets": [
-    "swap"
+    "swap",
+    "temp",
+    "blur"
   ],
   "passes": [
     {
-      "name": "color_convolve",
+      "name": "invert",
       "intarget": "minecraft:main",
+      "outtarget": "temp",
+      "uniforms": [
+        {
+          "name": "InverseAmount",
+          "values": [ 0.1 ]
+        }
+      ]
+    },
+    {
+      "name": "color_convolve",
+      "intarget": "temp",
       "outtarget": "swap",
       "uniforms": [
         {
@@ -23,19 +36,20 @@
       ]
     },
     {
-      "name": "invert",
-      "intarget": "minecraft:main",
-      "outtarget": "swap",
+      "name": "box_blur",
+      "intarget": "swap",
+      "outtarget": "blur",
+      "use_linear_filter": true,
       "uniforms": [
         {
-          "name": "InverseAmount",
-          "values": [ 0.05 ]
+          "name": "BlurDir",
+          "values": [ 0.35, 0.35 ]
         }
       ]
     },
     {
       "name": "blit",
-      "intarget": "swap",
+      "intarget": "blur",
       "outtarget": "minecraft:main"
     }
   ]

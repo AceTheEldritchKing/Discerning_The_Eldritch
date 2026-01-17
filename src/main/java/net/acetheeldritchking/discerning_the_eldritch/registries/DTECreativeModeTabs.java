@@ -36,6 +36,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.BOTTLE_OF_LIQUID_MALICE.get());
                         output.accept(ItemRegistries.FORBIDDEN_SPELL_IMPROVEMENT.get());
                         output.accept(ItemRegistries.SOUL_EMBER.get());
+                        // Map Items
                         output.accept(FurledMapItem.of(DiscerningTheEldritch.id("cultist_base"),
                                 ResourceKey.create(Registries.DIMENSION, ResourceLocation.withDefaultNamespace("overworld")), Component.translatable("item.discerning_the_eldritch.cultist_base_map"), true));
                         // Curios
@@ -43,16 +44,20 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.AMULET_OF_SCULK_TREASURE.get());
                         output.accept(ItemRegistries.CASTERS_MANTLE.get());
                         output.accept(ItemRegistries.IRONBOUND_FEATHER.get());
+                        output.accept(ItemRegistries.RIFT_RIPPER_EMBLEM.get());
+                        //output.accept(ItemRegistries.KINGS_EFFIGY.get());
+                        // Sheaths
                         output.accept(ItemRegistries.PYRIUM_SHEATH.get());
                         output.accept(ItemRegistries.FROSTBOURNE_SHEATH.get());
                         output.accept(ItemRegistries.RAZOR_SHEATH.get());
-                        output.accept(ItemRegistries.RIFT_RIPPER_EMBLEM.get());
-                        //output.accept(ItemRegistries.KINGS_EFFIGY.get());
+                        output.accept(ItemRegistries.STARSTRUCK_SHEATH.get());
                         // Treasure
                         output.accept(ItemRegistries.APOTHIC_KEY.get());
                         output.accept(ItemRegistries.ASCENDED_KEY.get());
                         output.accept(ItemRegistries.RITUAL_KEY.get());
                         output.accept(ItemRegistries.FADING_SCULK_LANTERN.get());
+                        // Lootbags
+                        output.accept(ItemRegistries.ASCENDED_ONE_LOOTBAG.get());
                         // Spellbooks
                         output.accept(ItemRegistries.BLACK_BOOK_SPELLBOOK.get());
                         output.accept(ItemRegistries.THE_APOCRYPHA_SPELLBOOK.get());
