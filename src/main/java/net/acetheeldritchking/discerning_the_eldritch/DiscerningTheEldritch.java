@@ -136,6 +136,7 @@ public class DiscerningTheEldritch
 
             // Item Rendering Registry
             AzItemRendererRegistry.register(StaffOfVehemenceRenderer::new, ItemRegistries.STAFF_OF_VEHEMENCE.get());
+            AzItemRendererRegistry.register(StaffOfTheSpectreRenderer::new, ItemRegistries.STAFF_OF_THE_SPECTRE.get());
 
             // Curio Rendering
             CuriosRendererRegistry.register(

@@ -108,6 +108,9 @@
   "item.discerning_the_eldritch.devourer_awakened.desc2": "Devoured entities:",
   "item.discerning_the_eldritch.mourning_star_awakened": "Awakened Mourning Star",
   "item.discerning_the_eldritch.mourning_star_awakened.desc": "Judgement - Entities with less than 50% of their health have a 50% chance of taking mortal damage or being cursed",
+  "item.discerning_the_eldritch.staff_of_the_spectre": "Staff of The Spectre",
+  "item.discerning_the_eldritch.staff_of_the_spectre.desc": "Spectre - ",
+  "item.discerning_the_eldritch.staff_of_the_spectre.desc2": "Wraith - ",
 
   "item.discerning_the_eldritch.staff_of_eldritch": "Staff of Vehemence",
   "item.discerning_the_eldritch.staff_of_ascension": "Staff of Ascension",

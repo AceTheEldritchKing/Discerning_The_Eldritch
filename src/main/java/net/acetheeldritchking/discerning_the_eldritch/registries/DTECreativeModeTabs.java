@@ -82,6 +82,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.DEVOURER_AWAKENED.get());
                         output.accept(ItemRegistries.MOURNING_STAR_AWAKENED.get());
                         output.accept(ItemRegistries.STARMETAL_SCYTHE.get());
+                        output.accept(ItemRegistries.STAFF_OF_THE_SPECTRE.get());
                         output.accept(ItemRegistries.YMIR.get());
                         // Staves
                         output.accept(ItemRegistries.STAFF_OF_VEHEMENCE.get());

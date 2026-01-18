@@ -1,0 +1,97 @@
+{
+  "credit": "Made by Ace The Eldritch King",
+  "parent": "builtin/entity",
+  "texture_size": [
+    96,
+    96
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "translation": [
+        0,
+        -17.5,
+        2
+      ]
+    },
+    "thirdperson_lefthand": {
+      "translation": [
+        0,
+        -17.5,
+        2
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -12.75,
+        0,
+        -5
+      ],
+      "translation": [
+        0,
+        -15,
+        4
+      ],
+      "scale": [
+        0.75,
+        0.75,
+        0.75
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -12.75,
+        0,
+        -5
+      ],
+      "translation": [
+        0,
+        -15,
+        4
+      ],
+      "scale": [
+        0.75,
+        0.75,
+        0.75
+      ]
+    },
+    "ground": {
+      "rotation": [
+        55.92000000000007,
+        28.929999999999836,
+        51.88000000000011
+      ],
+      "translation": [
+        7,
+        -8,
+        -6
+      ]
+    },
+    "gui": {
+      "rotation": [
+        0,
+        -26.75,
+        -46.25
+      ],
+      "translation": [
+        -1,
+        -4.75,
+        0
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    "fixed": {
+      "translation": [
+        0,
+        -18,
+        -0.5
+      ]
+    }
+  },
+  "textures": {
+    "particle": "staff_of_the_spectre"
+  }
+}

@@ -161,6 +161,9 @@ public class ItemRegistries {
     // Starmetal Scythe
     public static final DeferredHolder<Item, Item> STARMETAL_SCYTHE = ITEMS.register("starmetal_scythe", StarmetalScytheItem::new);
 
+    // Staff of The Spectre
+    public static final DeferredHolder<Item, Item> STAFF_OF_THE_SPECTRE = ITEMS.register("staff_of_the_spectre", StaffOfTheSpectre::new);
+
 
     /***
      * Generic Items
