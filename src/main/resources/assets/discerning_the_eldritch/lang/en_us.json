@@ -47,6 +47,7 @@
   "item.discerning_the_eldritch.soul_ember": "Soul Ember",
   "item.discerning_the_eldritch.bucket_of_malice": "Bucket of Liquid Malice",
   "item.discerning_the_eldritch.bucket_of_malice.description": "It refuses to be placed down...",
+  "item.discerning_the_eldritch.starmetal_ingot": "Starmetal Ingot",
 
   "item.discerning_the_eldritch.black_book_spellbook": "Black Book",
   "item.discerning_the_eldritch.the_apocrypha_spellbook": "The Apocrypha",
@@ -151,6 +152,7 @@
   "item.discerning_the_eldritch.blood_cultist_mage_spawn_egg": "Blood Cultist Mage Spawn Egg",
   "item.discerning_the_eldritch.blood_cultist_witch_spawn_egg": "Blood Cultist Witch Spawn Egg",
   "item.discerning_the_eldritch.blood_matriarch_spawn_egg": "Blood Matriarch Spawn Egg",
+  "item.discerning_the_eldritch.apostle_of_sculk_spawn_egg": "Apostle Of Sculk Spawn Egg",
 
   "item.discerning_the_eldritch.cultist_base_map": "Cultist Headquarters",
 
@@ -269,6 +271,7 @@
   "entity.discerning_the_eldritch.blood_cultist_mage": "Blood Cultist Mage",
   "entity.discerning_the_eldritch.blood_cultist_witch": "Blood Cultist Witch",
   "entity.discerning_the_eldritch.blood_matriarch": "Blood Matriarch",
+  "entity.discerning_the_eldritch.apostle_of_sculk": "The Apostle Of Sculk",
 
 
 
@@ -292,6 +295,8 @@
   "display.discerning_the_eldritch.judgement_decree_2": "Judgement Decree: Affliction on hit",
   "display.discerning_the_eldritch.libras_judgement_1": "Judgement Decree: Mourning Star's Smite",
   "display.discerning_the_eldritch.libras_judgement_2": "Judgement Decree: Immolate in Flames",
+  "display.discerning_the_eldritch.apostle_of_sculk_taunt_1": "You have the nerve to beat me?",
+  "display.discerning_the_eldritch.apostle_of_sculk_taunt_2": "I'VE HAD ENOUGH OF YOU!",
 
 
 
@@ -327,6 +332,7 @@
   "death.attack.discerning_the_eldritch.gore_bile": "%1$s was disintegrated",
   "death.attack.discerning_the_eldritch.blood_rot": "%1$s had they blood decayed",
   "death.attack.discerning_the_eldritch.devoured": "%1$s was devoured by their own weapon",
+  "death.attack.discerning_the_eldritch.apostle_of_sculk": "%1$s was subsumed with sculk by %2$s",
 
   "death.attack.discerning_the_eldritch.esoteric_edge.item": "%1$s was torn asunder by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.gaoler.item": "%1$s maimed and gored by %2$s using %3$s",
@@ -341,6 +347,7 @@
   "death.attack.discerning_the_eldritch.unstable_rift.item": "%1$s flesh was torn from their skeleton by %2$s unstable rift using %3$s",
   "death.attack.discerning_the_eldritch.esoteric_strike.item": "%1$s was punched into oblivion by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.crystal_carve.item": "%1$s was turned into icy ribbons by %2$s using %3$s",
+  "death.attack.discerning_the_eldritch.apostle_of_sculk.item": "%1$s was subsumed with sculk by %2$s using %3$s",
 
   "death.attack.discerning_the_eldritch.razor_blade.player": "%1$s enjoyed the mutual subtext of their murder by %2$s",
   "death.attack.discerning_the_eldritch.gore_bile.player": "%1$s was disintegrated by %2$s's stomach fluids",

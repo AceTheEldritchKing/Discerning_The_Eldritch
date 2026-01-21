@@ -12,6 +12,7 @@ import it.crystalnest.prometheus.api.Fire;
 import it.crystalnest.prometheus.api.FireManager;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkBoss;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.blade_of_rancor.BladeOfRancorProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeSmallProjectile;
@@ -567,7 +568,15 @@ public class ServerEvents {
                     //DiscerningTheEldritch.LOGGER.debug("New Damage: " + event.getNewDamage());
                 }
 
-                // Boss Two
+                // Apostle of Sculk
+                if (livingEntity instanceof ApostleOfSculkBoss apostleOfSculkBoss && DTEServerConfig.enableApostleOfSculkDamageCap)
+                {
+                    float baseDamage = event.getOriginalDamage();
+                    float newDamage = ASUtils.basicDamageCap(baseDamage, 0, DTEServerConfig.apostleOfSculkDamageCap);
+                    event.setNewDamage(newDamage);
+                    //DiscerningTheEldritch.LOGGER.debug("Old Damage: " + event.getOriginalDamage());
+                    //DiscerningTheEldritch.LOGGER.debug("New Damage: " + event.getNewDamage());
+                }
 
                 // Boss Three
 

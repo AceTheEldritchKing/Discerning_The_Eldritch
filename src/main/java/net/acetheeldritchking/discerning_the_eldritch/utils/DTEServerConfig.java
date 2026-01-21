@@ -94,6 +94,17 @@ public class DTEServerConfig
             .comment("Default is [100]")
             .define("Base Ascended One damage cap", 100);
 
+    // Apostle of Sculk
+    private static final ModConfigSpec.BooleanValue ENABLED_APOSTLE_OF_SCULK_DAMAGE_CAP = BUILDER
+            .comment("Defines whether or not to enable Apostle of Sculk's damage cap.")
+            .comment("Default is true")
+            .define("Enable Apostle of Sculk damage cap", true);
+
+    private static final ModConfigSpec.ConfigValue<Integer> APOSTLE_OF_SCULK_DAMAGE_CAP_VALUE = BUILDER
+            .comment("Defines the max damage the Apostle of Sculk can take for the damage cap")
+            .comment("Default is [100]")
+            .define("Base Apostle of Sculk damage cap", 100);
+
     // Trading //
     // Blood Cultist Aggro
     private static final ModConfigSpec.BooleanValue BLOOD_CULTIST_AGGRESSION = BUILDER
@@ -122,6 +133,8 @@ public class DTEServerConfig
     public static boolean enableHexPrevention;
     public static boolean enableAscendedOneDamageCap;
     public static int ascendedOneDamageCap;
+    public static boolean enableApostleOfSculkDamageCap;
+    public static int apostleOfSculkDamageCap;
     public static int pyriumSheathCooldown;
     public static int frostbourneSheathCooldown;
     public static int razorSheathCooldown;
@@ -152,6 +165,8 @@ public class DTEServerConfig
 
         enableAscendedOneDamageCap = ENABLED_ASCENDED_ONE_DAMAGE_CAP.get();
         ascendedOneDamageCap = ASCENDED_ONE_DAMAGE_CAP_VALUE.get();
+        enableApostleOfSculkDamageCap = ENABLED_APOSTLE_OF_SCULK_DAMAGE_CAP.get();
+        apostleOfSculkDamageCap = APOSTLE_OF_SCULK_DAMAGE_CAP_VALUE.get();
 
         enableBloodCultistAggression = BLOOD_CULTIST_AGGRESSION.get();
 

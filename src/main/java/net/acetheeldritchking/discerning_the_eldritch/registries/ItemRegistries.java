@@ -217,6 +217,10 @@ public class ItemRegistries {
     // Ascended One Lootbag
     public static final DeferredHolder<Item, Item> ASCENDED_ONE_LOOTBAG = ITEMS.register("ascended_one_lootbag", AscendedOneLootbag::new);
 
+    // Starmetal Ingot
+    public static final DeferredHolder<Item, Item> STARMETAL_INGOT = ITEMS.register("starmetal_ingot",
+            () -> new Item(ItemPropertiesHelper.material().fireResistant().rarity(ASRarities.ARID_RARITY_PROXY.getValue())));
+
 
     /***
      * Upgrade Orbs
@@ -351,6 +355,11 @@ public class ItemRegistries {
             () -> new DeferredSpawnEggItem(DTEEntityRegistry.ELECTROMANCER_MAGE, 16097366, 7729392,
                     new Item.Properties()));
 
+    // Apostle Of Sculk
+    public static final DeferredItem<Item> APOSTLE_OF_SCULK_SPAWN_EGG = ITEMS.register("apostle_of_sculk_spawn_egg",
+            () -> new DeferredSpawnEggItem(DTEEntityRegistry.APOSTLE_OF_SCULK, 2640476, 5892331,
+                    new Item.Properties()));
+
 
     /***
      * Gecko Armor
@@ -377,6 +386,12 @@ public class ItemRegistries {
     public static final DeferredHolder<Item, Item> GECKOLIB_CRIMSON_STAG_ROBES = ITEMS.register("gecko_crimson_stag_robes", () -> new GeckolibCrimsonStagArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
     public static final DeferredHolder<Item, Item> GECKOLIB_CRIMSON_STAG_LEGGINGS = ITEMS.register("gecko_crimson_stag_leggings", () -> new GeckolibCrimsonStagArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
     public static final DeferredHolder<Item, Item> GECKOLIB_CRIMSON_STAG_BOOTS = ITEMS.register("gecko_crimson_stag_boots", () -> new GeckolibCrimsonStagArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
+
+    // Sculk Apostle Set
+    public static final DeferredHolder<Item, Item> SCULK_APOSTLE_HOOD = ITEMS.register("sculk_apostle_hood", () -> new SculkApostleArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredHolder<Item, Item> SCULK_APOSTLE_ROBES = ITEMS.register("sculk_apostle_robes", () -> new SculkApostleArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
+    public static final DeferredHolder<Item, Item> SCULK_APOSTLE_LEGGINGS = ITEMS.register("sculk_apostle_leggings", () -> new SculkApostleArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
+    public static final DeferredHolder<Item, Item> SCULK_APOSTLE_GREAVES = ITEMS.register("sculk_apostle_greaves", () -> new SculkApostleArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
 
     public static Collection<DeferredHolder<Item, ? extends Item>> getDTEItems()

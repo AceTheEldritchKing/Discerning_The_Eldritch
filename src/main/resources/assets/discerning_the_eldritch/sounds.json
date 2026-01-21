@@ -228,5 +228,10 @@
         "sounds": [
             "discerning_the_eldritch:magic_sword_blood_cast"
         ]
+    },
+    "apostle_of_sculk_theme": {
+        "sounds": [
+            "discerning_the_eldritch:mob/apostle_of_sculk/music/the_summoning"
+        ]
     }
 }

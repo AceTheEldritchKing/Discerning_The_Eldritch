@@ -36,6 +36,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.BOTTLE_OF_LIQUID_MALICE.get());
                         output.accept(ItemRegistries.FORBIDDEN_SPELL_IMPROVEMENT.get());
                         output.accept(ItemRegistries.SOUL_EMBER.get());
+                        output.accept(ItemRegistries.STARMETAL_INGOT.get());
                         // Map Items
                         output.accept(FurledMapItem.of(DiscerningTheEldritch.id("cultist_base"),
                                 ResourceKey.create(Registries.DIMENSION, ResourceLocation.withDefaultNamespace("overworld")), Component.translatable("item.discerning_the_eldritch.cultist_base_map"), true));
@@ -110,6 +111,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.BLOOD_CULTIST_WITCH_SPAWN_EGG.get());
                         output.accept(ItemRegistries.BLOOD_MATRIARCH_SPAWN_EGG.get());
                         output.accept(ItemRegistries.ELECTROMANCER_SPAWN_EGG.get());
+                        output.accept(ItemRegistries.APOSTLE_OF_SCULK_SPAWN_EGG.get());
 
                         // Compat
                         if (CompatManager.isPastelLoaded())

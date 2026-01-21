@@ -68,6 +68,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.MOURNING_STAR_PROJECTILE.get(), MourningStarRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.RITUAL_BURN_AOE.get(), NoopRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.STARDUST_AOE.get(), NoopRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.APOSTLE_OF_SCULK.get(), ApostleOfSculkRenderer::new);
     }
 
     @SubscribeEvent

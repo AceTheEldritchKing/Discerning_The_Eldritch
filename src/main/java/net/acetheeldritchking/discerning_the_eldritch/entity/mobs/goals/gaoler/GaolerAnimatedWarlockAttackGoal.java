@@ -1,15 +1,11 @@
-package net.acetheeldritchking.discerning_the_eldritch.entity.mobs.goals;
+package net.acetheeldritchking.discerning_the_eldritch.entity.mobs.goals.gaoler;
 
 import io.redspace.ironsspellbooks.entity.mobs.goals.melee.AttackKeyframe;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.GenericAnimatedWarlockAttackGoal;
 import io.redspace.ironsspellbooks.entity.spells.EarthquakeAoe;
-import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
-
-import java.util.List;
 
 public class GaolerAnimatedWarlockAttackGoal extends GenericAnimatedWarlockAttackGoal<GaolerEntity> {
     final GaolerEntity gaoler;
@@ -53,6 +49,17 @@ public class GaolerAnimatedWarlockAttackGoal extends GenericAnimatedWarlockAttac
                     }
 
                     spawnVisualEarthquake();
+                }
+            }
+        }
+        if (meleeAnimTimer > 0 && currentAttack != null)
+        {
+            int shortcut = 5;
+            if (meleeAnimTimer < shortcut)
+            {
+                if (currentAttack.attacks.keySet().intStream().noneMatch(i -> i > currentAttack.lengthInTicks - shortcut))
+                {
+                    meleeAnimTimer = 0;
                 }
             }
         }

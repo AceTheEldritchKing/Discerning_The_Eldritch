@@ -140,6 +140,9 @@ public class DTESoundRegistry {
     // Ascended One Final Phase - FULL
     public static DeferredHolder<SoundEvent, SoundEvent> ASCENDED_ONE_FINAL_PHASE_FULL = registerSoundEvent("ascended_one_final_phase_full");
 
+    // Apostle of Sculk Theme
+    public static DeferredHolder<SoundEvent, SoundEvent> APOSTLE_OF_SCULK_THEME = registerSoundEvent("apostle_of_sculk_theme");
+
 
     private static DeferredHolder<SoundEvent, SoundEvent> registerSoundEvent(String name)
     {

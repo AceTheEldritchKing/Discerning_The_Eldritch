@@ -46,13 +46,22 @@ public class DTEArmorMaterialRegistry {
 
     // Evoker Reverance Warlock Armor
 
-    // Void Seeker Warlock Armor
+    // Starvoid Warlock Armor
 
     // Crimson Stag Armor
     public static DeferredHolder<ArmorMaterial, ArmorMaterial> CRIMSON_STAG = register("crimson_stag_armor",
             warlockArmorMap(),
             25,
             SoundEvents.ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.of(ItemRegistries.CORRUPTED_CLOTH.get()),
+            3,
+            0.1F);
+
+    // Sculk Apostle Wardress Armor
+    public static DeferredHolder<ArmorMaterial, ArmorMaterial> SCULK_APOSTLE_ARMOR = register("sculk_apostle_armor",
+            warlockArmorMap(),
+            25,
+            SoundEvents.ARMOR_EQUIP_NETHERITE,
             () -> Ingredient.of(ItemRegistries.CORRUPTED_CLOTH.get()),
             3,
             0.1F);

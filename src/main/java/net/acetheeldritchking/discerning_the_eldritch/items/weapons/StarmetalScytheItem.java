@@ -8,7 +8,7 @@ public class StarmetalScytheItem extends ExtendedSwordItem {
     public StarmetalScytheItem() {
         super(
                 DTEWeaponTiers.STARMETAL_SCYTHE,
-                ItemPropertiesHelper.equipment(1).fireResistant().rarity(ASRarities.COSMIC_RARITY_PROXY.getValue()).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.STARMETAL_SCYTHE))
+                ItemPropertiesHelper.equipment(1).fireResistant().rarity(ASRarities.ARID_RARITY_PROXY.getValue()).attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.STARMETAL_SCYTHE))
         );
     }
 }

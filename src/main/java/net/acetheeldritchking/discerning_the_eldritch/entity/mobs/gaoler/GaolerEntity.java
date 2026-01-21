@@ -17,7 +17,7 @@ import io.redspace.ironsspellbooks.entity.spells.EarthquakeAoe;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
 import net.acetheeldritchking.aces_spell_utils.entity.mobs.UniqueAbstractSpellCastingMob;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.goals.GaolerAnimatedWarlockAttackGoal;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.goals.gaoler.GaolerAnimatedWarlockAttackGoal;
 import net.acetheeldritchking.discerning_the_eldritch.registries.*;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
 import net.minecraft.core.BlockPos;

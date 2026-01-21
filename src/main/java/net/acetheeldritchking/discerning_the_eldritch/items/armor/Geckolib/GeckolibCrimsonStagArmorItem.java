@@ -14,7 +14,7 @@ import net.neoforged.api.distmarker.OnlyIn;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;
 
 public class GeckolibCrimsonStagArmorItem extends ImbuableGeckolibDTEArmorItem{
-    public GeckolibCrimsonStagArmorItem(Type slot, Properties settings, AttributeContainer... attributeContainers) {
+    public GeckolibCrimsonStagArmorItem(Type slot, Properties settings) {
         super(DTEArmorMaterialRegistry.CRIMSON_STAG, slot, settings,
                 schoolAttributesWithResistance(
                         AttributeRegistry.BLOOD_SPELL_POWER,
