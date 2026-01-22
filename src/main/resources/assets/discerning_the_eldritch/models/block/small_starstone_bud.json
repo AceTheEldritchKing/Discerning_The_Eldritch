@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "discerning_the_eldritch:block/small_starstone_bud"
+  }
+}

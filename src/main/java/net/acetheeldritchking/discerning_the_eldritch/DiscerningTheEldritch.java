@@ -17,7 +17,10 @@ import net.acetheeldritchking.discerning_the_eldritch.items.armor.DTEArmorMateri
 import net.acetheeldritchking.discerning_the_eldritch.loot.DTELootModifiers;
 import net.acetheeldritchking.discerning_the_eldritch.registries.*;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.neoforge.client.ChunkRenderTypeSet;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
@@ -53,6 +56,8 @@ public class DiscerningTheEldritch
         DTECreativeModeTabs.register(modEventBus);
         // Items
         ItemRegistries.register(modEventBus);
+        // Blocks
+        BlockRegistries.register(modEventBus);
         // Spells
         SpellRegistries.register(modEventBus);
         // Effects
@@ -145,6 +150,12 @@ public class DiscerningTheEldritch
             CuriosRendererRegistry.register(
                     ItemRegistries.CASTERS_MANTLE.get(), CastersMantleCurioRenderer::new
             );
+
+            // Block Rendering
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistries.SMALL_STARSTONE_BUD.get(), ChunkRenderTypeSet.of(RenderType.CUTOUT));
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistries.MEDIUM_STARSTONE_BUD.get(), ChunkRenderTypeSet.of(RenderType.CUTOUT));
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistries.LARGE_STARSTONE_BUD.get(), ChunkRenderTypeSet.of(RenderType.CUTOUT));
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistries.STARSTONE_CLUSTER.get(), ChunkRenderTypeSet.of(RenderType.CUTOUT));
         }
     }
 

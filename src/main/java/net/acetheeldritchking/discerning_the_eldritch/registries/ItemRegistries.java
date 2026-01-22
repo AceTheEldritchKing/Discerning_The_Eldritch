@@ -221,6 +221,14 @@ public class ItemRegistries {
     public static final DeferredHolder<Item, Item> STARMETAL_INGOT = ITEMS.register("starmetal_ingot",
             () -> new Item(ItemPropertiesHelper.material().fireResistant().rarity(ASRarities.ARID_RARITY_PROXY.getValue())));
 
+    // Starmetal Nugget
+    public static final DeferredHolder<Item, Item> STARMETAL_NUGGET = ITEMS.register("starmetal_nugget",
+            () -> new Item(ItemPropertiesHelper.material().fireResistant().rarity(ASRarities.ARID_RARITY_PROXY.getValue())));
+
+    // Starstone
+    public static final DeferredHolder<Item, Item> STARSTONE = ITEMS.register("starstone",
+            () -> new Item(ItemPropertiesHelper.material().fireResistant().rarity(ASRarities.ARID_RARITY_PROXY.getValue())));
+
 
     /***
      * Upgrade Orbs

@@ -24,7 +24,7 @@ import top.theillusivec4.curios.api.SlotContext;
 @EventBusSubscriber
 public class StarstruckSheathCurio extends SheathCurioItem {
     public StarstruckSheathCurio() {
-        super(new Properties().stacksTo(1).rarity(ASRarities.COSMIC_RARITY_PROXY.getValue()).fireResistant(), null);
+        super(new Properties().stacksTo(1).rarity(ASRarities.ARID_RARITY_PROXY.getValue()).fireResistant(), null);
     }
 
     @Override

@@ -1,0 +1,9 @@
+{
+  "variants":
+  {
+    "":
+    {
+      "model": "discerning_the_eldritch:block/starstone_ore"
+    }
+  }
+}

@@ -37,6 +37,8 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.FORBIDDEN_SPELL_IMPROVEMENT.get());
                         output.accept(ItemRegistries.SOUL_EMBER.get());
                         output.accept(ItemRegistries.STARMETAL_INGOT.get());
+                        output.accept(ItemRegistries.STARMETAL_NUGGET.get());
+                        output.accept(ItemRegistries.STARSTONE.get());
                         // Map Items
                         output.accept(FurledMapItem.of(DiscerningTheEldritch.id("cultist_base"),
                                 ResourceKey.create(Registries.DIMENSION, ResourceLocation.withDefaultNamespace("overworld")), Component.translatable("item.discerning_the_eldritch.cultist_base_map"), true));
@@ -120,6 +122,25 @@ public class DTECreativeModeTabs {
                             output.accept(PastelCompatItems.DREAM_REAVER_YMIR.get());
                             output.accept(PastelCompatItems.BUCKET_OF_MALICE.get());
                         }
+                    }).build());
+
+    public static final Supplier<CreativeModeTab> DTE_BLOCKS_TAB = CREATIVE_MODE_TAB.register("dte_blocks_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(BlockRegistries.METEORSTONE_BLOCK.get()))
+                    .title(Component.translatable("creative_tab.discerning_the_eldritch.blocks"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        // Stones
+                        output.accept(BlockRegistries.METEORSTONE_BLOCK.get());
+                        output.accept(BlockRegistries.METEORSTONE_BRICKS.get());
+                        output.accept(BlockRegistries.METEORSTONE_TILES.get());
+                        // Gems
+                        output.accept(BlockRegistries.STARSTONE_ORE.get());
+                        output.accept(BlockRegistries.STARSTONE_BLOCK.get());
+                        output.accept(BlockRegistries.BUDDING_STARSTONE_BLOCK.get());
+                        output.accept(BlockRegistries.SMALL_STARSTONE_BUD.get());
+                        output.accept(BlockRegistries.MEDIUM_STARSTONE_BUD.get());
+                        output.accept(BlockRegistries.LARGE_STARSTONE_BUD.get());
+                        output.accept(BlockRegistries.STARSTONE_CLUSTER.get());
+                        // Decor
                     }).build());
 
     public static void register(IEventBus eventBus)

@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "discerning_the_eldritch:block/medium_starstone_bud",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "discerning_the_eldritch:block/medium_starstone_bud",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "discerning_the_eldritch:block/medium_starstone_bud",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "discerning_the_eldritch:block/medium_starstone_bud",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "discerning_the_eldritch:block/medium_starstone_bud"
+    },
+    "facing=west": {
+      "model": "discerning_the_eldritch:block/medium_starstone_bud",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

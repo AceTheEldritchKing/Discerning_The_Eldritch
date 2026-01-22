@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures":
+  {
+    "all": "discerning_the_eldritch:block/meteorstone_tiles"
+  }
+}

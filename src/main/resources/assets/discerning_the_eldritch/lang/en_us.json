@@ -1,5 +1,6 @@
 {
-  "creative_tab.discerning_the_eldritch.items": "Discerning The Eldritch",
+  "creative_tab.discerning_the_eldritch.items": "Discerning The Eldritch Items",
+  "creative_tab.discerning_the_eldritch.blocks": "Discerning The Eldritch Blocks",
 
   "attribute.discerning_the_eldritch.ritual_magic_resist": "Occult Magic Resist",
   "attribute.discerning_the_eldritch.ritual_spell_power": "Occult Spell Power",
@@ -48,6 +49,8 @@
   "item.discerning_the_eldritch.bucket_of_malice": "Bucket of Liquid Malice",
   "item.discerning_the_eldritch.bucket_of_malice.description": "It refuses to be placed down...",
   "item.discerning_the_eldritch.starmetal_ingot": "Starmetal Ingot",
+  "item.discerning_the_eldritch.starmetal_nugget": "Starmetal Nugget",
+  "item.discerning_the_eldritch.starstone": "Starstone",
 
   "item.discerning_the_eldritch.black_book_spellbook": "Black Book",
   "item.discerning_the_eldritch.the_apocrypha_spellbook": "The Apocrypha",
@@ -161,6 +164,18 @@
 
   "item.discerning_the_eldritch.more_details": "Press [SHIFT] for more details",
   "tooltip.discerning_the_eldritch.active_ability": "Active Ability (%s cooldown):",
+
+
+  "block.discerning_the_eldritch.meteorstone": "Meteorstone",
+  "block.discerning_the_eldritch.meteorstone_bricks": "Meteorstone Bricks",
+  "block.discerning_the_eldritch.meteorstone_tiles": "Meteorstone Tiles",
+  "block.discerning_the_eldritch.starstone_ore": "Starstone Ore",
+  "block.discerning_the_eldritch.starstone_block": "Block of Starstone",
+  "block.discerning_the_eldritch.budding_starstone": "Budding Starstone",
+  "block.discerning_the_eldritch.small_starstone_bud": "Small Starstone Bud",
+  "block.discerning_the_eldritch.medium_starstone_bud": "Medium Starstone Bud",
+  "block.discerning_the_eldritch.large_starstone_bud": "Large Starstone Bud",
+  "block.discerning_the_eldritch.starstone_cluster": "Starstone Cluster",
 
 
   "spell.discerning_the_eldritch.silence": "Silence",
