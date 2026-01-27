@@ -85,12 +85,14 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.DEVOURER_AWAKENED.get());
                         output.accept(ItemRegistries.MOURNING_STAR_AWAKENED.get());
                         output.accept(ItemRegistries.STARMETAL_SCYTHE.get());
+                        output.accept(ItemRegistries.STARMETAL_ODACHI.get());
+                        output.accept(ItemRegistries.VOIDSPLITTER_SCYTHE.get());
                         output.accept(ItemRegistries.STAFF_OF_THE_SPECTRE.get());
                         output.accept(ItemRegistries.YMIR.get());
                         // Staves
-                        output.accept(ItemRegistries.STAFF_OF_VEHEMENCE.get());
-                        output.accept(ItemRegistries.STAFF_OF_ASCENSION.get());
                         output.accept(ItemRegistries.BROKEN_LEGENDS_STAFF.get());
+                        output.accept(ItemRegistries.STAFF_OF_ASCENSION.get());
+                        output.accept(ItemRegistries.STAFF_OF_VEHEMENCE.get());
                         // Armor
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_HOOD.get());
                         output.accept(ItemRegistries.ELDRITCH_WARLOCK_MASK.get());
@@ -103,6 +105,11 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.CRIMSON_STAG_ROBES.get());
                         output.accept(ItemRegistries.CRIMSON_STAG_LEGGINGS.get());
                         output.accept(ItemRegistries.CRIMSON_STAG_BOOTS.get());
+
+                        output.accept(ItemRegistries.STARVOID_HELMET.get());
+                        output.accept(ItemRegistries.STARVOID_CUIRASS.get());
+                        output.accept(ItemRegistries.STARVOID_LEGGINGS.get());
+                        output.accept(ItemRegistries.STARVOID_GREAVES.get());
                         // Spawn Eggs
                         output.accept(ItemRegistries.ACOLYTE_SPAWN_EGG.get());
                         output.accept(ItemRegistries.SUMMONER_SPAWN_EGG.get());

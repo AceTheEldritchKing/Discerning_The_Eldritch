@@ -1,5 +1,6 @@
 package net.acetheeldritchking.discerning_the_eldritch.items.armor;
 
+import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.minecraft.Util;
@@ -47,13 +48,20 @@ public class DTEArmorMaterialRegistry {
     // Evoker Reverance Warlock Armor
 
     // Starvoid Warlock Armor
+    public static DeferredHolder<ArmorMaterial, ArmorMaterial> STARVOID_ARMOR = register("starvoid_armor",
+            warlockArmorMap(),
+            25,
+            SoundEvents.ARMOR_EQUIP_CHAIN,
+            () -> Ingredient.of(ItemRegistries.STARMETAL_INGOT.get()),
+            3,
+            0.1F);
 
     // Crimson Stag Armor
     public static DeferredHolder<ArmorMaterial, ArmorMaterial> CRIMSON_STAG = register("crimson_stag_armor",
             warlockArmorMap(),
             25,
             SoundEvents.ARMOR_EQUIP_LEATHER,
-            () -> Ingredient.of(ItemRegistries.CORRUPTED_CLOTH.get()),
+            () -> Ingredient.of(ItemRegistry.MAGIC_CLOTH.get()),
             3,
             0.1F);
 

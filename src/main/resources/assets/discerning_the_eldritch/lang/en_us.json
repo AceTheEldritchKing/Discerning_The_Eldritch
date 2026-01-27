@@ -80,7 +80,6 @@
   "item.discerning_the_eldritch.razor_sheath.desc": "On hit, spawn a group of razor blades around the victim",
   "item.discerning_the_eldritch.starstruck_sheath": "Starstruck Sheath",
   "item.discerning_the_eldritch.starstruck_sheath.desc": "On hit, create a cloud of stardust around the victim. Those who have stardust on them take extra Ender magic damage",
-  "item.discerning_the_eldritch.starmetal_scythe": "Starmetal Scythe",
 
   "item.discerning_the_eldritch.deep_greatsword": "Greatsword of the Depths",
   "item.discerning_the_eldritch.ymir": "Ymir, Apothic Eldritch Blade",
@@ -115,6 +114,9 @@
   "item.discerning_the_eldritch.staff_of_the_spectre": "Staff of The Spectre",
   "item.discerning_the_eldritch.staff_of_the_spectre.desc": "Spectre - ",
   "item.discerning_the_eldritch.staff_of_the_spectre.desc2": "Wraith - ",
+  "item.discerning_the_eldritch.starmetal_scythe": "Starmetal Scythe",
+  "item.discerning_the_eldritch.starmetal_odachi": "Starmetal Odachi",
+  "item.discerning_the_eldritch.voidsplitter": "Voidsplitter Scythe",
 
   "item.discerning_the_eldritch.staff_of_eldritch": "Staff of Vehemence",
   "item.discerning_the_eldritch.staff_of_ascension": "Staff of Ascension",
@@ -132,6 +134,11 @@
   "item.discerning_the_eldritch.crimson_stag_robes": "Crimson Stag Robes",
   "item.discerning_the_eldritch.crimson_stag_leggings": "Crimson Stag Breeches",
   "item.discerning_the_eldritch.crimson_stag_boots": "Crimson Stag Tabi",
+
+  "item.discerning_the_eldritch.starvoid_helmet": "Starvoid Helmet",
+  "item.discerning_the_eldritch.starvoid_chestplate": "Starvoid Cuirass",
+  "item.discerning_the_eldritch.starvoid_leggings": "Starvoid Breeches",
+  "item.discerning_the_eldritch.starvoid_greaves": "Starvoid Greaves",
 
   "item.discerning_the_eldritch.eldritch_upgrade_orb": "Eldritch Upgrade Orb",
   "item.discerning_the_eldritch.eldritch_rune": "Eldritch Rune",

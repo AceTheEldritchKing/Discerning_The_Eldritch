@@ -4,6 +4,7 @@ import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.spells.blood.VeinRipperSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.eldritch.*;
+import net.acetheeldritchking.discerning_the_eldritch.spells.ender.VoidSplitterSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.BoogieWoogieSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.evocation.GuardiansGazeSpell;
 import net.acetheeldritchking.discerning_the_eldritch.spells.fire.SoulSetAblazeSpell;
@@ -104,6 +105,7 @@ public class SpellRegistries {
     // Hocus Pocus - Tether to an entity on the first recast. On the second, summon that entity to your position
 
     // Voidsplitter - Slash twice, once inflicting a status effect on nearby entities with a small amount of damage, the second dealing the full amount of damage as well as acting as a CTS
+    public static final Supplier<AbstractSpell> VOID_SPLITTER = registerSpell(new VoidSplitterSpell());
 
 
     /***

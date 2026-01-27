@@ -161,8 +161,14 @@ public class ItemRegistries {
     // Starmetal Scythe
     public static final DeferredHolder<Item, Item> STARMETAL_SCYTHE = ITEMS.register("starmetal_scythe", StarmetalScytheItem::new);
 
+    // Starmetal Odachi
+    public static final DeferredHolder<Item, Item> STARMETAL_ODACHI = ITEMS.register("starmetal_odachi", StarmetalOdachi::new);
+
     // Staff of The Spectre
     public static final DeferredHolder<Item, Item> STAFF_OF_THE_SPECTRE = ITEMS.register("staff_of_the_spectre", StaffOfTheSpectre::new);
+
+    // Voidsplitter
+    public static final DeferredHolder<Item, Item> VOIDSPLITTER_SCYTHE = ITEMS.register("voidsplitter", VoidSplitterItem::new);
 
 
     /***
@@ -306,7 +312,11 @@ public class ItemRegistries {
 
     // Evoker Reverance Warlock Armor
 
-    // Void Seeker Warlock Armor
+    // Starvoid Warlock Armor - This one is plain Geckolib for now
+    public static final DeferredHolder<Item, Item> STARVOID_HELMET = ITEMS.register("starvoid_helmet", () -> new StarvoidArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredHolder<Item, Item> STARVOID_CUIRASS = ITEMS.register("starvoid_chestplate", () -> new StarvoidArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
+    public static final DeferredHolder<Item, Item> STARVOID_LEGGINGS = ITEMS.register("starvoid_leggings", () -> new StarvoidArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
+    public static final DeferredHolder<Item, Item> STARVOID_GREAVES = ITEMS.register("starvoid_greaves", () -> new StarvoidArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
     // Crimson Stag Armor (Blood & Nature set)
     public static final DeferredHolder<Item, Item> CRIMSON_STAG_ANTLERS = ITEMS.register("crimson_stag_antlers", () -> new CrimsonStagArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
