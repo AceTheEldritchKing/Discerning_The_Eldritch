@@ -117,6 +117,8 @@
   "item.discerning_the_eldritch.starmetal_scythe": "Starmetal Scythe",
   "item.discerning_the_eldritch.starmetal_odachi": "Starmetal Odachi",
   "item.discerning_the_eldritch.voidsplitter": "Voidsplitter Scythe",
+  "item.discerning_the_eldritch.voidsplitter.desc": "Void Reaper - ",
+  "item.discerning_the_eldritch.voidsplitter.desc2": "Void Shatter - ",
 
   "item.discerning_the_eldritch.staff_of_eldritch": "Staff of Vehemence",
   "item.discerning_the_eldritch.staff_of_ascension": "Staff of Ascension",
@@ -306,7 +308,8 @@
   "display.discerning_the_eldritch.insanity_warning_1": "ARE YOU STILL YOU?",
   "display.discerning_the_eldritch.insanity_warning_2": "NO GOING BACK",
   "display.discerning_the_eldritch.insanity_warning_3": "YOUR MIND FALTERS",
-  "display.discerning_the_eldritch.insanity_warning_4": "THE KING COMES.",
+  "display.discerning_the_eldritch.insanity_warning_4": "SUCCUMB TO MADNESS.",
+  "display.discerning_the_eldritch.insanity_warning_5": "THE KING COMES.",
   "display.discerning_the_eldritch.silence_warning": "Unable to cast for : ",
   "display.discerning_the_eldritch.presence_warning": "Your metaphysical form cannot cast spells for : ",
   "display.discerning_the_eldritch.exorcism_no_insanity": "There is nothing to cleanse",
@@ -319,6 +322,7 @@
   "display.discerning_the_eldritch.libras_judgement_2": "Judgement Decree: Immolate in Flames",
   "display.discerning_the_eldritch.apostle_of_sculk_taunt_1": "You have the nerve to beat me?",
   "display.discerning_the_eldritch.apostle_of_sculk_taunt_2": "I'VE HAD ENOUGH OF YOU!",
+  "display.discerning_the_eldritch.enraged_warning": "The boss is now enraged! Deal damage above their threshold to harm them!",
 
 
 
@@ -430,5 +434,8 @@
   "advancements.discerning_the_eldritch.bottle_of_liquid_malice.description": "Obtain liquid malice",
 
   "advancements.discerning_the_eldritch.staff_of_eldritch.title": "Brutal, Stained Vehemence",
-  "advancements.discerning_the_eldritch.staff_of_eldritch.description": "Obtain The Staff of Vehemence"
+  "advancements.discerning_the_eldritch.staff_of_eldritch.description": "Obtain The Staff of Vehemence",
+
+  "advancements.discerning_the_eldritch.begin_insanity.title": "Discerning The Truth",
+  "advancements.discerning_the_eldritch.begin_insanity.description": "Go insane after casting too many Eldritch spells"
 }

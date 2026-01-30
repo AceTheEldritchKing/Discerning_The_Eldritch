@@ -1,0 +1,19 @@
+{
+  "name": "Soul Embers",
+  "icon": "discerning_the_eldritch:soul_ember",
+  "category": "discerning_the_eldritch:mob_drops",
+  "advancement": "minecraft:nether/root",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Occasionally dropped by Blazes within the confines of a Soul Sand Valley."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "discerning_the_eldritch:soul_ember"
+      },
+      "text": "Hot to the touch!"
+    }
+  ]
+}

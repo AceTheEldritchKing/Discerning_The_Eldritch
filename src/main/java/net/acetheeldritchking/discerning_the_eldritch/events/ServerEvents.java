@@ -1,5 +1,6 @@
 package net.acetheeldritchking.discerning_the_eldritch.events;
 
+import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
@@ -141,25 +142,36 @@ public class ServerEvents {
 
                         if (entity instanceof ServerPlayer player)
                         {
-                            if (player.getRandom().nextFloat() * 100.0F < 32.0F)
+                            float chance = (player.getRandom().nextFloat() * 100);
+
+                            if (chance <= 5.0F)
                             {
-                                player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_1")
+                                player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_5")
                                         .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
                             }
-                            if (player.getRandom().nextFloat() * 100.0F < 32.0F)
+                            else if (chance <= 25.0F)
                             {
-                                player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_2")
+                                player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_4")
                                         .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
                             }
-                            if (player.getRandom().nextFloat() * 100.0F < 32.0F)
+                            else if (chance <= 55.0F)
                             {
                                 player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_3")
                                         .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
                             }
-                            if (player.getRandom().nextFloat() * 100.0F < 4.0F)
+                            else if (chance <= 75.0F)
                             {
-                                player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_4")
+                                player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_2")
                                         .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
+                            } else
+                            {
+                                player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_1")
+                                        .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
+                            }
+
+                            var advancement = player.serverLevel().getServer().getAdvancements().get(DiscerningTheEldritch.id("discerning_the_eldritch/main/begin_insanity"));
+                            if (advancement != null) {
+                                player.getAdvancements().award(advancement, "insanity");
                             }
                         }
                     }
@@ -554,40 +566,6 @@ public class ServerEvents {
         var source = event.getSource();
         var attacker = event.getSource().getEntity();
 
-        if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
-        {
-            if (entity instanceof LivingEntity livingEntity)
-            {
-                //Ascended One
-                if (livingEntity instanceof AscendedOneBoss ascendedOneBoss && DTEServerConfig.enableAscendedOneDamageCap)
-                {
-                    float baseDamage = event.getOriginalDamage();
-                    float newDamage = ASUtils.basicDamageCap(baseDamage, 0, DTEServerConfig.ascendedOneDamageCap);
-                    event.setNewDamage(newDamage);
-                    //DiscerningTheEldritch.LOGGER.debug("Old Damage: " + event.getOriginalDamage());
-                    //DiscerningTheEldritch.LOGGER.debug("New Damage: " + event.getNewDamage());
-                }
-
-                // Apostle of Sculk
-                if (livingEntity instanceof ApostleOfSculkBoss apostleOfSculkBoss && DTEServerConfig.enableApostleOfSculkDamageCap)
-                {
-                    float baseDamage = event.getOriginalDamage();
-                    float newDamage = ASUtils.basicDamageCap(baseDamage, 0, DTEServerConfig.apostleOfSculkDamageCap);
-                    event.setNewDamage(newDamage);
-                    //DiscerningTheEldritch.LOGGER.debug("Old Damage: " + event.getOriginalDamage());
-                    //DiscerningTheEldritch.LOGGER.debug("New Damage: " + event.getNewDamage());
-                }
-
-                // Boss Three
-
-                // Boss Four
-
-                // Boss Five
-
-                // Boss Six
-            }
-        }
-
         if (entity != null)
         {
             if (entity instanceof Player player)
@@ -623,6 +601,48 @@ public class ServerEvents {
 
                     player.getCooldowns().addCooldown(ItemRegistries.TEMPESTUOUS_TOME.get(), StormWeaverTomeSpellbook.COOLDOWN);
                 }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void bossDamageCapEvent(LivingIncomingDamageEvent event)
+    {
+        var entity = event.getEntity();
+        var source = event.getSource();
+        var attacker = event.getSource().getEntity();
+
+        if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
+        {
+            if (entity instanceof LivingEntity livingEntity)
+            {
+                //Ascended One
+                if (livingEntity instanceof AscendedOneBoss ascendedOneBoss && DTEServerConfig.enableAscendedOneDamageCap)
+                {
+                    float baseDamage = event.getAmount();
+                    float newDamage = ASUtils.basicDamageCap(baseDamage, 0, DTEServerConfig.ascendedOneDamageCap);
+                    event.setAmount(newDamage);
+                    //DiscerningTheEldritch.LOGGER.debug("Old Damage: " + event.getOriginalDamage());
+                    //DiscerningTheEldritch.LOGGER.debug("New Damage: " + event.getNewDamage());
+                }
+
+                // Apostle of Sculk
+                if (livingEntity instanceof ApostleOfSculkBoss apostleOfSculkBoss && DTEServerConfig.enableApostleOfSculkDamageCap)
+                {
+                    float baseDamage = event.getAmount();
+                    float newDamage = ASUtils.basicDamageCap(baseDamage, 0, DTEServerConfig.apostleOfSculkDamageCap);
+                    event.setAmount(newDamage);
+                    //DiscerningTheEldritch.LOGGER.debug("Old Damage: " + event.getOriginalDamage());
+                    //DiscerningTheEldritch.LOGGER.debug("New Damage: " + event.getNewDamage());
+                }
+
+                // Boss Three
+
+                // Boss Four
+
+                // Boss Five
+
+                // Boss Six
             }
         }
     }

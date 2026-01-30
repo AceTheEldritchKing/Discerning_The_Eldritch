@@ -1,0 +1,19 @@
+{
+  "name": "Shards of Malice",
+  "icon": "discerning_the_eldritch:shard_of_malice",
+  "category": "discerning_the_eldritch:mob_drops",
+  "advancement": "minecraft:nether/root",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Occasionally dropped by Wither Skeletons, seems like a fragment of a whole..."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "discerning_the_eldritch:shard_of_malice"
+      },
+      "text": "Tastes like... Strawberry?"
+    }
+  ]
+}

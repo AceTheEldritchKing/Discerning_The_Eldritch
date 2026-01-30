@@ -33,6 +33,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.spells.rift_walker.
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.ritual_burn.RitualBurnAoE;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.soul_eruption.SoulEruptionAoe;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.stardust_aoe.StardustAoE;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.voidsplitter.VoidsplitterProjectile;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -288,11 +289,20 @@ public class DTEEntityRegistry {
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "stardust_aoe").toString())
             );
 
+    // Apostle of Sculk Boss
     public static final DeferredHolder<EntityType<?>, EntityType<ApostleOfSculkBoss>> APOSTLE_OF_SCULK =
             ENTITIES.register("apostle_of_sculk", () -> EntityType.Builder.<ApostleOfSculkBoss>of(ApostleOfSculkBoss::new, MobCategory.MONSTER)
                     .sized(.6f, 1.8f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "apostle_of_sculk").toString())
+            );
+
+    // Voidsplitter Projectile
+    public static final DeferredHolder<EntityType<?>, EntityType<VoidsplitterProjectile>> VOIDSPLITTER_PROJECTILE =
+            ENTITIES.register("voidsplitter_projectile", () -> EntityType.Builder.<VoidsplitterProjectile>of(VoidsplitterProjectile::new, MobCategory.MISC)
+                    .sized(4.5f, 4.5f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "voidsplitter_projectile").toString())
             );
 
 

@@ -1,0 +1,23 @@
+{
+  "display": {
+    "hidden": true,
+    "icon": {
+      "id": "discerning_the_eldritch:forbidden_spell_improvement"
+    },
+    "title": {
+      "translate": "advancements.discerning_the_eldritch.begin_insanity.title"
+    },
+    "description": {
+      "translate": "advancements.discerning_the_eldritch.begin_insanity.description"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "frame": "goal"
+  },
+  "parent": "discerning_the_eldritch:discerning_the_eldritch/main/root",
+  "criteria": {
+    "insanity": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

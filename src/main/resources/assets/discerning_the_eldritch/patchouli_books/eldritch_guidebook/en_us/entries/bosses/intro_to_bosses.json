@@ -1,0 +1,12 @@
+{
+  "name": "Introduction To Conflict",
+  "icon": "discerning_the_eldritch:forbidden_spell_improvement",
+  "category": "discerning_the_eldritch:bosses",
+  "advancement": "discerning_the_eldritch:discerning_the_eldritch/main/kill_ascended_one",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "And so, you've defeated your first true foe, impressive, mage. From here forth, your trials will only grow more difficult as you grow in power."
+    }
+  ]
+}

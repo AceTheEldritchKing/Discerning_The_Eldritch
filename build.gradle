@@ -216,8 +216,8 @@ dependencies {
     //localRuntime "curse.maven:cloth-config-348521:4633416"
 
     // PATCHOULI **************************************************************************************************
-    //compileOnly "vazkii.patchouli:Patchouli:${patchouli_version}:api"
-    //localRuntime "vazkii.patchouli:Patchouli:${patchouli_version}"
+    compileOnly "curse.maven:patchouli-306770:6842247"
+    localRuntime "curse.maven:patchouli-306770:6842247"
 
     // APOTHEOSIS
     compileOnly "curse.maven:apotheosis-${apotheosis_version}"

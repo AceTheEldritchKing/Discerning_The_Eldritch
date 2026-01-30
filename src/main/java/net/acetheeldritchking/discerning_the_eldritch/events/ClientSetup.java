@@ -19,6 +19,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.spells.glacial_edge
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.mourning_star.MourningStarRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.ravenous_jaw.RavenousJawRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.razor_blade.RazorBladeRenderer;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.voidsplitter.VoidsplitterRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.particle.*;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEFluidRegistry;
@@ -69,6 +70,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.RITUAL_BURN_AOE.get(), NoopRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.STARDUST_AOE.get(), NoopRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.APOSTLE_OF_SCULK.get(), ApostleOfSculkRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.VOIDSPLITTER_PROJECTILE.get(), VoidsplitterRenderer::new);
     }
 
     @SubscribeEvent

@@ -105,6 +105,13 @@ public class DTEServerConfig
             .comment("Default is [100]")
             .define("Base Apostle of Sculk damage cap", 100);
 
+    private static final ModConfigSpec.ConfigValue<Integer> APOSTLE_OF_SCULK_DAMAGE_THRESHOLD = BUILDER
+            .comment("Defines the threshold damage for the Apostle of Sculk when enraged")
+            .comment("This is the amount of damage you have to meet or surpass in order to damage the boss")
+            .comment("NOTE: This NEEDS to be LOWER than than the damage cap, otherwise you will not be able to hurt the boss")
+            .comment("Default is [25]")
+            .define("Base Apostle of Sculk damage threshold", 25);
+
     // Trading //
     // Blood Cultist Aggro
     private static final ModConfigSpec.BooleanValue BLOOD_CULTIST_AGGRESSION = BUILDER
@@ -135,6 +142,7 @@ public class DTEServerConfig
     public static int ascendedOneDamageCap;
     public static boolean enableApostleOfSculkDamageCap;
     public static int apostleOfSculkDamageCap;
+    public static int apostleOfSculkDamageThreshold;
     public static int pyriumSheathCooldown;
     public static int frostbourneSheathCooldown;
     public static int razorSheathCooldown;
@@ -167,6 +175,7 @@ public class DTEServerConfig
         ascendedOneDamageCap = ASCENDED_ONE_DAMAGE_CAP_VALUE.get();
         enableApostleOfSculkDamageCap = ENABLED_APOSTLE_OF_SCULK_DAMAGE_CAP.get();
         apostleOfSculkDamageCap = APOSTLE_OF_SCULK_DAMAGE_CAP_VALUE.get();
+        apostleOfSculkDamageThreshold = APOSTLE_OF_SCULK_DAMAGE_THRESHOLD.get();
 
         enableBloodCultistAggression = BLOOD_CULTIST_AGGRESSION.get();
 

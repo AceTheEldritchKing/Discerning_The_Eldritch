@@ -1,0 +1,12 @@
+{
+  "name": "Introduction To The Insane",
+  "icon": "discerning_the_eldritch:forbidden_spell_improvement",
+  "category": "discerning_the_eldritch:insanity",
+  "advancement": "discerning_the_eldritch:discerning_the_eldritch/main/begin_insanity",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "And so, you path to knowledge begins here, mage. The secrets of the world unfold before your shattered eyes. View with your broken vision the truth that awaits you."
+    }
+  ]
+}

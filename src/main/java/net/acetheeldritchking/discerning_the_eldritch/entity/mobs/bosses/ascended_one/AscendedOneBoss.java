@@ -479,7 +479,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 secondPhaseGoals();
 
                 this.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(1.1F);
-                this.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(1.5F);
+                this.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(1.35F);
 
                 var player = level().getNearestPlayer(this, 16);
                 if (player != null)
@@ -546,9 +546,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 finalPhaseGoals();
 
                 this.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(1.5F);
-                this.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(3.5F);
-                this.getAttributes().getInstance(Attributes.ARMOR_TOUGHNESS).setBaseValue(55);
-                this.getAttributes().getInstance(Attributes.ARMOR).setBaseValue(65);
+                this.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(1.4F);
 
                 var player = level().getNearestPlayer(this, 16);
                 if (player != null)
@@ -754,13 +752,13 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 .add(Attributes.ATTACK_KNOCKBACK, 0.5)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.8)
                 .add(Attributes.MAX_HEALTH, 600.0)
-                .add(Attributes.ARMOR, 50)
-                .add(Attributes.ARMOR_TOUGHNESS, 45)
+                .add(Attributes.ARMOR, 40)
+                .add(Attributes.ARMOR_TOUGHNESS, 25)
                 .add(Attributes.FOLLOW_RANGE, 80.0)
                 .add(Attributes.ENTITY_INTERACTION_RANGE, 4.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.25)
                 .add(AttributeRegistry.SPELL_POWER, 1.4)
-                .add(AttributeRegistry.SPELL_RESIST, 1.65)
+                .add(AttributeRegistry.SPELL_RESIST, 1.3)
                 .add(AttributeRegistry.MAX_MANA, 1000)
                 .add(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.12)
                 ;

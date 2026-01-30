@@ -12,6 +12,7 @@ import net.acetheeldritchking.aces_spell_utils.network.AddShaderEffectPacket;
 import net.acetheeldritchking.aces_spell_utils.network.RemoveShaderEffectPacket;
 import net.acetheeldritchking.aces_spell_utils.spells.ASSpellAnimations;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.voidsplitter.VoidsplitterProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -121,9 +122,21 @@ public class VoidSplitterSpell extends AbstractSpell {
 
         if (recastResult.isSuccess())
         {
+            PacketDistributor.sendToPlayer(serverPlayer, new RemoveShaderEffectPacket());
+
             isFirstCast = false;
             PacketDistributor.sendToPlayer(serverPlayer, new AddShaderEffectPacket(DiscerningTheEldritch.MOD_ID, "shaders/post/inverted_purple.json"));
             serverPlayer.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.PORTENT_EFFECT, 3*20, 1, false, false, false));
+
+            VoidsplitterProjectile voidSplitter = new VoidsplitterProjectile(serverPlayer.level(), serverPlayer);
+            voidSplitter.setTimer(240);
+            voidSplitter.setDamage(25);
+            voidSplitter.getSpeed();
+            voidSplitter.setNoGravity(true);
+            voidSplitter.setDeltaMovement(0, 0, 0);
+            voidSplitter.moveTo(serverPlayer.getX(), serverPlayer.getY() + 1, serverPlayer.getZ());
+
+            serverPlayer.level().addFreshEntity(voidSplitter);
         }
         else
         {

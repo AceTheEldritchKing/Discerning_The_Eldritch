@@ -1,0 +1,9 @@
+{
+  "name": "Discerning The Eldritch",
+  "landing_text": "Of everything between the arcane, the occult, and the mysteries of the realm",
+  "version": 1,
+  "show_progress": false,
+  "model": "discerning_the_eldritch:dte_guidebook",
+  "creative_tab": "discerning_the_eldritch:dte_items_tab",
+  "use_resource_pack": true
+}

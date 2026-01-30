@@ -1,14 +1,14 @@
 package net.acetheeldritchking.discerning_the_eldritch.items.weapons;
 
 import io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem;
-import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
 import io.redspace.ironsspellbooks.item.UniqueItem;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
+import net.acetheeldritchking.aces_spell_utils.items.weapons.ActiveAndPassiveAbilityMagicSwordItem;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 
-public class VoidSplitterItem extends MagicSwordItem implements UniqueItem {
+public class VoidSplitterItem extends ActiveAndPassiveAbilityMagicSwordItem implements UniqueItem {
     public VoidSplitterItem() {
         super(
                 DTEWeaponTiers.VOIDSPLITTER,
@@ -16,5 +16,15 @@ public class VoidSplitterItem extends MagicSwordItem implements UniqueItem {
                 SpellDataRegistryHolder.of(
                         new SpellDataRegistryHolder(SpellRegistries.VOID_SPLITTER, 1))
         );
+    }
+
+    @Override
+    protected int getActiveCooldownTicks() {
+        return 15 * 20;
+    }
+
+    @Override
+    protected int getPassiveCooldownTicks() {
+        return 5 * 20;
     }
 }
