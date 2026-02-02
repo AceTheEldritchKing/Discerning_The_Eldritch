@@ -107,11 +107,15 @@ public class VoidsplitterProjectile extends AbstractMagicProjectile implements G
                 }
             }
         }
+
+        if(tickCount==getDelay()){
+            shoot(this.getLookAngle());
+        }
     }
 
     @Override
     protected void rotateWithMotion() {
-        return;
+        //
     }
 
     @Override
