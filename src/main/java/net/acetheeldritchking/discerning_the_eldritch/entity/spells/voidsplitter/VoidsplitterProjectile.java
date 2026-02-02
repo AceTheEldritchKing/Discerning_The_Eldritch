@@ -5,7 +5,6 @@ import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
-import net.acetheeldritchking.discerning_the_eldritch.particle.DTEParticleHelper;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.BlockPos;
@@ -14,6 +13,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -39,6 +39,8 @@ public class VoidsplitterProjectile extends AbstractMagicProjectile implements G
     private int hitsPerTick;
     private int timer;
     private int windupTimer = 25;
+    private static final EntityDataAccessor<Integer> DATA_TIMER = SynchedEntityData.defineId(VoidsplitterProjectile.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> DATA_DELAY = SynchedEntityData.defineId(VoidsplitterProjectile.class, EntityDataSerializers.INT);
 
     public VoidsplitterProjectile(EntityType<? extends Projectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -49,11 +51,6 @@ public class VoidsplitterProjectile extends AbstractMagicProjectile implements G
     public VoidsplitterProjectile(Level pLevel, LivingEntity pShooter) {
         super(DTEEntityRegistry.VOIDSPLITTER_PROJECTILE.get(), pLevel);
         this.setOwner(pShooter);
-    }
-
-    public void setTimer(int timer)
-    {
-        this.timer = timer;
     }
 
     @Override
@@ -98,30 +95,23 @@ public class VoidsplitterProjectile extends AbstractMagicProjectile implements G
         super.tick();
         hitsPerTick = 0;
 
-        // Referenced from Magic From The East
-        if (windupTimer > 0)
+        if (tickCount > getDelay())
         {
-            windupTimer--;
-            if (windupTimer <= 0 && timer > 0)
+            if (!level().isClientSide)
             {
-                timer--;
+                HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
 
-                if (timer <= 100)
+                if (hitresult.getType() == HitResult.Type.ENTITY)
                 {
-                    Vec3 paused = new Vec3(0, 0, 0);
-                    this.setDeltaMovement(paused);
-
-                    if (timer <= 50 && timer > 0)
-                    {
-                        this.setDeltaMovement(getDeltaMovement().add(getOwner().getEyePosition().multiply(1, 1, 1).normalize()));
-                    }
-                    else if (timer <= 0)
-                    {
-                        discard();
-                    }
+                    onHitEntity((EntityHitResult) hitresult);
                 }
             }
         }
+    }
+
+    @Override
+    protected void rotateWithMotion() {
+        return;
     }
 
     @Override
@@ -155,6 +145,17 @@ public class VoidsplitterProjectile extends AbstractMagicProjectile implements G
 
     @Override
     protected void onHit(HitResult hitresult) {
+        if (!level().isClientSide)
+        {
+            var blockPos = BlockPos.containing(hitresult.getLocation());
+            if (hitresult.getType() == HitResult.Type.BLOCK && !blockPos.equals(lastHitBlock))
+            {
+                lastHitBlock = blockPos;
+            } else if (hitresult.getType() == HitResult.Type.ENTITY) {
+                level().playSound(null, BlockPos.containing(position()), SoundRegistry.FORCE_IMPACT.get(), SoundSource.NEUTRAL, 2, .65f);
+            }
+        }
+
         super.onHit(hitresult);
     }
 
@@ -173,16 +174,16 @@ public class VoidsplitterProjectile extends AbstractMagicProjectile implements G
 
     private PlayState predicate(AnimationState<VoidsplitterProjectile> event)
     {
-        if (windupTimer > 25)
+        if (tickCount < 20)
         {
             event.getController().setAnimation(RawAnimation.begin().then("spawn", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
-        if (windupTimer <= 0 && timer > 0)
+        if (tickCount > 20 && tickCount < 100)
         {
             event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
-        } else if (timer <= 0)
+        } else if (tickCount > 100)
         {
             event.getController().setAnimation(RawAnimation.begin().then("spin", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
@@ -194,5 +195,33 @@ public class VoidsplitterProjectile extends AbstractMagicProjectile implements G
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
+    }
+
+    // NBT
+    public int getTimer()
+    {
+        return entityData.get(DATA_TIMER);
+    }
+
+    public void setTimer(int timer)
+    {
+        entityData.set(DATA_TIMER, timer);
+    }
+
+    public int getDelay()
+    {
+        return entityData.get(DATA_DELAY);
+    }
+
+    public void setDelay(int delay)
+    {
+        entityData.set(DATA_DELAY, delay);
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        super.defineSynchedData(pBuilder);
+        pBuilder.define(DATA_TIMER, -1);
+        pBuilder.define(DATA_DELAY, 20);
     }
 }

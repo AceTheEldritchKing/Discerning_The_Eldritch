@@ -129,7 +129,7 @@ public class VoidSplitterSpell extends AbstractSpell {
             serverPlayer.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.PORTENT_EFFECT, 3*20, 1, false, false, false));
 
             VoidsplitterProjectile voidSplitter = new VoidsplitterProjectile(serverPlayer.level(), serverPlayer);
-            voidSplitter.setTimer(240);
+            voidSplitter.setDelay(60);
             voidSplitter.setDamage(25);
             voidSplitter.getSpeed();
             voidSplitter.setNoGravity(true);
