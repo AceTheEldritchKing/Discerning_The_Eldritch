@@ -1,6 +1,6 @@
 {
     "parent": "irons_spellbooks:item/ring",
     "textures": {
-        "layer0": "discerning_the_eldritch:item/echo_vibration_ring"
+        "layer0": "discerning_the_eldritch:item/thorn_ring"
     }
 }

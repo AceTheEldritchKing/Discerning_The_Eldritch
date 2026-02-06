@@ -163,6 +163,10 @@ public class SpellRegistries {
 
     // Eternal Blizzard (If you know, you know)
 
+    // Ice Howl (Howl and inflict chilled in a radius around you, scaring off lesser mobs)
+
+    // Snowgrave (Completely entomb and deal almost lethal damage to an entity)
+
 
     /***
      * Lightning Spells

@@ -778,10 +778,6 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
     @Override
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
-        if (this.hasCustomName())
-        {
-            this.bossEvent.setName(this.getDisplayName());
-        }
         // Phases
         pCompound.putInt("phase", getPhase());
     }
@@ -789,6 +785,10 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
     @Override
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
+        if (this.hasCustomName())
+        {
+            this.bossEvent.setName(this.getDisplayName());
+        }
         // Phases
         setPhase(pCompound.getInt("phase"));
         if (isPhase(Phase.SecondPhase))

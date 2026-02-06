@@ -43,7 +43,7 @@ public class AbracadabraPotionEffect extends CustomDescriptionMobEffect {
     }
 
     @SubscribeEvent
-    public static void damageCapEvent(LivingDamageEvent.Pre event)
+    public static void damageCapEvent(LivingIncomingDamageEvent event)
     {
         if (DTEServerConfig.enableDamageCap)
         {
@@ -55,10 +55,10 @@ public class AbracadabraPotionEffect extends CustomDescriptionMobEffect {
             if (effect != null && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
             {
                 int level = effect.getAmplifier() + 1;
-                float baseDamage = event.getOriginalDamage();
+                float baseDamage = event.getOriginalAmount();
                 float newDamage = getDamageCapAmount(level, baseDamage);
 
-                event.setNewDamage(newDamage);
+                event.setAmount(newDamage);
                 //DiscerningTheEldritch.LOGGER.debug("Old damage: " + baseDamage);
                 //DiscerningTheEldritch.LOGGER.debug("Level: " + level);
                 //DiscerningTheEldritch.LOGGER.debug("Base cap: " + DTEConfig.abracadabraDamageCap);

@@ -13,6 +13,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.Eldrit
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockHelmetRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.armor.EldritchWarlockMaskRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.entity.render.items.*;
+import net.acetheeldritchking.discerning_the_eldritch.entity.render.items.lantern_of_hatred.LanternOfHatredEquippedCurioRenderer;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.DTEArmorMaterialRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.loot.DTELootModifiers;
 import net.acetheeldritchking.discerning_the_eldritch.registries.*;
@@ -101,7 +102,8 @@ public class DiscerningTheEldritch
                 ItemRegistries.ELDRITCH_WARLOCK_MASK.get(),
                 ItemRegistries.ELDRITCH_WARLOCK_HELMET.get(),
                 ItemRegistries.STAFF_OF_VEHEMENCE.get(),
-                ItemRegistries.KINGS_EFFIGY.get()
+                ItemRegistries.KINGS_EFFIGY.get(),
+                ItemRegistries.LANTERN_OF_HATRED.get()
         );
     }
 
@@ -149,6 +151,9 @@ public class DiscerningTheEldritch
             );
             CuriosRendererRegistry.register(
                     ItemRegistries.CASTERS_MANTLE.get(), CastersMantleCurioRenderer::new
+            );
+            CuriosRendererRegistry.register(
+                    ItemRegistries.LANTERN_OF_HATRED.get(), LanternOfHatredEquippedCurioRenderer::new
             );
 
             // Block Rendering

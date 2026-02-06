@@ -7,6 +7,7 @@ import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.ISSDamageTypes;
+import io.redspace.ironsspellbooks.damage.SpellDamageSource;
 import io.redspace.ironsspellbooks.entity.spells.ChainLightning;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import it.crystalnest.prometheus.api.Fire;
@@ -44,6 +45,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
@@ -51,6 +53,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
@@ -605,13 +608,14 @@ public class ServerEvents {
         }
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void bossDamageCapEvent(LivingIncomingDamageEvent event)
     {
         var entity = event.getEntity();
         var source = event.getSource();
         var attacker = event.getSource().getEntity();
 
+        // Boss damage caps
         if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
         {
             if (entity instanceof LivingEntity livingEntity)
@@ -619,7 +623,7 @@ public class ServerEvents {
                 //Ascended One
                 if (livingEntity instanceof AscendedOneBoss ascendedOneBoss && DTEServerConfig.enableAscendedOneDamageCap)
                 {
-                    float baseDamage = event.getAmount();
+                    float baseDamage = event.getOriginalAmount();
                     float newDamage = ASUtils.basicDamageCap(baseDamage, 0, DTEServerConfig.ascendedOneDamageCap);
                     event.setAmount(newDamage);
                     //DiscerningTheEldritch.LOGGER.debug("Old Damage: " + event.getOriginalDamage());
@@ -629,7 +633,7 @@ public class ServerEvents {
                 // Apostle of Sculk
                 if (livingEntity instanceof ApostleOfSculkBoss apostleOfSculkBoss && DTEServerConfig.enableApostleOfSculkDamageCap)
                 {
-                    float baseDamage = event.getAmount();
+                    float baseDamage = event.getOriginalAmount();
                     float newDamage = ASUtils.basicDamageCap(baseDamage, 0, DTEServerConfig.apostleOfSculkDamageCap);
                     event.setAmount(newDamage);
                     //DiscerningTheEldritch.LOGGER.debug("Old Damage: " + event.getOriginalDamage());
@@ -644,6 +648,31 @@ public class ServerEvents {
 
                 // Boss Six
             }
+        }
+
+        // Boss lifesteal
+        if (attacker instanceof LivingEntity livingEntity)
+        {
+            // Apostle of Sculk
+            // This is so lifesteal can be done on magic attacks
+            if (livingEntity instanceof ApostleOfSculkBoss apostleOfSculkBoss && source instanceof SpellDamageSource)
+            {
+                if (apostleOfSculkBoss.getEnraged())
+                {
+                    apostleOfSculkBoss.heal(10);
+                } else
+                {
+                    apostleOfSculkBoss.heal(5);
+                }
+            }
+
+            // Boss Three
+
+            // Boss Four
+
+            // Boss Five
+
+            // Boss Six
         }
     }
 }

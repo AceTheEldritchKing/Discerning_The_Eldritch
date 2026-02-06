@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "id": "discerning_the_eldritch:thorn_ring"
+    },
+    "title": {
+      "translate": "advancements.discerning_the_eldritch.thorn_ring.title"
+    },
+    "description": {
+      "translate": "advancements.discerning_the_eldritch.thorn_ring.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "discerning_the_eldritch:discerning_the_eldritch/main/begin_insanity",
+  "criteria": {
+    "thorn": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "discerning_the_eldritch:thorn_ring"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "thorn"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

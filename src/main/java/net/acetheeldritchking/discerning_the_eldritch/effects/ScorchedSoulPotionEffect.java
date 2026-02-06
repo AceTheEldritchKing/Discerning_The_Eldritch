@@ -36,7 +36,7 @@ public class ScorchedSoulPotionEffect extends MobEffect {
         {
             if (!ASUtils.isBossEntity(entity.getType()) && ((source.is(ISSDamageTypes.FIRE_MAGIC) || entity.isOnFire()) && entity.hasEffect(DTEPotionEffectRegistry.SCORCHED_SOUL_EFFECT)))
             {
-                float baseDamage = event.getAmount();
+                float baseDamage = event.getOriginalAmount();
                 float newDamage = baseDamage * 1.5F;
                 event.setAmount(newDamage);
                 //DiscerningTheEldritch.LOGGER.debug("New damage: " + newDamage);

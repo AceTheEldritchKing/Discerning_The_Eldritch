@@ -80,6 +80,10 @@
   "item.discerning_the_eldritch.razor_sheath.desc": "On hit, spawn a group of razor blades around the victim",
   "item.discerning_the_eldritch.starstruck_sheath": "Starstruck Sheath",
   "item.discerning_the_eldritch.starstruck_sheath.desc": "On hit, create a cloud of stardust around the victim. Those who have stardust on them take extra Ender magic damage",
+  "item.discerning_the_eldritch.thorn_ring": "The Thorn Ring",
+  "item.discerning_the_eldritch.thorn_ring.desc": "Things have taken a weird route...",
+  "item.discerning_the_eldritch.lantern_of_hatred": "Lantern of Hatred",
+  "item.discerning_the_eldritch.lantern_of_hatred.desc": "HATE HATE HATE...",
 
   "item.discerning_the_eldritch.deep_greatsword": "Greatsword of the Depths",
   "item.discerning_the_eldritch.ymir": "Ymir, Apothic Eldritch Blade",
@@ -323,6 +327,7 @@
   "display.discerning_the_eldritch.apostle_of_sculk_taunt_1": "You have the nerve to beat me?",
   "display.discerning_the_eldritch.apostle_of_sculk_taunt_2": "I'VE HAD ENOUGH OF YOU!",
   "display.discerning_the_eldritch.enraged_warning": "The boss is now enraged! Deal damage above their threshold to harm them!",
+  "display.discerning_the_eldritch.enraged_notification": "The boss is now no longer enraged! Normal damage has returned!",
 
 
 
@@ -437,5 +442,8 @@
   "advancements.discerning_the_eldritch.staff_of_eldritch.description": "Obtain The Staff of Vehemence",
 
   "advancements.discerning_the_eldritch.begin_insanity.title": "Discerning The Truth",
-  "advancements.discerning_the_eldritch.begin_insanity.description": "Go insane after casting too many Eldritch spells"
+  "advancements.discerning_the_eldritch.begin_insanity.description": "Go insane after casting too many Eldritch spells",
+
+  "advancements.discerning_the_eldritch.thorn_ring.title": "That's Not The Thorn Ring, Is It?",
+  "advancements.discerning_the_eldritch.thorn_ring.description": "Proceed to equip The Thorn Ring"
 }

@@ -283,6 +283,12 @@ public class ItemRegistries {
     // Starstruck Sheath
     public static final Supplier<CurioBaseItem> STARSTRUCK_SHEATH = ITEMS.register("starstruck_sheath", StarstruckSheathCurio::new);
 
+    // The Thorn Ring
+    public static final Supplier<CurioBaseItem> THORN_RING = ITEMS.register("thorn_ring", TheThornRingCurio::new);
+
+    // Lantern of Hatred
+    public static final Supplier<CurioBaseItem> LANTERN_OF_HATRED = ITEMS.register("lantern_of_hatred", LanternOfHatredCurio::new);
+
 
     /***
      * Armor
