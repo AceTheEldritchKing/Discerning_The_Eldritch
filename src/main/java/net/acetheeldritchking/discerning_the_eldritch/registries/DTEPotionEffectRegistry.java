@@ -54,6 +54,9 @@ public class DTEPotionEffectRegistry {
     // Stardusted Effect
     public static final DeferredHolder<MobEffect, MobEffect> STARDUSTED_EFFECT = MOB_EFFECTS.register("star_dusted_potion_effect", StardustedPotionEffect::new);
 
+    // Ruin Effect
+    public static final DeferredHolder<MobEffect, MobEffect> RUIN_EFFECT = MOB_EFFECTS.register("ruin_potion_effect", RuinPotionEffect::new);
+
 
     public static void register(IEventBus eventBus)
     {

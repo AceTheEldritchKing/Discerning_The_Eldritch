@@ -231,7 +231,7 @@
     },
     "apostle_of_sculk_theme": {
         "sounds": [
-            "discerning_the_eldritch:mob/apostle_of_sculk/music/the_summoning"
+            "discerning_the_eldritch:mob/apostle_of_sculk/music/vore"
         ]
     }
 }

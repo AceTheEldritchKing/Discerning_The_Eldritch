@@ -150,6 +150,7 @@ public class DTECreativeModeTabs {
                         output.accept(BlockRegistries.LARGE_STARSTONE_BUD.get());
                         output.accept(BlockRegistries.STARSTONE_CLUSTER.get());
                         // Decor
+                        output.accept(BlockRegistries.RESONATING_DEEPSLATE.get());
                     }).build());
 
     public static void register(IEventBus eventBus)

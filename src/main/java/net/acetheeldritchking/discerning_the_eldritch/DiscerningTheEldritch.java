@@ -83,6 +83,8 @@ public class DiscerningTheEldritch
         DTEFluidRegistry.register(modEventBus);
         // Data Components
         DTEDataComponentRegistry.register(modEventBus);
+        // Points of Interest
+        DTEPoiRegistry.register(modEventBus);
 
         // Compat
         CompatRegistry.registerPastelItems(modEventBus);

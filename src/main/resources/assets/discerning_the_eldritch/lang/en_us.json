@@ -31,6 +31,8 @@
   "effect.discerning_the_eldritch.predator_potion_effect.description": "Summon ravenous jaws when hitting prey",
   "effect.discerning_the_eldritch.scorched_soul_potion_effect": "Scorched Soul",
   "effect.discerning_the_eldritch.scorched_soul_potion_effect.description": "Take increased damage from fire magic or if you are on fire while the attacker is holding the Soul Fire Scythe",
+  "effect.discerning_the_eldritch.ruin_potion_effect": "Ruin",
+  "effect.discerning_the_eldritch.ruin_potion_effect.description": "Take increased damage from Eldritch magic",
 
 
   "curios.identifier.artifact": "Artifact",
@@ -188,6 +190,7 @@
   "block.discerning_the_eldritch.medium_starstone_bud": "Medium Starstone Bud",
   "block.discerning_the_eldritch.large_starstone_bud": "Large Starstone Bud",
   "block.discerning_the_eldritch.starstone_cluster": "Starstone Cluster",
+  "block.discerning_the_eldritch.resonating_deepslate": "Resonating Deepslate",
 
 
   "spell.discerning_the_eldritch.silence": "Silence",
@@ -319,7 +322,8 @@
   "display.discerning_the_eldritch.presence_warning": "Your metaphysical form cannot cast spells for : ",
   "display.discerning_the_eldritch.exorcism_no_insanity": "There is nothing to cleanse",
   "display.discerning_the_eldritch.no_insanity_system": "Insanity does not reside in your heart",
-  "display.discerning_the_eldritch.fading_sculk_lantern_fail": "You call, but there is no response",
+  "display.discerning_the_eldritch.fading_sculk_lantern_fail_1": "You call, but there is no response",
+  "display.discerning_the_eldritch.fading_sculk_lantern_fail_2": "She's already here!",
   "display.discerning_the_eldritch.fading_sculk_lantern_success": "You call, she's coming - prepare yourself",
   "display.discerning_the_eldritch.judgement_decree_1": "Judgement Decree: Mortal Damage on hit",
   "display.discerning_the_eldritch.judgement_decree_2": "Judgement Decree: Affliction on hit",
