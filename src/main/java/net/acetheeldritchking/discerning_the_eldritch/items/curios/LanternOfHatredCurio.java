@@ -7,6 +7,7 @@ import io.redspace.ironsspellbooks.compat.Curios;
 import io.redspace.ironsspellbooks.item.curios.PassiveAbilityCurio;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
+import net.acetheeldritchking.discerning_the_eldritch.items.custom.CursedItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.custom.DTEItemDispatcher;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTERarities;
 import net.minecraft.core.Holder;
@@ -19,7 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import top.theillusivec4.curios.api.SlotContext;
 
-public class LanternOfHatredCurio extends PassiveAbilityCurio {
+public class LanternOfHatredCurio extends PassiveAbilityCurio implements CursedItem {
     public final DTEItemDispatcher dispatcher;
 
     public LanternOfHatredCurio() {
@@ -49,5 +50,10 @@ public class LanternOfHatredCurio extends PassiveAbilityCurio {
         {
             dispatcher.idle(player, stack);
         }
+    }
+
+    @Override
+    public String getIdentifier() {
+        return "artifact";
     }
 }

@@ -1,6 +1,5 @@
 package net.acetheeldritchking.discerning_the_eldritch.events;
 
-import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
@@ -9,16 +8,16 @@ import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.ISSDamageTypes;
 import io.redspace.ironsspellbooks.damage.SpellDamageSource;
 import io.redspace.ironsspellbooks.entity.spells.ChainLightning;
+import io.redspace.ironsspellbooks.item.curios.CurioBaseItem;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
-import it.crystalnest.prometheus.api.Fire;
 import it.crystalnest.prometheus.api.FireManager;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkBoss;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
-import net.acetheeldritchking.discerning_the_eldritch.entity.spells.blade_of_rancor.BladeOfRancorProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeSmallProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.gore_bile.GoreBileAoE;
+import net.acetheeldritchking.discerning_the_eldritch.items.custom.CursedItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.DiaryOfDecaySpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.StormWeaverTomeSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.*;
@@ -48,18 +47,16 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
-
-import java.util.function.UnaryOperator;
+import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
 
 import static net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttachmentRegistry.*;
 
@@ -603,6 +600,30 @@ public class ServerEvents {
                     }
 
                     player.getCooldowns().addCooldown(ItemRegistries.TEMPESTUOUS_TOME.get(), StormWeaverTomeSpellbook.COOLDOWN);
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void equipCursedItemEvent(CurioCanEquipEvent event)
+    {
+        var curio = event.getStack();
+        var wearer = event.getEntity();
+        var slotContext = event.getSlotContext();
+
+        CurioBaseItem cursedItem = (CurioBaseItem) curio.getItem();
+
+        if (cursedItem instanceof CursedItem)
+        {
+            if (slotContext.identifier().equals(((CursedItem) cursedItem).getIdentifier()))
+            {
+                if (wearer.getData(IS_INSANE))
+                {
+                    event.setEquipResult(TriState.TRUE);
+                } else if (!wearer.getData(IS_INSANE))
+                {
+                    event.setEquipResult(TriState.FALSE);
                 }
             }
         }

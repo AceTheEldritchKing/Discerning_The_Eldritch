@@ -77,7 +77,7 @@ public class SpellRegistries {
 
     // Eternal Chains - Wrap the target in chains, preventing movement. The chains cannot be disspelled & the target cannot teleport. Any damage towards the target is halved.
 
-    // Malevolent Maelstrom - Conjure negative energy around the caster, manifesting in a swirling storm of Eso Edges slicing any nearby entities. Spell can be targeted as well to deal triple damage to a singular target. Scales with Fire SP
+    // Malevolent Maelstrom - Conjure negative energy around the caster, manifesting in a swirling storm of Eso Edges slicing any nearby entities. Spell can be targeted as well to deal triple damage to a singular target
 
     // Abhorrent Inferno - Channel your mana into an eruption of Eldritch magic, swinging your weapon around into a fatal dance. Entities caught in your wicked ballet will be affected with the Abhorrent Burn debuff. At the end of your dance, your mana regeneration is halted for a few seconds. You may target another entity to "dance" with you, increasing the damage of your slashes
 
@@ -96,6 +96,8 @@ public class SpellRegistries {
     // WATEOA - If you know, you know.
 
     // Black Sun - If you know, you know.
+
+    // Falsified Phenomena (Credit to Lumi) - Engulf the nearby area into a domain, shattering reality within it. When the domain expires, the surrounding area explodes and inflicts Ruin
 
 
     /***
@@ -149,6 +151,9 @@ public class SpellRegistries {
     // Exorcism - Resets insanity
     public static final Supplier<AbstractSpell> EXORCISM = registerSpell(new ExorcismSpell());
 
+    // Death of Despair (Credit to Lumi) - Creates a field above the caster which fires dozens of magical arrows, each exploding on impact
+
+
     /***
      * Ice Spells
      */
@@ -165,7 +170,7 @@ public class SpellRegistries {
 
     // Ice Howl (Howl and inflict chilled in a radius around you, scaring off lesser mobs)
 
-    // Snowgrave (Completely entomb and deal almost lethal damage to an entity)
+    // Snowgrave (Completely entomb and deal almost lethal damage to an entity - Special interaction with The Thorn Ring)
 
 
     /***

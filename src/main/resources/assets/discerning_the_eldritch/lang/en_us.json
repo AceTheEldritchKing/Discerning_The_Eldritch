@@ -71,17 +71,17 @@
   "item.discerning_the_eldritch.ironbound_feather": "Ironbound Feather",
   "item.discerning_the_eldritch.ironbound_feather.desc": "A beautiful brooch that feels lighter than it seems",
   "item.discerning_the_eldritch.pyrium_sheath": "Pyrium Sheath",
-  "item.discerning_the_eldritch.pyrium_sheath.desc": "On hit, ignite entities on fire for 3 seconds and deal increased damage to entities on fire",
+  "item.discerning_the_eldritch.pyrium_sheath.desc": "Scorching - On hit, ignite entities on fire for 3 seconds and deal increased damage to entities on fire",
   "item.discerning_the_eldritch.frostbourne_sheath": "Frostbourne Sheath",
-  "item.discerning_the_eldritch.frostbourne_sheath.desc": "On hit, inflicts Chilled for 5 seconds and deal increased damage to entities with Chilled",
+  "item.discerning_the_eldritch.frostbourne_sheath.desc": "Frost Touch - On hit, inflicts Chilled for 5 seconds and deal increased damage to entities with Chilled",
   "item.discerning_the_eldritch.rift_ripper_emblem": "Emblem of The Rift Ripper",
   "item.discerning_the_eldritch.rift_ripper_emblem.desc": "An ancient emblem, allows you to cast Rift Walker multiple times",
   "item.discerning_the_eldritch.razor_sheath": "Sheath of The Razor",
-  "item.discerning_the_eldritch.razor_sheath.desc": "On hit, spawn a group of razor blades around the victim",
+  "item.discerning_the_eldritch.razor_sheath.desc": "The Razor - On hit, spawn a group of razor blades around the victim",
   "item.discerning_the_eldritch.starstruck_sheath": "Starstruck Sheath",
-  "item.discerning_the_eldritch.starstruck_sheath.desc": "On hit, create a cloud of stardust around the victim. Those who have stardust on them take extra Ender magic damage",
+  "item.discerning_the_eldritch.starstruck_sheath.desc": "Stardusted - On hit, create a cloud of stardust around the victim. Those who have stardust on them take extra Ender magic damage",
   "item.discerning_the_eldritch.thorn_ring": "The Thorn Ring",
-  "item.discerning_the_eldritch.thorn_ring.desc": "Things have taken a weird route...",
+  "item.discerning_the_eldritch.thorn_ring.desc": "Trancer - Eldritch and Ice spells have their mana costs halved (no cooldown) and their damage increased by 1.5x",
   "item.discerning_the_eldritch.lantern_of_hatred": "Lantern of Hatred",
   "item.discerning_the_eldritch.lantern_of_hatred.desc": "HATE HATE HATE...",
 
@@ -176,7 +176,6 @@
   "item.discerning_the_eldritch.fading_sculk_lantern.description": "It looks like it can be used, but when?",
 
   "item.discerning_the_eldritch.more_details": "Press [SHIFT] for more details",
-  "tooltip.discerning_the_eldritch.active_ability": "Active Ability (%s cooldown):",
 
 
   "block.discerning_the_eldritch.meteorstone": "Meteorstone",
@@ -273,6 +272,8 @@
 
 
   "tooltip.discerning_the_eldritch.abracadabra_description": "Damage taken caps at +%d%%",
+  "tooltip.discerning_the_eldritch.active_ability": "Active Ability (%s cooldown):",
+  "tooltip.discerning_the_eldritch.cursed_item": "This is a cursed item, it cannot be worn if the user is not insane",
 
 
   "material.discerning_the_eldritch.rune_eldritch": "Eldritch Rune",
