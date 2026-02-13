@@ -85,7 +85,8 @@ public class FadingSculkLantern extends Item {
                     float yRot = Utils.getAngle(center.x, center.z, player.getX(), player.getZ()) * Mth.RAD_TO_DEG;
                     ApostleOfSculkBoss apostleOfSculkBoss = DTEEntityRegistry.APOSTLE_OF_SCULK.get().create(serverLevel);
                     apostleOfSculkBoss.moveTo(center);
-                    apostleOfSculkBoss.setYBodyRot(yRot + 90);
+                    apostleOfSculkBoss.setYBodyRot(yRot);
+                    apostleOfSculkBoss.setXRot(player.getXRot());
                     apostleOfSculkBoss.triggerSpawnAnim();
                     apostleOfSculkBoss.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(player.blockPosition()), MobSpawnType.MOB_SUMMONED, null);
                     level.addFreshEntity(apostleOfSculkBoss);
