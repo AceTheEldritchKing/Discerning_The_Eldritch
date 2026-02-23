@@ -177,9 +177,8 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
         ItemStack mainhandItem = player.getMainHandItem();
 
         Integer soulFireStacks = mainhandItem.get(DTEDataComponentRegistry.SOUL_FIRE_STACKS);
-        assert soulFireStacks != null;
 
-        if (soulFireStacks >= 5)
+        if (soulFireStacks != null && soulFireStacks >= 5)
         {
             // Consume soul fire souls
             player.startUsingItem(usedHand);
