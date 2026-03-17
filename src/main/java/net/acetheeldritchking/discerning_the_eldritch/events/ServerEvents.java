@@ -120,58 +120,62 @@ public class ServerEvents {
         {
             //System.out.println("System enabled?");
 
-            entity.getData(INSANITY_METER);
-            entity.getData(IS_INSANE);
-
-            if (spell.getSchoolType() == SchoolRegistry.ELDRITCH.get())
+            // Prevent this if we are wearing Exorcist's Aegis
+            if (!ASUtils.hasCurio(entity, ItemRegistries.EXORCISTS_AEGIS.get()))
             {
-                //System.out.println("Is Eldritch?");
+                entity.getData(INSANITY_METER);
+                entity.getData(IS_INSANE);
 
-                if (entity.getData(INSANITY_METER) <= (DTEServerConfig.maxInsanityValue - 1))
+                if (spell.getSchoolType() == SchoolRegistry.ELDRITCH.get())
                 {
-                    //System.out.println("Increment?");
-                    entity.setData(INSANITY_METER, entity.getData(INSANITY_METER) + 1);
+                    //System.out.println("Is Eldritch?");
 
-                    DiscerningTheEldritch.LOGGER.debug("Meter: " + entity.getData(INSANITY_METER));
-                    DiscerningTheEldritch.LOGGER.debug("Max: " + DTEServerConfig.maxInsanityValue);
-
-                    if (entity.getData(INSANITY_METER) == DTEServerConfig.maxInsanityValue)
+                    if (entity.getData(INSANITY_METER) <= (DTEServerConfig.maxInsanityValue - 1))
                     {
-                        // We're doing new logic now, having this in a variable instead
-                        entity.setData(IS_INSANE, true);
+                        //System.out.println("Increment?");
+                        entity.setData(INSANITY_METER, entity.getData(INSANITY_METER) + 1);
 
-                        if (entity instanceof ServerPlayer player)
+                        DiscerningTheEldritch.LOGGER.debug("Meter: " + entity.getData(INSANITY_METER));
+                        DiscerningTheEldritch.LOGGER.debug("Max: " + DTEServerConfig.maxInsanityValue);
+
+                        if (entity.getData(INSANITY_METER) == DTEServerConfig.maxInsanityValue)
                         {
-                            float chance = (player.getRandom().nextFloat() * 100);
+                            // We're doing new logic now, having this in a variable instead
+                            entity.setData(IS_INSANE, true);
 
-                            if (chance <= 5.0F)
+                            if (entity instanceof ServerPlayer player)
                             {
-                                player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_5")
-                                        .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
-                            }
-                            else if (chance <= 25.0F)
-                            {
-                                player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_4")
-                                        .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
-                            }
-                            else if (chance <= 55.0F)
-                            {
-                                player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_3")
-                                        .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
-                            }
-                            else if (chance <= 75.0F)
-                            {
-                                player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_2")
-                                        .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
-                            } else
-                            {
-                                player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_1")
-                                        .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
-                            }
+                                float chance = (player.getRandom().nextFloat() * 100);
 
-                            var advancement = player.serverLevel().getServer().getAdvancements().get(DiscerningTheEldritch.id("discerning_the_eldritch/main/begin_insanity"));
-                            if (advancement != null) {
-                                player.getAdvancements().award(advancement, "insanity");
+                                if (chance <= 5.0F)
+                                {
+                                    player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_5")
+                                            .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
+                                }
+                                else if (chance <= 25.0F)
+                                {
+                                    player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_4")
+                                            .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
+                                }
+                                else if (chance <= 55.0F)
+                                {
+                                    player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_3")
+                                            .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
+                                }
+                                else if (chance <= 75.0F)
+                                {
+                                    player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_2")
+                                            .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
+                                } else
+                                {
+                                    player.connection.send(new ClientboundSetTitleTextPacket(Component.translatable("display.discerning_the_eldritch.insanity_warning_1")
+                                            .withStyle(s -> s.withColor(TextColor.fromRgb(0xF35F5F)))));
+                                }
+
+                                var advancement = player.serverLevel().getServer().getAdvancements().get(DiscerningTheEldritch.id("discerning_the_eldritch/main/begin_insanity"));
+                                if (advancement != null) {
+                                    player.getAdvancements().award(advancement, "insanity");
+                                }
                             }
                         }
                     }
@@ -612,7 +616,7 @@ public class ServerEvents {
         var wearer = event.getEntity();
         var slotContext = event.getSlotContext();
 
-        CurioBaseItem cursedItem = (CurioBaseItem) curio.getItem();
+        var cursedItem = curio.getItem();
 
         if (cursedItem instanceof CursedItem)
         {
@@ -678,12 +682,13 @@ public class ServerEvents {
             // This is so lifesteal can be done on magic attacks
             if (livingEntity instanceof ApostleOfSculkBoss apostleOfSculkBoss && source instanceof SpellDamageSource)
             {
+                float MAX_HEALTH = apostleOfSculkBoss.getMaxHealth();
                 if (apostleOfSculkBoss.getEnraged())
                 {
-                    apostleOfSculkBoss.heal(10);
+                    apostleOfSculkBoss.heal(ApostleOfSculkBoss.healFor(MAX_HEALTH, 1.5F));
                 } else
                 {
-                    apostleOfSculkBoss.heal(5);
+                    apostleOfSculkBoss.heal(ApostleOfSculkBoss.healFor(MAX_HEALTH, 1));
                 }
             }
 

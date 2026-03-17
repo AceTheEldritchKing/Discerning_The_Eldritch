@@ -122,6 +122,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.BLOOD_CULTIST_WITCH_SPAWN_EGG.get());
                         output.accept(ItemRegistries.BLOOD_MATRIARCH_SPAWN_EGG.get());
                         output.accept(ItemRegistries.ELECTROMANCER_SPAWN_EGG.get());
+                        output.accept(ItemRegistries.ENDER_RONIN_SPAWN_EGG.get());
                         output.accept(ItemRegistries.APOSTLE_OF_SCULK_SPAWN_EGG.get());
 
                         // Compat

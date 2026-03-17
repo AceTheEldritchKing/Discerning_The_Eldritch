@@ -9,6 +9,10 @@
   "school.discerning_the_eldritch.ritual": "Occult",
 
 
+  "rarity.discerning_the_eldritch_rarity_apothic.name": "Apothic",
+  "rarity.discerning_the_eldritch_rarity_divine.name": "Divine",
+
+
   "effect.discerning_the_eldritch.silence_potion_effect": "Silenced",
   "effect.discerning_the_eldritch.silence_potion_effect.description": "Prevents the user from casting spells",
   "effect.discerning_the_eldritch.metaphysical_potion_effect": "Metaphysical",
@@ -37,6 +41,10 @@
 
   "curios.identifier.artifact": "Artifact",
   "curios.modifiers.artifact": "Artifact",
+  "curios.identifier.ward": "Ward",
+  "curios.modifiers.ward": "Ward",
+  "curios.identifier.alter": "Spell Alteration",
+  "curios.modifiers.alter": "Spell Alteration",
 
 
   "fluid_type.discerning_the_eldritch.liquid_malice": "Liquid Malice",
@@ -86,6 +94,8 @@
   "item.discerning_the_eldritch.thorn_ring.desc": "Trancer - Eldritch and Ice spells have their mana costs halved (no cooldown) and their damage increased by 1.5x",
   "item.discerning_the_eldritch.lantern_of_hatred": "Lantern of Hatred",
   "item.discerning_the_eldritch.lantern_of_hatred.desc": "HATE HATE HATE...",
+  "item.discerning_the_eldritch.exorcists_aegis": "Exorcist's Aegis",
+  "item.discerning_the_eldritch.exorcists_aegis.desc": "Divine Protection - You are immune to insanity, however the costs of all eldritch spells are doubled and you have a chance to fail casted Eldritch spells",
 
   "item.discerning_the_eldritch.deep_greatsword": "Greatsword of the Depths",
   "item.discerning_the_eldritch.ymir": "Ymir, Apothic Eldritch Blade",
@@ -171,6 +181,7 @@
   "item.discerning_the_eldritch.blood_cultist_witch_spawn_egg": "Blood Cultist Witch Spawn Egg",
   "item.discerning_the_eldritch.blood_matriarch_spawn_egg": "Blood Matriarch Spawn Egg",
   "item.discerning_the_eldritch.apostle_of_sculk_spawn_egg": "Apostle Of Sculk Spawn Egg",
+  "item.discerning_the_eldritch.ender_ronin_spawn_egg": "Elderman Spawn Egg",
 
   "item.discerning_the_eldritch.cultist_base_map": "Cultist Headquarters",
 
@@ -304,6 +315,7 @@
   "entity.discerning_the_eldritch.blood_cultist_witch": "Blood Cultist Witch",
   "entity.discerning_the_eldritch.blood_matriarch": "Blood Matriarch",
   "entity.discerning_the_eldritch.apostle_of_sculk": "The Apostle Of Sculk",
+  "entity.discerning_the_eldritch.ender_ronin": "Elderman",
 
 
 
@@ -333,6 +345,7 @@
   "display.discerning_the_eldritch.apostle_of_sculk_taunt_2": "I'VE HAD ENOUGH OF YOU!",
   "display.discerning_the_eldritch.enraged_warning": "The boss is now enraged! Deal damage above their threshold to harm them!",
   "display.discerning_the_eldritch.enraged_notification": "The boss is now no longer enraged! Normal damage has returned!",
+  "display.discerning_the_eldritch.eldritch_cast_fail": "You're unable to cast this dark spell...",
 
 
 
@@ -348,6 +361,7 @@
   "subtitles.entity.ascended_one.taunt_2": "Ascended One challenges you",
   "subtitles.item.fading_lantern_rings": "Fading Lantern echoes",
   "subtitles.item.fading_lantern_beckons": "Fading Lantern beckons Her",
+  "subtitles.entity.apostle_of_sculk.hurt": "Apostle of Sculk hurts",
 
 
   "death.attack.discerning_the_eldritch.guardians_gaze": "%1$s fell from %2$s's gaze",

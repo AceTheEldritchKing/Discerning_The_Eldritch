@@ -4,6 +4,7 @@ import io.redspace.ironsspellbooks.fluids.SimpleClientFluidType;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import io.redspace.ironsspellbooks.render.ClientStaffItemExtensions;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ender_ronin.EnderRoninModel;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerModel;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sightless_maw.SightlessMawModel;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caster.TheApostleModel;
@@ -71,6 +72,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.STARDUST_AOE.get(), NoopRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.APOSTLE_OF_SCULK.get(), ApostleOfSculkRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.VOIDSPLITTER_PROJECTILE.get(), VoidsplitterRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.ENDER_RONIN.get(), EnderRoninRenderer::new);
     }
 
     @SubscribeEvent

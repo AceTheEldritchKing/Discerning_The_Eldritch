@@ -289,6 +289,15 @@ public class ItemRegistries {
     // Lantern of Hatred
     public static final Supplier<CurioBaseItem> LANTERN_OF_HATRED = ITEMS.register("lantern_of_hatred", LanternOfHatredCurio::new);
 
+    // Exorcist's Aegis - Prevents user from becoming insane at the cost of reduced Eldr. SP & increased mana cost of Eldr. spells & a chance to "fail" casting Eldr. spells
+    public static final Supplier<CurioBaseItem> EXORCISTS_AEGIS = ITEMS.register("exorcists_aegis", ExorcistsAegisCurio::new);
+
+    // Ward of Shadow - Prevents darkness when insane
+
+    // Ward of Voice - Prevents auditory hallucinations when insane
+
+    // Ward of Body - Prevents weakness when insane
+
 
     /***
      * Armor
@@ -382,6 +391,11 @@ public class ItemRegistries {
     // Apostle Of Sculk
     public static final DeferredItem<Item> APOSTLE_OF_SCULK_SPAWN_EGG = ITEMS.register("apostle_of_sculk_spawn_egg",
             () -> new DeferredSpawnEggItem(DTEEntityRegistry.APOSTLE_OF_SCULK, 2640476, 5892331,
+                    new Item.Properties()));
+
+    // Ender Ronin
+    public static final DeferredItem<Item> ENDER_RONIN_SPAWN_EGG = ITEMS.register("ender_ronin_spawn_egg",
+            () -> new DeferredSpawnEggItem(DTEEntityRegistry.ENDER_RONIN, 1709097, 2496568,
                     new Item.Properties()));
 
 

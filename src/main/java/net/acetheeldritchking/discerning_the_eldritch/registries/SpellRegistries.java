@@ -91,7 +91,7 @@ public class SpellRegistries {
 
     // Knight's Edge - Conjure a group of shadow blades with down upon a selected area. Blades cause hit entities to take more Eldritch damage
 
-    // Dark Rise - Recast; On first recast, ascend into the air. On the second, slam down on your opponent
+    // Dark Ascent - Recast; On first recast, ascend into the air. On the second, slam down on your opponent
 
     // WATEOA - If you know, you know.
 

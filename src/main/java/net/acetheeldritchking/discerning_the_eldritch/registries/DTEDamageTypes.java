@@ -29,6 +29,9 @@ public class DTEDamageTypes {
     // Devoured
     public static final ResourceKey<DamageType> DEVOURED = register("devoured");
 
+    // Sculk Corrosion
+    public static final ResourceKey<DamageType> SCULK_CORROSION = register("sculk_corrosion");
+
 
     public static void bootstrap(BootstrapContext<DamageType> context)
     {

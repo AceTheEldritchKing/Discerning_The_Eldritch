@@ -1,17 +1,17 @@
 {
     "silence_cast": {
         "sounds": [
-            "discerning_the_eldritch:silence_cast"
+            "discerning_the_eldritch:spells/silence_cast"
         ]
     },
     "clap": {
         "sounds": [
-            "discerning_the_eldritch:clap"
+            "discerning_the_eldritch:spells/clap"
         ]
     },
     "esoteric_edge_slash": {
         "sounds": [
-            "discerning_the_eldritch:esoteric_edge_slash"
+            "discerning_the_eldritch:spells/esoteric_edge_slash"
         ]
     },
     "entity.gaoler.hurt": {
@@ -65,17 +65,17 @@
     },
     "test_boss_music": {
         "sounds": [
-            "discerning_the_eldritch:test_boss_music"
+            "discerning_the_eldritch:music/test_boss_music"
         ]
     },
     "mend_flesh": {
         "sounds": [
-            "discerning_the_eldritch:mend_flesh"
+            "discerning_the_eldritch:spells/mend_flesh"
         ]
     },
     "insanity_voices": {
         "sounds": [
-            "discerning_the_eldritch:insanity_voices"
+            "discerning_the_eldritch:misc/insanity_voices"
         ]
     },
     "entity.gaoler.roar": {
@@ -110,7 +110,7 @@
     },
     "glacial_cleave_full": {
         "sounds": [
-            "discerning_the_eldritch:glacial_cleave_full"
+            "discerning_the_eldritch:spells/glacial_cleave_full"
         ]
     },
     "entity.ascended_one.hurt": {
@@ -144,94 +144,103 @@
     },
     "rift_walker_cast": {
         "sounds": [
-            "discerning_the_eldritch:rift_walker_cast"
+            "discerning_the_eldritch:spells/rift_walker_cast"
         ]
     },
     "sculk_lantern_ominous_normal": {
         "sounds": [
-            "discerning_the_eldritch:sculk_lantern_ominous_normal"
+            "discerning_the_eldritch:item/sculk_lantern_ominous_normal"
         ],
         "subtitle": "subtitles.item.fading_lantern_rings"
     },
     "sculk_lantern_ominous_success": {
         "sounds": [
-            "discerning_the_eldritch:sculk_lantern_ominous_success"
+            "discerning_the_eldritch:item/sculk_lantern_ominous_success"
         ],
         "subtitle": "subtitles.item.fading_lantern_beckons"
     },
     "esoteric_strike": {
         "sounds": [
-            "discerning_the_eldritch:esoteric_strike"
+            "discerning_the_eldritch:spells/esoteric_strike"
         ]
     },
     "esoteric_edge_slash_2": {
         "sounds": [
-            "discerning_the_eldritch:esoteric_edge_slash_2"
+            "discerning_the_eldritch:spells/esoteric_edge_slash_2"
         ]
     },
     "crystalline_carver_base": {
         "sounds": [
-            "discerning_the_eldritch:crystalline_carver_base"
+            "discerning_the_eldritch:spells/crystalline_carver_base"
         ]
     },
     "crystalline_carver_finish": {
         "sounds": [
-            "discerning_the_eldritch:crystalline_carver_finish"
+            "discerning_the_eldritch:spells/crystalline_carver_finish"
         ]
     },
     "ymir_slash": {
         "sounds": [
-            "discerning_the_eldritch:ymir_slash"
+            "discerning_the_eldritch:item/ymir_slash"
         ]
     },
     "razor_unsheathed": {
         "sounds": [
-            "discerning_the_eldritch:razor_unsheathed"
+            "discerning_the_eldritch:misc/razor_unsheathed"
         ]
     },
     "razor_sheathed": {
         "sounds": [
-            "discerning_the_eldritch:razor_sheathed"
+            "discerning_the_eldritch:misc/razor_sheathed"
         ]
     },
     "magic_sword_cast": {
         "sounds": [
-            "discerning_the_eldritch:magic_sword_cast"
+            "discerning_the_eldritch:spells/magic_sword_cast"
         ]
     },
     "devourer_wretch": {
         "sounds": [
-            "discerning_the_eldritch:devourer_wretch"
+            "discerning_the_eldritch:spells/devourer_wretch"
         ]
     },
     "dark_magic_sword_cast": {
         "sounds": [
-            "discerning_the_eldritch:dark_magic_sword_cast"
+            "discerning_the_eldritch:spells/dark_magic_sword_cast"
         ]
     },
     "dark_magic_charge_1": {
         "sounds": [
-            "discerning_the_eldritch:dark_magic_charge_1"
+            "discerning_the_eldritch:spells/dark_magic_charge_1"
         ]
     },
     "soul_slam": {
         "sounds": [
-            "discerning_the_eldritch:soul_slam"
+            "discerning_the_eldritch:spells/soul_slam"
         ]
     },
     "soul_slam_echo": {
         "sounds": [
-            "discerning_the_eldritch:soul_slam_echo"
+            "discerning_the_eldritch:spells/soul_slam_echo"
         ]
     },
     "magic_sword_blood_cast": {
         "sounds": [
-            "discerning_the_eldritch:magic_sword_blood_cast"
+            "discerning_the_eldritch:spells/magic_sword_blood_cast"
         ]
     },
     "apostle_of_sculk_theme": {
         "sounds": [
             "discerning_the_eldritch:mob/apostle_of_sculk/music/vore"
         ]
+    },
+    "entity.apostle_of_sculk.hurt": {
+        "sounds": [
+            "discerning_the_eldritch:mob/apostle_of_sculk/voice/aos_hurt_1",
+            "discerning_the_eldritch:mob/apostle_of_sculk/voice/aos_hurt_2",
+            "discerning_the_eldritch:mob/apostle_of_sculk/voice/aos_hurt_3",
+            "discerning_the_eldritch:mob/apostle_of_sculk/voice/aos_hurt_4"
+        ],
+        "subtitle": "subtitles.entity.apostle_of_sculk.hurt"
     }
 }

@@ -15,6 +15,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascende
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.minibosses.blood_matriarch.BloodMatriarchEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caster.TheApostleEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.electromancer.ElectromancerEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ender_ronin.EnderRoninEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sightless_maw.SightlessMawEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothEntity;
@@ -303,6 +304,14 @@ public class DTEEntityRegistry {
                     .sized(4.5f, 4.5f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "voidsplitter_projectile").toString())
+            );
+
+    // Ender Ronin
+    public static final DeferredHolder<EntityType<?>, EntityType<EnderRoninEntity>> ENDER_RONIN =
+            ENTITIES.register("ender_ronin", () -> EntityType.Builder.of(EnderRoninEntity::new, MobCategory.MONSTER)
+                    .sized(.6f, 1.8f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "ender_ronin").toString())
             );
 
 

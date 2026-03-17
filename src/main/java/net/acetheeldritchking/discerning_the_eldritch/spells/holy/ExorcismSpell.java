@@ -95,7 +95,7 @@ public class ExorcismSpell extends AbstractSpell {
     // If somehow someone gets the scroll and doesn't have insanity enabled, they can't cast it
     @Override
     public CastResult canBeCastedBy(int spellLevel, CastSource castSource, MagicData playerMagicData, Player player) {
-        if (!DTEServerConfig.enableInsanitySystem)
+        if (!DTEServerConfig.enableInsanitySystem && !(player.hasData(INSANITY_METER) || player.hasData(IS_INSANE)))
         {
             if (player instanceof ServerPlayer serverPlayer)
             {
