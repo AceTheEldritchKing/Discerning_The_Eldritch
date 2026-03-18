@@ -218,6 +218,7 @@ public class ServerEvents {
         if (entity.getData(IS_INSANE) == true && entity.tickCount % 100 == 0)
         {
             entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 110, 9, false, false, false));
+            entity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.AUDITORY_HALLUCINATION, 110, 9, false, false, false));
         }
     }
 

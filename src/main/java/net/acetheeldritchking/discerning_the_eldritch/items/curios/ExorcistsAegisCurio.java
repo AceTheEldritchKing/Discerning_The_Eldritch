@@ -63,12 +63,13 @@ public class ExorcistsAegisCurio extends FlatCooldownPassiveAbilityCurio {
 
                 event.setManaCost(newManaCost);
 
-                DiscerningTheEldritch.LOGGER.debug("OG Mana Cost: " + originalManaCost);
-                DiscerningTheEldritch.LOGGER.debug("New Mana Cost: " + event.getManaCost());
+                //DiscerningTheEldritch.LOGGER.debug("OG Mana Cost: " + originalManaCost);
+                //DiscerningTheEldritch.LOGGER.debug("New Mana Cost: " + event.getManaCost());
             }
         }
     }
 
+    // Have the chance be configurable
     @SubscribeEvent
     public static void failSpellCast(SpellPreCastEvent event)
     {

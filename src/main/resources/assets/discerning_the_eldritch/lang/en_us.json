@@ -37,6 +37,8 @@
   "effect.discerning_the_eldritch.scorched_soul_potion_effect.description": "Take increased damage from fire magic or if you are on fire while the attacker is holding the Soul Fire Scythe",
   "effect.discerning_the_eldritch.ruin_potion_effect": "Ruin",
   "effect.discerning_the_eldritch.ruin_potion_effect.description": "Take increased damage from Eldritch magic",
+  "effect.discerning_the_eldritch.auditory_hallucination_potion_effect": "Auditory Hallucination",
+  "effect.discerning_the_eldritch.auditory_hallucination_potion_effect.description": "You're hearing things you know aren't there... are they...?",
 
 
   "curios.identifier.artifact": "Artifact",
