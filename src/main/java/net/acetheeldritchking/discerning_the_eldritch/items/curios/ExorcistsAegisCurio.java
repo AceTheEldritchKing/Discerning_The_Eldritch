@@ -13,6 +13,7 @@ import net.acetheeldritchking.aces_spell_utils.items.curios.FlatCooldownPassiveA
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTERarities;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
@@ -83,7 +84,7 @@ public class ExorcistsAegisCurio extends FlatCooldownPassiveAbilityCurio {
             {
                 float chance = (caster.getRandom().nextFloat() * 100);
 
-                if (chance <= 25.0F)
+                if (chance <= DTEServerConfig.exorcistsAegisFailChance)
                 {
                     if (caster instanceof ServerPlayer serverPlayer)
                     {

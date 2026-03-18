@@ -15,16 +15,16 @@ public class DTEServerConfig
 
 
     // Mend Flesh
-    private static final ModConfigSpec.BooleanValue MEND_FLESH_LIFESTEAL = BUILDER
+    private static final ModConfigSpec.ConfigValue<Boolean> MEND_FLESH_LIFESTEAL = BUILDER
             .comment("Defines whether or not mend flesh will heal on entity hit. Default is true")
             .define("Mend flesh lifesteal", true);
 
-    private static final ModConfigSpec.BooleanValue MEND_FLESH_EXP_GAIN = BUILDER
+    private static final ModConfigSpec.ConfigValue<Boolean> MEND_FLESH_EXP_GAIN = BUILDER
             .comment("Defines whether or not mend flesh will heal on XP gain. Default is true")
             .define("Mend flesh exp gain", true);
 
     // Insanity System
-    private static final ModConfigSpec.BooleanValue ELDRITCH_INSANITY_SYSTEM = BUILDER
+    private static final ModConfigSpec.ConfigValue<Boolean> ELDRITCH_INSANITY_SYSTEM = BUILDER
             .comment("Defines whether or not to enable the insanity system. Everytime an Eldritch spell is cast, it increases your insanity.")
             .comment("Default is false")
             .define("Enable insanity system", false);
@@ -35,7 +35,7 @@ public class DTEServerConfig
             .define("Max value for insanity", 15);
 
     // Abracadabra Effects
-    private static final ModConfigSpec.BooleanValue ENABLE_ABRACADABRA_DAMAGE_CAP = BUILDER
+    private static final ModConfigSpec.ConfigValue<Boolean> ENABLE_ABRACADABRA_DAMAGE_CAP = BUILDER
             .comment("Defines whether or not to enable Abracadabra's damage cap abilities.")
             .comment("Default is true")
             .define("Enable Abracadabra's damage cap", true);
@@ -45,7 +45,7 @@ public class DTEServerConfig
             .comment("Default is [80]")
             .define("Base damage cap", 80);
 
-    private static final ModConfigSpec.BooleanValue ENABLE_ABRACADABRA_HEX_PREVENTION = BUILDER
+    private static final ModConfigSpec.ConfigValue<Boolean> ENABLE_ABRACADABRA_HEX_PREVENTION = BUILDER
             .comment("Defines whether or not to enable Abracadabra's hex prevention abilities. This prevents the user from gaining negative potion effects.")
             .comment("Default is true")
             .define("Enable Abracadabra's hex prevention", true);
@@ -82,9 +82,15 @@ public class DTEServerConfig
             .comment("Default is [5.5F]")
             .define("Mourning Star Damage Multiplier", 5.5F);
 
+    // Exorcist's Aegis
+    private static final ModConfigSpec.ConfigValue<Float> EXORCISTS_AEGIS_FAIL_CHANCE = BUILDER
+            .comment("Defines the fail chance for casting an Eldritch spell with Exorcist's Aegis equipped")
+            .comment("Default is [25.0F]")
+            .define("Exorcist's Aegis fail chance", 25.0F);
+
     // Boss Damage Caps //
     // Ascended One
-    private static final ModConfigSpec.BooleanValue ENABLED_ASCENDED_ONE_DAMAGE_CAP = BUILDER
+    private static final ModConfigSpec.ConfigValue<Boolean> ENABLED_ASCENDED_ONE_DAMAGE_CAP = BUILDER
             .comment("Defines whether or not to enable Ascended One's damage cap.")
             .comment("Default is true")
             .define("Enable Ascended One's damage cap", true);
@@ -95,7 +101,7 @@ public class DTEServerConfig
             .define("Base Ascended One damage cap", 100);
 
     // Apostle of Sculk
-    private static final ModConfigSpec.BooleanValue ENABLED_APOSTLE_OF_SCULK_DAMAGE_CAP = BUILDER
+    private static final ModConfigSpec.ConfigValue<Boolean> ENABLED_APOSTLE_OF_SCULK_DAMAGE_CAP = BUILDER
             .comment("Defines whether or not to enable Apostle of Sculk's damage cap.")
             .comment("Default is true")
             .define("Enable Apostle of Sculk damage cap", true);
@@ -114,7 +120,7 @@ public class DTEServerConfig
 
     // Trading //
     // Blood Cultist Aggro
-    private static final ModConfigSpec.BooleanValue BLOOD_CULTIST_AGGRESSION = BUILDER
+    private static final ModConfigSpec.ConfigValue<Boolean> BLOOD_CULTIST_AGGRESSION = BUILDER
             .comment("Defines whether or not to enable blood cultist aggression.")
             .comment("This means blood cultists will attack you on sight if your blood spell power is below 1.15x.")
             .comment("Default is false")
@@ -122,7 +128,7 @@ public class DTEServerConfig
 
     // CLIENT //
     // Gaoler Screenshake
-    private static final ModConfigSpec.BooleanValue ENABLE_GAOLER_SCREENSHAKE = BUILDER
+    private static final ModConfigSpec.ConfigValue<Boolean> ENABLE_GAOLER_SCREENSHAKE = BUILDER
             .comment("Defines whether or not to enable the Gaoler's walking screenshake.")
             .comment("Default is true")
             .define("Enable Gaoler's walking screenshake", true);
@@ -150,6 +156,7 @@ public class DTEServerConfig
     public static boolean gaolerWalkingScreenshake;
     public static float mourningStarMortalDamageMultiplier;
     public static boolean enableBloodCultistAggression;
+    public static float exorcistsAegisFailChance;
 
 
     @SubscribeEvent
@@ -170,6 +177,7 @@ public class DTEServerConfig
         razorSheathCooldown = RAZOR_SHEATH_COOLDOWN.get();
         razorSheathMultiplier = RAZOR_SHEATH_MULTIPLIER.get();
         mourningStarMortalDamageMultiplier = MOURNING_STAR_MORTAL_DAMAGE_MULTIPLIER.get();
+        exorcistsAegisFailChance = EXORCISTS_AEGIS_FAIL_CHANCE.get();
 
         enableAscendedOneDamageCap = ENABLED_ASCENDED_ONE_DAMAGE_CAP.get();
         ascendedOneDamageCap = ASCENDED_ONE_DAMAGE_CAP_VALUE.get();
