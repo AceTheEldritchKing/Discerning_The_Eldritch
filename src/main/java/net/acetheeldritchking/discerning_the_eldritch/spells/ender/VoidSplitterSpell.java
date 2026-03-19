@@ -60,6 +60,21 @@ public class VoidSplitterSpell extends AbstractSpell {
     }
 
     @Override
+    public boolean canBeCraftedBy(Player player) {
+        return false;
+    }
+
+    @Override
+    public boolean allowCrafting() {
+        return false;
+    }
+
+    @Override
+    public boolean allowLooting() {
+        return false;
+    }
+
+    @Override
     public AnimationHolder getCastStartAnimation() {
         if (isFirstCast)
         {

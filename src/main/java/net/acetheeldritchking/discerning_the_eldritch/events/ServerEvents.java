@@ -493,9 +493,9 @@ public class ServerEvents {
 
                         // Insta-kill w/o insta-killing
                         float baseDamage = event.getOriginalAmount();
-                        float newDamage = baseDamage * ((Float) DTEServerConfig.mourningStarMortalDamageMultiplier);
+                        double newDamage = baseDamage * (DTEServerConfig.mourningStarMortalDamageMultiplier);
 
-                        event.setAmount(newDamage);
+                        event.setAmount((float) newDamage);
 
                         //DiscerningTheEldritch.LOGGER.debug("Post Max HP: " + MAX_HEALTH);
                         //DiscerningTheEldritch.LOGGER.debug("Post Base HP: " + baseHealth);

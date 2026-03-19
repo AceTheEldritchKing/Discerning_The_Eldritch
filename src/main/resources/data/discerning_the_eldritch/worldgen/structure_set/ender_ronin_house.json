@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "discerning_the_eldritch:ender_ronin_house",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "exclusion_zone": {
+      "chunk_count": 3,
+      "other_set": "minecraft:end_cities"
+    },
+    "spacing": 35,
+    "separation": 20,
+    "salt": 6139437881
+  }
+}

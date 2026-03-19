@@ -48,6 +48,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.CASTERS_MANTLE.get());
                         output.accept(ItemRegistries.IRONBOUND_FEATHER.get());
                         output.accept(ItemRegistries.RIFT_RIPPER_EMBLEM.get());
+                        output.accept(ItemRegistries.EXORCISTS_AEGIS.get());
                         output.accept(ItemRegistries.THORN_RING.get());
                         output.accept(ItemRegistries.LANTERN_OF_HATRED.get());
                         //output.accept(ItemRegistries.KINGS_EFFIGY.get());

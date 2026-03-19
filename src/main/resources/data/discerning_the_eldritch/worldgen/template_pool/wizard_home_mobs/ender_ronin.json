@@ -1,0 +1,15 @@
+{
+  "name": "discerning_the_eldritch:wizard_home_mobs/ender_ronin",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "discerning_the_eldritch:wizard_home_mobs/ender_ronin",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      }
+    }
+  ]
+}
