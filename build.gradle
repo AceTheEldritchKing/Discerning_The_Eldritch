@@ -239,7 +239,7 @@ dependencies {
 
     // Ace's Spell Utils (REQUIRED - It's literally my API mod)
     //implementation "curse.maven:aces-spell-utils-1299492:7586646"
-    implementation("net.acetheeldritchking.aces_spell_utils:aces_spell_utils:1.2.3.1-1.21.1-a")
+    implementation("net.acetheeldritchking.aces_spell_utils:aces_spell_utils:1.2.4.6-1.21.1-a")
 
     //QOL
     //todo: 1.21: update these mods
@@ -249,13 +249,13 @@ dependencies {
     // COMPAT //
 
     // Pastel
-    /*localRuntime "curse.maven:pastel-1264556:6847961"
+    localRuntime "curse.maven:pastel-1264556:6847961"
     compileOnly "curse.maven:pastel-1264556:6847961"
     localRuntime "curse.maven:databank-1181408:7007287"
     compileOnly "curse.maven:databank-1181408:7007287"
     implementation "curse.maven:modonomicon-538392:7086032"
     localRuntime "curse.maven:pasteljei-1297526:6892907"
-    compileOnly "curse.maven:pasteljei-1297526:6892907"*/
+    compileOnly "curse.maven:pasteljei-1297526:6892907"
 
     // JSON ******************************************************************************************************
     implementation "com.google.code.gson:gson:${gson_version}"

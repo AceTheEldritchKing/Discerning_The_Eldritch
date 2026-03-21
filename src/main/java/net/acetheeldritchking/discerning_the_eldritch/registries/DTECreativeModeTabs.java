@@ -4,6 +4,7 @@ import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.item.FurledMapItem;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.compat.CompatManager;
+import net.acetheeldritchking.discerning_the_eldritch.compat.pastel.PastelCompatBlocks;
 import net.acetheeldritchking.discerning_the_eldritch.compat.pastel.PastelCompatItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -153,6 +154,13 @@ public class DTECreativeModeTabs {
                         output.accept(BlockRegistries.STARSTONE_CLUSTER.get());
                         // Decor
                         output.accept(BlockRegistries.RESONATING_DEEPSLATE.get());
+
+                        // Compat
+                        if (CompatManager.isPastelLoaded())
+                        {
+                            // Gemstone Blocks
+                            output.accept(PastelCompatBlocks.POLISHED_STARSTONE_BLOCK.get());
+                        }
                     }).build());
 
     public static void register(IEventBus eventBus)

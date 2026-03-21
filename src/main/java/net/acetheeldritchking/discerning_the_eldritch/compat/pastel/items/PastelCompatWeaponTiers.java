@@ -1,4 +1,4 @@
-package net.acetheeldritchking.discerning_the_eldritch.compat.pastel;
+package net.acetheeldritchking.discerning_the_eldritch.compat.pastel.items;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;

@@ -10,6 +10,7 @@ import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import io.redspace.ironsspellbooks.entity.mobs.goals.melee.AttackAnimationData;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.GenericAnimatedWarlockAttackGoal;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
+import net.acetheeldritchking.aces_spell_utils.entity.mobs.UniqueAbstractMeleeCastingMob;
 import net.acetheeldritchking.aces_spell_utils.entity.mobs.UniqueAbstractSpellCastingMob;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
@@ -36,57 +37,18 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import java.util.List;
 import java.util.UUID;
 
-public class UntoldBehemothEntity extends UniqueAbstractSpellCastingMob implements IMagicSummon, GeoAnimatable, IAnimatedAttacker {
+public class UntoldBehemothEntity extends UniqueAbstractMeleeCastingMob implements IMagicSummon {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     protected UUID summonerUUID;
 
     public UntoldBehemothEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         xpReward = 0;
-        this.lookControl = createLookControl();
-        this.moveControl = createMoveControl();
         noCulling = true;
     }
 
     public UntoldBehemothEntity(Level level, LivingEntity owner) {
         this(DTEEntityRegistry.UNTOLD_BEHEMOTH.get(), level);
-    }
-
-    protected LookControl createLookControl()
-    {
-        return new LookControl(this)
-        {
-            @Override
-            protected float rotateTowards(float from, float to, float maxDelta) {
-                return super.rotateTowards(from, to, maxDelta * 2.5F);
-            }
-
-            @Override
-            protected boolean resetXRotOnTick() {
-                return getTarget() == null;
-            }
-        };
-    }
-
-    protected MoveControl createMoveControl()
-    {
-        return new MoveControl(this)
-        {
-            @Override
-            protected float rotlerp(float sourceAngle, float targetAngle, float maximumChange) {
-                double x = this.wantedX - this.mob.getX();
-                double z = this.wantedZ - this.mob.getZ();
-
-                if (x * x + z * z < 0.5F)
-                {
-                    return sourceAngle;
-                }
-                else
-                {
-                    return super.rotlerp(sourceAngle, targetAngle, maximumChange * 0.25F);
-                }
-            }
-        };
     }
 
     @Override
@@ -166,7 +128,7 @@ public class UntoldBehemothEntity extends UniqueAbstractSpellCastingMob implemen
     }
 
     // Geckolib & Animations
-    RawAnimation animationToPlay = null;
+    /*RawAnimation animationToPlay = null;
     private final AnimationController<UntoldBehemothEntity> attackAnimationController = new AnimationController<>(this, "attack_controller", 0, this::attackPredicate);
     private final AnimationController<UntoldBehemothEntity> animationController = new AnimationController<>(this, "controller", 0, this::predicate);
     private final AnimationController<UntoldBehemothEntity> castingAnimationController = new AnimationController<>(this, "casting_controller", 0, this::castingPredicate);
@@ -232,7 +194,7 @@ public class UntoldBehemothEntity extends UniqueAbstractSpellCastingMob implemen
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.cache;
-    }
+    }*/
 
     @Override
     public double getTick(Object object) {

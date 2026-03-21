@@ -2,6 +2,7 @@ package net.acetheeldritchking.discerning_the_eldritch.compat.pastel;
 
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
+import net.acetheeldritchking.discerning_the_eldritch.compat.pastel.items.DreamReaverYmirItem;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEFluidRegistry;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;

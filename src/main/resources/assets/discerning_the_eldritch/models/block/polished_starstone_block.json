@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "discerning_the_eldritch:block/polished_starstone_block_bottom",
+    "side": "discerning_the_eldritch:block/polished_starstone_block",
+    "top": "discerning_the_eldritch:block/polished_starstone_block_top"
+  }
+}
