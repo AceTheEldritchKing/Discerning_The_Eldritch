@@ -203,6 +203,8 @@ public class SpellRegistries {
 
     // Transmutation - A generic spell used for transmutating certain materials for crafting
 
+    // Allegiance: Apostle of Sculk - Summons AoS as an ally, a special spell just for
+
 
     public static void register(IEventBus eventBus)
     {

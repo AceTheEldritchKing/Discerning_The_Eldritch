@@ -15,6 +15,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caste
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.electromancer.ElectromancerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ender_ronin.EnderRoninEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sculk_mobs.the_assimilated.AssimilatedEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sightless_maw.SightlessMawEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.razor_blade.RazorBlade;
@@ -46,5 +47,6 @@ public class CommonSetup {
         event.put(DTEEntityRegistry.BLOOD_MATRIARCH.get(), BloodMatriarchEntity.createAttributes().build());
         event.put(DTEEntityRegistry.APOSTLE_OF_SCULK.get(), ApostleOfSculkBoss.createAttributes().build());
         event.put(DTEEntityRegistry.ENDER_RONIN.get(), EnderRoninEntity.createAttributes().build());
+        event.put(DTEEntityRegistry.ASSIMILATED_ENTITY.get(), AssimilatedEntity.createAttributes().build());
     }
 }

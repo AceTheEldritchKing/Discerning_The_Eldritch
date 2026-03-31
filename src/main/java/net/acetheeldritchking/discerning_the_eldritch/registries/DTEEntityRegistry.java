@@ -17,6 +17,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caste
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.electromancer.ElectromancerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.ender_ronin.EnderRoninEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sculk_mobs.the_assimilated.AssimilatedEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.sightless_maw.SightlessMawEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.untold_behemoth.UntoldBehemothEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.blade_of_rancor.BladeOfRancorProjectile;
@@ -312,6 +313,23 @@ public class DTEEntityRegistry {
                     .sized(.6f, 1.8f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "ender_ronin").toString())
+            );
+
+    // Assimilated
+    public static final DeferredHolder<EntityType<?>, EntityType<AssimilatedEntity>> ASSIMILATED_ENTITY =
+            ENTITIES.register("assimilated", () -> EntityType.Builder.<AssimilatedEntity>of
+                            (AssimilatedEntity::new, MobCategory.MONSTER).
+                    sized(.6f, 1.8f)
+                    .build(
+                            ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "assimilated").toString()
+                    ));
+
+    // Sculk Slam AoE
+    public static final DeferredHolder<EntityType<?>, EntityType<SoulEruptionAoe>> SCULK_SLAM_AOE =
+            ENTITIES.register("sculk_slam", () -> EntityType.Builder.<SoulEruptionAoe>of(SoulEruptionAoe::new, MobCategory.MISC)
+                    .sized(4f, .8f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "sculk_slam").toString())
             );
 
 

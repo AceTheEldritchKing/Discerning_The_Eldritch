@@ -11,6 +11,7 @@ import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.SpellDamageSource;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
+import net.acetheeldritchking.aces_spell_utils.registries.ASSchoolRegistry;
 import net.acetheeldritchking.aces_spell_utils.spells.ASSpellAnimations;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
@@ -41,7 +42,7 @@ public class RavenousRevenantSpell extends AbstractRitualSpell {
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.LEGENDARY)
-            .setSchoolResource(DTESchoolRegistry.RITUAL_RESOURCE)
+            .setSchoolResource(ASSchoolRegistry.RITUAL_RESOURCE)
             .setMaxLevel(1)
             .setCooldownSeconds(35)
             .build();

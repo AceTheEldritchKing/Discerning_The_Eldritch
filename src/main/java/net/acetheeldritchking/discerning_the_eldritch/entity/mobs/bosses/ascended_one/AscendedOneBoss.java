@@ -80,10 +80,12 @@ import java.util.List;
 
 public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttacker {
     // This method is only needed if you plan on summoning the boss with a spell
-    public AscendedOneBoss(Level level)
+    // And Torment Mode, that too
+    public AscendedOneBoss(Level level, boolean isTormentMode)
     {
         this(DTEEntityRegistry.ASCENDED_ONE.get(), level);
         setPersistenceRequired();
+        setTormentMode(isTormentMode);
     }
 
     // Constructor for the boss
@@ -102,6 +104,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
     // These are used for doing boss bars, setting up the phase serializer for NBT, and stopping and starting music
     private ExtendedServerBossEvent bossEvent;
     private final static EntityDataAccessor<Integer> PHASE = SynchedEntityData.defineId(AscendedOneBoss.class, EntityDataSerializers.INT);
+    private final static EntityDataAccessor<Boolean> TORMENT_MODE = SynchedEntityData.defineId(AscendedOneBoss.class, EntityDataSerializers.BOOLEAN);
     public static final byte CLIENT_STOP_TRACKING = 0;
     public static final byte CLIENT_START_TRACKING = 1;
     //public static final byte START_MUSIC = 2;
@@ -764,6 +767,8 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 ;
     }
 
+    // Setters & Getters
+    // Phases
     @Override
     public void setPhase(int phase) {
         this.entityData.set(PHASE, phase);
@@ -774,12 +779,23 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         return this.entityData.get(PHASE);
     }
 
+    // Torment Mode
+    public void setTormentMode(boolean tormentMode) {
+        this.entityData.set(TORMENT_MODE, tormentMode);
+    }
+
+    public boolean getTormentMode() {
+        return this.entityData.get(TORMENT_MODE);
+    }
+
     // NBT
     @Override
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         // Phases
         pCompound.putInt("phase", getPhase());
+        // Torment Mode
+        pCompound.putBoolean("is_torment_mode", getTormentMode());
     }
 
     @Override
@@ -817,12 +833,16 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         {
             this.bossEvent.setName(this.getDisplayName());
         }
+
+        // Torment Mode
+        setTormentMode(pCompound.getBoolean("is_torment_mode"));
     }
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
         super.defineSynchedData(pBuilder);
         pBuilder.define(PHASE, 0);
+        pBuilder.define(TORMENT_MODE, false);
     }
 
     @Override

@@ -40,6 +40,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.STARMETAL_INGOT.get());
                         output.accept(ItemRegistries.STARMETAL_NUGGET.get());
                         output.accept(ItemRegistries.STARSTONE.get());
+                        output.accept(ItemRegistries.VEHEMITE_INGOT.get());
                         // Map Items
                         output.accept(FurledMapItem.of(DiscerningTheEldritch.id("cultist_base"),
                                 ResourceKey.create(Registries.DIMENSION, ResourceLocation.withDefaultNamespace("overworld")), Component.translatable("item.discerning_the_eldritch.cultist_base_map"), true));
@@ -52,6 +53,8 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.EXORCISTS_AEGIS.get());
                         output.accept(ItemRegistries.THORN_RING.get());
                         output.accept(ItemRegistries.LANTERN_OF_HATRED.get());
+                        output.accept(ItemRegistries.STRANGE_IDOL.get());
+                        output.accept(ItemRegistries.TORMENT_NEXUS.get());
                         //output.accept(ItemRegistries.KINGS_EFFIGY.get());
                         // Sheaths
                         output.accept(ItemRegistries.PYRIUM_SHEATH.get());
@@ -125,6 +128,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.BLOOD_MATRIARCH_SPAWN_EGG.get());
                         output.accept(ItemRegistries.ELECTROMANCER_SPAWN_EGG.get());
                         output.accept(ItemRegistries.ENDER_RONIN_SPAWN_EGG.get());
+                        output.accept(ItemRegistries.ASSIMILATED_SPAWN_EGG.get());
                         output.accept(ItemRegistries.APOSTLE_OF_SCULK_SPAWN_EGG.get());
 
                         // Compat

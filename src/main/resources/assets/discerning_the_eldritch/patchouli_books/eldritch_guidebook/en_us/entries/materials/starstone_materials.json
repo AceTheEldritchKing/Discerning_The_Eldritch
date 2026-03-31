@@ -1,0 +1,37 @@
+{
+  "name": "Starstone",
+  "icon": "discerning_the_eldritch:starstone",
+  "category": "discerning_the_eldritch:materials",
+  "advancement": "minecraft:end/kill_dragon",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A gemstone hailing from The End, it's crystalline and metallic makeup allows it to be used for various purposes."
+    },
+    {
+      "title": "Where To Find",
+      "type": "patchouli:text",
+      "text": "Starstone itself is dropped from Starstone clusters, which can be found in the End - often accompanying various mining structures nearby."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "discerning_the_eldritch:starmetal_nugget"
+      },
+      "text": "Dropped from starstone ore, this nugget when combined with starstone will create a metal known as Starmetal."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "discerning_the_eldritch:starmetal_ingot"
+      },
+      "text": "An ingot created from starmetal nuggets and starstone, this metal amplifies the power of Ender magic and is used to craft various equipment."
+    },
+    {
+      "type": "patchouli:crafting",
+      "title": "Starmetal Ingot Crafting",
+      "recipe": "discerning_the_eldritch:starmetal",
+      "text": "Combining raw slag and a gemstone to create a metal, how curious."
+    }
+  ]
+}

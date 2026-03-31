@@ -1,0 +1,19 @@
+{
+    "loader": "neoforge:item_layers",
+    "parent": "item/generated",
+    "render_type": "cutout",
+    "textures": {
+        "layer0": "discerning_the_eldritch:item/torment_nexus",
+        "layer1": "discerning_the_eldritch:item/torment_nexus_glowmask"
+    },
+    "neoforge_data": {
+        "layers": {
+            "1": {
+                "color": "FFFFFFFF",
+                "block_light": 15,
+                "sky_light": 15,
+                "ambient_occlusion": false
+            }
+        }
+    }
+}

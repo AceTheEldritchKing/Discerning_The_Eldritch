@@ -1,6 +1,6 @@
 {
   "amount": 0.05,
-  "attribute": "discerning_the_eldritch:ritual_spell_power",
+  "attribute": "aces_spell_utils:ritual_spell_power",
   "containerItem": {
     "count": 1,
     "id": "discerning_the_eldritch:ritual_upgrade_orb"

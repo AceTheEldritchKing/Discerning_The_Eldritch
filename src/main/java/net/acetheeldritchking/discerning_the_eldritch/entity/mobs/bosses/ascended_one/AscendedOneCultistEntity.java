@@ -102,7 +102,7 @@ public class AscendedOneCultistEntity extends AbstractSpellCastingMob {
             ++currentAnimTime;
             if (!level().isClientSide) {
                 if (currentAnimTime > animLength) {
-                    AscendedOneBoss ascendedOneBoss = new AscendedOneBoss(level());
+                    AscendedOneBoss ascendedOneBoss = new AscendedOneBoss(level(), false);
                     ascendedOneBoss.moveTo(this.position());
                     ascendedOneBoss.finalizeSpawn((ServerLevelAccessor) level(), level().getCurrentDifficultyAt(ascendedOneBoss.getOnPos()), MobSpawnType.TRIGGERED, null);
 

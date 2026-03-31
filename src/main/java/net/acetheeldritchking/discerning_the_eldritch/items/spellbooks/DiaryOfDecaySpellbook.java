@@ -7,6 +7,7 @@ import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import io.redspace.ironsspellbooks.util.TooltipsUtils;
 import net.acetheeldritchking.aces_spell_utils.items.curios.PassiveAbilitySpellbook;
+import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEAttributeRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
@@ -27,7 +28,7 @@ public class DiaryOfDecaySpellbook extends PassiveAbilitySpellbook {
         this.withSpellbookAttributes(
                 new AttributeContainer(AttributeRegistry.BLOOD_SPELL_POWER, .15F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
                 new AttributeContainer(AttributeRegistry.SPELL_RESIST, .05F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-                new AttributeContainer(DTEAttributeRegistry.RITUAL_MAGIC_POWER, .05F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                new AttributeContainer(ASAttributeRegistry.RITUAL_MAGIC_POWER, .05F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
                 new AttributeContainer(AttributeRegistry.MAX_MANA, 250, AttributeModifier.Operation.ADD_VALUE)
         );
     }

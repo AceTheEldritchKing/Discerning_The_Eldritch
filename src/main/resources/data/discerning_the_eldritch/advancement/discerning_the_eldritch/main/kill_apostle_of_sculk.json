@@ -1,0 +1,40 @@
+{
+  "display": {
+    "icon": {
+      "id": "discerning_the_eldritch:fading_sculk_lantern"
+    },
+    "title": {
+      "translate": "advancements.discerning_the_eldritch.kill_apostle_of_sculk.title"
+    },
+    "description": {
+      "translate": "advancements.discerning_the_eldritch.kill_apostle_of_sculk.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "discerning_the_eldritch:discerning_the_eldritch/main/apostle_of_sculk_fight",
+  "criteria": {
+    "apostle_of_sculk": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "discerning_the_eldritch:apostle_of_sculk"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "apostle_of_sculk"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

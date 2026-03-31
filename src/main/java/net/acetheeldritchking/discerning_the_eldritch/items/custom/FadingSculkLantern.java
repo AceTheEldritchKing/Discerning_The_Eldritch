@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.registries.PoiTypeRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
+import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkBoss;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPoiRegistry;
@@ -91,6 +92,11 @@ public class FadingSculkLantern extends Item {
                     apostleOfSculkBoss.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(player.blockPosition()), MobSpawnType.MOB_SUMMONED, null);
                     level.addFreshEntity(apostleOfSculkBoss);
                     onUseEffects(serverPlayer, serverLevel, player.position(), true);
+
+                    var advancement = serverPlayer.serverLevel().getServer().getAdvancements().get(DiscerningTheEldritch.id("discerning_the_eldritch/main/apostle_of_sculk_fight"));
+                    if (advancement != null) {
+                        serverPlayer.getAdvancements().award(advancement, "apostle_of_sculk_fight");
+                    }
                 } else
                 {
                     serverPlayer.connection.send(new ClientboundSetActionBarTextPacket(Component.translatable("display.discerning_the_eldritch.fading_sculk_lantern_fail_2")

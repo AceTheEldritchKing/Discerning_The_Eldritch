@@ -3,11 +3,11 @@ package net.acetheeldritchking.discerning_the_eldritch.spells.ritual;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-import io.redspace.ironsspellbooks.api.spells.AutoSpellConfig;
 import io.redspace.ironsspellbooks.api.spells.CastSource;
 import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import net.acetheeldritchking.aces_spell_utils.registries.ASSchoolRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESchoolRegistry;
@@ -38,7 +38,7 @@ public class CallAscendedOneSpell extends AbstractRitualSpell {
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.LEGENDARY)
-            .setSchoolResource(DTESchoolRegistry.RITUAL_RESOURCE)
+            .setSchoolResource(ASSchoolRegistry.RITUAL_RESOURCE)
             .setMaxLevel(1)
             .setCooldownSeconds(1000)
             .build();
@@ -91,7 +91,7 @@ public class CallAscendedOneSpell extends AbstractRitualSpell {
 
     private void spawnAscendedOneBoss(double x, double y, double z, LivingEntity caster, Level level, int spellLevel)
     {
-        AscendedOneBoss ascendedOneBoss = new AscendedOneBoss(level);
+        AscendedOneBoss ascendedOneBoss = new AscendedOneBoss(level, false);
 
         ascendedOneBoss.setPos(x, y, z);
         ascendedOneBoss.setOldPosAndRot();

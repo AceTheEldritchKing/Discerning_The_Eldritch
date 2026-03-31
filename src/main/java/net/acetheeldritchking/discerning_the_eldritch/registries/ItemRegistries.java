@@ -218,22 +218,26 @@ public class ItemRegistries {
 
     // Soul Ember
     public static final DeferredHolder<Item, Item> SOUL_EMBER = ITEMS.register("soul_ember",
-            () -> new Item(ItemPropertiesHelper.material().rarity(ASRarities.AQUATIC_RARITY_PROXY.getValue())));
+            () -> new Item(ItemPropertiesHelper.material().rarity(DTERarities.SOUL_BURNED_RARITY_PROXY.getValue())));
 
     // Ascended One Lootbag
     public static final DeferredHolder<Item, Item> ASCENDED_ONE_LOOTBAG = ITEMS.register("ascended_one_lootbag", AscendedOneLootbag::new);
 
     // Starmetal Ingot
     public static final DeferredHolder<Item, Item> STARMETAL_INGOT = ITEMS.register("starmetal_ingot",
-            () -> new Item(ItemPropertiesHelper.material().fireResistant().rarity(ASRarities.ARID_RARITY_PROXY.getValue())));
+            () -> new Item(ItemPropertiesHelper.material().fireResistant().rarity(DTERarities.STARDUST_RARITY_PROXY.getValue())));
 
     // Starmetal Nugget
     public static final DeferredHolder<Item, Item> STARMETAL_NUGGET = ITEMS.register("starmetal_nugget",
-            () -> new Item(ItemPropertiesHelper.material().fireResistant().rarity(ASRarities.ARID_RARITY_PROXY.getValue())));
+            () -> new Item(ItemPropertiesHelper.material().fireResistant().rarity(DTERarities.STARDUST_RARITY_PROXY.getValue())));
 
     // Starstone
     public static final DeferredHolder<Item, Item> STARSTONE = ITEMS.register("starstone",
-            () -> new Item(ItemPropertiesHelper.material().fireResistant().rarity(ASRarities.ARID_RARITY_PROXY.getValue())));
+            () -> new Item(ItemPropertiesHelper.material().fireResistant().rarity(DTERarities.STARDUST_RARITY_PROXY.getValue())));
+
+    // Vehemite Ingot
+    public static final DeferredHolder<Item, Item> VEHEMITE_INGOT = ITEMS.register("vehemite_ingot",
+            () -> new Item(ItemPropertiesHelper.material().fireResistant().rarity(DTERarities.APOTHIC_RARITY_PROXY.getValue())));
 
 
     /***
@@ -297,6 +301,14 @@ public class ItemRegistries {
     // Ward of Voice - Prevents auditory hallucinations when insane
 
     // Ward of Body - Prevents weakness when insane
+
+    // Ward of Clarity - Prevents all debuffs when insane
+
+    // Strange Idol
+    public static final Supplier<CurioBaseItem> STRANGE_IDOL = ITEMS.register("strange_idol", StrangeIdolCurio::new);
+
+    // Torment Nexus
+    public static final Supplier<CurioBaseItem> TORMENT_NEXUS = ITEMS.register("torment_nexus", TormentNexusCurio::new);
 
 
     /***
@@ -396,6 +408,11 @@ public class ItemRegistries {
     // Ender Ronin
     public static final DeferredItem<Item> ENDER_RONIN_SPAWN_EGG = ITEMS.register("ender_ronin_spawn_egg",
             () -> new DeferredSpawnEggItem(DTEEntityRegistry.ENDER_RONIN, 1709097, 2496568,
+                    new Item.Properties()));
+
+    // Assimilated
+    public static final DeferredItem<Item> ASSIMILATED_SPAWN_EGG = ITEMS.register("assimilated_spawn_egg",
+            () -> new DeferredSpawnEggItem(DTEEntityRegistry.ASSIMILATED_ENTITY, 2640476, 5892331,
                     new Item.Properties()));
 
 

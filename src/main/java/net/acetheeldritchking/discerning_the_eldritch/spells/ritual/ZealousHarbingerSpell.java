@@ -7,6 +7,7 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MultiTargetEntityCastData;
 import io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData;
 import io.redspace.ironsspellbooks.damage.SpellDamageSource;
+import net.acetheeldritchking.aces_spell_utils.registries.ASSchoolRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeBigProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESchoolRegistry;
@@ -38,7 +39,7 @@ public class ZealousHarbingerSpell extends AbstractRitualSpell {
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.LEGENDARY)
-            .setSchoolResource(DTESchoolRegistry.RITUAL_RESOURCE)
+            .setSchoolResource(ASSchoolRegistry.RITUAL_RESOURCE)
             .setMaxLevel(1)
             .setCooldownSeconds(35)
             .build();

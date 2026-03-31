@@ -9,6 +9,7 @@ import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData;
 import io.redspace.ironsspellbooks.damage.SpellDamageSource;
+import net.acetheeldritchking.aces_spell_utils.registries.ASSchoolRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.mourning_star.MourningStarProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.ritual_burn.RitualBurnAoE;
@@ -46,7 +47,7 @@ public class LibrasJudgementSpell extends AbstractRitualSpell {
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.LEGENDARY)
-            .setSchoolResource(DTESchoolRegistry.RITUAL_RESOURCE)
+            .setSchoolResource(ASSchoolRegistry.RITUAL_RESOURCE)
             .setMaxLevel(1)
             .setCooldownSeconds(45)
             .build();

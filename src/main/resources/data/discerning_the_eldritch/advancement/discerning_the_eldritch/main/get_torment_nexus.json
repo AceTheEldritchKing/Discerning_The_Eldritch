@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "id": "discerning_the_eldritch:torment_nexus"
+    },
+    "title": {
+      "translate": "advancements.discerning_the_eldritch.torment_nexus.title"
+    },
+    "description": {
+      "translate": "advancements.discerning_the_eldritch.torment_nexus.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "discerning_the_eldritch:discerning_the_eldritch/main/strange_idol",
+  "criteria": {
+    "torment_nexus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "discerning_the_eldritch:torment_nexus"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "torment_nexus"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

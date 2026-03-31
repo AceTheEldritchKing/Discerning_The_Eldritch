@@ -18,6 +18,7 @@ import net.acetheeldritchking.discerning_the_eldritch.registries.DTEDataComponen
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTERarities;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -39,7 +40,7 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
     public SoulFireScytheItem() {
         super(
                 DTEWeaponTiers.SOUL_FIRE_SCYTHE,
-                ItemPropertiesHelper.equipment(1).fireResistant().rarity(ASRarities.AQUATIC_RARITY_PROXY.getValue())
+                ItemPropertiesHelper.equipment(1).fireResistant().rarity(DTERarities.SOUL_BURNED_RARITY_PROXY.getValue())
                         .component(DTEDataComponentRegistry.SOUL_FIRE_STACKS, 0)
                         .attributes(ExtendedSwordItem.createAttributes(DTEWeaponTiers.SOUL_FIRE_SCYTHE)),
                 SpellDataRegistryHolder.of(

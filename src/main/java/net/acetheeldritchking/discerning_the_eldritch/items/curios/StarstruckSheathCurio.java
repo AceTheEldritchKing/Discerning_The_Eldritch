@@ -8,6 +8,7 @@ import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.stardust_aoe.StardustAoE;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTERarities;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTEServerConfig;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
@@ -24,7 +25,7 @@ import top.theillusivec4.curios.api.SlotContext;
 @EventBusSubscriber
 public class StarstruckSheathCurio extends SheathCurioItem {
     public StarstruckSheathCurio() {
-        super(new Properties().stacksTo(1).rarity(ASRarities.ARID_RARITY_PROXY.getValue()).fireResistant(), null);
+        super(new Properties().stacksTo(1).rarity(DTERarities.STARDUST_RARITY_PROXY.getValue()).fireResistant(), null);
     }
 
     @Override

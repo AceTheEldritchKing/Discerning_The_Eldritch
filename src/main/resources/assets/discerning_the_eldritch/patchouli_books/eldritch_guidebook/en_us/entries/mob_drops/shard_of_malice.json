@@ -14,6 +14,13 @@
         "item": "discerning_the_eldritch:shard_of_malice"
       },
       "text": "Tastes like... Strawberry?"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "discerning_the_eldritch:bottle_of_liquid_malice"
+      },
+      "text": "The result of melting down a shard of malice in an alchemist cauldron filled with blood. A catalyst for many recipes."
     }
   ]
 }

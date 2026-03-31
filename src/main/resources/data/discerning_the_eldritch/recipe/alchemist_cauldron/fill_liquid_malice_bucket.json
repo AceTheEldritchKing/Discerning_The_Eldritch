@@ -12,5 +12,11 @@
     "count": 1,
     "id": "minecraft:bucket"
   },
-  "sound": "minecraft:item.bucket.empty"
+  "sound": "minecraft:item.bucket.empty",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "pastel"
+    }
+  ]
 }

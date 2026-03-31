@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+      " v ",
+      "msm",
+      " v "
+    ],
+    "result": {
+      "count": 1,
+      "id": "discerning_the_eldritch:torment_nexus"
+    },
+    "key": {
+        "s": {
+          "item": "discerning_the_eldritch:strange_idol"
+        },
+        "v": {
+          "item": "discerning_the_eldritch:vehemite_ingot"
+        },
+        "m": {
+          "item": "discerning_the_eldritch:shard_of_malice"
+        }
+    }
+}

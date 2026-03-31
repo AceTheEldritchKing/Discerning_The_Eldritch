@@ -1,0 +1,19 @@
+{
+  "name": "Vehemite",
+  "icon": "discerning_the_eldritch:vehemite_ingot",
+  "category": "discerning_the_eldritch:materials",
+  "advancement": "discerning_the_eldritch:discerning_the_eldritch/main/liquid_malice",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A strange, forbidden metal created by mixing a mithril ingot in liquid malice. It's arcane properties remain unmatched, although at a cost."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "discerning_the_eldritch:vehemite_ingot"
+      },
+      "text": "Dip a mithril ingot into an alchemist cauldron full of liquid malice to alchemize it into a vehemite ingot."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "Torment Mode",
+  "icon": "discerning_the_eldritch:torment_nexus",
+  "category": "discerning_the_eldritch:bosses",
+  "advancement": "discerning_the_eldritch:discerning_the_eldritch/main/get_strange_idol",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "With the use of a special curio, certain bosses will have their difficulty enhanced, entering what is known as Torment Mode."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item":
+      {
+        "item": "discerning_the_eldritch:strange_idol"
+      },
+      "text": "A strange idol found in the deep depths of the world, the uses for it seem endless."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item":
+      {
+        "item": "discerning_the_eldritch:torment_nexus"
+      },
+      "text": "The Torment Nexus unlocks Torment Mode for certain bosses, yet it also increases the experience you gain and the loot you receive."
+    },
+    {
+      "type": "patchouli:crafting",
+      "title": "Torment Nexus Crafting",
+      "recipe": "discerning_the_eldritch:torment_nexus",
+      "text": "The source of hatred burns into others; the zenith of their torment, and yours."
+    }
+  ]
+}

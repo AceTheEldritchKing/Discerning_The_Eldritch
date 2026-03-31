@@ -14,7 +14,7 @@
             },
             {
               "function": "minecraft:set_potion",
-              "id": "irons_spellbooks:blight"
+              "id": "irons_spellbooks:instant_mana_three"
             }
           ],
           "name": "minecraft:lingering_potion"
@@ -29,7 +29,7 @@
             },
             {
               "function": "minecraft:set_potion",
-              "id": "irons_spellbooks:rend"
+              "id": "irons_spellbooks:instant_mana_two"
             }
           ],
           "name": "minecraft:lingering_potion"
@@ -45,21 +45,6 @@
             {
               "function": "minecraft:set_potion",
               "id": "minecraft:strength"
-            }
-          ],
-          "name": "minecraft:lingering_potion"
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            },
-            {
-              "function": "minecraft:set_potion",
-              "id": "irons_spellbooks:hastened"
             }
           ],
           "name": "minecraft:lingering_potion"
@@ -130,5 +115,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "discerning_the_eldritch:spawners/cultist+base/apothic_ominous_items"
+  "random_sequence": "discerning_the_eldritch:spawners/cultist_base/apothic_ominous_items"
 }

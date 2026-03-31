@@ -19,7 +19,7 @@ public class PastelCompatWeaponTiers implements Tier, IronsWeaponTier {
     // Dream Reaver Ymir
     public static PastelCompatWeaponTiers DREAM_REAVER_YMIR = new PastelCompatWeaponTiers(2670, 17.5F, -2.9F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-            new AttributeContainer(DTEAttributeRegistry.RITUAL_MAGIC_POWER, 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(ASAttributeRegistry.RITUAL_MAGIC_POWER, 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(ASAttributeRegistry.MANA_STEAL, 0.15D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(ASAttributeRegistry.MANA_REND, 0.30D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),

@@ -174,8 +174,11 @@ repositories {
 
 dependencies {
     // ISS ***************************************************************************************************
-    implementation "io.redspace:irons_spellbooks:1.21.1-3.15.4"
+    implementation "io.redspace:irons_spellbooks:1.21.1-3.15.5"
     //implementation "curse.maven:irons-spells-n-spellbooks-855414:6359979"
+
+    // PATREON LIB
+    implementation "io.redspace:irons_patreon_lib:${patreon_lib_version}"
 
     // GECKOLIB ***************************************************************************************************
     implementation "curse.maven:geckolib-388172:6304958"
@@ -249,13 +252,13 @@ dependencies {
     // COMPAT //
 
     // Pastel
-    localRuntime "curse.maven:pastel-1264556:6847961"
+    /*localRuntime "curse.maven:pastel-1264556:6847961"
     compileOnly "curse.maven:pastel-1264556:6847961"
     localRuntime "curse.maven:databank-1181408:7007287"
     compileOnly "curse.maven:databank-1181408:7007287"
     implementation "curse.maven:modonomicon-538392:7086032"
     localRuntime "curse.maven:pasteljei-1297526:6892907"
-    compileOnly "curse.maven:pasteljei-1297526:6892907"
+    compileOnly "curse.maven:pasteljei-1297526:6892907"*/
 
     // JSON ******************************************************************************************************
     implementation "com.google.code.gson:gson:${gson_version}"

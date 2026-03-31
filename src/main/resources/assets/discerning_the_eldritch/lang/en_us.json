@@ -11,6 +11,8 @@
 
   "rarity.discerning_the_eldritch_rarity_apothic.name": "Apothic",
   "rarity.discerning_the_eldritch_rarity_divine.name": "Divine",
+  "rarity.discerning_the_eldritch_rarity_stardust.name": "Stardusted",
+  "rarity.discerning_the_eldritch_rarity_soul_burned.name": "Soul-Burned",
 
 
   "effect.discerning_the_eldritch.silence_potion_effect": "Silenced",
@@ -63,6 +65,7 @@
   "item.discerning_the_eldritch.starmetal_ingot": "Starmetal Ingot",
   "item.discerning_the_eldritch.starmetal_nugget": "Starmetal Nugget",
   "item.discerning_the_eldritch.starstone": "Starstone",
+  "item.discerning_the_eldritch.vehemite_ingot": "Vehemite Ingot",
 
   "item.discerning_the_eldritch.black_book_spellbook": "Black Book",
   "item.discerning_the_eldritch.the_apocrypha_spellbook": "The Apocrypha",
@@ -98,6 +101,10 @@
   "item.discerning_the_eldritch.lantern_of_hatred.desc": "HATE HATE HATE...",
   "item.discerning_the_eldritch.exorcists_aegis": "Exorcist's Aegis",
   "item.discerning_the_eldritch.exorcists_aegis.desc": "Divine Protection - You are immune to insanity, however the costs of all eldritch spells are doubled and you have a chance to fail casted Eldritch spells",
+  "item.discerning_the_eldritch.strange_idol": "Strange Idol",
+  "item.discerning_the_eldritch.strange_idol.desc": "A peculiar artifact, it doesn't seem to do much... Can it be used for something else?",
+  "item.discerning_the_eldritch.torment_nexus": "The Torment Nexus",
+  "item.discerning_the_eldritch.torment_nexus.desc": "Torment Mode - Unlocks Torment Mode for certain bosses, greatly increasing their difficulty and changing their attack behaviors",
 
   "item.discerning_the_eldritch.deep_greatsword": "Greatsword of the Depths",
   "item.discerning_the_eldritch.ymir": "Ymir, Apothic Eldritch Blade",
@@ -184,6 +191,7 @@
   "item.discerning_the_eldritch.blood_matriarch_spawn_egg": "Blood Matriarch Spawn Egg",
   "item.discerning_the_eldritch.apostle_of_sculk_spawn_egg": "Apostle Of Sculk Spawn Egg",
   "item.discerning_the_eldritch.ender_ronin_spawn_egg": "Elderman Spawn Egg",
+  "item.discerning_the_eldritch.assimilated_spawn_egg": "Assimilated Spawn Egg",
 
   "item.discerning_the_eldritch.cultist_base_map": "Cultist Headquarters",
 
@@ -320,10 +328,12 @@
   "entity.discerning_the_eldritch.blood_matriarch": "Blood Matriarch",
   "entity.discerning_the_eldritch.apostle_of_sculk": "The Apostle Of Sculk",
   "entity.discerning_the_eldritch.ender_ronin": "Elderman",
+  "entity.discerning_the_eldritch.assimilated": "The Assimilated",
 
 
 
   "bossbar.discerning_the_eldritch.ascended_one_boss": "The Ascended One",
+  "bossbar.discerning_the_eldritch.apostle_of_sculk": "The Apostle of Sculk",
 
 
 
@@ -387,6 +397,7 @@
   "death.attack.discerning_the_eldritch.blood_rot": "%1$s had they blood decayed",
   "death.attack.discerning_the_eldritch.devoured": "%1$s was devoured by their own weapon",
   "death.attack.discerning_the_eldritch.apostle_of_sculk": "%1$s was subsumed with sculk by %2$s",
+  "death.attack.discerning_the_eldritch.assimilated": "%1$s was melded together by %2$s",
 
   "death.attack.discerning_the_eldritch.esoteric_edge.item": "%1$s was torn asunder by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.gaoler.item": "%1$s maimed and gored by %2$s using %3$s",
@@ -402,6 +413,7 @@
   "death.attack.discerning_the_eldritch.esoteric_strike.item": "%1$s was punched into oblivion by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.crystal_carve.item": "%1$s was turned into icy ribbons by %2$s using %3$s",
   "death.attack.discerning_the_eldritch.apostle_of_sculk.item": "%1$s was subsumed with sculk by %2$s using %3$s",
+  "death.attack.discerning_the_eldritch.assimilated.item": "%1$s was melded together by %2$s using %3$s",
 
   "death.attack.discerning_the_eldritch.razor_blade.player": "%1$s enjoyed the mutual subtext of their murder by %2$s",
   "death.attack.discerning_the_eldritch.gore_bile.player": "%1$s was disintegrated by %2$s's stomach fluids",
@@ -468,5 +480,17 @@
   "advancements.discerning_the_eldritch.begin_insanity.description": "Go insane after casting too many Eldritch spells",
 
   "advancements.discerning_the_eldritch.thorn_ring.title": "That's Not The Thorn Ring, Is It?",
-  "advancements.discerning_the_eldritch.thorn_ring.description": "Proceed to equip The Thorn Ring"
+  "advancements.discerning_the_eldritch.thorn_ring.description": "Proceed to equip The Thorn Ring",
+
+  "advancements.discerning_the_eldritch.apostle_of_sculk_fight.title": "Avenging Ascension",
+  "advancements.discerning_the_eldritch.apostle_of_sculk_fight.description": "Fight The Apostle of Sculk",
+
+  "advancements.discerning_the_eldritch.kill_apostle_of_sculk.title": "Return To Sculk",
+  "advancements.discerning_the_eldritch.kill_apostle_of_sculk.description": "Kill The Apostle of Sculk",
+
+  "advancements.discerning_the_eldritch.strange_idol.title": "Bygone's Trinket",
+  "advancements.discerning_the_eldritch.strange_idol.description": "Get a strange idol from... somewhere",
+
+  "advancements.discerning_the_eldritch.torment_nexus.title": "What Should Not Have Been Made",
+  "advancements.discerning_the_eldritch.torment_nexus.description": "Combine a strange idol with liquid malice to obtain the Torment Nexus"
 }

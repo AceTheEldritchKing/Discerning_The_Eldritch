@@ -2,6 +2,7 @@ package net.acetheeldritchking.discerning_the_eldritch.registries;
 
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
+import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
 import net.minecraft.network.chat.Component;
@@ -14,6 +15,7 @@ import java.util.function.Supplier;
 
 import static io.redspace.ironsspellbooks.api.registry.SchoolRegistry.SCHOOL_REGISTRY_KEY;
 
+@Deprecated
 public class DTESchoolRegistry {
     private static final DeferredRegister<SchoolType> DTE_SCHOOLS = DeferredRegister.create(SCHOOL_REGISTRY_KEY, DiscerningTheEldritch.MOD_ID);
 
@@ -34,8 +36,8 @@ public class DTESchoolRegistry {
                     RITUAL_RESOURCE,
                     DTETags.RITUAL_FOCUS,
                     Component.translatable("school.discerning_the_eldritch.ritual").withStyle(Style.EMPTY.withColor(0x870b32)),
-                    DTEAttributeRegistry.RITUAL_MAGIC_POWER,
-                    DTEAttributeRegistry.RITUAL_MAGIC_RESIST,
+                    ASAttributeRegistry.RITUAL_MAGIC_POWER,
+                    ASAttributeRegistry.RITUAL_MAGIC_RESIST,
                     SoundRegistry.EVOCATION_CAST,
                     DTEDamageTypes.RITUAL_MAGIC
             ));

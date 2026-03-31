@@ -73,6 +73,8 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.APOSTLE_OF_SCULK.get(), ApostleOfSculkRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.VOIDSPLITTER_PROJECTILE.get(), VoidsplitterRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.ENDER_RONIN.get(), EnderRoninRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.ASSIMILATED_ENTITY.get(), AssimilatedEntityRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.SCULK_SLAM_AOE.get(), NoopRenderer::new);
     }
 
     @SubscribeEvent

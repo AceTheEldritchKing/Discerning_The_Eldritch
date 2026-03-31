@@ -3,6 +3,7 @@ package net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import net.acetheeldritchking.aces_spell_utils.entity.render.armor.EmissiveGenericCustomArmorRenderer;
+import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.armor.Geckolib.GeckolibCrimsonStagArmorModel;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.DTEArmorMaterialRegistry;
@@ -18,7 +19,7 @@ public class GeckolibCrimsonStagArmorItem extends ImbuableGeckolibDTEArmorItem{
         super(DTEArmorMaterialRegistry.CRIMSON_STAG, slot, settings,
                 schoolAttributesWithResistance(
                         AttributeRegistry.BLOOD_SPELL_POWER,
-                        DTEAttributeRegistry.RITUAL_MAGIC_POWER,
+                        ASAttributeRegistry.RITUAL_MAGIC_POWER,
                         150,
                         0.15F,
                         0.05F,

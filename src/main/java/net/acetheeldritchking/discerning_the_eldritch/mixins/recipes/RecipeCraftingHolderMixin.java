@@ -19,7 +19,7 @@ public interface RecipeCraftingHolderMixin {
     {
         //List<ResourceLocation> recipes = new ArrayList<>();
 
-        //recipes.add(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "data/discerning_the_eldritch/recipe/insanity/apple.json"));
+        //recipes.add(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "data/discerning_the_eldritch/recipe/insanity/thorn_ring.json"));
 
         if (!players.getData(DTEAttachmentRegistry.IS_INSANE) && recipe.id().getPath().contains("insanity/"))
         {

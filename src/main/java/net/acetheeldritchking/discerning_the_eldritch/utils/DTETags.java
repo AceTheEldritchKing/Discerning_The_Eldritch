@@ -34,6 +34,9 @@ public class DTETags {
     // Holy Crusaders
     public static final TagKey<EntityType<?>> CRUSADER_ALLIES = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "crusader_allies"));
 
+    // Sculk Allies
+    public static final TagKey<EntityType<?>> SCULK_ALLIES = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "sculk_allies"));
+
     /***
      * Potion Effects
      */

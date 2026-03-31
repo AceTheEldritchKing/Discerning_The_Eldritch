@@ -1,0 +1,42 @@
+{
+  "name": "The Ascended One",
+  "icon": "discerning_the_eldritch:staff_of_ascension",
+  "category": "discerning_the_eldritch:bosses",
+  "advancement": "discerning_the_eldritch:discerning_the_eldritch/main/kill_ascended_one",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "You beheld his apotheosis, and returned him to the earth in the same breath."
+    },
+    {
+      "type": "patchouli:image",
+      "title ": "The Ascended One",
+      "images": ["discerning_the_eldritch:textures/gui/entries/ascended_one_banner_1.png"],
+      "text": "The Ascended One in his glory"
+    },
+    {
+      "title": "A Man Troubled",
+      "type": "patchouli:text",
+      "text": "Marcus, otherwise known as The Ascended One, was the first mage in this chapter to test your skills. An Eldritch mage of noble descent, dreams of grandeur clouded his judgement.$(br2)In his quest to find what was lost to him, he lost himself in his hubris and sorrow."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "discerning_the_eldritch:staff_of_ascension"
+      },
+      "text": "Staff of Ascension, his main weapon which he may drop"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "discerning_the_eldritch:black_book_spellbook"
+      },
+      "text": "The Black Book, the spellbook he wields which he may drop"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Torment Mode",
+      "text": "When the Torment Nexus is worn, returning the Ascended One to the mortal coil sends him in a fury. His attacks increase in aggression and consistency, as well as unlocking new maneuvers."
+    }
+  ]
+}
