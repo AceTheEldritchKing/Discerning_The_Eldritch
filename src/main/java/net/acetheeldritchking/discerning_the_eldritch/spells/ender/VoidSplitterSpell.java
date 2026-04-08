@@ -140,7 +140,7 @@ public class VoidSplitterSpell extends AbstractSpell {
             PacketDistributor.sendToPlayer(serverPlayer, new RemoveShaderEffectPacket());
 
             isFirstCast = false;
-            PacketDistributor.sendToPlayer(serverPlayer, new AddShaderEffectPacket(DiscerningTheEldritch.MOD_ID, "shaders/post/inverted_purple.json"));
+            //PacketDistributor.sendToPlayer(serverPlayer, new AddShaderEffectPacket(DiscerningTheEldritch.MOD_ID, "shaders/post/inverted_purple.json"));
             serverPlayer.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.PORTENT_EFFECT, 3*20, 1, false, false, false));
 
             VoidsplitterProjectile voidSplitter = new VoidsplitterProjectile(serverPlayer.level(), serverPlayer);

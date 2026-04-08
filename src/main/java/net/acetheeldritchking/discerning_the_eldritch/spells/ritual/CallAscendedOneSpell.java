@@ -5,12 +5,11 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.spells.CastSource;
 import io.redspace.ironsspellbooks.api.spells.CastType;
+import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import net.acetheeldritchking.aces_spell_utils.registries.ASSchoolRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
-import net.acetheeldritchking.discerning_the_eldritch.mixins.spells.DefaultConfigMixin;
-import net.acetheeldritchking.discerning_the_eldritch.spells.DTESpellRarities;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -36,8 +35,8 @@ public class CallAscendedOneSpell extends AbstractRitualSpell {
         );
     }
 
-    private final DefaultConfig defaultConfig = new DefaultConfigMixin()
-            .discerningTheEldritch$setMinRarity(DTESpellRarities.APOCRYPHAL)
+    private final DefaultConfig defaultConfig = new DefaultConfig()
+            .setMinRarity(SpellRarity.LEGENDARY)
             .setSchoolResource(ASSchoolRegistry.RITUAL_RESOURCE)
             .setMaxLevel(1)
             .setCooldownSeconds(1000)

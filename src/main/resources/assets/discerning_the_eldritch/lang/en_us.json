@@ -66,6 +66,10 @@
   "item.discerning_the_eldritch.starmetal_nugget": "Starmetal Nugget",
   "item.discerning_the_eldritch.starstone": "Starstone",
   "item.discerning_the_eldritch.vehemite_ingot": "Vehemite Ingot",
+  "item.discerning_the_eldritch.glyph_stone_translated": "Archaic Glyph Stone",
+  "item.discerning_the_eldritch.glyph_stone_untranslated": "Strange Glyph Stone",
+  "item.discerning_the_eldritch.glyph_stone.header": "Our Language",
+  "item.discerning_the_eldritch.glyph_stone.alphabet": "Sphinx of black quartz, judge my vow.",
 
   "item.discerning_the_eldritch.black_book_spellbook": "Black Book",
   "item.discerning_the_eldritch.the_apocrypha_spellbook": "The Apocrypha",
@@ -179,6 +183,8 @@
 
   "item.discerning_the_eldritch.ascended_one_lootbag": "Ascended One Loot Bag",
   "item.discerning_the_eldritch.ascended_one_lootbag.desc": "Contains loot from the Ascended One",
+  "item.discerning_the_eldritch.apostle_of_sculk_lootbag": "Apostle of Sculk Loot Bag",
+  "item.discerning_the_eldritch.apostle_of_sculk_lootbag.desc": "Contains loot from the Apostle of Sculk",
 
   "item.discerning_the_eldritch.apothic_acolyte_spawn_egg": "Apothic Acolyte Spawn Egg",
   "item.discerning_the_eldritch.apothic_summoner_spawn_egg": "Apothic Summoner Spawn Egg",
@@ -212,6 +218,7 @@
   "block.discerning_the_eldritch.large_starstone_bud": "Large Starstone Bud",
   "block.discerning_the_eldritch.starstone_cluster": "Starstone Cluster",
   "block.discerning_the_eldritch.resonating_deepslate": "Resonating Deepslate",
+  "block.discerning_the_eldritch.vehemite_block": "Block of Vehemite",
 
   "block.discerning_the_eldritch.polished_starstone_block": "Polished Starstone Block",
 

@@ -35,6 +35,9 @@ public class BlockRegistries {
     // Resonating Deepslate
     public static final DeferredHolder<Block, Block> RESONATING_DEEPSLATE = registerBlock("resonating_deepslate", () -> new Block(BlockBehaviour.Properties.of().lightLevel(state -> 8).pushReaction(PushReaction.BLOCK).sound(SoundType.DEEPSLATE).noLootTable().strength(60, 1200.0F)), ASRarities.SCULK_RARITY_PROXY.getValue());
 
+    // Vehemite Block
+    public static final DeferredHolder<Block, Block> VEHEMITE_BLOCK = registerBlock("vehemite_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK)), Rarity.COMMON);
+
     // Starstone Geodes
     public static final DeferredHolder<Block, Block> STARSTONE_ORE = registerBlock("starstone_ore", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_DIAMOND_ORE)), Rarity.COMMON);
     public static final DeferredHolder<Block, Block> STARSTONE_BLOCK = registerBlock("starstone_block", () -> new DTEGemstoneBlock(gemstoneBlockProperties(SoundType.AMETHYST), SoundEvents.AMETHYST_BLOCK_HIT, SoundEvents.AMETHYST_BLOCK_CHIME), Rarity.COMMON);

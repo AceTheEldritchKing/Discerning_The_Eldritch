@@ -6,9 +6,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "entity.CultistEntityMixin",
-    "recipes.RecipeCraftingHolderMixin",
-    "spells.DefaultConfigMixin",
-    "spells.SpellConfigParameterMixin"
+    "recipes.RecipeCraftingHolderMixin"
   ],
   "injectors": {
     "defaultRequire": 1

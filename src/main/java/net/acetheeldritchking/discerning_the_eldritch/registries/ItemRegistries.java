@@ -21,8 +21,10 @@ import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarloc
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockMaskItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.*;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.*;
+import net.acetheeldritchking.discerning_the_eldritch.items.custom.ApostleOfSculkLootbag;
 import net.acetheeldritchking.discerning_the_eldritch.items.custom.AscendedOneLootbag;
 import net.acetheeldritchking.discerning_the_eldritch.items.custom.FadingSculkLantern;
+import net.acetheeldritchking.discerning_the_eldritch.items.custom.RuneGlyphStoneItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.BlackBookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.DiaryOfDecaySpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.GuardianGuidebookSpellbook;
@@ -32,6 +34,7 @@ import net.acetheeldritchking.discerning_the_eldritch.items.staffs.DTEStaffTier;
 import net.acetheeldritchking.discerning_the_eldritch.items.staffs.StaffOfVehemenceStaffItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.weapons.*;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTERarities;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
@@ -80,6 +83,10 @@ public class ItemRegistries {
 
     // Guardian's Gaze
     public static final DeferredHolder<Item, Item> GUARDIANS_GAZE = ITEMS.register("guardian_guidebook", GuardianGuidebookSpellbook::new);
+
+    // Star Ronin's Oathbook
+
+    // Spiritbox Spellbook
 
 
     /***
@@ -238,6 +245,15 @@ public class ItemRegistries {
     // Vehemite Ingot
     public static final DeferredHolder<Item, Item> VEHEMITE_INGOT = ITEMS.register("vehemite_ingot",
             () -> new Item(ItemPropertiesHelper.material().fireResistant().rarity(DTERarities.APOTHIC_RARITY_PROXY.getValue())));
+
+    // Glyph Stone
+    public static final DeferredHolder<Item, Item> TRANSLATED_GLYPH_STONE = ITEMS.register("glyph_stone_translated",
+            () -> new RuneGlyphStoneItem(true, new Item.Properties().component(DataComponents.WRITTEN_BOOK_CONTENT, RuneGlyphStoneItem.TRANSLATED_CONTENTS)));
+    public static final DeferredHolder<Item, Item> UNTRANSLATED_GLYPH_STONE = ITEMS.register("glyph_stone_untranslated",
+            () -> new RuneGlyphStoneItem(false, new Item.Properties().component(DataComponents.WRITTEN_BOOK_CONTENT, RuneGlyphStoneItem.UNTRANSLATED_CONTENTS)));
+
+    // Apostle of Sculk Lootbag
+    public static final DeferredHolder<Item, Item> APOSTLE_OF_SCULK_LOOTBAG = ITEMS.register("apostle_of_sculk_lootbag", ApostleOfSculkLootbag::new);
 
 
     /***
@@ -402,7 +418,7 @@ public class ItemRegistries {
 
     // Apostle Of Sculk
     public static final DeferredItem<Item> APOSTLE_OF_SCULK_SPAWN_EGG = ITEMS.register("apostle_of_sculk_spawn_egg",
-            () -> new DeferredSpawnEggItem(DTEEntityRegistry.APOSTLE_OF_SCULK, 2640476, 5892331,
+            () -> new DeferredSpawnEggItem(DTEEntityRegistry.APOSTLE_OF_SCULK, 213316, 5892331,
                     new Item.Properties()));
 
     // Ender Ronin
