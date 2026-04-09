@@ -13,9 +13,9 @@ import io.redspace.ironsspellbooks.entity.mobs.goals.melee.AttackKeyframe;
 import io.redspace.ironsspellbooks.entity.mobs.keeper.KeeperEntity;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.GenericAnimatedWarlockAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.NotIdioticNavigation;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkAttackKeyframe;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkBoss;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkHeavyAttackKeyframe;
+//import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkAttackKeyframe;
+//import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkBoss;
+//import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkHeavyAttackKeyframe;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.goals.assimilated.AssimilatedAnimatedWarlockAttackGoal;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.utils.DTETags;
@@ -46,7 +46,7 @@ import software.bernie.geckolib.animation.RawAnimation;
 import java.util.List;
 
 public class AssimilatedEntity extends AbstractSpellCastingMob implements Enemy, IAnimatedAttacker {
-    ApostleOfSculkBoss apostleOfSculkBoss;
+    //ApostleOfSculkBoss apostleOfSculkBoss;
 
     public AssimilatedEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);

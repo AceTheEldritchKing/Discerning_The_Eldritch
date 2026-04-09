@@ -41,8 +41,8 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.STARMETAL_NUGGET.get());
                         output.accept(ItemRegistries.STARSTONE.get());
                         output.accept(ItemRegistries.VEHEMITE_INGOT.get());
-                        output.accept(ItemRegistries.TRANSLATED_GLYPH_STONE.get());
-                        output.accept(ItemRegistries.UNTRANSLATED_GLYPH_STONE.get());
+                        //output.accept(ItemRegistries.TRANSLATED_GLYPH_STONE.get());
+                        //output.accept(ItemRegistries.UNTRANSLATED_GLYPH_STONE.get());
                         // Map Items
                         output.accept(FurledMapItem.of(DiscerningTheEldritch.id("cultist_base"),
                                 ResourceKey.create(Registries.DIMENSION, ResourceLocation.withDefaultNamespace("overworld")), Component.translatable("item.discerning_the_eldritch.cultist_base_map"), true));
@@ -70,7 +70,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.FADING_SCULK_LANTERN.get());
                         // Lootbags
                         output.accept(ItemRegistries.ASCENDED_ONE_LOOTBAG.get());
-                        output.accept(ItemRegistries.APOSTLE_OF_SCULK_LOOTBAG.get());
+                        //output.accept(ItemRegistries.APOSTLE_OF_SCULK_LOOTBAG.get());
                         // Spellbooks
                         output.accept(ItemRegistries.BLACK_BOOK_SPELLBOOK.get());
                         output.accept(ItemRegistries.THE_APOCRYPHA_SPELLBOOK.get());
@@ -132,7 +132,7 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.ELECTROMANCER_SPAWN_EGG.get());
                         output.accept(ItemRegistries.ENDER_RONIN_SPAWN_EGG.get());
                         output.accept(ItemRegistries.ASSIMILATED_SPAWN_EGG.get());
-                        output.accept(ItemRegistries.APOSTLE_OF_SCULK_SPAWN_EGG.get());
+                        //output.accept(ItemRegistries.APOSTLE_OF_SCULK_SPAWN_EGG.get());
 
                         // Compat
                         if (CompatManager.isPastelLoaded())

@@ -8,7 +8,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultis
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistCaptainEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistMageEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistWitchEntity;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkBoss;
+//import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkBoss;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.minibosses.blood_matriarch.BloodMatriarchEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.eldritch_caster.TheApostleEntity;
@@ -45,7 +45,7 @@ public class CommonSetup {
         event.put(DTEEntityRegistry.BLOOD_CULTIST_MAGE.get(), BloodCultistMageEntity.createAttributes().build());
         event.put(DTEEntityRegistry.BLOOD_CULTIST_WITCH.get(), BloodCultistWitchEntity.createAttributes().build());
         event.put(DTEEntityRegistry.BLOOD_MATRIARCH.get(), BloodMatriarchEntity.createAttributes().build());
-        event.put(DTEEntityRegistry.APOSTLE_OF_SCULK.get(), ApostleOfSculkBoss.createAttributes().build());
+        //event.put(DTEEntityRegistry.APOSTLE_OF_SCULK.get(), ApostleOfSculkBoss.createAttributes().build());
         event.put(DTEEntityRegistry.ENDER_RONIN.get(), EnderRoninEntity.createAttributes().build());
         event.put(DTEEntityRegistry.ASSIMILATED_ENTITY.get(), AssimilatedEntity.createAttributes().build());
     }
