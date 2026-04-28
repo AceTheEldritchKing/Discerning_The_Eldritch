@@ -21,10 +21,10 @@ import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarloc
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockMaskItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.*;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.*;
-//import net.acetheeldritchking.discerning_the_eldritch.items.custom.ApostleOfSculkLootbag;
+import net.acetheeldritchking.discerning_the_eldritch.items.custom.ApostleOfSculkLootbag;
 import net.acetheeldritchking.discerning_the_eldritch.items.custom.AscendedOneLootbag;
 import net.acetheeldritchking.discerning_the_eldritch.items.custom.FadingSculkLantern;
-//import net.acetheeldritchking.discerning_the_eldritch.items.custom.RuneGlyphStoneItem;
+import net.acetheeldritchking.discerning_the_eldritch.items.custom.RuneGlyphStoneItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.BlackBookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.DiaryOfDecaySpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.GuardianGuidebookSpellbook;
@@ -247,13 +247,13 @@ public class ItemRegistries {
             () -> new Item(ItemPropertiesHelper.material().fireResistant().rarity(DTERarities.APOTHIC_RARITY_PROXY.getValue())));
 
     // Glyph Stone
-//    public static final DeferredHolder<Item, Item> TRANSLATED_GLYPH_STONE = ITEMS.register("glyph_stone_translated",
-//            () -> new RuneGlyphStoneItem(true, new Item.Properties().component(DataComponents.WRITTEN_BOOK_CONTENT, RuneGlyphStoneItem.TRANSLATED_CONTENTS)));
-//    public static final DeferredHolder<Item, Item> UNTRANSLATED_GLYPH_STONE = ITEMS.register("glyph_stone_untranslated",
-//            () -> new RuneGlyphStoneItem(false, new Item.Properties().component(DataComponents.WRITTEN_BOOK_CONTENT, RuneGlyphStoneItem.UNTRANSLATED_CONTENTS)));
+    public static final DeferredHolder<Item, Item> TRANSLATED_GLYPH_STONE = ITEMS.register("glyph_stone_translated",
+            () -> new RuneGlyphStoneItem(true, new Item.Properties().component(DataComponents.WRITTEN_BOOK_CONTENT, RuneGlyphStoneItem.TRANSLATED_CONTENTS)));
+    public static final DeferredHolder<Item, Item> UNTRANSLATED_GLYPH_STONE = ITEMS.register("glyph_stone_untranslated",
+            () -> new RuneGlyphStoneItem(false, new Item.Properties().component(DataComponents.WRITTEN_BOOK_CONTENT, RuneGlyphStoneItem.UNTRANSLATED_CONTENTS)));
 
     // Apostle of Sculk Lootbag
-//    public static final DeferredHolder<Item, Item> APOSTLE_OF_SCULK_LOOTBAG = ITEMS.register("apostle_of_sculk_lootbag", ApostleOfSculkLootbag::new);
+    public static final DeferredHolder<Item, Item> APOSTLE_OF_SCULK_LOOTBAG = ITEMS.register("apostle_of_sculk_lootbag", ApostleOfSculkLootbag::new);
 
 
     /***
@@ -417,9 +417,9 @@ public class ItemRegistries {
                     new Item.Properties()));
 
     // Apostle Of Sculk
-//    public static final DeferredItem<Item> APOSTLE_OF_SCULK_SPAWN_EGG = ITEMS.register("apostle_of_sculk_spawn_egg",
-//            () -> new DeferredSpawnEggItem(DTEEntityRegistry.APOSTLE_OF_SCULK, 213316, 5892331,
-//                    new Item.Properties()));
+    public static final DeferredItem<Item> APOSTLE_OF_SCULK_SPAWN_EGG = ITEMS.register("apostle_of_sculk_spawn_egg",
+            () -> new DeferredSpawnEggItem(DTEEntityRegistry.APOSTLE_OF_SCULK, 213316, 5892331,
+                    new Item.Properties()));
 
     // Ender Ronin
     public static final DeferredItem<Item> ENDER_RONIN_SPAWN_EGG = ITEMS.register("ender_ronin_spawn_egg",
@@ -459,10 +459,10 @@ public class ItemRegistries {
     public static final DeferredHolder<Item, Item> GECKOLIB_CRIMSON_STAG_BOOTS = ITEMS.register("gecko_crimson_stag_boots", () -> new GeckolibCrimsonStagArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
     // Sculk Apostle Set
-    //public static final DeferredHolder<Item, Item> SCULK_APOSTLE_HOOD = ITEMS.register("sculk_apostle_hood", () -> new SculkApostleArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
-    //public static final DeferredHolder<Item, Item> SCULK_APOSTLE_ROBES = ITEMS.register("sculk_apostle_robes", () -> new SculkApostleArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
-    //public static final DeferredHolder<Item, Item> SCULK_APOSTLE_LEGGINGS = ITEMS.register("sculk_apostle_leggings", () -> new SculkApostleArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
-    //public static final DeferredHolder<Item, Item> SCULK_APOSTLE_GREAVES = ITEMS.register("sculk_apostle_greaves", () -> new SculkApostleArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
+    public static final DeferredHolder<Item, Item> SCULK_APOSTLE_HOOD = ITEMS.register("sculk_apostle_hood", () -> new SculkApostleArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredHolder<Item, Item> SCULK_APOSTLE_ROBES = ITEMS.register("sculk_apostle_robes", () -> new SculkApostleArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
+    public static final DeferredHolder<Item, Item> SCULK_APOSTLE_LEGGINGS = ITEMS.register("sculk_apostle_leggings", () -> new SculkApostleArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
+    public static final DeferredHolder<Item, Item> SCULK_APOSTLE_GREAVES = ITEMS.register("sculk_apostle_greaves", () -> new SculkApostleArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
 
     public static Collection<DeferredHolder<Item, ? extends Item>> getDTEItems()

@@ -9,7 +9,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.apothic_cultis
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistCaptainEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistMageEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistWitchEntity;
-//import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkBoss;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkBoss;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneCultistEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.minibosses.blood_matriarch.BloodMatriarchEntity;
@@ -292,17 +292,17 @@ public class DTEEntityRegistry {
             );
 
     // Apostle of Sculk Boss
-//    public static final DeferredHolder<EntityType<?>, EntityType<ApostleOfSculkBoss>> APOSTLE_OF_SCULK =
-//            ENTITIES.register("apostle_of_sculk", () -> EntityType.Builder.<ApostleOfSculkBoss>of(ApostleOfSculkBoss::new, MobCategory.MONSTER)
-//                    .sized(.6f, 1.8f)
-//                    .clientTrackingRange(64)
-//                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "apostle_of_sculk").toString())
-//            );
+    public static final DeferredHolder<EntityType<?>, EntityType<ApostleOfSculkBoss>> APOSTLE_OF_SCULK =
+            ENTITIES.register("apostle_of_sculk", () -> EntityType.Builder.<ApostleOfSculkBoss>of(ApostleOfSculkBoss::new, MobCategory.MONSTER)
+                    .sized(.6f, 1.8f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "apostle_of_sculk").toString())
+            );
 
     // Voidsplitter Projectile
     public static final DeferredHolder<EntityType<?>, EntityType<VoidsplitterProjectile>> VOIDSPLITTER_PROJECTILE =
             ENTITIES.register("voidsplitter_projectile", () -> EntityType.Builder.<VoidsplitterProjectile>of(VoidsplitterProjectile::new, MobCategory.MISC)
-                    .sized(4.5f, 4.5f)
+                    .sized(2f, 2f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "voidsplitter_projectile").toString())
             );

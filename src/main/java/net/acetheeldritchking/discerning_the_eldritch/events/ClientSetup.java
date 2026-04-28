@@ -70,7 +70,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.MOURNING_STAR_PROJECTILE.get(), MourningStarRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.RITUAL_BURN_AOE.get(), NoopRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.STARDUST_AOE.get(), NoopRenderer::new);
-        //event.registerEntityRenderer(DTEEntityRegistry.APOSTLE_OF_SCULK.get(), ApostleOfSculkRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.APOSTLE_OF_SCULK.get(), ApostleOfSculkRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.VOIDSPLITTER_PROJECTILE.get(), VoidsplitterRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.ENDER_RONIN.get(), EnderRoninRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.ASSIMILATED_ENTITY.get(), AssimilatedEntityRenderer::new);

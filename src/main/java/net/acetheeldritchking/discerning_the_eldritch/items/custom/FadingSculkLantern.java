@@ -7,7 +7,7 @@ import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
-//import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkBoss;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkBoss;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPoiRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
@@ -69,7 +69,7 @@ public class FadingSculkLantern extends Item {
                 BlockPos deepslatePos = resonatingDeepslate.get();
                 AABB exclusiveRange = AABB.ofSize(deepslatePos.getCenter(), 80, 80, 80);
 
-                if (/*level.getEntitiesOfClass(ApostleOfSculkBoss.class, exclusiveRange).isEmpty()*/ true)
+                if (level.getEntitiesOfClass(ApostleOfSculkBoss.class, exclusiveRange).isEmpty())
                 {
                     if (!player.getAbilities().instabuild)
                     {
@@ -84,13 +84,13 @@ public class FadingSculkLantern extends Item {
 
                     Vec3 center = deepslatePos.getCenter().add(0, 0.6, 0);
                     float yRot = Utils.getAngle(center.x, center.z, player.getX(), player.getZ()) * Mth.RAD_TO_DEG;
-//                    ApostleOfSculkBoss apostleOfSculkBoss = DTEEntityRegistry.APOSTLE_OF_SCULK.get().create(serverLevel);
-//                    apostleOfSculkBoss.moveTo(center);
-//                    apostleOfSculkBoss.setYBodyRot(yRot);
-//                    apostleOfSculkBoss.setXRot(player.getXRot());
-//                    apostleOfSculkBoss.triggerSpawnAnim();
-//                    apostleOfSculkBoss.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(player.blockPosition()), MobSpawnType.MOB_SUMMONED, null);
-//                    level.addFreshEntity(apostleOfSculkBoss);
+                    ApostleOfSculkBoss apostleOfSculkBoss = DTEEntityRegistry.APOSTLE_OF_SCULK.get().create(serverLevel);
+                    apostleOfSculkBoss.moveTo(center);
+                    apostleOfSculkBoss.setYBodyRot(yRot);
+                    apostleOfSculkBoss.setXRot(player.getXRot());
+                    apostleOfSculkBoss.triggerSpawnAnim();
+                    apostleOfSculkBoss.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(player.blockPosition()), MobSpawnType.MOB_SUMMONED, null);
+                    level.addFreshEntity(apostleOfSculkBoss);
                     onUseEffects(serverPlayer, serverLevel, player.position(), true);
 
                     var advancement = serverPlayer.serverLevel().getServer().getAdvancements().get(DiscerningTheEldritch.id("discerning_the_eldritch/main/apostle_of_sculk_fight"));

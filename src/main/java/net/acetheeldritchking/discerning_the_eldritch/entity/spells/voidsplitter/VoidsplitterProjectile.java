@@ -55,30 +55,24 @@ public class VoidsplitterProjectile extends AbstractMagicProjectile implements G
     @Override
     public void trailParticles() {
         if(tickCount >= getDelay()) {
-            float upper = 2F;
-            float lower = 0;
-            //main particles
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 5; i++) {
                 double speed = 0.05F;
                 double dx = Math.random() * 2 * speed - speed;
                 double dy = Math.random() * 2 * speed - speed;
                 double dz = Math.random() * 2 * speed - speed;
 
-                float radius = (upper - lower) / 2;
-
-                Vec3 upAdjust = this.position().add(new Vec3(Math.cos(Math.toRadians(getXRot() + 90)), Math.sin(Math.toRadians(getXRot() + 90)) * radius + radius, 0).scale(radius));
-                Vec3 downAdjust = this.position().add(new Vec3(Math.cos(Math.toRadians(getXRot() - 90)), Math.sin(Math.toRadians(getXRot() - 90)) * radius + radius, 0).scale(radius));
+                Vec3 upAdjust = this.position().add(new Vec3(Math.cos(Math.toRadians(getXRot() + 90)), Math.sin(Math.toRadians(getXRot() + 90)) + 1, 0));
+                Vec3 downAdjust = this.position().add(new Vec3(Math.cos(Math.toRadians(getXRot() - 90)), Math.sin(Math.toRadians(getXRot() - 90)) + 1, 0));
+                Vec3 waveAdjust = this.position().add(new Vec3(Math.cos(Math.toRadians(getXRot() + 90)) * Math.sin((tickCount + 0.2 * i) / 3), Math.sin(Math.toRadians(getXRot() + 90)) * Math.sin((tickCount + 0.2 * i) / 3) + 1, 0));
 
                 // Top
                 level().addParticle(ParticleRegistry.UNSTABLE_ENDER_PARTICLE.get(), upAdjust.x, upAdjust.y, upAdjust.z, dx, dy, dz);
 
                 // Bottom
                 level().addParticle(ParticleRegistry.UNSTABLE_ENDER_PARTICLE.get(), downAdjust.x, downAdjust.y, downAdjust.z, dx, dy, dz);
-            }
-            //sin wave
-            for(int i = 0; i < 5; i++) {
-                Vec3 random = this.position().add(0, Math.sin((tickCount + 0.2 * i) / 3) * (upper - lower) / 2 + (upper - lower) / 2, 0);
-                level().addParticle(ParticleRegistry.PORTAL_FRAME_PARTICLE.get(), random.x, random.y, random.z, 0, 0, 0);
+
+                //Sin Wave
+                level().addParticle(ParticleRegistry.PORTAL_FRAME_PARTICLE.get(), waveAdjust.x, waveAdjust.y, waveAdjust.z, 0, 0, 0);
             }
         }
     }

@@ -13,7 +13,7 @@ import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import it.crystalnest.prometheus.api.FireManager;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
-//import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkBoss;
+import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.apostle_of_sculk.ApostleOfSculkBoss;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.cataclysm_blade_projectile.CataclysmBladeSmallProjectile;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.gore_bile.GoreBileAoE;
@@ -657,14 +657,14 @@ public class ServerEvents {
                 }
 
                 // Apostle of Sculk
-//                if (livingEntity instanceof ApostleOfSculkBoss apostleOfSculkBoss && DTEServerConfig.enableApostleOfSculkDamageCap)
-//                {
-//                    float baseDamage = event.getOriginalAmount();
-//                    float newDamage = ASUtils.basicDamageCap(baseDamage, 0, DTEServerConfig.apostleOfSculkDamageCap);
-//                    event.setAmount(newDamage);
-//                    //DiscerningTheEldritch.LOGGER.debug("Old Damage: " + event.getOriginalDamage());
-//                    //DiscerningTheEldritch.LOGGER.debug("New Damage: " + event.getNewDamage());
-//                }
+                if (livingEntity instanceof ApostleOfSculkBoss apostleOfSculkBoss && DTEServerConfig.enableApostleOfSculkDamageCap)
+                {
+                    float baseDamage = event.getOriginalAmount();
+                    float newDamage = ASUtils.basicDamageCap(baseDamage, 0, DTEServerConfig.apostleOfSculkDamageCap);
+                    event.setAmount(newDamage);
+                    //DiscerningTheEldritch.LOGGER.debug("Old Damage: " + event.getOriginalDamage());
+                    //DiscerningTheEldritch.LOGGER.debug("New Damage: " + event.getNewDamage());
+                }
 
                 // Boss Three
 
@@ -681,17 +681,17 @@ public class ServerEvents {
         {
             // Apostle of Sculk
             // This is so lifesteal can be done on magic attacks
-//            if (livingEntity instanceof ApostleOfSculkBoss apostleOfSculkBoss && source instanceof SpellDamageSource)
-//            {
-//                float MAX_HEALTH = apostleOfSculkBoss.getMaxHealth();
-//                if (apostleOfSculkBoss.getEnraged())
-//                {
-//                    apostleOfSculkBoss.heal(ApostleOfSculkBoss.healFor(MAX_HEALTH, 1.5F));
-//                } else
-//                {
-//                    apostleOfSculkBoss.heal(ApostleOfSculkBoss.healFor(MAX_HEALTH, 1));
-//                }
-//            }
+            if (livingEntity instanceof ApostleOfSculkBoss apostleOfSculkBoss && source instanceof SpellDamageSource)
+            {
+                float MAX_HEALTH = apostleOfSculkBoss.getMaxHealth();
+                if (apostleOfSculkBoss.getEnraged())
+                {
+                    apostleOfSculkBoss.heal(ApostleOfSculkBoss.healFor(MAX_HEALTH, 1.5F));
+                } else
+                {
+                    apostleOfSculkBoss.heal(ApostleOfSculkBoss.healFor(MAX_HEALTH, 1));
+                }
+            }
 
             // Boss Three
 
