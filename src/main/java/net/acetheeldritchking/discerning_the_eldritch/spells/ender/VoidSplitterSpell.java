@@ -150,10 +150,9 @@ public class VoidSplitterSpell extends AbstractSpell {
             voidSplitter.setNoGravity(true);
             voidSplitter.setDeltaMovement(0, 0, 0);
             voidSplitter.moveTo(serverPlayer.getX(), serverPlayer.getY() + 1, serverPlayer.getZ());
-            voidSplitter.setXRot(serverPlayer.getXRot());
-            voidSplitter.setYRot(serverPlayer.getYRot());
 
             serverPlayer.level().addFreshEntity(voidSplitter);
+            voidSplitter.absRotateTo(serverPlayer.getYRot(),serverPlayer.getXRot());
         }
         else
         {
