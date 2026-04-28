@@ -55,24 +55,32 @@ public class VoidsplitterProjectile extends AbstractMagicProjectile implements G
     @Override
     public void trailParticles() {
         if(tickCount >= getDelay()) {
+            double xOffset = 0;//Math.cos(degree) * radius;
+            double yOffset = 1;//Math.sin(degree) * radius;
+            double cosPsi = Math.cos(Math.toRadians(this.getYRot()));
+            double sinPsi = Math.sin(Math.toRadians(this.getYRot()));
+            double cosTheta = Math.cos(Math.toRadians(this.getXRot()));
+            double sinTheta = Math.sin(Math.toRadians(this.getXRot()));
             for (int i = 0; i < 5; i++) {
                 double speed = 0.05F;
                 double dx = Math.random() * 2 * speed - speed;
                 double dy = Math.random() * 2 * speed - speed;
                 double dz = Math.random() * 2 * speed - speed;
 
-                Vec3 upAdjust = this.position().add(new Vec3(Math.cos(Math.toRadians(getXRot() + 90)), Math.sin(Math.toRadians(getXRot() + 90)) + 1, 0));
-                Vec3 downAdjust = this.position().add(new Vec3(Math.cos(Math.toRadians(getXRot() - 90)), Math.sin(Math.toRadians(getXRot() - 90)) + 1, 0));
-                Vec3 waveAdjust = this.position().add(new Vec3(Math.cos(Math.toRadians(getXRot() + 90)) * Math.sin((tickCount + 0.2 * i) / 3), Math.sin(Math.toRadians(getXRot() + 90)) * Math.sin((tickCount + 0.2 * i) / 3) + 1, 0));
+
+                Vec3 adjust = new Vec3(xOffset* cosPsi- yOffset * sinTheta * sinPsi,yOffset * cosTheta,xOffset * sinPsi + yOffset * sinTheta * cosPsi);
+                Vec3 originUp = this.position().add(adjust).add(0,1,0);
+                Vec3 originDown = this.position().subtract(adjust).add(0,1,0);
+                Vec3 originWave = this.position().add(adjust.multiply(Math.sin((tickCount + 0.2 * i) / 3),Math.sin((tickCount + 0.2 * i) / 3),Math.sin((tickCount + 0.2 * i) / 3))).add(0,1,0);
 
                 // Top
-                level().addParticle(ParticleRegistry.UNSTABLE_ENDER_PARTICLE.get(), upAdjust.x, upAdjust.y, upAdjust.z, dx, dy, dz);
+                level().addParticle(ParticleRegistry.UNSTABLE_ENDER_PARTICLE.get(), originUp.x, originUp.y, originUp.z, dx, dy, dz);
 
                 // Bottom
-                level().addParticle(ParticleRegistry.UNSTABLE_ENDER_PARTICLE.get(), downAdjust.x, downAdjust.y, downAdjust.z, dx, dy, dz);
+                level().addParticle(ParticleRegistry.UNSTABLE_ENDER_PARTICLE.get(), originDown.x, originDown.y, originDown.z, dx, dy, dz);
 
                 //Sin Wave
-                level().addParticle(ParticleRegistry.PORTAL_FRAME_PARTICLE.get(), waveAdjust.x, waveAdjust.y, waveAdjust.z, 0, 0, 0);
+                level().addParticle(ParticleRegistry.PORTAL_FRAME_PARTICLE.get(), originWave.x, originWave.y, originWave.z, 0, 0, 0);
             }
         }
     }
