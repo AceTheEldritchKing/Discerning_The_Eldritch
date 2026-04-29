@@ -302,7 +302,7 @@ public class DTEEntityRegistry {
     // Voidsplitter Projectile
     public static final DeferredHolder<EntityType<?>, EntityType<VoidsplitterProjectile>> VOIDSPLITTER_PROJECTILE =
             ENTITIES.register("voidsplitter_projectile", () -> EntityType.Builder.<VoidsplitterProjectile>of(VoidsplitterProjectile::new, MobCategory.MISC)
-                    .sized(4.5f, 4.5f)
+                    .sized(2f, 2f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "voidsplitter_projectile").toString())
             );

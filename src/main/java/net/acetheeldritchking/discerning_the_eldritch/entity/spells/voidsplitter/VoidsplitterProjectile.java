@@ -2,9 +2,8 @@ package net.acetheeldritchking.discerning_the_eldritch.entity.spells.voidsplitte
 
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
+import io.redspace.ironsspellbooks.registries.ParticleRegistry;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
-import io.redspace.ironsspellbooks.util.ParticleHelper;
-import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.SpellRegistries;
 import net.minecraft.core.BlockPos;
@@ -55,23 +54,34 @@ public class VoidsplitterProjectile extends AbstractMagicProjectile implements G
 
     @Override
     public void trailParticles() {
-        for (int i = 0; i < 3; i++)
-        {
-            double speed = 0.05F;
-            double dx = Math.random() * 2 * speed - speed;
-            double dy = Math.random() * 2 * speed - speed;
-            double dz = Math.random() * 2 * speed - speed;
+        if(tickCount >= getDelay()) {
+            double xOffset = 0;//Math.cos(degree) * radius;
+            double yOffset = 1;//Math.sin(degree) * radius;
+            double cosPsi = Math.cos(Math.toRadians(this.getYRot()));
+            double sinPsi = Math.sin(Math.toRadians(this.getYRot()));
+            double cosTheta = Math.cos(Math.toRadians(this.getXRot()));
+            double sinTheta = Math.sin(Math.toRadians(this.getXRot()));
+            for (int i = 0; i < 5; i++) {
+                double speed = 0.05F;
+                double dx = Math.random() * 2 * speed - speed;
+                double dy = Math.random() * 2 * speed - speed;
+                double dz = Math.random() * 2 * speed - speed;
 
-            double radius = 4;
 
-            Vec3 upAdjust = this.position().add(new Vec3(Math.sin(Math.toRadians(getXRot() + 180)), 0, Math.cos(Math.toRadians(getXRot() + 180))).scale(radius));
-            Vec3 downAdjust = this.position().add(new Vec3(Math.sin(Math.toRadians(getXRot() - 180)), 0, Math.cos(Math.toRadians(getXRot() - 180))).scale(radius));
+                Vec3 adjust = new Vec3(xOffset* cosPsi- yOffset * sinTheta * sinPsi,yOffset * cosTheta,xOffset * sinPsi + yOffset * sinTheta * cosPsi);
+                Vec3 originUp = this.position().add(adjust).add(0,1,0);
+                Vec3 originDown = this.position().subtract(adjust).add(0,1,0);
+                Vec3 originWave = this.position().add(adjust.multiply(Math.sin((tickCount + 0.2 * i) / 3),Math.sin((tickCount + 0.2 * i) / 3),Math.sin((tickCount + 0.2 * i) / 3))).add(0,1,0);
 
-            // Left
-            level().addParticle(ParticleHelper.UNSTABLE_ENDER, upAdjust.x, upAdjust.y, upAdjust.z, dx, dy, dz);
+                // Top
+                level().addParticle(ParticleRegistry.UNSTABLE_ENDER_PARTICLE.get(), originUp.x, originUp.y, originUp.z, dx, dy, dz);
 
-            // Right
-            level().addParticle(ParticleHelper.UNSTABLE_ENDER, downAdjust.x, downAdjust.y, downAdjust.z, dx, dy, dz);
+                // Bottom
+                level().addParticle(ParticleRegistry.UNSTABLE_ENDER_PARTICLE.get(), originDown.x, originDown.y, originDown.z, dx, dy, dz);
+
+                //Sin Wave
+                level().addParticle(ParticleRegistry.PORTAL_FRAME_PARTICLE.get(), originWave.x, originWave.y, originWave.z, 0, 0, 0);
+            }
         }
     }
 
@@ -114,8 +124,16 @@ public class VoidsplitterProjectile extends AbstractMagicProjectile implements G
     }
 
     @Override
+    public void travel() {
+        setPos(position().add(getDeltaMovement()));
+        if (!this.isNoGravity()) {
+            Vec3 vec34 = this.getDeltaMovement();
+            this.setDeltaMovement(vec34.x, vec34.y - getDefaultGravity(), vec34.z);
+        }
+    }
+
+    @Override
     protected void rotateWithMotion() {
-        //
     }
 
     @Override
@@ -178,16 +196,12 @@ public class VoidsplitterProjectile extends AbstractMagicProjectile implements G
 
     private PlayState predicate(AnimationState<VoidsplitterProjectile> event)
     {
-        if (tickCount < 20)
-        {
-            event.getController().setAnimation(RawAnimation.begin().then("spawn", Animation.LoopType.LOOP));
-            return PlayState.CONTINUE;
-        }
-        if (tickCount > 20 && tickCount < 100)
-        {
-            event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
-            return PlayState.CONTINUE;
-        } else if (tickCount > 100)
+//        if (tickCount < 20)
+//        {
+//            event.getController().setAnimation(RawAnimation.begin().then("spawn", Animation.LoopType.LOOP));
+//            return PlayState.CONTINUE;
+//        }
+        if (true /*tickCount > 20 && tickCount < 60*/)
         {
             event.getController().setAnimation(RawAnimation.begin().then("spin", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
