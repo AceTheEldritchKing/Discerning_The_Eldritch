@@ -1,0 +1,15 @@
+{
+  "name": "discerning_the_eldritch:sculk_city/boss_room/sculk_arena_bottom",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "discerning_the_eldritch:sculk_city/boss_room/sculk_arena_bottom",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

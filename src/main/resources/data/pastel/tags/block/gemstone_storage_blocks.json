@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "discerning_the_eldritch:polished_starstone_block"
+    {"id":"discerning_the_eldritch:polished_starstone_block","required":false}
   ]
 }

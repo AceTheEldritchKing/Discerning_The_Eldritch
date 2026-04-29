@@ -131,7 +131,7 @@ public class VeinRipperSpell extends AbstractSpell {
                         target.hurtMarked = true;
                         if (target instanceof LivingEntity livingTarget)
                         {
-                            livingTarget.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.BLOOD_ROT_EFFECT, 3 * 20, 0, true, true, true));
+                            livingTarget.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.BLOOD_ROT_EFFECT, 10 * 20, 0, true, true, true));
                         }
                     }
                 }

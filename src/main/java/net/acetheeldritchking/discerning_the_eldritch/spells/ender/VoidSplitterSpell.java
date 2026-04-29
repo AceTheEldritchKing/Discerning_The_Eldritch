@@ -144,15 +144,38 @@ public class VoidSplitterSpell extends AbstractSpell {
             serverPlayer.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.PORTENT_EFFECT, 3*20, 1, false, false, false));
 
             VoidsplitterProjectile voidSplitter = new VoidsplitterProjectile(serverPlayer.level(), serverPlayer);
-            voidSplitter.setDelay(60);
+            VoidsplitterProjectile voidSplitter2 = new VoidsplitterProjectile(serverPlayer.level(), serverPlayer);
+            VoidsplitterProjectile voidSplitter3 = new VoidsplitterProjectile(serverPlayer.level(), serverPlayer);
+
+            voidSplitter.setDelay(30);
             voidSplitter.setDamage(25);
             voidSplitter.getSpeed();
             voidSplitter.setNoGravity(true);
             voidSplitter.setDeltaMovement(0, 0, 0);
             voidSplitter.moveTo(serverPlayer.getX(), serverPlayer.getY() + 1, serverPlayer.getZ());
 
+            voidSplitter2.setDelay(30);
+            voidSplitter2.setDamage(25);
+            voidSplitter2.getSpeed();
+            voidSplitter2.setNoGravity(true);
+            voidSplitter2.setDeltaMovement(0, 0, 0);
+            voidSplitter2.moveTo(serverPlayer.getX() + 1, serverPlayer.getY() + 1, serverPlayer.getZ());
+
+            voidSplitter3.setDelay(30);
+            voidSplitter3.setDamage(25);
+            voidSplitter3.getSpeed();
+            voidSplitter3.setNoGravity(true);
+            voidSplitter3.setDeltaMovement(0, 0, 0);
+            voidSplitter3.moveTo(serverPlayer.getX() - 1, serverPlayer.getY() + 1, serverPlayer.getZ());
+
             serverPlayer.level().addFreshEntity(voidSplitter);
             voidSplitter.absRotateTo(serverPlayer.getYRot(),serverPlayer.getXRot());
+
+            serverPlayer.level().addFreshEntity(voidSplitter2);
+            voidSplitter2.absRotateTo(serverPlayer.getYRot(),serverPlayer.getXRot());
+
+            serverPlayer.level().addFreshEntity(voidSplitter3);
+            voidSplitter3.absRotateTo(serverPlayer.getYRot(),serverPlayer.getXRot());
         }
         else
         {

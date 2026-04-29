@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "discerning_the_eldritch:sculk_city",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 85,
+    "separation": 35,
+    "salt": 9269245988
+  }
+}
