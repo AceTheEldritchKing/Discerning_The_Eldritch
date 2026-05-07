@@ -31,12 +31,16 @@ public class BlockRegistries {
     public static final DeferredHolder<Block, Block> METEORSTONE_BLOCK = registerBlock("meteorstone", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE)), Rarity.COMMON);
     public static final DeferredHolder<Block, Block> METEORSTONE_BRICKS = registerBlock("meteorstone_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_BRICKS)), Rarity.COMMON);
     public static final DeferredHolder<Block, Block> METEORSTONE_TILES = registerBlock("meteorstone_tiles", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_TILES)), Rarity.COMMON);
+    public static final DeferredHolder<Block, Block> CHISELED_METEORSTONE = registerBlock("chiseled_meteorstone", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.CHISELED_DEEPSLATE)), Rarity.COMMON);
 
     // Resonating Deepslate
     public static final DeferredHolder<Block, Block> RESONATING_DEEPSLATE = registerBlock("resonating_deepslate", () -> new Block(BlockBehaviour.Properties.of().lightLevel(state -> 8).pushReaction(PushReaction.BLOCK).sound(SoundType.DEEPSLATE).noLootTable().strength(60, 1200.0F)), ASRarities.SCULK_RARITY_PROXY.getValue());
 
     // Vehemite Block
     public static final DeferredHolder<Block, Block> VEHEMITE_BLOCK = registerBlock("vehemite_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK)), Rarity.COMMON);
+
+    // Starmetal Block
+    public static final DeferredHolder<Block, Block> STARMETAL_BLOCK = registerBlock("starmetal_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK)), Rarity.COMMON);
 
     // Starstone Geodes
     public static final DeferredHolder<Block, Block> STARSTONE_ORE = registerBlock("starstone_ore", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_DIAMOND_ORE)), Rarity.COMMON);

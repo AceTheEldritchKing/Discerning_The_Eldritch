@@ -151,6 +151,7 @@ public class DTECreativeModeTabs {
                         output.accept(BlockRegistries.METEORSTONE_BLOCK.get());
                         output.accept(BlockRegistries.METEORSTONE_BRICKS.get());
                         output.accept(BlockRegistries.METEORSTONE_TILES.get());
+                        output.accept(BlockRegistries.CHISELED_METEORSTONE.get());
                         // Gems
                         output.accept(BlockRegistries.STARSTONE_ORE.get());
                         output.accept(BlockRegistries.STARSTONE_BLOCK.get());
@@ -162,6 +163,7 @@ public class DTECreativeModeTabs {
                         // Decor
                         output.accept(BlockRegistries.RESONATING_DEEPSLATE.get());
                         output.accept(BlockRegistries.VEHEMITE_BLOCK.get());
+                        output.accept(BlockRegistries.STARMETAL_BLOCK.get());
 
                         // Compat
                         if (CompatManager.isPastelLoaded())
