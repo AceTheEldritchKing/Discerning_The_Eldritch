@@ -26,14 +26,19 @@ import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegist
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEFluidRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEParticleRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
+import net.acetheeldritchking.discerning_the_eldritch.utils.DTERarities;
+import net.acetheeldritchking.discerning_the_eldritch.utils.UniqueRarityColorHelper;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 @EventBusSubscriber(modid = DiscerningTheEldritch.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientSetup {
@@ -98,5 +103,28 @@ public class ClientSetup {
         event.registerSpriteSet(DTEParticleRegistry.SOUL_FIRE_SLASH_PARTICLE.get(), SoulFireSlashParticle.Provider::new);
         event.registerSpriteSet(DTEParticleRegistry.VEIN_RIPPER_VERTICAL_PARTICLE.get(), VeinRipperVerticalParticle.Provider::new);
         event.registerSpriteSet(DTEParticleRegistry.STARDUST_PARTICLE.get(), StardustParticle.Provider::new);
+    }
+
+    // Item Rarity rendering
+    @SubscribeEvent
+    public static void onClientTickEvent(ClientTickEvent.Post event)
+    {
+        UniqueRarityColorHelper.clientTick++;
+    }
+
+    @SubscribeEvent
+    public static void applyRarityGradientEvent(ItemTooltipEvent event)
+    {
+        ItemStack itemStack = event.getItemStack();
+
+        if (!event.getToolTip().isEmpty() && itemStack.getRarity() == DTERarities.TRUE_APOTHIC_RARITY_PROXY.getValue())
+        {
+            int COLOR_RED = 0xba1127;
+            int COLOR_DEEP_RED = 0x700606;
+            int COLOR_BRIGHT_RED_PINK = 0xd91850;
+
+            String rawName = itemStack.getHoverName().getString();
+            event.getToolTip().set(0, UniqueRarityColorHelper.createWaveGradient(rawName, COLOR_RED, COLOR_DEEP_RED, COLOR_BRIGHT_RED_PINK));
+        }
     }
 }

@@ -109,7 +109,7 @@ public class DTEServerConfig
     private static final ModConfigSpec.ConfigValue<Integer> APOSTLE_OF_SCULK_DAMAGE_CAP_VALUE = BUILDER
             .comment("Defines the max damage the Apostle of Sculk can take for the damage cap")
             .comment("Default is [100]")
-            .define("Base Apostle of Sculk damage cap", 100);
+            .define("Base Apostle of Sculk damage cap", 50);
 
     private static final ModConfigSpec.ConfigValue<Integer> APOSTLE_OF_SCULK_DAMAGE_THRESHOLD = BUILDER
             .comment("Defines the threshold damage for the Apostle of Sculk when enraged")
@@ -117,6 +117,16 @@ public class DTEServerConfig
             .comment("NOTE: This NEEDS to be LOWER than than the damage cap, otherwise you will not be able to hurt the boss")
             .comment("Default is [25]")
             .define("Base Apostle of Sculk damage threshold", 25);
+
+    private static final ModConfigSpec.ConfigValue<Double> APOSTLE_OF_SCULK_MELEE_LIFESTEAL = BUILDER
+            .comment("Defines the percentage of max health the Apostle of Sculk will gain when dealing melee damage")
+            .comment("Default is [2] percent")
+            .define("Base Apostle of Sculk melee lifesteal", 2.0);
+
+    private static final ModConfigSpec.ConfigValue<Double> APOSTLE_OF_SCULK_SPELL_LIFESTEAL = BUILDER
+            .comment("Defines the percentage of max health the Apostle of Sculk will gain when dealing spell damage")
+            .comment("Default is [1] percent")
+            .define("Base Apostle of Sculk spell lifesteal", 1.0);
 
     // Trading //
     // Blood Cultist Aggro
@@ -149,6 +159,8 @@ public class DTEServerConfig
     public static boolean enableApostleOfSculkDamageCap;
     public static int apostleOfSculkDamageCap;
     public static int apostleOfSculkDamageThreshold;
+    public static double apostleOfSculkMeleeLifesteal;
+    public static double apostleOfSculkSpellLifesteal;
     public static int pyriumSheathCooldown;
     public static int frostbourneSheathCooldown;
     public static int razorSheathCooldown;
@@ -184,6 +196,8 @@ public class DTEServerConfig
         enableApostleOfSculkDamageCap = ENABLED_APOSTLE_OF_SCULK_DAMAGE_CAP.get();
         apostleOfSculkDamageCap = APOSTLE_OF_SCULK_DAMAGE_CAP_VALUE.get();
         apostleOfSculkDamageThreshold = APOSTLE_OF_SCULK_DAMAGE_THRESHOLD.get();
+        apostleOfSculkMeleeLifesteal = APOSTLE_OF_SCULK_MELEE_LIFESTEAL.get();
+        apostleOfSculkSpellLifesteal = APOSTLE_OF_SCULK_SPELL_LIFESTEAL.get();
 
         enableBloodCultistAggression = BLOOD_CULTIST_AGGRESSION.get();
 

@@ -686,10 +686,10 @@ public class ServerEvents {
                 float MAX_HEALTH = apostleOfSculkBoss.getMaxHealth();
                 if (apostleOfSculkBoss.getEnraged())
                 {
-                    apostleOfSculkBoss.heal(ApostleOfSculkBoss.healFor(MAX_HEALTH, 1.5F));
+                    apostleOfSculkBoss.heal(ApostleOfSculkBoss.healFor(MAX_HEALTH, (float) DTEServerConfig.apostleOfSculkSpellLifesteal + 0.5F));
                 } else
                 {
-                    apostleOfSculkBoss.heal(ApostleOfSculkBoss.healFor(MAX_HEALTH, 1));
+                    apostleOfSculkBoss.heal(ApostleOfSculkBoss.healFor(MAX_HEALTH, (float) DTEServerConfig.apostleOfSculkSpellLifesteal));
                 }
             }
 

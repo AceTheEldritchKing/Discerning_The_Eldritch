@@ -25,7 +25,7 @@ public class KingsEffigyCurio extends SimpleDescriptiveCurio {
     public final DTEItemDispatcher dispatcher;
 
     public KingsEffigyCurio() {
-        super(ItemPropertiesHelper.equipment().stacksTo(1).fireResistant().rarity(DTERarities.APOTHIC_RARITY_PROXY.getValue()), Curios.NECKLACE_SLOT);
+        super(ItemPropertiesHelper.equipment().stacksTo(1).fireResistant().rarity(DTERarities.TRUE_APOTHIC_RARITY_PROXY.getValue()), Curios.NECKLACE_SLOT);
         this.dispatcher = new DTEItemDispatcher();
     }
 

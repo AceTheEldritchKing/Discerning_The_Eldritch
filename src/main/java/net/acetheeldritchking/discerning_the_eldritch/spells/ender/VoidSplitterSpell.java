@@ -21,6 +21,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
 
@@ -147,6 +148,11 @@ public class VoidSplitterSpell extends AbstractSpell {
             VoidsplitterProjectile voidSplitter2 = new VoidsplitterProjectile(serverPlayer.level(), serverPlayer);
             VoidsplitterProjectile voidSplitter3 = new VoidsplitterProjectile(serverPlayer.level(), serverPlayer);
 
+            double radius = 4;
+
+            Vec3 leftAdjust = serverPlayer.position().add(new Vec3(Math.sin(Math.toRadians(serverPlayer.getYRot() + 90)), 0, Math.cos(Math.toRadians(serverPlayer.getYRot() + 90))).scale(radius));
+            Vec3 rightAdjust = serverPlayer.position().add(new Vec3(Math.sin(Math.toRadians(serverPlayer.getYRot() - 90)), 0, Math.cos(Math.toRadians(serverPlayer.getYRot() - 90))).scale(radius));
+
             voidSplitter.setDelay(30);
             voidSplitter.setDamage(25);
             voidSplitter.getSpeed();
@@ -154,26 +160,30 @@ public class VoidSplitterSpell extends AbstractSpell {
             voidSplitter.setDeltaMovement(0, 0, 0);
             voidSplitter.moveTo(serverPlayer.getX(), serverPlayer.getY() + 1, serverPlayer.getZ());
 
+            // Left
             voidSplitter2.setDelay(30);
             voidSplitter2.setDamage(25);
             voidSplitter2.getSpeed();
             voidSplitter2.setNoGravity(true);
             voidSplitter2.setDeltaMovement(0, 0, 0);
-            voidSplitter2.moveTo(serverPlayer.getX() + 1, serverPlayer.getY() + 1, serverPlayer.getZ());
+            voidSplitter2.moveTo(leftAdjust.x, leftAdjust.y + 1, leftAdjust.z);
 
+            // Right
             voidSplitter3.setDelay(30);
             voidSplitter3.setDamage(25);
             voidSplitter3.getSpeed();
             voidSplitter3.setNoGravity(true);
             voidSplitter3.setDeltaMovement(0, 0, 0);
-            voidSplitter3.moveTo(serverPlayer.getX() - 1, serverPlayer.getY() + 1, serverPlayer.getZ());
+            voidSplitter3.moveTo(rightAdjust.x, rightAdjust.y + 1, rightAdjust.z);
 
             serverPlayer.level().addFreshEntity(voidSplitter);
             voidSplitter.absRotateTo(serverPlayer.getYRot(),serverPlayer.getXRot());
 
+            // Left
             serverPlayer.level().addFreshEntity(voidSplitter2);
             voidSplitter2.absRotateTo(serverPlayer.getYRot(),serverPlayer.getXRot());
 
+            // Right
             serverPlayer.level().addFreshEntity(voidSplitter3);
             voidSplitter3.absRotateTo(serverPlayer.getYRot(),serverPlayer.getXRot());
         }
