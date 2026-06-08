@@ -22,6 +22,7 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.acetheeldritchking.aces_spell_utils.entity.mobs.GenericBossEntity;
 import net.acetheeldritchking.aces_spell_utils.entity.mobs.goals.WizardSpellComboGoal;
 import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
+import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.aces_spell_utils.utils.boss_music.BossMusicManager;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.blood_cultists.BloodCultistCaptainEntity;
@@ -667,6 +668,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
 
         ResourceKey<LootTable> lootTable = this.getLootTable();
         LootTable mainLoot = this.level().getServer().reloadableRegistries().getLootTable(lootTable);
+        LootTable tormentModeLoot = this.level().getServer().reloadableRegistries().getLootTable(ResourceKey.create(lootTable.registryKey(), lootTable.location().withSuffix("_torment_mode")));
 
         LootParams.Builder builder = new LootParams.Builder(level)
                 .withParameter(LootContextParams.THIS_ENTITY, this)
@@ -685,6 +687,10 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
         ObjectArrayList<ItemStack> objectArrayList = new ObjectArrayList<>();
         mainLoot.getRandomItems(lootParams, this.getLootTableSeed(), objectArrayList::add);
 
+        if (ASUtils.hasCurio(lastHurtByPlayer, ItemRegistries.TORMENT_NEXUS.get()))
+        {
+            tormentModeLoot.getRandomItems(lootParams, this.getLootTableSeed(), objectArrayList::add);
+        }
         this.deathLoot = new SimpleContainer(objectArrayList.size());
         objectArrayList.forEach(deathLoot::addItem);
     }

@@ -8,14 +8,17 @@ import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import net.acetheeldritchking.aces_spell_utils.registries.ASSchoolRegistry;
+import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
+import net.acetheeldritchking.discerning_the_eldritch.registries.ItemRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
@@ -90,22 +93,46 @@ public class CallAscendedOneSpell extends AbstractRitualSpell {
 
     private void spawnAscendedOneBoss(double x, double y, double z, LivingEntity caster, Level level, int spellLevel)
     {
-        AscendedOneBoss ascendedOneBoss = new AscendedOneBoss(level, false);
+        if (caster instanceof Player player)
+        {
+            if (ASUtils.hasCurio(player, ItemRegistries.TORMENT_NEXUS.get()))
+            {
+                AscendedOneBoss ascendedOneBoss = new AscendedOneBoss(level, true);
 
-        ascendedOneBoss.setPos(x, y, z);
-        ascendedOneBoss.setOldPosAndRot();
-        ascendedOneBoss.getAttributes().getInstance(Attributes.ATTACK_DAMAGE).setBaseValue(getAscendedDamage(spellLevel, caster));
-        ascendedOneBoss.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(getAscendedSpellPower(spellLevel, caster));
-        ascendedOneBoss.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(getAscendedSpellResist(spellLevel, caster));
-        ascendedOneBoss.getAttributes().getInstance(Attributes.MAX_HEALTH).setBaseValue(getAscendedHealth(spellLevel, caster));
-        ascendedOneBoss.setHealth(ascendedOneBoss.getMaxHealth());
+                ascendedOneBoss.setPos(x, y, z);
+                ascendedOneBoss.setOldPosAndRot();
+                ascendedOneBoss.getAttributes().getInstance(Attributes.ATTACK_DAMAGE).setBaseValue(getAscendedDamage(spellLevel, caster));
+                ascendedOneBoss.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(getAscendedSpellPower(spellLevel, caster));
+                ascendedOneBoss.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(getAscendedSpellResist(spellLevel, caster));
+                ascendedOneBoss.getAttributes().getInstance(Attributes.MAX_HEALTH).setBaseValue(getAscendedHealth(spellLevel, caster));
+                ascendedOneBoss.setHealth(ascendedOneBoss.getMaxHealth());
 
-        ascendedOneBoss.finalizeSpawn((ServerLevelAccessor) level,
-                level.getCurrentDifficultyAt(ascendedOneBoss.getOnPos()),
-                MobSpawnType.MOB_SUMMONED, null);
+                ascendedOneBoss.finalizeSpawn((ServerLevelAccessor) level,
+                        level.getCurrentDifficultyAt(ascendedOneBoss.getOnPos()),
+                        MobSpawnType.MOB_SUMMONED, null);
 
 
-        level.addFreshEntity(ascendedOneBoss);
+                level.addFreshEntity(ascendedOneBoss);
+            } else
+            {
+                AscendedOneBoss ascendedOneBoss = new AscendedOneBoss(level, false);
+
+                ascendedOneBoss.setPos(x, y, z);
+                ascendedOneBoss.setOldPosAndRot();
+                ascendedOneBoss.getAttributes().getInstance(Attributes.ATTACK_DAMAGE).setBaseValue(getAscendedDamage(spellLevel, caster));
+                ascendedOneBoss.getAttributes().getInstance(AttributeRegistry.SPELL_POWER).setBaseValue(getAscendedSpellPower(spellLevel, caster));
+                ascendedOneBoss.getAttributes().getInstance(AttributeRegistry.SPELL_RESIST).setBaseValue(getAscendedSpellResist(spellLevel, caster));
+                ascendedOneBoss.getAttributes().getInstance(Attributes.MAX_HEALTH).setBaseValue(getAscendedHealth(spellLevel, caster));
+                ascendedOneBoss.setHealth(ascendedOneBoss.getMaxHealth());
+
+                ascendedOneBoss.finalizeSpawn((ServerLevelAccessor) level,
+                        level.getCurrentDifficultyAt(ascendedOneBoss.getOnPos()),
+                        MobSpawnType.MOB_SUMMONED, null);
+
+
+                level.addFreshEntity(ascendedOneBoss);
+            }
+        }
     }
 
     private float getAscendedDamage(int spellLevel, LivingEntity caster)

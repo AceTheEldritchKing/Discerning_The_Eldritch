@@ -42,6 +42,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.EventPriority;
@@ -215,10 +216,23 @@ public class ServerEvents {
 
         // Do this every two seconds
         // Handling this with a bool now
-        if (entity.getData(IS_INSANE) == true && entity.tickCount % 100 == 0)
+        if (entity.getData(IS_INSANE) == true && entity.tickCount % 100 == 0 && !ASUtils.hasCurio((Player) entity, ItemRegistries.WARD_OF_CLARITY.get()))
         {
-            entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 110, 9, false, false, false));
-            entity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.AUDITORY_HALLUCINATION, 110, 9, false, false, false));
+            if (entity instanceof Player player)
+            {
+                if (!ASUtils.hasCurio(player, ItemRegistries.WARD_OF_SHADOW.get()))
+                {
+                    entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 110, 9, false, false, false));
+                }
+                if (!ASUtils.hasCurio(player, ItemRegistries.WARD_OF_VOICE.get()))
+                {
+                    entity.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.AUDITORY_HALLUCINATION, 110, 9, false, false, false));
+                }
+                if (!ASUtils.hasCurio(player, ItemRegistries.WARD_OF_BODY.get()))
+                {
+                    entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 110, 0, false, false, false));
+                }
+            }
         }
     }
 

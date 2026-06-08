@@ -124,6 +124,21 @@ public class DTESoundRegistry {
     // Apostle of Sculk Hurt
     public static DeferredHolder<SoundEvent, SoundEvent> APOSTLE_OF_SCULK_HURT = registerSoundEvent("entity.apostle_of_sculk.hurt");
 
+    // Apostle of Sculk Death
+    public static DeferredHolder<SoundEvent, SoundEvent> APOSTLE_OF_SCULK_DEATH = registerSoundEvent("entity.apostle_of_sculk.death");
+
+    // Apostle of Sculk Taunt 1
+    public static DeferredHolder<SoundEvent, SoundEvent> APOSTLE_OF_SCULK_TAUNT_ONE = registerSoundEvent("entity.apostle_of_sculk.taunt_1");
+
+    // Apostle of Sculk Taunt 2
+    public static DeferredHolder<SoundEvent, SoundEvent> APOSTLE_OF_SCULK_TAUNT_TWO = registerSoundEvent("entity.apostle_of_sculk.taunt_2");
+
+    // Apostle of Sculk Summon Entity
+    public static DeferredHolder<SoundEvent, SoundEvent> APOSTLE_OF_SCULK_SUMMON_ENTITY = registerSoundEvent("entity.apostle_of_sculk.summon_entity");
+
+    // Apostle of Sculk Strong Attack 1
+    public static DeferredHolder<SoundEvent, SoundEvent> APOSTLE_OF_SCULK_STRONG_ATTACK_ONE = registerSoundEvent("entity.apostle_of_sculk.strong_attack_1");
+
 
     /***
      * Music Sounds

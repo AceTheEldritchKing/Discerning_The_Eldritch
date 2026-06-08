@@ -1,6 +1,10 @@
 {
     "replace": false,
     "values": [
-        "discerning_the_eldritch:exorcists_aegis"
+        "discerning_the_eldritch:exorcists_aegis",
+        "discerning_the_eldritch:ward_of_shadow",
+        "discerning_the_eldritch:ward_of_voice",
+        "discerning_the_eldritch:ward_of_body",
+        "discerning_the_eldritch:ward_of_clarity"
     ]
 }

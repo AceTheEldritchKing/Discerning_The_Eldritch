@@ -21,10 +21,7 @@ import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarloc
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.EldritchWarlockMaskItem;
 import net.acetheeldritchking.discerning_the_eldritch.items.armor.Geckolib.*;
 import net.acetheeldritchking.discerning_the_eldritch.items.curios.*;
-import net.acetheeldritchking.discerning_the_eldritch.items.custom.ApostleOfSculkLootbag;
-import net.acetheeldritchking.discerning_the_eldritch.items.custom.AscendedOneLootbag;
-import net.acetheeldritchking.discerning_the_eldritch.items.custom.FadingSculkLantern;
-import net.acetheeldritchking.discerning_the_eldritch.items.custom.RuneGlyphStoneItem;
+import net.acetheeldritchking.discerning_the_eldritch.items.custom.*;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.BlackBookSpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.DiaryOfDecaySpellbook;
 import net.acetheeldritchking.discerning_the_eldritch.items.spellbooks.GuardianGuidebookSpellbook;
@@ -229,6 +226,7 @@ public class ItemRegistries {
 
     // Ascended One Lootbag
     public static final DeferredHolder<Item, Item> ASCENDED_ONE_LOOTBAG = ITEMS.register("ascended_one_lootbag", AscendedOneLootbag::new);
+    public static final DeferredHolder<Item, Item> ASCENDED_ONE_TORMENT_LOOTBAG = ITEMS.register("ascended_one_lootbag_torment", AscendedOneTormentLootbag::new);
 
     // Starmetal Ingot
     public static final DeferredHolder<Item, Item> STARMETAL_INGOT = ITEMS.register("starmetal_ingot",
@@ -254,6 +252,7 @@ public class ItemRegistries {
 
     // Apostle of Sculk Lootbag
     public static final DeferredHolder<Item, Item> APOSTLE_OF_SCULK_LOOTBAG = ITEMS.register("apostle_of_sculk_lootbag", ApostleOfSculkLootbag::new);
+    public static final DeferredHolder<Item, Item> APOSTLE_OF_SCULK_TORMENT_LOOTBAG = ITEMS.register("apostle_of_sculk_lootbag_torment", ApostleOfSculkTormentLootbag::new);
 
 
     /***
@@ -313,12 +312,16 @@ public class ItemRegistries {
     public static final Supplier<CurioBaseItem> EXORCISTS_AEGIS = ITEMS.register("exorcists_aegis", ExorcistsAegisCurio::new);
 
     // Ward of Shadow - Prevents darkness when insane
+    public static final Supplier<CurioBaseItem> WARD_OF_SHADOW = ITEMS.register("ward_of_shadow", WardOfShadowCurio::new);
 
     // Ward of Voice - Prevents auditory hallucinations when insane
+    public static final Supplier<CurioBaseItem> WARD_OF_VOICE = ITEMS.register("ward_of_voice", WardOfVoiceCurio::new);
 
     // Ward of Body - Prevents weakness when insane
+    public static final Supplier<CurioBaseItem> WARD_OF_BODY = ITEMS.register("ward_of_body", WardOfBodyCurio::new);
 
     // Ward of Clarity - Prevents all debuffs when insane
+    public static final Supplier<CurioBaseItem> WARD_OF_CLARITY = ITEMS.register("ward_of_clarity", WardOfClarityCurio::new);
 
     // Strange Idol
     public static final Supplier<CurioBaseItem> STRANGE_IDOL = ITEMS.register("strange_idol", StrangeIdolCurio::new);

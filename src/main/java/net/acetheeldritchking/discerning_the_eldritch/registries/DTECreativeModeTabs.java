@@ -53,6 +53,10 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.IRONBOUND_FEATHER.get());
                         output.accept(ItemRegistries.RIFT_RIPPER_EMBLEM.get());
                         output.accept(ItemRegistries.EXORCISTS_AEGIS.get());
+                        output.accept(ItemRegistries.WARD_OF_SHADOW.get());
+                        output.accept(ItemRegistries.WARD_OF_VOICE.get());
+                        output.accept(ItemRegistries.WARD_OF_BODY.get());
+                        output.accept(ItemRegistries.WARD_OF_CLARITY.get());
                         output.accept(ItemRegistries.THORN_RING.get());
                         output.accept(ItemRegistries.LANTERN_OF_HATRED.get());
                         output.accept(ItemRegistries.STRANGE_IDOL.get());
@@ -70,7 +74,9 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.FADING_SCULK_LANTERN.get());
                         // Lootbags
                         output.accept(ItemRegistries.ASCENDED_ONE_LOOTBAG.get());
+                        output.accept(ItemRegistries.ASCENDED_ONE_TORMENT_LOOTBAG.get());
                         output.accept(ItemRegistries.APOSTLE_OF_SCULK_LOOTBAG.get());
+                        output.accept(ItemRegistries.APOSTLE_OF_SCULK_TORMENT_LOOTBAG.get());
                         // Spellbooks
                         output.accept(ItemRegistries.BLACK_BOOK_SPELLBOOK.get());
                         output.accept(ItemRegistries.THE_APOCRYPHA_SPELLBOOK.get());
