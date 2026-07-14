@@ -1,8 +1,8 @@
 {
-  "replace": false,
   "values": [
-    "discerning_the_eldritch:staff_of_eldritch",
+    "discerning_the_eldritch:broken_legends_staff",
     "discerning_the_eldritch:staff_of_ascension",
-    "discerning_the_eldritch:broken_legends_staff"
+    "discerning_the_eldritch:staff_of_eldritch",
+    "discerning_the_eldritch:staff_of_the_spectre"
   ]
 }
