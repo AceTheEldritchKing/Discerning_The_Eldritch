@@ -10,6 +10,7 @@ import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import io.redspace.ironsspellbooks.entity.mobs.goals.melee.AttackAnimationData;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.GenericAnimatedWarlockAttackGoal;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
+import net.acetheeldritchking.aces_spell_utils.entity.mobs.UniqueAbstractMeleeCastingMob;
 import net.acetheeldritchking.aces_spell_utils.entity.mobs.UniqueAbstractSpellCastingMob;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.gaoler.GaolerEntity;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
@@ -36,57 +37,18 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import java.util.List;
 import java.util.UUID;
 
-public class UntoldBehemothEntity extends UniqueAbstractSpellCastingMob implements IMagicSummon, GeoAnimatable, IAnimatedAttacker {
+public class UntoldBehemothEntity extends UniqueAbstractMeleeCastingMob implements IMagicSummon, GeoAnimatable, IAnimatedAttacker {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     protected UUID summonerUUID;
 
     public UntoldBehemothEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         xpReward = 0;
-        this.lookControl = createLookControl();
-        this.moveControl = createMoveControl();
         noCulling = true;
     }
 
     public UntoldBehemothEntity(Level level, LivingEntity owner) {
         this(DTEEntityRegistry.UNTOLD_BEHEMOTH.get(), level);
-    }
-
-    protected LookControl createLookControl()
-    {
-        return new LookControl(this)
-        {
-            @Override
-            protected float rotateTowards(float from, float to, float maxDelta) {
-                return super.rotateTowards(from, to, maxDelta * 2.5F);
-            }
-
-            @Override
-            protected boolean resetXRotOnTick() {
-                return getTarget() == null;
-            }
-        };
-    }
-
-    protected MoveControl createMoveControl()
-    {
-        return new MoveControl(this)
-        {
-            @Override
-            protected float rotlerp(float sourceAngle, float targetAngle, float maximumChange) {
-                double x = this.wantedX - this.mob.getX();
-                double z = this.wantedZ - this.mob.getZ();
-
-                if (x * x + z * z < 0.5F)
-                {
-                    return sourceAngle;
-                }
-                else
-                {
-                    return super.rotlerp(sourceAngle, targetAngle, maximumChange * 0.25F);
-                }
-            }
-        };
     }
 
     @Override
@@ -163,75 +125,6 @@ public class UntoldBehemothEntity extends UniqueAbstractSpellCastingMob implemen
 
     public boolean hurt(DamageSource pSource, float pAmount) {
         return this.shouldIgnoreDamage(pSource) ? false : super.hurt(pSource, pAmount);
-    }
-
-    // Geckolib & Animations
-    RawAnimation animationToPlay = null;
-    private final AnimationController<UntoldBehemothEntity> attackAnimationController = new AnimationController<>(this, "attack_controller", 0, this::attackPredicate);
-    private final AnimationController<UntoldBehemothEntity> animationController = new AnimationController<>(this, "controller", 0, this::predicate);
-    private final AnimationController<UntoldBehemothEntity> castingAnimationController = new AnimationController<>(this, "casting_controller", 0, this::castingPredicate);
-
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(animationController);
-        controllers.add(attackAnimationController);
-        controllers.add(castingAnimationController);
-    }
-
-    private PlayState predicate(AnimationState<UntoldBehemothEntity> event)
-    {
-        if (event.isMoving() && this.animationToPlay == null)
-        {
-            event.getController().setAnimation(RawAnimation.begin().then("walk", Animation.LoopType.LOOP));
-            return PlayState.CONTINUE;
-        }
-        else if (!event.isMoving() && this.animationToPlay == null)
-        {
-            event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
-            return PlayState.CONTINUE;
-        }
-
-        return PlayState.STOP;
-    }
-
-    private PlayState attackPredicate(AnimationState<UntoldBehemothEntity> event)
-    {
-        var controller = event.getController();
-
-        if (this.animationToPlay != null)
-        {
-            // This should do the custom attack animations
-            controller.forceAnimationReset();
-            controller.setAnimation(animationToPlay);
-            animationToPlay = null;
-        }
-
-        return PlayState.CONTINUE;
-    }
-
-    private PlayState castingPredicate(AnimationState<UntoldBehemothEntity> event)
-    {
-        if (isCasting() && this.animationToPlay == null)
-        {
-            event.getController().setAnimation(RawAnimation.begin().thenPlay("stomp_cast"));
-            return PlayState.CONTINUE;
-        }
-
-        return PlayState.STOP;
-    }
-
-    @Override
-    public void playAnimation(String animationId) {
-        try {
-            animationToPlay = RawAnimation.begin().thenPlay(animationId);
-        } catch (Exception ignored) {
-            IronsSpellbooks.LOGGER.error("Entity {} Failed to play animation: {}", this, animationId);
-        }
-    }
-
-    @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return this.cache;
     }
 
     @Override

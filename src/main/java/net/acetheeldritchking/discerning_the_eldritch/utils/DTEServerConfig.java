@@ -77,10 +77,10 @@ public class DTEServerConfig
             .define("Sheath of The Razor Multiplier", 10);
 
     // Mourning Star
-    private static final ModConfigSpec.ConfigValue<Float> MOURNING_STAR_MORTAL_DAMAGE_MULTIPLIER = BUILDER
+    private static final ModConfigSpec.ConfigValue<Double> MOURNING_STAR_MORTAL_DAMAGE_MULTIPLIER = BUILDER
             .comment("Defines the multiplier for the Mourning Star's mortal damage decree")
             .comment("Default is [5.5F]")
-            .define("Mourning Star Damage Multiplier", 5.5F);
+            .define("Mourning Star Damage Multiplier", 5.5);
 
     // Boss Damage Caps //
     // Ascended One
@@ -127,7 +127,7 @@ public class DTEServerConfig
     public static int razorSheathCooldown;
     public static int razorSheathMultiplier;
     public static boolean gaolerWalkingScreenshake;
-    public static float mourningStarMortalDamageMultiplier;
+    public static double mourningStarMortalDamageMultiplier;
     public static boolean enableBloodCultistAggression;
 
 

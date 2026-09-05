@@ -258,7 +258,7 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
 
     // Geckolib & Animations
     RawAnimation animationToPlay = null;
-    private final AnimationController<GaolerEntity> animationController = new AnimationController<>(this, "controller", 0, this::predicate);
+    private final AnimationController<GaolerEntity> animationController = new AnimationController<>(this, "controller", 0, this::idlePredicate);
     private final AnimationController<GaolerEntity> attackAnimationController = new AnimationController<>(this, "attack_controller", 0, this::attackPredicate);
     private final AnimationController<GaolerEntity> castingAnimationController = new AnimationController<>(this, "casting_controller", 0, this::castingPredicate);
 
@@ -269,7 +269,7 @@ public class GaolerEntity extends UniqueAbstractSpellCastingMob implements IMagi
         controllers.add(castingAnimationController);
     }
 
-    private PlayState predicate(AnimationState<GaolerEntity> event)
+    private PlayState idlePredicate(AnimationState<GaolerEntity> event)
     {
         if (!isPlayingRiseAnimation())
         {
