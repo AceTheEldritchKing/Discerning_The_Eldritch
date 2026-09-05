@@ -45,9 +45,9 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
             new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.20, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(ASAttributeRegistry.RITUAL_MAGIC_POWER, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-            new AttributeContainer(ASAttributeRegistry.MANA_STEAL, 0.10D, AttributeModifier.Operation.ADD_VALUE),
+            new AttributeContainer(ASAttributeRegistry.MANA_STEAL, 1.10D, AttributeModifier.Operation.ADD_VALUE),
             new AttributeContainer(ASAttributeRegistry.MANA_REND, 0.25D, AttributeModifier.Operation.ADD_VALUE),
-            new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.1D, AttributeModifier.Operation.ADD_VALUE)
+            new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.75D, AttributeModifier.Operation.ADD_VALUE)
     );
 
     // Ritual Dagger
@@ -68,7 +68,7 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
     public static DTEWeaponTiers FORSAKEN_FLAMBERGE = new DTEWeaponTiers(2031, 10F, -2.7F, 6, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-            new AttributeContainer(ASAttributeRegistry.MANA_STEAL, 0.05D, AttributeModifier.Operation.ADD_VALUE)
+            new AttributeContainer(ASAttributeRegistry.MANA_STEAL, 1.05D, AttributeModifier.Operation.ADD_VALUE)
     );
 
     // Snowgrave
@@ -79,7 +79,7 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
     public static DTEWeaponTiers SOUL_FIRE_SCYTHE = new DTEWeaponTiers(2061, 12F, -2.7F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.FIRE_SPELL_POWER, 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(AttributeRegistry.FIRE_MAGIC_RESIST, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-            new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.05D, AttributeModifier.Operation.ADD_VALUE)
+            new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.5, AttributeModifier.Operation.ADD_VALUE)
     );
 
     // Cataclysm (Dormant)
@@ -94,7 +94,7 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
             new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(ASAttributeRegistry.RITUAL_MAGIC_POWER, 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(ASAttributeRegistry.GOLIATH_SLAYER, 0.1, AttributeModifier.Operation.ADD_VALUE),
-            new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.05, AttributeModifier.Operation.ADD_VALUE)
+            new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.5, AttributeModifier.Operation.ADD_VALUE)
     );
 
     // Devourer (Dormant)
@@ -109,7 +109,7 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
             new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(ASAttributeRegistry.RITUAL_MAGIC_POWER, 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(ASAttributeRegistry.HUNGER_STEAL, 2, AttributeModifier.Operation.ADD_VALUE),
-            new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.05, AttributeModifier.Operation.ADD_VALUE)
+            new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.5, AttributeModifier.Operation.ADD_VALUE)
     );
 
     // Mourning Star (Dormant)
@@ -124,7 +124,7 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
             new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(ASAttributeRegistry.RITUAL_MAGIC_POWER, 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(ASAttributeRegistry.MANA_REND, 0.1, AttributeModifier.Operation.ADD_VALUE),
-            new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.05, AttributeModifier.Operation.ADD_VALUE)
+            new AttributeContainer(ASAttributeRegistry.SPELL_RES_PENETRATION, 0.5, AttributeModifier.Operation.ADD_VALUE)
     );
 
     // Starmetal Scythe
@@ -134,18 +134,18 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
             new AttributeContainer(ASAttributeRegistry.MAGIC_PROJECTILE_DAMAGE, 0.10D, AttributeModifier.Operation.ADD_VALUE)
     );
 
-    // Starmetal Scythe
+    // Starmetal Odachi
     public static DTEWeaponTiers STARMETAL_ODACHI = new DTEWeaponTiers(2061, 9.5F, -2.5F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.ENDER_SPELL_POWER, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(AttributeRegistry.ENDER_MAGIC_RESIST, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-            new AttributeContainer(ASAttributeRegistry.LIFE_RECOVERY, 0.05D, AttributeModifier.Operation.ADD_VALUE)
+            new AttributeContainer(ASAttributeRegistry.DETERMINATION, 0.25, AttributeModifier.Operation.ADD_VALUE)
     );
 
     // Void Splitter
     public static DTEWeaponTiers VOIDSPLITTER = new DTEWeaponTiers(2061, 13.5F, -2.5F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.ENDER_SPELL_POWER, 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(ASAttributeRegistry.MAGIC_DAMAGE_CRIT_CHANCE, 0.15, AttributeModifier.Operation.ADD_VALUE),
-            new AttributeContainer(ASAttributeRegistry.LIFE_RECOVERY, 0.10D, AttributeModifier.Operation.ADD_VALUE)
+            new AttributeContainer(ASAttributeRegistry.DETERMINATION, 0.30, AttributeModifier.Operation.ADD_VALUE)
     );
 
     // Staff of The Spectre

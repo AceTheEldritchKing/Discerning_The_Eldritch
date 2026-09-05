@@ -14,8 +14,8 @@ public class DTEStaffTier implements IronsWeaponTier {
             new AttributeContainer(ASAttributeRegistry.RITUAL_MAGIC_POWER, 0.20f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(AttributeRegistry.MANA_REGEN, 0.15f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.25f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-            new AttributeContainer(ASAttributeRegistry.MANA_STEAL, 0.25D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-            new AttributeContainer(ASAttributeRegistry.MANA_REND, 0.10D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+            new AttributeContainer(ASAttributeRegistry.MANA_STEAL, 1.25, AttributeModifier.Operation.ADD_VALUE),
+            new AttributeContainer(ASAttributeRegistry.MANA_REND, 0.10, AttributeModifier.Operation.ADD_VALUE)
     );
 
     // Staff of Ascension
