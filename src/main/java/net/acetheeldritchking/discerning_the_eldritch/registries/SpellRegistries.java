@@ -87,10 +87,6 @@ public class SpellRegistries {
 
     // Umbral Miasma - Create a field of miasma that disorients targets and leaves the susceptible to Eldritch spells
 
-    // Shadow Splitter - Send out a blade of shadow that homes in on the nearest target, cutting through them repeatedly
-
-    // Knight's Edge - Conjure a group of shadow blades with down upon a selected area. Blades cause hit entities to take more Eldritch damage
-
     // Dark Ascent - Recast; On first recast, ascend into the air. On the second, slam down on your opponent
 
     // WATEOA - If you know, you know.
@@ -98,6 +94,8 @@ public class SpellRegistries {
     // Black Sun - If you know, you know.
 
     // Falsified Phenomena (Credit to Lumi) - Engulf the nearby area into a domain, shattering reality within it. When the domain expires, the surrounding area explodes and inflicts Ruin
+
+    // Ruinous Howl - Release a howl that sends dread into nearby enemies and empowers allies and summons
 
 
     /***

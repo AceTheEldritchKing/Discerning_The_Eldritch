@@ -25,12 +25,12 @@ public class StaffOfTheSpectre extends ActiveAndPassiveAbilityMagicSwordItem imp
     }
 
     @Override
-    protected int getActiveCooldownTicks() {
+    public int getActiveCooldownTicks() {
         return ACTIVE_COOLDOWN;
     }
 
     @Override
-    protected int getPassiveCooldownTicks() {
+    public int getPassiveCooldownTicks() {
         return PASSIVE_COOLDOWN;
     }
 }

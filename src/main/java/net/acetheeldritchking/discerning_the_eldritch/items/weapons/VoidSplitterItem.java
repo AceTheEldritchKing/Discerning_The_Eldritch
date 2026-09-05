@@ -19,12 +19,12 @@ public class VoidSplitterItem extends ActiveAndPassiveAbilityMagicSwordItem impl
     }
 
     @Override
-    protected int getActiveCooldownTicks() {
+    public int getActiveCooldownTicks() {
         return 15 * 20;
     }
 
     @Override
-    protected int getPassiveCooldownTicks() {
+    public int getPassiveCooldownTicks() {
         return 5 * 20;
     }
 }

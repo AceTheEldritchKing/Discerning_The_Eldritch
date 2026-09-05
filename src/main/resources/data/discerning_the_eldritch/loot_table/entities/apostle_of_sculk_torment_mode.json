@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "discerning_the_eldritch:apostle_of_sculk_lootbag_torment"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

@@ -242,5 +242,38 @@
             "discerning_the_eldritch:mob/apostle_of_sculk/voice/aos_hurt_4"
         ],
         "subtitle": "subtitles.entity.apostle_of_sculk.hurt"
+    },
+    "entity.apostle_of_sculk.death": {
+        "sounds": [
+            "discerning_the_eldritch:mob/apostle_of_sculk/voice/aos_death_line"
+        ],
+        "subtitle": "subtitles.entity.apostle_of_sculk.death"
+    },
+    "entity.apostle_of_sculk.taunt_1": {
+        "sounds": [
+            "discerning_the_eldritch:mob/apostle_of_sculk/voice/aos_second_phase_no_laugh"
+        ],
+        "subtitle": "subtitles.entity.apostle_of_sculk.taunt_1"
+    },
+    "entity.apostle_of_sculk.taunt_2": {
+        "sounds": [
+            "discerning_the_eldritch:mob/apostle_of_sculk/voice/aos_final_phase"
+        ],
+        "subtitle": "subtitles.entity.apostle_of_sculk.taunt_2"
+    },
+    "entity.apostle_of_sculk.summon_entity": {
+        "sounds": [
+            "discerning_the_eldritch:mob/apostle_of_sculk/voice/aos_rise_1",
+            "discerning_the_eldritch:mob/apostle_of_sculk/voice/aos_rise_2",
+            "discerning_the_eldritch:mob/apostle_of_sculk/voice/aos_rise_3",
+            "discerning_the_eldritch:mob/apostle_of_sculk/voice/aos_rise_4"
+        ],
+        "subtitle": "subtitles.entity.apostle_of_sculk.summon_entity"
+    },
+    "entity.apostle_of_sculk.strong_attack_1": {
+        "sounds": [
+            "discerning_the_eldritch:mob/apostle_of_sculk/voice/aos_strong_attack_1"
+        ],
+        "subtitle": "subtitles.entity.apostle_of_sculk.strong_attack_1"
     }
 }

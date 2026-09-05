@@ -32,5 +32,4 @@ public class DTEAttachmentRegistry {
     {
         ATTACHMENT_TYPES.register(eventBus);
     }
-
 }

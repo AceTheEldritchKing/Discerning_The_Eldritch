@@ -38,10 +38,11 @@
     }
   },
   "start_height": {
-    "absolute": -10
+    "absolute": -32
   },
-  "start_pool": "discerning_the_eldritch:sculk_city/boss_room/sculk_arena_top",
+  "start_pool": "discerning_the_eldritch:sculk_city/boss_room/sculk_arena_bottom",
   "step": "underground_decoration",
   "terrain_adaptation": "beard_box",
-  "use_expansion_hack": false
+  "use_expansion_hack": false,
+  "liquid_settings": "ignore_waterlogging"
 }

@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "id": "discerning_the_eldritch:fading_sculk_lantern"
+    },
+    "title": {
+      "translate": "advancements.discerning_the_eldritch.apostle_of_sculk_fight.title"
+    },
+    "description": {
+      "translate": "advancements.discerning_the_eldritch.apostle_of_sculk_fight.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "discerning_the_eldritch:discerning_the_eldritch/main/kill_ascended_one",
+  "criteria": {
+    "apostle_of_sculk_fight": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}
