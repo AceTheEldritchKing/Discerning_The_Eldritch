@@ -138,14 +138,14 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
     public static DTEWeaponTiers STARMETAL_ODACHI = new DTEWeaponTiers(2061, 9.5F, -2.5F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.ENDER_SPELL_POWER, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(AttributeRegistry.ENDER_MAGIC_RESIST, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-            new AttributeContainer(ASAttributeRegistry.DETERMINATION, 0.25, AttributeModifier.Operation.ADD_VALUE)
+            new AttributeContainer(ASAttributeRegistry.VIGOR_REAP, 0.25, AttributeModifier.Operation.ADD_VALUE)
     );
 
     // Void Splitter
     public static DTEWeaponTiers VOIDSPLITTER = new DTEWeaponTiers(2061, 13.5F, -2.5F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
             new AttributeContainer(AttributeRegistry.ENDER_SPELL_POWER, 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
             new AttributeContainer(ASAttributeRegistry.MAGIC_DAMAGE_CRIT_CHANCE, 0.15, AttributeModifier.Operation.ADD_VALUE),
-            new AttributeContainer(ASAttributeRegistry.DETERMINATION, 0.30, AttributeModifier.Operation.ADD_VALUE)
+            new AttributeContainer(ASAttributeRegistry.VIGOR_REAP, 0.30, AttributeModifier.Operation.ADD_VALUE)
     );
 
     // Staff of The Spectre

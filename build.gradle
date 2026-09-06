@@ -182,7 +182,7 @@ dependencies {
     implementation "curse.maven:irons-lib-1492763:8364894"
 
     // GECKOLIB ***************************************************************************************************
-    implementation "curse.maven:geckolib-388172:6304958"
+    implementation "curse.maven:geckolib-388172:8350073"
 
     // CAELUS *****************************************************************************************************
     compileOnly "com.illusivesoulworks.caelus:caelus-neoforge:${caelus_version}:api"
