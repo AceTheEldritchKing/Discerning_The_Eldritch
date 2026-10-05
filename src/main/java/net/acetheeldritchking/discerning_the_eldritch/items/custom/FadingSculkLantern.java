@@ -2,8 +2,6 @@ package net.acetheeldritchking.discerning_the_eldritch.items.custom;
 
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
-import io.redspace.ironsspellbooks.registries.PoiTypeRegistry;
-import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
@@ -40,7 +38,7 @@ import java.util.Objects;
 
 public class FadingSculkLantern extends Item {
     public FadingSculkLantern() {
-        super(ItemPropertiesHelper.material().rarity(ASRarities.SCULK_RARITY_PROXY.getValue()).stacksTo(1));
+        super(new Properties().rarity(ASRarities.SCULK_RARITY_PROXY.getValue()).stacksTo(1));
     }
 
     @Override

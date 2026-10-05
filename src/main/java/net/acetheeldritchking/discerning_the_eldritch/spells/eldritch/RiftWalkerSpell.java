@@ -182,26 +182,4 @@ public class RiftWalkerSpell extends AbstractSpell {
     {
         return (float) (Utils.softCapFormula(getEntityPowerMultiplier(entity)) * (getSpellPower(spellLevel, null) / 2));
     }
-
-    // I am REALLY tired, so I copied this from TP spell
-    public static class TeleportData implements ICastData {
-        private Vec3 teleportTargetPosition;
-
-        public TeleportData(Vec3 teleportTargetPosition) {
-            this.teleportTargetPosition = teleportTargetPosition;
-        }
-
-        public void setTeleportTargetPosition(Vec3 targetPosition) {
-            this.teleportTargetPosition = targetPosition;
-        }
-
-        public Vec3 getTeleportTargetPosition() {
-            return this.teleportTargetPosition;
-        }
-
-        @Override
-        public void reset() {
-            //Nothing needed here for teleport
-        }
-    }
 }
