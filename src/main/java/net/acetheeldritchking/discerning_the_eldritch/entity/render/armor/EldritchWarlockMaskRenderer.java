@@ -27,6 +27,7 @@ public class EldritchWarlockMaskRenderer extends AzArmorRenderer {
                 AzArmorRendererConfig.builder(GEO, TEX)
                         .setAnimatorProvider(EldritchArmorAnimator::new)
                         .addRenderLayer(new AzAutoGlowingLayer<>())
+                        .setPipelineContext(AzArmorLowerCloakLayerPipeline::new)
                         .build()
         );
     }
