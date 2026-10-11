@@ -1,5 +1,6 @@
 package net.acetheeldritchking.discerning_the_eldritch.items.weapons;
 
+import io.redspace.ironslib.soulfire.SoulFireHelper;
 import io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem;
 import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
@@ -10,7 +11,6 @@ import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import io.redspace.ironsspellbooks.util.MinecraftInstanceHelper;
-import it.crystalnest.prometheus.api.FireManager;
 import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
@@ -157,7 +157,7 @@ public class SoulFireScytheItem extends MagicSwordItem implements UniqueItem {
         {
             if (targets != player)
             {
-                FireManager.setOnFire(targets, 10, FireManager.SOUL_FIRE_TYPE);
+                SoulFireHelper.igniteSoul(targets, 10*20);
                 success = true;
             }
         }

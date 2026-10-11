@@ -1,5 +1,6 @@
 package net.acetheeldritchking.discerning_the_eldritch.events;
 
+import io.redspace.ironslib.soulfire.SoulFireHelper;
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
@@ -8,8 +9,6 @@ import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.ISSDamageTypes;
 import io.redspace.ironsspellbooks.entity.spells.ChainLightning;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
-import it.crystalnest.prometheus.api.Fire;
-import it.crystalnest.prometheus.api.FireManager;
 import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.entity.mobs.bosses.ascended_one.AscendedOneBoss;
@@ -359,7 +358,7 @@ public class ServerEvents {
                     // Burn them all
                     //DiscerningTheEldritch.LOGGER.debug("Are we coming into this?: " + soulFireStacks);
 
-                    FireManager.setOnFire(target, 5, FireManager.SOUL_FIRE_TYPE);
+                    SoulFireHelper.igniteSoul(target, 5*20);
 
                     // Only go on CD if we reach max stacks
                     /*if (livingEntity instanceof Player player)

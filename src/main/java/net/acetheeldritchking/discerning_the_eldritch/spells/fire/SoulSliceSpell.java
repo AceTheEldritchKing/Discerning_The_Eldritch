@@ -1,5 +1,6 @@
 package net.acetheeldritchking.discerning_the_eldritch.spells.fire;
 
+import io.redspace.ironslib.soulfire.SoulFireHelper;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
@@ -11,7 +12,6 @@ import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.damage.SpellDamageSource;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
-import it.crystalnest.prometheus.api.FireManager;
 import net.acetheeldritchking.aces_spell_utils.spells.ASSpellAnimations;
 import net.acetheeldritchking.discerning_the_eldritch.DiscerningTheEldritch;
 import net.acetheeldritchking.discerning_the_eldritch.particle.SoulFireSlashParticleOptions;
@@ -146,7 +146,7 @@ public class SoulSliceSpell extends AbstractSpell {
                     {
                         if (DamageSources.applyDamage(target, (getDamage(spellLevel, entity) + 2), damageSource))
                         {
-                            FireManager.setOnFire(target, 10, FireManager.SOUL_FIRE_TYPE);
+                            SoulFireHelper.igniteSoul(target, 10*20);
                             EnchantmentHelper.doPostAttackEffects((ServerLevel) level, target, damageSource);
                             mainhandItem.set(DTEDataComponentRegistry.SOUL_FIRE_STACKS, soulFireStacks - 2);
                         }
@@ -154,7 +154,7 @@ public class SoulSliceSpell extends AbstractSpell {
                     {
                         if (DamageSources.applyDamage(target, getDamage(spellLevel, entity), damageSource))
                         {
-                            FireManager.setOnFire(target, 10, FireManager.SOUL_FIRE_TYPE);
+                            SoulFireHelper.igniteSoul(target, 10*20);
                             EnchantmentHelper.doPostAttackEffects((ServerLevel) level, target, damageSource);
                         }
                     }

@@ -1,12 +1,9 @@
 package net.acetheeldritchking.discerning_the_eldritch.entity.spells.soul_eruption;
 
+import io.redspace.ironslib.soulfire.SoulFireHelper;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AoeEntity;
-import io.redspace.ironsspellbooks.registries.EntityRegistry;
-import io.redspace.ironsspellbooks.registries.SoundRegistry;
-import io.redspace.ironsspellbooks.util.ParticleHelper;
-import it.crystalnest.prometheus.api.FireManager;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEEntityRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTEPotionEffectRegistry;
 import net.acetheeldritchking.discerning_the_eldritch.registries.DTESoundRegistry;
@@ -57,7 +54,7 @@ public class SoulEruptionAoe extends AoeEntity {
         DamageSources.ignoreNextKnockback(target);
         target.hurt(DAMAGE_SOURCE, getDamage());
         // Yeah, you're gonna hurt *bad*
-        FireManager.setOnFire(target, 25, FireManager.SOUL_FIRE_TYPE);
+        SoulFireHelper.igniteSoul(target, 25*20);
         target.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.SCORCHED_SOUL_EFFECT, 25 * 20, 0, true, true, true));
     }
 
