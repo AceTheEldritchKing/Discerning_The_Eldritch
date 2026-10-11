@@ -67,6 +67,7 @@ public class ClientSetup {
         event.registerEntityRenderer(DTEEntityRegistry.SOUL_FIRE_ERUPTION_AOE.get(), NoopRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.MOURNING_STAR_PROJECTILE.get(), MourningStarRenderer::new);
         event.registerEntityRenderer(DTEEntityRegistry.RITUAL_BURN_AOE.get(), NoopRenderer::new);
+        event.registerEntityRenderer(DTEEntityRegistry.STARDUST_AOE.get(), NoopRenderer::new);
     }
 
     @SubscribeEvent
@@ -89,5 +90,6 @@ public class ClientSetup {
         event.registerSpriteSet(DTEParticleRegistry.MALIGNANT_FLAME.get(), MalignantFlameParticle.Provider::new);
         event.registerSpriteSet(DTEParticleRegistry.SOUL_FIRE_SLASH_PARTICLE.get(), SoulFireSlashParticle.Provider::new);
         event.registerSpriteSet(DTEParticleRegistry.VEIN_RIPPER_VERTICAL_PARTICLE.get(), VeinRipperVerticalParticle.Provider::new);
+        event.registerSpriteSet(DTEParticleRegistry.STARDUST_PARTICLE.get(), StardustParticle.Provider::new);
     }
 }

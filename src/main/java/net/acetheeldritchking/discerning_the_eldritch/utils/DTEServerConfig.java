@@ -82,6 +82,12 @@ public class DTEServerConfig
             .comment("Default is [5.5F]")
             .define("Mourning Star Damage Multiplier", 5.5);
 
+    // Pyrium Sheath
+    private static final ModConfigSpec.ConfigValue<Integer> STARSTRUCK_SHEATH_COOLDOWN = BUILDER
+            .comment("Defines the cooldown in seconds value for the Starstruck Sheath's ability")
+            .comment("Default is [5]")
+            .define("Starstruck Sheath CD", 5);
+
     // Boss Damage Caps //
     // Ascended One
     private static final ModConfigSpec.BooleanValue ENABLED_ASCENDED_ONE_DAMAGE_CAP = BUILDER
@@ -126,6 +132,7 @@ public class DTEServerConfig
     public static int frostbourneSheathCooldown;
     public static int razorSheathCooldown;
     public static int razorSheathMultiplier;
+    public static int starStruckSheathCooldown;
     public static boolean gaolerWalkingScreenshake;
     public static double mourningStarMortalDamageMultiplier;
     public static boolean enableBloodCultistAggression;
@@ -149,6 +156,7 @@ public class DTEServerConfig
         razorSheathCooldown = RAZOR_SHEATH_COOLDOWN.get();
         razorSheathMultiplier = RAZOR_SHEATH_MULTIPLIER.get();
         mourningStarMortalDamageMultiplier = MOURNING_STAR_MORTAL_DAMAGE_MULTIPLIER.get();
+        starStruckSheathCooldown = STARSTRUCK_SHEATH_COOLDOWN.get();
 
         enableAscendedOneDamageCap = ENABLED_ASCENDED_ONE_DAMAGE_CAP.get();
         ascendedOneDamageCap = ASCENDED_ONE_DAMAGE_CAP_VALUE.get();

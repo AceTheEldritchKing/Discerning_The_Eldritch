@@ -51,6 +51,9 @@ public class DTEPotionEffectRegistry {
     // Scorched Soul Effect
     public static final DeferredHolder<MobEffect, MobEffect> SCORCHED_SOUL_EFFECT = MOB_EFFECTS.register("scorched_soul_potion_effect", ScorchedSoulPotionEffect::new);
 
+    // Stardusted Effect
+    public static final DeferredHolder<MobEffect, MobEffect> STARDUSTED_EFFECT = MOB_EFFECTS.register("star_dusted_potion_effect", StardustedPotionEffect::new);
+
 
     public static void register(IEventBus eventBus)
     {

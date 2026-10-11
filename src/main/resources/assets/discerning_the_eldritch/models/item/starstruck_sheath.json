@@ -1,0 +1,15 @@
+{
+    "parent": "minecraft:item/handheld",
+    "loader": "neoforge:separate_transforms",
+    "base": {
+        "parent": "discerning_the_eldritch:item/starstruck_sheath_handheld"
+    },
+    "perspectives": {
+        "gui": {
+            "parent": "discerning_the_eldritch:item/starstruck_sheath_gui"
+        },
+        "fixed": {
+            "parent": "discerning_the_eldritch:item/starstruck_sheath_fixed"
+        }
+    }
+}

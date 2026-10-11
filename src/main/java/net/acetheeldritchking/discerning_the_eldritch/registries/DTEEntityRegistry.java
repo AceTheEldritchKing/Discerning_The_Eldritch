@@ -31,6 +31,7 @@ import net.acetheeldritchking.discerning_the_eldritch.entity.spells.razor_blade.
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.rift_walker.UnstableRiftEntity;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.ritual_burn.RitualBurnAoE;
 import net.acetheeldritchking.discerning_the_eldritch.entity.spells.soul_eruption.SoulEruptionAoe;
+import net.acetheeldritchking.discerning_the_eldritch.entity.spells.stardust_aoe.StardustAoE;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -276,6 +277,14 @@ public class DTEEntityRegistry {
                     .sized(1f, 1f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "ritual_burn_aoe").toString())
+            );
+
+    // Stardust AoE
+    public static final DeferredHolder<EntityType<?>, EntityType<StardustAoE>> STARDUST_AOE =
+            ENTITIES.register("stardust_aoe", () -> EntityType.Builder.<StardustAoE>of(StardustAoE::new, MobCategory.MISC)
+                    .sized(1f, 1f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(DiscerningTheEldritch.MOD_ID, "stardust_aoe").toString())
             );
 
 

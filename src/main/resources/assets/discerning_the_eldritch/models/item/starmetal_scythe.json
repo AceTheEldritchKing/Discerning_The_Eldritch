@@ -1,0 +1,18 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "irons_spellbooks:item/template_verylarge_sword",
+    "textures": {
+      "layer0": "discerning_the_eldritch:item/starmetal_scythe"
+    }
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "minecraft:item/handheld",
+      "textures": {
+        "layer0": "discerning_the_eldritch:item/star_metal_scythe_gui"
+      }
+    }
+  }
+}

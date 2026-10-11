@@ -157,6 +157,12 @@ public class ItemRegistries {
     // Mourning Star (Awakened)
     public static final DeferredHolder<Item, Item> MOURNING_STAR_AWAKENED = ITEMS.register("mourning_star_awakened", MourningStarMaceAwakenedItem::new);
 
+    // Starmetal Scythe
+    public static final DeferredHolder<Item, Item> STARMETAL_SCYTHE = ITEMS.register("starmetal_scythe", StarmetalScytheItem::new);
+
+    // Starmetal Odachi
+    public static final DeferredHolder<Item, Item> STARMETAL_ODACHI = ITEMS.register("starmetal_odachi", StarmetalOdachi::new);
+
 
     /***
      * Generic Items
@@ -207,6 +213,18 @@ public class ItemRegistries {
     public static final DeferredHolder<Item, Item> SOUL_EMBER = ITEMS.register("soul_ember",
             () -> new Item(ItemPropertiesHelper.material().rarity(ASRarities.AQUATIC_RARITY_PROXY.getValue())));
 
+    // Starmetal Ingot
+    public static final DeferredHolder<Item, Item> STARMETAL_INGOT = ITEMS.register("starmetal_ingot",
+            () -> new Item(ItemPropertiesHelper.material().fireResistant().rarity(DTERarities.STARDUST_RARITY_PROXY.getValue())));
+
+    // Starmetal Nugget
+    public static final DeferredHolder<Item, Item> STARMETAL_NUGGET = ITEMS.register("starmetal_nugget",
+            () -> new Item(ItemPropertiesHelper.material().fireResistant().rarity(DTERarities.STARDUST_RARITY_PROXY.getValue())));
+
+    // Starstone
+    public static final DeferredHolder<Item, Item> STARSTONE = ITEMS.register("starstone",
+            () -> new Item(ItemPropertiesHelper.material().fireResistant().rarity(DTERarities.STARDUST_RARITY_PROXY.getValue())));
+
 
     /***
      * Upgrade Orbs
@@ -252,6 +270,9 @@ public class ItemRegistries {
     // Razor Sheath
     public static final Supplier<CurioBaseItem> RAZOR_SHEATH = ITEMS.register("razor_sheath", RazorSheathCurio::new);
 
+    // Starstruck Sheath
+    public static final Supplier<CurioBaseItem> STARSTRUCK_SHEATH = ITEMS.register("starstruck_sheath", StarstruckSheathCurio::new);
+
 
     /***
      * Armor
@@ -281,7 +302,12 @@ public class ItemRegistries {
 
     // Evoker Reverance Warlock Armor
 
-    // Void Seeker Warlock Armor
+    // Starvoid Warlock Armor
+    // Starvoid Warlock Armor - This one is plain Geckolib for now
+    public static final DeferredHolder<Item, Item> STARVOID_HELMET = ITEMS.register("starvoid_helmet", () -> new StarvoidArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredHolder<Item, Item> STARVOID_CUIRASS = ITEMS.register("starvoid_chestplate", () -> new StarvoidArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
+    public static final DeferredHolder<Item, Item> STARVOID_LEGGINGS = ITEMS.register("starvoid_leggings", () -> new StarvoidArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
+    public static final DeferredHolder<Item, Item> STARVOID_GREAVES = ITEMS.register("starvoid_greaves", () -> new StarvoidArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
     // Crimson Stag Armor (Blood & Nature set)
     public static final DeferredHolder<Item, Item> CRIMSON_STAG_ANTLERS = ITEMS.register("crimson_stag_antlers", () -> new CrimsonStagArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));

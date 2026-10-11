@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+      " s ",
+      "sns",
+      " s "
+    ],
+    "result": {
+      "count": 1,
+      "id": "discerning_the_eldritch:starmetal_ingot"
+    },
+    "key": {
+        "s": {
+          "item": "discerning_the_eldritch:starstone"
+        },
+        "n": {
+          "item": "discerning_the_eldritch:starmetal_nugget"
+        }
+    }
+}

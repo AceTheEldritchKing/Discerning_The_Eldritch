@@ -36,6 +36,9 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.BOTTLE_OF_LIQUID_MALICE.get());
                         output.accept(ItemRegistries.FORBIDDEN_SPELL_IMPROVEMENT.get());
                         output.accept(ItemRegistries.SOUL_EMBER.get());
+                        output.accept(ItemRegistries.STARMETAL_INGOT.get());
+                        output.accept(ItemRegistries.STARMETAL_NUGGET.get());
+                        output.accept(ItemRegistries.STARSTONE.get());
                         output.accept(FurledMapItem.of(DiscerningTheEldritch.id("cultist_base"),
                                 ResourceKey.create(Registries.DIMENSION, ResourceLocation.withDefaultNamespace("overworld")), Component.translatable("item.discerning_the_eldritch.cultist_base_map"), true));
                         // Curios
@@ -43,11 +46,13 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.AMULET_OF_SCULK_TREASURE.get());
                         output.accept(ItemRegistries.CASTERS_MANTLE.get());
                         output.accept(ItemRegistries.IRONBOUND_FEATHER.get());
+                        output.accept(ItemRegistries.RIFT_RIPPER_EMBLEM.get());
+                        //output.accept(ItemRegistries.KINGS_EFFIGY.get());
+                        // Sheaths
                         output.accept(ItemRegistries.PYRIUM_SHEATH.get());
                         output.accept(ItemRegistries.FROSTBOURNE_SHEATH.get());
                         output.accept(ItemRegistries.RAZOR_SHEATH.get());
-                        output.accept(ItemRegistries.RIFT_RIPPER_EMBLEM.get());
-                        //output.accept(ItemRegistries.KINGS_EFFIGY.get());
+                        output.accept(ItemRegistries.STARSTRUCK_SHEATH.get());
                         // Treasure
                         output.accept(ItemRegistries.APOTHIC_KEY.get());
                         output.accept(ItemRegistries.ASCENDED_KEY.get());
@@ -76,6 +81,8 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.CATACLYSM_AWAKENED.get());
                         output.accept(ItemRegistries.DEVOURER_AWAKENED.get());
                         output.accept(ItemRegistries.MOURNING_STAR_AWAKENED.get());
+                        output.accept(ItemRegistries.STARMETAL_SCYTHE.get());
+                        output.accept(ItemRegistries.STARMETAL_ODACHI.get());
                         output.accept(ItemRegistries.YMIR.get());
                         // Staves
                         output.accept(ItemRegistries.STAFF_OF_VEHEMENCE.get());
@@ -93,6 +100,11 @@ public class DTECreativeModeTabs {
                         output.accept(ItemRegistries.CRIMSON_STAG_ROBES.get());
                         output.accept(ItemRegistries.CRIMSON_STAG_LEGGINGS.get());
                         output.accept(ItemRegistries.CRIMSON_STAG_BOOTS.get());
+
+                        output.accept(ItemRegistries.STARVOID_HELMET.get());
+                        output.accept(ItemRegistries.STARVOID_CUIRASS.get());
+                        output.accept(ItemRegistries.STARVOID_LEGGINGS.get());
+                        output.accept(ItemRegistries.STARVOID_GREAVES.get());
                         // Spawn Eggs
                         output.accept(ItemRegistries.ACOLYTE_SPAWN_EGG.get());
                         output.accept(ItemRegistries.SUMMONER_SPAWN_EGG.get());

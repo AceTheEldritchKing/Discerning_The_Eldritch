@@ -47,6 +47,9 @@
   "item.discerning_the_eldritch.soul_ember": "Soul Ember",
   "item.discerning_the_eldritch.bucket_of_malice": "Bucket of Liquid Malice",
   "item.discerning_the_eldritch.bucket_of_malice.description": "It refuses to be placed down...",
+  "item.discerning_the_eldritch.starmetal_ingot": "Starmetal Ingot",
+  "item.discerning_the_eldritch.starmetal_nugget": "Starmetal Nugget",
+  "item.discerning_the_eldritch.starstone": "Starstone",
 
   "item.discerning_the_eldritch.black_book_spellbook": "Black Book",
   "item.discerning_the_eldritch.the_apocrypha_spellbook": "The Apocrypha",
@@ -74,6 +77,8 @@
   "item.discerning_the_eldritch.rift_ripper_emblem.desc": "An ancient emblem, allows you to cast Rift Walker multiple times",
   "item.discerning_the_eldritch.razor_sheath": "Sheath of The Razor",
   "item.discerning_the_eldritch.razor_sheath.desc": "On hit, spawn a group of razor blades around the victim",
+  "item.discerning_the_eldritch.starstruck_sheath": "Starstruck Sheath",
+  "item.discerning_the_eldritch.starstruck_sheath.desc": "Stardusted - On hit, create a cloud of stardust around the victim. Those who have stardust on them take extra Ender magic damage",
 
   "item.discerning_the_eldritch.deep_greatsword": "Greatsword of the Depths",
   "item.discerning_the_eldritch.ymir": "Ymir, Apothic Eldritch Blade",
@@ -105,6 +110,8 @@
   "item.discerning_the_eldritch.devourer_awakened.desc2": "Devoured entities:",
   "item.discerning_the_eldritch.mourning_star_awakened": "Awakened Mourning Star",
   "item.discerning_the_eldritch.mourning_star_awakened.desc": "Judgement - Entities with less than 50% of their health have a 50% chance of taking mortal damage or being cursed",
+  "item.discerning_the_eldritch.starmetal_scythe": "Starmetal Scythe",
+  "item.discerning_the_eldritch.starmetal_odachi": "Starmetal Odachi",
 
   "item.discerning_the_eldritch.staff_of_eldritch": "Staff of Vehemence",
   "item.discerning_the_eldritch.staff_of_ascension": "Staff of Ascension",
@@ -122,6 +129,11 @@
   "item.discerning_the_eldritch.crimson_stag_robes": "Crimson Stag Robes",
   "item.discerning_the_eldritch.crimson_stag_leggings": "Crimson Stag Breeches",
   "item.discerning_the_eldritch.crimson_stag_boots": "Crimson Stag Tabi",
+
+  "item.discerning_the_eldritch.starvoid_helmet": "Starvoid Helmet",
+  "item.discerning_the_eldritch.starvoid_chestplate": "Starvoid Cuirass",
+  "item.discerning_the_eldritch.starvoid_leggings": "Starvoid Breeches",
+  "item.discerning_the_eldritch.starvoid_greaves": "Starvoid Greaves",
 
   "item.discerning_the_eldritch.eldritch_upgrade_orb": "Eldritch Upgrade Orb",
   "item.discerning_the_eldritch.eldritch_rune": "Eldritch Rune",
