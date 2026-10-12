@@ -108,8 +108,8 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
     private final static EntityDataAccessor<Boolean> TORMENT_MODE = SynchedEntityData.defineId(AscendedOneBoss.class, EntityDataSerializers.BOOLEAN);
     public static final byte CLIENT_STOP_TRACKING = 0;
     public static final byte CLIENT_START_TRACKING = 1;
-    //public static final byte START_MUSIC = 2;
-    //public static final byte STOP_MUSIC = 3;
+    public static final byte START_MUSIC = 2;
+    public static final byte STOP_MUSIC = 3;
 
     // Boss music
     public static SoundEvent bossMusic = DTESoundRegistry.ASCENDED_ONE_THEME.get();
@@ -183,8 +183,8 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
                 BossbarManager.startTracking(this.uuid, BOSSBAR_SPRITE);
                 BossMusicManager.createOrResumeInstance(this);
             }
-            //case START_MUSIC -> BossMusicManager.createOrResumeInstance(this);
-            //case STOP_MUSIC -> BossMusicManager.stop(this);
+            case START_MUSIC -> BossMusicManager.createOrResumeInstance(this);
+            case STOP_MUSIC -> BossMusicManager.stop(this);
         }
     }
 
@@ -653,6 +653,7 @@ public class AscendedOneBoss extends GenericBossEntity implements IAnimatedAttac
             this.castComplete();
             this.serverTriggerAnimation("ascended_death");
             this.serverTriggerEvent(CLIENT_STOP_TRACKING);
+            this.serverTriggerEvent(STOP_MUSIC);
         }
     }
 
