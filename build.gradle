@@ -153,23 +153,6 @@ repositories {
             includeGroup "com.klikli_dev"
         }
     }
-
-    exclusiveContent {
-        forRepository {
-            maven {
-                name = "Crystal Nest"
-                url = "https://maven.crystalnest.it"
-            }
-        }
-        filter {
-            includeGroup "it.crystalnest"
-        }
-    }
-    // Fuzs repository where Soul Fire'd required dependency FCAP is hosted. Not needed since 1.21
-    maven {
-        name = "Fuzs Mod Resources"
-        url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
-    }
 }
 
 dependencies {
