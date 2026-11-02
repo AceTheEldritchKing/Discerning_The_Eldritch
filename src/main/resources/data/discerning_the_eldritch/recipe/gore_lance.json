@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+      " vv",
+      " mv",
+      "w  "
+    ],
+    "result": {
+      "count": 1,
+      "id": "discerning_the_eldritch:gore_lance"
+    },
+    "key": {
+        "v": {
+          "item": "irons_spellbooks:blood_vial"
+        },
+        "m": {
+          "item": "irons_spellbooks:mithril_ingot"
+        },
+        "w": {
+          "item": "irons_spellbooks:weapon_parts"
+        }
+    }
+}

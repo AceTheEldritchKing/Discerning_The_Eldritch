@@ -273,6 +273,9 @@ public class ItemRegistries {
     // Starstruck Sheath
     public static final Supplier<CurioBaseItem> STARSTRUCK_SHEATH = ITEMS.register("starstruck_sheath", StarstruckSheathCurio::new);
 
+    // Gore Lance
+    public static final DeferredHolder<Item, Item> GORE_LANCE = ITEMS.register("gore_lance", GoreLanceItem::new);
+
 
     /***
      * Armor

@@ -141,6 +141,13 @@ public class DTEWeaponTiers implements Tier, IronsWeaponTier {
             new AttributeContainer(ASAttributeRegistry.VIGOR_REAP, 0.25, AttributeModifier.Operation.ADD_VALUE)
     );
 
+    // Gore Lance
+    public static DTEWeaponTiers GORE_LANCE = new DTEWeaponTiers(2370, 12.5F, -2.5F, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.BLOOD_SPELL_POWER, 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(ASAttributeRegistry.VIGOR_REAP, 0.30, AttributeModifier.Operation.ADD_VALUE),
+            new AttributeContainer(ASAttributeRegistry.MANA_STEAL, 0.5, AttributeModifier.Operation.ADD_VALUE)
+    );
+
 
     //private final int level;
     private final int uses;
