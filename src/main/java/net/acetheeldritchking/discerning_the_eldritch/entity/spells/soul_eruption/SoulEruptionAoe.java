@@ -47,15 +47,16 @@ public class SoulEruptionAoe extends AoeEntity {
 
     @Override
     public void applyEffect(LivingEntity target) {
-        if (DAMAGE_SOURCE == null)
-        {
-            DAMAGE_SOURCE = SpellRegistries.SOUL_SLICE.get().getDamageSource(getOwner());
-        }
+        // Doing this how FireEruption does it to prevent potential crashes
+        var damageSource = SpellRegistries.SOUL_SET_ABLAZE.get().getDamageSource(this.getOwner() == null ? this : this.getOwner());
         DamageSources.ignoreNextKnockback(target);
-        target.hurt(DAMAGE_SOURCE, getDamage());
-        // Yeah, you're gonna hurt *bad*
-        SoulFireHelper.igniteSoul(target, 25*20);
-        target.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.SCORCHED_SOUL_EFFECT, 25 * 20, 0, true, true, true));
+        if (target.hurt(damageSource, getDamage()))
+        {
+            // Yeah, you're gonna hurt *bad*
+            SoulFireHelper.igniteSoul(target, 25*20);
+            target.addEffect(new MobEffectInstance(DTEPotionEffectRegistry.SCORCHED_SOUL_EFFECT, 25 * 20, 0, true, true, true));
+            target.hurtMarked = true;
+        }
     }
 
     @Override
