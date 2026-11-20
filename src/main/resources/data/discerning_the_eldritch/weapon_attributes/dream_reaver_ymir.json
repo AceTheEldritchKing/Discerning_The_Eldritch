@@ -1,0 +1,61 @@
+{
+  "attributes": {
+    "attack_range": 3.25,
+    "two_handed": true,
+    "pose": "bettercombat:pose_two_handed_sword",
+    "category": "longsword",
+    "attacks": [
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 1,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slash_horizontal_right",
+        "swing_sound": {
+          "id": "discerning_the_eldritch:ymir_slash"
+        }
+      },
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 1,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slash_horizontal_left",
+        "swing_sound": {
+          "id": "discerning_the_eldritch:ymir_slash"
+        }
+      },
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 1,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:one_handed_slash_switch_blade_right",
+        "swing_sound": {
+          "id": "discerning_the_eldritch:ymir_slash"
+        }
+      },
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 1,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:one_handed_slash_switch_blade_left",
+        "swing_sound": {
+          "id": "discerning_the_eldritch:ymir_slash"
+        }
+      },
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 1.75,
+        "angle": 360,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_spin",
+        "swing_sound": {
+          "id": "discerning_the_eldritch:ymir_slash",
+          "pitch": 1.1
+        }
+      }
+    ]
+  }
+}

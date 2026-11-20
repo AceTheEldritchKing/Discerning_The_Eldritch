@@ -1,0 +1,21 @@
+{
+  "attributes": {
+    "attack_range": 3.35,
+    "two_handed": true,
+    "pose": "bettercombat:pose_two_handed_sword",
+    "category": "claymore",
+    "attacks": [
+      {
+        "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 1.0,
+        "angle": 0,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_stab_right",
+        "swing_sound": {
+          "id": "bettercombat:claymore_stab",
+          "pitch": 1
+        }
+      }
+    ]
+  }
+}

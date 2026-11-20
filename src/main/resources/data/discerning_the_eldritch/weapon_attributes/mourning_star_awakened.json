@@ -1,0 +1,59 @@
+{
+  "attributes": {
+    "attack_range": 2.95,
+    "two_handed": false,
+    "category": "mace",
+    "attacks": [
+      {
+        "hitbox": "VERTICAL_PLANE",
+        "damage_multiplier": 1,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:one_handed_slam",
+        "swing_sound": {
+          "id": "irons_spellbooks:entity.citadel_keeper.step",
+          "randomness": 0,
+          "volume": 0.67
+        }
+      },
+      {
+        "hitbox": "VERTICAL_PLANE",
+        "damage_multiplier": 1.3,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:one_handed_slam",
+        "swing_sound": {
+          "id": "irons_spellbooks:entity.dead_king.attack_hit",
+          "randomness": 0,
+          "volume": 0.4
+        }
+      },
+      {
+        "conditions": ["DUAL_WIELDING_SAME_CATEGORY", "MAIN_HAND_ONLY"],
+        "hitbox": "VERTICAL_PLANE",
+        "damage_multiplier": 1.6,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slam_heavy",
+        "swing_sound": {
+          "id": "discerning_the_eldritch:soul_slam",
+          "randomness": 0,
+          "volume": 0.8
+        }
+      },
+      {
+        "conditions": ["DUAL_WIELDING_SAME_CATEGORY", "OFF_HAND_ONLY"],
+        "hitbox": "VERTICAL_PLANE",
+        "damage_multiplier": 1.6,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slam_heavy",
+        "swing_sound": {
+          "id": "discerning_the_eldritch:soul_slam",
+          "randomness": 0,
+          "volume": 0.8
+        }
+      }
+    ]
+  }
+}

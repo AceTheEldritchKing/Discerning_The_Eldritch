@@ -1,0 +1,21 @@
+{
+  "attributes": {
+    "attack_range": 3.65,
+    "two_handed": true,
+    "pose": "bettercombat:pose_two_handed_scythe",
+    "category": "scythe",
+    "attacks": [
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 1,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slash_horizontal_right",
+        "swing_sound": {
+          "id": "bettercombat:scythe_slash",
+          "pitch": 1
+        }
+      }
+    ]
+  }
+}

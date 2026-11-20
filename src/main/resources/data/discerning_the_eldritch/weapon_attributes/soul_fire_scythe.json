@@ -1,0 +1,68 @@
+{
+  "attributes": {
+    "attack_range": 3.5,
+    "two_handed": true,
+    "pose": "bettercombat:pose_two_handed_scythe",
+    "category": "scythe",
+    "attacks": [
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 0.85,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slash_horizontal_right",
+        "swing_sound": {
+          "id": "bettercombat:scythe_slash",
+          "pitch": 1
+        }
+      },
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 0.85,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slash_horizontal_left",
+        "swing_sound": {
+          "id": "bettercombat:scythe_slash",
+          "pitch": 1.2
+        }
+      },
+      {
+        "hitbox": "VERTICAL_PLANE",
+        "damage_multiplier": 1.2,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slam",
+        "swing_sound": {
+          "id": "discerning_the_eldritch:soul_slam",
+          "randomness": 0,
+          "volume": 0.6
+        }
+      },
+      {
+        "hitbox": "VERTICAL_PLANE",
+        "damage_multiplier": 1.2,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slam",
+        "swing_sound": {
+          "id": "discerning_the_eldritch:soul_slam",
+          "randomness": 0,
+          "volume": 0.6
+        }
+      },
+      {
+        "hitbox": "VERTICAL_PLANE",
+        "damage_multiplier": 1.4,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slam_heavy",
+        "swing_sound": {
+          "id": "discerning_the_eldritch:soul_slam_echo",
+          "randomness": 0,
+          "volume": 0.4
+        }
+      }
+    ]
+  }
+}

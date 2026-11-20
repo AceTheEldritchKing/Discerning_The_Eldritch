@@ -1,0 +1,8 @@
+{
+  "values": [
+    "#malum:scythe",
+    "#malum:staff",
+    "discerning_the_eldritch:ymir",
+    {"id":"discerning_the_eldritch:dream_reaver_ymir","required":false}
+  ]
+}

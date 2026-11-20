@@ -1,0 +1,57 @@
+{
+  "attributes": {
+    "attack_range": 3.35,
+    "two_handed": true,
+    "pose": "bettercombat:pose_two_handed_sword",
+    "category": "claymore",
+    "attacks": [
+      {
+        "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 1.2,
+        "angle": 0,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_stab_right",
+        "swing_sound": {
+          "id": "irons_spellbooks:force_impact",
+          "pitch": 1.2,
+          "volume": 0.6
+        }
+      },
+      {
+        "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 0.8,
+        "angle": 0,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slash_horizontal_right",
+        "swing_sound": {
+          "id": "irons_spellbooks:entity.generic.swing_blade",
+          "pitch": 0.75,
+          "volume": 0.3
+        }
+      },
+      {
+        "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 0.8,
+        "angle": 0,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slash_vertical_left",
+        "swing_sound": {
+          "id": "irons_spellbooks:entity.generic.swing_blade",
+          "pitch": 0.85,
+          "volume": 0.3
+        }
+      },
+      {
+        "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 1.4,
+        "angle": 0,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_spin",
+        "swing_sound": {
+          "id": "discerning_the_eldritch:magic_sword_blood_cast",
+          "pitch": 1
+        }
+      }
+    ]
+  }
+}
