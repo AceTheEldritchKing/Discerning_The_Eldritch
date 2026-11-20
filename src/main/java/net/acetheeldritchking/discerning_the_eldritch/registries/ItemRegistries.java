@@ -199,7 +199,7 @@ public class ItemRegistries {
 
     // Shard of Malice
     public static final DeferredHolder<Item, Item> SHARD_OF_MALICE = ITEMS.register("shard_of_malice",
-            () -> new Item(ItemPropertiesHelper.material().stacksTo(16).rarity(ASRarities.ACCURSED_RARITY_PROXY.getValue())));
+            () -> new Item(ItemPropertiesHelper.material().stacksTo(64).rarity(ASRarities.ACCURSED_RARITY_PROXY.getValue())));
 
     // Bottle of Liquid Malice
     public static final DeferredHolder<Item, Item> BOTTLE_OF_LIQUID_MALICE = ITEMS.register("bottle_of_liquid_malice",
